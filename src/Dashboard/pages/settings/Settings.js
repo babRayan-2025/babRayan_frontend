@@ -85,14 +85,14 @@ export default function Settings() {
         }
     };
 
-    const handleImageUpload = (info) => {
-        if (info.file.status === "done") {
-            // Use a mock URL for demonstration purposes
-            const newPic = URL.createObjectURL(info.file.originFileObj);
-            setFormData({ ...formData, pic: newPic });
-            message.success("Image uploaded successfully!");
-        }
-    };
+    // const handleImageUpload = (info) => {
+    //     if (info.file.status === "done") {
+    //         // Use a mock URL for demonstration purposes
+    //         const newPic = URL.createObjectURL(info.file.originFileObj);
+    //         setFormData({ ...formData, pic: newPic });
+    //         message.success("Image uploaded successfully!");
+    //     }
+    // };
 
     if (!userData) return <div>Loading...</div>;
 

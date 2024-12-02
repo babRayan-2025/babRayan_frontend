@@ -24,7 +24,7 @@
   z-index: 1;
 }
 
-.foyer-page .title{
+.foyer-page .title {
   color: #003049;
 }
 .foyer-page .hero-content {
@@ -37,7 +37,6 @@
   font-size: 3.5rem;
   font-weight: 700;
   margin-top: var(--spacing-base);
-  
 }
 .foyer-page .introduction-section {
   display: flex;
@@ -96,6 +95,9 @@
   margin: 5px 0 0;
   font-size: 0.9em;
 }
+
+/* timeline */  
+
 
 .foyer-page .gallery-section {
   display: flex;

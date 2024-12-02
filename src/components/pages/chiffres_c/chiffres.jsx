@@ -64,6 +64,12 @@ const ChiffresPage = () => {
         </div>
       </section>
 
+      {/* Timeline */}
+      
+   <div className="timeline">
+    
+   </div>
+
       {/* Gallery Section */}
       <section className="gallery-section">
           <img src={CFI} alt="Gallery image 1" />

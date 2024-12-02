@@ -70,7 +70,7 @@ export default function Actions() {
 
                 </div>
                 <div className="col-12  col-md-6  my-auto"><div className="card-body">
-                  <h2 style={{ color: "#c2aa79" }} className='text-center'>{action.titre} </h2>
+                  <h2 style={{ color: "#c2aa79" }} className="fw-bold fs-5 text-center">{action.titre} </h2>
                   <div style={{ color: "#EAE2B7" }}>{action.desc}</div>
                   <p className='text-center mt-4' style={{ cursor: "pointer", color: "#FCBF49" }}><u>Voir Plus</u></p>
                 </div></div>
