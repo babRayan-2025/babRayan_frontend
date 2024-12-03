@@ -273,7 +273,7 @@ const AboutUs = () => {
             <h3 className="president-title">Fondatrice PRÉSIDENTE</h3>
             <div className="president-bio">
               <p>
-                Œuvrant depuis plus de 15 ans dans le domaine de l'aide humanitaire, engagée dans le milieu associatif local depuis son plus jeune âge, la présidente de notre association fut, avant d'être élue présidente nationale en mai 2019, une grande bénévole et membre.
+              Au cours de cette décennie, notre dévouement inébranlable envers la protection, l'éducation, la formation, et l'insertion professionnelle des enfants en difficulté a été la pierre angulaire de notre action à Bab Rayan. Guidés par des valeurs nobles, notre boussole morale reste ferme, et nous sommes fiers de reconnaître Sa Majesté le Roi Mohammed VI comme une source inépuisable d'inspiration et de motivation.
               </p>
               <p>
                 Attachée à une bonne gouvernance et à une gestion saine et transparente, elle mène la vie associative de BAB RAYAN d'une main de maître. En phase avec les réalités du terrain qu'elle n'a cessé d'arpenter au cours de sa carrière.

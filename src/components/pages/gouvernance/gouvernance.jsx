@@ -2,74 +2,63 @@ import React, { useRef } from "react";
 import "animate.css";
 import { motion } from "framer-motion";
 import "./gouvernance.css";
-import { Collapse } from "antd";
+// import { Collapse } from "antd";
 import reporti from "../../../assets/gouvernance/report.jpg";
-import pic1 from "../../../assets/gouvernance/gen.jpg";
-import pic2 from "../../../assets/gouvernance/pic3.jpg";
-import pic3 from "../../../assets/indh.png";
+import pic1 from "../../../assets/bg.webp";
+// import pic2 from "../../../assets/gouvernance/pic3.jpg";
+// import pic3 from "../../../assets/indh.png";
 
 import Lalami from "../../../assets/members/lalami.jpeg";
 import Abdelmoula from "../../../assets/members/Abdelmoula.jpeg";
 import Mouji from "../../../assets/members/Mouji.jpeg";
 
-const items = [
-  {
-    key: "1",
-    label: "Conseil d'administration",
-    children: (
-      <div className="imgp">
-        <img 
-          src={pic2} 
-          alt="Conseil d'administration" 
-          
-        />
-        <p >
-          Le Conseil d'administration est l'instance décisionnaire. Il se réunit
-          au moins quatre fois par an. Son rôle consiste à adopter le
-          fonctionnement, déterminer la politique générale et suivre les
-          orientations stratégiques. Il est composé de membres administrateurs.
-        </p>
-      </div>
-    ),
-  },
-  {
-    key: "2",
-    label: "Direction Générale",
-    children: (
-      <div className="imgp">
-        <img 
-          src={pic3} 
-          alt="Direction Générale" 
-        />
-        <p >
-          La Direction Générale gère les établissements et services sous
-          l'autorité du Représentant de l'État. Elle assure une fonction
-          stratégique dans la gestion des affaires, en lien avec le Conseil
-          d'Administration et l'association, ainsi que le contexte économique,
-          politique et scientifique.
-        </p>
-      </div>
-    ),
-  },
-  {
-    key: "3",
-    label: "Partenaires institutionnels",
-    children: (
-      <div className="imgp">
-        <img 
-          src={pic2} 
-          alt="Partenaires institutionnels" 
-        />
-        <p>
-          INDH (Initiative Nationale pour les Droits de l'Homme) Wilaya Grand
-          Casablanca AREF Grand Casablanca (Académie Régional de l'Enseignement
-          et de la Formation) Entraide Nationale Casa Anfa
-        </p>
-      </div>
-    ),
-  },
-];
-
+// const items = [
+//   {
+//     key: "1",
+//     label: "Conseil d'administration",
+//     children: (
+//       <div className="imgp">
+//         <img src={pic2} alt="Conseil d'administration" />
+//         <p>
+//           Le Conseil d'administration est l'instance décisionnaire. Il se réunit
+//           au moins quatre fois par an. Son rôle consiste à adopter le
+//           fonctionnement, déterminer la politique générale et suivre les
+//           orientations stratégiques. Il est composé de membres administrateurs.
+//         </p>
+//       </div>
+//     ),
+//   },
+//   {
+//     key: "2",
+//     label: "Direction Générale",
+//     children: (
+//       <div className="imgp">
+//         <img src={pic3} alt="Direction Générale" />
+//         <p>
+//           La Direction Générale gère les établissements et services sous
+//           l'autorité du Représentant de l'État. Elle assure une fonction
+//           stratégique dans la gestion des affaires, en lien avec le Conseil
+//           d'Administration et l'association, ainsi que le contexte économique,
+//           politique et scientifique.
+//         </p>
+//       </div>
+//     ),
+//   },
+//   {
+//     key: "3",
+//     label: "Partenaires institutionnels",
+//     children: (
+//       <div className="imgp">
+//         <img src={pic2} alt="Partenaires institutionnels" />
+//         <p>
+//           INDH (Initiative Nationale pour les Droits de l'Homme) Wilaya Grand
+//           Casablanca AREF Grand Casablanca (Académie Régional de l'Enseignement
+//           et de la Formation) Entraide Nationale Casa Anfa
+//         </p>
+//       </div>
+//     ),
+//   },
+// ];
 
 //
 const Gouvernance = () => {
@@ -196,31 +185,31 @@ const Gouvernance = () => {
 
   const actions = [
     {
-      titre: "Conseil d'administration", 
-    //   img: Ftour,
+      titre: "Conseil d'administration",
+      //   img: Ftour,
       desc: ` Le Conseil d'administration est l'instance décisionnaire. Il se réunit
           au moins quatre fois par an. Son rôle consiste à adopter le
           fonctionnement, déterminer la politique générale et suivre les
           orientations stratégiques. Il est composé de membres administrateurs.
-   `
-         },
+   `,
+    },
     {
       titre: "Direction Générale",
-    //    img: Ftour,
+      //    img: Ftour,
       desc: ` La Direction Générale gère les établissements et services sous
           l'autorité du Représentant de l'État. Elle assure une fonction
           stratégique dans la gestion des affaires, en lien avec le Conseil
           d'Administration et l'association, ainsi que le contexte économique,
-          politique et scientifique.`
-     },
+          politique et scientifique.`,
+    },
     {
-      titre: "Partenaires institutionnels", 
-    //   img: Ftour,
+      titre: "Partenaires institutionnels",
+      //   img: Ftour,
       desc: `     INDH (Initiative Nationale pour les Droits de l'Homme) Wilaya Grand
           Casablanca AREF Grand Casablanca (Académie Régional de l'Enseignement
-          et de la Formation) Entraide Nationale Casa Anfa`    },
-
-  ]
+          et de la Formation) Entraide Nationale Casa Anfa`,
+    },
+  ];
 
   return (
     <div className="general-page">
@@ -368,7 +357,7 @@ const Gouvernance = () => {
     /> */}
 
       <div className="report-container">
-        <div  className="section-title ">
+        <div className="section-title ">
           <p className="collaboration-text">Collaborations à livres ouverts</p>
           <h2 className="main-title">Transparence financière</h2>
         </div>
@@ -391,16 +380,21 @@ const Gouvernance = () => {
           ))}
         </div>
       </div>
- <hr />
+      <hr />
       <div className="rubrique">
-      {actions.map((action, index) => (
+        {actions.map((action, index) => (
           <div key={index} className="col-12 mb-2 col-md-6 col-lg-4 w-25 p-3">
-            <div className="card h-100 border-0" style={{ backgroundColor: "#003049" }}>
+            <div
+              className="card h-100 border-0"
+              style={{ backgroundColor: "#003049" }}
+            >
               {/* <div className="p-2 card-hedader">
                 <img src={action.img} alt="ftour" className="img-fluid roudndeed" />
               </div> */}
               <div className="card-body">
-                <h2 style={{ color: "#c2aa79" }} className='text-center'>{action.titre} </h2>
+                <h2 style={{ color: "#c2aa79" }} className="text-center">
+                  {action.titre}{" "}
+                </h2>
                 <hr style={{ color: "#c2aa79" }} />
                 <div style={{ color: "#EAE2B7" }}>{action.desc}</div>
                 {/* <p className='text-center mt-4' style={{ cursor: "pointer", color: "#FCBF49" }}><u>Voir Plus</u></p> */}

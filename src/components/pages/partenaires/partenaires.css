@@ -76,3 +76,38 @@
   width: 120px;
   max-width: 100%;
 }
+
+/* General Styles for the Logo Carousel */
+.logo-carousel {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for individual logo slides */
+.logo-slide img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
+  transition: transform 0.3s ease; 
+}
+
+/* Optional hover effect to enlarge logos slightly when hovered */
+.logo-slide img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* For responsive layouts, we can add some media queries if needed */
+@media (max-width: 1024px) {
+  .logo-carousel {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-carousel {
+    padding: 5px;
+  }
+}
