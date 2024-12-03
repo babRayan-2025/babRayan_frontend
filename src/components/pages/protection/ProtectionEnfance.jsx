@@ -172,23 +172,6 @@ const ProtectionEnfance = () => {
 
             <div className="foyer">
               <h3 style={{textAlign:"center", padding:"10px"}}>Le Foyer en Chiffres</h3>
-              {/* <motion.ul
-              className="stats"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-            >
-              <li>
-                <strong>105 enfants</strong> pris en charge de 3 à 18 ans (et
-                parfois au-delà)
-              </li>
-              <li>
-                <strong>16 encadrants</strong> dédiés
-              </li>
-              <li>
-                <strong>1300 bénévoles</strong> impliqués
-              </li>
-            </motion.ul> */}
               <motion.div className="stat-container">
                 {chiffres.map((stat, index) => (
                   <div key={index} className="stat-item text-center">

@@ -68,7 +68,7 @@ export default function Navbar() {
     {
       key: '3',
       label: (
-        <a href="/chiffres">Dates et Chiffres clés</a>
+        <a href="/chiffres">Dates clés</a>
       ),
       style: { color: '#003049', fontSize: '15px' },
 

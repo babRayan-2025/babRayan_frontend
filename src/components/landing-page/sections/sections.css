@@ -114,3 +114,14 @@
   background-color: #FCBF49;
   color: black;
 }
+.btnandicon{
+  display: flex;
+  padding :10px;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 20px;
+}
+.fa-solid.fa-share-nodes{
+  font-size: 30px;
+  cursor: pointer;
+}

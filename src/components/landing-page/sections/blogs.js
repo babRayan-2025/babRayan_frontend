@@ -78,8 +78,10 @@ export default function Blogs() {
           <div className="col-12 col-md-5" style={{ color: "#003049" }}>
             <h2>{blog.title}</h2>
             <div dangerouslySetInnerHTML={{ __html: blog.text }} />
+            <div className="btnandicon"> 
             <button className="btn">Découvrir Plus</button>
             <i class="fa-solid fa-share-nodes"></i>
+            </div>
             </div>
         </div>
       ))}

@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.education-container .hero-section {
+  position: relative;
+  height: 17rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-red);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}
+
+.education-container .title {
+  color: #003049;
+}
+
+.education-container .hero-content {
+  position: relative;
+  z-index: 2;
+  padding: var(--spacing-base);
+}
+
+.education-container .hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-top: var(--spacing-base);
+}
+
+.ecole-plamier{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px; 
+}
+.ecole-plamier h2{
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: var(--spacing-base);
+}
+
+.section-pedagogy{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  padding: 0px 0px 20px 80px;
+  width: 70%;
+}
+
+
+/* .parental{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px; 
+} */
+.parental-title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+}
+
+.parental-title h2{
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: var(--spacing-base);}
+
+/* .parental-Collapse{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  padding: 0px 0px 20px 80px;
+  width: 70%;
+} */
+/*  */
