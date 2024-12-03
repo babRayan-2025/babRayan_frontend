@@ -93,7 +93,7 @@ export default function Navbar() {
     {
       key: '3',
       label: (
-        <a href="#">Education et scolarité</a>
+        <a href="/education">Education et scolarité</a>
       ),
       style: { color: '#003049', fontSize: '15px' },
     },

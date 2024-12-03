@@ -28,6 +28,7 @@ import Actualite from './components/pages/actualité/Actualite';
 import ActualiteDetails from './components/pages/actualité/ActualiteDetails';
 import Sociaux from './components/pages/sociaux/Sociaux';
 import Protection from './components/pages/protection/ProtectionEnfance';
+import Education from './components/pages/education/EducationScolarite';
 
 // 404
 import NotFound from './components/NotFound';
@@ -191,6 +192,10 @@ const Router = createBrowserRouter([
       {
         path: '/protection',
         element: <Protection />
+      },
+      {
+        path: '/education',
+        element: <Education />
       },
       {
         path: '*',

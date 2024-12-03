@@ -1,28 +1,39 @@
 // AboutUs.js
-import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 import {
-  Globe2, Users, Target, Award, Heart,
-  CheckCircle2, ShieldCheck, GraduationCap, Lightbulb,
-  Calendar, MapPin, Mail, Phone,
+  Globe2,
+  Users,
+  Target,
+  Award,
+  Heart,
+  CheckCircle2,
+  ShieldCheck,
+  GraduationCap,
+  Lightbulb,
+  Calendar,
+  MapPin,
+  Mail,
+  Phone,
   Linkedin,
   Facebook,
   Twitter,
-  Instagram
-} from 'lucide-react';
-import './about.css';
+  Instagram,
+} from "lucide-react";
+import "./about.css";
+import fatimapic from "../../../assets/members/fatima.jpeg";
 
 const AboutUs = () => {
   const controls = useAnimation();
-  const [activeTab, setActiveTab] = useState('vision');
+  const [activeTab, setActiveTab] = useState("vision");
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const staggerChildren = {
@@ -30,9 +41,9 @@ const AboutUs = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const scaleIn = {
@@ -40,8 +51,8 @@ const AboutUs = () => {
     visible: {
       scale: 1,
       opacity: 1,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   const teamMembers = [
@@ -52,8 +63,8 @@ const AboutUs = () => {
       // expertise: ["compt"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       name: "Ratibe Hind",
@@ -62,8 +73,8 @@ const AboutUs = () => {
       // expertise: ["Program Management", "Outreach", "Development"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       name: "Ratibe Abdelmoula",
@@ -72,8 +83,8 @@ const AboutUs = () => {
       // expertise: ["Research", "Impact Analysis", "Data Science"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       name: "LALAMI Driss",
@@ -82,8 +93,8 @@ const AboutUs = () => {
       // expertise: ["Strategic Planning", "Leadership", "Community Relations"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       name: "Sefrioui Mouji Salim",
@@ -92,8 +103,8 @@ const AboutUs = () => {
       // expertise: ["Program Management", "Outreach", "Development"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       name: "Jamal Lahjouji Mohamed",
@@ -102,8 +113,8 @@ const AboutUs = () => {
       // expertise: ["Research", "Impact Analysis", "Data Science"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       name: "Anas Guennoun",
@@ -112,8 +123,8 @@ const AboutUs = () => {
       // expertise: ["Strategic Planning", "Leadership", "Community Relations"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       name: "Mesbahi Zhor",
@@ -122,8 +133,8 @@ const AboutUs = () => {
       // expertise: ["Program Management", "Outreach", "Development"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       name: "Hamza Laghrari",
@@ -132,96 +143,125 @@ const AboutUs = () => {
       // expertise: ["Research", "Impact Analysis", "Data Science"],
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
-    }
+        twitter: "#",
+      },
+    },
   ];
 
   const values = [
     {
       icon: <Target className="icon" />,
       title: "Solidarité",
-      description: "La solidarité consiste à soutenir et à aider les autres, particulièrement les personnes en difficulté. Chez Bab Rayan, cela signifie travailler main dans la main pour offrir aux enfants des conditions de vie et d'apprentissage favorables."
+      description:
+        "La solidarité consiste à soutenir et à aider les autres, particulièrement les personnes en difficulté. Chez Bab Rayan, cela signifie travailler main dans la main pour offrir aux enfants des conditions de vie et d'apprentissage favorables.",
     },
     {
       icon: <Globe2 className="icon" />,
       title: "Engagement",
-      description: "L'engagement reflète le dévouement et la détermination de l’équipe à atteindre les objectifs de l’association. C’est une promesse d’action durable en faveur des enfants, pour leur garantir un avenir meilleur."
+      description:
+        "L'engagement reflète le dévouement et la détermination de l’équipe à atteindre les objectifs de l’association. C’est une promesse d’action durable en faveur des enfants, pour leur garantir un avenir meilleur.",
     },
     {
       icon: <Users className="icon" />,
       title: "Égalité des chances",
-      description: "L'égalité des chances est le principe selon lequel chaque enfant doit avoir les mêmes possibilités de réussite, indépendamment de son origine ou de sa situation. Bab Rayan s’assure de créer un environnement où chaque enfant peut s’épanouir sans discrimination."
+      description:
+        "L'égalité des chances est le principe selon lequel chaque enfant doit avoir les mêmes possibilités de réussite, indépendamment de son origine ou de sa situation. Bab Rayan s’assure de créer un environnement où chaque enfant peut s’épanouir sans discrimination.",
     },
     {
       icon: <Award className="icon" />,
       title: "Responsabilité sociale et durable",
-      description: "Cette valeur implique de prendre des décisions et d’agir en tenant compte des impacts à long terme sur la société et l'environnement. Bab Rayan s’engage à bâtir un avenir plus responsable pour les enfants tout en respectant les ressources de la planète."
+      description:
+        "Cette valeur implique de prendre des décisions et d’agir en tenant compte des impacts à long terme sur la société et l'environnement. Bab Rayan s’engage à bâtir un avenir plus responsable pour les enfants tout en respectant les ressources de la planète.",
     },
     {
       icon: <Lightbulb className="icon" />,
       title: "Innovation et adaptabilité",
-      description: "L'innovation et l'adaptabilité permettent de trouver des solutions nouvelles et de s’ajuster aux changements. Bab Rayan utilise ces qualités pour répondre efficacement aux besoins des enfants et pour rester pertinent face aux défis sociaux actuels."
-    }
+      description:
+        "L'innovation et l'adaptabilité permettent de trouver des solutions nouvelles et de s’ajuster aux changements. Bab Rayan utilise ces qualités pour répondre efficacement aux besoins des enfants et pour rester pertinent face aux défis sociaux actuels.",
+    },
   ];
 
   const achievements = [
     {
       year: 2023,
       title: "Global Impact Award",
-      description: "Recognized for outstanding contribution to sustainable development"
+      description:
+        "Recognized for outstanding contribution to sustainable development",
     },
     {
       year: 2022,
       title: "Community Excellence",
-      description: "Award for innovative community engagement programs"
+      description: "Award for innovative community engagement programs",
     },
     {
       year: 2021,
       title: "Partnership Milestone",
-      description: "Reached 100+ active partnerships globally"
-    }
+      description: "Reached 100+ active partnerships globally",
+    },
   ];
 
-  const milestones = [
-    { year: 2014, text: "Création de l’association Bab Rayan." },
-    { year: 2015, text: "Ouverture du foyer Bab Rayan et accueil des enfants." },
-    { year: 2016, text: "Partenariat avec l’Entraide Nationale pour la création d’EPS." },
-    { year: 2017, text: "Construction de l’école palmier." },
-    { year: 2018, text: "Formation des instituteurs en Approche Pédagogique « École de la Vie »." },
-    { year: 2019, text: "Ouverture des classes de formation préscolaire." },
-    { year: 2020, text: "Visite de Mr Khamlichi Gouverneur de Casa-Anfa." },
-    { year: 2021, text: "Reconnaissance d’utilité publique." },
-    { year: 2022, text: "Démarrage du Centre de Compétence et de Formation (CCF)." },
-    { year: 2023, text: "Visite de Mme Awatif Hayar Ministre de la Solidarité de l’Insertion sociale et de la Famille et de Mr Hamid Karam Président RAMSA." }
-  ];
+  // const milestones = [
+  //   { year: 2014, text: "Création de l’association Bab Rayan." },
+  //   {
+  //     year: 2015,
+  //     text: "Ouverture du foyer Bab Rayan et accueil des enfants.",
+  //   },
+  //   {
+  //     year: 2016,
+  //     text: "Partenariat avec l’Entraide Nationale pour la création d’EPS.",
+  //   },
+  //   { year: 2017, text: "Construction de l’école palmier." },
+  //   {
+  //     year: 2018,
+  //     text: "Formation des instituteurs en Approche Pédagogique « École de la Vie ».",
+  //   },
+  //   { year: 2019, text: "Ouverture des classes de formation préscolaire." },
+  //   { year: 2020, text: "Visite de Mr Khamlichi Gouverneur de Casa-Anfa." },
+  //   { year: 2021, text: "Reconnaissance d’utilité publique." },
+  //   {
+  //     year: 2022,
+  //     text: "Démarrage du Centre de Compétence et de Formation (CCF).",
+  //   },
+  //   {
+  //     year: 2023,
+  //     text: "Visite de Mme Awatif Hayar Ministre de la Solidarité de l’Insertion sociale et de la Famille et de Mr Hamid Karam Président RAMSA.",
+  //   },
+  // ];
 
   useEffect(() => {
-    controls.start('visible');
+    controls.start("visible");
 
     // Parallax effect on scroll
     const handleScroll = () => {
       const scrolled = window.scrollY;
-      const parallaxElements = document.querySelectorAll('.parallax');
+      const parallaxElements = document.querySelectorAll(".parallax");
       parallaxElements.forEach((element) => {
         const speed = element.dataset.speed || 0.5;
         element.style.transform = `translateY(${scrolled * speed}px)`;
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [controls]);
 
   return (
     <div className="about-us">
       {/* Enhanced Hero Section */}
-      <motion.div  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="hero-content">
-          <motion.div className="title" initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.8, duration: 0.8 }}>
+          <motion.div
+            className="title"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
             <h1 className="hero-title">À propos</h1>
             <div className="divider"></div>
-
           </motion.div>
         </div>
       </motion.div>
@@ -229,36 +269,29 @@ const AboutUs = () => {
       {/* mot de presedente */}
 
       <div className="intro-section">
-        <motion.h2 
-          className="section-title"
-          variants={fadeInUp}
-        >
+        <motion.h2 className="section-title" variants={fadeInUp}>
           Un Message de Compassion et d'Action
         </motion.h2>
-        <motion.p 
-          className="intro-text"
-          variants={fadeInUp}
-        >
-          En tant que présidente, je suis honorée de partager notre vision et notre engagement envers un avenir meilleur. Chaque action compte, et ensemble, nous pouvons transformer des vies.
+        <motion.p className="intro-text" variants={fadeInUp}>
+          En tant que présidente, je suis honorée de partager notre vision et
+          notre engagement envers un avenir meilleur. Chaque action compte, et
+          ensemble, nous pouvons transformer des vies.
         </motion.p>
       </div>
 
       {/* President Section */}
       <div className="president-section">
-        <motion.div 
+        <motion.div
           animate={controls}
           variants={staggerChildren}
           className="president-grid"
         >
           {/* Image Column */}
-          <motion.div 
-            variants={fadeInUp}
-            className="president-image-container"
-          >
+          <motion.div variants={fadeInUp} className="president-image-container">
             <div className="image-wrapper">
-              <img 
-                src=''
-                alt="FATIMA ZAHRA HAMROUDI RATIBE" 
+              <img
+                src={fatimapic}
+                alt="FATIMA ZAHRA HAMROUDI RATIBE"
                 className="president-image"
               />
               <div className="image-overlay"></div>
@@ -273,16 +306,36 @@ const AboutUs = () => {
             <h3 className="president-title">Fondatrice PRÉSIDENTE</h3>
             <div className="president-bio">
               <p>
-              Au cours de cette décennie, notre dévouement inébranlable envers la protection, l'éducation, la formation, et l'insertion professionnelle des enfants en difficulté a été la pierre angulaire de notre action à Bab Rayan. Guidés par des valeurs nobles, notre boussole morale reste ferme, et nous sommes fiers de reconnaître Sa Majesté le Roi Mohammed VI comme une source inépuisable d'inspiration et de motivation.
+                Au cours de cette décennie, notre dévouement inébranlable envers
+                la protection, l'éducation, la formation, et l'insertion
+                professionnelle des enfants en difficulté a été la pierre
+                angulaire de notre action à Bab Rayan. Guidés par des valeurs
+                nobles, notre boussole morale reste ferme, et nous sommes fiers
+                de reconnaître Sa Majesté le Roi Mohammed VI comme une source
+                inépuisable d'inspiration et de motivation. Les initiatives de
+                Bab Rayan ont évolué, démontrant notre engagement croissant
+                envers la construction d'un avenir prometteur pour les enfants
+                que nous servons. Nous avons tracé une trajectoire ascendante,
+                passant d'un simple projet de protection à un modèle de vie
+                holistique, méticuleusement conçu pour façonner des citoyens
+                marocains productifs et fiers.
               </p>
               <p>
-                Attachée à une bonne gouvernance et à une gestion saine et transparente, elle mène la vie associative de BAB RAYAN d'une main de maître. En phase avec les réalités du terrain qu'elle n'a cessé d'arpenter au cours de sa carrière.
+                En rendant hommage à nos partenaires publics et privés, nous
+                contemplons avec satisfaction les réussites passées tout en
+                tournant résolument notre regard vers l'avenir. Nous sommes
+                convaincus que des miracles attendent ces enfants qui méritent
+                un avenir meilleur. En unissant nos forces, nous continuerons
+                d'inscrire des chapitres positifs dans l'histoire de Bab Rayan.
+              </p>
+              <p>
+                Ensemble, nous formons une communauté déterminée à faire une
+                différence durable. Merci à chacun de vous pour votre engagement
+                et votre soutien continu.
               </p>
             </div>
             <motion.div className="cta-container">
-              <button className="cta-button">
-                Apprendre Plus
-              </button>
+              <button className="cta-button">Apprendre Plus</button>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -293,19 +346,22 @@ const AboutUs = () => {
         <div className="container">
           <div className="tabs">
             <button
-              className={`tab-button ${activeTab === 'vision' ? 'active' : ''}`}
-              onClick={() => setActiveTab('vision')}
+              className={`tab-button ${activeTab === "vision" ? "active" : ""}`}
+              onClick={() => setActiveTab("vision")}
             >
-              Notre vision            </button>
+              Notre vision{" "}
+            </button>
             <button
-              className={`tab-button ${activeTab === 'mission' ? 'active ' : ''}`}
-              onClick={() => setActiveTab('mission')}
+              className={`tab-button ${
+                activeTab === "mission" ? "active " : ""
+              }`}
+              onClick={() => setActiveTab("mission")}
             >
               Nos missions
             </button>
             <button
-              className={`tab-button ${activeTab === 'values' ? 'active' : ''}`}
-              onClick={() => setActiveTab('values')}
+              className={`tab-button ${activeTab === "values" ? "active" : ""}`}
+              onClick={() => setActiveTab("values")}
             >
               Nos valeurs
             </button>
@@ -318,10 +374,16 @@ const AboutUs = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {activeTab === 'vision' && (
+            {activeTab === "vision" && (
               <div className="vision-content">
-                <h3 className='blue fw-bold'>« Parce que chaque enfant mérite un bon départ dans la vie »</h3>
-                <p>Chez Bab Rayan, nous sommes convaincus que chaque enfant mérite une opportunité égale de réussir, peu importe son parcours. </p>
+                <h3 className="blue fw-bold">
+                  « Parce que chaque enfant mérite un bon départ dans la vie »
+                </h3>
+                <p>
+                  Chez Bab Rayan, nous sommes convaincus que chaque enfant
+                  mérite une opportunité égale de réussir, peu importe son
+                  parcours.{" "}
+                </p>
                 <div className="vision-points">
                   <div className="point">
                     <CheckCircle2 className="point-icon" />
@@ -338,15 +400,39 @@ const AboutUs = () => {
                 </div>
               </div>
             )}
-            {activeTab === 'mission' && (
+            {activeTab === "mission" && (
               <div className="mission-content">
-                <h3 className='blue fw-bold'>Notre objectif</h3>
-                <p>Bab Rayan place la protection de l'enfance au cœur de sa mission. Son objectif : offrir à ces enfants un cadre de vie sécurisant, tout en restaurant leur confiance grâce à un soutien matériel et humain continu. En leur redonnant une part de leur insouciance et en les accompagnant vers la réalisation de leurs rêves — avoir un foyer et accéder à l'éducation — l'association leur permet de se projeter vers un avenir meilleur.</p>
+                <h3 className="blue fw-bold">Notre objectif</h3>
+                <p>
+                  Bab Rayan place la protection de l'enfance au cœur de sa
+                  mission. Son objectif : offrir à ces enfants un cadre de vie
+                  sécurisant, tout en restaurant leur confiance grâce à un
+                  soutien matériel et humain continu. En leur redonnant une part
+                  de leur insouciance et en les accompagnant vers la réalisation
+                  de leurs rêves — avoir un foyer et accéder à l'éducation —
+                  l'association leur permet de se projeter vers un avenir
+                  meilleur.
+                </p>
                 <div className="mission-pillars">
                   {[
-                    { icon: <ShieldCheck />, text: "  Protection de l’enfance", description: "Depuis 2014, Bab rayan se consacre à la protection de l’enfance, assurant un environnement sûr et bienveillant pour les enfants vulnérables. Chaque jour, l’association défend leurs droits et leur garantit un accès à une éducation de qualité, ouvrant ainsi la voie à un avenir plus prometteur." },
-                    { icon: <GraduationCap />, text: "  Éducation et scolarité", description: "Bab Rayan, ONG dédiée à la protection de l’enfance depuis 2014, mène un combat quotidien pour défendre les droits des enfants et leur offrir une éducation de qualité. Sa mission ultime est de leur ouvrir la voie vers un avenir meilleur" },
-                    { icon: <Heart />, text: "  CFI ", description: "Ces formations gratuites et certifiantes d’un an, sont ouvertes aux jeunes de +18 ans issus du foyer Bab Rayan, des autres établissements de protection sociale (EPS) et des jeunes en précarité de la région Grand Casablanca. Le centre est agréé par l'Entraide Nationale." }
+                    {
+                      icon: <ShieldCheck />,
+                      text: "  Protection de l’enfance",
+                      description:
+                        "Depuis 2014, Bab rayan se consacre à la protection de l’enfance, assurant un environnement sûr et bienveillant pour les enfants vulnérables. Chaque jour, l’association défend leurs droits et leur garantit un accès à une éducation de qualité, ouvrant ainsi la voie à un avenir plus prometteur.",
+                    },
+                    {
+                      icon: <GraduationCap />,
+                      text: "  Éducation et scolarité",
+                      description:
+                        "Bab Rayan, ONG dédiée à la protection de l’enfance depuis 2014, mène un combat quotidien pour défendre les droits des enfants et leur offrir une éducation de qualité. Sa mission ultime est de leur ouvrir la voie vers un avenir meilleur",
+                    },
+                    {
+                      icon: <Heart />,
+                      text: "  CFI ",
+                      description:
+                        "Ces formations gratuites et certifiantes d’un an, sont ouvertes aux jeunes de +18 ans issus du foyer Bab Rayan, des autres établissements de protection sociale (EPS) et des jeunes en précarité de la région Grand Casablanca. Le centre est agréé par l'Entraide Nationale.",
+                    },
                   ].map((pillar, index) => (
                     <div key={index} className="pillar">
                       {pillar.icon}
@@ -359,9 +445,9 @@ const AboutUs = () => {
                 </div>
               </div>
             )}
-            {activeTab === 'values' && (
+            {activeTab === "values" && (
               <div className="values-content">
-                <h3 className='blue fw-bold'>Ce que nous défendons</h3>
+                <h3 className="blue fw-bold">Ce que nous défendons</h3>
                 <div className="values-grid">
                   {values.map((value, index) => (
                     <div key={index} className="value-item">
@@ -445,7 +531,7 @@ const AboutUs = () => {
             {milestones.map((milestone, index) => (
               <motion.div key={index} className="timeline-item" variants={fadeInUp}>
                 {/* {index !== milestones.length - 1 ? ( */}
-                  {/* <div className="timeline-marker"></div>
+      {/* <div className="timeline-marker"></div>
                ) : (
                    <div className="timeline-marker last"></div>
                )} 
@@ -478,10 +564,16 @@ const AboutUs = () => {
             animate={controls}
           >
             {achievements.map((achievement, index) => (
-              <motion.div key={index} className="achievement-card" variants={scaleIn}>
+              <motion.div
+                key={index}
+                className="achievement-card"
+                variants={scaleIn}
+              >
                 <div className="achievement-year">{achievement.year}</div>
                 <h3 className="achievement-title">{achievement.title}</h3>
-                <p className="achievement-description">{achievement.description}</p>
+                <p className="achievement-description">
+                  {achievement.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -537,10 +629,18 @@ const AboutUs = () => {
           <motion.div className="social-links" variants={fadeInUp}>
             <h3>Follow Us</h3>
             <div className="social-icons">
-              <a href="#" aria-label="Facebook"><Facebook /></a>
-              <a href="#" aria-label="Twitter"><Twitter /></a>
-              <a href="#" aria-label="LinkedIn"><Linkedin /></a>
-              <a href="#" aria-label="Instagram"><Instagram /></a>
+              <a href="#" aria-label="Facebook">
+                <Facebook />
+              </a>
+              <a href="#" aria-label="Twitter">
+                <Twitter />
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <Linkedin />
+              </a>
+              <a href="#" aria-label="Instagram">
+                <Instagram />
+              </a>
             </div>
           </motion.div>
         </div>
