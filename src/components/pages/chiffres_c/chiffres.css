@@ -1,6 +1,5 @@
 .foyer-page {
-  font-family: Arial, sans-serif;
-  color: #333;
+  /* color: #333; */
 }
 
 /* Hero Section */
@@ -164,4 +163,180 @@
   .foyer-page .hero-title {
     font-size: 2em;
   }
+}
+
+/* timeline  */
+
+.timeline-main {
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+  margin: auto;
+}
+
+.timeline-yellow {
+  position: absolute;
+  width: 500px;
+  height: 200px;
+  border-top: 60px solid yellow;
+  background: transparent;
+  top: 170px;
+  right: 450px;
+}
+
+.timeline-orange {
+  position: absolute;
+  width: 250px;
+  height: 550px;
+  border: 60px solid #fcbf49;
+  background: transparent;
+  border-radius: 250px;
+  top: 20px;
+  right: 170px;
+  transform: rotate(90deg);
+  clip-path: inset(0px 190px 180px 0px);
+  /* Top, right, bottom, left */
+}
+
+.timeline-orange1 {
+  position: absolute;
+  width: 250px;
+  height: 550px;
+  border: 60px solid #f77f00;
+  background: transparent;
+  border-radius: 250px;
+  top: 20px;
+  right: 170px;
+  transform: rotate(90deg);
+  clip-path: inset(0px 0px 179px 180px);
+  /* Top, right, bottom, left */
+}
+
+.timeline-red {
+  position: absolute;
+  width: 250px;
+  height: 550px;
+  border: 60px solid #d62828;
+  background: transparent;
+  border-radius: 250px;
+  top: 330px;
+  right: 480px;
+  transform: rotate(90deg);
+  clip-path: inset(175px 180px 0px 0px);
+  /* Top, right, bottom, left */
+}
+
+.timeline-bleu {
+  position: absolute;
+  width: 250px;
+  height: 550px;
+  border: 60px solid #003049;
+  background: transparent;
+  border-radius: 250px;
+  top: 335px;
+  right: 480px;
+  transform: rotate(90deg);
+  clip-path: inset(175px 0px 0px 180px);
+  /* Top, right, bottom, left */
+}
+
+.timeline-purple {
+  position: absolute;
+  width: 450px;
+  height: 200px;
+  border-top: 60px solid purple;
+  background: transparent;
+  top: 795px;
+  right: 55px;
+}
+
+.timeline-start,
+.timeline-a,
+.timeline-b,
+.timeline-c,
+.timeline-d,
+.timeline-e,
+.timeline-finish {
+  position: absolute;
+  border: 2px solid white;
+  box-shadow: 0px 0px 5px 2px white;
+  width: 130px;
+  height: 130px;
+  text-align: center;
+  line-height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.timeline-start {
+  top: 140px;
+  left: 10px;
+}
+.timeline-start img,
+.timeline-a img,
+.timeline-b img,
+.timeline-c img,
+.timeline-d img,
+.timeline-e img,
+.timeline-finish img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timeline-a {
+  top: 140px;
+  left: 428px;
+}
+
+.timeline-b {
+  top: 288px;
+  left: 890px;
+}
+
+.timeline-c {
+  background-color: red;
+  top: 446px;
+  left: 428px;
+}
+
+.timeline-d {
+  background-color: green;
+  top: 604px;
+  left: -29px;
+}
+
+.timeline-e {
+  background-color: purple;
+  top: 761px;
+  left: 428px;
+}
+
+.timeline-finish {
+  background-color: yellow;
+  top: 761px;
+  left: 883px;
+}
+.timeline-a1 {
+  position: absolute;
+  width: 250px;
+  height: 100px;
+  left: 140px;
+  background-color: yellow;
+}
+.timeline-a1.timeline-desc {
+  position: absolute;
+}
+.timeline-a1.timeline-date {
+  margin: 0;
+}
+
+.line-a1 {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  left: 240px;
+  top: 100px;
+  background-color: yellow;
 }

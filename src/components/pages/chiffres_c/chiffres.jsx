@@ -66,9 +66,59 @@ const ChiffresPage = () => {
 
       {/* Timeline */}
       
-   <div className="timeline">
-    
-   </div>
+      <div class="timeline-main">
+      <div class="timeline-yellow"></div>
+      <div class="timeline-orange"></div>
+      <div class="timeline-orange1"></div>
+      <div class="timeline-red"></div>
+      <div class="timeline-bleu"></div>
+      <div class="timeline-purple"></div>
+      <div class="timeline-start">
+        <img src="./don800.jpg" alt="" srcset="" />
+      </div>
+      <div class="timeline-a">
+        <img src="./don800.jpg" alt="" srcset="" />
+      </div>
+      <div class="timeline-b">
+        <img src="./don800.jpg" alt="" srcset="" />
+      </div>
+      <div class="timeline-c">
+        <img src="./don800.jpg" alt="" srcset="" />
+      </div>
+      <div class="timeline-d">
+        <img src="./don800.jpg" alt="" srcset="" />
+      </div>
+      <div class="timeline-e">
+        <img src="./don800.jpg" alt="" srcset="" />
+      </div>
+      <div class="timeline-finish">
+        <img src="./don800.jpg" alt="" srcset="" />
+      </div>
+      {/* <!-- description --> */}
+      
+      <div class="timeline-a1">
+        <div class="timeline-date"></div>
+        <div class="timeline-desc"></div>
+      </div>
+      <div class="line-a1">
+      </div>
+      <div class="timeline-b1">
+        <div class="timeline-date"></div>
+        <div class="timeline-desc"></div>
+      </div>
+      <div class="timeline-c1">
+        <div class="timeline-date"></div>
+        <div class="timeline-desc"></div>
+      </div>
+      <div class="timeline-d1">
+        <div class="timeline-date"></div>
+        <div class="timeline-desc"></div>
+      </div>
+      <div class="timeline-e1">
+        <div class="timeline-date"></div>
+        <div class="timeline-desc"></div>
+      </div>
+    </div>
 
       {/* Gallery Section */}
       <section className="gallery-section">
