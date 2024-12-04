@@ -608,14 +608,14 @@ const AboutUs = () => {
               <Mail className="contact-icon" />
               <div>
                 <h3>Email Us</h3>
-                <p>hello@organization.org</p>
+                <p>Association@babrayan.org</p>
               </div>
             </div>
             <div className="contact-item">
               <Phone className="contact-icon" />
               <div>
                 <h3>Call Us</h3>
-                <p>+1 (234) 567-8900</p>
+                <p>+212 612 345 678</p>
               </div>
             </div>
             <div className="contact-item">
