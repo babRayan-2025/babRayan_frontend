@@ -11,6 +11,12 @@ export default {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+		  },
+		  backgroundImage: {
+			'video-pattern': "url('/public/PNG/BACKGROUND SCHOOL.png')"
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
