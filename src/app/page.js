@@ -36,22 +36,22 @@ export default function Home() {
     {
       label: "Enfants pris en charge",
       value: 450,
-      icon: <FaChild  />,
+      icon: <FaChild />,
     },
     {
       label: "Bénévoles",
       value: 6000,
-      icon: <FaHandHoldingHeart  />,
+      icon: <FaHandHoldingHeart />,
     },
     {
       label: "Familles accompagnées",
       value: 1200,
-      icon: <FaHouseUser  />,
+      icon: <FaHouseUser />,
     },
     {
       label: "Paniers distribués",
       value: 57000,
-      icon: <FaBox  />,
+      icon: <FaBox />,
     },
   ];
   // Initialize Flowbite carousel on component mount
@@ -85,7 +85,7 @@ export default function Home() {
         <div className="absolute right-10 top-1/2 -translate-y-1/2 z-40 max-w-md text-white">
           <Image
             src={soleil}
-            className="relative block"
+            className="relative block w-[300px] h-[200px]" 
             alt="Soleil Icon"
             priority
           />
@@ -391,7 +391,11 @@ export default function Home() {
             <span className="text-sm font-light">Solidaires ensemble !</span>
             <div className="w-32 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
           </h1>
-          <Image src={pic11} className="w-52 absolute top-0 left-[65%]" alt="solidaire" />
+          <Image
+            src={pic11}
+            className="w-52 absolute top-0 left-[65%]"
+            alt="solidaire"
+          />
           {/* Container */}
           <div className="   rounded-lg  flex  items-center  gap-28">
             {/* Image Section */}
@@ -441,7 +445,6 @@ export default function Home() {
           <h1 className=" p-4 text-4xl  font-bold text-center mb-8">
             NOTRE IMPACT
             <div className="w-56 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
-
           </h1>{" "}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
             {" "}
@@ -538,10 +541,10 @@ export default function Home() {
       {/* /Actualites/ */}
 
       <div className="">
-      <h1 className="p-4 text-4xl font-bold text-center mb-8 relative">
-    ACTUALITÉS
-    <div className="w-48 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
-  </h1>
+        <h1 className="p-4 text-4xl font-bold text-center mb-8 relative">
+          ACTUALITÉS
+          <div className="w-48 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
+        </h1>
 
         <div className="flex bg-pink-100 flex-col items-center justify-centergap-7">
           <div className="  p-6 rounded-lg flex gap-7 items-center justify-center  space-x-6 w-[70vw] ">
@@ -607,8 +610,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 }

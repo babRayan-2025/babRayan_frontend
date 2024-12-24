@@ -27,7 +27,7 @@ export default function DashboardLayout({ children }) {
                 href="/dashboard/settings"
                 className="block p-2 hover:bg-gray-700 rounded"
               >
-                Profile
+                Settings
               </Link>
             </li>
           </ul>

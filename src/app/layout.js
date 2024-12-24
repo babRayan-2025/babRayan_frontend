@@ -1,10 +1,8 @@
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 
 const roboto = Roboto({
-  weight: ["100", "300", "400", "500", "700", "900"], 
+  weight: ["100", "300", "400", "500", "700", "900"],
   variable: "--font-roboto",
   subsets: ["latin"],
 });
@@ -26,14 +24,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${roboto.variable} ${robotoMono.variable} antialiased`}
-      >
-        <NavBar />
-        <section>
-          {children}
-        </section>
-        <Footer />
+      <body className={`${roboto.variable} ${robotoMono.variable} antialiased`}>
+        {children}
       </body>
     </html>
   );
