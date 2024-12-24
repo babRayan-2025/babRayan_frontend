@@ -68,7 +68,7 @@ export default function DashboardLayout({ children }) {
                 {/* Sidebar */}
                 <div className="border-end " id="sidebar-wrapper">
                     <div className="image_dashbord">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-87f71.appspot.com/o/Logo.png?alt=media&token=8c99c671-8d02-4c25-8180-71f0e394fabb" alt="Logo" />
+                        <img src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-87f71.appspot.com/o/Logo.png?alt=media&token=8c99c671-8d02-4c25-8180-71f0e394fabb" alt="Logo" />
                     </div>
                     <div className="sidebar-heading border-bottodm ">Admin Bab Rayan</div>
                     <div className="list-group list-group-flush d-flex">
@@ -127,7 +127,9 @@ export default function DashboardLayout({ children }) {
                             </div>
                         </div>
                     </nav>
-                    <div className={`content-children ${isOpen ? "ms-4" : ""}`}>{children}</div>
+                    <div className={`content-children ${isOpen ? "ms-4" : ""}`}>
+                        {children}
+                    </div>
                 </div>
             </div>
         </section>

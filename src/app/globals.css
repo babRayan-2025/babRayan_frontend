@@ -160,3 +160,52 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
       margin-left: -15rem;
   }
 }
+
+
+
+
+/* overlay button */
+.don_icon_animate {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  font-size: 30px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  animation: don_icon 2s infinite;
+  z-index: 3; 
+  transition: background-color 0.3s; 
+}
+
+.red_color {
+  color: white;
+  background-color: #FFD44D; 
+}
+
+.red_color:hover {
+  background-color: #ffd54db7;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 968px) {
+  .don_icon_animate {
+    font-size: 15px;
+  }
+}
+
+@keyframes don_icon {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+    background-color: #FFD44D
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

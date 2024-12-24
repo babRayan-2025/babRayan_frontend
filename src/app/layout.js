@@ -5,6 +5,7 @@ import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { FaHandHoldingHeart } from "react-icons/fa";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"], 
@@ -42,6 +43,13 @@ export default function RootLayout({ children }) {
           {children}
         </section>
         { !isDashboard && <Footer />}
+
+
+        {!isDashboard ?
+        <button onClick={() => window.location.href = "donation"} className='red_color don_icon_animate' title='Faire un DON'>
+          <FaHandHoldingHeart />
+
+        </button> : null}
       </body>
     </html>
   );
