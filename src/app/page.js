@@ -1,28 +1,58 @@
 "use client";
 
 import Image from "next/image";
+import {
+  FaChild,
+  FaHandHoldingHeart,
+  FaHouseUser,
+  FaBox,
+} from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import pic1 from "../../public/PHOTO/1.jpg";
 import pic2 from "../../public/PHOTO/2.jpg";
+import pic4 from "../../public/PHOTO/4.jpg";
+import pic5 from "../../public/PHOTO/5.jpg";
+import pic6 from "../../public/PHOTO/6.jpg";
+import pic7 from "../../public/PHOTO/7.jpg";
+import pic8 from "../../public/PHOTO/8.jpg";
+import pic9 from "../../public/PHOTO/9.jpg";
+import pic10 from "../../public/PNG/ETOILERAMADAN.png";
+import pic11 from "../../public/PNG/LANTERNE.png";
 import soleil from "../../public/PNG/SOLEIL.png";
-import { Statistic } from 'antd';
-import CountUp from 'react-countup';
-import React, { useState , useEffect } from 'react';
-import { Link, Play } from 'lucide-react';
-
+// import { Statistic } from "antd";
+import CountUp from "react-countup";
+import React, { useState, useEffect } from "react";
+import { Link, Play } from "lucide-react";
 
 export default function Home() {
-
-  const formatter = (value) => <CountUp end={value} separator="," duration={8} />;
+  const formatter = (value) => (
+    <CountUp end={value} separator="," duration={8} />
+  );
 
   const chiffres = [
-    { label: 'Enfants pris en charge', value: 450, icon: <i className="fa-solid fa-child"></i> },
-    { label: 'Bénévoles', value: 6000, icon: <i className="fa-solid fa-hand-holding-heart"></i> },
-    { label: 'Familles accompagnées', value: 1200, icon: <i className="fa-solid fa-house-user"></i> },
-    { label: 'Paniers distribués', value: 57000, icon: <i className="fa-solid fa-boxes-stacked"></i> },
+    {
+      label: "Enfants pris en charge",
+      value: 450,
+      icon: <FaChild  />,
+    },
+    {
+      label: "Bénévoles",
+      value: 6000,
+      icon: <FaHandHoldingHeart  />,
+    },
+    {
+      label: "Familles accompagnées",
+      value: 1200,
+      icon: <FaHouseUser  />,
+    },
+    {
+      label: "Paniers distribués",
+      value: 57000,
+      icon: <FaBox  />,
+    },
   ];
   // Initialize Flowbite carousel on component mount
   useEffect(() => {
@@ -38,7 +68,8 @@ export default function Home() {
 
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const videoUrl = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-87f71.appspot.com/o/video.mp4?alt=media&token=6cc682dc-b7fa-4729-b2d3-ac2ad8d0df87";
+  const videoUrl =
+    "https://firebasestorage.googleapis.com/v0/b/bab-rayan-87f71.appspot.com/o/video.mp4?alt=media&token=6cc682dc-b7fa-4729-b2d3-ac2ad8d0df87";
 
   const handlePlayClick = () => {
     setIsPlaying(true);
@@ -54,7 +85,7 @@ export default function Home() {
         <div className="absolute right-10 top-1/2 -translate-y-1/2 z-40 max-w-md text-white">
           <Image
             src={soleil}
-            className="relative block w-full"
+            className="relative block"
             alt="Soleil Icon"
             priority
           />
@@ -65,7 +96,7 @@ export default function Home() {
             L`association Bab Rayan agit depuis 2014 pour transformer la vie des
             enfants en difficulté.
           </p>
-          <button className="px-6 py-1 bg-[#f3ca31] font-bold rounded-xl hover:bg-[#c19f26] transition duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-gray-700 rounded-lg transition-colors">
+          <button className="px-6 py-1 bg-[#f3ca31] font-bold rounded-xl hover:bg-[#c19f26] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-gray-700 transition-colors">
             En savoir plus
           </button>
         </div>
@@ -166,325 +197,418 @@ export default function Home() {
       </div>
 
       {/* Swiper carousel */}
-      <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        pagination={{ clickable: true }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
+      <div className="p-11">
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={30}
+          pagination={{ clickable: true }}
+          modules={[Pagination]}
+          className="mySwiper "
+        >
+          <SwiperSlide>
+            <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
+              <div className="p-2 gap-1 md:w-1/2 items-center">
+                <h1 className="font-sans text-2xl font-bold mb-4 text-gray-900">
+                  Education et scolarité
+                </h1>
+                <p className="font-sans text-gray-700 mb-6">
+                  En intégrant ces jeunes dans un parcours éducatif adapté à
+                  leurs besoins, nous leur donnons les outils nécessaires pour
+                  construire leur avenir.
+                </p>
+                <button className="px-2 py-1 bg-[#f3ca31] text-white font-semibold rounded-2xl   hover:bg-yellow-500 transition duration-300">
+                  Découvrir l`école Palmier
+                </button>
+              </div>
 
-        <SwiperSlide>
-          <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
-  <div className="p-2 gap-1 md:w-1/2 items-center">
-    <h1 className="font-sans text-2xl font-bold mb-4 text-gray-900">Education et scolarité</h1>
-    <p className="font-sans text-gray-700 mb-6">
-      En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, 
-      nous leur donnons les outils nécessaires pour construire leur avenir.
-    </p>
-    <button className="px-2 py-1 bg-[#f3ca31] text-white font-semibold rounded-3xl hover:bg-yellow-500 transition duration-300">
-      Découvrir l`école Palmier
-    </button>
-  </div>
+              <div className="md:w-1/2">
+                <Image
+                  src={pic2}
+                  alt="Kids in school"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
+              <div className="p-2 gap-1 md:w-1/2 items-center">
+                <h1 className="font-sans text-2xl font-bold mb-4 text-gray-900">
+                  Education et scolarité
+                </h1>
+                <p className="font-sans text-gray-700 mb-6">
+                  En intégrant ces jeunes dans un parcours éducatif adapté à
+                  leurs besoins, nous leur donnons les outils nécessaires pour
+                  construire leur avenir.
+                </p>
+                <button className="px-2 py-1 bg-[#f3ca31] text-white font-semibold rounded-2xl   hover:bg-yellow-500 transition duration-300">
+                  Découvrir l`école Palmier
+                </button>
+              </div>
 
-  <div className="md:w-1/2">
-    <Image
-      src={pic2}
-      alt="Kids in school"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-</SwiperSlide>
-        <SwiperSlide>
-          <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
-  <div className="p-2 gap-1 md:w-1/2 items-center">
-    <h1 className="font-sans text-2xl font-bold mb-4 text-gray-900">Education et scolarité</h1>
-    <p className="font-sans text-gray-700 mb-6">
-      En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, 
-      nous leur donnons les outils nécessaires pour construire leur avenir.
-    </p>
-    <button className="px-2 py-1 bg-[#f3ca31] text-white font-semibold rounded-2xl   hover:bg-yellow-500 transition duration-300">
-      Découvrir l`école Palmier
-    </button>
-  </div>
+              <div className="md:w-1/2">
+                <Image
+                  src={pic2}
+                  alt="Kids in school"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
+              <div className="p-2 gap-1 md:w-1/2 items-center">
+                <h1 className="font-sans text-2xl font-bold mb-4 text-gray-900">
+                  Education et scolarité
+                </h1>
+                <p className="font-sans text-gray-700 mb-6">
+                  En intégrant ces jeunes dans un parcours éducatif adapté à
+                  leurs besoins, nous leur donnons les outils nécessaires pour
+                  construire leur avenir.
+                </p>
+                <button className="px-2 py-1 bg-[#f3ca31] text-white font-semibold rounded-lg hover:bg-yellow-500 transition duration-300">
+                  Découvrir l`école Palmier
+                </button>
+              </div>
 
-  <div className="md:w-1/2">
-    <Image
-      src={pic2}
-      alt="Kids in school"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-</SwiperSlide>
-        <SwiperSlide>
-          <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
-  <div className="p-2 gap-1 md:w-1/2 items-center">
-    <h1 className="font-sans text-2xl font-bold mb-4 text-gray-900">Education et scolarité</h1>
-    <p className="font-sans text-gray-700 mb-6">
-      En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, 
-      nous leur donnons les outils nécessaires pour construire leur avenir.
-    </p>
-    <button className="px-2 py-1 bg-[#f3ca31] text-white font-semibold rounded-lg hover:bg-yellow-500 transition duration-300">
-      Découvrir l`école Palmier
-    </button>
-  </div>
+              <div className="md:w-1/2">
+                <Image
+                  src={pic2}
+                  alt="Kids in school"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
+              <div className="p-2 gap-1 md:w-1/2 items-center">
+                <h1 className="font-sans text-2xl font-bold mb-4 text-gray-900">
+                  Education et scolarité
+                </h1>
+                <p className="font-sans text-gray-700 mb-6">
+                  En intégrant ces jeunes dans un parcours éducatif adapté à
+                  leurs besoins, nous leur donnons les outils nécessaires pour
+                  construire leur avenir.
+                </p>
+                <button className="px-2 py-1 bg-[#f3ca31] text-white font-semibold rounded-lg hover:bg-yellow-500 transition duration-300">
+                  Découvrir l`école Palmier
+                </button>
+              </div>
 
-  <div className="md:w-1/2">
-    <Image
-      src={pic2}
-      alt="Kids in school"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-</SwiperSlide>
-        <SwiperSlide>
-          <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
-  <div className="p-2 gap-1 md:w-1/2 items-center">
-    <h1 className="font-sans text-2xl font-bold mb-4 text-gray-900">Education et scolarité</h1>
-    <p className="font-sans text-gray-700 mb-6">
-      En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, 
-      nous leur donnons les outils nécessaires pour construire leur avenir.
-    </p>
-    <button className="px-2 py-1 bg-[#f3ca31] text-white font-semibold rounded-lg hover:bg-yellow-500 transition duration-300">
-      Découvrir l`école Palmier
-    </button>
-  </div>
-
-  <div className="md:w-1/2">
-    <Image
-      src={pic2}
-      alt="Kids in school"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-</SwiperSlide>
-
-      </Swiper>
-
+              <div className="md:w-1/2">
+                <Image
+                  src={pic2}
+                  alt="Kids in school"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
 
       {/* chiffres */}
 
-         <div className="bg-[#ef2323] py-8 px-5 shadow-inner overflow-hidden">
-   <div className="flex flex-wrap justify-center items-center gap-4">
-      {chiffres.map((stat, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center text-center rounded-lg p-6 m-2  transform animate-bounce transition-all duration-1000 hover:scale-105 md:flex-1 md:basis-5/12 xl:basis-1/5"
-        >
-          <span className="text-[#ffffff] text-5xl">{stat.icon}</span>
-          <div className="flex items-center justify-center mt-2">
-            <span className="text-[#ffffff] text-3xl font-bold">+</span>
-            <Statistic
-              className="text-[#ffffff] text-3xl font-bold"
-              valueStyle={{ fontSize: 'inherit' }}
-              value={stat.value}
-              formatter={formatter}
-            />
-          </div>
-          <span className="text-[#ffffff] mt-2">{stat.label}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-
-{/* video section  */}
-<section className="w-full bg-[url('/public/PNG/BACKGROUND SCHOOL.png')] bg-cover bg-center py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="relative w-full rounded-3xl overflow-hidden">
-          {/* Thumbnail/Preview Image */}
-          <div className="relative aspect-video w-full">
-            <Image
-              src={pic1}
-              alt="Video thumbnail"
-              className="w-full h-full object-cover"
-            />
-            
-            {/* Play Button Overlay */}
-            {!isPlaying && (
-              <button
-                onClick={handlePlayClick}
-                className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
-              >
-                <div className="w-16 h-16 flex items-center justify-center rounded-full bg-white/90 group-hover:bg-white transition-colors">
-                  <Play className="w-8 h-8 text-gray-900 ml-1" />
-                </div>
-              </button>
-            )}
-
-            {/* Video Player (shown when isPlaying is true) */}
-            {isPlaying && (
-              <div className="absolute inset-0">
-           <video
-                  className="w-full h-full"
-                  controls
-                  autoPlay
-                >
-                  <source src={videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+      <div className="bg-[#ef2323] py-8 px-5 shadow-inner overflow-hidden">
+        <div className="flex flex-wrap justify-center items-center gap-4">
+          {chiffres.map((stat, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center text-center rounded-lg p-6 m-2   hover:scale-105 md:flex-1 md:basis-5/12 xl:basis-1/5"
+            >
+              <span className="text-[#ffffff] text-6xl text-center">
+                {stat.icon}
+              </span>
+              <div className="flex items-center justify-center mt-2">
+                <span className="text-[#ffffff] text-6xl font-bold">+</span>
+                {/* <Statistic
+                  className="text-white text-3xl font-bold"
+                  valueStyle={{ fontSize: "inherit" }}
+                  value={stat.value}
+                  formatter={formatter}
+                /> */}
+                <span className="text-white text-5xl font-bold">
+                  {stat.value}
+                </span>
               </div>
-            )}
+              <span className="text-[#ffffff] mt-2">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* video section  */}
+      <section className="w-full bg-[url('/PNG/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="relative w-full rounded-3xl overflow-hidden">
+            {/* Thumbnail/Preview Image */}
+            <div className="relative aspect-video w-full">
+              <Image
+                src={pic1}
+                alt="Video thumbnail"
+                className="w-full h-full object-cover"
+              />
+
+              {/* Play Button Overlay */}
+              {!isPlaying && (
+                <button
+                  onClick={handlePlayClick}
+                  className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
+                >
+                  <div className="w-16 h-16 flex items-center justify-center rounded-full bg-white/90 group-hover:bg-white transition-colors">
+                    <Play className="w-8 h-8 text-gray-900 ml-1" />
+                  </div>
+                </button>
+              )}
+
+              {/* Video Player (shown when isPlaying is true) */}
+              {isPlaying && (
+                <div className="absolute inset-0">
+                  <video className="w-full h-full" controls autoPlay>
+                    <source src={videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              )}
+            </div>
+
+            {/* Optional: Decorative Background Pattern */}
+            <div
+              className="absolute -z-10 inset-0 bg-gradient-to-tr from-gray-100 to-white"
+              aria-hidden="true"
+            />
           </div>
+        </div>
+      </section>
+      {/* action sol  */}
 
-          {/* Optional: Decorative Background Pattern */}
-          <div className="absolute -z-10 inset-0 bg-gradient-to-tr from-gray-100 to-white" aria-hidden="true" />
+      <div className="">
+        <div className="bg-red-700 py-12 relative">
+          <h1 className=" text-white text-center text-3xl font-bold mb-4  py-2 rounded-t-lg">
+            ACTIONS SOLIDAIRES
+            <br />
+            <span className="text-sm font-light">Solidaires ensemble !</span>
+            <div className="w-32 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
+          </h1>
+          <Image src={pic11} className="w-52 absolute top-0 left-[65%]" alt="solidaire" />
+          {/* Container */}
+          <div className="   rounded-lg  flex  items-center  gap-28">
+            {/* Image Section */}
+            <div className="w-[50vw]">
+              <Image
+                src={pic4}
+                alt="Les Ftours Bab Rayan"
+                className="w-[100%] h-[49vh] rounded-r-3xl  object-cover"
+              />
+            </div>
+            {/* Text Section */}
+            <div className="p-6 flex-1">
+              <h2 className="text-white text-4xl font-semibold mb-4">
+                Les Ftours Bab Rayan
+              </h2>
+              <p className="text-gray-200 mb-4 italic w-[33vw] text-lg">
+                L`association Bab Rayan organise chaque année depuis 2015 le
+                Ftour Bab Rayan. Pendant ce mois sacré, la plupart n`ont pas la
+                chance de rompre leur jeûne autour d`une table garnie. Cette
+                action apporte beaucoup de convivialité et de chaleur à leur
+                environnement&nbsp;; l`esprit de solidarité du Ramadan est alors
+                au rendez-vous, grâce à vos dons !
+              </p>
+              <button
+                href="#"
+                className="inline-block bg-yellow-400 text-red-600 font-bold px-7 py-2 rounded-lg hover:bg-yellow-500 transition"
+              >
+                Voir plus
+              </button>
+
+              <Image
+                src={pic10}
+                className="w-40 absolute bottom-[-2%] left-[86%]"
+                alt="Les Ftours Bab Rayan"
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  {/* action sol  */}
 
-  <div className="bg-red-500 text-white py-8 px-4 md:px-16 rounded-lg flex flex-col md:flex-row items-center md:items-start">
-      <div className="flex-shrink-0">
-        <Image
-          src={pic1}
-          alt="Group of people at Bab Rayan event"
-          width={400} // Adjust width based on your needs
-          height={300} // Adjust height based on your needs
-          className="rounded-lg shadow-lg"
-        />
+      {/* 3 card of solidarité */}
+
+      <div className="bg-white-100">
+        {" "}
+        <div className="p-6 container mx-auto py-8">
+          {" "}
+          <h1 className=" p-4 text-4xl  font-bold text-center mb-8">
+            NOTRE IMPACT
+            <div className="w-56 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
+
+          </h1>{" "}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+            {" "}
+            {/* Left Section */}{" "}
+            <div className="bg-white  rounded-lg shadow-lg">
+              <Image
+                src={pic5}
+                className="h-[45vh] object-cover"
+                alt="article"
+              />{" "}
+              <div className="bg-white flex flex-col justify-start p-6">
+                <p className="text-3xl font-bold hover:text-gray-700 pb-4 text-center">
+                  Lorem Ipsum Dolor Sit Amet Dolor Sit Amet
+                </p>
+                <p className="text-sm pb-3 text-center">
+                  By Published on October 22nd, 2019
+                </p>
+                <p className="pb-6 text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula
+                  lacus, quis iaculis dui porta volutpat. In sit amet posuere
+                  magna..
+                </p>
+                <a
+                  href="#"
+                  className="uppercase text-gray-800 hover:text-black text-center"
+                >
+                  Continue Reading
+                </a>
+              </div>
+            </div>{" "}
+            {/* Middle Section */}{" "}
+            <div className="bg-white  rounded-lg shadow-lg">
+              {" "}
+              <Image
+                src={pic6}
+                className="h-[45vh] object-cover "
+                alt="article"
+              />{" "}
+              <div className="bg-white flex flex-col justify-start p-6">
+                <p className="text-3xl font-bold hover:text-gray-700 pb-4 text-center">
+                  Lorem Ipsum Dolor Sit Amet Dolor Sit Amet
+                </p>
+                <p className="text-sm pb-3 text-center">
+                  By Published on October 22nd, 2019
+                </p>
+                <p className="pb-6 text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula
+                  lacus, quis iaculis dui porta volutpat. In sit amet posuere
+                  magna..
+                </p>
+                <a
+                  href="#"
+                  className="uppercase text-gray-800 hover:text-black text-center"
+                >
+                  Continue Reading
+                </a>
+              </div>
+            </div>{" "}
+            {/* Right Section */}{" "}
+            <div className="bg-white  rounded-lg shadow-lg ">
+              {" "}
+              <Image
+                src={pic7}
+                className="h-[45vh] object-cover"
+                alt="article"
+              />{" "}
+              <div className="bg-white flex flex-col justify-start p-6">
+                <p className="text-3xl font-bold hover:text-gray-700 pb-4 text-center">
+                  Lorem Ipsum Dolor Sit Amet Dolor Sit Amet
+                </p>
+                <p className="text-sm pb-3 text-center">
+                  By Published on October 22nd, 2019
+                </p>
+                <p className="pb-6 text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula
+                  lacus, quis iaculis dui porta volutpat. In sit amet posuere
+                  magna..
+                </p>
+                <a
+                  href="#"
+                  className="uppercase text-gray-800 hover:text-black text-center"
+                >
+                  Continue Reading
+                </a>
+              </div>
+            </div>{" "}
+          </div>{" "}
+        </div>{" "}
       </div>
 
-      <div className="mt-6 md:mt-0 md:ml-10 flex flex-col">
+      {/* /Actualites/ */}
 
-        <h2 className="text-2xl font-bold">ACTIONS SOLIDAIRES</h2>
-        <p className="mt-1 text-yellow-300 font-medium">Solidaires ensemble !</p>
+      <div className="">
+      <h1 className="p-4 text-4xl font-bold text-center mb-8 relative">
+    ACTUALITÉS
+    <div className="w-48 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
+  </h1>
 
-        <h3 className="mt-4 text-xl font-bold">Les Ftours Bab Rayan</h3>
-        <p className="mt-2 text-sm leading-relaxed">
-          L`association Bab Rayan organise chaque année depuis 2015 le Ftour Bab Rayan. Pendant ce mois sacré, la plupart n`ont pas la chance de rompre leur jeûne autour d`une table garnie. Cette action apporte beaucoup de convivialité et de chaleur à leur environnement ; l`esprit de solidarité du Ramadan est alors au rendez-vous, grâce à vos dons !
-        </p>
+        <div className="flex bg-pink-100 flex-col items-center justify-centergap-7">
+          <div className="  p-6 rounded-lg flex gap-7 items-center justify-center  space-x-6 w-[70vw] ">
+            {/* Image Section */}
+            <div className="flex-shrink-0">
+              <Image
+                src={pic8}
+                alt="Graduation"
+                className="rounded-lg w-[30vw] h-auto object-cover "
+              />
+            </div>
+            {/* Text Section */}
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900 mb-4">
+                Remise des diplômes <br></br> de la deuxième promotion du CFI
+              </h1>
+              <p className="text-gray-700 mb-4 italic">
+                L`Association Bab Rayan a eu l`honneur de célébrer ce 28 Octobre
+                2024, la réussite de la deuxième promotion de diplômés de son
+                Centre de Formation et d`Insertion. Le CFI propose aux jeunes
+                issus des EPS et en situation de précarité une formation
+                qualifiante dans les métiers de l`hôtellerie et de la
+                restauration. Aujourd`hui, plus de 120 jeunes franchissent une
+                étape clé vers l`emploi, grâce au soutien de nos entreprises
+                partenaires.
+              </p>
+              <button className="inline-block bg-yellow-300 rounded-full  text-red-500 font-semibold px-4 py-2 ">
+                Découvrir plus
+              </button>
+            </div>
+          </div>
+        </div>
 
-        <button className="mt-6 bg-yellow-400 hover:bg-yellow-500 text-red-500 font-semibold py-2 px-4 rounded-lg shadow-lg">
-          Voir plus
-        </button>
+        <div className="flex flex-col items-center justify-centergap-7">
+          <div className=" p-6 rounded-lg flex items-center gap-7 space-x-6 w-[70vw] ">
+            {/* Image Section */}
+            <div className="flex-shrink-0">
+              <Image
+                src={pic9}
+                alt="Graduation"
+                className="rounded-lg w-[30vw]  object-cover "
+              />
+            </div>
+            {/* Text Section */}
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900 mb-4 ">
+                Remise des diplômes <br></br> de la deuxième promotion du CFI
+              </h1>
+              <p className="text-gray-700 mb-4 italic">
+                L`Association Bab Rayan a eu l`honneur de célébrer ce 28 Octobre
+                2024, la réussite de la deuxième promotion de diplômés de son
+                Centre de Formation et d`Insertion. Le CFI propose aux jeunes
+                issus des EPS et en situation de précarité une formation
+                qualifiante dans les métiers de l`hôtellerie et de la
+                restauration. Aujourd`hui, plus de 120 jeunes franchissent une
+                étape clé vers l`emploi, grâce au soutien de nos entreprises
+                partenaires.
+              </p>
+              <button className="inline-block bg-yellow-300 rounded-full font-semibold  text-white px-4 py-2 ">
+                Découvrir plus
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    {/* 3 card of solidarité */}
-    <div className="flex gap-7 items-center justify-center">
-    <article class="flex flex-col shadow max-w-[400px]">
-        <Image src={pic1} alt="article" />
-   
-    <div class="bg-white flex flex-col justify-start p-6">
-        <p class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
-        <p
-       class="text-sm pb-3">
-            By  Published on October 22nd, 2019
-        </p>
-        <p class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu
-            iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</p>
-        <a href="#" class="uppercase text-gray-800 hover:text-black">
-            Continue Reading
-        </a>
-    </div>
-</article>
-    <article class="flex flex-col shadow max-w-[400px]">
-        <Image src={pic1} alt="article" />
-   
-    <div class="bg-white flex flex-col justify-start p-6">
-        <p class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
-        <p
-       class="text-sm pb-3">
-            By  Published on October 22nd, 2019
-        </p>
-        <p class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu
-            iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</p>
-        <a href="#" class="uppercase text-gray-800 hover:text-black">
-            Continue Reading
-        </a>
-    </div>
-</article>
-    <article class="flex flex-col shadow max-w-[400px]">
-        <Image src={pic1} alt="article" />
-   
-    <div class="bg-white flex flex-col justify-start p-6">
-        <p class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
-        <p
-       class="text-sm pb-3">
-            By  Published on October 22nd, 2019
-        </p>
-        <p class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu
-            iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</p>
-        <a href="#" class="uppercase text-gray-800 hover:text-black">
-            Continue Reading
-        </a>
-    </div>
-</article>
 
 
-    </div>
-
-    {/* blog section  */}
-
-<ul class="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
-    <li class="relative flex flex-col sm:flex-row xl:flex-col items-start">
-        <div class="order-1 sm:ml-6 xl:ml-0">
-            <h3 class="mb-1 text-slate-900 font-semibold">
-                <span class="mb-1 block text-sm leading-6 text-indigo-500">Headless UI</span>Completely unstyled, fully
-                accessible UI components
-            </h3>
-            <div class="prose prose-slate prose-sm text-slate-600">
-                <p>Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind
-                    CSS.</p>
-            </div><a
-                class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 mt-6"
-                href="">Learn
-                more<span class="sr-only">, Completely unstyled, fully accessible UI components</span>
-                <svg class="overflow-visible ml-3 text-slate-300 group-hover:text-slate-400"
-                    width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M0 0L3 3L0 6"></path>
-                </svg></a>
-        </div>
-        <Image src={pic1} alt="" class="mb-6 shadow-md rounded-lg bg-slate-50 w-full sm:w-[17rem] sm:mb-0 xl:mb-6 xl:w-full" width="1216" height="640"/>
-    </li>
-    <li class="relative flex flex-col sm:flex-row xl:flex-col items-start">
-        <div class="order-1 sm:ml-6 xl:ml-0">
-            <h3 class="mb-1 text-slate-900 font-semibold">
-                <span class="mb-1 block text-sm leading-6 text-purple-500">Heroicons</span>Beautiful hand-crafted SVG
-                icons, by the makers of Tailwind CSS.
-            </h3>
-            <div class="prose prose-slate prose-sm text-slate-600">
-                <p>A set of 450+ free MIT-licensed SVG icons. Available as basic SVG icons and via first-party React and
-                    Vue libraries.</p>
-            </div><a
-                class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 mt-6"
-                href="">Learn
-                more<span class="sr-only">, Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS.</span>
-                <svg class="overflow-visible ml-3 text-slate-300 group-hover:text-slate-400"
-                    width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M0 0L3 3L0 6"></path>
-                </svg></a>
-        </div>
-        <Image src={pic1} alt="" class="mb-6 shadow-md rounded-lg bg-slate-50 w-full sm:w-[17rem] sm:mb-0 xl:mb-6 xl:w-full" width="1216" height="640"/>
-    </li>
-    <li class="relative flex flex-col sm:flex-row xl:flex-col items-start">
-        <div class="order-1 sm:ml-6 xl:ml-0">
-            <h3 class="mb-1 text-slate-900 font-semibold">
-                <span class="mb-1 block text-sm leading-6 text-cyan-500">Hero Patterns</span>Seamless SVG background
-                patterns by the makers of Tailwind CSS.
-            </h3>
-            <div class="prose prose-slate prose-sm text-slate-600">
-                <p>A collection of over 100 free MIT-licensed high-quality SVG patterns for you to use in your web
-                    projects.</p>
-            </div><a
-                class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 mt-6"
-                href="">Learn
-                more<span class="sr-only">, Seamless SVG background patterns by the makers of Tailwind CSS.</span>
-                <svg class="overflow-visible ml-3 text-slate-300 group-hover:text-slate-400"
-                    width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M0 0L3 3L0 6"></path>
-                </svg></a>
-        </div>
-        <Image src={pic1} alt="" class="mb-6 shadow-md rounded-lg bg-slate-50 w-full sm:w-[17rem] sm:mb-0 xl:mb-6 xl:w-full" width="1216" height="640"/>
-    </li>
-</ul>
     </div>
   );
 }
