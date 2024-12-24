@@ -89,10 +89,10 @@ export default function Home() {
             alt="Soleil Icon"
             priority
           />
-          <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">
+          <h1 className="text-3xl font-bold mb-4 drop-shadow-lg">
             CHANGER LE PARCOURS D`UNE VIE
           </h1>
-          <p className="mb-6 text-lg drop-shadow-md">
+          <p className="mb-6 text-md drop-shadow-md">
             L`association Bab Rayan agit depuis 2014 pour transformer la vie des
             enfants en difficulté.
           </p>
@@ -203,7 +203,7 @@ export default function Home() {
           spaceBetween={30}
           pagination={{ clickable: true }}
           modules={[Pagination]}
-          className="mySwiper "
+          className="mySwiper"
         >
           <SwiperSlide>
             <div className="m-5 flex flex-col md:flex-row items-center  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden">
@@ -315,7 +315,7 @@ export default function Home() {
           {chiffres.map((stat, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center rounded-lg p-6 m-2   hover:scale-105 md:flex-1 md:basis-5/12 xl:basis-1/5"
+              className="flex flex-col items-center text-center rounded-lg p-3 m-2   hover:scale-105 md:flex-1 md:basis-5/12 xl:basis-1/5"
             >
               <span className="text-[#ffffff] text-6xl text-center">
                 {stat.icon}
@@ -389,7 +389,7 @@ export default function Home() {
             ACTIONS SOLIDAIRES
             <br />
             <span className="text-sm font-light">Solidaires ensemble !</span>
-            <div className="w-32 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
+            <div className="w-32 h-0.5 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
           </h1>
           <Image
             src={pic11}
@@ -608,6 +608,13 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </div>
+
+        <div class="p-6 items-center justify-center gap-6 md:flex">
+            <a href="/blog"
+                class="rounded-lg bg-black px-3 py-1.5 font-dm text-sm font-medium text-white shadow-md shadow-gray-100/50 transition-transform duration-200 ease-in-out hover:scale-[1.03]">
+                  Voir toutes les Actualites                
+            </a>
         </div>
       </div>
     </div>

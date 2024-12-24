@@ -7,10 +7,12 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 export default function Template({ children }) {
   const pathname = usePathname();
   const isDashboard = pathname?.includes("/dashboard");
+  // const isLogin = pathname?.includes("/login");
+  // const isRegister = pathname?.includes("/register");
 
   return (
     <>
-      {!isDashboard && <NavBar />}
+      {!isDashboard &&  <NavBar />}
       <section>{children}</section>
       {!isDashboard && <Footer />}
       {!isDashboard && (
