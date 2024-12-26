@@ -1,6 +1,8 @@
+"use client"
+
 import React, { useEffect, useState } from 'react';
-import './pages.css';
-import AvatarUser from '../../assets/dashboard/male.png';
+import '../pages.css';
+//import AvatarUser from '../../assets/dashboard/male.png';
 
 export default function UsersPage() {
     const [users, setUsers] = useState([
@@ -35,7 +37,7 @@ export default function UsersPage() {
                         <tr key={user.id} >
                             <td>
                                 <div className="d-flex align-items-center">
-                                    <img src={user.pic ? user.pic : AvatarUser} alt={user.name} style={{ width: '55px', height: '55px', objectFit: 'cover' }} className="rounded-circle" />
+                                    <img src={user.pic ? user.pic : "https://randomuser.me/api/portraits/men/1.jpg"} alt={user.name} style={{ width: '55px', height: '55px', objectFit: 'cover' }} className="rounded-circle" />
                                     <div className="ms-3">
                                         <p className="fw-bold mb-1">{user.name}</p>
                                         <p className="text-muted mb-0">{user.email}</p>

@@ -7,12 +7,12 @@ import "../globals.css"; // Global styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+import '@fortawesome/fontawesome-free/css/all.css';
 
 import { TfiMenu } from "react-icons/tfi"; // Import the TfiMenu icon
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { ImNewspaper } from "react-icons/im";
 import { FaUsers } from "react-icons/fa";
-import { PiUsersFourFill } from "react-icons/pi";
 import { IoSettingsSharp } from "react-icons/io5";
 
 export default function DashboardLayout({ children }) {
@@ -65,41 +65,7 @@ export default function DashboardLayout({ children }) {
   ];
 
   return (
-    // <div className="flex h-screen">
-    //   {/* Sidebar */}
-    //   <aside className="w-64 bg-gray-800 text-white p-4">
-    //     <h2 className="text-xl font-bold mb-4">Dashboard</h2>
-    //     <nav>
-    //       <ul>
-    //         <li>
-    //           <Link href="/dashboard"
-    //             className="block p-2 hover:bg-gray-700 rounded" >
-    //             Home
-    //           </Link>
-    //         </li>
-    //         <li>
-    //           <Link
-    //             href="/dashboard/profile"
-    //             className="block p-2 hover:bg-gray-700 rounded"
-    //           >
-    //             Profile
-    //           </Link>
-    //         </li>
-    //         <li>
-    //           <Link
-    //             href="/dashboard/settings"
-    //             className="block p-2 hover:bg-gray-700 rounded"
-    //           >
-    //             Settings
-    //           </Link>
-    //         </li>
-    //       </ul>
-    //     </nav>
-    //   </aside>
-
-    //   {/* Main Content */}
-    //   <main className="flex-1 bg-gray-100 p-6 overflow-y-auto">{children}</main>
-    // </div>
+ 
     <section className="dashboard">
     <div className="d-flex" id="wrapper">
         {/* Sidebar */}
@@ -111,7 +77,7 @@ export default function DashboardLayout({ children }) {
             <div className="list-group list-group-flush d-flex">
                 {menuItems.map(
                     (menuItem, index) => (
-                        <Link className="p-3" key={index} href={`/dashboard${menuItem.path}`}><span className='me-2'>{menuItem.icon}</span> {menuItem.name} </Link>
+                        <Link className="p-3 d-flex align-items-center" key={index} href={`/dashboard${menuItem.path}`}><span className='me-2'>{menuItem.icon}</span> {menuItem.name} </Link>
                     ))}
             </div>
 
