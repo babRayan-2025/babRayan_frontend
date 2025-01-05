@@ -26,8 +26,16 @@ import soleil from "../../public/PNG/SOLEIL.png";
 import CountUp from "react-countup";
 import React, { useState, useEffect } from "react";
 import { Link, Play } from "lucide-react";
+import SkeletonLoader from '../components/SkeletonLoader';
 
 export default function Home() {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 3000); // 3 seconds
+    return () => clearTimeout(timer);
+  }, []);
   const formatter = (value) => (
     <CountUp end={value} separator="," duration={8} />
   );
@@ -73,10 +81,15 @@ export default function Home() {
 
   const handlePlayClick = () => {
     setIsPlaying(true);
-    // Add your video playing logic here
+    // video playing logic here
   };
 
   return (
+    <>
+    {isLoading ? (
+      <SkeletonLoader />
+    ) : (
+      <>
     <div>
       {/* main carousel  */}
 
@@ -618,5 +631,8 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </>
+      )}
+    </>
   );
 }
