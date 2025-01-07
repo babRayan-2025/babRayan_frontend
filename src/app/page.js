@@ -297,7 +297,7 @@ export default function Home() {
               whileInView="animate"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="w-full bg-[url('../assets/PNG/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16"
+              className="w-full bg-[url('/PNG/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16"
             >
               <div className="max-w-6xl mx-auto px-4">
                 <motion.div 

@@ -18,7 +18,7 @@ export default function NavBar() {
   const navItems = [
     {
       name: "Nous Connaitre",
-      href: "#",
+      href: "/about",
       hasDropdown: true,
       dropdownItems: [
         { name: "A propos", href: "/about" },

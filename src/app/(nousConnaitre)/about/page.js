@@ -1,7 +1,247 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import cookingImage from "../../../assets/Pics/11.jpg";
+import presidentImage from "../../../assets/Pics/Fatima Zohra Ratibe.jpeg";
+import groupPhoto from "../../../assets/PHOTO/6.jpg";
+import {  FaCloud } from "react-icons/fa";
+import { FaHandsHelping, FaFistRaised, FaBalanceScale, FaHeart, FaLightbulb } from "react-icons/fa";
+ //i3adat nadar 
+
 export default function About() {
-    return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <h1 className="text-3xl font-bold underline">About page</h1>
-        </main>
-    );
+  return (
+    <main>
+      {/* first section: nous connaitre */}
+      <motion.div
+        className="relative w-full h-[800px] bg-black text-white"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={cookingImage}
+            alt="Cooking Activity"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-80 "
+          />
+        </div>
+        <motion.div
+          className="relative z-5 flex items-center justify-end h-full p-8"
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="p-6 max-w-xl text-left absolute bottom-6 right-8">
+            <h2 className="text-4xl font-bold mb-4">NOUS CONNAÎTRE</h2>
+            <p className="text-md italic leading-relaxed">
+              L’association Bab Rayan, reconnue d’utilité publique, œuvre depuis
+              2014 à accompagner les enfants vulnérables vers un avenir
+              prometteur. À travers des programmes de protection, une éducation
+              de qualité, des formations adaptées et des opportunités
+              d’insertion professionnelle, Bab Rayan aide ces jeunes à devenir
+              des citoyens autonomes et engagés.
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* mot de presidente */}
+      <div className=" w-full bg-[url('/PNG/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16 px-6">
+      {/* <div className="bg-gray-50 py-12 px-6"> */}
+      <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+              MOT DE LA PRÉSIDENTE
+              <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            </h1>
+        <motion.div
+          className="max-w-7xl mx-auto flex flex-col items-center md:flex-row md:items-start"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          {/* Left Side: Image */}
+          <motion.div
+            className="flex-shrink-0 mb-6 md:mb-0 md:mr-8"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="relative w-80 h-80 rounded-full border-4 border-red-500 overflow-hidden">
+              <Image
+                src={presidentImage}
+                alt="Présidente"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <h3 className="text-center mt-4 text-xl font-bold text-red-600">
+              FATIMA ZAHRA HAMROUDI RATIBE
+            </h3>
+            <p className="text-center text-sm text-red-600">
+              Fondatrice PRÉSIDENTE de l’association BAB RAYAN
+            </p>
+          </motion.div>
+
+          {/* Right Side: Content */}
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+           <br/>
+            <p className="text-gray-800 text-lg font-bold leading-relaxed mb-4">
+              
+              Au fil de cette décennie, notre dévouement indéfectible envers la
+              protection, l’éducation, la formation et l’insertion
+              professionnelle des enfants en difficulté a été au cœur de notre
+              mission à Bab Rayan. Portés par des valeurs nobles et une boussole
+              morale inébranlable, nous trouvons une source constante
+              d’inspiration et de motivation dans la vision éclairée de Sa
+              Majesté le Roi Mohammed VI.
+            </p>
+            <p className="text-gray-800 text-lg font-bold leading-relaxed mb-6">
+              Les initiatives de Bab Rayan ont évolué, démontrant notre
+              engagement croissant envers la construction d’un avenir prometteur
+              pour les enfants que nous servons. Nous avons tracé une
+              trajectoire ascendante, passant d’un simple projet de protection à
+              un modèle de vie holistique, méticuleusement conçu pour façonner
+              des citoyens marocains productifs et fiers.
+            </p>
+            <motion.button
+              className="bg-yellow-300 hover:bg-yellow-500 text-red-600 font-bold py-2 px-4 rounded-xl"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              Voir plus
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </div>
+      {/* vision section part */}
+
+      <div className="bg-pink-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto text-center">
+        {/* Vision Section */}
+        <div className="mb-12">
+          <div className="flex justify-center items-center space-x-4 mb-4">
+          <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+              NOTRE VISION
+              <div className="w-24 md:w-48 h-2 bg-yellow-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            </h1>
+          </div>
+          <p className="text-6xl font-bold text-gray-800 italic">
+            « Parce que chaque enfant mérite un bon départ dans la vie »
+          </p>
+        </div>
+
+        {/* Mission Section */}
+        <div className="mt-12">
+          <div className="flex justify-center items-center space-x-4 mb-4">
+          <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+              MISSION GLOBALE
+              <div className="w-24 md:w-48 h-2 bg-yellow-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            </h1>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 items-center">
+            {/* Left Side: Image */}
+            <div className="flex justify-center">
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                <Image
+                  src={groupPhoto}
+                  alt="Group of children"
+                  width={500}
+                  height={300}
+                  objectFit="cover"
+                />
+              </div>
+            </div>
+
+            {/* Right Side: Text */}
+            <div className="text-left">
+              <p className="text-gray-800 text-2xl italic font-bold leading-relaxed">
+                Notre mission est de protéger, d`éduquer et de former les
+                enfants et jeunes en difficulté pour leur offrir un avenir
+                digne, autonome et enrichissant. Grâce à nos programmes
+                holistiques, nous les accompagnons sur la voie de la réussite
+                personnelle et professionnelle.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Background Icons */}
+      <div className="absolute inset-0 pointer-events-none">
+        <FaCloud className="text-yellow-500 text-6xl absolute top-10 left-10" />
+      </div>
+    </div>
+
+    {/* nos valeur part  */}
+    <div className="bg-red-600 py-12 px-6 text-white relative">
+      <div className="max-w-7xl mx-auto text-center">
+        {/* Title */}
+        <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+              NOS VALEURS :
+              <div className="w-24 md:w-48 h-2 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            </h1>
+
+        {/* Values Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Value 1: Solidarité */}
+          <div className="flex flex-col items-center space-y-4">
+            <FaHandsHelping className="text-yellow-500 text-6xl" />
+            <p className="text-xl font-semibold">SOLIDARITÉ</p>
+          </div>
+
+          {/* Value 2: Engagement */}
+          <div className="flex flex-col items-center space-y-4">
+            <FaFistRaised className="text-yellow-500 text-6xl" />
+            <p className="text-xl font-semibold">ENGAGEMENT</p>
+          </div>
+
+          {/* Value 3: Égalité des chances */}
+          <div className="flex flex-col items-center space-y-4">
+            <FaBalanceScale className="text-yellow-500 text-6xl" />
+            <p className="text-xl font-semibold">ÉGALITÉ DES CHANCES</p>
+          </div>
+
+          {/* Value 4: Responsabilité sociale et durable */}
+          <div className="flex flex-col items-center space-y-4">
+            <FaHeart className="text-yellow-500 text-6xl" />
+            <p className="text-xl font-semibold text-center">
+              RESPONSABILITÉ SOCIALE ET DURABLE
+            </p>
+          </div>
+
+          {/* Value 5: Innovation et Adaptabilité */}
+          <div className="flex flex-col items-center space-y-4">
+            <FaLightbulb className="text-yellow-500 text-6xl" />
+            <p className="text-xl font-semibold text-center">
+              INNOVATION ET ADAPTABILITÉ
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Decorative Background Arrow */}
+      <div className="absolute top-5 left-5 text-yellow-500 text-6xl">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-12 h-12 rotate-45"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M3 12l1.5-1.5 7 7 7-7L21 12l-9 9-9-9z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    </main>
+  );
 }
