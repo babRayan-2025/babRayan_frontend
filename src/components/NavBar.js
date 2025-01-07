@@ -1,168 +1,239 @@
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/Logo.png";
-import { FaCircleUser } from "react-icons/fa6";
 
 export default function NavBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const navItems = [
+    {
+      name: "Nous Connaitre",
+      href: "#",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "A propos", href: "/a-propos" }
+      ]
+    },
+    { name: "Nos Missions", href: "#" },
+    { name: "Nous soutenir", href: "#" },
+    { name: "Nous suivre", href: "#" },
+    { name: "Nous contacter", href: "#" },
+  ];
+
   return (
-    <header className="flex shadow-md py-3 px-4 sm:px-10 bg-[#cc2229] font-[sans-serif] min-h-[70px] tracking-wide relative z-50">
-      <div className="flex flex-wrap items-center justify-between lg:gap-y-4 gap-y-6 gap-x-4 w-full">
-        {/* Logo Section */}
-        <Link href="/">
-          <Image src={logo} alt="Logo" className="w-36" />
-        </Link>
+    <header className="shadow-md bg-[#cc2229] font-[sans-serif] relative z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-24"> {/* Increased height */}
+          {/* Left side - Logo */}
+          <div className="flex items-center">
+            <Link href="/">
+              <Image src={logo} alt="Logo" className="w-28 sm:w-36" />
+            </Link>
+          </div>
 
-        {/* Navigation Menu */}
-        <div
-          id="collapseMenu"
-          className="max-lg:hidden lg:block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50"
-        >
-          <button
-            id="toggleClose"
-            className="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-3.5 h-3.5 fill-black"
-              viewBox="0 0 320.591 320.591"
-            >
-              <path
-                d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
-                data-original="#000000"
-              />
-              <path
-                d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
-                data-original="#000000"
-              />
-            </svg>
-          </button>
-
-          <ul className="lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
-            <li className="mb-6 hidden max-lg:block">
-              <Link href="/">
-                <Image src={logo} alt="Logo" className="w-36" />
-              </Link>
-            </li>
-            {[
-              "Nous Connaitre",
-              "Nos Missions",
-              "Nous soutenir",
-              "Nous suivre",
-              "Nous contacter",
-            ].map((item, index) => (
-              <li
-                key={index}
-                className="max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300"
-              >
-                <Link href="#" className="text-white block text-[15px]">
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-          {/* register login ... botton */}
-          <div class="hidden items-center justify-center gap-6 md:flex">
-            <a href="/login" class="font-dm text-sm font-medium text-[#ffffff]">Se Connecter</a>
-            <a href="/register"
-                class="rounded-md bg-[#ffffff] px-3 py-1.5 font-dm text-sm font-medium text-[#cc2229] shadow-md shadow-gray-100/50 transition-transform duration-200 ease-in-out hover:scale-[1.03]">
-                  S`incrire                
-            </a>
-            <a href="/donation"
-                class="rounded-md bg-[#f3ca31] px-3 py-1.5 font-dm text-sm font-medium text-[#cc2229] shadow-md shadow-gray-100/50 transition-transform duration-200 ease-in-out hover:scale-[1.03]">
-                  Faire un don                
-            </a>
-
-            {/* / Mobile Menu Toggle / */}
-            
-          <button id="toggleOpen" className="lg:hidden ml-7">
-            <svg
-              className="w-7 h-7"
-              fill="#000"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
-
-        {/* Profile & Menu Toggle */}
-        {/* <div className="flex items-center max-sm:ml-auto space-x-6">
-          <ul>
-            <li
-              id="profile-dropdown-toggle"
-              className="relative px-1 after:absolute after:bg-black after:w-full after:h-[2px] after:block after:top-8 after:left-0 after:transition-all after:duration-300"
-            >
-         
-                <FaCircleUser  className="cursor-pointer hover:fill-black"
-                />
-            
-              <div
-                id="profile-dropdown-menu"
-                className="bg-white block z-20 shadow-lg py-6 px-6 rounded sm:min-w-[320px] max-sm:min-w-[250px] absolute right-0 top-10"
-              >
-                <h6 className="font-semibold text-[15px]">Welcome</h6>
-                <p className="text-sm text-gray-500 mt-1">
-                  To access account and manage orders
-                </p>
-                <button
-                  type="button"
-                  className="bg-transparent border border-gray-300 hover:border-black rounded px-4 py-2 mt-4 text-sm text-black"
-                >
-                  LOGOUT
-                </button>
-                <hr className="border-b-0 my-4" />
-                <ul className="space-y-1.5">
-                  {[ "Contact Us"].map(
-                    (link, index) => (
-                      <li key={index}>
-                        <Link href="#" className="text-sm text-gray-500 hover:text-black">
-                          {link}
-                        </Link>
-                      </li>
-                    )
+          {/* Center - Navigation */}
+          <nav className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2">
+            <div className="flex space-x-8">
+              {navItems.map((item, index) => (
+                <div key={index} className="relative group">
+                  {item.hasDropdown ? (
+                    <button
+                      onClick={toggleDropdown}
+                      className="text-white text-sm group-hover:text-gray-200 flex items-center"
+                    >
+                      {item.name}
+                      <svg
+                        className="ml-1 w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="text-white text-sm hover:text-gray-200 relative after:absolute after:bg-white after:w-0 hover:after:w-full after:h-0.5 after:bottom--2 after:left-0 after:transition-all after:duration-300"
+                    >
+                      {item.name}
+                    </Link>
                   )}
-                </ul>
-                <hr className="border-b-0 my-4" />
-                <ul className="space-y-1.5">
-                  {[
-                    
-                    "Contact Us",
-                    "Settings",
-                  ].map((link, index) => (
-                    <li key={index}>
-                      <Link href="#" className="text-sm text-gray-500 hover:text-black">
-                        {link}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          </ul>
+                  {item.hasDropdown && (
+                    <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="py-1">
+                        {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                          <Link
+                            key={dropdownIndex}
+                            href={dropdownItem.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            {dropdownItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </nav>
 
-          / Mobile Menu Toggle /
-          <button id="toggleOpen" className="lg:hidden ml-7">
-            <svg
-              className="w-7 h-7"
-              fill="#000"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+          {/* Right side - Auth Buttons */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <Link
+              href="/login"
+              className="text-white text-sm hover:text-gray-200"
             >
-              <path
-                fillRule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div> */}
+              Se Connecter
+            </Link>
+            <Link
+              href="/register"
+              className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-medium hover:bg-gray-100 transition duration-150"
+            >
+              S`incrire
+            </Link>
+            <Link
+              href="/donation"
+              className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#cc2229] text-sm font-medium hover:bg-[#e5b82c] transition duration-150"
+            >
+              Faire un don
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
+            <button
+              onClick={toggleMenu}
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200"
+            >
+              <span className="sr-only">Open main menu</span>
+              {!isMenuOpen ? (
+                <svg
+                  className="block h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="block h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } lg:hidden bg-[#cc2229] border-t border-white/10`}
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          {navItems.map((item, index) => (
+            <div key={index}>
+              {item.hasDropdown ? (
+                <>
+                  <button
+                    onClick={toggleDropdown}
+                    className="w-full text-left text-white px-3 py-2 text-base font-medium hover:bg-[#b41e24] rounded-md flex items-center justify-between"
+                  >
+                    {item.name}
+                    <svg
+                      className={`ml-1 w-4 h-4 transform transition-transform ${
+                        isDropdownOpen ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="ml-4 mt-2 space-y-1">
+                      {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                        <Link
+                          key={dropdownIndex}
+                          href={dropdownItem.href}
+                          className="block text-white px-3 py-2 text-sm font-medium hover:bg-[#b41e24] rounded-md"
+                        >
+                          {dropdownItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="text-white block px-3 py-2 text-base font-medium hover:bg-[#b41e24] rounded-md"
+                >
+                  {item.name}
+                </Link>
+              )}
+            </div>
+          ))}
+          <div className="mt-4 space-y-2 px-3">
+            <Link
+              href="/login"
+              className="block text-white hover:bg-[#b41e24] px-3 py-2 rounded-md"
+            >
+              Se Connecter
+            </Link>
+            <Link
+              href="/register"
+              className="block bg-white text-center px-3 py-2 rounded-md text-[#cc2229] font-medium hover:bg-gray-100"
+            >
+              S`incrire
+            </Link>
+            <Link
+              href="/donation"
+              className="block bg-[#f3ca31] text-center px-3 py-2 rounded-md text-[#cc2229] font-medium hover:bg-[#e5b82c]"
+            >
+              Faire un don
+            </Link>
+          </div>
+        </div>
       </div>
     </header>
   );
