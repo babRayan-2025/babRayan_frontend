@@ -12,17 +12,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import pic1 from "../../public/PHOTO/1.jpg";
-import pic2 from "../../public/PHOTO/2.jpg";
-import pic4 from "../../public/PHOTO/4.jpg";
-import pic5 from "../../public/PHOTO/5.jpg";
-import pic6 from "../../public/PHOTO/6.jpg";
-import pic7 from "../../public/PHOTO/7.jpg";
-import pic8 from "../../public/PHOTO/8.jpg";
-import pic9 from "../../public/PHOTO/9.jpg";
-import pic10 from "../../public/PNG/ETOILERAMADAN.png";
-import pic11 from "../../public/PNG/LANTERNE.png";
-import soleil from "../../public/PNG/SOLEIL.png";
+import pic1 from "../assets/PHOTO/1.jpg";
+import pic2 from "../assets/PHOTO/2.jpg";
+import pic4 from "../assets/PHOTO/4.jpg";
+import pic5 from "../assets/PHOTO/5.jpg";
+import pic6 from "../assets/PHOTO/6.jpg";
+import pic7 from "../assets/PHOTO/7.jpg";
+import pic8 from "../assets/PHOTO/8.jpg";
+import pic9 from "../assets/PHOTO/9.jpg";
+import pic10 from "../assets/PNG/ETOILERAMADAN.png";
+import pic11 from "../assets/PNG/LANTERNE.png";
+import soleil from "../assets/PNG/SOLEIL.png";
 import CountUp from "react-countup";
 import React, { useState, useEffect } from "react";
 import { Play } from "lucide-react";
@@ -115,7 +115,7 @@ export default function Home() {
                 <div className="hidden md:block">
                   <Image
                     src={soleil}
-                    className="relative w-[200px] md:w-[300px] h-[130px] md:h-[200px]"
+                    className="relative  w-[200px] md:w-[250px] h-[100px] md:h-[150px]"
                     alt="Soleil Icon"
                     priority
                   />
@@ -128,7 +128,7 @@ export default function Home() {
                 </motion.h1>
                 <motion.p 
                   variants={fadeIn}
-                  className="mb-4 md:mb-6 text-sm md:text-md drop-shadow-md"
+                  className="mb-4 md:mb-6 text-lg italic md:text-md drop-shadow-md"
                 >
                   L`association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.
                 </motion.p>
@@ -235,9 +235,9 @@ export default function Home() {
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="px-3 py-2 bg-[#f3ca31] text-white font-semibold rounded-xl hover:bg-yellow-500 transition duration-300"
+                          className="px-3 py-2 bg-[#f3ca31] text-white font-medium rounded-xl hover:bg-yellow-500 transition duration-300"
                         >
-                          Découvrir l'école Palmier
+                          Découvrir l`école Palmier
                         </motion.button>
                       </div>
                       <div className="md:w-1/2">
@@ -297,7 +297,7 @@ export default function Home() {
               whileInView="animate"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="w-full bg-[url('/PNG/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16"
+              className="w-full bg-[url('../assets/PNG/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16"
             >
               <div className="max-w-6xl mx-auto px-4">
                 <motion.div 
@@ -379,7 +379,7 @@ export default function Home() {
           vos dons !
         </p>
         <button
-          className="inline-block bg-yellow-400 text-red-600 font-bold px-5 md:px-7 py-2 rounded-lg hover:bg-yellow-500 transition"
+          className="inline-block bg-yellow-400 text-red-600 font-bold px-5 md:px-7 py-2 rounded-xl hover:bg-yellow-500 transition"
         >
           Voir plus
         </button>
@@ -508,11 +508,11 @@ export default function Home() {
   <div className="flex flex-col items-center bg-pink-100 gap-9 px-4">
     <div className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]">
       {/* Image Section */}
-      <div className="flex-shrink-0 w-full md:w-[40%]">
+      <div className="flex-shrink-0 w-full md:w-[45%]">
         <Image
           src={pic8}
           alt="Graduation"
-          className="rounded-lg w-full h-auto object-cover"
+          className="rounded-xl w-full h-auto object-cover"
         />
       </div>
       {/* Text Section */}
@@ -534,11 +534,11 @@ export default function Home() {
   <div className="flex flex-col items-center gap-9 px-4">
     <div className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]">
       {/* Image Section */}
-      <div className="flex-shrink-0 w-full md:w-[40%]">
+      <div className="flex-shrink-0 w-full md:w-[45%]">
         <Image
           src={pic9}
           alt="Graduation"
-          className="rounded-lg w-full h-auto object-cover"
+          className="rounded-xl w-full h-auto object-cover"
         />
       </div>
       {/* Text Section */}
@@ -560,7 +560,7 @@ export default function Home() {
   <div className="p-6 flex items-center justify-center">
     <a
       href="/blog"
-      className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105"
+      className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105"
     >
       Voir toutes les Actualités
     </a>
