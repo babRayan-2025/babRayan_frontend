@@ -5,7 +5,9 @@ import Image from "next/image";
 import cookingImage from "../../../assets/Pics/11.jpg";
 import presidentImage from "../../../assets/Pics/Fatima Zohra Ratibe.jpeg";
 import groupPhoto from "../../../assets/PHOTO/6.jpg";
-import {  FaCloud } from "react-icons/fa";
+import dec1 from "../../../assets/PNG/ETOILERAMADAN.png";
+import dec10 from "../../../assets/PNG/RAYONBLANC.png";
+import soleil from "../../../assets/PNG/SOLEIL.png";
 import { FaHandsHelping, FaFistRaised, FaBalanceScale, FaHeart, FaLightbulb } from "react-icons/fa";
  //i3adat nadar 
 
@@ -14,7 +16,7 @@ export default function About() {
     <main>
       {/* first section: nous connaitre */}
       <motion.div
-        className="relative w-full h-[800px] bg-black text-white"
+        className="relative w-full h-[750px] bg-black text-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -133,6 +135,12 @@ export default function About() {
               <div className="w-24 md:w-48 h-2 bg-yellow-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
             </h1>
           </div>
+                 {/* Decorative Image */}
+        <Image
+          src={dec1}
+          className="w-20 md:w-40 absolute buttom-[-2%] md:buttom-[-2%] left-[75%] md:left-[86%]"
+          alt="Les Ftours Bab Rayan"
+        />
           <p className="text-6xl font-bold text-gray-800 italic">
             « Parce que chaque enfant mérite un bon départ dans la vie »
           </p>
@@ -161,6 +169,11 @@ export default function About() {
             </div>
 
             {/* Right Side: Text */}
+            {/* <Image
+          src={soleil}
+          className="w-20 md:w-40 absolute buttom-[100%] md:buttom-[100%] right-[35%] md:right-[36%]"
+          alt="Les Ftours Bab Rayan"
+        /> */}
             <div className="text-left">
               <p className="text-gray-800 text-2xl italic font-bold leading-relaxed">
                 Notre mission est de protéger, d`éduquer et de former les
@@ -174,10 +187,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Background Icons */}
-      <div className="absolute inset-0 pointer-events-none">
-        <FaCloud className="text-yellow-500 text-6xl absolute top-10 left-10" />
-      </div>
     </div>
 
     {/* nos valeur part  */}
@@ -228,18 +237,18 @@ export default function About() {
       </div>
 
       {/* Decorative Background Arrow */}
-      <div className="absolute top-5 left-5 text-yellow-500 text-6xl">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-12 h-12 rotate-45"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path
-            d="M3 12l1.5-1.5 7 7 7-7L21 12l-9 9-9-9z"
-          />
-        </svg>
-      </div>
+        
+        <Image
+          src={dec1}
+          className="w-20 md:w-40 absolute top-[-5%] md:top-[-2%] right-[75%] md:right-[86%]"
+          alt="Les Ftours Bab Rayan"
+        />
+
+        <Image
+          src={dec10}
+          className="w-20 md:w-40 absolute top-[2%] md:top-[2%] left-[75%] md:left-[86%]"
+          alt="Les Ftours Bab Rayan"
+        />
     </div>
 
     </main>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/Logo.png";
+import deco from "../../assets/PNG/SPLASH.png";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -145,6 +146,12 @@ export default function NavBar() {
             >
               Faire un don
             </Link>
+              {/* Decorative sign */}
+        <Image
+          src={deco}
+          className="w-5 md:w-10 absolute top-[-5%] md:top-[-2%] left-[95%] md:left-[95%]"
+          alt="Les Ftours Bab Rayan"
+        />
           </div>
 
           {/* Mobile menu button */}
