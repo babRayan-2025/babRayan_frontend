@@ -323,7 +323,7 @@ export default function Home() {
               whileInView="animate"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="w-full bg-[url('/PNG/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16"
+              className="w-full bg-[url('/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16"
             >
               <div className="max-w-6xl mx-auto px-4">
                 <motion.div
@@ -456,7 +456,7 @@ export default function Home() {
                       <div className="p-6 flex items-center justify-center">
                         <a
                           href="/blog"
-                          className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-semibold text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
+                          className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-medium text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
                         >
                           Voir Plus 
                         </a>
@@ -485,7 +485,7 @@ export default function Home() {
                       <div className="p-6 flex items-center justify-center">
                         <a
                           href="/blog"
-                          className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-semibold text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
+                          className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-medium text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
                         >
                           Voir Plus 
                         </a>
@@ -515,7 +515,7 @@ export default function Home() {
                       <div className="p-6 flex items-center justify-center">
                         <a
                           href="/blog"
-                          className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-semibold text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
+                          className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-medium text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
                         >
                           Voir Plus 
                         </a>

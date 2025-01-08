@@ -51,7 +51,7 @@ export default function About() {
       </motion.div>
 
       {/* mot de presidente */}
-      <div className=" w-full bg-[url('/PNG/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16 px-6">
+      <div className=" w-full bg-[url('/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16 px-6">
       {/* <div className="bg-gray-50 py-12 px-6"> */}
       <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
               MOT DE LA PRÉSIDENTE

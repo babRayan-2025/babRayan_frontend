@@ -59,7 +59,7 @@ export default function NavBar() {
         { name: "Médiathèque", href: "/mediatheque" }
       ]
     },
-    { name: "Nous contacter", href: "#" },
+    { name: "Nous contacter", href: "/contact_us" },
   ];
 
   return (
