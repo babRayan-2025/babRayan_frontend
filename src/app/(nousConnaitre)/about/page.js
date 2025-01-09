@@ -2,12 +2,16 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import cookingImage from "../../../assets/Pics/11.jpg";
-import presidentImage from "../../../assets/Pics/Fatima Zohra Ratibe.jpeg";
+import cookingImage from "../../../assets/PHOTO/12.jpg";
+// import presidentImage from "../../../assets/PHOTO/members/Fatima Zohra Ratibe.jpeg";
 import groupPhoto from "../../../assets/PHOTO/6.jpg";
-import dec1 from "../../../assets/PNG/ETOILERAMADAN.png";
-import dec10 from "../../../assets/PNG/RAYONBLANC.png";
+import lampe from "../../../assets/PNG/lampe.png";
+import sign from "../../../assets/PNG/flaiche.png";
 import soleil from "../../../assets/PNG/SOLEIL.png";
+import cloud from "../../../assets/PNG/cloud.png";
+import pen from "../../../assets/PNG/pen.png";
+import book from "../../../assets/PNG/book.png";
+import star from "../../../assets/PNG/yellow_star.png";
 import { FaHandsHelping, FaFistRaised, FaBalanceScale, FaHeart, FaLightbulb } from "react-icons/fa";
  //i3adat nadar 
 
@@ -51,14 +55,14 @@ export default function About() {
       </motion.div>
 
       {/* mot de presidente */}
-      <div className=" w-full bg-[url('/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16 px-6">
+      <div className=" w-full bg-[url('/white_back.png')] bg-cover bg-center py-16 px-6">
       {/* <div className="bg-gray-50 py-12 px-6"> */}
       <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
               MOT DE LA PRÉSIDENTE
               <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
             </h1>
         <motion.div
-          className="max-w-7xl mx-auto flex flex-col items-center md:flex-row md:items-start"
+          className="max-w-7xl mx-auto flex flex-col items-center pt-8 md:flex-row md:items-start"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -70,9 +74,9 @@ export default function About() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="relative w-80 h-80 rounded-full border-4 border-red-500 overflow-hidden">
+            <div className="relative w-80 h-60 rounded-xl border-3 border-red-500 overflow-hidden">
               <Image
-                src={presidentImage}
+                src='/members/presedente.jpeg'
                 alt="Présidente"
                 layout="fill"
                 objectFit="cover"
@@ -94,8 +98,7 @@ export default function About() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-           <br/>
-            <p className="text-gray-800 text-lg font-bold leading-relaxed mb-4">
+            <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-4">
               
               Au fil de cette décennie, notre dévouement indéfectible envers la
               protection, l’éducation, la formation et l’insertion
@@ -105,7 +108,7 @@ export default function About() {
               d’inspiration et de motivation dans la vision éclairée de Sa
               Majesté le Roi Mohammed VI.
             </p>
-            <p className="text-gray-800 text-lg font-bold leading-relaxed mb-6">
+            <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-6">
               Les initiatives de Bab Rayan ont évolué, démontrant notre
               engagement croissant envers la construction d’un avenir prometteur
               pour les enfants que nous servons. Nous avons tracé une
@@ -137,8 +140,23 @@ export default function About() {
           </div>
                  {/* Decorative Image */}
         <Image
-          src={dec1}
+          src={star}
           className="w-20 md:w-40 absolute buttom-[-2%] md:buttom-[-2%] left-[75%] md:left-[86%]"
+          alt="Les Ftours Bab Rayan"
+        />
+        <Image
+          src={book}
+          className="w-20 md:w-40 absolute buttom-[-2%] md:buttom-[-2%] right-[75%] md:right-[86%]"
+          alt="Les Ftours Bab Rayan"
+        />
+        <Image
+          src={pen}
+          className="w-20 md:w-40 absolute buttom-[-2%] md:buttom-[-20%] left-[75%] md:left-[86%]"
+          alt="Les Ftours Bab Rayan"
+        />
+        <Image
+          src={cloud}
+          className="w-20 md:w-40 absolute buttom-[-20%] md:buttom-[-20%] right-[75%] md:right-[86%]"
           alt="Les Ftours Bab Rayan"
         />
           <p className="text-6xl font-bold text-gray-800 italic">
@@ -157,6 +175,11 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-6 items-center">
             {/* Left Side: Image */}
             <div className="flex justify-center">
+            <Image
+          src={soleil}
+          className="w-20 md:w-52 absolute buttom-[9%] md:buttom-[9%] right-[25%] md:right-[26%]"
+          alt="Les Ftours Bab Rayan"
+        />
               <div className="overflow-hidden rounded-lg shadow-lg">
                 <Image
                   src={groupPhoto}
@@ -169,13 +192,11 @@ export default function About() {
             </div>
 
             {/* Right Side: Text */}
-            {/* <Image
-          src={soleil}
-          className="w-20 md:w-40 absolute buttom-[100%] md:buttom-[100%] right-[35%] md:right-[36%]"
-          alt="Les Ftours Bab Rayan"
-        /> */}
+          
             <div className="text-left">
               <p className="text-gray-800 text-2xl italic font-bold leading-relaxed">
+                <br/>
+                <br/>
                 Notre mission est de protéger, d`éduquer et de former les
                 enfants et jeunes en difficulté pour leur offrir un avenir
                 digne, autonome et enrichissant. Grâce à nos programmes
@@ -239,14 +260,14 @@ export default function About() {
       {/* Decorative Background Arrow */}
         
         <Image
-          src={dec1}
-          className="w-20 md:w-40 absolute top-[-5%] md:top-[-2%] right-[75%] md:right-[86%]"
+          src={sign}
+          className="w-30 md:w-80 absolute top-[-5%] md:top-[1%] right-[75%] md:right-[84%]"
           alt="Les Ftours Bab Rayan"
         />
 
         <Image
-          src={dec10}
-          className="w-20 md:w-40 absolute top-[2%] md:top-[2%] left-[75%] md:left-[86%]"
+          src={lampe}
+          className="w-20 md:w-40 absolute top-[2%] md:top-[2%] left-[90%] md:left-[91%]"
           alt="Les Ftours Bab Rayan"
         />
     </div>

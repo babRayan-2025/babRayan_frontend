@@ -21,6 +21,7 @@ import pic6 from "../assets/PHOTO/6.jpg";
 import pic7 from "../assets/PHOTO/7.jpg";
 import pic8 from "../assets/PHOTO/8.jpg";
 import pic9 from "../assets/PHOTO/9.jpg";
+import pic1prime from "../assets/PHOTO/11.jpg";
 import pic10 from "../assets/PNG/ETOILERAMADAN.png";
 import pic11 from "../assets/PNG/LANTERNE.png";
 import soleil from "../assets/PNG/SOLEIL.png";
@@ -165,7 +166,7 @@ export default function Home() {
                   loop={true}
                   className="w-full"
                 >
-                  {[pic1, pic6, pic7].map((pic, index) => (
+                  {[pic1prime, pic6, pic1, pic7].map((pic, index) => (
                     <SwiperSlide key={index}>
                       <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
                         <Image
