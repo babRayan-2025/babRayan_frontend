@@ -86,7 +86,7 @@ export default function Home() {
       description:
         "Des formations ofertes dos des secteurs varlés tels que /hotalario-restauration ot los mátiors du digital pour accompagner ces jeunes vers une insertion professiannelle réussie.",
       buttonText: "Découvrir le CFI",
-      image: '/2.jpg',
+      image: '/cfi.jpg',
     },
   ];
 
@@ -292,9 +292,9 @@ export default function Home() {
               <Image
                 src={slide.image}
                 alt={slide.title}
-                className="w-full h-full object-cover"
+                className="w-[434px] h-[500px] object-cover"
                 width={500}
-                height={300}
+                height={500}
               />
             </div>
           </motion.div>
