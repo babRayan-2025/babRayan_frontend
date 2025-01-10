@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation"; // Import Next.js navigation hook
 import { useEffect, useState, useRef } from "react"; // React hooks for state, effect, and refs
 import "../globals.css"; // Global styles
-import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '@fortawesome/fontawesome-free/css/all.css';

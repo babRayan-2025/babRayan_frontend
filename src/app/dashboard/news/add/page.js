@@ -8,6 +8,8 @@ import { Upload, Image } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { FaArrowLeft } from "react-icons/fa6";
 import Link from "next/link";
+import { convertToRaw } from "draft-js";
+import { stateToHTML } from "draft-js-export-html"; // You need to install this package
 
 const AddNews = () => {
   const [title, setTitle] = useState("");
@@ -41,12 +43,18 @@ const AddNews = () => {
     }));
     setFileList(processedList);
   };
-
+const [texxt , setTexxt] = useState("");
   const handleSubmit = () => {
-    const content = editorState.getCurrentContent().getPlainText();
+    const contentState = editorState.getCurrentContent();
+    
+    // Get raw content and convert to HTML
+    const rawContent = convertToRaw(contentState);
+    const htmlContent = stateToHTML(contentState);
+    setTexxt(htmlContent);
     console.log("Title:", title);
     console.log("Images:", fileList);
-    console.log("Content:", content);
+    console.log("Raw Content:", rawContent); // Logs raw content (structured data)
+    console.log("HTML Content:", htmlContent); // Logs the HTML content with formatting
   };
 
   const uploadButton = (
@@ -58,6 +66,7 @@ const AddNews = () => {
 
   return (
     <section className="p-4">
+     <div dangerouslySetInnerHTML={{ __html: texxt }}></div>
         <Link className="d-flex" href={"/dashboard/news"}><h6 className="d-flex  font-bold"><FaArrowLeft /> <span className="ms-2">Revenir</span></h6></Link>
       <center>
         <h1 className="text-3xl font-bold">Ajouter un nouvel article</h1>
