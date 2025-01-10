@@ -70,7 +70,7 @@ export default function Home() {
     {
       title: "Protection de l'enfance",
       description:
-        "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
+      "Depuis 2014, Bab Rayan se consacre a la protection de l'enfanco, assurant un anvvoroment sur ot bonvallant pour les enfants vuinérables.",
       buttonText: "Découvrir le foyer Bab Rayan",
       image: '/2girls.jpg',
     },
@@ -190,7 +190,7 @@ export default function Home() {
                   loop={true}
                   className="w-full"
                 >
-                  {[pic1prime, pic1].map((pic, index) => (
+                  {[pic1prime, pic1 ,pic7].map((pic, index) => (
                     <SwiperSlide key={index}>
                       <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px]">
                         <Image
@@ -575,13 +575,13 @@ export default function Home() {
                   </div>
                   {/* Text Section */}
                   <div className="text-center md:text-left">
-                    <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                    <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
                       Remise des diplômes <br /> de la deuxième promotion du CFI
                     </h1>
                     <p className="text-gray-700 mb-4 italic text-sm md:text-base">
                       L`Association Bab Rayan a eu l`honneur de célébrer ce 28
                       Octobre 2024, la réussite de la deuxième promotion de
-                      diplômés de son Centre de Formation et d`Insertion. Le CFI
+                      diplômés de son Centre de Formation et d`Insertion.<br /> Le CFI
                       propose aux jeunes issus des EPS et en situation de
                       précarité une formation qualifiante dans les métiers de
                       l`hôtellerie et de la restauration. Aujourd`hui, plus de
@@ -608,18 +608,12 @@ export default function Home() {
                   </div>
                   {/* Text Section */}
                   <div className="text-center md:text-left">
-                    <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                      Remise des diplômes <br /> de la deuxième promotion du CFI
+                    <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
+                    Convention entre Newrest et le CFI <br /> pour offrir une formation <br /> en alternance de qualité 
                     </h1>
                     <p className="text-gray-700 mb-4 italic text-sm md:text-base">
-                      L`Association Bab Rayan a eu l`honneur de célébrer ce 28
-                      Octobre 2024, la réussite de la deuxième promotion de
-                      diplômés de son Centre de Formation et d`Insertion. Le CFI
-                      propose aux jeunes issus des EPS et en situation de
-                      précarité une formation qualifiante dans les métiers de
-                      l`hôtellerie et de la restauration. Aujourd`hui, plus de
-                      120 jeunes franchissent une étape clé vers l`emploi, grâce
-                      au soutien de nos entreprises partenaires.
+                    Le CFI à Bab Rayan & Newrest s`unissent pour offrir une formation diplômante en restauration, une première qui changera la vie d`une promotion engagée de jeunes en difficulté !<br />
+                    D`ici août prochain, ils auront non seulement acquis d`es compétences, mais aussi trouvé un projet de vie qui leur ouvre les portes d`un avenir prometteur
                     </p>
                     <button className="inline-block bg-yellow-300 rounded-full text-white font-semibold px-4 py-2 transition hover:bg-yellow-400">
                       Découvrir plus
