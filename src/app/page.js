@@ -13,7 +13,7 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import pic1 from "../assets/PHOTO/1.jpg";
-import pic2 from "../assets/PHOTO/2.jpg";
+// import pic2 from "../assets/PHOTO/2.jpg";
 import pic3 from "../assets/PHOTO/3.jpg";
 import pic4 from "../assets/PHOTO/4.jpg";
 import pic5 from "../assets/PHOTO/5.jpg";
@@ -65,6 +65,30 @@ export default function Home() {
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  const slidesData = [
+    {
+      title: "Protection de l'enfance",
+      description:
+        "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
+      buttonText: "Découvrir le foyer Bab Rayan",
+      image: '/2girls.jpg',
+    },
+    {
+      title: "Éducation et scolarité",
+      description:
+      "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
+      buttonText: "Découvrir l'ecole Palemier",
+      image: '/2.jpg',
+    },
+    {
+      title: "Formation et insertion professionnelle",
+      description:
+        "Des formations ofertes dos des secteurs varlés tels que /hotalario-restauration ot los mátiors du digital pour accompagner ces jeunes vers une insertion professiannelle réussie.",
+      buttonText: "Découvrir le CFI",
+      image: '/2.jpg',
+    },
+  ];
 
   const chiffres = [
     {
@@ -166,9 +190,9 @@ export default function Home() {
                   loop={true}
                   className="w-full"
                 >
-                  {[pic1prime, pic6, pic1, pic7].map((pic, index) => (
+                  {[pic1prime, pic1].map((pic, index) => (
                     <SwiperSlide key={index}>
-                      <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
+                      <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px]">
                         <Image
                           src={pic}
                           className="absolute block w-full h-full object-cover"
@@ -229,54 +253,57 @@ export default function Home() {
             </motion.div>
 
             {/* Secondary Carousel Section */}
-            <motion.div variants={fadeIn} className="p-5 md:p-11">
-              <Swiper
-                slidesPerView={1}
-                spaceBetween={20}
-                pagination={{ clickable: true }}
-                modules={[Pagination]}
-                breakpoints={{
-                  640: { slidesPerView: 1 },
-                  768: { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 },
-                }}
-                className="mySwiper"
+            <div className="space-y-12">
+  <motion.div variants={fadeIn} className="p-5 md:p-11">
+    <Swiper
+      slidesPerView={2.5} 
+      spaceBetween={20} // Ajoute un espace entre les cartes
+      pagination={{ clickable: true }}
+      modules={[Pagination]}
+      breakpoints={{
+        320: { slidesPerView: 1 }, // 1.5 cartes visibles sur les petits écrans
+        768: { slidesPerView: 2 }, // 2 cartes visibles sur les écrans moyens
+        1024: { slidesPerView: 2.5 }, // 2.5 cartes visibles sur les grands écrans
+      }}
+      className="mySwiper"
+    >
+      {slidesData.map((slide, index) => (
+        <SwiperSlide key={index}>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="m-3 flex flex-col md:flex-row items-center bg-white shadow-md rounded-xl duration-500 hover:shadow-xl overflow-hidden"
+          >
+            <div className="p-4 gap-4 md:w-1/2">
+              <h1 className="text-xl sm:text-4xl font-bold mb-4 text-gray-900">
+                {slide.title}
+              </h1>
+              <p className="text-sm sm:text-base italic text-gray-700 mb-6">
+                {slide.description}
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-3 py-2 bg-[#f3ca31] text-white font-medium rounded-xl hover:bg-yellow-500 transition duration-300"
               >
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <SwiperSlide key={index}>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="m-5 flex flex-col md:flex-row items-center bg-white shadow-md rounded-xl duration-500 hover:shadow-xl overflow-hidden"
-                    >
-                      <div className="p-4 gap-4 md:w-1/2">
-                        <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">
-                          Education et scolarité
-                        </h1>
-                        <p className="text-sm sm:text-base text-gray-700 mb-6">
-                          En intégrant ces jeunes dans un parcours éducatif
-                          adapté à leurs besoins, nous leur donnons les outils
-                          nécessaires pour construire leur avenir.
-                        </p>
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="px-3 py-2 bg-[#f3ca31] text-white font-medium rounded-xl hover:bg-yellow-500 transition duration-300"
-                        >
-                          Découvrir l`école Palmier
-                        </motion.button>
-                      </div>
-                      <div className="md:w-1/2">
-                        <Image
-                          src={pic2}
-                          alt="Kids in school"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </motion.div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </motion.div>
+                {slide.buttonText}
+              </motion.button>
+            </div>
+            <div className="md:w-1/2">
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+                width={500}
+                height={300}
+              />
+            </div>
+          </motion.div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </motion.div>
+</div>
+
 
             {/* Statistics Section */}
             <motion.div

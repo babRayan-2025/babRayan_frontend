@@ -12,8 +12,14 @@ import cloud from "../../../assets/PNG/cloud.png";
 import pen from "../../../assets/PNG/pen.png";
 import book from "../../../assets/PNG/book.png";
 import star from "../../../assets/PNG/yellow_star.png";
-import { FaHandsHelping, FaFistRaised, FaBalanceScale, FaHeart, FaLightbulb } from "react-icons/fa";
- //i3adat nadar 
+import {
+  FaHandsHelping,
+  FaFistRaised,
+  FaBalanceScale,
+  FaHeart,
+  FaLightbulb,
+} from "react-icons/fa";
+//i3adat nadar
 
 export default function About() {
   return (
@@ -56,11 +62,11 @@ export default function About() {
 
       {/* mot de presidente */}
       <div className=" w-full bg-[url('/white_back.png')] bg-cover bg-center py-16 px-6">
-      {/* <div className="bg-gray-50 py-12 px-6"> */}
-      <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
-              MOT DE LA PRÉSIDENTE
-              <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
-            </h1>
+        {/* <div className="bg-gray-50 py-12 px-6"> */}
+        <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+          MOT DE LA PRÉSIDENTE
+          <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+        </h1>
         <motion.div
           className="max-w-7xl mx-auto flex flex-col items-center pt-8 md:flex-row md:items-start"
           initial={{ opacity: 0, y: 50 }}
@@ -76,7 +82,7 @@ export default function About() {
           >
             <div className="relative w-80 h-60 rounded-xl border-3 border-red-500 overflow-hidden">
               <Image
-                src='/members/presedente.jpeg'
+                src="/members/presedente.jpeg"
                 alt="Présidente"
                 layout="fill"
                 objectFit="cover"
@@ -99,7 +105,6 @@ export default function About() {
             viewport={{ once: true }}
           >
             <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-4">
-              
               Au fil de cette décennie, notre dévouement indéfectible envers la
               protection, l’éducation, la formation et l’insertion
               professionnelle des enfants en difficulté a été au cœur de notre
@@ -126,140 +131,147 @@ export default function About() {
           </motion.div>
         </motion.div>
       </div>
-      {/* vision section part */}
-
-      <div className="bg-pink-100 py-12 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Vision Section */}
-        <div className="mb-12">
-          <div className="flex justify-center items-center space-x-4 mb-4">
-          <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
-              NOTRE VISION
-              <div className="w-24 md:w-48 h-2 bg-yellow-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
-            </h1>
-          </div>
-                 {/* Decorative Image */}
-        <Image
+      {/* Vision Section */}
+      <motion.div
+        className="relative bg-pink-100 py-12 px-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+          {/* Decorative Image */}
+          <Image
           src={star}
-          className="w-20 md:w-40 absolute buttom-[-2%] md:buttom-[-2%] left-[75%] md:left-[86%]"
+          className="w-40 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] left-[75%] md:left-[88%]"
           alt="Les Ftours Bab Rayan"
         />
         <Image
           src={book}
-          className="w-20 md:w-40 absolute buttom-[-2%] md:buttom-[-2%] right-[75%] md:right-[86%]"
+          className="w-40 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] right-[75%] md:right-[86%]"
           alt="Les Ftours Bab Rayan"
         />
         <Image
           src={pen}
-          className="w-20 md:w-40 absolute buttom-[-2%] md:buttom-[-20%] left-[75%] md:left-[86%]"
+          className="w-20 md:w-40 absolute top-[20%] md:top-[40%] left-[75%] md:left-[86%]"
           alt="Les Ftours Bab Rayan"
         />
         <Image
           src={cloud}
-          className="w-20 md:w-40 absolute buttom-[-20%] md:buttom-[-20%] right-[75%] md:right-[86%]"
+          className="w-30 md:w-44 absolute top-[20%] md:top-[35%] right-[65%] md:right-[78%]"
           alt="Les Ftours Bab Rayan"
         />
-          <p className="text-6xl font-bold text-gray-800 italic">
-            « Parce que chaque enfant mérite un bon départ dans la vie »
-          </p>
-        </div>
-
-        {/* Mission Section */}
-        <div className="mt-12">
-          <div className="flex justify-center items-center space-x-4 mb-4">
-          <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
-              MISSION GLOBALE
-              <div className="w-24 md:w-48 h-2 bg-yellow-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
-            </h1>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 items-center">
-            {/* Left Side: Image */}
-            <div className="flex justify-center">
-            <Image
+         <Image
           src={soleil}
-          className="w-20 md:w-52 absolute buttom-[9%] md:buttom-[9%] right-[25%] md:right-[26%]"
+          className="w-36 md:w-48 absolute top-[20%] md:top-[50%] left-[60%] md:left-[60%]"
           alt="Les Ftours Bab Rayan"
         />
-              <div className="overflow-hidden rounded-lg shadow-lg">
-                <Image
-                  src={groupPhoto}
-                  alt="Group of children"
-                  width={500}
-                  height={300}
-                  objectFit="cover"
-                />
-              </div>
-            </div>
 
-            {/* Right Side: Text */}
-          
-            <div className="text-left">
-              <p className="text-gray-800 text-2xl italic font-bold leading-relaxed">
-                <br/>
-                <br/>
-                Notre mission est de protéger, d`éduquer et de former les
-                enfants et jeunes en difficulté pour leur offrir un avenir
-                digne, autonome et enrichissant. Grâce à nos programmes
-                holistiques, nous les accompagnons sur la voie de la réussite
-                personnelle et professionnelle.
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            {/* Vision Section */}
+            <div className="mb-12">
+              <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+                NOTRE VISION
+                <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+              </h1>
+              <p className="text-6xl font-bold text-gray-800 italic">
+                « Parce que chaque enfant mérite un bon départ dans la vie »
               </p>
             </div>
+
+            {/* Mission Section */}
+            <div className="mt-12">
+              <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+                MISSION GLOBALE
+                <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+              </h1>
+              <div className="grid md:grid-cols-2 gap-6 items-center">
+                {/* Left Side: Image */}
+                <motion.div
+                  className="flex justify-center"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="overflow-hidden rounded-xl shadow-lg">
+                    <Image
+                      src={groupPhoto}
+                      alt="Group of children"
+                      width={500}
+                      height={300}
+                      objectFit="cover"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Right Side: Text */}
+                <motion.div
+                  className="text-left pt-16"
+                  initial={{ x: 50, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <p className="text-gray-800 text-2xl italic font-bold leading-relaxed">
+                    Notre mission est de protéger, d’éduquer et de former les
+                    enfants et jeunes en difficulté pour leur offrir un avenir
+                    digne, autonome et enrichissant. Grâce à nos programmes
+                    holistiques, nous les accompagnons sur la voie de la
+                    réussite personnelle et professionnelle.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Nos Valeurs Section */}
+      <motion.div
+        className="bg-red-600 py-12 px-6 text-white relative"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+            NOS VALEURS :
+            <div className="w-24 md:w-48 h-2 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+          </h1>
+
+          {/* Values Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+            {[
+              { icon: FaHandsHelping, title: "SOLIDARITÉ" },
+              { icon: FaFistRaised, title: "ENGAGEMENT" },
+              { icon: FaBalanceScale, title: "ÉGALITÉ DES CHANCES" },
+              { icon: FaHeart, title: "RESPONSABILITÉ SOCIALE ET DURABLE" },
+              { icon: FaLightbulb, title: "INNOVATION ET ADAPTABILITÉ" },
+            ].map((value, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col items-center space-y-4"
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <value.icon className="text-yellow-300 text-6xl" />
+                <p className="text-xl font-semibold text-center">
+                  {value.title}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </div>
-
-    </div>
-
-    {/* nos valeur part  */}
-    <div className="bg-red-600 py-12 px-6 text-white relative">
-      <div className="max-w-7xl mx-auto text-center">
-        {/* Title */}
-        <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
-              NOS VALEURS :
-              <div className="w-24 md:w-48 h-2 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
-            </h1>
-
-        {/* Values Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Value 1: Solidarité */}
-          <div className="flex flex-col items-center space-y-4">
-            <FaHandsHelping className="text-yellow-500 text-6xl" />
-            <p className="text-xl font-semibold">SOLIDARITÉ</p>
-          </div>
-
-          {/* Value 2: Engagement */}
-          <div className="flex flex-col items-center space-y-4">
-            <FaFistRaised className="text-yellow-500 text-6xl" />
-            <p className="text-xl font-semibold">ENGAGEMENT</p>
-          </div>
-
-          {/* Value 3: Égalité des chances */}
-          <div className="flex flex-col items-center space-y-4">
-            <FaBalanceScale className="text-yellow-500 text-6xl" />
-            <p className="text-xl font-semibold">ÉGALITÉ DES CHANCES</p>
-          </div>
-
-          {/* Value 4: Responsabilité sociale et durable */}
-          <div className="flex flex-col items-center space-y-4">
-            <FaHeart className="text-yellow-500 text-6xl" />
-            <p className="text-xl font-semibold text-center">
-              RESPONSABILITÉ SOCIALE ET DURABLE
-            </p>
-          </div>
-
-          {/* Value 5: Innovation et Adaptabilité */}
-          <div className="flex flex-col items-center space-y-4">
-            <FaLightbulb className="text-yellow-500 text-6xl" />
-            <p className="text-xl font-semibold text-center">
-              INNOVATION ET ADAPTABILITÉ
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Decorative Background Arrow */}
-        
-        <Image
+            {/* Decorative Background Arrow */}
+            <Image
           src={sign}
           className="w-30 md:w-80 absolute top-[-5%] md:top-[1%] right-[75%] md:right-[84%]"
           alt="Les Ftours Bab Rayan"
@@ -270,8 +282,7 @@ export default function About() {
           className="w-20 md:w-40 absolute top-[2%] md:top-[2%] left-[90%] md:left-[91%]"
           alt="Les Ftours Bab Rayan"
         />
-    </div>
-
+      </motion.div>
     </main>
   );
 }
