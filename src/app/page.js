@@ -28,7 +28,7 @@ import soleil from "../assets/PNG/SOLEIL.png";
 import CountUp from "react-countup";
 import React, { useState, useEffect } from "react";
 import { Play } from "lucide-react";
-import SkeletonLoader from "../components/SkeletonLoader";
+// import SkeletonLoader from "../components/SkeletonLoader";
 
 // Animation variants
 const fadeIn = {
@@ -58,7 +58,7 @@ const staggerContainer = {
 };
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -122,10 +122,10 @@ export default function Home() {
 
   return (
     <>
-      {isLoading ? (
+      {/* {isLoading ? (
         <SkeletonLoader />
       ) : (
-        <>
+        <> */}
           {/* Main Content */}
           <motion.div
             initial="initial"
@@ -638,8 +638,8 @@ export default function Home() {
               </div>
             </div>
           </motion.div>
-        </>
-      )}
+        {/* </>
+      )} */}
     </>
   );
 }
