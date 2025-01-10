@@ -61,10 +61,10 @@ export default function Home() {
   // const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setIsLoading(false), 2000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const slidesData = [
     {

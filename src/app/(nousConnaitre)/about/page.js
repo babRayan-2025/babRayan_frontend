@@ -141,17 +141,17 @@ export default function About() {
           {/* Decorative Image */}
           <Image
           src={star}
-          className="w-40 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] left-[75%] md:left-[88%]"
+          className="w-20 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] left-[75%] md:left-[86%]"
           alt="Les Ftours Bab Rayan"
         />
         <Image
           src={book}
-          className="w-40 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] right-[75%] md:right-[86%]"
+          className="w-40 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] right-[70%] md:right-[86%]"
           alt="Les Ftours Bab Rayan"
         />
         <Image
           src={pen}
-          className="w-20 md:w-40 absolute top-[20%] md:top-[40%] left-[75%] md:left-[86%]"
+          className="w-20 md:w-40 absolute top-[20%] md:top-[40%] left-[80%] md:left-[86%]"
           alt="Les Ftours Bab Rayan"
         />
         <Image
@@ -161,7 +161,7 @@ export default function About() {
         />
          <Image
           src={soleil}
-          className="w-36 md:w-48 absolute top-[20%] md:top-[50%] left-[60%] md:left-[60%]"
+          className="w-36 md:w-48 absolute top-[100%] md:top-[50%] left-[60%] md:left-[60%]"
           alt="Les Ftours Bab Rayan"
         />
 
@@ -273,13 +273,13 @@ export default function About() {
             {/* Decorative Background Arrow */}
             <Image
           src={sign}
-          className="w-30 md:w-80 absolute top-[-5%] md:top-[1%] right-[75%] md:right-[84%]"
+          className="w-30 md:w-80 absolute top-[4%] md:top-[1%] right-[65%] md:right-[84%]"
           alt="Les Ftours Bab Rayan"
         />
 
         <Image
           src={lampe}
-          className="w-20 md:w-40 absolute top-[2%] md:top-[2%] left-[90%] md:left-[91%]"
+          className="w-20 md:w-40 absolute top-[2%] md:top-[2%] left-[80%] md:left-[91%]"
           alt="Les Ftours Bab Rayan"
         />
       </motion.div>
