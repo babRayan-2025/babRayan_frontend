@@ -1,3 +1,5 @@
+"use client";
+
 import SkeletonLoader from "../../../components/SkeletonLoader";
 import React, { useState ,useEffect} from "react";
 
