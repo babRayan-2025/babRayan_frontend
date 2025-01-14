@@ -12,7 +12,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import pic1 from "../assets/PHOTO/1.jpg";
+import caros1 from "../assets/PHOTO/caroussel/1.jpg";
+import caros2 from "../assets/PHOTO/caroussel/11.jpg";
+import caros3 from "../assets/PHOTO/caroussel/bab rayan 2.jpeg";
+import caros4 from "../assets/PHOTO/caroussel/bab rayan 3.jpeg";
+
 // import pic2 from "../assets/PHOTO/2.jpg";
 import pic3 from "../assets/PHOTO/3.jpg";
 import pic4 from "../assets/PHOTO/4.jpg";
@@ -21,14 +25,12 @@ import pic6 from "../assets/PHOTO/6.jpg";
 import pic7 from "../assets/PHOTO/7.jpg";
 import pic8 from "../assets/PHOTO/8.jpg";
 import pic9 from "../assets/PHOTO/9.jpg";
-import pic1prime from "../assets/PHOTO/11.jpg";
 import pic10 from "../assets/PNG/ETOILERAMADAN.png";
 import pic11 from "../assets/PNG/LANTERNE.png";
 import soleil from "../assets/PNG/SOLEIL.png";
 import CountUp from "react-countup";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Play } from "lucide-react";
-// import SkeletonLoader from "../components/SkeletonLoader";
 
 // Animation variants
 const fadeIn = {
@@ -58,13 +60,35 @@ const staggerContainer = {
 };
 
 export default function Home() {
-  // const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setIsLoading(false), 2000);
-  //   return () => clearTimeout(timer);
-  // }, []);
+
+  const caroussel = [
+    {
+      image: caros2,
+      picto: soleil, // Adding the soleil icon
+      title: "CHANGER LE PARCOURS D'UNE VIE",
+      description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
+    },
+    {
+      image: caros3,
+      picto: soleil,
+      title: "ENSEMBLE POUR UN AVENIR MEILLEUR",
+      description: "Nous travaillons main dans la main pour offrir un soutien durable et efficace.",
+    },
+    {
+      image: caros4,
+      picto: soleil,
+      title: "UNE ÉDUCATION POUR TOUS",
+      description: "L'éducation est la clé pour briser le cycle de la pauvreté et créer un avenir prometteur.",
+    },
+    {
+      image: pic7,
+      picto: soleil,
+      title: "DONNER ESPOIR, CHANGER DES DESTINS",
+      description: "Grâce à votre soutien, nous redonnons de l'espoir à ceux qui en ont le plus besoin.",
+    },
+  ];
 
   const slidesData = [
     {
@@ -122,10 +146,6 @@ export default function Home() {
 
   return (
     <>
-      {/* {isLoading ? (
-        <SkeletonLoader />
-      ) : (
-        <> */}
           {/* Main Content */}
           <motion.div
             initial="initial"
@@ -133,124 +153,127 @@ export default function Home() {
             variants={staggerContainer}
           >
             {/* Main Carousel Section */}
-            <motion.div variants={fadeIn} className="relative w-full">
-              {/* Slogan and Button Container */}
-              <motion.div
-                variants={slideIn}
-                className="absolute right-4 md:right-10 top-1/4 -translate-y-1/2 z-40 max-w-[280px] md:max-w-md text-white p-4 md:p-0"
-              >
-                <div className="hidden md:block">
-                  <Image
-                    src={soleil}
-                    className="relative  w-[200px] md:w-[250px] h-[100px] md:h-[150px]"
-                    alt="Soleil Icon"
-                    priority
-                  />
-                </div>
-                <motion.h1
-                  variants={fadeIn}
-                  className="text-xl md:text-3xl font-bold mb-2 md:mb-4 drop-shadow-lg"
-                >
-                  CHANGER LE PARCOURS D`UNE VIE
-                </motion.h1>
-                <motion.p
-                  variants={fadeIn}
-                  className="mb-4 md:mb-6 text-lg italic md:text-md drop-shadow-md"
-                >
-                  L`association Bab Rayan agit depuis 2014 pour transformer la
-                  vie des enfants en difficulté.
-                </motion.p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-4 md:px-6 py-1 bg-[#f3ca31] font-bold text-sm md:text-base rounded-xl hover:bg-[#c19f26] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-gray-700 transition-colors"
-                >
-                  En savoir plus
-                </motion.button>
-              </motion.div>
+            <motion.div variants={{}} className="relative w-full">
+      {/* Swiper Container */}
+      <div className="swiper-container relative w-full">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={0}
+          slidesPerView={1}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          pagination={{
+            clickable: true,
+            el: ".swiper-pagination",
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          className="w-full"
+        >
+          {caroussel.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative h-[400px] sm:h-[500px] md:h-[700px] lg:h-[850px]">
+                {/* Background Image */}
+                <Image
+                  src={slide.image}
+                  className="absolute block w-full h-full object-cover"
+                  alt={`Slide ${index + 1}`}
+                  priority={index === 0}
+                  fill
+                />
 
-              {/* Swiper Container */}
-              <div className="swiper-container relative w-full">
-                <Swiper
-                  modules={[Navigation, Pagination, Autoplay]}
-                  spaceBetween={0}
-                  slidesPerView={1}
-                  navigation={{
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                  }}
-                  pagination={{
-                    clickable: true,
-                    el: ".swiper-pagination",
-                  }}
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                  }}
-                  loop={true}
-                  className="w-full"
+                {/* Text Content */}
+                <motion.div
+                  variants={{}}
+                  className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[280px] md:max-w-md text-white p-4 md:p-0"
                 >
-                  {[pic1prime, pic1 ,pic7].map((pic, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px]">
-                        <Image
-                          src={pic}
-                          className="absolute block w-full h-full object-cover"
-                          alt={`Image ${index + 1}`}
-                          priority={index === 0}
-                          fill
-                        />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-
-                {/* Navigation Buttons */}
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="swiper-button-prev absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-2 rounded-full cursor-pointer z-10 transition-colors"
-                >
-                  <svg
-                    className="w-4 h-4 md:w-6 md:h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
+                  {/* Icon */}
+                  {slide.picto && (
+                    <div className="hidden md:block">
+                      <Image
+                        src={slide.picto}
+                        className="relative w-[200px] md:w-[250px] h-[100px] md:h-[150px]"
+                        alt="Soleil Icon"
+                        priority
+                      />
+                    </div>
+                  )}
+                  <motion.h1
+                    variants={{}}
+                    className="text-xl md:text-3xl font-bold mb-2 md:mb-4 drop-shadow-lg"
                   >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 1L1 5l4 4"
-                    />
-                  </svg>
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="swiper-button-next absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-2 rounded-full cursor-pointer z-10 transition-colors"
-                >
-                  <svg
-                    className="w-4 h-4 md:w-6 md:h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
+                    {slide.title}
+                  </motion.h1>
+                  <motion.p
+                    variants={{}}
+                    className="mb-4 md:mb-6 text-xl italic md:text-md drop-shadow-md"
                   >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 9l4-4-4-4"
-                    />
-                  </svg>
-                </motion.button>
-
-                <div className="swiper-pagination absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"></div>
+                    {slide.description}
+                  </motion.p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-4 md:px-6 py-1 bg-[#f42020] font-bold text-sm md:text-base rounded-xl hover:bg-[#ab2222] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-gray-700 transition-colors"
+                  >
+                    En savoir plus
+                  </motion.button>
+                </motion.div>
               </div>
-            </motion.div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Navigation Buttons */}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="swiper-button-prev absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-2 rounded-full cursor-pointer z-10 transition-colors"
+        >
+          <svg
+            className="w-4 h-4 md:w-6 md:h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 6 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M5 1L1 5l4 4"
+            />
+          </svg>
+        </motion.button>
+
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="swiper-button-next absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-2 rounded-full cursor-pointer z-10 transition-colors"
+        >
+          <svg
+            className="w-4 h-4 md:w-6 md:h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 6 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 9l4-4-4-4"
+            />
+          </svg>
+        </motion.button>
+
+        <div className="swiper-pagination absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"></div>
+      </div>
+    </motion.div>
 
             {/* Secondary Carousel Section */}
             <div className="space-y-12">
