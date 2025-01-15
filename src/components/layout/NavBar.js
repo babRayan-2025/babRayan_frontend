@@ -43,7 +43,7 @@ export default function NavBar() {
       hasDropdown: true,
       dropdownItems: [
         { name: "Faire un DON", href: "/donation" },
-        { name: "Parrainer un enfant", href: "/Parrainage" },
+        { name: "Parrainer un enfant", href: "/parrainage" },
         { name: "Devenir partenaire", href: "/partenaire" },
         { name: "Devenir bénévole", href: "/benevole" }
       ]
