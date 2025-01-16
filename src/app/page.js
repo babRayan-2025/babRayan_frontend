@@ -66,28 +66,28 @@ export default function Home() {
   const caroussel = [
     {
       image: caros2,
-      picto: soleil, // Adding the soleil icon
+      picto: soleil, 
       title: "CHANGER LE PARCOURS D'UNE VIE",
       description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
     },
     {
       image: caros3,
       picto: soleil,
-      title: "ENSEMBLE POUR UN AVENIR MEILLEUR",
-      description: "Nous travaillons main dans la main pour offrir un soutien durable et efficace.",
+      title: "FORMER ET INTÉGRER ",
+      description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens automnes et engagés.",
     },
     {
       image: caros4,
       picto: soleil,
-      title: "UNE ÉDUCATION POUR TOUS",
-      description: "L'éducation est la clé pour briser le cycle de la pauvreté et créer un avenir prometteur.",
+      title: "PROTÉGER, ÉDUQUER, ACCOMPAGNER",
+      description: "Bab Rayan défend les droits des enfants en leur offrant un foyer sécurisant et une éducation de qualité.",
     },
-    {
-      image: pic7,
-      picto: soleil,
-      title: "DONNER ESPOIR, CHANGER DES DESTINS",
-      description: "Grâce à votre soutien, nous redonnons de l'espoir à ceux qui en ont le plus besoin.",
-    },
+    // {
+    //   image: pic7,
+    //   picto: soleil,
+    //   title: "DONNER ESPOIR, CHANGER DES DESTINS",
+    //   description: "Grâce à votre soutien, nous redonnons de l'espoir à ceux qui en ont le plus besoin.",
+    // },
   ];
 
   const slidesData = [
@@ -190,7 +190,7 @@ export default function Home() {
                 {/* Text Content */}
                 <motion.div
                   variants={{}}
-                  className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[280px] md:max-w-md text-white p-4 md:p-0"
+                  className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[280px] md:max-w-2xl text-white p-4 md:p-0"
                 >
                   {/* Icon */}
                   {slide.picto && (
@@ -205,20 +205,20 @@ export default function Home() {
                   )}
                   <motion.h1
                     variants={{}}
-                    className="text-xl md:text-3xl font-bold mb-2 md:mb-4 drop-shadow-lg"
+                    className="text-xl md:text-5xl font-bold mb-2 md:mb-4 drop-shadow-lg"
                   >
                     {slide.title}
                   </motion.h1>
                   <motion.p
                     variants={{}}
-                    className="mb-4 md:mb-6 text-xl italic md:text-md drop-shadow-md"
+                    className="mb-4 md:mb-6 text-2xl italic md:text-md drop-shadow-md"
                   >
                     {slide.description}
                   </motion.p>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 md:px-6 py-1 bg-[#f42020] font-bold text-sm md:text-base rounded-xl hover:bg-[#ab2222] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-gray-700 transition-colors"
+                    className="px-4 md:px-6 py-1 bg-[#f42020] font-bold text-sm md:text-2xl rounded-xl hover:bg-[#ab2222] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-white-700 transition-colors"
                   >
                     En savoir plus
                   </motion.button>

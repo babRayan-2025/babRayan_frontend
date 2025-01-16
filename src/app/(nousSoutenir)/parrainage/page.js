@@ -159,7 +159,7 @@ export default function Parrainage() {
       </div>
 
       {/* Form section */}
-      <div className="bg-red-600 p-8">
+      <div className="bg-red-700 p-8">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-white text-4xl font-bold mb-2">
             Je parraine un enfant

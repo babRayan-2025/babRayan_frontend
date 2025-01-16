@@ -12,7 +12,7 @@ export default function Benevole() {
         transition={{ duration: 0.5 }}
       >
         <motion.h1
-          className="p-4 text-3xl md:text-4xl font-bold text-center mt-8 relative"
+          className="p-4 text-3xl md:text-4xl font-bold text-center place-content-center mt-8 relative"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}

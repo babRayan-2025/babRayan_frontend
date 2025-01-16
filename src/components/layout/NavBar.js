@@ -24,7 +24,7 @@ export default function NavBar() {
       dropdownItems: [
         { name: "A propos", href: "/about" },
         { name: "Gouvernance", href: "/gouvernance" },
-        { name: "Dates clés", href: "/chiffres" }
+        { name: "Dates clés", href: "/dateCles" }
       ]
     },
     {
@@ -44,8 +44,9 @@ export default function NavBar() {
       dropdownItems: [
         { name: "Faire un DON", href: "/donation" },
         { name: "Parrainer un enfant", href: "/parrainage" },
-        { name: "Devenir partenaire", href: "/partenaire" },
-        { name: "Devenir bénévole", href: "/benevole" }
+        { name: "Devenir partenaire", href: "/devenir_partenaire" },
+        { name: "Devenir bénévole", href: "/benevole" },
+        { name: "Partenaires", href: "/partenaires" },
       ]
     },
     {
