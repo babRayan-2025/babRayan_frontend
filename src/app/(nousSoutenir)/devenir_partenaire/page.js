@@ -71,22 +71,22 @@ export default function DevenirPartenaire() {
         {/* Content Section */}
         <div className="md:flex md:gap-6">
           {/* Left Side (Image) */}
-          <div className="md:w-1/2 mb-6 md:mb-0">
+          <div className="md:w-[1100px] ml-[-40px] mb-6 md:mb-0">
             <Image
               src="/devenirPartenaire/partenaire.jpg"
               alt="Group Image"
-              width={900}
+              width={1100}
               height={600}
-              className="rounded-md"
+              className="rounded-r-xl"
             />
           </div>
 
           {/* Right Side (Text) */}
-          <div className="md:w-1/2">
-            <h2 className="text-xl md:text-3xl font-semibold mb-4">
+          <div className="md:w-1/2 mx-16">
+            <h2 className="text-xl md:text-6xl font-semibold mb-4">
               Pourquoi devenir partenaire ?
             </h2>
-            <p className="mb-4 text-xl">
+            <p className="mb-4 text-gray-600 text-xl">
               Parce que cette forme de générosité permet à l&apos;association Bab Rayan de réaliser des projets concrets en faveur des enfants et familles en difficulté. Vous devenez ainsi un acteur à part entière du développement économique et social de votre territoire. Nous pouvons convenir ensemble d’un partenariat sur mesure en adéquation avec vos valeurs et votre stratégie RSE.
             </p>
           </div>
@@ -126,27 +126,29 @@ export default function DevenirPartenaire() {
         </section>
 
         {/* Contact Section */}
-        <section className="mt-10 pt-6">
+        <section className="mt-10 md:mx-96 pt-6">
           <h2 className="text-lg font-bold text-center text-gray-800 mb-8 relative">
             CONTACT
             <div className="w-10 md:w-24 h-1 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 bg-white border border-red-500 p-4 mx-96 rounded-3xl">
-            <div className="">
-              <Image src="/benevole/contact.png" alt="call" width={50} height={50} className="object-cover" />
-              <Image src="/benevole/mail.png" alt="mail" width={70} height={70} className="object-cover" />
-            </div>
-            <div>
-              <h4 className="font-semibold">Coordinateur général</h4>
-              <div className="text-red-600">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 bg-white border border-red-500 p-4 rounded-3xl">
+            {/* <div className="m-1 absolute"> */}
+              <Image src="/benevole/contact.png" alt="call" width={50} height={50} className="object-cover absolute mt-16" />
+              <Image src="/benevole/mail.png" alt="mail" width={70} height={70} className="object-cover absolute left-[440px] buttom-[100px] " />
+            {/* </div> */}
+            <div className="ml-24">
+              <h4 className="font-semibold text-xl">Coordinateur général <br/></h4>
+              <div className="text-red-600 text-xl">
                 <p>Téléphone : +212 6 100 22 000</p>
+                <br/>
                 <p>Email : coordi.general@babrayan.ma</p>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold">Responsable Communication & Partenariats</h4>
-              <div className="text-red-600">
+              <h4 className="font-semibold text-xl">Responsable Communication & Partenariats<br/></h4>
+              <div className="text-red-600 text-xl">
                 <p>Téléphone : +212 6 181 81 806</p>
+                <br/>
                 <p>Email : communication@babrayan.ma</p>
               </div>
             </div>
