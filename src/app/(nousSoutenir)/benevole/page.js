@@ -60,16 +60,23 @@ export default function Benevole() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <h2 className="text-lg font-bold text-gray-800 mb-4">
+          <h2 className="text-2xl font-bold text-center place-content-center text-gray-800 mb-4">
             CONTACT
             <motion.div
-              className="w-10 md:w-24 h-1 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"
+              className="w-24 md:w-28 h-1  bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"
               layoutId="contact-underline"
             ></motion.div>
           </h2>
           <div className="flex justify-center my-10 gap-6">
+          <Image
+                src="/benevole/flech-partenaire.png"
+                alt="flech-partenaire" 
+                width={100}
+                height={50}
+                className="absolute -left-48 md:left-[550px]"
+              />
             <div
-              className="flex items-center gap-2 font-semibold text-red-600 border border-red-600 px-4 rounded-2xl shadow-md cursor-pointer"
+              className="flex items-center gap-2 font-semibold text-red-600 border-2 border-red-600 px-4 rounded-3xl shadow-md cursor-pointer"
               title="Call us at +212 6 181 81 806"
               aria-label="Call us"
             >
@@ -80,7 +87,7 @@ export default function Benevole() {
                 height={50}
                 className="object-cover"
               />
-              <span>+212 6 181 81 806</span>
+              <span className="mr-12">+212 6 181 81 806</span>
 
               <Image
                 src="/benevole/mail.png"
@@ -104,7 +111,7 @@ export default function Benevole() {
       >
         <h1 className="text-white text-6xl md:text-4xl font-bold mx-auto pl-8">
           Formulaire
-          <div className="w-10 md:w-44 h-1 bg-yellow-300 mt-2"></div>
+          <div className="w-44 md:w-44 h-1 bg-yellow-300 mt-2"></div>
         </h1>
         <div className="mx-auto p-8">
           {/* Form Fields */}

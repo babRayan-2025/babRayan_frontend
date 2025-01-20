@@ -12,10 +12,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import caros1 from "../assets/PHOTO/caroussel/1.jpg";
-import caros2 from "../assets/PHOTO/caroussel/11.jpg";
-import caros3 from "../assets/PHOTO/caroussel/bab rayan 2.jpeg";
-import caros4 from "../assets/PHOTO/caroussel/bab rayan 3.jpeg";
+// import caros1 from "../assets/PHOTO/caroussel/1.jpg";
+// import caros2 from "../assets/PHOTO/caroussel/11.jpg";
+// import caros3 from "../assets/PHOTO/caroussel/bab rayan 2.jpeg";
+// import caros4 from "../assets/PHOTO/caroussel/bab rayan 3.jpeg";
 
 // import pic2 from "../assets/PHOTO/2.jpg";
 import pic3 from "../assets/PHOTO/3.jpg";
@@ -27,7 +27,7 @@ import pic8 from "../assets/PHOTO/8.jpg";
 import pic9 from "../assets/PHOTO/9.jpg";
 import pic10 from "../assets/PNG/ETOILERAMADAN.png";
 import pic11 from "../assets/PNG/LANTERNE.png";
-import soleil from "../assets/PNG/SOLEIL.png";
+// import soleil from "../assets/PNG/SOLEIL.png";
 import CountUp from "react-countup";
 import React, { useState } from "react";
 import { Play } from "lucide-react";
@@ -65,20 +65,20 @@ export default function Home() {
 
   const caroussel = [
     {
-      image: caros2,
-      picto: soleil, 
+      image: '/caroussel/children.jpg',
+      picto: '/caroussel/sun.png', 
       title: "CHANGER LE PARCOURS D'UNE VIE",
       description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
     },
     {
-      image: caros3,
-      picto: soleil,
+      image: '/caroussel/patisserie.png',
+      picto: '/caroussel/fleche.png',
       title: "FORMER ET INTÉGRER ",
       description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens automnes et engagés.",
     },
     {
-      image: caros4,
-      picto: soleil,
+      image: '/caroussel/jeux.png',
+      picto: '/caroussel/main.png',
       title: "PROTÉGER, ÉDUQUER, ACCOMPAGNER",
       description: "Bab Rayan défend les droits des enfants en leur offrant un foyer sécurisant et une éducation de qualité.",
     },
@@ -182,7 +182,7 @@ export default function Home() {
         >
           {caroussel.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="relative h-[400px] sm:h-[500px] md:h-[700px] lg:h-[850px]">
+              <div className="relative h-[400px] sm:h-[500px] md:h-[650px] lg:h-[850px]">
                 {/* Background Image */}
                 <Image
                   src={slide.image}
@@ -195,14 +195,16 @@ export default function Home() {
                 {/* Text Content */}
                 <motion.div
                   variants={{}}
-                  className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[280px] md:max-w-2xl text-white p-4 md:p-0"
+                  className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[300px] md:max-w-xl text-white p-4 md:p-0"
                 >
                   {/* Icon */}
                   {slide.picto && (
                     <div className="hidden md:block">
                       <Image
                         src={slide.picto}
-                        className="relative w-[200px] md:w-[250px] h-[100px] md:h-[150px]"
+                        className="relative w-[200px] md:w-[550px] h-[100px] md:h-[280px] mb-4"
+                        width={300}
+                        height={200}
                         alt="Soleil Icon"
                         priority
                       />
@@ -216,14 +218,14 @@ export default function Home() {
                   </motion.h1>
                   <motion.p
                     variants={{}}
-                    className="mb-4 md:mb-6 text-2xl italic md:text-md drop-shadow-md"
+                    className="mb-4 md:mb-6 text-xl italic md:text-md drop-shadow-md"
                   >
                     {slide.description}
                   </motion.p>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 md:px-6 py-1 bg-[#f42020] font-bold text-sm md:text-2xl rounded-xl hover:bg-[#ab2222] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-white-700 transition-colors"
+                    className="px-4 md:px-14 py-1 bg-[#fd1111f3] font-bold text-sm md:text-2xl rounded-xl hover:bg-[#ab2222] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-white-700 transition-colors"
                   >
                     En savoir plus
                   </motion.button>
