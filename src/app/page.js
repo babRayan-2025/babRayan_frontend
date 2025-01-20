@@ -436,7 +436,7 @@ export default function Home() {
     >
       ACTIONS SOLIDAIRES
       <br />
-      <span className="text-sm font-light">Solidaires ensemble !</span>
+      <span className="text-md font-light">Solidaires ensemble !</span>
       <div className="w-20 md:w-32 h-0.5 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
     </motion.h1>
 
@@ -563,7 +563,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Voir Plus
+              Voir plus
             </motion.a>
           </div>
         </div>
@@ -598,7 +598,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Voir Plus
+              Voir plus
             </motion.a>
           </div>
         </div>
@@ -632,7 +632,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Voir Plus
+              Voir plus
             </motion.a>
           </div>
         </div>
@@ -676,7 +676,7 @@ export default function Home() {
       {/* Text Section */}
       <motion.div className="text-center md:text-left" variants={fadeIn}>
         <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
-          Remise des diplômes <br /> de la deuxième promotion du CFI
+          Remise des diplômes de la deuxième promotion du CFI
         </h1>
         <p className="text-gray-700 mb-4 italic text-sm md:text-base">
           L`Association Bab Rayan a eu l`honneur de célébrer ce 28 Octobre 2024,
@@ -722,7 +722,7 @@ export default function Home() {
       {/* Text Section */}
       <motion.div className="text-center md:text-left" variants={fadeIn}>
         <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
-          Convention entre Newrest et le CFI <br /> pour offrir une formation <br /> en alternance de qualité
+          Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité
         </h1>
         <p className="text-gray-700 mb-4 italic text-sm md:text-base">
           Le CFI à Bab Rayan & Newrest s`unissent pour offrir une formation
