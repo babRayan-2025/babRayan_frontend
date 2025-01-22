@@ -24,7 +24,8 @@ export default function NavBar() {
       dropdownItems: [
         { name: "A propos", href: "/about" },
         { name: "Gouvernance", href: "/gouvernance" },
-        { name: "Dates clés", href: "/dateCles" }
+        { name: "Dates clés", href: "/dateCles" },
+        { name: "Foyer", href: "/foyer" },
       ]
     },
     {
