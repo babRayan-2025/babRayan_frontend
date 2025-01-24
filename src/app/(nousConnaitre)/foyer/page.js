@@ -107,8 +107,7 @@ export default function Foyer() {
                                 <div>
                                     <Image
                                         src={card.image}
-                                        width={380}
-                                        height={380}
+                                        style={{ width: "550px" }}
                                         alt="Group of Children"
                                         className="shadow_style_css rounded-lg w-full"
                                     />
