@@ -436,7 +436,7 @@ export default function Home() {
     >
       ACTIONS SOLIDAIRES
       <br />
-      <span className="text-md font-light">Solidaires ensemble !</span>
+      <span className="text-sm font-light">Solidaires ensemble !</span>
       <div className="w-20 md:w-32 h-0.5 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
     </motion.h1>
 
