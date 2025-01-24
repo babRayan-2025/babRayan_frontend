@@ -16,7 +16,6 @@ import "swiper/css/pagination";
 // import caros2 from "../assets/PHOTO/caroussel/11.jpg";
 // import caros3 from "../assets/PHOTO/caroussel/bab rayan 2.jpeg";
 // import caros4 from "../assets/PHOTO/caroussel/bab rayan 3.jpeg";
-
 // import pic2 from "../assets/PHOTO/2.jpg";
 import pic3 from "../assets/PHOTO/3.jpg";
 import pic4 from "../assets/PHOTO/4.jpg";
