@@ -1,27 +1,56 @@
-export default function SkeletonLoader() {
+export default function NewsSkeletonLoader() {
   return (
     <div className="skeleton-container">
-      {/* Skeleton for Carousel */}
-      <div className="skeleton-carousel"></div>
+      {/* Skeleton Header */}
+      <div className="skeleton-header"></div>
 
-      {/* Skeleton for Cards */}
-      <div className="skeleton-cards">
-        <div className="skeleton-card"></div>
-        <div className="skeleton-card"></div>
-        <div className="skeleton-card"></div>
+      {/* Skeleton News Items */}
+      <div className="skeleton-news">
+        <div className="skeleton-news-item">
+          <div className="skeleton-news-image"></div>
+          <div className="skeleton-news-content">
+            <div className="skeleton-title"></div>
+            <div className="skeleton-text"></div>
+            <div className="skeleton-button"></div>
+          </div>
+        </div>
+        <div className="skeleton-news-item">
+          <div className="skeleton-news-image"></div>
+          <div className="skeleton-news-content">
+            <div className="skeleton-title"></div>
+            <div className="skeleton-text"></div>
+            <div className="skeleton-button"></div>
+          </div>
+        </div>
+        <div className="skeleton-news-item">
+          <div className="skeleton-news-image"></div>
+          <div className="skeleton-news-content">
+            <div className="skeleton-title"></div>
+            <div className="skeleton-text"></div>
+            <div className="skeleton-button"></div>
+          </div>
+        </div>
+        <div className="skeleton-news-item">
+          <div className="skeleton-news-image"></div>
+          <div className="skeleton-news-content">
+            <div className="skeleton-title"></div>
+            <div className="skeleton-text"></div>
+            <div className="skeleton-button"></div>
+          </div>
+        </div>
       </div>
-      {/* Skeleton for numbers */}
-      <div className="skeleton-numbers"></div>
 
       <style jsx>{`
         .skeleton-container {
           padding: 20px;
+          max-width: 1200px;
+          margin: 0 auto;
         }
 
-        /* Shared styles for skeleton elements */
-        .skeleton-carousel,
-        .skeleton-card,
-        .skeleton-numbers {
+        .skeleton-header {
+          width: 50%;
+          height: 40px;
+          margin: 0 auto 30px;
           background: linear-gradient(
             90deg,
             #e0e0e0 25%,
@@ -33,28 +62,67 @@ export default function SkeletonLoader() {
           border-radius: 8px;
         }
 
-        .skeleton-carousel {
-          width: 100%;
-          height: 600px;
-          margin-bottom: 20px;
-        }
-
-        .skeleton-cards {
+        .skeleton-news {
           display: flex;
-          gap: 15px;
+          flex-direction: column;
+          gap: 20px;
         }
 
-        .skeleton-card {
-          flex: 1;
-          height: 350px;
+        .skeleton-news-item {
+          display: flex;
+          gap: 20px;
+          align-items: flex-start;
         }
 
-      .skeleton-numbers {
-          width: 100%;
-          height: 300px;
-          margin-top: 20px;
-          background-color: #e0e0e0;
+        .skeleton-news-image {
+          width: 30%;
+          height: 200px;
+          background: linear-gradient(
+            90deg,
+            #e0e0e0 25%,
+            #f5f5f5 50%,
+            #e0e0e0 75%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 1.5s infinite;
           border-radius: 8px;
+        }
+
+        .skeleton-news-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .skeleton-title,
+        .skeleton-text,
+        .skeleton-button {
+          background: linear-gradient(
+            90deg,
+            #e0e0e0 25%,
+            #f5f5f5 50%,
+            #e0e0e0 75%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 1.5s infinite;
+          border-radius: 8px;
+        }
+
+        .skeleton-title {
+          width: 70%;
+          height: 20px;
+        }
+
+        .skeleton-text {
+          width: 90%;
+          height: 15px;
+        }
+
+        .skeleton-button {
+          width: 30%;
+          height: 30px;
+          margin-top: 10px;
         }
 
         @keyframes shimmer {
