@@ -48,7 +48,7 @@ export default function NewsSkeletonLoader() {
         }
 
         .skeleton-header {
-          width: 50%;
+          width: 30%;
           height: 40px;
           margin: 0 auto 30px;
           background: linear-gradient(
@@ -75,8 +75,8 @@ export default function NewsSkeletonLoader() {
         }
 
         .skeleton-news-image {
-          width: 30%;
-          height: 200px;
+          width: 50%;
+          height: 300px;
           background: linear-gradient(
             90deg,
             #e0e0e0 25%,

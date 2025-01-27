@@ -57,8 +57,8 @@ export default function NavBar() {
       dropdownItems: [
         { name: "Actualités", href: "/blog" },
         { name: "Actions Solidaires", href: "/actions-solidaires" },
-        { name: "Presse", href: "/press" },
-        { name: "Médiathèque", href: "/mediatheque" }
+        { name: "Medias et Press", href: "/Medias_press" }
+        // { name: "Médiathèque", href: "/mediatheque" }
       ]
     },
     { name: "Nous contacter", href: "/contact_us" },

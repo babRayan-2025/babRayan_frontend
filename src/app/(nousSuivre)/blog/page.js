@@ -144,7 +144,11 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
 
 
   return (
-    <main className="w-full bg-[url('/BACKGROUNDSCHOOL.png')] bg-center py-16">
+    <>
+    {isLoading ? (
+      <SkeletonLoader />
+    ) : (
+    <main className="w-full bg-[url('/BG-actualité.png')] bg-center py-16">
       <motion.h1
         className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative"
         variants={fadeIn}
@@ -187,7 +191,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
           {item.description}
         </p>
         <motion.button
-          className="inline-block bg-yellow-300 rounded-full text-red-600 font-semibold px-6 py-2 transition hover:bg-yellow-400"
+          className="inline-block bg-yellow-300 rounded-full text-red-600 font-semibold px-6 py-2 justify-end transition hover:bg-yellow-400"
           variants={scaleIn}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -200,5 +204,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
 ))}
 
     </main>
+     )}
+    </>
   );
 }
