@@ -6,7 +6,7 @@ import FirstImg from "../../../assets/foyer/first_pic.jpeg";
 import BookIcon from "../../../assets/foyer/book_icon.png";
 import StartIcon from "../../../assets/foyer/star.png";
 import CardPic1 from "../../../assets/foyer/pic1.jpeg";
-import CardPic2 from "../../../assets/foyer/pic2.jpg";
+import CardPic2 from "../../../assets/foyer/pic2.JPG";
 import SoleilIcon from "../../../assets/foyer/soleil.png";
 import S7abaIcon from "../../../assets/foyer/s7aba.png";
 
