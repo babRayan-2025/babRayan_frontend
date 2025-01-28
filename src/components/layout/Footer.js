@@ -13,11 +13,11 @@ export default function Footer() {
               4 Rue Bayt Lahm, <br /> Quartier Palmier <br /> 20100 Casablanca
               <br /> Maroc
             </p>
-            <hr class="border-t-0.5 border-white w-500 my-4" />
+            <hr className="border-t-0.5 border-white w-500 my-4" />
             <p>
               <span className="text-gray-400">Tél:</span> +212 610 023 555
             </p>
-            <hr class="border-t-0.5 border-white w-500 my-2" />
+            <hr className="border-t-0.5 border-white w-500 my-2" />
             <p>
               <span className="text-gray-400">Email:</span>{" "}
               <a
