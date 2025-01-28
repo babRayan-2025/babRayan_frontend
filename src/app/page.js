@@ -22,8 +22,8 @@ import pic4 from "../assets/PHOTO/4.jpg";
 import pic5 from "../assets/PHOTO/5.jpg";
 import pic6 from "../assets/PHOTO/6.jpg";
 import pic7 from "../assets/PHOTO/7.jpg";
-import pic8 from "../assets/PHOTO/8.jpg";
-import pic9 from "../assets/PHOTO/9.jpg";
+import pic8 from "../assets/PHOTO/remiseDiplome.jpg";
+import pic9 from "../assets/PHOTO/newrest.jpg";
 import pic10 from "../assets/PNG/ETOILERAMADAN.png";
 import pic11 from "../assets/PNG/LANTERNE.png";
 // import soleil from "../assets/PNG/SOLEIL.png";
@@ -93,7 +93,7 @@ export default function Home() {
     {
       title: "Protection de l'enfance",
       description:
-      "Depuis 2014, Bab Rayan se consacre a la protection de l'enfanco, assurant un anvvoroment sur ot bonvallant pour les enfants vuinérables.",
+      "Depuis 2014, Bab Rayan se consacre à la protection de l'enfance, assurant un environnement sûr et bienveillant pour les enfants vulnérables.",
       buttonText: "Découvrir le foyer Bab Rayan",
       image: '/2girls.jpg',
     },
@@ -101,13 +101,13 @@ export default function Home() {
       title: "Éducation et scolarité",
       description:
       "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
-      buttonText: "Découvrir l'ecole Palemier",
-      image: '/2.jpg',
+      buttonText: "Découvrir l'école Palmier",
+      image: '/fille.jpg',
     },
     {
       title: "Formation et insertion professionnelle",
       description:
-        "Des formations ofertes dos des secteurs varlés tels que /hotalario-restauration ot los mátiors du digital pour accompagner ces jeunes vers une insertion professiannelle réussie.",
+        "Des formations offertes dans des secteurs variés tels que l'hôtellerie-restauration et les métiers du digital pour accompagner ces jeunes vers une insertion professionnelle réussie.",
       buttonText: "Découvrir le CFI",
       image: '/cfi.jpg',
     },
@@ -481,12 +481,12 @@ export default function Home() {
           className="text-gray-200 mb-4 italic text-sm md:text-lg w-full lg:w-[33vw]"
           variants={fadeIn} // Apply fadeIn animation
         >
-          L`association Bab Rayan organise chaque année depuis 2015
+          L'association Bab Rayan organise chaque année depuis 2015
           le Ftour Bab Rayan. Pendant ce mois sacré, la plupart
-          n`ont pas la chance de rompre leur jeûne autour d`une
+          n'ont pas la chance de rompre leur jeûne autour d'une
           table garnie. Cette action apporte beaucoup de
           convivialité et de chaleur à leur environnement&nbsp;;
-          l`esprit de solidarité du Ramadan est alors au
+          l'esprit de solidarité du Ramadan est alors au
           rendez-vous, grâce à vos dons !
         </motion.p>
         <motion.button
@@ -548,11 +548,11 @@ export default function Home() {
         />
         <div className="bg-white flex flex-col justify-start p-6">
           <p className="text-3xl font-bold hover:text-gray-700 pb-4 text-center">
-            Mecenat culturel : Eveiller les talents et les passions de nos jeunes
+            Mécénat culturel : Éveiller les talents et les passions de nos jeunes
           </p>
           <p className="pb-6 text-center">
-            l`Association Bab Rayan donne a ses jeunes la chance de
-            decouvrir le monde fascinant di la culture ...
+            l'Association Bab Rayan donne à ses jeunes la chance de
+            découvrir le monde fascinant de la culture ...
           </p>
           <div className="p-6 flex items-center justify-center">
             <motion.a
@@ -586,8 +586,8 @@ export default function Home() {
           </p>
          <br/>
           <p className="pb-6 text-center">
-            Aujourd`hui, plusieurs projets de l`association Bab
-            Rayan integrent la digitalisation comme levier ...
+            Aujourd'hui, plusieurs projets de l'association Bab
+            Rayan intègrent la digitalisation comme levier ...
           </p>
           <div className="p-6 flex items-center justify-center">
             <motion.a
@@ -617,10 +617,10 @@ export default function Home() {
         />
         <div className="bg-white flex flex-col justify-start p-6">
           <p className="text-3xl font-bold hover:text-gray-700 pb-4 text-center">
-            ForsaTech : Une porte d`entree vers les metiers de numerique
+            ForsaTech : Une porte d'entrée vers les métiers du numérique
           </p>
           <p className="pb-6 text-center">
-            Cree pour repondre aux besoins croissant du marche
+            Créé pour répondre aux besoins croissant du marché
             digital, ForsaTech propose des formations ...
           </p>
           <div className="p-6 flex items-center justify-center">
@@ -678,12 +678,12 @@ export default function Home() {
           Remise des diplômes de la deuxième promotion du CFI
         </h1>
         <p className="text-gray-700 mb-4 italic text-sm md:text-base">
-          L`Association Bab Rayan a eu l`honneur de célébrer ce 28 Octobre 2024,
+          L'Association Bab Rayan a eu l'honneur de célébrer ce 28 Octobre 2024,
           la réussite de la deuxième promotion de diplômés de son Centre de
-          Formation et d`Insertion. Le CFI propose aux jeunes issus des EPS et
+          Formation et d'Insertion. Le CFI propose aux jeunes issus des EPS et
           en situation de précarité une formation qualifiante dans les métiers
-          de l`hôtellerie et de la restauration. Aujourd`hui, plus de 120 jeunes
-          franchissent une étape clé vers l`emploi, grâce au soutien de nos
+          de l'hôtellerie et de la restauration. Aujourd'hui, plus de 120 jeunes
+          franchissent une étape clé vers l'emploi, grâce au soutien de nos
           entreprises partenaires.
         </p>
         <motion.button
@@ -724,11 +724,11 @@ export default function Home() {
           Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité
         </h1>
         <p className="text-gray-700 mb-4 italic text-sm md:text-base">
-          Le CFI à Bab Rayan & Newrest s`unissent pour offrir une formation
-          diplômante en restauration, une première qui changera la vie d`une
-          promotion engagée de jeunes en difficulté! D`ici août prochain, ils
+          Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation
+          diplômante en restauration, une première qui changera la vie d'une
+          promotion engagée de jeunes en difficulté! D'ici août prochain, ils
           auront non seulement acquis des compétences, mais aussi trouvé un
-          projet de vie qui leur ouvre les portes d`un avenir prometteur.
+          projet de vie qui leur ouvre les portes d'un avenir prometteur.
         </p>
         <motion.button
           className="inline-block bg-yellow-300 rounded-full text-white font-semibold px-4 py-2 transition hover:bg-yellow-400"
