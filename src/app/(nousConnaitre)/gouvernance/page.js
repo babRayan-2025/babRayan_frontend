@@ -108,7 +108,7 @@ export default function Gouvernance() {
     {
       name: 'Hamza Laghari',
       title: 'Vice-président',
-      imageUrl: '/members/Hind Ratibe.jpeg'
+      imageUrl: '/members/Hamza Laghrari.jpeg'
     },
     {
       name: 'Reda Essakalli',

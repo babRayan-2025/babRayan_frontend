@@ -22,7 +22,7 @@ export default function NavBar() {
       href: "/about",
       hasDropdown: true,
       dropdownItems: [
-        { name: "A propos", href: "/about" },
+        { name: "À propos", href: "/about" },
         { name: "Gouvernance", href: "/gouvernance" },
         { name: "Dates clés", href: "/dateCles" },
         { name: "Foyer", href: "/foyer" },
@@ -57,8 +57,7 @@ export default function NavBar() {
       dropdownItems: [
         { name: "Actualités", href: "/blog" },
         { name: "Actions Solidaires", href: "/actions-solidaires" },
-        { name: "Medias et Press", href: "/Medias_press" }
-        // { name: "Médiathèque", href: "/mediatheque" }
+        { name: "Kit Média et Presse", href: "/media-press" },
       ]
     },
     { name: "Nous contacter", href: "/contact_us" },
