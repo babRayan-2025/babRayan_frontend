@@ -5,21 +5,21 @@ import Image from "next/image";
 export default function Benevole() {
   return (
     <main className="">
-      <motion.div 
+      <motion.div
         className="bg-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
         <motion.h1
-          className="p-4 text-3xl md:text-4xl font-bold text-center place-content-center mt-8 relative"
+          className="p-4 text-2xl md:text-4xl font-bold text-center mt-8 relative"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          DEVENIR BÉNÉVOLE  
+          DEVENIR BÉNÉVOLE
           <motion.div
-            className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"
+            className="w-24 md:w-56 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"
             layoutId="underline"
           ></motion.div>
         </motion.h1>
@@ -48,9 +48,11 @@ export default function Benevole() {
           transition={{ duration: 0.6, delay: 0.7 }}
         >
           Quelle que soit votre formation, votre âge, votre expérience ou vos
-          envies,<br /> remplissez le formulaire et contactez-nous. Nous trouverons
-          ensemble la mission qui vous <br />convient le mieux :  soutien scolaire,
-          activités culturelles, sportives, artistiques, de loisirs…
+          envies,
+          <br /> remplissez le formulaire et contactez-nous. Nous trouverons
+          ensemble la mission qui vous <br />
+          convient le mieux : soutien scolaire, activités culturelles,
+          sportives, artistiques, de loisirs…
         </motion.p>
 
         {/* Contact Section */}
@@ -68,13 +70,13 @@ export default function Benevole() {
             ></motion.div>
           </h2>
           <div className="flex justify-center my-10 gap-6">
-          <Image
-                src="/benevole/flech-partenaire.png"
-                alt="flech-partenaire" 
-                width={100}
-                height={50}
-                className="absolute -left-48 md:left-[550px]"
-              />
+            {/* <Image
+              src="/benevole/flech-partenaire.png"
+              alt="flech-partenaire"
+              width={100}
+              height={50}
+              className="init-block -left-48 md:left-[550px]"
+            /> */}
             <div
               className="flex items-center gap-2 font-semibold text-red-600 border-2 border-red-600 px-4 rounded-3xl shadow-md cursor-pointer"
               title="Call us at +212 6 181 81 806"
@@ -149,103 +151,103 @@ export default function Benevole() {
           </motion.div>
 
           {/* Categories */}
-<motion.div
-  className="grid grid-cols-1 md:grid-cols-3 text-white gap-8"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1, delay: 1.7 }}
->
-  {/* Foyer */}
-  <div>
-    <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
-      FOYER
-    </h2>
-    <div className="space-y-2">
-      {[
-        "Soutien Scolaire",
-        "Accompagnement des enfants",
-        "Organisations d’évènements",
-        "Coaching professionnel",
-        "Animation des ateliers",
-        "Autres (texte libre)",
-      ].map((item, index) => (
-        <motion.button
-          key={index}
-          className={`w-full text-left p-4 rounded-full border ${
-            item === "Accompagnement des enfants"
-              ? "bg-yellow-300 border-black text-2xl font-medium text-center text-red-600"
-              : "border-yellow-300 text-2xl font-medium text-center bg-red-600 text-white-300"
-          }`}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {item}
-        </motion.button>
-      ))}
-    </div>
-  </div>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 text-white gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.7 }}
+          >
+            {/* Foyer */}
+            <div>
+              <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
+                FOYER
+              </h2>
+              <div className="space-y-2">
+                {[
+                  "Soutien Scolaire",
+                  "Accompagnement des enfants",
+                  "Organisations d’évènements",
+                  "Coaching professionnel",
+                  "Animation des ateliers",
+                  "Autres (texte libre)",
+                ].map((item, index) => (
+                  <motion.button
+                    key={index}
+                    className={`w-full text-left p-4 rounded-full border ${
+                      item === "Accompagnement des enfants"
+                        ? "bg-yellow-300 border-black text-2xl font-medium text-center text-red-600"
+                        : "border-yellow-300 text-2xl font-medium text-center bg-red-600 text-white-300"
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
 
-  {/* École */}
-  <div>
-    <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
-      ÉCOLE
-    </h2>
-    <div className="space-y-2">
-      {[
-        "Soutien Scolaire",
-        "Soutien administratif",
-        "Animation Ateliers",
-        "Suivi psychologique",
-        "Coaching professionnel",
-        "Formation pédagogique",
-        "Autres (texte libre)",
-      ].map((item, index) => (
-        <motion.button
-          key={index}
-          className="w-full text-center text-2xl font-medium p-4 rounded-full bg-red-600 border border-yellow-300 text-white-300"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {item}
-        </motion.button>
-      ))}
-    </div>
-  </div>
+            {/* École */}
+            <div>
+              <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
+                ÉCOLE
+              </h2>
+              <div className="space-y-2">
+                {[
+                  "Soutien Scolaire",
+                  "Soutien administratif",
+                  "Animation Ateliers",
+                  "Suivi psychologique",
+                  "Coaching professionnel",
+                  "Formation pédagogique",
+                  "Autres (texte libre)",
+                ].map((item, index) => (
+                  <motion.button
+                    key={index}
+                    className="w-full text-center text-2xl font-medium p-4 rounded-full bg-red-600 border border-yellow-300 text-white-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
 
-  {/* Centre de formation et d'insertion */}
-  <div>
-    <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
-      CENTRE DE FORMATION ET D’INSERTION
-    </h2>
-    <div className="space-y-2">
-      {[
-        "Coaching pédagogique",
-        "Cours de communication et soft-skills",
-        "Formation en métiers d’hôtellerie",
-        "Autres (texte libre)",
-      ].map((item, index) => (
-        <motion.button
-          key={index}
-          className="w-full text-2xl font-medium p-4 rounded-full text-center bg-red-600 border border-yellow-300 text-white-300"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {item}
-        </motion.button>
-      ))}
-    </div>
-  </div>
-</motion.div>
-<motion.button
-  className="bg-black text-2xl font-semibold text-white border border-white-300 py-4 px-8 mt-8 rounded-full shadow-md hover:bg-gray-700 transition"
-  whileHover={{ scale: 1.1, backgroundColor: "#333333" }}
-  whileTap={{ scale: 0.95 }}
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, delay: 2 }}
->
-  envoyer
-</motion.button>
+            {/* Centre de formation et d'insertion */}
+            <div>
+              <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
+                CENTRE DE FORMATION ET D’INSERTION
+              </h2>
+              <div className="space-y-2">
+                {[
+                  "Coaching pédagogique",
+                  "Cours de communication et soft-skills",
+                  "Formation en métiers d’hôtellerie",
+                  "Autres (texte libre)",
+                ].map((item, index) => (
+                  <motion.button
+                    key={index}
+                    className="w-full text-2xl font-medium p-4 rounded-full text-center bg-red-600 border border-yellow-300 text-white-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+          <motion.button
+            className="bg-black text-2xl font-semibold text-white border border-white-300 py-4 px-8 mt-8 rounded-full shadow-md hover:bg-gray-700 transition"
+            whileHover={{ scale: 1.1, backgroundColor: "#333333" }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 2 }}
+          >
+            envoyer
+          </motion.button>
         </div>
       </motion.div>
     </main>

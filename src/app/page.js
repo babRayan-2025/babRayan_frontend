@@ -185,7 +185,7 @@ export default function Home() {
                 {/* Background Image */}
                 <Image
                   src={slide.image}
-                  className="absolute block w-full h-full object-cover"
+                  className="absolute block w-full h-full"
                   alt={`Slide ${index + 1}`}
                   priority={index === 0}
                   fill
@@ -300,7 +300,7 @@ export default function Home() {
         <SwiperSlide key={index}>
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="m-3 flex flex-col md:flex-row items-center bg-white shadow-md rounded-xl duration-500 hover:shadow-xl overflow-hidden"
+            className="m-2 flex flex-col md:flex-row items-center bg-white border-r-4 border-b-4 border-red-300 shadow-md rounded-md duration-500 hover:shadow-xl overflow-hidden"
           >
             <div className="p-4 gap-4 md:w-1/2">
               <h1 className="text-xl sm:text-4xl font-bold mb-4 text-gray-900">
@@ -321,7 +321,7 @@ export default function Home() {
               <Image
                 src={slide.image}
                 alt={slide.title}
-                className="w-[434px] h-[500px] object-cover"
+                className="w-[434px] h-[400px] object-cover"
                 width={500}
                 height={500}
               />
@@ -435,7 +435,7 @@ export default function Home() {
     >
       ACTIONS SOLIDAIRES
       <br />
-      <span className="text-md font-light">Solidaires ensemble !</span>
+      <span className="text-sm font-light">Solidaires ensemble !</span>
       <div className="w-20 md:w-32 h-0.5 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
     </motion.h1>
 

@@ -69,12 +69,12 @@ export default function Foyer() {
                         LA PROTECTION DE L’ENFANCE
                     </h1>
                     <p className="mt-4 italic text-sm md:text-base leading-relaxed">
-                        Bab Rayan place la protection de l'enfance au cœur de sa mission.
+                        Bab Rayan place la protection de l&apos;enfance au cœur de sa mission.
                         Son objectif : offrir à ces enfants un cadre de vie sécurisant, tout
                         en restaurant leur confiance grâce à un soutien matériel et humain
                         continu. En leur redonnant une part de leur insouciance et en les
                         accompagnant vers la réalisation de leurs rêves — avoir un foyer et
-                        accéder à l'éducation — l'association leur permet de se projeter
+                        accéder à l&apos;éducation — l&apos;association leur permet de se projeter
                         vers un avenir meilleur.
                     </p>
                 </div>
