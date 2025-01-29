@@ -69,7 +69,6 @@ export default function Actions() {
                         alt="Ramadan"
                         className="absolute top-0 right-0 w-64 h-64 object-cover"
                     />
-
                     {/* Text Section */}
                     <div className="w-full lg:w-1/2 text-white xl:ps-80">
                         <div className="relative col-span-1 lg:col-span-2  h-full flex flex-col justify-center items-start">
