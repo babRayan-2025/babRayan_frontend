@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from 'next/link';
 import {
   FaChild,
   FaHandHoldingHeart,
@@ -12,16 +13,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-// import caros1 from "../assets/PHOTO/caroussel/1.jpg";
-// import caros2 from "../assets/PHOTO/caroussel/11.jpg";
-// import caros3 from "../assets/PHOTO/caroussel/bab rayan 2.jpeg";
-// import caros4 from "../assets/PHOTO/caroussel/bab rayan 3.jpeg";
-// import pic2 from "../assets/PHOTO/2.jpg";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
+
 import pic3 from "../assets/PHOTO/3.jpg";
 import pic4 from "../assets/PHOTO/4.jpg";
-import pic5 from "../assets/PHOTO/5.jpg";
-import pic6 from "../assets/PHOTO/6.jpg";
-import pic7 from "../assets/PHOTO/7.jpg";
+// import pic5 from "../assets/PHOTO/5.jpg";
+// import pic6 from "../assets/PHOTO/6.jpg";
+// import pic7 from "../assets/PHOTO/7.jpg";
 import pic8 from "../assets/PHOTO/remiseDiplome.jpg";
 import pic9 from "../assets/PHOTO/newrest.jpg";
 import pic10 from "../assets/PNG/ETOILERAMADAN.png";
@@ -68,50 +66,55 @@ export default function Home() {
       picto: '/caroussel/sun.png', 
       title: "CHANGER LE PARCOURS D'UNE VIE",
       description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
+      link: "/protection"
     },
     {
       image: '/caroussel/patisserie.png',
       picto: '/caroussel/fleche.png',
-      title: "FORMER ET INTÉGRER ",
-      description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens automnes et engagés.",
+      title: "FORMER ET INTÉGRER",
+      description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens autonomes et engagés.",
+      link: "/formation"
     },
     {
       image: '/caroussel/jeux.png',
       picto: '/caroussel/main.png',
       title: "PROTÉGER, ÉDUQUER, ACCOMPAGNER",
       description: "Bab Rayan défend les droits des enfants en leur offrant un foyer sécurisant et une éducation de qualité.",
+      link: "/education"
     },
-    // {
-    //   image: pic7,
-    //   picto: soleil,
-    //   title: "DONNER ESPOIR, CHANGER DES DESTINS",
-    //   description: "Grâce à votre soutien, nous redonnons de l'espoir à ceux qui en ont le plus besoin.",
-    // },
+    {
+      image: '/caroussel/slide1.png',
+      picto: '/caroussel/main.png',
+      title: "UN ENGAGEMENT QUI A DU SENS",
+      description: "Rejoignez le combat pour la protection de l’enfance, engagez-vous en devenant donateur, partenaire ou bénévole.",
+      link: "/devenir_partenaire"
+    },
   ];
+  
 
   const slidesData = [
     {
       title: "Protection de l'enfance",
-      description:
-      "Depuis 2014, Bab Rayan se consacre à la protection de l'enfance, assurant un environnement sûr et bienveillant pour les enfants vulnérables.",
+      description: "Depuis 2014, Bab Rayan se consacre à la protection de l'enfance, assurant un environnement sûr et bienveillant pour les enfants vulnérables.",
       buttonText: "Découvrir le foyer Bab Rayan",
       image: '/2girls.jpg',
+      link: '/protection'  
     },
     {
       title: "Éducation et scolarité",
-      description:
-      "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
+      description: "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
       buttonText: "Découvrir l'école Palmier",
       image: '/fille.jpg',
+      link: '/education'  
     },
     {
       title: "Formation et insertion professionnelle",
-      description:
-        "Des formations offertes dans des secteurs variés tels que l'hôtellerie-restauration et les métiers du digital pour accompagner ces jeunes vers une insertion professionnelle réussie.",
+      description: "Des formations offertes dans des secteurs variés tels que l'hôtellerie-restauration et les métiers du digital pour accompagner ces jeunes vers une insertion professionnelle réussie.",
       buttonText: "Découvrir le CFI",
       image: '/cfi.jpg',
-    },
-  ];
+      link: '/formation',
+    }
+];
 
   const chiffres = [
     {
@@ -136,12 +139,35 @@ export default function Home() {
     },
   ];
 
+  const articles = [
+    {
+      title: "Mécénat culturel : Éveiller les talents et les passions de nos jeunes",
+      shortDesc: "L'Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture ...",
+      fullDesc: "l’Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture et de l’art. À travers le programme de l’école du jeune spectateur, de nombreuses sorties au théâtre sont organisées, offrant aux enfants et adolescents une immersion unique dans l’univers des arts vivants. Au-delà du théâtre, nos jeunes participent activement à des expositions d’art, explorant les œuvres et les histoires qu’elles racontent. Des ateliers de peinture et d’expression artistique leur permettent également de développer leur sensibilité, leur créativité et leur confiance en eux. Ces initiatives culturelles sont bien plus que des moments de loisir : elles nourrissent l’imaginaire, ouvrent de nouveaux horizons et encouragent chacun de nos jeunes à croire en ses talents. Nous remercions chaleureusement tous nos partenaires pour leur engagement à rendre l’art et la culture accessibles à tous.",
+      img: "/3cards/5.jpg",
+    },
+    {
+      title: "La Digitalisation au cœur des projets de Bab Rayan",
+      shortDesc: "Aujourd'hui, plusieurs projets de l'association Bab Rayan intègrent la digitalisation comme levier d’apprentissage et d’insertion professionnelle. À l’école élémentaire ...",
+      fullDesc: "Aujourd’hui, plusieurs projets de l’association Bab Rayan intègrent la digitalisation comme levier d’apprentissage et d’insertion professionnelle. À l’école élémentaire, nous sensibilisons dès le plus jeune âge à l’informatique à travers des programmes de codage interactifs, spécialement conçus pour éveiller l’intérêt des enfants pour les métiers de l’IT. Au niveau du Centre de Formation et d’Insertion (CFI), un module dédié aux outils bureautiques (Microsoft Office) a été intégré au curriculum pour renforcer les compétences techniques essentielles. En parallèle, le CFI a lancé un projet pilote ambitieux : ForsaTech.",
+      img: "/3cards/6.jpg",
+    },
+    {
+      title: "ForsaTech : Une porte d'entrée vers les métiers du numérique",
+      shortDesc: "Créé pour répondre aux besoins croissant du marché digital, ForsaTech propose des formations ...",
+      fullDesc: "Créé pour répondre aux besoins croissants du marché digital, ForsaTech propose des formations accélérées aux jeunes en difficulté, axées sur les compétences numériques les plus demandées. Conçu en collaboration avec des entreprises partenaires, ce programme garantit une employabilité directe grâce à une sélection rigoureuse des modules et des candidats. Forts de notre expertise dans les métiers de l’hôtellerie et de la restauration, et inspirés par le succès de ce modèle, nous sommes déterminés à élargir notre impact en ouvrant de nouvelles perspectives dans le secteur numérique. Avec ces initiatives, Bab Rayan continue de transformer les défis de la jeunesse en opportunités durables, en bâtissant un pont solide entre éducation, technologie et insertion professionnelle.",
+      img: "/3cards/7.jpg",
+    },
+  ];
+
   const videoUrl =
     "https://firebasestorage.googleapis.com/v0/b/bab-rayan-87f71.appspot.com/o/video.mp4?alt=media&token=6cc682dc-b7fa-4729-b2d3-ac2ad8d0df87";
 
   const handlePlayClick = () => {
     setIsPlaying(true);
   };
+
+  const [selectedArticle, setSelectedArticle] = useState(null);
 
   return (
     <>
@@ -180,58 +206,64 @@ export default function Home() {
           className="w-full"
         >
           {caroussel.map((slide, index) => (
-            <SwiperSlide key={index}>
-              <div className="relative h-[400px] sm:h-[500px] md:h-[650px] lg:h-[850px]">
-                {/* Background Image */}
-                <Image
-                  src={slide.image}
-                  className="absolute block w-full h-full"
-                  alt={`Slide ${index + 1}`}
-                  priority={index === 0}
-                  fill
-                />
+  <SwiperSlide key={index}>
+    <div className="relative h-[400px] sm:h-[500px] md:h-[650px] lg:h-[800px]">
+      {/* Background Image */}
+      <Image
+        src={slide.image}
+        className="absolute block w-full h-full"
+        alt={`Slide ${index + 1}`}
+        priority={index === 0}
+        fill
+      />
 
-                {/* Text Content */}
-                <motion.div
-                  variants={{}}
-                  className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[300px] md:max-w-xl text-white p-4 md:p-0"
-                >
-                  {/* Icon */}
-                  {slide.picto && (
-                    <div className="hidden md:block">
-                      <Image
-                        src={slide.picto}
-                        className="relative w-[200px] md:w-[550px] h-[100px] md:h-[280px] mb-4"
-                        width={300}
-                        height={200}
-                        alt="Soleil Icon"
-                        priority
-                      />
-                    </div>
-                  )}
-                  <motion.h1
-                    variants={{}}
-                    className="text-xl md:text-5xl font-bold mb-2 md:mb-4 drop-shadow-lg"
-                  >
-                    {slide.title}
-                  </motion.h1>
-                  <motion.p
-                    variants={{}}
-                    className="mb-4 md:mb-6 text-xl italic md:text-md drop-shadow-md"
-                  >
-                    {slide.description}
-                  </motion.p>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-4 md:px-14 py-1 bg-[#fd1111f3] font-bold text-sm md:text-2xl rounded-xl hover:bg-[#ab2222] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-white-700 transition-colors"
-                  >
-                    En savoir plus
-                  </motion.button>
-                </motion.div>
-              </div>
-            </SwiperSlide>
-          ))}
+      {/* Text Content */}
+      <motion.div
+        variants={{}}
+        className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[300px] md:max-w-xl text-white p-4 md:p-0"
+      >
+        {/* Icon */}
+        {slide.picto && (
+          <div className="hidden md:block">
+            <Image
+              src={slide.picto}
+              className="relative w-[200px] md:w-[550px] h-[100px] md:h-[280px] mb-4"
+              width={300}
+              height={200}
+              alt="Picto"
+              
+              priority
+            />
+          </div>
+        )}
+
+        <motion.h1
+          variants={{}}
+          className="text-xl md:text-5xl font-bold mb-2 md:mb-4 drop-shadow-lg"
+        >
+          {slide.title}
+        </motion.h1>
+
+        <motion.p
+          variants={{}}
+          className="mb-4 md:mb-6 text-xl italic md:text-md drop-shadow-md"
+        >
+          {slide.description}
+        </motion.p>
+
+        <Link href={slide.link} passHref>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-4 md:px-14 py-1 bg-[#fd1111f3] font-bold text-sm md:text-2xl rounded-xl hover:bg-[#ab2222] duration-300 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white mr-4 drop-shadow-md hover:text-white-700 transition-colors"
+          >
+            En savoir plus
+          </motion.button>
+        </Link>
+      </motion.div>
+    </div>
+  </SwiperSlide>
+))}
         </Swiper>
 
         {/* Navigation Buttons */}
@@ -296,39 +328,41 @@ export default function Home() {
       }}
       className="mySwiper"
     >
-      {slidesData.map((slide, index) => (
-        <SwiperSlide key={index}>
-          <motion.div
+     {slidesData.map((slide, index) => (
+    <SwiperSlide key={index}>
+        <motion.div
             whileHover={{ scale: 1.02 }}
             className="m-2 flex flex-col md:flex-row items-center bg-white border-r-4 border-b-4 border-red-300 shadow-md rounded-md duration-500 hover:shadow-xl overflow-hidden"
-          >
+        >
             <div className="p-4 gap-4 md:w-1/2">
-              <h1 className="text-xl sm:text-4xl font-bold mb-4 text-gray-900">
-                {slide.title}
-              </h1>
-              <p className="text-sm sm:text-base italic text-gray-700 mb-6">
-                {slide.description}
-              </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-3 py-2 bg-[#f3ca31] text-white font-medium rounded-xl hover:bg-yellow-500 transition duration-300"
-              >
-                {slide.buttonText}
-              </motion.button>
+                <h1 className="text-xl sm:text-4xl font-bold mb-4 text-gray-900">
+                    {slide.title}
+                </h1>
+                <p className="text-sm sm:text-base italic text-gray-700 mb-6">
+                    {slide.description}
+                </p>
+                <Link href={slide.link} passHref>
+                    <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-3 py-2 bg-[#f3ca31] text-white font-medium rounded-xl hover:bg-yellow-500 transition duration-300 cursor-pointer"
+                    >
+                        {slide.buttonText}
+                    </motion.a>
+                </Link>
             </div>
             <div className="md:w-1/2">
-              <Image
-                src={slide.image}
-                alt={slide.title}
-                className="w-[434px] h-[400px] object-cover"
-                width={500}
-                height={500}
-              />
+                <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-[434px] h-[400px] object-cover"
+                    width={500}
+                    height={500}
+                />
             </div>
-          </motion.div>
-        </SwiperSlide>
-      ))}
+        </motion.div>
+    </SwiperSlide>
+))}
     </Swiper>
   </motion.div>
 </div>
@@ -481,22 +515,24 @@ export default function Home() {
           className="text-gray-200 mb-4 italic text-sm md:text-lg w-full lg:w-[33vw]"
           variants={fadeIn} // Apply fadeIn animation
         >
-          L'association Bab Rayan organise chaque année depuis 2015
+          L&apos;association Bab Rayan organise chaque année depuis 2015
           le Ftour Bab Rayan. Pendant ce mois sacré, la plupart
-          n'ont pas la chance de rompre leur jeûne autour d'une
+          n&apos;ont pas la chance de rompre leur jeûne autour d&apos;une
           table garnie. Cette action apporte beaucoup de
           convivialité et de chaleur à leur environnement&nbsp;;
-          l'esprit de solidarité du Ramadan est alors au
+          l&apos;esprit de solidarité du Ramadan est alors au
           rendez-vous, grâce à vos dons !
         </motion.p>
-        <motion.button
-          variants={scaleIn} // Apply scaleIn animation
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-block bg-yellow-400 text-red-600 font-bold px-5 md:px-7 py-2 rounded-xl hover:bg-yellow-500 transition"
-        >
-          Voir plus
-        </motion.button>
+        <Link href="/actions-solidaires" passHref> {/* Add the link to the "Actions Solidaires" page */}
+          <motion.button
+            variants={scaleIn} // Apply scaleIn animation
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block bg-yellow-400 text-red-600 font-bold px-5 md:px-7 py-2 rounded-xl hover:bg-yellow-500 transition cursor-pointer"
+          >
+            Voir plus
+          </motion.button>
+        </Link>
 
         {/* Decorative Image */}
         <motion.div
@@ -517,127 +553,57 @@ export default function Home() {
 
             {/* 3 card of solidarité */}
 
-  <motion.div
-    className="p-6 bg-white-100 container mx-auto py-8"
-    variants={staggerContainer} // Apply stagger effect to children
-    initial="initial"
-    animate="animate"
-  >
-    {/* Title Section */}
-    <motion.h1
-      className="p-4 text-4xl font-bold text-center mb-8"
-      variants={fadeIn} // Apply fadeIn animation
-    >
-      NOTRE IMPACT
-      <div className="w-56 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
-    </motion.h1>
+            <motion.div className="p-6 container mx-auto py-8">
+      <motion.h1 className="p-4 text-4xl font-bold text-center mb-8">
+        NOTRE IMPACT
+        <div className="w-56 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
+      </motion.h1>
 
-    {/* Cards Section */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
-      {/* Left Section */}
-      <motion.div
-        className="bg-white rounded-lg shadow-lg"
-        variants={fadeIn}
-        initial="initial"
-        animate="animate"
-      >
-        <Image
-          src={pic5}
-          className="h-[45vh] object-cover"
-          alt="article"
-        />
-        <div className="bg-white flex flex-col justify-start p-6">
-          <p className="text-3xl font-bold hover:text-gray-700 pb-4 text-center">
-            Mécénat culturel : Éveiller les talents et les passions de nos jeunes
-          </p>
-          <p className="pb-6 text-center">
-            l'Association Bab Rayan donne à ses jeunes la chance de
-            découvrir le monde fascinant de la culture ...
-          </p>
-          <div className="p-6 flex items-center justify-center">
-            <motion.a
-              href="/blog"
-              className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-medium text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
-              variants={scaleIn} // Apply scaleIn animation on hover
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Voir plus
-            </motion.a>
-          </div>
-        </div>
-      </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {articles.map((article, index) => (
+          <motion.div key={index} className="bg-white rounded-lg shadow-lg">
+            <Image src={article.img} className="h-[45vh]" alt={article.title} width={500} height={300} />
+            <div className="p-6">
+              <p className="text-3xl font-bold text-center pb-4">{article.title}</p>
+              <p className="pb-6 text-center">{article.shortDesc}</p>
+              <div className="p-6 flex items-center justify-center">
+                <motion.button
+                  className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-medium text-white shadow-sm hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setSelectedArticle(article)}
+                >
+                  Voir plus
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
-      {/* Middle Section */}
-      <motion.div
-        className="bg-white rounded-lg shadow-lg"
-        variants={fadeIn}
-        initial="initial"
-        animate="animate"
-      >
-        <Image
-          src={pic6}
-          className="h-[45vh] object-cover"
-          alt="article"
-        />
-        <div className="bg-white flex flex-col justify-start p-6">
-          <p className="text-3xl font-bold hover:text-gray-700 pb-4 text-center">
-            La Digitalisation au cœur des projets de Bab Rayan
-          </p>
-         <br/>
-          <p className="pb-6 text-center">
-            Aujourd'hui, plusieurs projets de l'association Bab
-            Rayan intègrent la digitalisation comme levier ...
-          </p>
-          <div className="p-6 flex items-center justify-center">
-            <motion.a
-              href="/blog"
-              className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-medium text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
-              variants={scaleIn} // Apply scaleIn animation on hover
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Voir plus
-            </motion.a>
-          </div>
-        </div>
-      </motion.div>
+      {selectedArticle && (
+  <Dialog open={true} onOpenChange={() => setSelectedArticle(null)}>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>
+          <h1 className="font-semibold sm:text-2xl md:text-5xl lg:text-5xl my-4">{selectedArticle.title}</h1>
+        </DialogTitle>
+      </DialogHeader>
+      <Image
+        src={selectedArticle.img}
+        className="w-full object-cover rounded mb-4"
+        alt={selectedArticle.title}
+        width={500}
+        height={300}
+      />
+      <div className="max-h-[70vh] pr-2">
+        <p className="md:text-lg leading-relaxed">{selectedArticle.fullDesc}</p>
+      </div>
+    </DialogContent>
+  </Dialog>
+)}
 
-      {/* Right Section */}
-      <motion.div
-        className="bg-white rounded-lg shadow-lg"
-        variants={fadeIn}
-        initial="initial"
-        animate="animate"
-      >
-        <Image
-          src={pic7}
-          className="h-[45vh] object-cover"
-          alt="article"
-        />
-        <div className="bg-white flex flex-col justify-start p-6">
-          <p className="text-3xl font-bold hover:text-gray-700 pb-4 text-center">
-            ForsaTech : Une porte d'entrée vers les métiers du numérique
-          </p>
-          <p className="pb-6 text-center">
-            Créé pour répondre aux besoins croissant du marché
-            digital, ForsaTech propose des formations ...
-          </p>
-          <div className="p-6 flex items-center justify-center">
-            <motion.a
-              href="/blog"
-              className="rounded-sm bg-yellow-300 px-4 py-2 text-xl font-medium text-white shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
-              variants={scaleIn} // Apply scaleIn animation on hover
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Voir plus
-            </motion.a>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  </motion.div>
+    </motion.div>
 
             {/* /Actualites/ */}
 
@@ -678,12 +644,12 @@ export default function Home() {
           Remise des diplômes de la deuxième promotion du CFI
         </h1>
         <p className="text-gray-700 mb-4 italic text-sm md:text-base">
-          L'Association Bab Rayan a eu l'honneur de célébrer ce 28 Octobre 2024,
+          L&apos;Association Bab Rayan a eu l&apos;honneur de célébrer ce 28 Octobre 2024,
           la réussite de la deuxième promotion de diplômés de son Centre de
-          Formation et d'Insertion. Le CFI propose aux jeunes issus des EPS et
+          Formation et d&apos;Insertion. Le CFI propose aux jeunes issus des EPS et
           en situation de précarité une formation qualifiante dans les métiers
-          de l'hôtellerie et de la restauration. Aujourd'hui, plus de 120 jeunes
-          franchissent une étape clé vers l'emploi, grâce au soutien de nos
+          de l&apos;hôtellerie et de la restauration. Aujourd&apos;hui, plus de 120 jeunes
+          franchissent une étape clé vers l&apos;emploi, grâce au soutien de nos
           entreprises partenaires.
         </p>
         <motion.button
