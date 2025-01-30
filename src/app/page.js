@@ -585,12 +585,13 @@ export default function Home() {
 
           {selectedArticle && (
             <Modal
-              title={<h2 className="text-center  w-full text-xl font-semibold">{selectedArticle.title}</h2>}
+              title={<h2 className="text-center w-full text-xl font-semibold">{selectedArticle.title}</h2>}
               centered
               open={modal2Open}
               onCancel={() => setModal2Open(false)}
               width={800} // Increased width for better display
               bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }} // Scrollable content
+              footer={null} // Removes the OK button
             >
               <div className="flex flex-col items-center">
                 {/* Styled Image */}
