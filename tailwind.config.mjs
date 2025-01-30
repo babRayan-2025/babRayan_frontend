@@ -61,7 +61,14 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		  screens: {
+			'xs': '480px', // Breakpoint personnalisé pour les petits écrans
+			'sm': '640px',
+			'md': '768px',
+			'lg': '1024px',
+			'xl': '1280px',
+		  },
   	}
   },
   plugins: [require("flowbite/plugin"), require("tailwindcss-animate")],
