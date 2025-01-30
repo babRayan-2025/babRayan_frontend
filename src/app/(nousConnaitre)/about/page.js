@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import cookingImage from "../../../assets/PHOTO/12.jpg";
@@ -22,6 +23,8 @@ import {
 //i3adat nadar
 
 export default function About() {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <main>
       {/* first section: nous connaitre */}
@@ -61,8 +64,7 @@ export default function About() {
       </motion.div>
 
       {/* mot de presidente */}
-      <div className=" w-full bg-[url('/white_back.png')] bg-cover bg-center py-16 px-6">
-        {/* <div className="bg-gray-50 py-12 px-6"> */}
+      <div className="w-full bg-[url('/white_back.png')] bg-cover bg-center py-16 px-6">
         <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
           MOT DE LA PRÉSIDENTE
           <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
@@ -74,7 +76,6 @@ export default function About() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          {/* Left Side: Image */}
           <motion.div
             className="flex-shrink-0 mb-6 md:mb-0 md:mr-8"
             whileHover={{ scale: 1.05 }}
@@ -96,7 +97,6 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* Right Side: Content */}
           <motion.div
             className="flex-1"
             initial={{ opacity: 0, y: 50 }}
@@ -105,28 +105,48 @@ export default function About() {
             viewport={{ once: true }}
           >
             <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-4">
-              Au fil de cette décennie, notre dévouement indéfectible envers la
-              protection, l’éducation, la formation et l’insertion
-              professionnelle des enfants en difficulté a été au cœur de notre
-              mission à Bab Rayan. Portés par des valeurs nobles et une boussole
-              morale inébranlable, nous trouvons une source constante
-              d’inspiration et de motivation dans la vision éclairée de Sa
-              Majesté le Roi Mohammed VI.
+              Au cours de cette décennie, notre dévouement inébranlable envers
+              la protection, l&apos;éducation, la formation, et l&apos;insertion
+              professionnelle des enfants en difficulté a été la pierre
+              angulaire de notre action à Bab Rayan. <br/> Guidés par des valeurs
+              nobles, notre boussole morale reste ferme, et nous sommes fiers de
+              reconnaître Sa Majesté le Roi Mohammed VI comme une source
+              inépuisable d&apos;inspiration et de motivation.
             </p>
             <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-6">
-              Les initiatives de Bab Rayan ont évolué, démontrant notre
-              engagement croissant envers la construction d’un avenir prometteur
-              pour les enfants que nous servons. Nous avons tracé une
-              trajectoire ascendante, passant d’un simple projet de protection à
-              un modèle de vie holistique, méticuleusement conçu pour façonner
-              des citoyens marocains productifs et fiers.
+            Les initiatives de Bab
+              Rayan ont évolué, démontrant notre engagement croissant envers la
+              construction d&apos;un avenir prometteur pour les enfants que nous
+              servons. 
             </p>
+            {showMore && (
+              <motion.p
+                className="text-gray-800 text-lg font-semibold leading-relaxed mb-6"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+              Nous avons tracé une trajectoire ascendante, passant d&apos;un
+              simple projet de protection à un modèle de vie holistique,
+              méticuleusement conçu pour façonner des citoyens marocains
+              productifs et fiers. En rendant hommage à nos partenaires publics
+              et privés, nous contemplons avec satisfaction les réussites
+              passées tout en tournant résolument notre regard vers l&apos;avenir.
+              Nous sommes convaincus que des miracles attendent ces enfants qui
+              méritent un avenir meilleur. En unissant nos forces, nous
+              continuerons d&apos;inscrire des chapitres positifs dans l&apos;histoire de
+              Bab Rayan. Ensemble, nous formons une communauté déterminée à
+              faire une différence durable. Merci à chacun de vous pour votre
+              engagement et votre soutien continu.
+              </motion.p>
+            )}
             <motion.button
               className="bg-yellow-300 hover:bg-yellow-500 text-red-600 font-bold py-2 px-4 rounded-xl"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              onClick={() => setShowMore(!showMore)}
             >
-              Voir plus
+              {showMore ? "Voir moins" : "Voir plus"}
             </motion.button>
           </motion.div>
         </motion.div>
@@ -138,8 +158,8 @@ export default function About() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-          {/* Decorative Image */}
-          <Image
+        {/* Decorative Image */}
+        <Image
           src={star}
           className="w-20 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] left-[75%] md:left-[86%]"
           alt="Les Ftours Bab Rayan"
@@ -159,7 +179,7 @@ export default function About() {
           className="w-30 md:w-44 absolute top-[20%] md:top-[35%] right-[65%] md:right-[78%]"
           alt="Les Ftours Bab Rayan"
         />
-         <Image
+        <Image
           src={soleil}
           className="w-36 md:w-48 absolute top-[100%] md:top-[50%] left-[60%] md:left-[60%]"
           alt="Les Ftours Bab Rayan"
@@ -270,8 +290,8 @@ export default function About() {
             ))}
           </div>
         </div>
-            {/* Decorative Background Arrow */}
-            <Image
+        {/* Decorative Background Arrow */}
+        <Image
           src={sign}
           className="w-30 md:w-80 absolute top-[4%] md:top-[1%] right-[65%] md:right-[84%]"
           alt="Les Ftours Bab Rayan"
