@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Download } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { Modal } from 'antd';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -36,33 +37,48 @@ export default function Press() {
     email: "",
     message: "",
   });
-
+  const [modal2Open, setModal2Open] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const albums = {
-    "Le-Foyer-bab-rayan": [
-      "/press/album/1.jpg",
-      "/press/album/2.jpg",
-      "/press/album/3.jpg",
+    "Le Foyer bab rayan": [
+      "/press/album/AlbumFoyer/1.JPG",
+      "/press/album/AlbumFoyer/2.JPG",
+      "/press/album/AlbumFoyer/3.JPG",
+      "/press/album/AlbumFoyer/4.JPG",
+      "/press/album/AlbumFoyer/5.jpeg",
+      "/press/album/AlbumFoyer/6.jpeg",
     ],
-    "Activités-extrascolaires": [
+    "Activités extrascolaires": [
       "/press/album/1.jpg",
       "/press/album/4.jpg",
       "/press/album/2.jpg",
     ],
-    CFI: ["/press/album/2.jpg", "/press/album/3.jpg", "/press/album/4.jpg"],
-    "Ecole-palmier": [
+    "CFI": [
+      "/press/album/AlbumCFI/1.JPG",
+      "/press/album/AlbumCFI/2.JPG",
+      "/press/album/AlbumCFI/3.JPG",
+      "/press/album/AlbumCFI/4.JPG",
+      "/press/album/AlbumCFI/5.JPG",
+      "/press/album/AlbumCFI/6.JPG",
+      "/press/album/AlbumCFI/7.JPG",
+      "/press/album/AlbumCFI/8.JPG",
+    ],
+    "Ecole palmier": [
+      "/press/album/AlbumécolePalmier/1.JPG",
+      "/press/album/AlbumécolePalmier/2.JPG",
+      "/press/album/AlbumécolePalmier/3.JPG",
+      "/press/album/AlbumécolePalmier/4.JPG",
+      "/press/album/AlbumécolePalmier/5.JPG",
+      "/press/album/AlbumécolePalmier/6.jpeg"
+    ],
+    "Ftour bab rayan": [
       "/press/album/1.jpg",
       "/press/album/1.jpg",
       "/press/album/1.jpg",
     ],
-    "Ftour-bab-rayan": [
-      "/press/album/1.jpg",
-      "/press/album/1.jpg",
-      "/press/album/1.jpg",
-    ],
-    "Action-solidaire": [
+    "Action solidaire": [
       "/press/album/1.jpg",
       "/press/album/1.jpg",
       "/press/album/1.jpg",
@@ -109,44 +125,45 @@ export default function Press() {
             <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </motion.h1>
         </motion.div>
-        <motion.div 
-      className="justify-center"
-      initial={{ opacity: 0, y: -20 }} 
-      animate={{ opacity: 1, y: 0 }} 
-      transition={{ duration: 0.8 }}
-    >
-      <h2 className="text-5xl font-medium text-red-600 my-8 text-center flex items-center justify-center">
-        <motion.div 
-          initial={{ x: -50, opacity: 0 }} 
-          animate={{ x: 0, opacity: 1 }} 
-          transition={{ duration: 0.8, delay: 0.3 }}
+        <motion.div
+          className="justify-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <Image
-            src="/benevole/flech-partenaire.png"
-            alt="flech-partenaire"
-            width={100}
-            height={50}
-            className="init-block -left-48 md:left-[550px]"
-          />
+          <h2 className="text-5xl font-medium text-red-600 my-8 text-center flex items-center justify-center">
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <Image
+                src="/benevole/flech-partenaire.png"
+                alt="flech-partenaire"
+                width={100}
+                height={50}
+                className="init-block -left-48 md:left-[550px]"
+              />
+            </motion.div>
+            <motion.span
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mr-2 mt-8"
+            >
+              Kit media
+            </motion.span>
+          </h2>
+          <motion.h1
+            className="text-center text-2xl md:text-5xl font-semibold"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            de l&apos;Association Bab Rayan
+          </motion.h1>
         </motion.div>
-        <motion.span 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mr-2 mt-8"
-        >
-          Kit media
-        </motion.span>
-      </h2>
-      <motion.h1 
-        className="text-center text-2xl md:text-5xl font-semibold"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.7 }}
-      >
-        de l&apos;Association Bab Rayan
-      </motion.h1>
-    </motion.div>
+
         {/* Content Sections */}
         <motion.div
           className="grid md:grid-cols-2 gap-8 p-6 md:p-10 mx-8"
@@ -155,7 +172,6 @@ export default function Press() {
           viewport={{ once: true, amount: 0.2 }}
           variants={cardVariants}
         >
-        {/* <div className="grid md:grid-cols-2 justify-center gap-8 p-6 md:p-10 text-gray-800 mx-8"></div> */}
           {/* Logos Section */}
           <motion.div
             className="bg-red-600 rounded-3xl p-8"
@@ -266,85 +282,72 @@ export default function Press() {
 
         {/* Albums Section */}
         <motion.div
-  className="bg-red-600 rounded-3xl mx-16 mb-6 p-8"
-  initial="offscreen"
-  whileInView="onscreen"
-  viewport={{ once: true, amount: 0.2 }}
-  variants={cardVariants}
->
-  <h2 className="text-5xl font-medium text-white mb-8 text-center flex items-center justify-center">
-    <Image
-      src="/benevole/flech-partenaire.png"
-      alt="flech-partenaire"
-      width={100}
-      height={50}
-      className="init-block -left-48 md:left-[550px]"
-    />
-    <span className="mr-2 mt-8">Albums Photos</span>
-  </h2>
-  <div className="flex flex-wrap m-4 gap-4 justify-center">
-    {Object.keys(albums).map((album) => (
-      <div key={album} onClick={() => handleAlbumClick(album)}>
-        <Image
-          src={`/press/${album}.png`}
-          alt={album}
-          width={550}
-          height={550}
-          className="init-block -left-48 md:left-[550px] cursor-pointer hover:opacity-80 transition-opacity"
-        />
-      </div>
-    ))}
-  </div>
-
-  {/* Modal */}
-  <AnimatePresence>
-    {isModalOpen && (
-      <motion.div
-        className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        variants={modalVariants}
-      >
-        <motion.div
-          className="bg-white rounded-lg w-full max-w-4xl h-[90vh] overflow-y-auto p-6 relative"
-          variants={modalVariants}
+          className="bg-red-600 rounded-3xl mx-16 mb-6 p-8"
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={cardVariants}
         >
-          {/* Close Button */}
-          <button
-            onClick={closeModal}
-            className="absolute top-4 right-4 text-3xl text-gray-700 hover:text-gray-900"
-          >
-            &times;
-          </button>
-
-          {/* Modal Content */}
-          <h3 className="text-5xl font-bold mb-6 text-center">
-            {selectedAlbum}
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {albums[selectedAlbum].map((image, index) => (
-              <div
-                key={index}
-                className={`relative ${
-                  index % 4 === 0 ? "col-span-2 row-span-2" : "col-span-1"
-                }`}
-              >
+          <h2 className="text-5xl font-medium text-white mb-8 text-center flex items-center justify-center">
+            <Image
+              src="/benevole/flech-partenaire.png"
+              alt="flech-partenaire"
+              width={100}
+              height={50}
+              className="init-block -left-48 md:left-[550px]"
+            />
+            <span className="mr-2 mt-8">Albums Photos</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4 gap-4 justify-center">
+            {Object.keys(albums).map((album) => (
+              <div key={album} onClick={() => { handleAlbumClick(album); setModal2Open(true) }}>
                 <Image
-                  src={image}
-                  alt={`${selectedAlbum}-${index}`}
-                  width={index % 4 === 0 ? 600 : 300}
-                  height={index % 4 === 0 ? 600 : 300}
-                  className="w-full h-full object-cover rounded-lg"
+                  src={`/press/${album}.png`}
+                  alt={album}
+                  width={550}
+                  height={550}
+                  className="init-block -left-48 md:left-[550px] cursor-pointer hover:opacity-80 transition-opacity"
                 />
               </div>
             ))}
           </div>
+
+          {/* Modal */}
+          <AnimatePresence>
+            {isModalOpen && (
+              <motion.div
+              >
+                <Modal
+                  title={<h2 className="text-center w-full text-3xl font-semibold">{selectedAlbum}</h2>}
+                  centered
+                  open={modal2Open}
+                  onCancel={() => setModal2Open(false)}
+                  width={1500} // Increased width for better display
+                  bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }} // Scrollable content
+                  footer={null} // Removes the OK button
+                >
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {albums[selectedAlbum].map((image, index) => (
+                      <div
+                        key={index}
+                        className={`relative ${index % 4 === 0 ? "col-span-2 row-span-2" : "col-span-1"
+                          }`}
+                      >
+                        <Image
+                          src={image}
+                          alt={`${selectedAlbum}-${index}`}
+                          width={index % 4 === 0 ? 600 : 300}
+                          height={index % 4 === 0 ? 600 : 300}
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </Modal>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
-      </motion.div>
-    )}
-  </AnimatePresence>
-</motion.div>
 
         {/* Press Section */}
         <motion.div
