@@ -68,7 +68,7 @@ const InfoCard = ({ title, description }) => (
 );
 
 export default function Gouvernance() {
- 
+
   const teamData = [
     {
       name: 'Hind Ratiba',
@@ -121,15 +121,19 @@ export default function Gouvernance() {
       imageUrl: '/members/Jihane Lahbabi Berrada.jpg'
     }
   ];
-  
+
   const reports = [
-    { year: 2016, imageUrl: '/2girls.jpg', pdfUrl: '/path/to/rapport2016.pdf' },
-    { year: 2017, imageUrl: '/2girls.jpg', pdfUrl: '/path/to/rapport2017.pdf' },
-    { year: 2018, imageUrl: '/2girls.jpg', pdfUrl: '/path/to/rapport2018.pdf' },
-    { year: 2019, imageUrl: '/2girls.jpg', pdfUrl: '/path/to/rapport2019.pdf' },
-    { year: 2020, imageUrl: '/2girls.jpg', pdfUrl: '/path/to/rapport2020.pdf' },
-    { year: 2021, imageUrl: '/2girls.jpg', pdfUrl: '/path/to/rapport2021.pdf' },
+    { year: 2024, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2024.pdf' },
+    { year: 2023, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport annuel -Association Bab Rayan 2023.pdf' },
+    { year: 2022, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2022.pdf' },
+    { year: 2021, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2021.pptx' },
+    { year: 2020, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2020.pdf' },
+    { year: 2019, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2019.pdf' },
+    { year: 2018, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2018.pdf' },
+    { year: 2017, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2017.pdf' },
+    { year: 2016, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2016.pdf' },
   ];
+
 
   const cards = [
     {
@@ -152,7 +156,7 @@ export default function Gouvernance() {
   return (
     <main>
       <HeroSection />
-    {/* members -------- */}
+      {/* members -------- */}
       <section className="w-full bg-[url('/teamback.png')] bg-cover bg-center py-16 px-6">
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="p-4 text-2xl md:text-4xl text-white font-bold text-center mb-8 relative">
@@ -171,7 +175,7 @@ export default function Gouvernance() {
           </motion.div>
         </div>
       </section>
-    {/* raports -------- */}
+      {/* raports -------- */}
       <section className="bg-pink-100 py-12">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
@@ -186,6 +190,7 @@ export default function Gouvernance() {
                 key={index}
                 className="bg-white shadow-lg rounded-lg overflow-hidden text-center"
               >
+                {/* Image */}
                 <div className="h-80 overflow-hidden">
                   <Image
                     src={report.imageUrl}
@@ -195,28 +200,32 @@ export default function Gouvernance() {
                     className="w-full h-full object-cover"
                   />
                 </div>
+
+                {/* Text Content */}
                 <div className="p-4">
                   <h3 className="text-red-600 font-bold text-lg">
                     Rapport Annuel {report.year}
                   </h3>
                   <p className="text-gray-700 text-sm mb-4">
-                    Compte rendu global des activités de l`Association Bab Rayan
+                    Compte rendu global des activités de l&apos;Association Bab Rayan
                   </p>
+
+                  {/* Download Button */}
                   <a
                     href={report.pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    download={`Rapport_Annuel_${report.year}.pdf`} // Forces file download
                     className="inline-block bg-yellow-300 text-red-600 font-semibold py-2 px-4 rounded hover:bg-yellow-400 transition"
                   >
-                    Télécharger le pdf
+                    Télécharger le PDF
                   </a>
                 </div>
               </motion.div>
             ))}
+
           </motion.div>
         </div>
       </section>
-   {/* cards ---------- */}
+      {/* cards ---------- */}
       <section className="max-w-7xl mx-auto px-4 py-16">
         <motion.div
           variants={container}
