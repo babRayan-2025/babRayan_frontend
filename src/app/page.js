@@ -588,7 +588,6 @@ export default function Home() {
               title={<h2 className="text-center  w-full text-xl font-semibold">{selectedArticle.title}</h2>}
               centered
               open={modal2Open}
-              onOk={() => setModal2Open(false)}
               onCancel={() => setModal2Open(false)}
               width={800} // Increased width for better display
               bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }} // Scrollable content
