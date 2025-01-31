@@ -99,6 +99,7 @@ export default function Donation() {
 
   const handleCustomAmountChange = (e) => {
     const value = e.target.value;
+    setSelectedAmount(null);
     setCustomAmount(value);
     setIsCustomAmountSelected(value !== "");
     updateDonationDetails(value, donationType);
@@ -236,7 +237,6 @@ export default function Donation() {
                         : "bg-red-700 text-white"
                     }`}
                     onClick={() => handleAmountChange(amount)}
-                    disabled={isCustomAmountSelected}
                   >
                     {amount}
                   </button>
@@ -254,7 +254,12 @@ export default function Donation() {
 
               <div className="flex flex-wrap gap-4 mt-4 justify-center">
                 <button
-                  className="bg-white border-2 border-yellow-400 p-1 rounded-lg"
+                  //className="bg-white border-2 border-yellow-400 p-1 rounded-lg"
+                  className={`bg-white p-1 rounded-lg border-2 border-yellow-400 ${
+                    paymentMethod === "CMI"
+                      ? "bg-yellow-400 text-red-700"
+                      : "bg-red-700 text-white"
+                  }`}
                   onClick={() => handlePaymentMethodClick("CMI")}
                 >
                   <img
@@ -264,7 +269,11 @@ export default function Donation() {
                   />
                 </button>
                 <button
-                  className="bg-white border-2 border-yellow-400 p-1 rounded-lg"
+                  className={`bg-white p-1 rounded-lg border-2 border-yellow-400 ${
+                    paymentMethod === "PayPal"
+                      ? "bg-yellow-400 text-red-700"
+                      : "bg-red-700 text-white"
+                  }`}
                   onClick={() => handlePaymentMethodClick("PayPal")}
                 >
                   <img
