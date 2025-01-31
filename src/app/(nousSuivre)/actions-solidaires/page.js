@@ -47,7 +47,7 @@ export default function Actions() {
                 initial="initial"
                 animate="animate" >
                 ACTIONS SOLIDAIRES
-                <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+                <div className="w-24 md:w-48 h-1 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
             </motion.h1>
 
             <div className="text-center lg:px-72 mb-10">
@@ -62,13 +62,8 @@ export default function Actions() {
                 variants={fadeIn}
                 className="bg-red-700 p-8"
             >
-                <div className="flex flex-col xl:flex-row items-center gap-8">
-                    {/* Image Section */}
-                    <img
-                        src="./actions_solidaires/ramadan.png"
-                        alt="Ramadan"
-                        className="absolute top-0 right-0 w-64 h-64 object-cover"
-                    />
+                <div className="flex flex-col xl:flex-row itdems-center gap-8">
+                   
                     {/* Text Section */}
                     <div className="w-full lg:w-1/2 text-white xl:ps-80">
                         <div className="relative col-span-1 lg:col-span-2  h-full flex flex-col justify-center items-start">
@@ -81,7 +76,7 @@ export default function Actions() {
 
                             {/* Content */}
                             <div>
-                                <h1 className="text-yellow-200 text-4xl font-bold">
+                                <h1 className="text-yellow-300 text-4xl font-bold">
                                     Ftour <br /> Bab Rayan
                                 </h1>
                                 <br />
@@ -95,14 +90,12 @@ export default function Actions() {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 w-full xl:w-1/2 xl:pe-80">
+                    <div className="grid grid-cols-2 gap-4 w-full xl:w-2/3 xl:pe-80">
                         {ftourPhotos.map((photo, index) => (
                             <div key={index} className="overflow-hidden  ">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    style={{ width: "400px" }}
-                                    className="w-full h-auto object-cover"
                                 />
                             </div>
                         ))}
@@ -164,7 +157,7 @@ export default function Actions() {
 
                     {/* Text Section */}
                     <div className="w-full lg:w-1/2 text-white">
-                        <h1 className="text-yellow-200 text-4xl font-bold">
+                        <h1 className="text-yellow-300 text-4xl font-bold">
                             Service <br /> Scolaires
                         </h1>
                         <br />
@@ -193,7 +186,7 @@ export default function Actions() {
                     <div className="text-red-700 text-2xl md:text-4xl font-bold my-8">
                         Actions <br /> Diverses
                     </div>
-                    <p> cLe pôle Actions Solidaires propose divers services sociaux, incluant la circoncision, le soutien aux familles pendant l'Aid al-Adha, et inculquer à nos entants du foyer Bab Rayan nos valeurs solidaires par le biais de partage de dons en nature, reçus de nos partenaires et donateurs, aux familles en besoins.
+                    <p> Le pôle Actions Solidaires propose divers services sociaux, incluant la circoncision, le soutien aux familles pendant l'Aid al-Adha, et inculquer à nos entants du foyer Bab Rayan nos valeurs solidaires par le biais de partage de dons en nature, reçus de nos partenaires et donateurs, aux familles en besoins.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
@@ -202,7 +195,7 @@ export default function Actions() {
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    className="w-full h-auto object-cover"
+                                    className="w-full h-auto object-cover shadow-lg"
                                 />
                             </div>
                         ))}
