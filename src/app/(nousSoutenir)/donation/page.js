@@ -2,52 +2,107 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify"; // Importez React Toastify
+import "react-toastify/dist/ReactToastify.css"; // Importez le CSS de React Toastify
 
 export default function Donation() {
-  const [selectedAmount, setSelectedAmount] = useState("1900 DH");
+  const [selectedAmount, setSelectedAmount] = useState(null);
   const [donationType, setDonationType] = useState("Mensuel");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showThirdCard, setShowThirdCard] = useState(false); // Masquée par défaut
-  const [customAmount, setCustomAmount] = useState(""); // État pour gérer le montant personnalisé
-  const [isCustomAmountSelected, setIsCustomAmountSelected] = useState(false); // État pour désactiver les boutons de montant
-  const [donationDetails, setDonationDetails] = useState(null); // État pour afficher les détails du don
+  const [showThirdCard, setShowThirdCard] = useState(false);
+  const [customAmount, setCustomAmount] = useState("");
+  const [isCustomAmountSelected, setIsCustomAmountSelected] = useState(false);
+  const [donationDetails, setDonationDetails] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
+
+  // Contenu différent pour chaque montant
+  const contentByAmount = {
+    "500 DH": {
+      title: "Parrainage 'Essentiel'",
+      description: "Apportez un soutien vital à un enfant :",
+      items: [
+        {
+          label: "Alimentation saine",
+          description: "pour lui permettre de bien grandir.",
+        },
+        {
+          label: "Soins médicaux",
+          description: "pour garantir sa bonne santé.",
+        },
+        {
+          label: "Hygiène adaptée",
+          description: "pour préserver sa dignité.",
+        },
+      ],
+      image: "/donation/Parrainage1.png",
+    },
+    "800 DH": {
+      title: "Parrainage 'Education+'",
+      description: "Investissez dans l'avenir d'un enfant :",
+      items: [
+        {
+          label: "Assurez sa scolarité",
+          description: "pour lui ouvrir les portes du savoir.",
+        },
+        {
+          label: "Proposez des activités extrascolaires",
+          description: "pour enrichir son quotidien.",
+        },
+        {
+          label: "Offrez des sorties sportives et culturelles",
+          description: "pour nourrir son esprit et son corps.",
+        },
+      ],
+      image: "/donation/Parrainage1.png",
+    },
+    "1900 DH": {
+      title: "Parrainage 'Envol'",
+      description: "Transformez un mois entier dans la vie d'un enfant :",
+      items: [
+        {
+          label: "Hébergement :",
+          description: "Offrez un toit sûr et chaleureux.",
+        },
+        {
+          label: "Alimentation équilibrée :",
+          description: "pour nourrir son corps et sa santé.",
+        },
+        {
+          label: "Soins médicaux et hygiène",
+          description: "pour veiller à son bien-être.",
+        },
+        {
+          label: "Scolarité",
+          description: "ouvrez-lui les portes du savoir.",
+        },
+        {
+          label: "Loisirs épanouissants",
+          description: "pour enrichir son quotidien.",
+        },
+      ],
+      image: "/donation/Parrainage1.png",
+    },
+  };
 
   const handleAmountChange = (amount) => {
     setSelectedAmount(amount);
-    setIsCustomAmountSelected(false); // Réactiver les boutons de montant si un montant prédéfini est sélectionné
-    setCustomAmount(""); // Réinitialiser l'input
+    setIsCustomAmountSelected(false);
+    setCustomAmount("");
+    updateDonationDetails(amount, donationType);
+    setShowThirdCard(true);
   };
 
   const handleDonationTypeChange = (type) => {
     setDonationType(type);
-  };
-
-  const handleDonation = () => {
-    // Afficher la troisième carte après le clic sur "Procéder au don"
+    updateDonationDetails(selectedAmount || customAmount, type);
     setShowThirdCard(true);
-    setShowSuccessMessage(true);
-
-    // Enregistrer les détails du don
-    const amount = isCustomAmountSelected ? customAmount : selectedAmount;
-    const details = {
-      amount: amount,
-      type: donationType,
-    };
-    setDonationDetails(details);
-
-    // Afficher les détails du don dans la console
-    console.log("Détails du don:", details);
-
-    // Réinitialiser l'input et les boutons
-    setCustomAmount("");
-    setIsCustomAmountSelected(false);
   };
 
   const handleCustomAmountChange = (e) => {
     const value = e.target.value;
     setCustomAmount(value);
-    setIsCustomAmountSelected(value !== ""); // Désactiver les boutons de montant si un montant personnalisé est saisi
+    setIsCustomAmountSelected(value !== "");
+    updateDonationDetails(value, donationType);
+    setShowThirdCard(true);
   };
 
   const handlePaymentMethodClick = (method) => {
@@ -55,9 +110,62 @@ export default function Donation() {
     console.log("Méthode de paiement sélectionnée :", method);
   };
 
+  const updateDonationDetails = (amount, type) => {
+    const details = {
+      amount: amount,
+      type: type,
+    };
+    setDonationDetails(details);
+  };
+
+  const handleProceedToDonation = () => {
+    if (!paymentMethod) {
+      // Affichez un toast d'erreur si aucune méthode de paiement n'est sélectionnée
+      toast.error("Veuillez choisir un type de paiement avant de procéder au don.");
+      return;
+    }
+
+    // Affichez un toast de succès
+    toast.success("Merci pour votre don !");
+
+    // Réinitialisez les états après le don
+    setSelectedAmount(null);
+    setCustomAmount("");
+    setIsCustomAmountSelected(false);
+    setDonationDetails(null);
+    setPaymentMethod(null);
+    setShowThirdCard(false);
+  };
+
+  // Récupérer le contenu en fonction du montant sélectionné
+  const selectedContent = contentByAmount[selectedAmount] || {
+    title: "Parrainage 'Personnalisé'",
+    description: "Soutien personnalisé pour un enfant :",
+    items: [
+      {
+        label: "Montant personnalisé",
+        description: "pour répondre à des besoins spécifiques.",
+      },
+    ],
+    image: "/donation/Parrainage1.png",
+  };
+
   return (
     <main>
       <div className="flex min-h-screen flex-col items-center justify-between p-5 bg-[url('/donation/background.png')] bg-cover">
+        {/* ToastContainer pour afficher les toasts */}
+        <ToastContainer
+          position="top-right"
+          autoClose={3000} // Fermer automatiquement après 3 secondes
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+
         <motion.header
           initial="hidden"
           whileInView="visible"
@@ -83,12 +191,12 @@ export default function Donation() {
 
         <section className="flex flex-col gap-10 p-8 rounded-lg mb-5 max-w-screen-xl mx-auto">
           <div className="flex flex-col md:flex-row gap-6">
-            {/* Carte des montants (30% de la largeur avant l'affichage de la carte jaune) */}
+            {/* Carte des montants */}
             <div
-    className={`bg-red-700 p-8 rounded-lg shadow-lg border-2 border-black ${
-      showThirdCard ? "w-full md:w-1/3" : "w-full md:w-[20rem]"
-    }`}
-  >
+              className={`bg-red-700 p-8 rounded-lg shadow-lg border-2 border-black ${
+                showThirdCard ? "w-full md:w-1/3" : "w-full md:w-[20rem]"
+              }`}
+            >
               <h2 className="text-3xl text-white font-semibold mb-4">
                 Choisissez le montant
               </h2>
@@ -96,7 +204,7 @@ export default function Donation() {
               <div className="mb-4">
                 <div className="flex gap-4">
                   <button
-                    className={`py-2 px-4 rounded-lg ${
+                    className={`py-2 px-4 rounded-full ${
                       donationType === "Mensuel"
                         ? "bg-yellow-400 text-red-700"
                         : "bg-white text-red-700 border border-yellow-400"
@@ -106,7 +214,7 @@ export default function Donation() {
                     Mensuel
                   </button>
                   <button
-                    className={`py-2 px-4 rounded ${
+                    className={`py-2 px-4 rounded-full ${
                       donationType === "Ponctuel"
                         ? "bg-yellow-400 text-red-700"
                         : "bg-white text-red-700 border border-yellow-400"
@@ -122,13 +230,13 @@ export default function Donation() {
                 {["500 DH", "800 DH", "1900 DH"].map((amount) => (
                   <button
                     key={amount}
-                    className={`py-2 px-4 rounded border-2 border-yellow-400 ${
+                    className={`py-0 px-5 rounded-lg border-2 border-yellow-400 ${
                       selectedAmount === amount
                         ? "bg-yellow-400 text-red-700"
                         : "bg-red-700 text-white"
                     }`}
                     onClick={() => handleAmountChange(amount)}
-                    disabled={isCustomAmountSelected} // Désactiver les boutons si un montant personnalisé est saisi
+                    disabled={isCustomAmountSelected}
                   >
                     {amount}
                   </button>
@@ -144,11 +252,7 @@ export default function Donation() {
                 className="bg-white text-red-700 py-2 px-4 rounded w-full mt-4 border-2 border-yellow-400 focus:outline-none focus:border-red-700"
               />
 
-              {showSuccessMessage && (
-                <p className="text-green-500 mt-4">Merci pour votre don!</p>
-              )}
-
-<div className="flex flex-wrap gap-4 mt-4 justify-center">
+              <div className="flex flex-wrap gap-4 mt-4 justify-center">
                 <button
                   className="bg-white border-2 border-yellow-400 p-1 rounded-lg"
                   onClick={() => handlePaymentMethodClick("CMI")}
@@ -172,35 +276,22 @@ export default function Donation() {
               </div>
 
               <button
-                className="bg-red-700 text-yellow-400 py-2 px-4 rounded-full w-full mt-4 border-2 border-yellow-400"
-                onClick={handleDonation}
+                className="bg-black text-yellow-400 py-2 px-4 rounded-full w-full mt-4 border-2 border-yellow-400"
+                onClick={handleProceedToDonation}
               >
                 Procéder au don
               </button>
             </div>
 
-            {/* Section jaune (Parrainage) - Affichée après le clic sur "Procéder au don" */}
+            {/* Section jaune (Parrainage) */}
             {showThirdCard && (
               <div className="bg-yellow-400 p-8 rounded-lg shadow-lg w-full md:w-1/3 border-2 border-red-700">
                 <h2 className="text-3xl text-red-700 font-semibold mb-4 text-center">
-                  Parrainage "Essentiel"
+                  {selectedContent.title}
                 </h2>
-                <p className="text-gray-800">Apportez un soutien vital à un enfant :</p>
+                <p className="text-gray-800">{selectedContent.description}</p>
                 <ul className="list-none ml-5 mb-4">
-                  {[
-                    {
-                      label: "Alimentation saine",
-                      description: "pour lui permettre de bien grandir.",
-                    },
-                    {
-                      label: "Soin médicaux",
-                      description: "pour garantir sa bonne santé.",
-                    },
-                    {
-                      label: "Hygiène adaptée",
-                      description: "pour préserver sa dignité.",
-                    },
-                  ].map((item, index) => (
+                  {selectedContent.items.map((item, index) => (
                     <li key={index} className="mb-2 flex items-start">
                       <img
                         src="/donation/check.png"
@@ -217,42 +308,45 @@ export default function Donation() {
                   ))}
                 </ul>
                 <img
-                  src="/donation/Parrainage1.png"
-                  alt="Essentiel"
+                  src={selectedContent.image}
+                  alt={selectedContent.title}
                   className="mb-4 rounded-lg h-48"
                 />
                 <div className="flex items-center mb-4 justify-end">
                   <span className="text-gray-800 font-bold mr-2">Type de don</span>
                   <button className="bg-red-700 text-yellow-400 py-1 px-4 rounded-lg ml-3 border-2 border-yellow-400">
-                    {donationType}
+                    {donationDetails ? donationDetails.type : "Mensuel"}
                   </button>
                 </div>
-                <div className="flex items-center justify-end">
-                  <img
-                    src="/donation/gauche.png"
-                    alt="Money"
-                    className="w-16 h-8 mr-2 "
-                  />
-                  <span className="text-gray-800 font-bold mr-2">Montant</span>
-                  <button className="bg-red-700 text-yellow-400 py-1 px-4 rounded-lg ml-3 border-2 border-yellow-400">
-                    {donationDetails ? donationDetails.amount : "500 DH"}
-                  </button>
-                </div>
+                {donationDetails?.amount && (
+                  <div className="flex items-center justify-end">
+                    <img
+                      src="/donation/gauche.png"
+                      alt="Money"
+                      className="w-16 h-8 mr-2 "
+                    />
+                    <span className="text-gray-800 font-bold mr-2">Montant</span>
+                    <button className="bg-red-700 text-yellow-400 py-1 px-4 rounded-lg ml-3 border-2 border-yellow-400">
+                      {donationDetails.amount}
+                    </button>
+                  </div>
+                )}
               </div>
             )}
 
-            {/* Carte de l'image (70% de la largeur avant l'affichage de la carte jaune) */}
+            {/* Carte de l'image */}
             <div
-    className={`p-8 rounded-lg shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${
-      showThirdCard ? "w-full md:w-1/3" : "w-full md:w-[50rem]"
-    }`}
-  >
+              className={`p-8 rounded-lg shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${
+                showThirdCard ? "w-full md:w-1/3" : "w-full md:w-[50rem]"
+              }`}
+            >
               {/* Content for Contact Section */}
             </div>
           </div>
         </section>
       </div>
 
+      {/* Section Contact */}
       <section className="text-center bg-red-700 text-white p-10 md:p-20 w-full m-0">
         <h2 className="text-3xl font-bold underline decoration-yellow-400 underline-offset-8 decoration-4">
           CONTACT
