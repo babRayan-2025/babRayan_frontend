@@ -120,11 +120,15 @@ export default function Donation() {
   };
 
   const handleProceedToDonation = () => {
-    if (!paymentMethod) {
+    if (!selectedAmount && !customAmount) {
+      // Affichez un toast d'erreur si aucun montant n'est sélectionné
+      toast.error("Veuillez choisir un montant avant de procéder au don.");
+      return;
+    }else if (!paymentMethod ) {
       // Affichez un toast d'erreur si aucune méthode de paiement n'est sélectionnée
       toast.error("Veuillez choisir un type de paiement avant de procéder au don.");
       return;
-    }
+    } 
 
     // Affichez un toast de succès
     toast.success("Merci pour votre don !");
