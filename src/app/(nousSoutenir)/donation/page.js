@@ -131,7 +131,6 @@ export default function Donation() {
     }
 
     toast.success("Merci pour votre don !");
-
     setSelectedAmount(null);
     setCustomAmount("");
     setIsCustomAmountSelected(false);
@@ -239,7 +238,6 @@ export default function Donation() {
                   </button>
                 ))}
               </div>
-
               <input
                 type="number"
                 placeholder="Montant personnalisé en DHS"
@@ -264,19 +262,20 @@ export default function Donation() {
                     paymentMethod === "PayPal"
                       ? "bg-[#f3ca31] text-[#cc2229]"
                       : "bg-[#cc2229] text-white"
-                  }`}
                   onClick={() => handlePaymentMethodClick("PayPal")}
                 >
                   <img
                     src="/donation/4.png"
                     alt="PayPal"
                     className="w-12 h-8"
+
                   />
                 </button>
               </div>
 
               <button
                 className="bg-black text-[#f3ca31] py-2 px-4 rounded-full w-full mt-4 border-2 border-[#f3ca31]"
+
                 onClick={handleProceedToDonation}
               >
                 Procéder au don
@@ -289,6 +288,7 @@ export default function Donation() {
                   {selectedContent.title}
                 </h2>
                 <p className="text-[#161618]">{selectedContent.description}</p>
+
                 <ul className="list-none ml-5 mb-4">
                   {selectedContent.items.map((item, index) => (
                     <li key={index} className="mb-2 flex items-start">
@@ -299,6 +299,7 @@ export default function Donation() {
                       />
                       <span>
                         <span className="text-[#cc2229] font-bold">
+
                           {item.label} :
                         </span>{" "}
                         <br /> {item.description}
@@ -316,6 +317,7 @@ export default function Donation() {
                     Type de don
                   </span>
                   <button className="bg-[#cc2229] text-[#f3ca31] py-1 px-4 rounded-lg ml-3 border-2 border-[#f3ca31]">
+
                     {donationDetails ? donationDetails.type : "Mensuel"}
                   </button>
                 </div>
@@ -330,13 +332,13 @@ export default function Donation() {
                       Montant
                     </span>
                     <button className="bg-[#cc2229] text-[#f3ca31] py-1 px-4 rounded-lg ml-3 border-2 border-[#f3ca31]">
+
                       {donationDetails.amount}
                     </button>
                   </div>
                 )}
               </div>
             )}
-
             <div
               className={`p-8 rounded-lg shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${
                 showThirdCard ? "w-full md:w-1/3" : "w-full md:w-[50rem]"
@@ -350,6 +352,7 @@ export default function Donation() {
 
       <section className="text-center bg-[#cc2229] text-white p-10 md:p-20 w-full m-0">
         <h2 className="text-2xl font-bold underline decoration-[#f3ca31] underline-offset-8 decoration-4">
+
           CONTACT
         </h2>
         <div className="flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-8">

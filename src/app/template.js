@@ -7,15 +7,16 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 export default function Template({ children }) {
   const pathname = usePathname();
   const isDashboard = pathname?.includes("/dashboard");
+  const isDon = pathname?.includes("/don");
   // const isLogin = pathname?.includes("/login");
   // const isRegister = pathname?.includes("/register");
 
   return (
     <>
-      {!isDashboard &&  <NavBar />}
+      {!isDashboard && <NavBar />}
       <section>{children}</section>
       {!isDashboard && <Footer />}
-      {!isDashboard && (
+      {!isDashboard && !isDon && (
         <button
           onClick={() => window.location.href = "donation"}
           className='red_color don_icon_animate'

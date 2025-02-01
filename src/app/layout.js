@@ -24,29 +24,3 @@ export default function RootLayout({ children }) {
    </html>
  );
 }
-
-
-// import { Roboto, Roboto_Mono } from "next/font/google";
-// import "./globals.css";
-
-// const roboto = Roboto({
-//   weight: ["100", "300", "400", "500", "700", "900"],
-//   variable: "--font-roboto",
-//   subsets: ["latin"],
-// });
-
-// const robotoMono = Roboto_Mono({
-//   weight: ["400", "700"],
-//   variable: "--font-roboto-mono",
-//   subsets: ["latin"],
-// });
-
-// export default function RootLayout({ children }) {
-//   return (
-//     <html lang="en">
-//       <body className={`${roboto.variable} ${robotoMono.variable} antialiased`}>
-//         {children}
-//       </body>
-//     </html>
-//   );
-// }

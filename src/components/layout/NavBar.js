@@ -25,7 +25,6 @@ export default function NavBar() {
         { name: "À propos", href: "/about" },
         { name: "Gouvernance", href: "/gouvernance" },
         { name: "Dates clés", href: "/dateCles" },
-        { name: "Foyer", href: "/foyer" },
       ]
     },
     {
