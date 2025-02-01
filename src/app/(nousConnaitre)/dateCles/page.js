@@ -21,8 +21,13 @@ export default function Dates() {
               />
             </div>
             <div className="relative grid place-items-start mt-4 md:mt-4 sm:mt-2 xs:mt-0 ml-[23rem] md:ml-[23rem] sm:ml-[19rem] xs:ml-[12rem]">
-              <ul className="list-disc list-inside text-pretty text-sm md:text-sm sm:text-xs xs:text-[9px]" style={{ lineHeight: "1" }}>
-                <li className="pl-[1rem]">Création de l'association Bab Rayan</li>
+              <ul
+                className="list-disc list-inside text-pretty text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                style={{ lineHeight: "1" }}
+              >
+                <li className="pl-[1rem]">
+                  Création de l'association Bab Rayan
+                </li>
                 <li className="pl-[1rem]">
                   Partenariat avec l'académie <br />
                   régionale de l'éducation et de la <br />
@@ -51,7 +56,10 @@ export default function Dates() {
               />
             </div>
             <div className="relative grid place-items-start mt-4 -ml-[18rem] md:-ml-[18rem] sm:-ml-[14rem] xs:-ml-[11rem]">
-              <ul className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]" style={{ lineHeight: "1" }}>
+              <ul
+                className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                style={{ lineHeight: "1" }}
+              >
                 <li>
                   Ouverture du foyer Bab Rayan et <br /> accueil des enfants
                 </li>
@@ -76,10 +84,13 @@ export default function Dates() {
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[23rem] md:ml-[23rem] sm:ml-[16rem] xs:ml-[12rem]">
-              <ul className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]" style={{ lineHeight: "1" }}>
+              <ul
+                className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                style={{ lineHeight: "1" }}
+              >
                 <li>
-                  Premiers Partenariats avec des <br /> institutions publiques et
-                  privées
+                  Premiers Partenariats avec des <br /> institutions publiques
+                  et privées
                 </li>
               </ul>
             </div>
@@ -102,7 +113,10 @@ export default function Dates() {
               />
             </div>
             <div className="relative grid place-items-start mt-4 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[11rem]">
-              <ul className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]" style={{ lineHeight: "1" }}>
+              <ul
+                className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                style={{ lineHeight: "1" }}
+              >
                 <li>
                   Ouverture de l'école Palmier <br /> (préscolaire et primaire)
                 </li>
@@ -127,7 +141,10 @@ export default function Dates() {
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[17rem] md:ml-[17rem] sm:ml-[12rem] xs:ml-[9rem]">
-              <ul className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]" style={{ lineHeight: "1" }}>
+              <ul
+                className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                style={{ lineHeight: "1" }}
+              >
                 <li>
                   Reconnaissance <br /> de l'utilité publique
                 </li>
@@ -152,11 +169,14 @@ export default function Dates() {
               />
             </div>
             <div className="relative grid place-items-start mt-4 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[12rem]">
-              <ul className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]" style={{ lineHeight: "1" }}>
+              <ul
+                className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                style={{ lineHeight: "1" }}
+              >
                 <li>
                   Ouverture du Centre de formation et <br /> d'insertion
-                  professionnelle (CFI) et <br /> signature de conventions publiques{" "}
-                  <br /> et privées
+                  professionnelle (CFI) et <br /> signature de conventions
+                  publiques <br /> et privées
                 </li>
               </ul>
             </div>
@@ -179,7 +199,10 @@ export default function Dates() {
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[20rem] md:ml-[20rem] sm:ml-[18rem] xs:ml-[12rem]">
-              <ul className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]" style={{ lineHeight: "1" }}>
+              <ul
+                className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                style={{ lineHeight: "1" }}
+              >
                 <li>
                   Remise des diplômes de la 2ème <br /> promotion du CFI
                 </li>
