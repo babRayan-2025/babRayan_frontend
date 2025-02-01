@@ -662,6 +662,7 @@ export default function Home() {
                   entreprises partenaires.
                 </p>
                 <motion.button
+                  onClick={() => (window.location.href = "/blog")}
                   className="inline-block bg-yellow-300 rounded-full text-red-500 font-semibold px-4 py-2 transition hover:bg-yellow-400"
                   variants={scaleIn} // Apply scaleIn animation
                   whileHover={{ scale: 1.05 }}
@@ -706,6 +707,7 @@ export default function Home() {
                   projet de vie qui leur ouvre les portes d'un avenir prometteur.
                 </p>
                 <motion.button
+                  onClick={() => (window.location.href = "/blog")}
                   className="inline-block bg-yellow-300 rounded-full text-white font-semibold px-4 py-2 transition hover:bg-yellow-400"
                   variants={scaleIn}
                   whileHover={{ scale: 1.05 }}
