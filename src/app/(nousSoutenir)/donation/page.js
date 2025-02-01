@@ -261,7 +261,8 @@ export default function Donation() {
                   className={`bg-white p-2 rounded-lg border-2 border-[#f3ca31] flex items-center justify-center ${
                     paymentMethod === "PayPal"
                       ? "bg-[#f3ca31] text-[#cc2229]"
-                      : "bg-[#cc2229] text-white"
+                      : "bg-[#cc2229] text-white" 
+                    }`}
                   onClick={() => handlePaymentMethodClick("PayPal")}
                 >
                   <img
