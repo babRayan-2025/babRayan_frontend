@@ -57,7 +57,7 @@ export default function Education() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <div className="p-6 max-w-xl sm:m-4 text-left absolute bottom-6 right-8">
+          <div className="p-6 max-w-2xl sm:m-4 text-left absolute bottom-6 right-6">
             <h2 className="text-4xl font-bold mb-4">ÉDUCATION ET SCOLARITÉ</h2>
             <p className="text-md leading-relaxed">
               Bab Rayan aspire à transformer les trajectoires des enfants en
@@ -66,12 +66,12 @@ export default function Education() {
               réussite de chaque enfant :
             </p>
             <ul>
-              <li>• Un suivi éducatif renforcé</li>
-              <li>• Le plaisir dapprendre</li>
-              <li>• Des activités extrascolaires enrichissantes</li>
+              <li>• Un suivi éducatif renforcé ;</li>
+              <li>• Le plaisir d&apos;apprendre ;</li>
+              <li>• Des activités extrascolaires enrichissantes ;</li>
               <li>
                 • Un accompagnement complet face aux défis rencontrés par les
-                élèves et leurs familles
+                élèves et leurs familles.
               </li>
             </ul>
           </div>
@@ -108,17 +108,18 @@ export default function Education() {
             <motion.div className="flex-1" variants={fadeInUp}>
               <p className="text-black text-xl font-medium leading-relaxed mb-4">
                 L’école Palmier est un établissement privé à caractère social,
-                gratuit, agréé par le Ministère de l’Éducation Nationale, du
-                préscolaire et des Sports.
+                gratuit, agréé par le Ministère de l’Éducation nationale, du
+                Préscolaire et des Sports.
               </p>
               <p className="text-black text-xl font-medium leading-relaxed mb-6">
                 Chaque année, de nombreux enfants orphelins, abandonnés, issus
-                de mères célibataires, de familles isolées, ou des enfants de la
-                rue, abandonnent leur scolarité, confrontés à des difficultés
+                de mères célibataires, de familles isolées ou vivant dans la rue
+                interrompent leur scolarité, confrontés à des difficultés
                 insurmontables. Les principales causes de l’échec scolaire chez
-                l’enfant sont dues à une négligence des diagnostics précoces des
-                différents troubles de l’apprentissage et de l’attention et aux
-                retards du développement psychologique et psychomoteur
+                l’enfant s’expliquent par une négligence des diagnostics
+                précoces des différents troubles de l’apprentissage et de
+                l’attention, ainsi que par des retards dans le développement
+                psychologique et psychomoteur
               </p>
             </motion.div>
           </motion.div>
@@ -189,10 +190,10 @@ export default function Education() {
                 <div className="text-yellow-300 text-[120px] font-semibold  -mt-10">
                   3
                 </div>
-                <div className="text-white text-3xl md:text-5xl font-bold ">
+                <div className="text-white text-3xl uppercase md:text-5xl font-bold ">
                   LE DÉVELOPPEMENT
                   <br />
-                  DE L’AUTONOMIE
+                  DE la créativité
                 </div>
               </motion.div>
             </div>
@@ -287,7 +288,7 @@ export default function Education() {
                   },
                   {
                     src: "/education/picto/site bab rayan école-05.png",
-                    text: "Cantine gratuite pour assure une nutrition équilibrée",
+                    text: "Cantine gratuite pour assurer une nutrition équilibrée",
                   },
                   {
                     src: "/education/picto/site bab rayan école-03.png",
@@ -301,7 +302,7 @@ export default function Education() {
                   >
                     <Image
                       src={item.src}
-                      className="w-40 h-40"
+                      className="w-44 h-40 ml-1"
                       width={40}
                       height={40}
                       alt={item.text}
@@ -339,7 +340,9 @@ export default function Education() {
         {/* ACCOMPAGNEMENT PARENTAL */}
         <div className="w-full bg-white bg-cover bg-center py-16 px-6">
           <div className="p-4  text-center mb-8 md:mx-44 relative">
-            <h1 className="text-black text-2xl md:text-4xl font-bold">ACCOMPAGNEMENT PARENTAL</h1>
+            <h1 className="text-black text-2xl md:text-4xl font-bold">
+              ACCOMPAGNEMENT PARENTAL
+            </h1>
             <p className="text-2xl text-red-700 font-semibold">
               PROMOUVOIR UNE COMMUNAUTÉ ÉDUCATIVE
             </p>
@@ -389,47 +392,59 @@ export default function Education() {
         </div>
         {/* L’ÉCOLE EN CHIFFRES */}
         <motion.div
-                className="bg-red-700 py-12 px-6 text-white relative"
-                initial="hidden"
-                whileInView="visible"
-                variants={staggerContainer}
-                viewport={{ once: true }}
-              >
-                <div className="max-w-7xl mx-auto text-center">
-                  <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
-                  L’ÉCOLE EN CHIFFRES
-                    <div className="w-24 md:w-48 h-2 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 my-6"></div>
-                  </h1>
-        
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {[
-                      { picto: "/education/site bab rayan école-10.png", numb:"+225",title: "élèves : l’école accueille tous les enfants du foyer et aussi des enfants externes défavorisés" },
-                      { picto: "/education/site bab rayan école-11.png", numb:"23", title: "encadrants" },
-                      { picto: "/CFI/site bab rayan CFI-09.png", numb:"1200", title: "bénévoles" },
-                    ].map((value, index) => (
-                      <motion.div
-                        key={index}
-                        className="flex flex-col items-center space-y-4"
-                        variants={fadeInUp}
-                      >
-                        <Image
-                          src={value.picto}
-                          alt={value.title}
-                          width={64}
-                          height={64}
-                          className="w-56 h-44"
-                        />
-        
-                        <p className="text-5xl font-extrabold text-center">
-                        {value.numb}
-                        </p>
-                        <p className="text-base font-medium mx-16">{value.title}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-                
-              </motion.div>
+          className="bg-red-700 py-12 px-6 text-white relative"
+          initial="hidden"
+          whileInView="visible"
+          variants={staggerContainer}
+          viewport={{ once: true }}
+        >
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+              L’ÉCOLE EN CHIFFRES
+              <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 my-6"></div>
+            </h1>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  picto: "/education/site bab rayan école-10.png",
+                  numb: "+225",
+                  title:
+                    "élèves : l’école accueille tous les enfants du foyer et aussi des enfants externes défavorisés",
+                },
+                {
+                  picto: "/education/site bab rayan école-11.png",
+                  numb: "23",
+                  title: "encadrants",
+                },
+                {
+                  picto: "/CFI/site bab rayan CFI-09.png",
+                  numb: "1200",
+                  title: "bénévoles",
+                },
+              ].map((value, index) => (
+                <motion.div
+                  key={index}
+                  className="flex flex-col items-center space-y-4"
+                  variants={fadeInUp}
+                >
+                  <Image
+                    src={value.picto}
+                    alt={value.title}
+                    width={64}
+                    height={64}
+                    className="w-52 h-44"
+                  />
+
+                  <p className="text-5xl font-extrabold text-center">
+                    {value.numb}
+                  </p>
+                  <p className="text-base font-medium mx-16">{value.title}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
     </main>
   );
