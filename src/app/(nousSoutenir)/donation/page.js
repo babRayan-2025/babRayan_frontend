@@ -72,7 +72,7 @@ export default function Donation() {
       image: "/donation/Parrainage1.png",
     },
     "800 DH": {
-      title: "Parrainage \"Education+\"",
+      title: "Parrainage \"Education\"",
       description: "Investissez dans l'avenir d'un enfant :",
       items: [
         {
@@ -187,6 +187,15 @@ export default function Donation() {
     image: "/donation/Parrainage1.png",
   };
 
+  const paymentMethods = [
+    { id: 1, label: "Virement bancaire", image: "/donation/1.png", desc: "Payer avec votre carte bancaire" },
+    { id: 2, label: "Chèque", image: "/donation/2.png", desc: "Payer avec votre compte PayPal" },
+    { id: 3, label: "Cash", image: "/donation/3.png", desc: "Faire un don par chèque" },
+    { id: 4, label: "PayPal", image: "/donation/4.png", desc: "Faire un don par virement bancaire" },
+    { id: 5, label: "Apple Pay", image: "/donation/5.png", desc: "Payer avec Apple Pay" },
+    { id: 6, label: "CMI", image: "/donation/6.png", desc: "Payer avec CMI" },
+  ]
+
   return (
     <main>
       <div className="flex min-h-screen flex-col items-center justify-between p-5 bg-[url('/donation/background.png')] bg-cover">
@@ -244,7 +253,7 @@ export default function Donation() {
 
         <section className="flex flex-col gap-10 p-8 mb-5 w-full max-w-full mx-auto">
           <motion.div
-            className="flex flex-col md:flex-row justify-center gap-6"
+            className="flex flex-col lg:flex-row justify-center gap-6"
             variants={staggerChildren}
             initial="hidden"
             whileInView="visible"
@@ -252,7 +261,7 @@ export default function Donation() {
             {/* Amount Card */}
             <motion.div
               variants={cardVariants}
-              className={`bg-red-700 p-8 rounded-3xl shadow-lg border-2 border-black ${showThirdCard ? "w-full md:w-1/4" : "w-full md:w-[25rem]"
+              className={`bg-red-700 p-8 rounded-3xl shadow-lg border-2 border-black ${showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
                 }`}
             >
               <h2 className="md:text-4xl text-white font-bold mb-4">
@@ -266,8 +275,8 @@ export default function Donation() {
                     whileHover="hover"
                     whileTap="tap"
                     className={`py-2 px-4 rounded-full ${donationType === "Mensuel"
-                        ? "bg-yellow-300 text-red-700"
-                        : "bg-white text-red-700 border border-yellow-300"
+                      ? "bg-yellow-300 text-red-700"
+                      : "bg-white text-red-700 border border-yellow-300"
                       }`}
                     onClick={() => handleDonationTypeChange("Mensuel")}
                   >
@@ -278,8 +287,8 @@ export default function Donation() {
                     whileHover="hover"
                     whileTap="tap"
                     className={`py-2 px-4 rounded-full ${donationType === "Ponctuel"
-                        ? "bg-yellow-300 text-red-700"
-                        : "bg-white text-red-700 border border-yellow-300"
+                      ? "bg-yellow-300 text-red-700"
+                      : "bg-white text-red-700 border border-yellow-300"
                       }`}
                     onClick={() => handleDonationTypeChange("Ponctuel")}
                   >
@@ -296,8 +305,8 @@ export default function Donation() {
                     whileHover="hover"
                     whileTap="tap"
                     className={`py-4 px-4  rounded-2xl text-lg border-2 border-yellow-300 ${selectedAmount === amount
-                        ? "bg-yellow-300 text-red-700 font-bold"
-                        : "bg-red-700 text-white font-bold"
+                      ? "bg-yellow-300 text-red-700 font-bold"
+                      : "bg-red-700 text-white font-bold"
                       }`}
                     onClick={() => handleAmountChange(amount)}
                   >
@@ -316,95 +325,20 @@ export default function Donation() {
               />
 
               <div className="grid grid-cols-3 gap-4 mt-4 justify-center">
-                {/* lwasa2iiil  */}
-
-
-                <motion.div
-                  // variants={buttonVariants}
-                  // whileHover="hover"
-                  //  whileTap="tap"
-                  className='bg-white p-1 rounded-2xl border-2 border-black '>
-                  <Image
-                    src="/donation/1.png"
-                    alt="choie de paiement"
-                    className="w-16 h-12  object-cover"
-                  />
-                </motion.div>
-                <motion.div
-                  // variants={buttonVariants}
-                  // whileHover="hover"
-                  //  whileTap="tap"
-                  className='bg-white p-1 rounded-2xl border-2 border-black '>
-                  <Image
-                    src="/donation/2.png"
-                    alt="choie de paiement"
-                    className="w-16 h-12  object-cover"
-                  />
-                </motion.div>
-                <motion.div
-                  // variants={buttonVariants}
-                  // whileHover="hover"
-                  //  whileTap="tap"
-                  className='bg-white p-1 rounded-2xl border-2 border-black '>
-                  <Image
-                    src="/donation/3.png"
-                    alt="choie de paiement"
-                    className="w-16 h-12  object-cover"
-                  />
-                </motion.div>
-
                 {/* khtaar le choie de paiement */}
-                <motion.button
-                  variants={buttonVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "PayPal"
-                      ? "bg-yellow-300 text-red-700"
-                      : "bg-red-700 text-white"
-                    }`}
-                  onClick={() => handlePaymentMethodClick("PayPal")}
-                >
-                  <Image
-                    src="/donation/4.png"
-                    alt="PayPal"
-                    className="w-16 h-12 p-2 "
-                  />
-                </motion.button>
+                {paymentMethods.map((method) => (
+                  <motion.button key={method.id} variants={buttonVariants} whileHover="hover" whileTap="tap"
+                    className={`bg-white p-2  rounded-2xl justify-items-center border-2 border-black ${paymentMethod === method.id
+                      ? "bg-yellow-300 text-red-700 font-bold"
+                      : "bg-red-700 text-white font-bold"
+                      }`}
+                    onClick={() => handlePaymentMethodClick(method.id)}
+                  >
+                    <img src={method.image} alt={method.label} className={`w-14 h-10  ${method.id == 4 || method.id == 5 || method.id == 6 ? "" : "object-cover"}`} />
+                  </motion.button>
+                )
+                )}
 
-                <motion.button
-                  variants={buttonVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "applepay"
-                      ? "bg-yellow-300 text-red-700"
-                      : "bg-red-700 text-white"
-                    }`}
-                  onClick={() => handlePaymentMethodClick("applepay")}
-                >
-                  <Image
-                    src="/donation/5.png"
-                    alt="applepay"
-                    className="w-16 h-12 p-2 "
-                  />
-                </motion.button>
-                              
-                <motion.button
-                  variants={buttonVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "CMI"
-                      ? "bg-yellow-300 text-red-700"
-                      : "bg-red-700 text-white"
-                    }`}
-                  onClick={() => handlePaymentMethodClick("CMI")}
-                >
-                  <Image
-                    src="/donation/6.png"
-                    alt="CMI"
-                    className="w-16 h-12 p-2 object-cover"
-                  />
-                </motion.button>
-                
               </div>
 
               <motion.button
@@ -424,9 +358,9 @@ export default function Donation() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-yellow-300 p-8 rounded-3xl shadow-lg w-full md:w-1/3 border-2 border-red-700"
+                className="bg-yellow-300 p-8 rounded-3xl shadow-lg w-full lg:w-1/3 border-2 border-red-700"
               >
-                <h2 className="text-4xl text-red-700 font-extrabold mb-4 text-center">
+                <h2 className="text-3xl text-red-700 font-extrabold mb-4 text-center">
                   {selectedContent.title}
                 </h2>
                 <p className="text-gray-800">{selectedContent.description}</p>
@@ -442,7 +376,7 @@ export default function Donation() {
                       variants={fadeIn}
                       className="mb-2 flex items-start"
                     >
-                      <Image
+                      <img
                         src="/donation/check.png"
                         alt="Check"
                         className="w-4 h-4 mr-2 mt-1"
@@ -474,7 +408,7 @@ export default function Donation() {
                 </div>
                 {donationDetails?.amount && (
                   <div className="flex items-center justify-end">
-                    <Image
+                    <img
                       src="/donation/gauche.png"
                       alt="Money"
                       className="w-16 h-8 mr-2 mb-2"
@@ -491,7 +425,7 @@ export default function Donation() {
             {/* Image Card */}
             <motion.div
               variants={cardVariants}
-              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${showThirdCard ? "w-full md:w-1/3" : "w-full md:w-[50rem]"
+              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${showThirdCard ? "w-full lg:w-1/3" : "w-full lg:w-[50rem]"
                 }`}
             />
           </motion.div>
