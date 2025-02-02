@@ -8,8 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 // Animation variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.6 }
   }
@@ -155,7 +155,11 @@ export default function Donation() {
   };
 
   const handleProceedToDonation = () => {
-    if (!paymentMethod) {
+    if (!selectedAmount && !customAmount) {
+      // Affichez un toast d'erreur si aucun montant n'est sélectionné
+      toast.error("Veuillez choisir un montant avant de procéder au don.");
+      return;
+    } else if (!paymentMethod) {
       toast.error("Veuillez choisir un type de paiement avant de procéder au don.");
       return;
     }
@@ -204,7 +208,7 @@ export default function Donation() {
           className="p-4 text-3xl md:text-4xl font-bold text-center mb-16 relative"
         >
           FAIRE UN DON
-          <motion.div 
+          <motion.div
             className="w-24 md:w-48 h-1 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
@@ -212,7 +216,7 @@ export default function Donation() {
           />
         </motion.header>
 
-        <motion.header 
+        <motion.header
           className="text-center"
           variants={fadeIn}
           initial="hidden"
@@ -220,7 +224,7 @@ export default function Donation() {
         >
           <h1 className="text-3xl md:text-6xl font-bold mt-2">
             <span className="text-gray-800">Votre soutien </span>
-            <motion.span 
+            <motion.span
               className="text-yellow-300"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
@@ -238,7 +242,7 @@ export default function Donation() {
         </motion.header>
 
         <section className="flex flex-col gap-10 p-8 mb-5 w-full max-w-full mx-auto">
-        <motion.div 
+          <motion.div
             className="flex flex-col md:flex-row justify-center gap-6"
             variants={staggerChildren}
             initial="hidden"
@@ -247,12 +251,11 @@ export default function Donation() {
             {/* Amount Card */}
             <motion.div
               variants={cardVariants}
-              className={`bg-red-700 p-8 rounded-3xl shadow-lg border-2 border-black ${
-                showThirdCard ? "w-full md:w-1/4" : "w-full md:w-[25rem]"
-              }`}
+              className={`bg-red-700 p-8 rounded-3xl shadow-lg border-2 border-black ${showThirdCard ? "w-full md:w-1/4" : "w-full md:w-[25rem]"
+                }`}
             >
               <h2 className="md:text-4xl text-white font-bold mb-4">
-                Choisissez <br/> le montant
+                Choisissez <br /> le montant
               </h2>
 
               <div className="mb-4">
@@ -261,11 +264,10 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-4 rounded-full ${
-                      donationType === "Mensuel"
+                    className={`py-2 px-4 rounded-full ${donationType === "Mensuel"
                         ? "bg-yellow-300 text-red-700"
                         : "bg-white text-red-700 border border-yellow-300"
-                    }`}
+                      }`}
                     onClick={() => handleDonationTypeChange("Mensuel")}
                   >
                     Mensuel
@@ -274,11 +276,10 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-4 rounded-full ${
-                      donationType === "Ponctuel"
+                    className={`py-2 px-4 rounded-full ${donationType === "Ponctuel"
                         ? "bg-yellow-300 text-red-700"
                         : "bg-white text-red-700 border border-yellow-300"
-                    }`}
+                      }`}
                     onClick={() => handleDonationTypeChange("Ponctuel")}
                   >
                     Ponctuel
@@ -293,11 +294,10 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-4 px-4  rounded-2xl text-lg border-2 border-yellow-300 ${
-                      selectedAmount === amount
+                    className={`py-4 px-4  rounded-2xl text-lg border-2 border-yellow-300 ${selectedAmount === amount
                         ? "bg-yellow-300 text-red-700 font-bold"
                         : "bg-red-700 text-white font-bold"
-                    }`}
+                      }`}
                     onClick={() => handleAmountChange(amount)}
                   >
                     {amount}
@@ -316,8 +316,8 @@ export default function Donation() {
 
               <div className="flex flex-wrap gap-4 mt-4 justify-center">
                 {/* lwasa2iiil  */}
-              
-                
+
+
                 <motion.div
                   // variants={buttonVariants}
                   // whileHover="hover"
@@ -357,11 +357,10 @@ export default function Donation() {
                   variants={buttonVariants}
                   whileHover="hover"
                   whileTap="tap"
-                  className={`bg-white p-1 rounded-2xl border-2 border-black ${
-                    paymentMethod === "CMI"
+                  className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "CMI"
                       ? "bg-yellow-300 text-red-700"
                       : "bg-red-700 text-white"
-                  }`}
+                    }`}
                   onClick={() => handlePaymentMethodClick("CMI")}
                 >
                   <img
@@ -374,11 +373,10 @@ export default function Donation() {
                   variants={buttonVariants}
                   whileHover="hover"
                   whileTap="tap"
-                  className={`bg-white p-1 rounded-2xl border-2 border-black ${
-                    paymentMethod === "PayPal"
+                  className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "PayPal"
                       ? "bg-yellow-300 text-red-700"
                       : "bg-red-700 text-white"
-                  }`}
+                    }`}
                   onClick={() => handlePaymentMethodClick("PayPal")}
                 >
                   <img
@@ -412,15 +410,15 @@ export default function Donation() {
                   {selectedContent.title}
                 </h2>
                 <p className="text-gray-800">{selectedContent.description}</p>
-                <motion.ul 
+                <motion.ul
                   variants={staggerChildren}
                   initial="hidden"
                   animate="visible"
                   className="list-none ml-5 mb-4"
                 >
                   {selectedContent.items.map((item, index) => (
-                    <motion.li 
-                      key={index} 
+                    <motion.li
+                      key={index}
                       variants={fadeIn}
                       className="mb-2 flex items-start"
                     >
@@ -445,37 +443,36 @@ export default function Donation() {
                   className="mb-4 rounded-3xl h-48"
                 />
                 <div className="flex items-center mb-4 justify-end">
-  <span className="text-gray-800 text-xl font-bold mr-2">Type de don</span>
-  <motion.button 
-    variants={buttonVariants}
-    whileHover="hover"
-    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 border-2 border-black"
-  >
-    {donationDetails ? donationDetails.type : "Mensuel"}
-  </motion.button>
-</div>
-{donationDetails?.amount && (
-  <div className="flex items-center justify-end">
-    <img
-      src="/donation/gauche.png"
-      alt="Money"
-      className="w-16 h-8 mr-2 mb-2"
-    />
-    <span className="text-gray-800 text-xl font-bold mr-2">Montant</span>
-    <button className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 border-2 border-black">
-      {donationDetails.amount}
-    </button>
-  </div>
-)}
-</motion.div>
+                  <span className="text-gray-800 text-xl font-bold mr-2">Type de don</span>
+                  <motion.button
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 border-2 border-black"
+                  >
+                    {donationDetails ? donationDetails.type : "Mensuel"}
+                  </motion.button>
+                </div>
+                {donationDetails?.amount && (
+                  <div className="flex items-center justify-end">
+                    <img
+                      src="/donation/gauche.png"
+                      alt="Money"
+                      className="w-16 h-8 mr-2 mb-2"
+                    />
+                    <span className="text-gray-800 text-xl font-bold mr-2">Montant</span>
+                    <button className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 border-2 border-black">
+                      {donationDetails.amount}
+                    </button>
+                  </div>
+                )}
+              </motion.div>
             )}
 
             {/* Image Card */}
             <motion.div
               variants={cardVariants}
-              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${
-                showThirdCard ? "w-full md:w-1/3" : "w-full md:w-[50rem]"
-              }`}
+              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${showThirdCard ? "w-full md:w-1/3" : "w-full md:w-[50rem]"
+                }`}
             />
           </motion.div>
         </section>
