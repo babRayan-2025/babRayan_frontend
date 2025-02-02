@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image";
 
 // Animation variants
 const fadeIn = {
@@ -229,7 +230,7 @@ export default function Donation() {
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              changera la vie d'un enfant.
+              changera la vie d&apos;un enfant.
             </motion.span>
           </h1>
           <motion.img
@@ -314,7 +315,7 @@ export default function Donation() {
                 className="bg-white text-red-700 py-2 px-4 rounded-full w-full mt-4 border-2 border-yellow-300 focus:outline-none focus:border-red-700"
               />
 
-              <div className="flex flex-wrap gap-4 mt-4 justify-center">
+              <div className="grid grid-cols-3 gap-4 mt-4 justify-center">
                 {/* lwasa2iiil  */}
 
 
@@ -323,7 +324,7 @@ export default function Donation() {
                   // whileHover="hover"
                   //  whileTap="tap"
                   className='bg-white p-1 rounded-2xl border-2 border-black '>
-                  <img
+                  <Image
                     src="/donation/1.png"
                     alt="choie de paiement"
                     className="w-16 h-12  object-cover"
@@ -334,7 +335,7 @@ export default function Donation() {
                   // whileHover="hover"
                   //  whileTap="tap"
                   className='bg-white p-1 rounded-2xl border-2 border-black '>
-                  <img
+                  <Image
                     src="/donation/2.png"
                     alt="choie de paiement"
                     className="w-16 h-12  object-cover"
@@ -345,7 +346,7 @@ export default function Donation() {
                   // whileHover="hover"
                   //  whileTap="tap"
                   className='bg-white p-1 rounded-2xl border-2 border-black '>
-                  <img
+                  <Image
                     src="/donation/3.png"
                     alt="choie de paiement"
                     className="w-16 h-12  object-cover"
@@ -357,34 +358,53 @@ export default function Donation() {
                   variants={buttonVariants}
                   whileHover="hover"
                   whileTap="tap"
-                  className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "CMI"
-                      ? "bg-yellow-300 text-red-700"
-                      : "bg-red-700 text-white"
-                    }`}
-                  onClick={() => handlePaymentMethodClick("CMI")}
-                >
-                  <img
-                    src="/donation/6.png"
-                    alt="CMI"
-                    className="w-16 h-12 p-2 object-cover"
-                  />
-                </motion.button>
-                <motion.button
-                  variants={buttonVariants}
-                  whileHover="hover"
-                  whileTap="tap"
                   className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "PayPal"
                       ? "bg-yellow-300 text-red-700"
                       : "bg-red-700 text-white"
                     }`}
                   onClick={() => handlePaymentMethodClick("PayPal")}
                 >
-                  <img
+                  <Image
                     src="/donation/4.png"
                     alt="PayPal"
                     className="w-16 h-12 p-2 "
                   />
                 </motion.button>
+
+                <motion.button
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "applepay"
+                      ? "bg-yellow-300 text-red-700"
+                      : "bg-red-700 text-white"
+                    }`}
+                  onClick={() => handlePaymentMethodClick("applepay")}
+                >
+                  <Image
+                    src="/donation/5.png"
+                    alt="applepay"
+                    className="w-16 h-12 p-2 "
+                  />
+                </motion.button>
+                              
+                <motion.button
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className={`bg-white p-1 rounded-2xl border-2 border-black ${paymentMethod === "CMI"
+                      ? "bg-yellow-300 text-red-700"
+                      : "bg-red-700 text-white"
+                    }`}
+                  onClick={() => handlePaymentMethodClick("CMI")}
+                >
+                  <Image
+                    src="/donation/6.png"
+                    alt="CMI"
+                    className="w-16 h-12 p-2 object-cover"
+                  />
+                </motion.button>
+                
               </div>
 
               <motion.button
@@ -422,7 +442,7 @@ export default function Donation() {
                       variants={fadeIn}
                       className="mb-2 flex items-start"
                     >
-                      <img
+                      <Image
                         src="/donation/check.png"
                         alt="Check"
                         className="w-4 h-4 mr-2 mt-1"
@@ -454,7 +474,7 @@ export default function Donation() {
                 </div>
                 {donationDetails?.amount && (
                   <div className="flex items-center justify-end">
-                    <img
+                    <Image
                       src="/donation/gauche.png"
                       alt="Money"
                       className="w-16 h-8 mr-2 mb-2"
@@ -521,9 +541,9 @@ export default function Donation() {
                     whileHover={{ scale: 1.1 }}
                   />
                   {item.label && (
-                    <span className="text-yellow-300 text-3xl font-medium">{item.label}</span>
+                    <span className="text-yellow-300 md:text-3xl font-medium">{item.label}</span>
                   )}
-                  <span className="ml-2 text-3xl">{item.content}</span>
+                  <span className="ml-2 md:text-3xl">{item.content}</span>
                 </motion.li>
               ))}
             </ul>
