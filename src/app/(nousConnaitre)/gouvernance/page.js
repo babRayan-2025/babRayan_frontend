@@ -161,7 +161,7 @@ export default function Gouvernance() {
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="p-4 text-2xl md:text-4xl text-white font-bold text-center mb-8 relative">
             MEMBRES DU BUREAU
-            <div className="w-24 md:w-48 h-2 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </h1>
           <motion.div
             variants={container}

@@ -75,7 +75,7 @@ export default function Formation() {
         >
           <div className="p-6 max-w-xl sm:m-4 text-left absolute bottom-6 right-8">
             <h2 className="text-4xl font-bold mb-4">
-              CENTRE DE FORMATION ET INSERTION CFI
+              CENTRE DE FORMATION ET D'INSERTION CFI
             </h2>
             <p className="text-md leading-relaxed">
               Dans une société où l&apos;accès à l&apos;éducation et à la

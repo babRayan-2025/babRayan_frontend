@@ -83,43 +83,33 @@ export default function Education() {
             <div className="w-44 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </h1>
           <motion.div
-            className="max-w-7xl mx-auto flex flex-col items-center pt-8 md:flex-row md:items-start"
+            className="max-w-7xl mx-auto flex flex-col items-center md:flex-row "
             initial="hidden"
             whileInView="visible"
             variants={staggerContainer}
             viewport={{ once: true }}
           >
             <motion.div
-              className="flex-shrink-0 mb-6 md:mb-0 md:mr-8"
-              variants={fadeInUp}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="relative w-80 h-60 rounded-xl border-3 shadow-2xl border-r-gray-500 overflow-hidden">
-                <Image
+              className="flex-shrdink-0 mb-6 md:mb-0 md:mr-8"
+d            >
+              <div className="relative  rounded-xl border-3 shadow-2xl border-r-gray-500 overfldow-hidden">
+                <img
                   src="/CFI/2.JPG"
                   alt="Présidente"
                   layout="fill"
                   objectFit="cover"
+                  style={{ borderRadius: "1rem", width: "500px" }}
                 />
               </div>
             </motion.div>
 
             <motion.div className="flex-1" variants={fadeInUp}>
               <p className="text-black text-xl font-medium leading-relaxed mb-4">
-                L’école Palmier est un établissement privé à caractère social,
-                gratuit, agréé par le Ministère de l’Éducation nationale, du
-                Préscolaire et des Sports.
+              L’école Palmier est un établissement privé à caractère social, gratuit, agréé par le Ministère de l’Éducation nationale, du Préscolaire et des Sports.
+
               </p>
               <p className="text-black text-xl font-medium leading-relaxed mb-6">
-                Chaque année, de nombreux enfants orphelins, abandonnés, issus
-                de mères célibataires, de familles isolées ou vivant dans la rue
-                interrompent leur scolarité, confrontés à des difficultés
-                insurmontables. Les principales causes de l’échec scolaire chez
-                l’enfant s’expliquent par une négligence des diagnostics
-                précoces des différents troubles de l’apprentissage et de
-                l’attention, ainsi que par des retards dans le développement
-                psychologique et psychomoteur
+              Chaque année, de nombreux enfants orphelins, abandonnés, issus de mères célibataires, de familles isolées ou vivant dans la rue interrompent leur scolarité, confrontés à des difficultés insurmontables. Les principales causes de l’échec scolaire chez l’enfant s’expliquent par une négligence des diagnostics précoces des différents troubles de l’apprentissage et de l’attention, ainsi que par des retards dans le développement psychologique et psychomoteur.
               </p>
             </motion.div>
           </motion.div>

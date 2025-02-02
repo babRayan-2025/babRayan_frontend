@@ -15,7 +15,10 @@ export default function Footer() {
             </p>
             <hr className="border-t-0.5 border-white w-500 my-4" />
             <p>
-              <span className="text-gray-400">Tél:</span> +212 610 023 555
+              <span className="text-gray-400">Tél:</span> 
+              <a href="tel:+212 522 22 22 22">
+              +212 610 023 555
+              </a>
             </p>
             <hr className="border-t-0.5 border-white w-500 my-2" />
             <p>
@@ -41,9 +44,11 @@ export default function Footer() {
             ].map((item, index) => (
               <p
                 key={index}
-                className="text-gray-400 border-b border-transparent hover:text-white  hover:border-white transition-colors cursor-pointer"
+                className="text-gray-400 border-b border-transparent hover:text-white  transition-colors cursor-pointer"
               >
+                <span className="hover:border-white border-b border-transparent">
                 {item}
+                </span>
               </p>
               
             ))}
@@ -61,9 +66,11 @@ export default function Footer() {
             ].map((item, index) => (
               <p
                 key={index}
-                className="text-gray-400 border-b border-transparent hover:text-white hover:border-white transition-colors cursor-pointer"
+                className="text-gray-400 border-b border-transparent hover:text-white transition-colors cursor-pointer"
               >
+                <span className="hover:border-white border-b border-transparent">
                 {item}
+                </span>
               </p>
             ))}
           </div>
@@ -75,9 +82,11 @@ export default function Footer() {
               (item, index) => (
                 <p
                   key={index}
-                  className="text-gray-400 border-b border-transparent hover:text-white hover:border-white transition-colors cursor-pointer"
+                  className="text-gray-400 border-b border-transparent hover:text-white transition-colors cursor-pointer"
                 >
-                  {item}
+                  <span className="hover:border-white border-b border-transparent">
+                {item}
+                </span>
                 </p>
               )
             )}

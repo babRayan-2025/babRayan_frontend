@@ -334,7 +334,7 @@ export default function Home() {
                 <SwiperSlide key={index}>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="m-2 flex flex-col md:flex-row items-center bg-white border-r-4 border-b-4 border-red-300 shadow-md rounded-md duration-500 hover:shadow-xl overflow-hidden"
+                    className="m-2 flex flex-col md:flex-row items-center bg-white border- border-b-5 border-red-300 shadow-md rounded-md duration-500 hover:shadow-xl overflow-hidden"
                   >
                     <div className="p-4 gap-4 md:w-1/2">
                       <h1 className="text-xl sm:text-4xl font-bold mb-4 text-gray-900">
@@ -564,7 +564,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {articles.map((article, index) => (
               <motion.div key={index} className="bg-white rounded-lg shadow-lg">
-                <Image src={article.img} className="h-[45vh]" alt={article.title} width={500} height={300} />
+                <Image src={article.img} className="h-[45vh] object-cover" alt={article.title} width={500} height={300} />
                 <div className="p-6">
                   <p className="text-3xl font-bold text-center pb-4">{article.title}</p>
                   <p className="pb-6 text-center">{article.shortDesc}</p>
@@ -659,7 +659,8 @@ export default function Home() {
                   en situation de précarité une formation qualifiante dans les métiers
                   de l&apos;hôtellerie et de la restauration. Aujourd&apos;hui, plus de 120 jeunes
                   franchissent une étape clé vers l&apos;emploi, grâce au soutien de nos
-                  entreprises partenaires.
+                  entreprises partenaires. <br />
+                  Nous avons été honorés par la présence de Mr le Wali, le Gouverneur et Mme la Maire de Casablanca.
                 </p>
                 <motion.button
                   onClick={() => (window.location.href = "/blog")}

@@ -25,6 +25,13 @@ import {
 export default function About() {
   const [showMore, setShowMore] = useState(false);
 
+  const values = [
+    { icon: './about/solidariter.png', title: "SOLIDARITÉ" },
+    { icon: '../about/engagemennnt.png', title: "ENGAGEMENT" },
+    { icon: '../about/egalite.png', title: "ÉGALITÉ DES CHANCES" },
+    { icon: './about/responsabilité.png', title: "RESPONSABILITÉ SOCIALE ET DURABLE" },
+    { icon: './about/inovation.png', title: "INNOVATION ET ADAPTABILITÉ" },
+  ]
   return (
     <main>
       {/* first section: nous connaitre */}
@@ -54,7 +61,7 @@ export default function About() {
             <p className="text-md italic leading-relaxed">
               L’association Bab Rayan, reconnue d’utilité publique, œuvre depuis
               2014 à accompagner les enfants vulnérables vers un avenir
-              prometteur. À travers des programmes de protection, une éducation
+              prometteur. <br /> À travers des programmes de protection, une éducation
               de qualité, des formations adaptées et des opportunités
               d’insertion professionnelle, Bab Rayan aide ces jeunes à devenir
               des citoyens autonomes et engagés.
@@ -93,7 +100,7 @@ export default function About() {
               FATIMA ZAHRA HAMROUDI RATIBE
             </h3>
             <p className="text-center text-sm text-red-600">
-              Fondatrice PRÉSIDENTE de l’association BAB RAYAN
+              Fondatrice présidente de l’association BAB RAYAN
             </p>
           </motion.div>
 
@@ -108,16 +115,16 @@ export default function About() {
               Au cours de cette décennie, notre dévouement inébranlable envers
               la protection, l&apos;éducation, la formation, et l&apos;insertion
               professionnelle des enfants en difficulté a été la pierre
-              angulaire de notre action à Bab Rayan. <br/> Guidés par des valeurs
+              angulaire de notre action à Bab Rayan. <br /> Guidés par des valeurs
               nobles, notre boussole morale reste ferme, et nous sommes fiers de
               reconnaître Sa Majesté le Roi Mohammed VI comme une source
               inépuisable d&apos;inspiration et de motivation.
             </p>
             <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-6">
-            Les initiatives de Bab
+              Les initiatives de Bab
               Rayan ont évolué, démontrant notre engagement croissant envers la
               construction d&apos;un avenir prometteur pour les enfants que nous
-              servons. 
+              servons.
             </p>
             {showMore && (
               <motion.p
@@ -126,18 +133,18 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-              Nous avons tracé une trajectoire ascendante, passant d&apos;un
-              simple projet de protection à un modèle de vie holistique,
-              méticuleusement conçu pour façonner des citoyens marocains
-              productifs et fiers. En rendant hommage à nos partenaires publics
-              et privés, nous contemplons avec satisfaction les réussites
-              passées tout en tournant résolument notre regard vers l&apos;avenir.
-              Nous sommes convaincus que des miracles attendent ces enfants qui
-              méritent un avenir meilleur. En unissant nos forces, nous
-              continuerons d&apos;inscrire des chapitres positifs dans l&apos;histoire de
-              Bab Rayan. Ensemble, nous formons une communauté déterminée à
-              faire une différence durable. Merci à chacun de vous pour votre
-              engagement et votre soutien continu.
+                Nous avons tracé une trajectoire ascendante, passant d&apos;un
+                simple projet de protection à un modèle de vie holistique,
+                méticuleusement conçu pour façonner des citoyens marocains
+                productifs et fiers. En rendant hommage à nos partenaires publics
+                et privés, nous contemplons avec satisfaction les réussites
+                passées tout en tournant résolument notre regard vers l&apos;avenir.
+                Nous sommes convaincus que des miracles attendent ces enfants qui
+                méritent un avenir meilleur. En unissant nos forces, nous
+                continuerons d&apos;inscrire des chapitres positifs dans l&apos;histoire de
+                Bab Rayan. Ensemble, nous formons une communauté déterminée à
+                faire une différence durable. Merci à chacun de vous pour votre
+                engagement et votre soutien continu.
               </motion.p>
             )}
             <motion.button
@@ -181,7 +188,7 @@ export default function About() {
         />
         <Image
           src={soleil}
-          className="w-36 md:w-48 absolute top-[100%] md:top-[50%] left-[60%] md:left-[60%]"
+          className="w-36 md:w-48 absolute top-[100%] md:top-[40%] left-[60%] md:left-[60%]"
           alt="Les Ftours Bab Rayan"
         />
 
@@ -194,11 +201,11 @@ export default function About() {
           >
             {/* Vision Section */}
             <div className="mb-12">
-              <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
+              <p className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
                 NOTRE VISION
                 <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
-              </h1>
-              <p className="text-6xl font-bold text-gray-800 italic">
+              </p>
+              <p className="text-xl md:text-3xl font-bold text-gray-800 italic">
                 « Parce que chaque enfant mérite un bon départ dans la vie »
               </p>
             </div>
@@ -231,13 +238,13 @@ export default function About() {
 
                 {/* Right Side: Text */}
                 <motion.div
-                  className="text-left pt-16"
+                  className="text-left pt-16 md:my-auto"
                   initial={{ x: 50, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <p className="text-gray-800 text-2xl italic font-bold leading-relaxed">
+                  <p className="text-gray-800 text-xl md:text-2xl italic font-bold leading-relaxed">
                     Notre mission est de protéger, d’éduquer et de former les
                     enfants et jeunes en difficulté pour leur offrir un avenir
                     digne, autonome et enrichissant. Grâce à nos programmes
@@ -261,19 +268,13 @@ export default function About() {
       >
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
-            NOS VALEURS :
-            <div className="w-24 md:w-48 h-2 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            NOS VALEURS
+            <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2" ></div>
           </h1>
 
           {/* Values Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-            {[
-              { icon: FaHandsHelping, title: "SOLIDARITÉ" },
-              { icon: FaFistRaised, title: "ENGAGEMENT" },
-              { icon: FaBalanceScale, title: "ÉGALITÉ DES CHANCES" },
-              { icon: FaHeart, title: "RESPONSABILITÉ SOCIALE ET DURABLE" },
-              { icon: FaLightbulb, title: "INNOVATION ET ADAPTABILITÉ" },
-            ].map((value, index) => (
+            {values.map((value, index) => (
               <motion.div
                 key={index}
                 className="flex flex-col items-center space-y-4"
@@ -282,7 +283,8 @@ export default function About() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <value.icon className="text-yellow-300 text-6xl" />
+                <p className="text-yellow-300 text-6xl">
+                  <img src={value.icon} className="w-36 h-36" alt="" /> </p>
                 <p className="text-xl font-semibold text-center">
                   {value.title}
                 </p>
