@@ -114,8 +114,8 @@ export default function Press() {
             className="p-4 text-2xl md:text-4xl font-bold mb-8 relative"
             whileHover={{ scale: 1.02 }}
           >
-            Kit Medias et Press
-            <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            Kit Médias et Press
+            <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </motion.h1>
         </motion.div>
         <motion.div
@@ -144,7 +144,7 @@ export default function Press() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mr-2 mt-8"
             >
-              Kit media
+              Kit Médias
             </motion.span>
           </h2>
           <motion.h1
@@ -218,7 +218,7 @@ export default function Press() {
             whileHover={{ scale: 1.02 }}
           >
             <h2 className="text-5xl font-medium text-white mb-8 text-center flex items-center justify-center">
-              <span className="mr-2"></span> Presentations
+              <span className="mr-2"></span> Présentations
             </h2>
             <div className="space-y-3 grid md:grid-cols-2 gap-4 text-white text-2xl font-medium">
               <div className="flex items-center space-x-2">

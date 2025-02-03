@@ -65,8 +65,8 @@ export default function Actions() {
                 <div className="flex flex-col xl:flex-row itdems-center gap-8">
 
                     {/* Text Section */}
-                    <div className="w-full lg:w-1/2 text-white xl:ps-80">
-                        <div className="relative col-span-1 lg:col-span-2  h-full flex flex-col justify-center items-start">
+                    <div className="w-full xl:w-1/2 text-white md:ps-20">
+                        <div className="relative col-span-1 lg:col-span-2 h-full flex flex-col justify-center items-start">
                             {/* Image positioned in the top-right corner */}
                             <img
                                 src="./actions_solidaires/ramadan.png"
@@ -85,17 +85,18 @@ export default function Actions() {
                                 </p>
                                 <br />
                                 <p className="text-white mb-2">
-                                    Les familles en précarité bénéficiaires ne manquent jamais cette occasion, et nous non plus, car nous les considérons comme une part intégrante de notre engagement durant ce mois sacré.
+                                    Les familles bénéficiaires dans la précarité ne manquent jamais cette occasion, et nous non plus, car nous les considérons comme une part intégrante de notre engagement durant ce mois sacré.
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 w-full xl:w-2/3 xl:pe-80">
+                    <div className="grid grid-cols-2 gap-4 w-full xl:w-2/3 xl:pde-80">
                         {ftourPhotos.map((photo, index) => (
                             <div key={index} className="overflow-hidden  ">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
+                                    width={700}
                                 />
                             </div>
                         ))}
@@ -108,24 +109,25 @@ export default function Actions() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeIn}
-                className="bg-yellow-200 p-8"
+                className="p-8" style={{ backgroundColor: "#F8D24D" }}
             >
-                <div className="items-center gap-8 xl:px-80">
+                <div className="items-center gap-8 xl:px-20">
                     <div className="text-red-700 text-2xl md:text-4xl font-bold my-8">
                         Séisme <br /> D'Alhaouz
                     </div>
                     <p className="text-black text-xl">
-                        En plus des activités mentionnées, l'association intervient également en cas d'urgence nationale, telles que la pandémie de Covid-19 ou le séisme dans la région d'Al Haouz en septembre dernier.
-                        <br />La solidarité massive démontrée à travers le Maroc s'inspire de notre Souverain, Sa Majesté le Roi Mohammed VI
+                        En plus des activités mentionnées, l'association intervient également en cas d'urgence nationale, telles que la pandémie de Covid-19 ou le séisme dans la région d'Al Haouz en septembre 2023.
+                        <br />La solidarité massive démontrée à travers le Maroc s'inspire de notre Souverain, Sa Majesté le Roi Mohammed VI.
                     </p>
 
                     <div className="flex justify-center items-center gap-4 my-8">
                         {seismePhotos.map((photo, index) => (
-                            <div key={index} className="w-1/3 overflow-hidden rounded-lg shadow-md">
+                            <div key={index} className="w-2/3 overflow-hidden rounded-lg shadow-md">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    className="w-full h-full object-cover rounded-lg"
+                                    width={600}
+                                    className="object-cover rounded-lg"
                                 />
                             </div>
                         ))}
@@ -140,35 +142,33 @@ export default function Actions() {
                 variants={fadeIn}
                 className="bg-red-700 p-8"
             >
-                <div className="flex flex-col lg:flex-row items-center gap-8">
+                <div className="flex flex-col lg:flex-row items-center gap-8 xl:px-20 ">
                     {/* Image Section */}
-                    <div className="grid grid-cols-2 gap-4 w-full lg:w-1/2 lg:ps-80">
+                    <div className="grid grid-cols-2 gap-4 w-full xl:w-2/3">
                         {scolairePhotos.map((photo, index) => (
                             <div key={index} className="overflow-hidden  ">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    style={{ width: "300px" }}
-                                    className="w-full h-auto object-cover"
+                                    width={700}
                                 />
                             </div>
                         ))}
                     </div>
-
                     {/* Text Section */}
                     <div className="w-full lg:w-1/2 text-white">
                         <h1 className="text-yellow-300 text-4xl font-bold">
-                            Service <br /> Scolaires
+                            Services <br /> Scolaires
                         </h1>
                         <br />
                         <p className="text-white mb-2">
-                            Depuis la création de l'école palmier en 2018, l'association Bab Rayan fournit :
+                            Depuis la création de l'école Palmier en 2018, l'association Bab Rayan fournit :
 
                         </p>
                         <br />
                         <ul className="text-white mb-2 list-disc list-inside">
                             <li>
-                                Des cartables garnis de fournitures scolaires et manuels à tous les bénéficiaires de l'école, soit aux internes (enfants résident au foyer Bab Rayan) ou aux externes (enfants issus de familles en grande précarité).
+                                Des cartables garnis de fournitures scolaires et manuels à tous les bénéficiaires de l'école, soit aux internes (enfants résidant au foyer Bab Rayan) ou aux externes (enfants issus de familles dans la précarité).
                             </li>
                             <li>
                                 Un repas équilibré et une garde gratuite.
@@ -188,22 +188,23 @@ export default function Actions() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeIn}
-                className="bg-yellow-200 p-8"
+                className=" p-8" style={{ backgroundColor: "#F8D24D" }}
             >
-                <div className="items-center gap-8 xl:px-80">
+                <div className="items-center gap-8 xl:px-20">
                     <div className="text-red-700 text-2xl md:text-4xl font-bold my-8">
                         Actions <br /> Diverses
                     </div>
-                    <p> Le pôle Actions Solidaires propose divers services sociaux, incluant la circoncision, le soutien aux familles pendant l'Aid al-Adha, et inculquer à nos enfants du foyer Bab Rayan nos valeurs solidaires par le biais de partage de dons en nature, reçus de nos partenaires et donateurs, aux familles dans le besoin.
+                    <p> Le pôle Actions Solidaires propose divers services sociaux, incluant la circoncision, le soutien aux familles pendant l'Aid al-Adha.
+                        Chez Bab Rayan, nous inculquons à nos enfants les valeurs de solidarité par le biais de partage de dons en nature, reçus de nos partenaires et donateurs.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
                         {actionsPhotos.map((photo, index) => (
-                            <div key={index} className="overflow-hidden ">
+                            <div key={index} className="overflow-hidden rounded-lg">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    className="w-full h-auto object-cover shadow-lg"
+                                    className="w-full h-auto object-cover shadow-lg rounded-lg"
                                 />
                             </div>
                         ))}
