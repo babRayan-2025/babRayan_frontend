@@ -50,11 +50,6 @@ export default function Press() {
       "/press/album/AlbumFoyer/5.jpeg",
       "/press/album/AlbumFoyer/6.jpeg",
     ],
-    "Activités extrascolaires": [
-      "/press/album/1.jpg",
-      "/press/album/4.jpg",
-      "/press/album/2.jpg",
-    ],
     "CFI": [
       "/press/album/AlbumCFI/1.JPG",
       "/press/album/AlbumCFI/2.JPG",
@@ -64,6 +59,9 @@ export default function Press() {
       "/press/album/AlbumCFI/6.JPG",
       "/press/album/AlbumCFI/7.JPG",
       "/press/album/AlbumCFI/8.JPG",
+      "/press/album/1.jpg",
+      "/press/album/4.jpg",
+      "/press/album/2.jpg",
     ],
     "Ecole palmier": [
       "/press/album/AlbumécolePalmier/1.JPG",
@@ -74,11 +72,6 @@ export default function Press() {
       "/press/album/AlbumécolePalmier/6.jpeg"
     ],
     "Ftour bab rayan": [
-      "/press/album/1.jpg",
-      "/press/album/1.jpg",
-      "/press/album/1.jpg",
-    ],
-    "Action solidaire": [
       "/press/album/1.jpg",
       "/press/album/1.jpg",
       "/press/album/1.jpg",
@@ -121,8 +114,8 @@ export default function Press() {
             className="p-4 text-2xl md:text-4xl font-bold mb-8 relative"
             whileHover={{ scale: 1.02 }}
           >
-            Kit Medias et Press
-            <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            Kit Médias et Press
+            <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </motion.h1>
         </motion.div>
         <motion.div
@@ -151,7 +144,7 @@ export default function Press() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mr-2 mt-8"
             >
-              Kit media
+              Kit Médias
             </motion.span>
           </h2>
           <motion.h1
@@ -225,7 +218,7 @@ export default function Press() {
             whileHover={{ scale: 1.02 }}
           >
             <h2 className="text-5xl font-medium text-white mb-8 text-center flex items-center justify-center">
-              <span className="mr-2"></span> Presentations
+              <span className="mr-2"></span> Présentations
             </h2>
             <div className="space-y-3 grid md:grid-cols-2 gap-4 text-white text-2xl font-medium">
               <div className="flex items-center space-x-2">
@@ -298,15 +291,14 @@ export default function Press() {
             />
             <span className="mr-2 mt-8">Albums Photos</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4 gap-4 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2   gap-4 justify-center">
             {Object.keys(albums).map((album) => (
               <div key={album} onClick={() => { handleAlbumClick(album); setModal2Open(true) }}>
-                <Image
+                <img
                   src={`/press/${album}.png`}
                   alt={album}
-                  width={550}
-                  height={550}
-                  className="init-block -left-48 md:left-[550px] cursor-pointer hover:opacity-80 transition-opacity"
+                  style={{width: '100%', height: 'auto'}}
+                  className="init-block cursor-pointer hover:opacity-80 transition-opacity"
                 />
               </div>
             ))}

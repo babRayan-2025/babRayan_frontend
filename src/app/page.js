@@ -161,6 +161,14 @@ export default function Home() {
     },
   ];
 
+  const blogs= [
+    {
+      id : 1,
+      title: "Formation",
+      description: "Le Centre de Formation",
+      text:"de"
+    }
+  ]
   const videoUrl =
     "https://firebasestorage.googleapis.com/v0/b/bab-rayan-87f71.appspot.com/o/video.mp4?alt=media&token=6cc682dc-b7fa-4729-b2d3-ac2ad8d0df87";
 
