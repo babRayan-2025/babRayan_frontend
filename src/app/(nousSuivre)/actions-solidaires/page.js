@@ -28,8 +28,8 @@ export default function Actions() {
     const scolairePhotos = [
         { src: "./actions_solidaires/7.png", alt: "Scolaire" },
         { src: "./actions_solidaires/8.png", alt: "Scolaire" },
-        { src: "./actions_solidaires/8.png", alt: "Scolaire" },
-        { src: "./actions_solidaires/8.png", alt: "Scolaire" },
+        { src: "./actions_solidaires/555.png", alt: "Scolaire" },
+        { src: "./actions_solidaires/666.png", alt: "Scolaire" },
     ]
     const actionsPhotos = [
         { src: "./actions_solidaires/1.png", alt: "action" },
@@ -150,7 +150,7 @@ export default function Actions() {
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    width={700}
+                                    className="object-cover rounded-lg shadow-lg w-auto "
                                 />
                             </div>
                         ))}

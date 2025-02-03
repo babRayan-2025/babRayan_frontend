@@ -506,7 +506,7 @@ export default function Donation() {
               {[
                 {
                   icon: "/donation/call.png",
-                  label: "La Direction Générale :",
+                  label: "Direction Générale :",
                   content: "+212 610 02 35 55",
                 },
                 {
@@ -515,7 +515,7 @@ export default function Donation() {
                 },
                 {
                   icon: "/donation/local.png",
-                  content: "4 rue Bayt Lham, Quartier Palmier, Casablanca",
+                  content: "4 rue Bayt Lahm, Quartier Palmier, Casablanca",
                 },
               ].map((item, index) => (
                 <motion.li
