@@ -188,7 +188,7 @@ export default function Actions() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeIn}
-                className=" p-8" style={{ backgroundColor: "#F8D24D" }}
+                className=" p-8"
             >
                 <div className="items-center gap-8 xl:px-20">
                     <div className="text-red-700 text-2xl md:text-4xl font-bold my-8">

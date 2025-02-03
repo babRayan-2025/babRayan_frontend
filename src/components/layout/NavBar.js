@@ -128,7 +128,7 @@ export default function NavBar() {
 
           {/* Right side - Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link
+            {/* <Link
               href="/login"
               className="text-white text-sm hover:text-gray-200"
             >
@@ -139,7 +139,7 @@ export default function NavBar() {
               className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-gray-100 transition duration-150"
             >
               S`incrire
-            </Link>
+            </Link> */}
             <Link
               href="/donation"
               className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"
