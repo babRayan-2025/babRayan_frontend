@@ -176,7 +176,7 @@ export default function Press() {
             <div className="flex flex-wrap gap-4 justify-center">
               <div className="space-y-3 grid md:grid-cols-2 gap-4 text-white text-2xl font-medium">
                 <div className="flex items-center space-x-2">
-                  <a href="/downloads/logo_association_bab_rayan.png" download>
+                  <a href="/press/logo/cfi_logo.pdf" download>
                     <Image
                       src="/press/telecharger.png"
                       alt="download"
@@ -207,6 +207,17 @@ export default function Press() {
                     />
                   </a>
                   <span>Ftour Bab Rayan</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <a href="/downloads/logo_ftour_bab_rayan.png" download>
+                    <Image
+                      src="/press/telecharger.png"
+                      alt="download"
+                      width={60}
+                      height={40}
+                    />
+                  </a>
+                  <span>CFI</span>
                 </div>
               </div>
             </div>
@@ -297,7 +308,7 @@ export default function Press() {
                 <img
                   src={`/press/${album}.png`}
                   alt={album}
-                  style={{width: '100%', height: 'auto'}}
+                  style={{ width: '100%', height: 'auto' }}
                   className="init-block cursor-pointer hover:opacity-80 transition-opacity"
                 />
               </div>
@@ -359,41 +370,57 @@ export default function Press() {
             />
             <span className="mr-2 mt-8">Ils parlent de nous</span>
           </h2>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-auto d-flex justify-items-center gap-4 justify-center">
             <Image
               src="/press/1.png"
+              onClick={() => window.open("https://www.youtube.com/watch?v=qV57CTHvD90", "_blank")} style={{cursor: "pointer"}}
               alt="call"
               width={300}
               height={300}
-              className="object-cover"
+              className="object-cover rounded-lg"
             />
             <Image
               src="/press/2.png"
               alt="call"
               width={300}
               height={300}
-              className="object-cover"
+              className="object-cover rounded-lg"
             />
             <Image
               src="/press/3.png"
               alt="call"
               width={300}
               height={300}
-              className="object-cover"
+              className="object-cover rounded-lg"
             />
             <Image
               src="/press/4.png"
               alt="call"
               width={300}
               height={300}
-              className="object-cover"
+              className="object-cover rounded-lg"
             />
             <Image
               src="/press/5.png"
               alt="call"
               width={300}
               height={300}
-              className="object-cover"
+              className="object-cover rounded-lg"
+            />
+            <Image
+              src="/press/888.png"
+              onClick={() => window.open("https://www.youtube.com/watch?v=qV57CTHvD90", "_blank")} style={{cursor: "pointer"}}
+              alt="call"
+              width={300}
+              height={300}
+              className="object-cover rounded-lg"
+            />
+            <Image
+              src="/press/888.png"
+              alt="call"
+              width={300}
+              height={300}
+              className="object-cover rounded-lg"
             />
           </div>
         </motion.div>
