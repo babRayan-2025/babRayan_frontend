@@ -168,7 +168,7 @@ export default function About() {
         {/* Decorative Image */}
         <Image
           src={star}
-          className="w-20 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] left-[75%] md:left-[86%]"
+          className="w-20 md:w-60 absolute buttom-[-2%] md:buttom-[-2%] left-[80%] md:left-[80%] md:hidden lg:block"
           alt="Les Ftours Bab Rayan"
         />
         <Image
@@ -178,7 +178,7 @@ export default function About() {
         />
         <Image
           src={pen}
-          className="w-20 md:w-40 absolute top-[20%] md:top-[40%] left-[80%] md:left-[86%]"
+          className="w-20 md:w-40 absolute top-[20%] md:top-[40%] left-[80%] md:left-[86%] md:hidden lg:block"
           alt="Les Ftours Bab Rayan"
         />
         <Image
@@ -301,7 +301,7 @@ export default function About() {
 
         <Image
           src={lampe}
-          className="w-20 md:w-40 absolute top-[2%] md:top-[2%] left-[80%] md:left-[91%]"
+          className="w-20 md:w-40 absolute top-[2%] md:top-[2%] left-[80%] md:hidden lg:block  md:left-[80%]"
           alt="Les Ftours Bab Rayan"
         />
       </motion.div>

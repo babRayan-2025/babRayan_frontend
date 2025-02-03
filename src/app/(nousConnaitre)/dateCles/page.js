@@ -7,7 +7,7 @@ export default function Dates() {
         {/* Header Section */}
         <header className="relative mt-4 p-4 text-2xl md:text-4xl sm:text-3xl xs:text-2xl font-bold text-center mb-16 uppercase">
           <h1>Dates Clés</h1>
-          <div className="w-24 md:w-48 sm:w-32 xs:w-24 h-1 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+          <div className="w-24 md:w-48 sm:w-32 xs:w-24 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
         </header>
 
         <section className="relative grid justify-items-center mb-20 md:mb-40 sm:mb-20 xs:mb-10">
@@ -22,7 +22,7 @@ export default function Dates() {
             </div>
             <div className="relative grid place-items-start mt-4 md:mt-4 sm:mt-2 xs:mt-0 ml-[23rem] md:ml-[23rem] sm:ml-[19rem] xs:ml-[12rem]">
               <ul
-                className="list-disc list-inside text-pretty text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-pretty text-sm md:text-lg sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li className="pl-[1rem]">
@@ -37,7 +37,7 @@ export default function Dates() {
                 <li className="pl-[1rem]">Lancement du Ftour Bab Rayan</li>
               </ul>
             </div>
-            <div className="absolute top-[8rem] md:top-[8rem] sm:top-[5rem] xs:top-[4rem] left-1/2 transform -translate-x-1/2">
+            <div className="absolute top-[8rem] md:top-[7rem] sm:top-[5rem] xs:top-[4rem] left-1/2 transform -translate-x-1/2">
               <img
                 src="/dateCles/site bab rayan dates clés-09.png"
                 alt="fleche"
@@ -55,9 +55,9 @@ export default function Dates() {
                 className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
-            <div className="relative grid place-items-start mt-4 -ml-[18rem] md:-ml-[18rem] sm:-ml-[14rem] xs:-ml-[11rem]">
+            <div className="relative grid place-items-start mt-4 ml-[18rem] md:-ml-[18rem] sm:-ml-[14rem] xs:-ml-[11rem]">
               <ul
-                className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-sm md:text-lg  sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -85,7 +85,7 @@ export default function Dates() {
             </div>
             <div className="relative grid place-items-start mt-4 ml-[23rem] md:ml-[23rem] sm:ml-[16rem] xs:ml-[12rem]">
               <ul
-                className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-left text-sm md:text-lg  sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -94,7 +94,7 @@ export default function Dates() {
                 </li>
               </ul>
             </div>
-            <div className="absolute top-[53rem] md:top-[53rem] sm:top-[38.5rem] xs:top-[29rem] left-1/2 transform -translate-x-1/2">
+            <div className="absolute mt-3 top-[53rem] md:top-[53rem] sm:top-[38.5rem] xs:top-[29rem] left-1/2 transform -translate-x-1/2">
               <img
                 src="/dateCles/site bab rayan dates clés-09.png"
                 alt="fleche"
@@ -114,7 +114,7 @@ export default function Dates() {
             </div>
             <div className="relative grid place-items-start mt-4 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[11rem]">
               <ul
-                className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-sm md:text-lg  sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -122,7 +122,7 @@ export default function Dates() {
                 </li>
               </ul>
             </div>
-            <div className="absolute top-[74rem] md:top-[74rem] sm:top-[54rem] xs:top-[41.3rem] left-1/2 transform -translate-x-1/2">
+            <div className="absolute mt-4 top-[74rem] md:top-[74rem] sm:top-[54rem] xs:top-[39rem] left-1/2 transform -translate-x-1/2">
               <img
                 src="/dateCles/yellowArrow.png"
                 alt="element"
@@ -142,7 +142,7 @@ export default function Dates() {
             </div>
             <div className="relative grid place-items-start mt-4 ml-[17rem] md:ml-[17rem] sm:ml-[12rem] xs:ml-[9rem]">
               <ul
-                className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-left text-sm md:text-lg  sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -150,7 +150,7 @@ export default function Dates() {
                 </li>
               </ul>
             </div>
-            <div className="absolute top-[96rem] md:top-[96rem] sm:top-[70rem] xs:top-[54rem] left-1/2 transform -translate-x-1/2">
+            <div className="absolute mt-5  top-[96rem] md:top-[96rem] sm:top-[70rem] xs:top-[51rem] left-1/2 transform -translate-x-1/2">
               <img
                 src="/dateCles/site bab rayan dates clés-09.png"
                 alt="fleche"
@@ -168,9 +168,9 @@ export default function Dates() {
                 className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
-            <div className="relative grid place-items-start mt-4 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[12rem]">
+            <div className="relative grid place-items-start mt-4 md:mr-8 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[12rem]">
               <ul
-                className="list-disc list-inside text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-sm md:text-lg  sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -180,7 +180,7 @@ export default function Dates() {
                 </li>
               </ul>
             </div>
-            <div className="absolute top-[118rem] md:top-[118rem] sm:top-[87rem] xs:top-[66rem] left-1/2 transform -translate-x-1/2">
+            <div className="absolute mt-8 top-[118rem] md:top-[118rem] sm:top-[87rem] xs:top-[63rem] left-1/2 transform -translate-x-1/2">
               <img
                 src="/dateCles/yellowArrow.png"
                 alt="element"
@@ -198,9 +198,9 @@ export default function Dates() {
                 className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
-            <div className="relative grid place-items-start mt-4 ml-[20rem] md:ml-[20rem] sm:ml-[18rem] xs:ml-[12rem]">
+            <div className="relative grid place-items-start mt-4 ml-[20rem] md:ml-[25rem] sm:ml-[18rem] xs:ml-[12rem]">
               <ul
-                className="list-disc list-inside text-left text-sm md:text-sm sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-left text-sm md:text-lg  sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -211,7 +211,7 @@ export default function Dates() {
                 </li>
               </ul>
             </div>
-            <div className="absolute top-[141rem] md:top-[141rem] sm:top-[104rem] xs:top-[78rem] left-1/2 transform -translate-x-1/2">
+            <div className="absolute mt-12 top-[141rem] md:top-[141rem] sm:top-[104rem] xs:top-[74rem] left-1/2 transform -translate-x-1/2">
               <img
                 src="/dateCles/site bab rayan dates clés-09.png"
                 alt="fleche"
