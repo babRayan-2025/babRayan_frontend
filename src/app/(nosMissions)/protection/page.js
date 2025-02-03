@@ -152,7 +152,7 @@ export default function Foyer() {
                     DES ACTIVITÉS QUI FONT GRANDIR
                     <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
                 </h1>
-                <div className="flex items-center justify-center w-full gap-8 p-8 rounded-lg">
+                <div className="flex items-center justify-center w-full gap-8 p-8 rounded-lg -ml-10">
                     <Image
                         src={Activity4} className="w-1/3 shadow_style_css rounded-lg" style={{ width: "350px", height: "300px", objectFit: "cover" }} />
                     <div className="w-1/3 text-gray-800">
@@ -172,7 +172,7 @@ export default function Foyer() {
                     </div>
                 </div>
 
-                <div className="flex justify-center gap-6 flex-wrap mt-8 w-full px-8">
+                <div className="flex justify-center gap-6 flex-wrap mt-8 w-full px-8 ml-7">
                     {activities.map((activity, index) => (
                         <div key={index} className="bg-white rounded-lg shadow_style_css overflow-hidden" style={{ width: "300px", height: "200px" }} >
                             <Image src={activity.image} className="w-full h-full object-cover" />
