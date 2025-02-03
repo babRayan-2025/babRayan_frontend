@@ -122,27 +122,27 @@ export default function DevenirPartenaire() {
         >
           <h3 className="text-xl md:text-4xl font-bold mb-6 uppercase">Formes de partenariat</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white border border-red-500 p-4 rounded-3xl">
-          {[
-  {
-    title: "Don financier",
-    description:
-      "Il s'agit d'un don qui peut être affecté à un projet en particulier. Les projets sont nombreux, nous pouvons nous adapter en fonction de vos attentes.",
-  },
-  {
-    title: "Don en nature",
-    description:
-      "Il s'agit d'un don de marchandises : produits alimentaires, vêtements, produits d’hygiène ou d’entretien, jouets, matériel sportif, mobiliers, etc.",
-  },
-  {
-    title: "Partenariat de compétences",
-    description:
-      "Votre entreprise peut mettre à disposition son savoir-faire et ses compétences au service de notre association. Elle peut également offrir à nos jeunes l’opportunité d’un stage, d’un contrat d’apprentissage.",
-  },
-  {
-    title: "Parrainer un enfant",
-    description: "Votre entreprise peut choisir de parrainer un ou plusieurs enfants.",
-  },
-].map((form, index) => (
+            {[
+              {
+                title: "Don financier",
+                description:
+                  "Il s'agit d'un don qui peut être affecté à un projet en particulier. Les projets sont nombreux, nous pouvons nous adapter en fonction de vos attentes.",
+              },
+              {
+                title: "Don en nature",
+                description:
+                  "Il s'agit d'un don de marchandises : produits alimentaires, vêtements, produits d’hygiène ou d’entretien, jouets, matériel sportif, mobiliers, etc.",
+              },
+              {
+                title: "Partenariat de compétences",
+                description:
+                  "Votre entreprise peut mettre à disposition son savoir-faire et ses compétences au service de notre association. Elle peut également offrir à nos jeunes l’opportunité d’un stage, d’un contrat d’apprentissage.",
+              },
+              {
+                title: "Parrainer un enfant",
+                description: "Votre entreprise peut choisir de parrainer un ou plusieurs enfants.",
+              },
+            ].map((form, index) => (
               <motion.article
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -162,95 +162,80 @@ export default function DevenirPartenaire() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="mt-10 md:mx-96 pt-6"
+          className="mt-10 d-flex justify-items-center justify-center pt-6"
         >
           <h2 className="text-lg font-bold text-center text-gray-800 mb-8 relative">
-          CONTACT
-          <div className="w-10 md:w-24 h-1 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 bg-white border border-red-500 p-4 rounded-3xl">
-          {/* <Image
-            src="/benevole/contact.png"
-            alt="call"
-            width={50}
-            height={50}
-            className="object-cover absolute mt-16"
-          />
-          <Image
-            src="/benevole/mail.png"
-            alt="mail"
-            width={70}
-            height={70}
-            className="object-cover absolute left-[440px] bottom-[100px]"
-          /> */}
-          <div className="md:ml-24">
-            <h4 className="font-semibold text-xl mb-3">Coordinateur général</h4>
-            <div className="text-red-600 text-xl">
-              <p>Téléphone : +212 6 100 22 000</p>
-              <br/>
-              <p>Email : coordi.general@babrayan.ma</p>
+            CONTACT
+            <div className="w-10 md:w-24 h-1 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+          </h2>
+          <div className="bg-white border border-red-500 rounded-3xl p-12">
+            <div className="grid grid-rows-2 xl:grid-rows-1 xl:grid-cols-2 gap-6">
+              <div className="xl:ml-12">
+                <h4 className="font-semibold text-xl mb-3">Coordinateur général</h4>
+                <div className="text-red-600 text-xl">
+                  <p>Téléphone : +212 6 100 22 000</p>
+                  <p>Email : coordi.general@babrayan.ma</p>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-semibold text-xl mb-3">Responsable Communication & Partenariats</h4>
+                <div className="text-red-600 text-xl">
+                  <p>Téléphone : +212 6 181 81 806</p>
+                  <p>Email : communication@babrayan.ma</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <h4 className="font-semibold text-xl mb-3">
-              Responsable Communication & Partenariats
-            </h4>
-            <div className="text-red-600 text-xl">
-              <p>Téléphone : +212 6 181 81 806</p>
-              <br/>
-              <p>Email : communication@babrayan.ma</p>
-            </div>
-          </div>
-        </div>
+
         </motion.section>
-             {/* Sponsors Section */}
-      <section className="mt-16">
-        <div className="relative">
-          <button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full"
-          >
-            &#8592;
-          </button>
-          <div className="overflow-hidden w-full">
-            <motion.div
-              className="flex"
-              initial={{ x: 0 }}
-              animate={{ x: `-${(currentIndex * 100) / visibleItems}%` }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+        {/* Sponsors Section */}
+        <section className="mt-16">
+          <div className="relative">
+            <button
+              onClick={handlePrev}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full"
             >
-              {sponsors.map((sponsor, index) => (
-                <motion.div
-                  key={index}
-                  className="flex-shrink-0 w-1/5 px-2"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <Image
-                    src={sponsor.src}
-                    alt={sponsor.alt}
-                    width={200}
-                    height={100}
-                    className="mx-auto"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
+              &#8592;
+            </button>
+            <div className="overflow-hidden w-full">
+              <motion.div
+                className="flex"
+                initial={{ x: 0 }}
+                animate={{ x: `-${(currentIndex * 100) / visibleItems}%` }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                {sponsors.map((sponsor, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex-shrink-0 w-1/5 px-2"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Image
+                      src={sponsor.src}
+                      alt={sponsor.alt}
+                      width={200}
+                      height={100}
+                      className="mx-auto"
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+            <button
+              onClick={handleNext}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full"
+            >
+              &#8594;
+            </button>
           </div>
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full"
-          >
-            &#8594;
-          </button>
-        </div>
-      </section>
+        </section>
       </motion.div>
       {/* Form section */}
       <motion.div
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-       className="bg-red-700 p-8">
+        className="bg-red-700 p-8">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-white text-4xl font-bold mb-2">
             Je veux devenir
@@ -334,5 +319,5 @@ export default function DevenirPartenaire() {
     </main>
   );
 }
-      {/* </motion.div>
+{/* </motion.div>
     </main> */}

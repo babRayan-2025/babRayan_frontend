@@ -63,7 +63,7 @@ export default function Actions() {
                 className="bg-red-700 p-8"
             >
                 <div className="flex flex-col xl:flex-row itdems-center gap-8">
-                   
+
                     {/* Text Section */}
                     <div className="w-full lg:w-1/2 text-white xl:ps-80">
                         <div className="relative col-span-1 lg:col-span-2  h-full flex flex-col justify-center items-start">
@@ -166,12 +166,20 @@ export default function Actions() {
 
                         </p>
                         <br />
-                        <p className="text-white mb-2">
-                            &nbsp; &nbsp; Des cartables garnis de fournitures scolaires et manuels à tous les bénéficiaires de l'école, soit aux (internes enfants résident au foyer Bab Rayan) ou aux externes (enfants issus de familles en grande précarité).
-                            <br />Un repas équilibré et une garde gratuite. <br />
-                            Soutien scolaire gratuit. <br />
-                            Activités et excursions ludiques gratuites.
-                        </p>
+                        <ul className="text-white mb-2 list-disc list-inside">
+                            <li>
+                                Des cartables garnis de fournitures scolaires et manuels à tous les bénéficiaires de l'école, soit aux internes (enfants résident au foyer Bab Rayan) ou aux externes (enfants issus de familles en grande précarité).
+                            </li>
+                            <li>
+                                Un repas équilibré et une garde gratuite.
+                            </li>
+                            <li>
+                                Soutien scolaire gratuit.
+                            </li>
+                            <li>
+                                Activités et excursions ludiques gratuites.
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </motion.div>
@@ -186,7 +194,7 @@ export default function Actions() {
                     <div className="text-red-700 text-2xl md:text-4xl font-bold my-8">
                         Actions <br /> Diverses
                     </div>
-                    <p> Le pôle Actions Solidaires propose divers services sociaux, incluant la circoncision, le soutien aux familles pendant l'Aid al-Adha, et inculquer à nos entants du foyer Bab Rayan nos valeurs solidaires par le biais de partage de dons en nature, reçus de nos partenaires et donateurs, aux familles en besoins.
+                    <p> Le pôle Actions Solidaires propose divers services sociaux, incluant la circoncision, le soutien aux familles pendant l'Aid al-Adha, et inculquer à nos enfants du foyer Bab Rayan nos valeurs solidaires par le biais de partage de dons en nature, reçus de nos partenaires et donateurs, aux familles dans le besoin.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">

@@ -10,27 +10,27 @@ export default function Formation() {
   const items = [
     {
       src: '/CFI/11.JPG',
-      text: 'DES FORMATIONS DANS DES SECTEURS PORTEURS',
+      text: `DES FORMATIONS DANS DES <br/> SECTEURS PORTEURS`,
     },
     {
       src: '/CFI/DSC_9647.JPG',
-      text: 'STAGE ET INSERTION PROFESSIONNELLE',
+      text: 'STAGE ET INSERTION <br/> PROFESSIONNELLE',
     },
     {
       src: '/CFI/DSC06880.jpg',
-      text: 'ENCOURAGER L’ENTREPRENEURIAT',
+      text: 'ENCOURAGER <br/> L’ENTREPRENEURIAT',
     },
     {
       src: '/CFI/111.jpeg',
-      text: 'FAVORISER L’INSERTION SOCIALE ET ÉCONOMIQUE',
+      text: 'FAVORISER L’INSERTION <br/> SOCIALE ET ÉCONOMIQUE',
     },
     {
       src: '/CFI/222.jpeg',
-      text: 'COURS DE LANGUE : ANGLAIS ET FRANÇAIS',
+      text: 'COURS DE LANGUE : <br/> ANGLAIS ET FRANÇAIS',
     },
     {
       src: '/CFI/DSC06862.jpg',
-      text: 'ATELIERS DE SOFT SKILLS ET BUREAUTIQUE',
+      text: 'ATELIERS DE SOFT SKILLS <br/> ET BUREAUTIQUE',
     },
   ];
 
@@ -212,38 +212,38 @@ export default function Formation() {
                 src: "/CFI/3.jpeg",
                 title: "PARTENARIATS STRATÉGIQUES POUR L’EMPLOI",
                 description:
-                  "L’association collabore avec des entreprises locales et internationales de renom, telles que Newrest et Hyatt Regency, pour garantir des opportunités de formation et d’embauche de qualité.",
+                  "L’association collabore avec des entreprises locales et internationales de renom, telles que Newrest et Hyatt Regency, pour garantir des opportunités de formation et d’embauche de qualité. Bab Rayan s’attache à développer en continu un réseau diversifié de partenaires, renforçant ainsi les chances d’insertion professionnelle des lauréats.",
               },
               {
                 src: "/CFI/7.jpg",
                 title: "ACCOMPAGNEMENT VERS UNE INTÉGRATION DURABLE",
                 description:
-                  "Le CFI assure un suivi personnalisé avec les formateurs et les responsables des entreprises partenaires pour garantir l’intégration réussie des lauréats.",
+                  "Le CFI assure un suivi personnalisé avec les formateurs et les responsables des entreprises partenaires pour garantir l’intégration réussie des lauréats. Ce suivi post-insertion s’étend sur une durée minimale de six mois après leur entrée dans leur nouvel environnement professionnel.",
               },
             ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]"
-                variants={fadeInUp}
-              >
-                <motion.div className="flex-shrink-0 w-full shadow-2xl md:w-[30%]">
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    width={400}
-                    height={400}
-                    className="rounded-xl w-full h-auto md:h-[250px] object-cover"
-                  />
-                </motion.div>
-                <motion.div className="text-center md:text-left">
-                  <h1 className="text-xl md:text-2xl font-bold text-red-700 mb-2">
-                    {item.title}
-                  </h1>
-                  <p className="text-gray-700 mb-4 text-sm font-semibold md:text-base">
-                    {item.description}
-                  </p>
-                </motion.div>
+            <motion.div
+              key={index}
+              className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]"
+              variants={fadeInUp}
+            >
+              <motion.div className="flex-shrink-0 w-full shadow-2xl md:w-[30%]">
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  width={400}
+                  height={400}
+                  className="rounded-xl w-full h-auto md:h-[250px] object-cover"
+                />
               </motion.div>
+              <motion.div className="text-center md:text-left">
+                <h1 className="text-xl md:text-2xl font-bold text-red-700 mb-2">
+                  {item.title}
+                </h1>
+                <p className="text-gray-700 mb-4 text-sm font-semibold md:text-base">
+                  {item.description}
+                </p>
+              </motion.div>
+            </motion.div>
             ))}
           </motion.div>
         </div>
@@ -265,17 +265,23 @@ export default function Formation() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
             {[
-              {                 picto: "/CFI/120.png",
-                numb:"120",
-                title: "Jeunes en formation" },
               {
-                picto: "/CFI/site bab rayan CFI-06.png",
-                numb:"+350",
-                title: "Notre capacité pourra atteindre bénéficiaires",
+                id: 1,
+                picto: "/CFI/120.png",
+                numb: "120",
+                title: "Jeunes en formation"
               },
-              { picto: "/CFI/site bab rayan CFI-07.png", numb:"7",title: "encadrants" },
-              { picto: "/CFI/site bab rayan CFI-08.png", numb:"100%", title: "Taux de recrutement" },
-              { picto: "/CFI/site bab rayan CFI-09.png", numb:"290", title: "bénévoles" },
+              {
+                id: 2,
+                picto: "/CFI/site bab rayan CFI-06.png",
+                numb: "+350",
+                title: "Notre capacité",
+                title2: "pourra atteindre",
+                title3: "bénéficiaires"
+              },
+              { id: 3, picto: "/CFI/site bab rayan CFI-07.png", numb: "7", title: "encadrants" },
+              { id: 4, picto: "/CFI/site bab rayan CFI-08.png", numb: "100%", title: "Taux de recrutement" },
+              { id: 5, picto: "/CFI/site bab rayan CFI-09.png", numb: "290", title: "bénévoles" },
             ].map((value, index) => (
               <motion.div
                 key={index}
@@ -291,9 +297,17 @@ export default function Formation() {
                 />
 
                 <p className="text-5xl font-extrabold text-center">
-                {value.numb}
+                  {value.id == 2 ? null : value.numb}
                 </p>
-                <p className="text-base font-medium">{value.title}</p>
+                <p className="text-base font-medium">
+                  {value.title}
+                  {value.id == 2 ? <> <br /> {value.title2} <br />
+                    <span className="text-5xl font-extrabold text-center">
+                      {value.numb}
+                    </span>
+                    <br />{value.title3}
+                  </> : null}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -331,7 +345,7 @@ export default function Formation() {
           bénéficiaire.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto place-items-center">
-        {items.map((item, index) => (
+          {items.map((item, index) => (
             <motion.div
               key={index}
               className="relative overflow-hidden rounded-lg shadow-lg"
@@ -345,7 +359,7 @@ export default function Formation() {
                 className="md:w-[44] h-80 object-cover"
               />
               <div className="absolute bottom-0 bg-red-700 text-white text-center py-3 w-full">
-                <p className="text-sm font-semibold">{item.text}</p>
+                <p className="text-sm font-semibold" dangerouslySetInnerHTML={{ __html: item.text }} />
               </div>
             </motion.div>
           ))}
