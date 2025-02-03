@@ -57,65 +57,65 @@ export default function Donation() {
       description: "Apportez un soutien vital à un enfant :",
       items: [
         {
-          label: "Alimentation saine",
-          description: "pour lui permettre de bien grandir.",
+          label: "Alimentation saine:",
+          description: "Pour lui permettre de bien grandir.",
         },
         {
-          label: "Soins médicaux",
-          description: "pour garantir sa bonne santé.",
+          label: "Soins médicaux:",
+          description: "Pour garantir sa bonne santé.",
         },
         {
-          label: "Hygiène adaptée",
-          description: "pour préserver sa dignité.",
+          label: "Hygiène adaptée:",
+          description: "Pour préserver sa dignité.",
         },
       ],
-      image: "/donation/Parrainage1.png",
+      image: "/donation/plat.png",
     },
     "800 DH": {
       title: 'Parrainage "Education"',
       description: "Investissez dans l'avenir d'un enfant :",
       items: [
         {
-          label: "Assurez sa scolarité",
-          description: "pour lui ouvrir les portes du savoir.",
+          label: "Assurez sa scolarité:",
+          description: "Pour lui ouvrir les portes du savoir.",
         },
         {
-          label: "Proposez des activités extrascolaires",
-          description: "pour enrichir son quotidien.",
+          label: "Proposez des activités extrascolaires:",
+          description: "Pour enrichir son quotidien.",
         },
         {
-          label: "Offrez des sorties sportives et culturelles",
-          description: "pour nourrir son esprit et son corps.",
+          label: "Offrez des sorties sportives et culturelles:",
+          description: "Pour nourrir son esprit et son corps.",
         },
       ],
-      image: "/donation/Parrainage1.png",
+      image: "/donation/edu.png",
     },
     "1900 DH": {
       title: 'Parrainage "Envol"',
       description: "Transformez un mois entier dans la vie d'un enfant :",
       items: [
         {
-          label: "Hébergement :",
+          label: "Hébergement:",
           description: "Offrez un toit sûr et chaleureux.",
         },
         {
-          label: "Alimentation équilibrée :",
-          description: "pour nourrir son corps et sa santé.",
+          label: "Alimentation équilibrée:",
+          description: "Pour nourrir son corps et sa santé.",
         },
         {
-          label: "Soins médicaux et hygiène",
-          description: "pour veiller à son bien-être.",
+          label: "Soins médicaux et hygiène:",
+          description: "Pour veiller à son bien-être.",
         },
         {
-          label: "Scolarité",
-          description: "ouvrez-lui les portes du savoir.",
+          label: "Scolarité:",
+          description: "Ouvrez-lui les portes du savoir.",
         },
         {
-          label: "Loisirs épanouissants",
-          description: "pour enrichir son quotidien.",
+          label: "Loisirs épanouissants:",
+          description: "Pour enrichir son quotidien.",
         },
       ],
-      image: "/donation/Parrainage1.png",
+      image: "/donation/edd.png",
     },
   };
 
@@ -186,7 +186,7 @@ export default function Donation() {
         description: "pour répondre à des besoins spécifiques.",
       },
     ],
-    image: "/donation/Parrainage1.png",
+    image: "/donation/plat.png",
   };
 
   const paymentMethods = [
@@ -288,7 +288,7 @@ export default function Donation() {
             {/* Amount Card */}
             <motion.div
               variants={cardVariants}
-              className={`bg-red-700 p-8 rounded-3xl shadow-lg border-2 border-black ${
+              className={`bg-[#cc2229] p-8 rounded-3xl shadow-md border border-gray-500 ${
                 showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
               }`}
             >
@@ -297,7 +297,7 @@ export default function Donation() {
               </h2>
 
               <div className="mb-4 flex justify-center">
-                <div className="flex gap-4">
+                <div className="flex gap-4 mr-3">
                   <motion.button
                     variants={buttonVariants}
                     whileHover="hover"
@@ -367,7 +367,7 @@ export default function Donation() {
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
-                      className={`bg-white p-2  rounded-2xl justify-items-center shadow-md ${
+                      className={`bg-white p-4  rounded-2xl justify-items-center shadow-md ${
                         paymentMethod === method.id
                           ? "bg-yellow-300 text-red-700 font-bold"
                           : "bg-red-700 text-white font-bold"
@@ -377,7 +377,7 @@ export default function Donation() {
                       <img
                         src={method.image}
                         alt={method.label}
-                        className={`w-14 h-10  ${
+                        className={`w-14 h-11  ${
                           method.id == 4 || method.id == 5 || method.id == 6
                             ? ""
                             : "object-cover"
@@ -395,7 +395,7 @@ export default function Donation() {
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="block mx-auto bg-yellow-300 text-black py-2 px-4 rounded-full mt-8 shadow-xl border-2 border-yellow-400"
+                className="block mx-auto bg-yellow-300 text-red-700 font-semibold py-3 px-10 rounded-full mt-8 shadow-2xl border-2 border-yellow-400"
                 onClick={handleProceedToDonation}
               >
                 Procéder au don
@@ -408,7 +408,7 @@ export default function Donation() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-yellow-300 p-8 rounded-3xl shadow-lg w-full lg:w-1/3 border-2 border-red-700"
+                className="bg-[#fdc000] p-4  rounded-3xl shadow-lg w-full lg:w-1/4 shadow-md border border-red-700"
               >
                 <h2 className="text-3xl text-red-700 font-extrabold mb-4 text-center">
                   {selectedContent.title}
@@ -427,12 +427,12 @@ export default function Donation() {
                       className="mb-2 flex items-start"
                     >
                       <img
-                        src="/donation/check.png"
+                        src="/donation/check .svg"
                         alt="Check"
-                        className="w-4 h-4 mr-2 mt-1"
+                        className="w-8 h-8 mr-0 mt-0"
                       />
-                      <span>
-                        <span className="text-red-700 font-bold">
+                      <span className="mt-0.5">
+                        <span className="text-red-700 font-bold ">
                           {item.label}
                         </span>{" "}
                         <br /> {item.description}
@@ -444,7 +444,7 @@ export default function Donation() {
                   variants={fadeIn}
                   src={selectedContent.image}
                   alt={selectedContent.title}
-                  className="mb-4 rounded-3xl h-48"
+                  className="mb-4 rounded-3xl h-48 w-full"
                 />
                 <div className="flex items-center mb-4 justify-end">
                   <span className="text-gray-800 text-xl font-bold mr-2">
@@ -453,7 +453,7 @@ export default function Donation() {
                   <motion.button
                     variants={buttonVariants}
                     whileHover="hover"
-                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 border-2 border-black"
+                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 "
                   >
                     {donationDetails ? donationDetails.type : "Mensuel"}
                   </motion.button>
@@ -468,7 +468,7 @@ export default function Donation() {
                     <span className="text-gray-800 text-xl font-bold mr-2">
                       Montant
                     </span>
-                    <button className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 border-2 border-black">
+                    <button className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 ">
                       {donationDetails.amount}
                     </button>
                   </div>
@@ -479,7 +479,7 @@ export default function Donation() {
             {/* Image Card */}
             <motion.div
               variants={cardVariants}
-              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${
+              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center shadow-md border border-gray-500 min-h-[30rem] ${
                 showThirdCard ? "w-full lg:w-1/3" : "w-full lg:w-[50rem]"
               }`}
             />
@@ -498,48 +498,51 @@ export default function Donation() {
           CONTACT
         </h2>
         <motion.div
-          variants={staggerChildren}
-          className="flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-8"
+  variants={staggerChildren}
+  className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8"
+>
+  <div className="justify-center mt-4">
+    <ul className="list-none flex flex-col text-sm sm:text-base md:text-lg">
+      {[
+        {
+          icon: "/donation/phone.svg",
+          label: "Direction Générale :",
+          content: "+212 610 02 35 55",
+        },
+        {
+          icon: "/donation/mail.svg",
+          content: "direction@babrayan.ma",
+        },
+        {
+          icon: "/donation/localisation.svg",
+          content: "4 rue Bayt Lahm, Quartier Palmier, Casablanca",
+        },
+      ].map((item, index) => (
+        <motion.li
+          key={index}
+          variants={fadeIn}
+          className="flex items-center space-x-2 md:space-x-4 mb-2 md:mb-3"
         >
-          <div className="justify-center mt-8">
-            <ul className="list-none mb-6 flex flex-col mt-4 text-lg md:text-xl">
-              {[
-                {
-                  icon: "/donation/call.png",
-                  label: "Direction Générale :",
-                  content: "+212 610 02 35 55",
-                },
-                {
-                  icon: "/donation/email.png",
-                  content: "direction@babrayan.ma",
-                },
-                {
-                  icon: "/donation/local.png",
-                  content: "4 rue Bayt Lahm, Quartier Palmier, Casablanca",
-                },
-              ].map((item, index) => (
-                <motion.li
-                  key={index}
-                  variants={fadeIn}
-                  className="mb-4 flex items-center"
-                >
-                  <motion.img
-                    src={item.icon}
-                    alt={`Contact ${index + 1}`}
-                    className="w-14 h-14 mr-4"
-                    whileHover={{ scale: 1.1 }}
-                  />
-                  {item.label && (
-                    <span className="text-yellow-300 md:text-3xl font-medium">
-                      {item.label}
-                    </span>
-                  )}
-                  <span className="ml-2 md:text-3xl">{item.content}</span>
-                </motion.li>
-              ))}
-            </ul>
+          <motion.img
+            src={item.icon}
+            alt={`Contact ${index + 1}`}
+            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
+            whileHover={{ scale: 1.1 }}
+          />
+          <div className="flex flex-col md:flex-row md:items-center">
+            {item.label && (
+              <span className="text-yellow-300 text-xs sm:text-sm md:text-lg font-medium mr-1 md:mr-2">
+                {item.label}
+              </span>
+            )}
+            <span className="text-xs sm:text-sm md:text-lg">{item.content}</span>
           </div>
-        </motion.div>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
+
       </motion.section>
     </main>
   );
