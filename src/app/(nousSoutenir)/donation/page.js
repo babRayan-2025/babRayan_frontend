@@ -12,8 +12,8 @@ const fadeIn = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6 }
-  }
+    transition: { duration: 0.6 },
+  },
 };
 
 const staggerChildren = {
@@ -21,9 +21,9 @@ const staggerChildren = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2
-    }
-  }
+      staggerChildren: 0.2,
+    },
+  },
 };
 
 const cardVariants = {
@@ -31,14 +31,14 @@ const cardVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.5 }
-  }
+    transition: { duration: 0.5 },
+  },
 };
 
 const buttonVariants = {
   initial: { scale: 1 },
   hover: { scale: 1.05 },
-  tap: { scale: 0.95 }
+  tap: { scale: 0.95 },
 };
 
 export default function Donation() {
@@ -53,7 +53,7 @@ export default function Donation() {
   // Content for different amounts
   const contentByAmount = {
     "500 DH": {
-      title: "Parrainage \"Essentiel\"",
+      title: 'Parrainage "Essentiel"',
       description: "Apportez un soutien vital à un enfant :",
       items: [
         {
@@ -72,7 +72,7 @@ export default function Donation() {
       image: "/donation/Parrainage1.png",
     },
     "800 DH": {
-      title: "Parrainage \"Education\"",
+      title: 'Parrainage "Education"',
       description: "Investissez dans l'avenir d'un enfant :",
       items: [
         {
@@ -91,7 +91,7 @@ export default function Donation() {
       image: "/donation/Parrainage1.png",
     },
     "1900 DH": {
-      title: "Parrainage \"Envol\"",
+      title: 'Parrainage "Envol"',
       description: "Transformez un mois entier dans la vie d'un enfant :",
       items: [
         {
@@ -161,7 +161,9 @@ export default function Donation() {
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
     } else if (!paymentMethod) {
-      toast.error("Veuillez choisir un type de paiement avant de procéder au don.");
+      toast.error(
+        "Veuillez choisir un type de paiement avant de procéder au don."
+      );
       return;
     }
 
@@ -176,7 +178,7 @@ export default function Donation() {
   };
 
   const selectedContent = contentByAmount[selectedAmount] || {
-    title: "Parrainage \"Personnalisé\"",
+    title: 'Parrainage "Personnalisé"',
     description: "Soutien personnalisé pour un enfant :",
     items: [
       {
@@ -188,13 +190,38 @@ export default function Donation() {
   };
 
   const paymentMethods = [
-    { id: 1, label: "Virement bancaire", image: "/donation/1.png", desc: "Payer avec votre carte bancaire" },
-    { id: 2, label: "Chèque", image: "/donation/2.png", desc: "Payer avec votre compte PayPal" },
-    { id: 3, label: "Cash", image: "/donation/3.png", desc: "Faire un don par chèque" },
-    { id: 4, label: "PayPal", image: "/donation/4.png", desc: "Faire un don par virement bancaire" },
-    { id: 5, label: "Apple Pay", image: "/donation/5.png", desc: "Payer avec Apple Pay" },
+    {
+      id: 1,
+      label: "Virement bancaire",
+      image: "/donation/1.png",
+      desc: "Payer avec votre carte bancaire",
+    },
+    {
+      id: 2,
+      label: "Chèque",
+      image: "/donation/2.png",
+      desc: "Payer avec votre compte PayPal",
+    },
+    {
+      id: 3,
+      label: "Cash",
+      image: "/donation/3.png",
+      desc: "Faire un don par chèque",
+    },
+    {
+      id: 4,
+      label: "PayPal",
+      image: "/donation/4.png",
+      desc: "Faire un don par virement bancaire",
+    },
+    {
+      id: 5,
+      label: "Apple Pay",
+      image: "/donation/5.png",
+      desc: "Payer avec Apple Pay",
+    },
     { id: 6, label: "CMI", image: "/donation/6.png", desc: "Payer avec CMI" },
-  ]
+  ];
 
   return (
     <main>
@@ -261,23 +288,25 @@ export default function Donation() {
             {/* Amount Card */}
             <motion.div
               variants={cardVariants}
-              className={`bg-red-700 p-8 rounded-3xl shadow-lg border-2 border-black ${showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
-                }`}
+              className={`bg-red-700 p-8 rounded-3xl shadow-lg border-2 border-black ${
+                showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
+              }`}
             >
               <h2 className="md:text-4xl text-white font-bold mb-4">
                 Choisissez <br /> le montant
               </h2>
 
-              <div className="mb-4">
+              <div className="mb-4 flex justify-center">
                 <div className="flex gap-4">
                   <motion.button
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-4 rounded-full ${donationType === "Mensuel"
-                      ? "bg-yellow-300 text-red-700"
-                      : "bg-white text-red-700 border border-yellow-300"
-                      }`}
+                    className={`py-2 px-11 rounded-full ${
+                      donationType === "Mensuel"
+                        ? "bg-yellow-300 text-red-700"
+                        : "bg-white text-red-700 border border-yellow-300"
+                    }`}
                     onClick={() => handleDonationTypeChange("Mensuel")}
                   >
                     Mensuel
@@ -286,10 +315,11 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-4 rounded-full ${donationType === "Ponctuel"
-                      ? "bg-yellow-300 text-red-700"
-                      : "bg-white text-red-700 border border-yellow-300"
-                      }`}
+                    className={`py-2 px-11 rounded-full ${
+                      donationType === "Ponctuel"
+                        ? "bg-yellow-300 text-red-700"
+                        : "bg-white text-red-700 border border-yellow-300"
+                    }`}
                     onClick={() => handleDonationTypeChange("Ponctuel")}
                   >
                     Ponctuel
@@ -304,10 +334,11 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-4 px-4  rounded-2xl text-lg border-2 border-yellow-300 ${selectedAmount === amount
-                      ? "bg-yellow-300 text-red-700 font-bold"
-                      : "bg-red-700 text-white font-bold"
-                      }`}
+                    className={`py-4 px-4  rounded-2xl text-lg border-2 border-yellow-300 ${
+                      selectedAmount === amount
+                        ? "bg-[#FCE8F3] text-red-700 font-bold"
+                        : "bg-red-700 text-white font-bold"
+                    }`}
                     onClick={() => handleAmountChange(amount)}
                   >
                     {amount}
@@ -327,25 +358,44 @@ export default function Donation() {
               <div className="grid grid-cols-3 gap-4 mt-4 justify-center">
                 {/* khtaar le choie de paiement */}
                 {paymentMethods.map((method) => (
-                  <motion.button key={method.id} variants={buttonVariants} whileHover="hover" whileTap="tap"
-                    className={`bg-white p-2  rounded-2xl justify-items-center border-2 border-black ${paymentMethod === method.id
-                      ? "bg-yellow-300 text-red-700 font-bold"
-                      : "bg-red-700 text-white font-bold"
-                      }`}
-                    onClick={() => handlePaymentMethodClick(method.id)}
+                  <div
+                    key={method.id}
+                    className="flex flex-col items-center gap-2"
                   >
-                    <img src={method.image} alt={method.label} className={`w-14 h-10  ${method.id == 4 || method.id == 5 || method.id == 6 ? "" : "object-cover"}`} />
-                  </motion.button>
-                )
-                )}
-
+                    <motion.button
+                      key={method.id}
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                      className={`bg-white p-2  rounded-2xl justify-items-center shadow-md ${
+                        paymentMethod === method.id
+                          ? "bg-yellow-300 text-red-700 font-bold"
+                          : "bg-red-700 text-white font-bold"
+                      }`}
+                      onClick={() => handlePaymentMethodClick(method.id)}
+                    >
+                      <img
+                        src={method.image}
+                        alt={method.label}
+                        className={`w-14 h-10  ${
+                          method.id == 4 || method.id == 5 || method.id == 6
+                            ? ""
+                            : "object-cover"
+                        }`}
+                      />
+                    </motion.button>
+                    <span className="text-xs block mt-0 text-center text-white">
+                      {method.label}
+                    </span>
+                  </div>
+                ))}
               </div>
 
               <motion.button
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="block mx-auto bg-black text-yellow-300 py-2 px-4 rounded-full mt-8 shadow-xl border-2 border-yellow-400"
+                className="block mx-auto bg-yellow-300 text-black py-2 px-4 rounded-full mt-8 shadow-xl border-2 border-yellow-400"
                 onClick={handleProceedToDonation}
               >
                 Procéder au don
@@ -397,7 +447,9 @@ export default function Donation() {
                   className="mb-4 rounded-3xl h-48"
                 />
                 <div className="flex items-center mb-4 justify-end">
-                  <span className="text-gray-800 text-xl font-bold mr-2">Type de don</span>
+                  <span className="text-gray-800 text-xl font-bold mr-2">
+                    Type de don
+                  </span>
                   <motion.button
                     variants={buttonVariants}
                     whileHover="hover"
@@ -413,7 +465,9 @@ export default function Donation() {
                       alt="Money"
                       className="w-16 h-8 mr-2 mb-2"
                     />
-                    <span className="text-gray-800 text-xl font-bold mr-2">Montant</span>
+                    <span className="text-gray-800 text-xl font-bold mr-2">
+                      Montant
+                    </span>
                     <button className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 border-2 border-black">
                       {donationDetails.amount}
                     </button>
@@ -425,8 +479,9 @@ export default function Donation() {
             {/* Image Card */}
             <motion.div
               variants={cardVariants}
-              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${showThirdCard ? "w-full lg:w-1/3" : "w-full lg:w-[50rem]"
-                }`}
+              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center border-2 border-black min-h-[30rem] ${
+                showThirdCard ? "w-full lg:w-1/3" : "w-full lg:w-[50rem]"
+              }`}
             />
           </motion.div>
         </section>
@@ -451,17 +506,17 @@ export default function Donation() {
               {[
                 {
                   icon: "/donation/call.png",
-                  label: "La Direction :",
-                  content: "+212 610 02 35 55"
+                  label: "La Direction Générale :",
+                  content: "+212 610 02 35 55",
                 },
                 {
                   icon: "/donation/email.png",
-                  content: "direction@babrayan.ma"
+                  content: "direction@babrayan.ma",
                 },
                 {
                   icon: "/donation/local.png",
-                  content: "4 rue Bayt Lham, Quartier Palmier, Casablanca"
-                }
+                  content: "4 rue Bayt Lham, Quartier Palmier, Casablanca",
+                },
               ].map((item, index) => (
                 <motion.li
                   key={index}
@@ -475,7 +530,9 @@ export default function Donation() {
                     whileHover={{ scale: 1.1 }}
                   />
                   {item.label && (
-                    <span className="text-yellow-300 md:text-3xl font-medium">{item.label}</span>
+                    <span className="text-yellow-300 md:text-3xl font-medium">
+                      {item.label}
+                    </span>
                   )}
                   <span className="ml-2 md:text-3xl">{item.content}</span>
                 </motion.li>
