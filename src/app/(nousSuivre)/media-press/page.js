@@ -72,9 +72,11 @@ export default function Press() {
       "/press/album/AlbumécolePalmier/6.jpeg"
     ],
     "Ftour bab rayan": [
-      "/press/album/1.jpg",
-      "/press/album/1.jpg",
-      "/press/album/1.jpg",
+      "/press/album/AlbumFtourBabRayan/Ftourbabrayan1.jpeg",
+      "/press/album/AlbumFtourBabRayan/Ftourbabrayan2.jpeg",
+      "/press/album/AlbumFtourBabRayan/Ftourbabrayan3.jpeg",
+      "/press/album/AlbumFtourBabRayan/Ftourbabrayan4.png",
+      "/press/album/AlbumFtourBabRayan/Ftourbabrayan5.png"
     ],
   };
 
@@ -114,7 +116,7 @@ export default function Press() {
             className="p-4 text-2xl md:text-4xl font-bold mb-8 relative"
             whileHover={{ scale: 1.02 }}
           >
-            Kit Médias et Press
+           MEDIAS ET PRESS
             <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </motion.h1>
         </motion.div>
@@ -124,7 +126,7 @@ export default function Press() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl font-medium text-red-600 my-8 text-center flex items-center justify-center">
+          <h2 className="text-5xl font-medium text-red-600 my-2 text-center flex items-center justify-center">
             <motion.div
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -142,19 +144,21 @@ export default function Press() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mr-2 mt-8"
+              className="mr-2 mt-6 mb-0 font-medium"
             >
-              Kit Médias
+              Kits média
             </motion.span>
           </h2>
           <motion.h1
-            className="text-center text-2xl md:text-5xl font-semibold"
+            className="text-center text-2xl md:text-5xl text-[#161618] font-semibold font-[Helvetica Neue] tracking-tighter"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
+            
           >
             de l&apos;Association Bab Rayan
           </motion.h1>
+
         </motion.div>
 
         {/* Content Sections */}
@@ -167,117 +171,112 @@ export default function Press() {
         >
           {/* Logos Section */}
           <motion.div
-            className="bg-red-600 rounded-3xl p-8"
-            whileHover={{ scale: 1.02 }}
-          >
-            <h2 className="text-5xl font-medium text-white mb-4 flex items-center justify-center">
-              <span className="mr-2"></span> Logos
-            </h2>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <div className="space-y-3 grid md:grid-cols-2 gap-4 text-white text-2xl font-medium">
-                <div className="flex items-center space-x-2">
-                  <a href="/press/logo/cfi_logo.pdf" download>
-                    <Image
-                      src="/press/telecharger.png"
-                      alt="download"
-                      width={60}
-                      height={40}
-                    />
-                  </a>
-                  <span>L&apos;association Bab Rayan</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <a href="/downloads/logo_ecole_palmier.png" download>
-                    <Image
-                      src="/press/telecharger.png"
-                      alt="download"
-                      width={60}
-                      height={40}
-                    />
-                  </a>
-                  <span>École Palmier</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <a href="/downloads/logo_ftour_bab_rayan.png" download>
-                    <Image
-                      src="/press/telecharger.png"
-                      alt="download"
-                      width={60}
-                      height={40}
-                    />
-                  </a>
-                  <span>Ftour Bab Rayan</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <a href="/downloads/logo_ftour_bab_rayan.png" download>
-                    <Image
-                      src="/press/telecharger.png"
-                      alt="download"
-                      width={60}
-                      height={40}
-                    />
-                  </a>
-                  <span>CFI</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+  className="bg-[#cc2229] rounded-3xl p-5 flex flex-col items-center justify-center"
+  whileHover={{ scale: 1.02 }}
+>
+  <h2 className="text-5xl font-medium text-white mb-4 flex items-center justify-center tracking-tighter">
+    <span className="mr-2"></span> Logos
+  </h2>
+  <div className="flex flex-wrap gap-2 justify-center">
+    <div className="grid grid-cols-2 gap-2 text-white text-xl font-medium ">
+      {/* Première div */}
+      <div className="flex items-center space-x-0 justify-center ml-6">
+        <a href="/press/logo/logobabrayan.jpg" download>
+          <Image
+            src="/press/telechargement.svg"
+            alt="download"
+            width={120}
+            height={60}
+          />
+        </a>
+        <span className="text-2xl mt-2">L&apos;association <br/> Bab Rayan</span>
+      </div>
+
+      {/* Deuxième div */}
+      <div className="flex items-center space-x-0 justify-center">
+        <a href="/press/logo/ecolePalmier.pdf" download>
+          <Image
+            src="/press/telechargement.svg"
+            alt="download"
+            width={120}
+            height={60}
+          />
+        </a>
+        <span className="text-2xl mt-2">École <br/> Palmier</span>
+      </div>
+
+      {/* Troisième div */}
+      <div className="col-span-1 flex items-center justify-center mr-16">
+        <a href="/press/logo/cfi_logo.pdf" download>
+          <Image
+            src="/press/telechargement.svg"
+            alt="download"
+            width={120}
+            height={60}
+          />
+        </a>
+        <span className="text-2xl mt-2">CFI</span>
+      </div>
+    </div>
+  </div>
+</motion.div>
+
 
           {/* Presentations Section */}
           <motion.div
-            className="bg-red-600 rounded-3xl p-8"
+            className="bg-[#cc2229] rounded-3xl p-5"
             whileHover={{ scale: 1.02 }}
           >
-            <h2 className="text-5xl font-medium text-white mb-8 text-center flex items-center justify-center">
+            <h2 className="text-5xl  font-medium text-white mb-4 text-center flex items-center justify-center tracking-tighter">
               <span className="mr-2"></span> Présentations
             </h2>
-            <div className="space-y-3 grid md:grid-cols-2 gap-4 text-white text-2xl font-medium">
-              <div className="flex items-center space-x-2">
+            <div className=" grid md:grid-cols-2 gap-4 text-white font-medium">
+              <div className="flex items-center">
                 <a
-                  href="/downloads/presentation_association_bab_rayan.pdf"
+                  href="/press/presentation/presentation_association_bab_rayan.pdf"
                   download
                 >
                   <Image
-                    src="/press/telecharger.png"
+                    src="/press/telechargement.svg"
                     alt="download"
-                    width={60}
-                    height={40}
+                    width={120}
+                    height={60}
                   />
                 </a>
-                <span>L&apos;association Bab Rayan</span>
+                <span className="text-2xl mt-3">L&apos;association <br/> Bab Rayan</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <a href="/downloads/presentation_ecole_palmier.pdf" download>
+              <div className="flex items-center ">
+                <a href="/press/presentation/EcolePalmier.pdf" download>
                   <Image
-                    src="/press/telecharger.png"
+                    src="/press/telechargement.svg"
                     alt="download"
-                    width={60}
-                    height={40}
+                    width={120}
+                    height={60}
                   />
                 </a>
-                <span>École Palmier</span>
+                <span className="text-2xl mt-3">École <br/> Palmier</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <a href="/downloads/presentation_ftour_bab_rayan.pdf" download>
+              <div className="flex items-center ">
+                <a href="/press/presentation/ftourBabRayan.pdf" download>
                   <Image
-                    src="/press/telecharger.png"
+                    src="/press/telechargement.svg"
                     alt="download"
-                    width={60}
-                    height={40}
+                    width={120}
+                    height={60}
                   />
                 </a>
-                <span>Ftour Bab Rayan</span>
+                <span className="text-2xl mt-4" >Ftour <br/> Bab Rayan</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <a href="/downloads/brochure_parrainage_bab_rayan.pdf" download>
+              <div className="flex items-center">
+                <a href="/press/presentation/Brochure-Parrainage-Bab-Rayan2025.pdf" download>
                   <Image
-                    src="/press/telecharger.png"
+                    src="/press/telechargement.svg"
                     alt="download"
-                    width={60}
-                    height={40}
+                    width={120}
+                    height={60}
                   />
                 </a>
-                <span>Brochure parrainage Bab Rayan</span>
+                <span className="text-2xl mt-4">Brochure parrainage <br/> Bab Rayan</span>
               </div>
             </div>
             {/* </div> */}
@@ -286,13 +285,13 @@ export default function Press() {
 
         {/* Albums Section */}
         <motion.div
-          className="bg-red-600 rounded-3xl mx-16 mb-6 p-8"
+          className="bg-[#cc2229] rounded-3xl mx-16 mb-6 p-8"
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.2 }}
           variants={cardVariants}
         >
-          <h2 className="text-5xl font-medium text-white mb-8 text-center flex items-center justify-center">
+          <h2 className="text-5xl font-medium text-white mb-8 text-center flex items-center justify-center font-[Helvetica Neue] tracking-tighter">
             <Image
               src="/benevole/flech-partenaire.png"
               alt="flech-partenaire"
@@ -302,7 +301,7 @@ export default function Press() {
             />
             <span className="mr-2 mt-8">Albums Photos</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2   gap-4 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-4 justify-center">
             {Object.keys(albums).map((album) => (
               <div key={album} onClick={() => { handleAlbumClick(album); setModal2Open(true) }}>
                 <img
@@ -333,7 +332,7 @@ export default function Press() {
                     {albums[selectedAlbum].map((image, index) => (
                       <div
                         key={index}
-                        className={`relative ${index % 4 === 0 ? "col-span-2 row-span-2" : "col-span-1"
+                        className={`relative ${index % 4 === 0 ? "col-span-3 row-span-5" : "col-span-1"
                           }`}
                       >
                         <Image
@@ -360,20 +359,20 @@ export default function Press() {
           viewport={{ once: true, amount: 0.2 }}
           variants={cardVariants}
         >
-          <h2 className="text-5xl font-medium text-black mb-8 text-center flex items-center justify-center ">
+          <h2 className="text-5xl font-semibold text-[#161618] mb-8 text-center flex items-center justify-center font-[Helvetica Neue] tracking-tighter">
             <Image
-              src="/benevole/flech-partenaire.png"
+              src="/press/aroow.png"
               alt="flech-partenaire"
               width={100}
               height={50}
-              className="init-block -left-48 md:left-[550px]"
+              className="init-block mt-4 -left-48 md:left-[550px]"
             />
-            <span className="mr-2 mt-8">Ils parlent de nous</span>
+            <span className="mr-2 mt-4">Ils parlent de nous</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-auto d-flex justify-items-center gap-4 justify-center">
             <Image
               src="/press/1.png"
-              onClick={() => window.open("https://www.youtube.com/watch?v=qV57CTHvD90", "_blank")} style={{cursor: "pointer"}}
+              onClick={() => window.open("/press/parlent/telque.pdf", "_blank")} style={{cursor: "pointer"}}
               alt="call"
               width={300}
               height={300}
@@ -381,6 +380,7 @@ export default function Press() {
             />
             <Image
               src="/press/2.png"
+              onClick={() => window.open("http://www.casa24.ma/people/economie/55743.html", "_blank")} style={{cursor: "pointer"}}
               alt="call"
               width={300}
               height={300}
@@ -388,6 +388,7 @@ export default function Press() {
             />
             <Image
               src="/press/3.png"
+              onClick={() => window.open("https://www.mediaplateforme.com/fr/100-dinsertion-pour-la-deuxieme-promotion-du-centre-de-formation-et-dinsertion-de-lassociation-bab-rayane/", "_blank")} style={{cursor: "pointer"}}
               alt="call"
               width={300}
               height={300}
@@ -395,20 +396,22 @@ export default function Press() {
             />
             <Image
               src="/press/4.png"
+              onClick={() => window.open("https://fr.hibapress.com/news-143334.html", "_blank")} style={{cursor: "pointer"}}
               alt="call"
               width={300}
               height={300}
               className="object-cover rounded-lg"
             />
             <Image
-              src="/press/5.png"
+              src="/press/mosta9bal.jpg"
+              onClick={() => window.open("https://almostakbal24.ma/2024/10/29/منح-شهادات-التخرج-للدفعة-الثانية-من-مر/ ", "_blank")} style={{cursor: "pointer"}}
               alt="call"
               width={300}
               height={300}
               className="object-cover rounded-lg"
             />
             <Image
-              src="/press/888.png"
+              src="/press/laalfatima.jpg"
               onClick={() => window.open("https://www.youtube.com/watch?v=qV57CTHvD90", "_blank")} style={{cursor: "pointer"}}
               alt="call"
               width={300}
@@ -416,7 +419,8 @@ export default function Press() {
               className="object-cover rounded-lg"
             />
             <Image
-              src="/press/888.png"
+              src="/press/ajrdh.jpg"
+              onClick={() => window.open("https://aujourdhui.ma/societe/lassociation-bab-rayan-celebre-la-2eme-promotion-de-son-centre-de-formation-et-dinsertion", "_blank")} style={{cursor: "pointer"}}
               alt="call"
               width={300}
               height={300}

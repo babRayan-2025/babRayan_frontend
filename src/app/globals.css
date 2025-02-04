@@ -5,6 +5,9 @@
 body {
   font-family: Helvetica  ;
 }
+.texte {
+  letter-spacing: -35px;
+}
 
 @layer base {
   :root {

@@ -57,33 +57,33 @@ export default function Parrainage() {
         >
           {/* Left side - Image */}
           <motion.div
-            className="relative md:w-[980px] h-[500px] ml-[-40px] overflow-hidden md:rounded-r-xl"
+            className=" h-[320px] ml-[-40px] overflow-hidden md:rounded-r-xl"
             variants={fadeIn}
           >
             <Image
               src="/Parrainer/1.jpg"
               alt="Children smiling"
               width={980}
-              height={500}
+              height={300}
               className="object-cover"
             />
           </motion.div>
 
           {/* Right side - Text content */}
-          <motion.div className="space-y-4 md:mx-16" variants={fadeIn}>
-            <h2 className="text-6xl font-bold">
+          <motion.div className="space-y-4 md:mx-4 pr-20" variants={fadeIn}>
+            <h2 className="text-5xl font-semibold">
               Pourquoi parrainer <br /> un enfant ?
             </h2>
-            <p className="text-gray-600 text-2xl">
+            <p className="text-gray-600 text-xl ">
               Trop d&apos;enfants souffrent encore... <br /> Le parrainage est
               un moyen efficace pour lutter contre l&apos;abandon.
             </p>
-            <p className="text-gray-600 text-2xl">
+            <p className="text-gray-600 text-xl">
               En parrainant un enfant, vous lui donnez la chance d&apos;accéder
               à ses droits fondamentaux : Éducation, Santé, Nutrition,
               Scolarisation...
             </p>
-            <p className="text-gray-600 text-2xl">
+            <p className="text-gray-600 text-xl">
               L&apos;enfant peut ainsi grandir dans de bonnes conditions et
               acquérir des compétences pour son autonomie future.
             </p>
@@ -97,7 +97,7 @@ export default function Parrainage() {
           animate="visible"
           variants={staggerContainer}
         >
-          <motion.div className="w-full p-6 mb-12" variants={fadeIn}>
+          <motion.div className="w-full p-6 mb-12 ml-12" variants={fadeIn}>
             <h3 className="text-xl font-semibold mb-4">
               Votre contribution mensuelle permettra de donner à un enfant :
             </h3>
@@ -127,7 +127,7 @@ export default function Parrainage() {
               <li>- L&apos;état d&apos;avancement des activités de l&apos;association</li>
               <li>- Des lettres et des dessins de l&apos;enfant</li>
             </ul>
-            <h4 className="font-semibold mt-4 mb-2">De plus :</h4>
+            <h3 className="text-xl font-semibold mt-4 mb-2">De plus :</h3>
             <p className="text-gray-600">
               - Vous participerez à des événements au sein du Foyer pour
               rencontrer les enfants et partager de bons moments ensemble
@@ -146,7 +146,7 @@ export default function Parrainage() {
 
           {/* Image grid */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4"
+            className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4 mr-8"
             variants={staggerContainer}
           >
             {["2.jpg", "3.jpg", "4.jpg", "5.jpg"].map((img, index) => (
