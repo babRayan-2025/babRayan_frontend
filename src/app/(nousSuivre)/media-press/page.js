@@ -49,7 +49,7 @@ export default function Press() {
       "/press/album/AlbumFoyer/4.JPG",
       "/press/album/AlbumFoyer/5.jpeg",
       "/press/album/AlbumFoyer/6.jpeg",
-    ],
+    ], 
     "CFI": [
       "/press/album/AlbumCFI/1.JPG",
       "/press/album/AlbumCFI/2.JPG",
