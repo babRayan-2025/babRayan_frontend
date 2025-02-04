@@ -344,8 +344,8 @@ export default function Home() {
                     whileHover={{ scale: 1.02 }}
                     className="m-2 flex flex-col md:flex-row items-center bg-white border- border-b-5 border-red-300 shadow-md rounded-md duration-500 hover:shadow-xl overflow-hidden"
                   >
-                    <div className="p-4 gap-4 md:w-1/2">
-                      <h1 className="text-xl sm:text-4xl font-bold mb-4 text-gray-900">
+                    <div className="p-4 gap-4 xl:w-1/2">
+                      <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">
                         {slide.title}
                       </h1>
                       <p className="text-sm sm:text-base italic text-gray-700 mb-6">
@@ -355,13 +355,13 @@ export default function Home() {
                         <motion.a
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="px-3 py-2 bg-[#f3ca31] text-white font-medium rounded-xl hover:bg-yellow-500 transition duration-300 cursor-pointer"
+                          className="px-1 py-2 bg-[#f3ca31] text-white font-medium rounded-xl hover:bg-yellow-500 transition duration-300 cursor-pointer"
                         >
                           {slide.buttonText}
                         </motion.a>
                       </Link>
                     </div>
-                    <div className="md:w-1/2">
+                    <div className="xl:w-1/2">
                       <Image
                         src={slide.image}
                         alt={slide.title}
