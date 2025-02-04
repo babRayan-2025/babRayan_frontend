@@ -18,7 +18,7 @@ export default function NavBar() {
 
   const navItems = [
     {
-      name: "Nous Connaitre",
+      name: "Nous connaître",
       href: "/about",
       hasDropdown: true,
       dropdownItems: [
@@ -28,7 +28,7 @@ export default function NavBar() {
       ]
     },
     {
-      name: "Nos Missions",
+      name: "Nos missions",
       href: "/missions",
       hasDropdown: true,
       dropdownItems: [
@@ -252,7 +252,7 @@ export default function NavBar() {
             </div>
           ))}
           <div className="mt-4 space-y-2 px-3">
-            <Link
+            {/* <Link
               href="/login"
               className="block text-white hover:bg-[#b41e24] px-3 py-2 rounded-md"
             >
@@ -263,7 +263,7 @@ export default function NavBar() {
               className="block bg-white text-center px-3 py-2 rounded-md text-[#cc2229] font-medium hover:bg-gray-100"
             >
               S`incrire
-            </Link>
+            </Link> */}
             <Link
               href="/donation"
               className="block bg-[#f3ca31] text-center px-3 py-2 rounded-md text-[#cc2229] font-medium hover:bg-[#e5b82c]"
