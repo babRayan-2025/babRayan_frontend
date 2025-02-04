@@ -146,7 +146,7 @@ export default function Press() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mr-2 mt-6 mb-0 font-medium"
             >
-              Kits média
+              Kit média
             </motion.span>
           </h2>
           <motion.h1
