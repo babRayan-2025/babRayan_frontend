@@ -99,19 +99,19 @@ export default function Formation() {
           <div className="w-44 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
         </h1>
         <motion.div
-          className="max-w-7xl mx-auto flex flex-col items-center pt-8 md:flex-row md:items-start"
+          className="max-w-7xl mx-auto flex flex-col items-center pt-8 lg:flex-row lg:items-start"
           initial="hidden"
           whileInView="visible"
           variants={staggerContainer}
           viewport={{ once: true }}
         >
           <motion.div
-            className="flex-shrink-0 mb-6 md:mb-0 md:mr-8"
+            className="flex-shrink-0 mb-6 lg:mb-0 lg:mr-8"
             variants={fadeInUp}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="relative w-80 h-60 rounded-xl border-3 shadow-2xl border-r-gray-500 overflow-hidden">
+            <div className="relative w-96 h-72 rounded-xl border-3 shadow-2xl border-r-gray-500 overflow-hidden">
               <Image
                 src="/CFI/2.JPG"
                 alt="Présidente"

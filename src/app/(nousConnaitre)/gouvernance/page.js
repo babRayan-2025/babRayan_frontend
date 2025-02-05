@@ -123,15 +123,15 @@ export default function Gouvernance() {
   ];
 
   const reports = [
-    { year: 2024, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2024.pdf' },
-    { year: 2023, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport annuel -Association Bab Rayan 2023.pdf' },
-    { year: 2022, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2022.pdf' },
-    { year: 2021, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2021.pptx' },
-    { year: 2020, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2020.pdf' },
-    { year: 2019, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2019.pdf' },
-    { year: 2018, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2018.pdf' },
-    { year: 2017, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2017.pdf' },
-    { year: 2016, imageUrl: '/2girls.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2016.pdf' },
+    { year: 2024, imageUrl: '/gouvernance/rapportPhotos/soon.jpg', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2024.pdf' },
+    { year: 2023, imageUrl: '/gouvernance/rapportPhotos/rap2023.webp', pdfUrl: '/about/Rapport annuel -Association Bab Rayan 2023.pdf' },
+    { year: 2022, imageUrl: '/gouvernance/rapportPhotos/rap2022.webp', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2022.pdf' },
+    { year: 2021, imageUrl: '/gouvernance/rapportPhotos/rap2021.webp', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2021.pptx' },
+    { year: 2020, imageUrl: '/gouvernance/rapportPhotos/rap2020.webp', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2020.pdf' },
+    { year: 2019, imageUrl: '/gouvernance/rapportPhotos/rap2019.webp', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2019.pdf' },
+    { year: 2018, imageUrl: '/gouvernance/rapportPhotos/rap2018.png', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2018.pdf' },
+    { year: 2017, imageUrl: '/gouvernance/rapportPhotos/rap2017.png', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2017.pdf' },
+    { year: 2016, imageUrl: '/gouvernance/rapportPhotos/rap2016.png', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2016.pdf' },
   ];
 
 
@@ -182,7 +182,7 @@ export default function Gouvernance() {
             variants={container}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2  gap-8"
           >
             {reports.map((report, index) => (
               <motion.div
@@ -192,11 +192,9 @@ export default function Gouvernance() {
               >
                 {/* Image */}
                 <div className="h-80 overflow-hidden">
-                  <Image
+                  <img
                     src={report.imageUrl}
                     alt={`Rapport Annuel ${report.year}`}
-                    width={400}
-                    height={324}
                     className="w-full h-full object-cover"
                   />
                 </div>
