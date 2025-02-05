@@ -161,13 +161,20 @@ export default function Home() {
     },
   ];
 
-  const blogs= [
+  const blogs = [
     {
-      id : 1,
-      title: "Formation",
-      description: "Le Centre de Formation",
-      text:"de"
-    }
+      id: 1,
+      img: pic8,
+      title: "Remise des diplômes de la deuxième promotion du CFI",
+      description: "L&apos;Association Bab Rayan a eu l&apos;honneur de célébrer ce 28 Octobre 2024, la réussite de la deuxième promotion de diplômés de son Centre de Formation et d&apos;Insertion. Le CFI propose aux jeunes issus des EPS et en situation de précarité une formation qualifiante dans les métiers de l&apos;hôtellerie et de la restauration. Aujourd&apos;hui, plus de 120 jeunes franchissent une étape clé vers l&apos;emploi, grâce au soutien de nos entreprises partenaires. <br /> Nous avons été honorés par la présence de Mr le Wali, le Gouverneur et Mme la Maire de Casablanca.",
+      text: "L'Association Bab Rayan a eu l'honneur de célébrer le 28 Octobre la réussite de la deuxième promotion de diplômés de son Centre de Formation et d'Insertion. Le CFI propose aux jeunes issus des établissements de protection sociale (EPS) et en situation de précarité une formation qualifiante dans les métiers de l’hôtellerie et de la restauration. Aujourd'hui, plus de 120 jeunes franchissent une étape clé vers l'emploi, grâce au soutien de nos entreprises partenaires. Ce diplôme, délivré en partenariat avec l'Entraide Nationale, témoigne de leur persévérance et marque le début d'une carrière prometteuse. Nous avons été honorés par la présence de personnalités de marque : le Wali de Casablanca, le Gouverneur des arrondissements de Casablanca-Anfa, Mme la Maire de Casablanca. Merci infiniment à nos partenaires et à la communauté Bab Rayan pour leur soutien indéfectible."
+    },
+    {
+      id: 2,
+      img: pic9,
+      title: "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
+      description: "Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation diplômante en restauration, une première qui changera la vie d'une promotion engagée de jeunes en difficulté! D'ici août prochain, ils auront non seulement acquis des compétences, mais aussi trouvé un projet de vie qui leur ouvre les portes d'un avenir prometteur.",
+    },
   ]
   const videoUrl =
     "https://firebasestorage.googleapis.com/v0/b/bab-rayan-87f71.appspot.com/o/video.mp4?alt=media&token=6cc682dc-b7fa-4729-b2d3-ac2ad8d0df87";
@@ -177,8 +184,9 @@ export default function Home() {
   };
 
   const [selectedArticle, setSelectedArticle] = useState(null);
-  const [modal1Open, setModal1Open] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState(null);
   const [modal2Open, setModal2Open] = useState(false);
+  const [blogModal, setBlogModal] = useState(false);
   return (
     <>
       {/* Main Content */}
@@ -635,98 +643,65 @@ export default function Home() {
             <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </motion.h1>
 
-          {/* First News Item */}
-          <motion.div
-            className="flex flex-col items-center bg-pink-100 gap-9 px-4"
-            variants={staggerContainer} // Apply stagger animation to child elements
-            initial="initial"
-            animate="animate"
-          >
+          {blogs.map((article, index) => (
             <motion.div
-              className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]"
-              variants={fadeIn}
+              className="flex flex-col items-center bg-pink-100 gap-9 px-4"
+              variants={staggerContainer} // Apply stagger animation to child elements
+              initial="initial"
+              animate="animate"
             >
-              {/* Image Section */}
-              <motion.div className="flex-shrink-0 w-full md:w-[45%]" variants={fadeIn}>
-                <Image
-                  src={pic8}
-                  alt="Graduation"
-                  className="rounded-xl w-full h-auto object-cover"
-                />
-              </motion.div>
+              <motion.div
+                className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]" variants={fadeIn} >
+                {/* Image Section */}
+                <motion.div className="flex-shrink-0 w-full md:w-[45%]" variants={fadeIn}>
+                  <Image src={article.img} alt="Graduation" className="rounded-xl w-full h-auto object-cover" />
+                </motion.div>
 
-              {/* Text Section */}
-              <motion.div className="text-center md:text-left" variants={fadeIn}>
-                <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
-                  Remise des diplômes de la deuxième promotion du CFI
-                </h1>
-                <p className="text-gray-700 mb-4 italic text-sm md:text-base">
-                  L&apos;Association Bab Rayan a eu l&apos;honneur de célébrer ce 28 Octobre 2024,
-                  la réussite de la deuxième promotion de diplômés de son Centre de
-                  Formation et d&apos;Insertion. Le CFI propose aux jeunes issus des EPS et
-                  en situation de précarité une formation qualifiante dans les métiers
-                  de l&apos;hôtellerie et de la restauration. Aujourd&apos;hui, plus de 120 jeunes
-                  franchissent une étape clé vers l&apos;emploi, grâce au soutien de nos
-                  entreprises partenaires. <br />
-                  Nous avons été honorés par la présence de Mr le Wali, le Gouverneur et Mme la Maire de Casablanca.
-                </p>
-                <motion.button
-                  onClick={() => (window.location.href = "/blog")}
-                  className="inline-block bg-yellow-300 rounded-full text-red-500 font-semibold px-4 py-2 transition hover:bg-yellow-400"
-                  variants={scaleIn} // Apply scaleIn animation
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Découvrir plus
-                </motion.button>
+                {/* Text Section */}
+                <motion.div className="text-center md:text-left" variants={fadeIn}>
+                  <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
+                    {article.title}
+                  </h1>
+                  <p className="text-gray-700 mb-4 italic text-sm md:text-base" dangerouslySetInnerHTML={{ __html: article.description }}>
+                  </p>
+                  <motion.button onClick={() => { setSelectedBlog(article); setBlogModal(true) }}
+                    className="inline-block bg-yellow-300 rounded-full text-red-500 font-semibold px-4 py-2 transition hover:bg-yellow-400"
+                    variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} >
+                    Découvrir plus
+                  </motion.button>
+                </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
+          ))}
 
-          {/* Second News Item */}
-          <motion.div
-            className="flex flex-col items-center gap-9 px-4"
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
-          >
-            <motion.div
-              className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]"
-              variants={fadeIn}
+
+          {selectedBlog && (
+            <Modal
+              title={<h2 className="text-center w-full text-xl font-semibold">{selectedBlog.title}</h2>}
+              centered
+              open={blogModal}
+              onCancel={() => setBlogModal(false)}
+              width={800}
+              bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }}
+              footer={null}
             >
-              {/* Image Section */}
-              <motion.div className="flex-shrink-0 w-full md:w-[45%]" variants={fadeIn}>
+              <div className="flex flex-col items-center">
+                {/* Styled Image */}
                 <Image
-                  src={pic9}
-                  alt="Graduation"
-                  className="rounded-xl w-full h-auto object-cover"
+                  src={selectedBlog.img}
+                  className="w-full h-auto max-h-[300px] object-cover rounded-lg mb-4 shadow-md"
+                  alt={selectedBlog.title}
+                  width={500}
+                  height={300}
                 />
-              </motion.div>
 
-              {/* Text Section */}
-              <motion.div className="text-center md:text-left" variants={fadeIn}>
-                <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
-                  Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité
-                </h1>
-                <p className="text-gray-700 mb-4 italic text-sm md:text-base">
-                  Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation
-                  diplômante en restauration, une première qui changera la vie d'une
-                  promotion engagée de jeunes en difficulté! D'ici août prochain, ils
-                  auront non seulement acquis des compétences, mais aussi trouvé un
-                  projet de vie qui leur ouvre les portes d'un avenir prometteur.
-                </p>
-                <motion.button
-                  onClick={() => (window.location.href = "/blog")}
-                  className="inline-block bg-yellow-300 rounded-full text-white font-semibold px-4 py-2 transition hover:bg-yellow-400"
-                  variants={scaleIn}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Découvrir plus
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+                {/* Content Section */}
+                <div className="max-h-[60vh] overflow-y-auto px-4 text-gray-700 leading-relaxed text-lg">
+                  <p dangerouslySetInnerHTML={{ __html: selectedBlog.text ? selectedBlog.text : selectedBlog.description }}></p>
+                </div>
+              </div>
+            </Modal>
+          )}
 
           {/* Link to All News */}
           <div className="p-6 flex items-center justify-center">
