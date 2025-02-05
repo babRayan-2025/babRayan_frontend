@@ -676,24 +676,10 @@ export default function Home() {
 
 
           {selectedBlog && (
-            <Modal
-              title={<h2 className="text-center w-full text-xl font-semibold">{selectedBlog.title}</h2>}
-              centered
-              open={blogModal}
-              onCancel={() => setBlogModal(false)}
-              width={800}
-              bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }}
-              footer={null}
-            >
+            <Modal title={<h2 className="text-center w-full text-xl font-semibold">{selectedBlog.title}</h2>} centered open={blogModal} onCancel={() => setBlogModal(false)} width={800} bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }} footer={null} >
               <div className="flex flex-col items-center">
                 {/* Styled Image */}
-                <Image
-                  src={selectedBlog.img}
-                  className="w-full h-auto max-h-[300px] object-cover rounded-lg mb-4 shadow-md"
-                  alt={selectedBlog.title}
-                  width={500}
-                  height={300}
-                />
+                <Image src={selectedBlog.img} className="w-full h-auto max-h-[300px] object-cover rounded-lg mb-4 shadow-md" alt={selectedBlog.title} width={500} height={300} />
 
                 {/* Content Section */}
                 <div className="max-h-[60vh] overflow-y-auto px-4 text-gray-700 leading-relaxed text-lg">
@@ -705,13 +691,8 @@ export default function Home() {
 
           {/* Link to All News */}
           <div className="p-6 flex items-center justify-center">
-            <motion.a
-              href="/blog"
-              className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105"
-              variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.a href="/blog" variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+              className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105" >
               Voir toutes les Actualités
             </motion.a>
           </div>
