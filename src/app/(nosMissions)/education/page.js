@@ -94,7 +94,7 @@ export default function Education() {
 d            >
               <div className="relative  rounded-xl border-3 shadow-2xl border-r-gray-500 overfldow-hidden">
                 <img
-                  src="/CFI/2.JPG"
+                  src="/education/girl_educate.jpg"
                   alt="Présidente"
                   layout="fill"
                   objectFit="cover"
