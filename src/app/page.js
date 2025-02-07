@@ -230,6 +230,7 @@ export default function Home() {
                     <Image
                       src={slide.image}
                       className="absolute block w-full h-full"
+                      // loading="lazy"
                       alt={`Slide ${index + 1}`}
                       priority={index === 0}
                       fill
@@ -646,7 +647,8 @@ export default function Home() {
           {blogs.map((article, index) => (
             <motion.div
               className="flex flex-col items-center bg-pink-100 gap-9 px-4"
-              variants={staggerContainer} // Apply stagger animation to child elements
+              variants={staggerContainer} 
+              key={index}
               initial="initial"
               animate="animate"
             >

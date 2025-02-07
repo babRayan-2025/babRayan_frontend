@@ -71,7 +71,7 @@ export default function Parrainage() {
 
           {/* Right side - Text content */}
           <motion.div className="space-y-4 md:mx-4 pr-20" variants={fadeIn}>
-            <h2 className="text-5xl font-semibold">
+            <h2 className="text-3xl font-semibold">
               Pourquoi parrainer <br /> un enfant ?
             </h2>
             <p className="text-gray-600 text-xl ">

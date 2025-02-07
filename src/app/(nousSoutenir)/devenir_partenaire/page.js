@@ -104,10 +104,10 @@ export default function DevenirPartenaire() {
             viewport={{ once: true }}
             className="md:w-1/2 mx-16"
           >
-            <h2 className="text-xl md:text-6xl font-semibold mb-4">
+            <h2 className="text-xl md:text-5xl font-semibold mb-4">
               Pourquoi devenir partenaire ?
             </h2>
-            <p className="mb-4 text-gray-600 text-xl">
+            <p className="mb-4 text-gray-600 text-xl leading-relaxed">
               Parce que cette forme de générosité permet à l&apos;association Bab Rayan de réaliser des projets concrets en faveur des enfants et familles en difficulté. Vous devenez ainsi un acteur à part entière du développement économique et social de votre territoire. Nous pouvons convenir ensemble d’un partenariat sur mesure en adéquation avec vos valeurs et votre stratégie RSE.
             </p>
           </motion.div>

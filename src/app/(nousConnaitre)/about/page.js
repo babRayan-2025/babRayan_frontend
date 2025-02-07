@@ -26,12 +26,15 @@ export default function About() {
   const [showMore, setShowMore] = useState(false);
 
   const values = [
-    { icon: './about/solidariter.png', title: "SOLIDARITÉ" },
-    { icon: '../about/engagemennnt.png', title: "ENGAGEMENT" },
-    { icon: '../about/egalite.png', title: "ÉGALITÉ DES CHANCES" },
-    { icon: './about/responsabilité.png', title: "RESPONSABILITÉ SOCIALE ET DURABLE" },
-    { icon: './about/inovation.png', title: "INNOVATION ET ADAPTABILITÉ" },
-  ]
+    { icon: "./about/solidariter.png", title: "SOLIDARITÉ" },
+    { icon: "../about/engagemennnt.png", title: "ENGAGEMENT" },
+    { icon: "../about/egalite.png", title: "ÉGALITÉ DES CHANCES" },
+    {
+      icon: "./about/responsabilité.png",
+      title: "RESPONSABILITÉ SOCIALE ET DURABLE",
+    },
+    { icon: "./about/inovation.png", title: "INNOVATION ET ADAPTABILITÉ" },
+  ];
   return (
     <main>
       {/* first section: nous connaitre */}
@@ -59,12 +62,11 @@ export default function About() {
           <div className="p-6 max-w-xl text-left absolute bottom-6 right-8">
             <h2 className="text-4xl font-bold mb-4">NOUS CONNAÎTRE</h2>
             <p className="text-md italic leading-relaxed">
-              L’association Bab Rayan, reconnue d’utilité publique, œuvre depuis
-              2014 à accompagner les enfants vulnérables vers un avenir
-              prometteur. <br /> À travers des programmes de protection, une éducation
-              de qualité, des formations adaptées et des opportunités
-              d’insertion professionnelle, Bab Rayan aide ces jeunes à devenir
-              des citoyens autonomes et engagés.
+              L’association Bab Rayan, reconnue d’utilité publique, accompagne
+              depuis 2014 les enfants vulnérables vers un avenir prometteur. Par
+              la protection, l’éducation, la formation et l’insertion
+              professionnelle, elle les aide à devenir des citoyens autonomes et
+              responsables.
             </p>
           </div>
         </motion.div>
@@ -115,16 +117,15 @@ export default function About() {
               Au cours de cette décennie, notre dévouement inébranlable envers
               la protection, l&apos;éducation, la formation, et l&apos;insertion
               professionnelle des enfants en difficulté a été la pierre
-              angulaire de notre action à Bab Rayan. <br /> Guidés par des valeurs
-              nobles, notre boussole morale reste ferme, et nous sommes fiers de
-              reconnaître Sa Majesté le Roi Mohammed VI comme une source
-              inépuisable d&apos;inspiration et de motivation.
+              angulaire de notre action à Bab Rayan. <br /> Guidés par des
+              valeurs nobles, notre boussole morale reste ferme, et nous sommes
+              fiers de reconnaître Sa Majesté le Roi Mohammed VI comme une
+              source inépuisable d&apos;inspiration et de motivation.
             </p>
             <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-6">
-              Les initiatives de Bab
-              Rayan ont évolué, démontrant notre engagement croissant envers la
-              construction d&apos;un avenir prometteur pour les enfants que nous
-              servons.
+              Les initiatives de Bab Rayan ont évolué, démontrant notre
+              engagement croissant envers la construction d&apos;un avenir
+              prometteur pour les enfants que nous servons.
             </p>
             {showMore && (
               <motion.p
@@ -136,15 +137,15 @@ export default function About() {
                 Nous avons tracé une trajectoire ascendante, passant d&apos;un
                 simple projet de protection à un modèle de vie holistique,
                 méticuleusement conçu pour façonner des citoyens marocains
-                productifs et fiers. En rendant hommage à nos partenaires publics
-                et privés, nous contemplons avec satisfaction les réussites
-                passées tout en tournant résolument notre regard vers l&apos;avenir.
-                Nous sommes convaincus que des miracles attendent ces enfants qui
-                méritent un avenir meilleur. En unissant nos forces, nous
-                continuerons d&apos;inscrire des chapitres positifs dans l&apos;histoire de
-                Bab Rayan. Ensemble, nous formons une communauté déterminée à
-                faire une différence durable. Merci à chacun de vous pour votre
-                engagement et votre soutien continu.
+                productifs et fiers. En rendant hommage à nos partenaires
+                publics et privés, nous contemplons avec satisfaction les
+                réussites passées tout en tournant résolument notre regard vers
+                l&apos;avenir. Nous sommes convaincus que des miracles attendent
+                ces enfants qui méritent un avenir meilleur. En unissant nos
+                forces, nous continuerons d&apos;inscrire des chapitres positifs
+                dans l&apos;histoire de Bab Rayan. Ensemble, nous formons une
+                communauté déterminée à faire une différence durable. Merci à
+                chacun de vous pour votre engagement et votre soutien continu.
               </motion.p>
             )}
             <motion.button
@@ -269,7 +270,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
             NOS VALEURS
-            <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2" ></div>
+            <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </h1>
 
           {/* Values Grid */}
@@ -284,7 +285,8 @@ export default function About() {
                 viewport={{ once: true }}
               >
                 <p className="text-yellow-300 text-6xl">
-                  <img src={value.icon} className="w-36 h-36" alt="" /> </p>
+                  <img src={value.icon} className="w-36 h-36" alt="" />{" "}
+                </p>
                 <p className="text-xl font-semibold text-center">
                   {value.title}
                 </p>

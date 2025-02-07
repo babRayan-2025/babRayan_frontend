@@ -60,18 +60,15 @@ export default function Education() {
           <div className="p-6 max-w-2xl sm:m-4 text-left absolute bottom-6 right-6">
             <h2 className="text-4xl font-bold mb-4">ÉDUCATION ET SCOLARITÉ</h2>
             <p className="text-md leading-relaxed">
-              Bab Rayan aspire à transformer les trajectoires des enfants en
-              difficulté en leur offrant une éducation et une scolarité adaptées
-              à leurs besoins, tout en soutenant leurs familles pour garantir la
-              réussite de chaque enfant :
+              Bab Rayan transforme les parcours des enfants en difficulté grâce
+              à une éducation adaptée et un soutien familial, en garantissant :
             </p>
             <ul>
-              <li>• Un suivi éducatif renforcé ;</li>
-              <li>• Le plaisir d&apos;apprendre ;</li>
+              <li>• Un suivi éducatif personnalisé,</li>
+              <li>• Le plaisir d&apos;apprendre,</li>
               <li>• Des activités extrascolaires enrichissantes ;</li>
               <li>
-                • Un accompagnement complet face aux défis rencontrés par les
-                élèves et leurs familles.
+              • Un accompagnement face aux défis scolaires et familiaux.
               </li>
             </ul>
           </div>
@@ -89,9 +86,7 @@ export default function Education() {
             variants={staggerContainer}
             viewport={{ once: true }}
           >
-            <motion.div
-              className="flex-shrdink-0 mb-6 md:mb-0 md:mr-8"
-d            >
+            <motion.div className="flex-shrdink-0 mb-6 md:mb-0 md:mr-8" d>
               <div className="relative  rounded-xl border-3 shadow-2xl border-r-gray-500 overfldow-hidden">
                 <img
                   src="/education/girl_educate.jpg"
@@ -105,11 +100,19 @@ d            >
 
             <motion.div className="flex-1" variants={fadeInUp}>
               <p className="text-black text-xl font-medium leading-relaxed mb-4">
-              L’école Palmier est un établissement privé à caractère social, gratuit, agréé par le Ministère de l’Éducation nationale, du Préscolaire et des Sports.
-
+                L’école Palmier est un établissement privé à caractère social,
+                gratuit, agréé par le Ministère de l’Éducation nationale, du
+                Préscolaire et des Sports.
               </p>
               <p className="text-black text-xl font-medium leading-relaxed mb-6">
-              Chaque année, de nombreux enfants orphelins, abandonnés, issus de mères célibataires, de familles isolées ou vivant dans la rue interrompent leur scolarité, confrontés à des difficultés insurmontables. Les principales causes de l’échec scolaire chez l’enfant s’expliquent par une négligence des diagnostics précoces des différents troubles de l’apprentissage et de l’attention, ainsi que par des retards dans le développement psychologique et psychomoteur.
+                Chaque année, de nombreux enfants orphelins, abandonnés, issus
+                de mères célibataires, de familles isolées ou vivant dans la rue
+                interrompent leur scolarité, confrontés à des difficultés
+                insurmontables. Les principales causes de l’échec scolaire chez
+                l’enfant s’expliquent par une négligence des diagnostics
+                précoces des différents troubles de l’apprentissage et de
+                l’attention, ainsi que par des retards dans le développement
+                psychologique et psychomoteur.
               </p>
             </motion.div>
           </motion.div>

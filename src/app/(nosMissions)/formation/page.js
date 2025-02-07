@@ -9,28 +9,28 @@ import sign from "../../../assets/PNG/flaiche.png";
 export default function Formation() {
   const items = [
     {
-      src: '/CFI/11.JPG',
+      src: "/CFI/11.JPG",
       text: `DES FORMATIONS DANS DES <br/> SECTEURS PORTEURS`,
     },
     {
-      src: '/CFI/DSC_9647.JPG',
-      text: 'STAGE ET INSERTION <br/> PROFESSIONNELLE',
+      src: "/CFI/DSC_9647.JPG",
+      text: "STAGE ET INSERTION <br/> PROFESSIONNELLE",
     },
     {
-      src: '/CFI/DSC06880.jpg',
-      text: 'ENCOURAGER <br/> L’ENTREPRENEURIAT',
+      src: "/CFI/DSC06880.jpg",
+      text: "ENCOURAGER <br/> L’ENTREPRENEURIAT",
     },
     {
-      src: '/CFI/111.jpeg',
-      text: 'FAVORISER L’INSERTION <br/> SOCIALE ET ÉCONOMIQUE',
+      src: "/CFI/111.jpeg",
+      text: "FAVORISER L’INSERTION <br/> SOCIALE ET ÉCONOMIQUE",
     },
     {
-      src: '/CFI/222.jpeg',
-      text: 'COURS DE LANGUE : <br/> ANGLAIS ET FRANÇAIS',
+      src: "/CFI/222.jpeg",
+      text: "COURS DE LANGUE : <br/> ANGLAIS ET FRANÇAIS",
     },
     {
-      src: '/CFI/DSC06862.jpg',
-      text: 'ATELIERS DE SOFT SKILLS <br/> ET BUREAUTIQUE',
+      src: "/CFI/DSC06862.jpg",
+      text: "ATELIERS DE SOFT SKILLS <br/> ET BUREAUTIQUE",
     },
   ];
 
@@ -75,18 +75,15 @@ export default function Formation() {
         >
           <div className="p-6 max-w-xl sm:m-4 text-left absolute bottom-6 right-8">
             <h2 className="text-4xl font-bold mb-4">
-              CENTRE DE FORMATION ET D'INSERTION CFI
+              CENTRE DE FORMATION ET D&apos;INSERTION CFI
             </h2>
             <p className="text-md leading-relaxed">
-              Dans une société où l&apos;accès à l&apos;éducation et à la
-              formation reste un privilège, les jeunes issus de milieux sociaux
-              précaires sont souvent exclus de ces opportunités essentielles.
-              Cette marginalisation est encore plus marquée pour ceux ayant
-              grandi dans des établissements de protection sociale, où la
-              transition vers l’âge adulte devient une période particulièrement
-              fragile. Pour répondre à ces défis, l’association Bab Rayan a créé
-              en 2022 le Centre de Formation et d’Insertion (CFI), offrant un
-              accompagnement personnalisé à travers le programme CARE.
+              Dans une société où l’accès à la formation professionnelle reste
+              un privilège, les jeunes de milieux précaires, notamment issus des
+              établissements de protection sociale, sont souvent marginalisés.
+              Pour y remédier, Bab Rayan a créé en 2022 le Centre de Formation
+              et d’Insertion (CFI) avec un programme d&apos;accompagnement
+              personnalisé : CARE.
             </p>
           </div>
         </motion.div>
@@ -221,29 +218,29 @@ export default function Formation() {
                   "Le CFI assure un suivi personnalisé avec les formateurs et les responsables des entreprises partenaires pour garantir l’intégration réussie des lauréats. Ce suivi post-insertion s’étend sur une durée minimale de six mois après leur entrée dans leur nouvel environnement professionnel.",
               },
             ].map((item, index) => (
-            <motion.div
-              key={index}
-              className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]"
-              variants={fadeInUp}
-            >
-              <motion.div className="flex-shrink-0 w-full shadow-2xl md:w-[30%]">
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  width={400}
-                  height={400}
-                  className="rounded-xl w-full h-auto md:h-[250px] object-cover"
-                />
+              <motion.div
+                key={index}
+                className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]"
+                variants={fadeInUp}
+              >
+                <motion.div className="flex-shrink-0 w-full shadow-2xl md:w-[30%]">
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    width={400}
+                    height={400}
+                    className="rounded-xl w-full h-auto md:h-[250px] object-cover"
+                  />
+                </motion.div>
+                <motion.div className="text-center md:text-left">
+                  <h1 className="text-xl md:text-2xl font-bold text-red-700 mb-2">
+                    {item.title}
+                  </h1>
+                  <p className="text-gray-700 mb-4 text-sm font-semibold md:text-base">
+                    {item.description}
+                  </p>
+                </motion.div>
               </motion.div>
-              <motion.div className="text-center md:text-left">
-                <h1 className="text-xl md:text-2xl font-bold text-red-700 mb-2">
-                  {item.title}
-                </h1>
-                <p className="text-gray-700 mb-4 text-sm font-semibold md:text-base">
-                  {item.description}
-                </p>
-              </motion.div>
-            </motion.div>
             ))}
           </motion.div>
         </div>
@@ -269,7 +266,7 @@ export default function Formation() {
                 id: 1,
                 picto: "/CFI/120.png",
                 numb: "120",
-                title: "Jeunes en formation"
+                title: "Jeunes en formation",
               },
               {
                 id: 2,
@@ -277,11 +274,26 @@ export default function Formation() {
                 numb: "+350",
                 title: "Notre capacité",
                 title2: "pourra atteindre",
-                title3: "bénéficiaires"
+                title3: "bénéficiaires",
               },
-              { id: 3, picto: "/CFI/site bab rayan CFI-07.png", numb: "7", title: "encadrants" },
-              { id: 4, picto: "/CFI/site bab rayan CFI-08.png", numb: "100%", title: "Taux de recrutement" },
-              { id: 5, picto: "/CFI/site bab rayan CFI-09.png", numb: "290", title: "bénévoles" },
+              {
+                id: 3,
+                picto: "/CFI/site bab rayan CFI-07.png",
+                numb: "7",
+                title: "encadrants",
+              },
+              {
+                id: 4,
+                picto: "/CFI/site bab rayan CFI-08.png",
+                numb: "100%",
+                title: "Taux de recrutement",
+              },
+              {
+                id: 5,
+                picto: "/CFI/site bab rayan CFI-09.png",
+                numb: "290",
+                title: "bénévoles",
+              },
             ].map((value, index) => (
               <motion.div
                 key={index}
@@ -301,12 +313,17 @@ export default function Formation() {
                 </p>
                 <p className="text-base font-medium">
                   {value.title}
-                  {value.id == 2 ? <> <br /> {value.title2} <br />
-                    <span className="text-5xl font-extrabold text-center">
-                      {value.numb}
-                    </span>
-                    <br />{value.title3}
-                  </> : null}
+                  {value.id == 2 ? (
+                    <>
+                      {" "}
+                      <br /> {value.title2} <br />
+                      <span className="text-5xl font-extrabold text-center">
+                        {value.numb}
+                      </span>
+                      <br />
+                      {value.title3}
+                    </>
+                  ) : null}
                 </p>
               </motion.div>
             ))}
@@ -359,7 +376,10 @@ export default function Formation() {
                 className="md:w-[44] h-80 object-cover"
               />
               <div className="absolute bottom-0 bg-red-700 text-white text-center py-3 w-full">
-                <p className="text-sm font-semibold" dangerouslySetInnerHTML={{ __html: item.text }} />
+                <p
+                  className="text-sm font-semibold"
+                  dangerouslySetInnerHTML={{ __html: item.text }}
+                />
               </div>
             </motion.div>
           ))}
