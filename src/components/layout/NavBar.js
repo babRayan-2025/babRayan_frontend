@@ -33,7 +33,7 @@ export default function NavBar() {
       hasDropdown: true,
       dropdownItems: [
         { name: "Protection de l'enfance", href: "/protection" },
-        { name: "Education et scolarité", href: "/education" },
+        { name: "Éducation et scolarité", href: "/education" },
         { name: "Formation et insertion", href: "/formation" }
       ]
     },

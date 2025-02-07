@@ -52,6 +52,63 @@ export default function Donation() {
 
   // Content for different amounts
   const contentByAmount = {
+    "100 DH": {
+      title: '"Sport"',
+      description: "Apportez un soutien vital à un enfant :",
+      items: [
+        {
+          label: "Alimentation saine:",
+          description: "Pour lui permettre de bien grandir.",
+        },
+        {
+          label: "Soins médicaux:",
+          description: "Pour garantir sa bonne santé.",
+        },
+        {
+          label: "Hygiène adaptée:",
+          description: "Pour préserver sa dignité.",
+        },
+      ],
+      image: "/donation/plat.png",
+    },
+    "200 DH": {
+      title: '"Santé"',
+      description: "Soins médicaux et hygiène adaptée Accès aux soins essentiels : ",
+      items: [
+        {
+          label: "Alimentation saine:",
+          description: "Pour lui permettre de bien grandir.",
+        },
+        {
+          label: "Soins médicaux:",
+          description: "Pour garantir sa bonne santé.",
+        },
+        {
+          label: "Hygiène adaptée:",
+          description: "Pour préserver sa dignité.",
+        },
+      ],
+      image: "/donation/plat.png",
+    },
+    "300 DH": {
+      title: 'Parrainage Habillement ',
+      description: "Apportez un soutien vital à un enfant :",
+      items: [
+        {
+          label: "Alimentation saine:",
+          description: "Pour lui permettre de bien grandir.",
+        },
+        {
+          label: "Soins médicaux:",
+          description: "Pour garantir sa bonne santé.",
+        },
+        {
+          label: "Hygiène adaptée:",
+          description: "Pour préserver sa dignité.",
+        },
+      ],
+      image: "/donation/plat.png",
+    },
     "500 DH": {
       title: 'Parrainage "Essentiel"',
       description: "Apportez un soutien vital à un enfant :",
@@ -327,8 +384,8 @@ export default function Donation() {
                 </div>
               </div>
 
-              <div className="flex gap-2 mb-4">
-                {["500 DH", "800 DH", "1900 DH"].map((amount) => (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
+                {["100 DH","200 DH","300 DH","500 DH", "800 DH", "1900DH"].map((amount) => (
                   <motion.button
                     key={amount}
                     variants={buttonVariants}
