@@ -222,9 +222,9 @@ export default function Education() {
                   alt={item.text}
                   width={390}
                   height={200}
-                  className="md:w-[44] h-80 object-cover"
+                  className="md:w-[44] h-80 sm:w-[24rem] sm:h-[20rem] xs:w-[22rem] xs:h-[19rem] object-cover"
                 />
-                <div className="absolute bottom-0 bg-red-700 text-white text-center py-3 w-full">
+                <div className="absolute bottom-0 bg-red-700 text-white text-center py-3 px-3 w-full">
                   <p className="text-sm font-semibold">{item.text}</p>
                 </div>
               </motion.div>
@@ -306,23 +306,24 @@ export default function Education() {
                 ))}
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto place-items-center">
+
                 <Image
                   src="/education/WhatsApp Image 2025-01-24 at 15.56.45.jpeg"
-                  className="w-96 h-72 rounded-3xl shadow-2xl"
+                  className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
                 />
                 <Image
                   src="/education/2.JPG"
-                  className="w-96 h-72 rounded-3xl shadow-2xl"
+                  className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
                 />
                 <Image
                   src="/education/3.jpeg"
-                  className="w-96 h-72 rounded-3xl shadow-2xl"
+                  className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
