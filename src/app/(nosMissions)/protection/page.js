@@ -64,7 +64,7 @@ export default function Foyer() {
           className="z-0"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-        <div className="absolute bottom-10 right-10 max-w-lg text-white z-20">
+        <div className="absolute bottom-10 right-10 p-6 max-w-lg text-white z-20">
           <h1 className="text-xl md:text-3xl font-bold leading-tight">
             REJOIGNEZ LE COMBAT POUR
             <br />
@@ -90,18 +90,18 @@ export default function Foyer() {
             src={BookIcon}
             alt="Book Icon"
             width={250}
-            className="absolute top-4 right-4 z-10"
+            className="absolute top-2 md:top-4 md:right-4 left-[280px] z-[-1]"
           />
           <Image
             src={StartIcon}
             alt="Star Icon"
             width={250}
-            className="absolute top-4 left-4 z-10"
+            className="absolute top-2 md:top-4 md:left-4 right-[350px] z-[-1]"
           />
         </h1>
 
         {/* Watermark Text */}
-        <h4 className="absolute top-1/2 right-[300px] transform -translate-y-1/2  font-bold text-gray-300 z-0 pointer-events-none">
+        <h4 className="absolute top-1/2 md:right-[300px] right-[500px] transform -translate-y-1/2  font-bold text-gray-300 z-0 pointer-events-none">
           <Image src={S7abaIcon} alt="Star Icon" width={250} />
         </h4>
 
@@ -122,7 +122,7 @@ export default function Foyer() {
                       objectFit: "cover",
                     }}
                     alt="Group of Children"
-                    className="shadow_style_css rounded-lg w-full"
+                    className="shadow_style_css rounded-lg w-full z-50"
                   />
                 </div>
                 <div className="max-w-lg">
@@ -156,13 +156,14 @@ export default function Foyer() {
           DES ACTIVITÉS QUI FONT GRANDIR
           <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
         </h1>
-        <div className="flex items-center justify-center w-full gap-8 p-8 rounded-lg -ml-10">
+        <div className="flex flex-wrap-reverse items-center justify-center w-full gap-8 p-8 rounded-lg md:-ml-10">
           <Image
             src={Activity4}
-            className="w-1/3 shadow_style_css rounded-lg"
+            className="md:w-1/3 shadow_style_css rounded-lg"
             style={{ width: "400px", height: "300px", objectFit: "cover" }}
+            alt="Activity"
           />
-          <div className="w-1/3 text-gray-800">
+          <div className="md:w-1/3 p-2 text-gray-800">
             <p className="text-justify leading-relaxed">
               Le choix d’une activité dans un club de leur préférence constitue
               une étape essentielle du processus éducatif. Cette initiative
@@ -182,16 +183,17 @@ export default function Foyer() {
           </div>
         </div>
 
-        <div className="flex justify-center gap-6 flex-wrap mt-8 w-full px-8 ml-7">
+        <div className="flex justify-center gap-6 flex-wrap mt-8 w-full md:px-8 md:ml-7">
           {activities.map((activity, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow_style_css overflow-hidden"
-              style={{ width: "340px", height: "260px" }}
+              className="bg-white rounded-lg shadow_style_css overflow-hidden w-[340px] h-[260px]"
+              // style={{ width: "340px", height: "260px" }}
             >
               <Image
                 src={activity.image}
                 className="w-full h-full object-cover"
+                alt="activity"
               />
             </div>
           ))}

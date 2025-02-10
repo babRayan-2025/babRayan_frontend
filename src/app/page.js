@@ -395,7 +395,7 @@ export default function Home() {
           variants={fadeIn}
           className="bg-[#ef2323] py-8 px-5 shadow-inner overflow-hidden"
         >
-          <div className="flex flex-wrap justify-center items-center gap-4">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-4">
             {chiffres.map((stat, index) => (
               <motion.div
                 key={index}
