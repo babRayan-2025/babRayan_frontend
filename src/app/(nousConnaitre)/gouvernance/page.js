@@ -71,14 +71,14 @@ export default function Gouvernance() {
 
   const teamData = [
     {
-      name: 'Hind Ratiba',
-      title: 'Membre Fondateur',
-      imageUrl: '/members/Hind Ratibe.jpeg'
-    },
-    {
       name: 'Fatima Zahra Hamroudi',
       title: 'Fondatrice Présidente',
       imageUrl: '/members/Fatima Zohra Ratibe.jpeg'
+    },
+    {
+      name: 'Hind Ratiba',
+      title: 'Membre Fondateur',
+      imageUrl: '/members/Hind Ratibe.jpeg'
     },
     {
       name: 'Abdelmoula Ratibe',

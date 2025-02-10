@@ -47,7 +47,7 @@ export default function Education() {
             src="/parrainer/5.jpg"
             alt="Cooking Activity"
             layout="fill"
-            objectFit="cover"
+            objectfit="cover"
             className="opacity-80"
           />
         </div>
@@ -100,7 +100,7 @@ export default function Education() {
                   src="/CFI/2.JPG"
                   alt="Présidente"
                   layout="fill"
-                  objectFit="cover"
+                  objectfit="cover"
                 />
               </div>
             </motion.div>
@@ -363,7 +363,7 @@ export default function Education() {
                   src="/education/WhatsApp Image 2025-01-24 at 15.47.51.jpeg"
                   alt="Présidente"
                   layout="fill"
-                  objectFit="cover shadow-2xl"
+                  objectfit="cover shadow-2xl"
                 />
               </div>
             </motion.div>
