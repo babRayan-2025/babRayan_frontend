@@ -289,7 +289,7 @@ export default function Press() {
 
         {/* Albums Section */}
         <motion.div
-          className="bg-[#cc2229] rounded-3xl mx-16 mb-6 p-8"
+          className="bg-[#cc2229] rounded-3xl mx-16 mb-6 p-8 md:mx-16 ms:mb-6 p-8 mx-14"
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.2 }}
@@ -357,7 +357,7 @@ export default function Press() {
 
         {/* Press Section */}
         <motion.div
-          className="bg-yellow-300 rounded-3xl mx-16 p-8"
+          className="bg-yellow-300 rounded-3xl mx-16 p-8 md:mx-16 ms:mb-6 p-8 mx-14"
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.2 }}
@@ -376,7 +376,7 @@ export default function Press() {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-auto d-flex justify-items-center gap-4 justify-center">
             <Image
               src="/press/1.png"
-              onClick={() => window.open("/press/parlent/telque.pdf", "_blank")} style={{ cursor: "pointer" }}
+              onClick={() => window.open("https://youtu.be/1SatrIi9WB0?si=MyxVJCpaVk2ye_f6", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}
               height={300}
