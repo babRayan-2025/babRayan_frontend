@@ -68,7 +68,7 @@ export default function Education() {
               <li>• Le plaisir d&apos;apprendre,</li>
               <li>• Des activités extrascolaires enrichissantes ;</li>
               <li>
-              • Un accompagnement face aux défis scolaires et familiaux.
+                • Un accompagnement face aux défis scolaires et familiaux.
               </li>
             </ul>
           </div>
@@ -221,9 +221,9 @@ export default function Education() {
                   alt={item.text}
                   width={290}
                   height={200}
-                  className="md:w-[44] h-80 object-cover"
+                  className="md:w-[44] h-80 sm:w-[24rem] sm:h-[20rem] xs:w-[22rem] xs:h-[19rem] object-cover"
                 />
-                <div className="absolute bottom-0 bg-red-700 text-white text-center py-3 w-full">
+                <div className="absolute bottom-0 bg-red-700 text-white text-center py-3 px-3 w-full">
                   <p className="text-sm font-semibold">{item.text}</p>
                 </div>
               </motion.div>
@@ -253,7 +253,7 @@ export default function Education() {
                 activités technologiques et un programme sportif d’éducation
                 physique.
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 mx-6  justify-center gap-36 my-20">
+              <div className="grid grid-cols-2 md:grid-cols-4 mx-6 justify-center gap-6 my-20">
                 {[
                   {
                     src: "/education/picto/site bab rayan école-08.png",
@@ -295,7 +295,7 @@ export default function Education() {
                   >
                     <Image
                       src={item.src}
-                      className="w-44 h-40 ml-1"
+                      className="w-24 h-24 mx-auto"
                       width={40}
                       height={40}
                       alt={item.text}
@@ -304,24 +304,24 @@ export default function Education() {
                   </motion.div>
                 ))}
               </div>
-              <div className="grid grid-cols-3 sm:gris-cols-1 gap-6 max-w-5xl mx-auto place-items-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto place-items-center">
                 <Image
                   src="/education/WhatsApp Image 2025-01-24 at 15.56.45.jpeg"
-                  className="w-96 h-72 rounded-3xl shadow-2xl"
+                  className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
                 />
                 <Image
                   src="/education/2.JPG"
-                  className="w-96 h-72 rounded-3xl shadow-2xl"
+                  className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
                 />
                 <Image
                   src="/education/3.jpeg"
-                  className="w-96 h-72 rounded-3xl shadow-2xl"
+                  className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
