@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Footer from "../../../components/layout/Footer";
 
 export default function Education() {
   const items = [
@@ -47,7 +48,7 @@ export default function Education() {
             src="/parrainer/5.jpg"
             alt="Cooking Activity"
             layout="fill"
-            objectFit="cover"
+            objectfit="cover"
             className="opacity-80"
           />
         </div>
@@ -58,17 +59,17 @@ export default function Education() {
           transition={{ duration: 1 }}
         >
           <div className="p-6 max-w-2xl sm:m-4 text-left absolute bottom-6 right-6">
-            <h2 className="text-4xl font-bold mb-4">ÉDUCATION ET SCOLARITÉ</h2>
-            <p className="text-md leading-relaxed">
+            <h2 className="text-5xl font-bold mb-4">ÉDUCATION ET SCOLARITÉ</h2>
+            <p className="text-lg leading-relaxed">
               Bab Rayan transforme les parcours des enfants en difficulté grâce
               à une éducation adaptée et un soutien familial, en garantissant :
             </p>
-            <ul>
+            <ul className="text-lg">
               <li>• Un suivi éducatif personnalisé,</li>
               <li>• Le plaisir d&apos;apprendre,</li>
               <li>• Des activités extrascolaires enrichissantes ;</li>
               <li>
-              • Un accompagnement face aux défis scolaires et familiaux.
+                • Un accompagnement face aux défis scolaires et familiaux.
               </li>
             </ul>
           </div>
@@ -92,7 +93,7 @@ export default function Education() {
                   src="/education/girl_educate.jpg"
                   alt="Présidente"
                   layout="fill"
-                  objectFit="cover"
+                  objectfit="cover"
                   style={{ borderRadius: "1rem", width: "500px" }}
                 />
               </div>
@@ -204,7 +205,7 @@ export default function Education() {
             SERVICES INTÉGRÉS
             <div className="w-44 md:w-60 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </h1>
-          <p className="text-xl md:font-semibold text-black md:mx-64 m-8 mb-12 md:m-24">
+          <p className="text-xl md:font-semibold text-black lg:mx-64 m-8 mb-12 md:m-24">
             L’école prépare les enfants aux défis de demain dans un monde de
             plus en plus globalisé, le programme choisi par l’école est par
             conséquent trilingue :
@@ -219,7 +220,7 @@ export default function Education() {
                 <Image
                   src={item.src}
                   alt={item.text}
-                  width={290}
+                  width={390}
                   height={200}
                   className="md:w-[44] h-80 object-cover"
                 />
@@ -242,7 +243,7 @@ export default function Education() {
           <div className="max-w-6xl mx-auto text-center">
             <motion.div variants={fadeInUp}>
               <h1 className="p-4 text-2xl md:text-4xl text-gray-950 font-bold text-center mb-8 relative">
-                SUIVI ET ENCADREMENT DE L&apos;ENFANT
+                SUIVI ET ENCADREMENT DE L'ENFANT
                 <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-6"></div>
               </h1>
               <p className="text-lg text-gray-900 font-semibold mx-6">
@@ -253,7 +254,7 @@ export default function Education() {
                 activités technologiques et un programme sportif d’éducation
                 physique.
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 mx-6  justify-center gap-36 my-20">
+              <div className="grid grid-cols-2 lg:grid-cols-4 mx-6  justify-center gap-36 my-20">
                 {[
                   {
                     src: "/education/picto/site bab rayan école-08.png",
@@ -290,12 +291,12 @@ export default function Education() {
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className="text-center text-gray-700 font-semibold text-lg"
+                    className="text-center mx-auto d-flex justify-items-center text-gray-700 font-semibold text-lg"
                     variants={fadeInUp}
                   >
                     <Image
                       src={item.src}
-                      className="w-44 h-40 ml-1"
+                      className="w-44 h-40  "
                       width={40}
                       height={40}
                       alt={item.text}
@@ -304,7 +305,7 @@ export default function Education() {
                   </motion.div>
                 ))}
               </div>
-              <div className="grid grid-cols-3 sm:gris-cols-1 gap-6 max-w-5xl mx-auto place-items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto place-items-center">
                 <Image
                   src="/education/WhatsApp Image 2025-01-24 at 15.56.45.jpeg"
                   className="w-96 h-72 rounded-3xl shadow-2xl"
@@ -359,7 +360,7 @@ export default function Education() {
                   src="/education/WhatsApp Image 2025-01-24 at 15.47.51.jpeg"
                   alt="Présidente"
                   layout="fill"
-                  objectFit="cover shadow-2xl"
+                  objectfit="cover shadow-2xl"
                 />
               </div>
             </motion.div>
@@ -397,7 +398,7 @@ export default function Education() {
               <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 my-6"></div>
             </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1  lg:grid-cols-3 gap-8">
               {[
                 {
                   picto: "/education/site bab rayan école-10.png",
@@ -438,6 +439,7 @@ export default function Education() {
             </div>
           </div>
         </motion.div>
+        <Footer />
       </motion.div>
     </main>
   );

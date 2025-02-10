@@ -10,7 +10,7 @@ export default function Template({ children }) {
   const isDon = pathname?.includes("/don");
   // const isLogin = pathname?.includes("/login");
   // const isRegister = pathname?.includes("/register");
-
+  
   return (
     <>
       {!isDashboard && <NavBar />}

@@ -63,7 +63,7 @@ export default function Formation() {
             src="/CFI/1.jpg"
             alt="Cooking Activity"
             layout="fill"
-            objectFit="cover"
+            objectfit="cover"
             className="opacity-80"
           />
         </div>
@@ -113,7 +113,7 @@ export default function Formation() {
                 src="/CFI/2.JPG"
                 alt="Présidente"
                 layout="fill"
-                objectFit="cover"
+                objectfit="cover"
               />
             </div>
           </motion.div>

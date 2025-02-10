@@ -60,7 +60,7 @@ export default function Foyer() {
           src={FirstImg}
           alt="Foyer Bab Rayan"
           layout="fill"
-          objectFit="cover"
+          objectfit="cover"
           className="z-0"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -119,7 +119,7 @@ export default function Foyer() {
                     style={{
                       width: "470px",
                       height: "400px",
-                      objectFit: "cover",
+                      objectfit: "cover",
                     }}
                     alt="Group of Children"
                     className="shadow_style_css rounded-lg w-full"
@@ -160,7 +160,7 @@ export default function Foyer() {
           <Image
             src={Activity4}
             className="w-1/3 shadow_style_css rounded-lg"
-            style={{ width: "400px", height: "300px", objectFit: "cover" }}
+            style={{ width: "400px", height: "300px", objectfit: "cover" }}
           />
           <div className="w-1/3 text-gray-800">
             <p className="text-justify leading-relaxed">

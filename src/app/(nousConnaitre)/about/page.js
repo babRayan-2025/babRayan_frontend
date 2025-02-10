@@ -49,7 +49,7 @@ export default function About() {
             src={cookingImage}
             alt="Cooking Activity"
             layout="fill"
-            objectFit="cover"
+            objectfit="cover"
             className="opacity-80 "
           />
         </div>
@@ -95,7 +95,7 @@ export default function About() {
                 src="/members/presedente.jpeg"
                 alt="Présidente"
                 layout="fill"
-                objectFit="cover"
+                objectfit="cover"
               />
             </div>
             <h3 className="text-center mt-4 text-xl font-bold text-red-600">
@@ -232,7 +232,7 @@ export default function About() {
                       alt="Group of children"
                       width={500}
                       height={300}
-                      objectFit="cover"
+                      objectfit="cover"
                     />
                   </div>
                 </motion.div>
