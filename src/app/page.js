@@ -84,8 +84,8 @@ export default function Home() {
       link: "/education"
     },
     {
-      image: '/caroussel/slide1.png',
-      // picto: '/caroussel/main.png',
+      image: '/caroussel/slider.jpg',
+      picto: '/caroussel/etoile.svg',
       title: "UN ENGAGEMENT QUI A DU SENS",
       description: "Rejoignez le combat pour la protection de l’enfance, engagez-vous en devenant donateur, partenaire ou bénévole.",
       link: "/devenir_partenaire"
