@@ -578,10 +578,10 @@ export default function Home() {
             <div className="w-56 h-1 bg-yellow-200 absolute left-1/2 -translate-x-1/2 mt-2"></div>
           </motion.h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {articles.map((article, index) => (
               <motion.div key={index} className="bg-white rounded-lg shadow-lg">
-                <Image src={article.img} className="h-[45vh] object-cover" alt={article.title} width={500} height={300} />
+                <img src={article.img} className="h-[45vh] object-cover" alt={article.title} style={{ width: '100%' }} height={300} />
                 <div className="p-6">
                   <p className="text-3xl font-bold text-center pb-4">{article.title}</p>
                   <p className="pb-6 text-center">{article.shortDesc}</p>
@@ -633,7 +633,7 @@ export default function Home() {
 
         {/* /Actualites/ */}
 
-        <div className="">
+        <div>
           <motion.h1
             className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative"
             variants={fadeIn} // Apply fadeIn animation
@@ -653,9 +653,9 @@ export default function Home() {
               animate="animate"
             >
               <motion.div
-                className="p-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]" variants={fadeIn} >
+                className="p-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]" variants={fadeIn} >
                 {/* Image Section */}
-                <motion.div className="flex-shrink-0 w-full md:w-[45%]" variants={fadeIn}>
+                <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn}>
                   <Image src={article.img} alt="Graduation" className="rounded-xl w-full h-auto object-cover" />
                 </motion.div>
 
