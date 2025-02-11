@@ -71,11 +71,11 @@ export default function Foyer() {
             LA PROTECTION DE L’ENFANCE
           </h1>
           <p className="mt-4 italic text-sm md:text-base leading-relaxed">
-            Bab Rayan place la protection de l&apos;enfance au cœur de sa mission.
-            Elle offre un cadre de vie sécurisant et un soutien continu pour
-            restaurer leur confiance. En leur redonnant une part d’insouciance
-            et en les guidant vers un foyer et l’éducation, l’association les
-            aide à construire un avenir meilleur.
+            Bab Rayan place la protection de l&apos;enfance au cœur de sa
+            mission. Elle offre un cadre de vie sécurisant et un soutien continu
+            pour restaurer leur confiance. En leur redonnant une part
+            d’insouciance et en les guidant vers un foyer et l’éducation,
+            l’association les aide à construire un avenir meilleur.
           </p>
         </div>
       </div>
@@ -90,7 +90,7 @@ export default function Foyer() {
             src={BookIcon}
             alt="Book Icon"
             width={250}
-            className="absolute top-2 md:top-4 md:right-4 left-[280px] z-[-1]"
+            className="absolute top-2 md:top-4 left-[280px] md:right-[300px] z-[-1]"
           />
           <Image
             src={StartIcon}
