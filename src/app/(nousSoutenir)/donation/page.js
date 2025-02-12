@@ -65,7 +65,7 @@ export default function Donation() {
           description: "Pour découvrir de nouvelles passions et développer ses talents.",
         },
         {
-          label: "•	Offrez un équipement adapté :",
+          label: "Offrez un équipement adapté :",
           description: "Pour pratiquer en toute sécurité et avec plaisir.",
         },
       ],
@@ -300,13 +300,13 @@ export default function Donation() {
 
   const Modal = ({ method, amount, onClose }) => {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center" onClick={onClose}>
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6" onClick={onClose}>
         <div className="bg-white rounded-3xl shadow-lg text-center">
           {method && (
             <>
-              <img src={method.popup} alt={method.label} className="w-[70rem] h-[40rem] mx-auto mb-4 rounded-3xl shadow-md" />
+              <img src={method.popup} alt={method.label} className="md:w-[70rem] md:h-[40rem] mx-auto mb-4 rounded-3xl shadow-md" />
               <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3>
-              <p className="text-gray-700">{method.desc}</p>
+              {/* <p className="text-gray-700">{method.desc}</p> */}
             </>
           )}
           {amount && (
@@ -382,7 +382,7 @@ export default function Donation() {
           />
         </motion.header>
 
-        <section className="flex flex-col gap-10 p-8 mb-5 w-full max-w-full mx-auto">
+        <section className="flex flex-col gap-10 md:p-8 mb-5 w-full max-w-full mx-auto">
           <motion.div
             className="flex flex-col lg:flex-row justify-center gap-6"
             variants={staggerChildren}
@@ -392,7 +392,7 @@ export default function Donation() {
             {/* Amount Card */}
             <motion.div
               variants={cardVariants}
-              className={`bg-[#cc2229] p-8 rounded-3xl shadow-md border border-gray-500 ${
+              className={`bg-[#cc2229] p-4 md:p-8 rounded-3xl shadow-md border border-gray-500 ${
                 showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
               }`}
             >
@@ -401,12 +401,12 @@ export default function Donation() {
               </h2>
 
               <div className="mb-4 flex justify-center">
-                <div className="flex gap-4 mr-3">
+                <div className="flex gap-4  justify-center">
                   <motion.button
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-11 rounded-full ${
+                    className={`py-2 px-8 md:px-10 rounded-full ${
                       donationType === "Mensuel"
                         ? "bg-yellow-300 text-red-700"
                         : "bg-white text-red-700 border border-yellow-300"
@@ -419,7 +419,7 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-11 rounded-full ${
+                    className={`py-2 px-8 md:px-10 rounded-full ${
                       donationType === "Ponctuel"
                         ? "bg-yellow-300 text-red-700"
                         : "bg-white text-red-700 border border-yellow-300"
@@ -432,13 +432,13 @@ export default function Donation() {
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
-                {["100 DH","200 DH","300 DH","500 DH", "800 DH", "1900DH"].map((amount) => (
+                {["100 DH","200 DH","300 DH","500 DH", "800 DH", "1900 DH"].map((amount) => (
                   <motion.button
                     key={amount}
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-4 px-4  rounded-2xl text-lg border-2 border-yellow-300 ${
+                    className={`py-4 px-2  rounded-2xl text-lg border-2 border-yellow-300 ${
                       selectedAmount === amount
                         ? "bg-[#FCE8F3] text-red-700 font-bold"
                         : "bg-red-700 text-white font-bold"
@@ -519,12 +519,12 @@ export default function Donation() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-[#fdc000] p-4  rounded-3xl shadow-lg w-full lg:w-1/4 shadow-md border border-red-700"
+                className="bg-[#fdc000] p-4  rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
               >
-                <h2 className="text-3xl text-red-700 font-extrabold mb-4 text-center">
+                <h2 className="text-3xl text-red-700 font-extrabold mb-4 mx-10 text-center">
                   {selectedContent.title}
                 </h2>
-                <p className="text-gray-800">{selectedContent.description}</p>
+                <p className="text-gray-800 mb-4">{selectedContent.description}</p>
                 <motion.ul
                   variants={staggerChildren}
                   initial="hidden"
