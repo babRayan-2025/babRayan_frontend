@@ -69,7 +69,7 @@ export default function Donation() {
           description: "Pour pratiquer en toute sécurité et avec plaisir.",
         },
       ],
-      image: "/donation/plat.png",
+      image: "/donation/Sport.png",
     },
     "200 DH": {
       title: 'Parrainage "Santé"',
@@ -88,7 +88,7 @@ export default function Donation() {
           description: "Produits d'hygiène, sensibilisation aux bonnes pratiques pour une vie saine.",
         },
       ],
-      image: "/donation/plat.png",
+      image: "/donation/santé.png",
     },
     "300 DH": {
       title: 'Parrainage "Habillement"',
@@ -103,7 +103,7 @@ export default function Donation() {
           description: "Pour se sentir confiant, que ce soit à l'école ou lors d'événements spéciaux.",
         },
       ],
-      image: "/donation/plat.png",
+      image: "/donation/Vetements.png",
     },
     "500 DH": {
       title: 'Parrainage "Essentiel"',
@@ -209,7 +209,12 @@ export default function Donation() {
   };
 
   const handleProceedToDonation = () => {
-    if (!selectedAmount && !customAmount) {
+    const selectedPaymentMethod = paymentMethods.find(method => method.id === paymentMethod);
+
+    if ([1, 2, 3].includes(paymentMethod)) {
+      setSelectedMethod(selectedPaymentMethod);
+      setIsModalOpen(true);
+    }else if (!selectedAmount && !customAmount) {
       // Affichez un toast d'erreur si aucun montant n'est sélectionné
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
@@ -248,18 +253,23 @@ export default function Donation() {
       label: "Virement bancaire",
       image: "/donation/1.png",
       desc: "Payer avec votre carte bancaire",
+      popup: "/donation/popUp/2.png",
     },
     {
       id: 2,
       label: "Chèque",
       image: "/donation/2.png",
       desc: "Payer avec votre compte PayPal",
+      popup: "/donation/popUp/1.png",
+
     },
     {
       id: 3,
       label: "Cash",
       image: "/donation/3.png",
       desc: "Faire un don par chèque",
+      popup: "/donation/popUp/3.png",
+
     },
     {
       id: 4,
@@ -275,6 +285,47 @@ export default function Donation() {
     },
     { id: 6, label: "CMI", image: "/donation/6.png", desc: "Payer avec CMI" },
   ];
+
+  // const amountImages = {
+  //   "100 DH": "/donation/amounts/100.png",
+  //   "200 DH": "/donation/amounts/200.png",
+  //   "300 DH": "/donation/amounts/300.png",
+  //   "500 DH": "/donation/amounts/500.png",
+  //   "800 DH": "/donation/amounts/800.png",
+  //   "1900 DH": "/donation/amounts/1900.png",
+  // };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState(null);
+
+  const Modal = ({ method, amount, onClose }) => {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center" onClick={onClose}>
+        <div className="bg-white rounded-3xl shadow-lg text-center">
+          {method && (
+            <>
+              <img src={method.popup} alt={method.label} className="w-[70rem] h-[40rem] mx-auto mb-4 rounded-3xl shadow-md" />
+              <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3>
+              <p className="text-gray-700">{method.desc}</p>
+            </>
+          )}
+          {amount && (
+            <>
+              <img src={amountImages[amount]} alt={amount} className="w-32 h-32 mx-auto mb-4" />
+              <h3 className="text-xl font-bold mb-2">Montant sélectionné</h3>
+              <p className="text-gray-700">{amount}</p>
+            </>
+          )}
+          <button
+            onClick={onClose}
+            className="mt-4 bg-red-700 text-white py-2 mb-4 px-6 rounded-full"
+          >
+            Fermer
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <main>
@@ -453,6 +504,13 @@ export default function Donation() {
               >
                 Procéder au don
               </motion.button>
+              {isModalOpen && (
+        <Modal
+          method={selectedMethod}
+          amount={selectedAmount}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
             </motion.div>
 
             {/* Sponsorship Card */}
