@@ -53,58 +53,54 @@ export default function Donation() {
   // Content for different amounts
   const contentByAmount = {
     "100 DH": {
-      title: '"Sport"',
-      description: "Apportez un soutien vital à un enfant :",
+      title: 'Parrainage "Sport"',
+      description: "Offrez-lui l'opportunité de s'épanouir pleinement :",
       items: [
         {
-          label: "Alimentation saine:",
-          description: "Pour lui permettre de bien grandir.",
+          label: "Encouragez l'activité physique régulière :",
+          description: "Pour cultiver son bien-être et sa vitalité.",
         },
         {
-          label: "Soins médicaux:",
-          description: "Pour garantir sa bonne santé.",
+          label: "Soutenez la diversité des sports :",
+          description: "Pour découvrir de nouvelles passions et développer ses talents.",
         },
         {
-          label: "Hygiène adaptée:",
-          description: "Pour préserver sa dignité.",
+          label: "•	Offrez un équipement adapté :",
+          description: "Pour pratiquer en toute sécurité et avec plaisir.",
         },
       ],
       image: "/donation/plat.png",
     },
     "200 DH": {
-      title: '"Santé"',
-      description: "Soins médicaux et hygiène adaptée Accès aux soins essentiels : ",
+      title: 'Parrainage "Santé"',
+      description: "Prenez soin de sa santé, un cadeau pour la vie :",
       items: [
         {
-          label: "Alimentation saine:",
-          description: "Pour lui permettre de bien grandir.",
+          label: "Assurez l'accès aux soins essentiels :",
+          description: "Consultations médicales, vaccins, et bilans réguliers.",
         },
         {
-          label: "Soins médicaux:",
-          description: "Pour garantir sa bonne santé.",
+          label: "Offrez des traitements adaptés :",
+          description: "Médecins spécialisés, soins dentaires, et suivi personnalisé.",
         },
         {
-          label: "Hygiène adaptée:",
-          description: "Pour préserver sa dignité.",
+          label: "Promouvez l'hygiène et le bien-être :",
+          description: "Produits d'hygiène, sensibilisation aux bonnes pratiques pour une vie saine.",
         },
       ],
       image: "/donation/plat.png",
     },
     "300 DH": {
-      title: 'Parrainage Habillement ',
-      description: "Apportez un soutien vital à un enfant :",
+      title: 'Parrainage "Habillement"',
+      description: "Offrez-lui la dignité et le confort à chaque saison :",
       items: [
         {
-          label: "Alimentation saine:",
-          description: "Pour lui permettre de bien grandir.",
+          label: "Des vêtements adaptés :",
+          description: "À son âge et son environnement.",
         },
         {
-          label: "Soins médicaux:",
-          description: "Pour garantir sa bonne santé.",
-        },
-        {
-          label: "Hygiène adaptée:",
-          description: "Pour préserver sa dignité.",
+          label: "Une tenue pour chaque occasion :",
+          description: "Pour se sentir confiant, que ce soit à l'école ou lors d'événements spéciaux.",
         },
       ],
       image: "/donation/plat.png",
