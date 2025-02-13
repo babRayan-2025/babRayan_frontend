@@ -70,18 +70,18 @@ export default function Home() {
       link: "/protection"
     },
     {
-      image: '/caroussel/patisserie.png',
-      picto: '/caroussel/fleche.png',
-      title: "FORMER ET INTÉGRER",
-      description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens autonomes et engagés.",
-      link: "/formation"
-    },
-    {
       image: '/caroussel/jeux.png',
       picto: '/caroussel/main.png',
       title: "PROTÉGER, ÉDUQUER, ACCOMPAGNER",
       description: "Bab Rayan défend les droits des enfants en leur offrant un foyer sécurisant et une éducation de qualité.",
       link: "/education"
+    },
+    {
+      image: '/caroussel/patisserie.png',
+      picto: '/caroussel/fleche.png',
+      title: "FORMER ET INTÉGRER",
+      description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens autonomes et engagés.",
+      link: "/formation"
     },
     {
       image: '/caroussel/slider.jpg',
