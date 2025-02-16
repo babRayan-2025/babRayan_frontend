@@ -100,6 +100,16 @@ body {
   background-color: #ffd54db7;
 }
 
+.blue_color {
+  color: white;
+  background-color: #003049;
+}
+
+.blue_color:hover {
+  background-color: #003049b7;
+}
+
+
 /* Responsive adjustments */
 @media screen and (max-width: 968px) {
   .don_icon_animate {
