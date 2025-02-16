@@ -4,10 +4,10 @@ import '../dashboard.css';
 
 export default function Users() {
     const [users, setUsers] = useState([
-        { id: 1, name: 'John Doe', tel: "066666666", email: "email@gmail.com", age: 25, role: "admin", pic: "https://randomuser.me/api/portraits/men/1.jpg" },
-        { id: 2, name: 'Jane Doe', tel: "066666666", email: "email@gmail.com", age: 30, role: "admin", pic: "https://randomuser.me/api/portraits/men/1.jpg" },
-        { id: 3, name: 'Bob Smith', tel: "066666666", email: "email@gmail.com", age: 35, role: "donateur", pic: "https://randomuser.me/api/portraits/men/1.jpg" },
-        { id: 4, name: 'Alice Johnson', tel: "066666666", email: "email@gmail.com", age: 28, role: "donateur", pic: "https://randomuser.me/api/portraits/men/1.jpg" },
+        { id: 1, name: 'John Doe', tel: "066666666", email: "email@gmail.com", age: 25, pic: "https://randomuser.me/api/portraits/men/1.jpg" },
+        { id: 2, name: 'Jane Doe', tel: "066666666", email: "email@gmail.com", age: 30, pic: "https://randomuser.me/api/portraits/men/1.jpg" },
+        { id: 3, name: 'Bob Smith', tel: "066666666", email: "email@gmail.com", age: 35, pic: "https://randomuser.me/api/portraits/men/1.jpg" },
+        { id: 4, name: 'Alice Johnson', tel: "066666666", email: "email@gmail.com", age: 28, pic: "https://randomuser.me/api/portraits/men/1.jpg" },
     ]);
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -48,7 +48,7 @@ export default function Users() {
                 </thead>
                 <tbody>
                     {filteredUsers.map((user) => (
-                        <tr key={user.id} className="border-b">
+                        <tr key={user.id} className="border-b my-auto">
                             <td className="py-3 px-4">
                                 <div className="flex items-center">
                                     <img src={user.pic ? user.pic : "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4"} alt={user.name} className="w-14 h-14 object-cover rounded-full" />
@@ -61,14 +61,11 @@ export default function Users() {
                             <td className="py-3 px-4">{user.age ? user.age : <i>non spécifié</i>}</td>
                             <td className="py-3 px-4">{user.tel ? user.tel : <i>non spécifié</i>}</td>
                             <td className="py-3 px-4">
-                                <span className={`py-1 px-3 inline-block rounded-full text-white ${user.role === 'admin' ? 'bg-red-500' : 'bg-green-500'}`}>
-                                    {user.role || "Donateur"}
+                                <span className={'py-1 px-3 inline-block rounded-full text-white bg-red-500'}>
+                                    admin
                                 </span>
                             </td>
-                            <td className="py-3 px-4 flex space-x-2">
-                                <button type="button" className="text-blue-500 hover:text-blue-700">
-                                    <i className="fas fa-eye"></i>
-                                </button>
+                            <td className="py-3 px-4 ">
                                 {/* Remove delete button for admin users */}
                                 {user.role !== 'admin' && (
                                     <button type="button" className="text-red-500 hover:text-red-700">

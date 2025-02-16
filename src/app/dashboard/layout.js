@@ -7,7 +7,6 @@ import { TfiMenu } from "react-icons/tfi";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { ImNewspaper } from "react-icons/im";
 import { FaUsers } from "react-icons/fa";
-import { PiUsersFourFill } from "react-icons/pi";
 import { IoSettingsSharp } from "react-icons/io5";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -31,8 +30,7 @@ export default function DashboardLayout({ children }) {
   const menuItems = [
     { name: 'Dashboard', icon: <MdOutlineSpaceDashboard />, path: '/' },
     { name: 'Actualités', icon: <ImNewspaper />, path: '/news' },
-    { name: 'Users', icon: <FaUsers />, path: '/users' },
-    { name: 'Members', icon: <PiUsersFourFill />, path: '/members' },
+    { name: 'Administateurs', icon: <FaUsers />, path: '/admins' },
     { name: 'Settings', icon: <IoSettingsSharp />, path: '/settings' },
   ];
 
