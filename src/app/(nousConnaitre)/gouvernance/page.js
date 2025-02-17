@@ -40,9 +40,9 @@ const HeroSection = () => (
       style={{ backgroundImage: "url('/gouvernance.png')" }}
     />
     <div className="absolute bottom-2 right-4 p-6 max-w-5xl">
-      <div className="text-white p-6 lg:p-12 max-w-4xl mx-auto rounded">
+      <div className="text-white p-4 lg:p-12 max-w-4xl mx-auto rounded">
         <h2 className="text-3xl lg:text-4xl font-bold mb-4">GOUVERNANCE</h2>
-        <p className="text-lg font-semibold text-yellow-300 mb-4">
+        <p className="text-lg font-semibold text-yellow-300">
           Engagés et unis autour d’un même espoir : un projet holistique pour
           chaque enfant accueilli par Bab Rayan
         </p>
@@ -195,7 +195,7 @@ export default function Gouvernance() {
                   <img
                     src={report.imageUrl}
                     alt={`Rapport Annuel ${report.year}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full "
                   />
                 </div>
 

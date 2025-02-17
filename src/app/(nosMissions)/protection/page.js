@@ -55,7 +55,7 @@ export default function Foyer() {
   return (
     <section>
       {/* Header Section */}
-      <div className="relative w-full h-screen flex items-center justify-center">
+      <div className="relative w-full h-[400px] md:h-screen flex items-center justify-center">
         <Image
           src={FirstImg}
           alt="Foyer Bab Rayan"
@@ -90,7 +90,7 @@ export default function Foyer() {
             src={BookIcon}
             alt="Book Icon"
             width={250}
-            className="absolute top-2 md:top-4 left-[280px] md:right-[300px] z-[-1]"
+            className="absolute top-2 md:top-4 right-[480px] md:right-[300px] z-[-1]"
           />
           <Image
             src={StartIcon}

@@ -50,7 +50,7 @@ export default function About() {
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
-            className="opacity-80 "
+            className="opacity-80 object-cover"
           />
         </div>
         <motion.div
@@ -245,7 +245,7 @@ export default function About() {
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <p className="text-gray-800 text-xl md:text-2xl italic font-bold leading-relaxed">
+                  <p className="text-gray-800 text-xl text-center md:text-start md:text-2xl italic font-bold leading-relaxed">
                     Notre mission est de protéger, d’éduquer et de former les
                     enfants et jeunes en difficulté pour leur offrir un avenir
                     digne, autonome et enrichissant. Grâce à nos programmes
