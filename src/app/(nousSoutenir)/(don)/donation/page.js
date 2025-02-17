@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from 'next/router';
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -215,16 +216,19 @@ export default function Donation() {
       setSelectedMethod(selectedPaymentMethod);
       setIsModalOpen(true);
     }else if (!selectedAmount && !customAmount) {
-      // Affichez un toast d'erreur si aucun montant n'est sélectionné
+      // Navigate to the error page
+      router.push('/sorry');
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
     } else if (!paymentMethod) {
+      // Navigate to the thanks page
+      // router.push('/sorry');
       toast.error(
         "Veuillez choisir un type de paiement avant de procéder au don."
       );
       return;
     }
-
+    // router.push('/Remerciement');
     toast.success("Merci pour votre don !");
 
     setSelectedAmount(null);

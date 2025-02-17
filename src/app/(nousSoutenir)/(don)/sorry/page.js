@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 export default function sorry() {
   return (
     <main>
-      <div className="flex min-h-screen flex-col items-center justify-between p-5 bg-[url('/donation/background.png')] bg-cover">
-        <div className="flex flex-col items-center p-24 justify-center leading-relaxed">
-          {/* <img src="/donation/erreur.png" alt="erreur" className="w-1/2" /> */}
+      <div className="flex min-h-screen flex-col items-center justify-between p-5 bg-[url('/sorry/bg.png')] bg-cover">
+        <div className="flex flex-col items-center pb-24 px-24 justify-center leading-relaxed">
+          <img src="/sorry/tri.png" alt="erreur" className="w-1/2 w-[400px] h-[4  00px]" />
           <h1 className="text-8xl font-bold text-gray-900 mb-8">OUPS...</h1>
           <p className="text-gray-900 font-bold mb-8 text-3xl">
             IL SEMBLE Y AVOIR UN PROBLÈME !
@@ -20,7 +20,7 @@ export default function sorry() {
           <div className="leading-loose mb-12">
             <li className="mb-8 flex items-start">
               <img
-                src="/donation/check .svg"
+                src="/sorry/check.png"
                 alt="Check"
                 className="w-10 h-10 mr-0 mt-0"
               />
@@ -30,7 +30,7 @@ export default function sorry() {
             </li>
             <li className="mb-8 flex items-start">
               <img
-                src="/donation/check .svg"
+                src="/sorry/check.png"
                 alt="Check"
                 className="w-10 h-10 mr-0 mt-0"
               />
@@ -41,7 +41,7 @@ export default function sorry() {
             </li>
             <li className="mb-8 flex items-start">
               <img
-                src="/donation/check .svg"
+                src="/sorry/check.png"
                 alt="Check"
                 className="w-10 h-10 mr-0 mt-0"
               />

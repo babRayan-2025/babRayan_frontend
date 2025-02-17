@@ -130,7 +130,7 @@ export default function Home() {
     },
     {
       label: "Familles accompagnées",
-      value: 1200,
+      value: 1500,
       icon: <FaHouseUser />,
     },
     {
@@ -229,7 +229,7 @@ export default function Home() {
                     {/* Background Image */}
                     <Image
                       src={slide.image}
-                      className="absolute block w-full h-full"
+                      className="absolute block w-full h-full object-cover"
                       // loading="lazy"
                       alt={`Slide ${index + 1}`}
                       priority={index === 0}
