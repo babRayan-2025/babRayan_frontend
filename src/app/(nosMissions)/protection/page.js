@@ -55,7 +55,7 @@ export default function Foyer() {
   return (
     <section>
       {/* Header Section */}
-      <div className="relative w-full h-[400px] md:h-screen flex items-center justify-center">
+      <div className="relative w-full h-[700px] md:h-screen flex items-center justify-center">
         <Image
           src={FirstImg}
           alt="Foyer Bab Rayan"
@@ -64,7 +64,7 @@ export default function Foyer() {
           className="z-0"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-        <div className="absolute bottom-10 right-10 p-6 max-w-lg text-white z-20">
+        <div className="absolute md:bottom-10  bottom-1  right-10 p-6 max-w-lg text-white z-20">
           <h1 className="text-xl md:text-3xl font-bold leading-tight">
             REJOIGNEZ LE COMBAT POUR
             <br />
@@ -122,7 +122,7 @@ export default function Foyer() {
                       objectfit: "cover",
                     }}
                     alt="Group of Children"
-                    className="shadow_style_css rounded-lg w-full z-50"
+                    className="shadow_style_css rounded-lg w-full z-50 object-cover"
                   />
                 </div>
                 <div className="max-w-lg">
@@ -142,24 +142,24 @@ export default function Foyer() {
             src={SoleilIcon}
             alt="Middle Right Icon"
             width={300}
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10"
+            className="absolute top-1/2 right-4 transform -translate-y-1/2 z-[-1]"
           />
         </div>
       </div>
 
       {/* ACTIVITÉS section */}
       <div
-        className="flex flex-col items-center pt-16 pb-16"
+        className="flex flex-col items-center py-16 px-10"
         style={{ backgroundColor: "#FFD9DA" }}
       >
         <h1 className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative">
           DES ACTIVITÉS QUI FONT GRANDIR
           <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
         </h1>
-        <div className="flex flex-wrap-reverse items-center justify-center w-full gap-8 p-8 rounded-lg md:-ml-10">
+        <div className="flex flex-wrap-reverse items-center justify-center w-full gap-8 px-2 rounded-lg md:-ml-10">
           <Image
             src={Activity4}
-            className="w-1/3 shadow_style_css rounded-lg"
+            className="w-1/3 shadow_style_css rounded-lg object-cover"
             style={{ width: "400px", height: "300px", objectfit: "cover" }}
           />
           <div className="md:w-1/3 p-2 text-gray-800">

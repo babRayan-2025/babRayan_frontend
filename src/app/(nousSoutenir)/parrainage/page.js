@@ -70,7 +70,7 @@ export default function Parrainage() {
           </motion.div>
 
           {/* Right side - Text content */}
-          <motion.div className="space-y-4 md:mx-4 pr-20" variants={fadeIn}>
+          <motion.div className="space-y-4 md:mx-4 p-4 md:pr-20" variants={fadeIn}>
             <h2 className="text-3xl font-semibold">
               Pourquoi parrainer <br /> un enfant ?
             </h2>
@@ -97,7 +97,7 @@ export default function Parrainage() {
           animate="visible"
           variants={staggerContainer}
         >
-          <motion.div className="w-full p-6 mb-12 ml-12" variants={fadeIn}>
+          <motion.div className="w-full p-6 md:pl-12 md:mb-1" variants={fadeIn}>
             <h3 className="text-xl font-semibold mb-4">
               Votre contribution mensuelle permettra de donner à un enfant :
             </h3>
@@ -146,7 +146,7 @@ export default function Parrainage() {
 
           {/* Image grid */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4 mr-8"
+            className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4 md:mr-8"
             variants={staggerContainer}
           >
             {["2.jpg", "3.jpg", "4.jpg", "5.jpg"].map((img, index) => (
@@ -156,7 +156,7 @@ export default function Parrainage() {
                   alt="Image description"
                   width={500}
                   height={300}
-                  className="rounded-xl h-[300px] w-[500px] shadow-md"
+                  className="rounded-2xl h-[300px] w-[500px] shadow-md object-cover"
                 />
               </motion.div>
             ))}

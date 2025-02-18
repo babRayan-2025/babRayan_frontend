@@ -102,7 +102,7 @@ export default function DevenirPartenaire() {
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
             viewport={{ once: true }}
-            className="md:w-1/2 mx-16"
+            className="md:w-1/2  md:mx-16"
           >
             <h2 className="text-xl md:text-5xl font-semibold mb-4">
               Pourquoi devenir partenaire ?
@@ -118,7 +118,7 @@ export default function DevenirPartenaire() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="my-10 mx-16"
+          className="my-10 md:mx-16"
         >
           <h3 className="text-xl md:text-4xl font-bold mb-6 uppercase">Formes de partenariat</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white border border-red-500 p-4 rounded-3xl">
@@ -168,19 +168,19 @@ export default function DevenirPartenaire() {
             CONTACT
             <div className="w-10 md:w-24 h-1 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </h2>
-          <div className="bg-white border border-red-500 rounded-3xl p-12">
+          <div className="bg-white border border-red-500 rounded-3xl p-4 md:p-12">
             <div className="grid grid-rows-2 xl:grid-rows-1 xl:grid-cols-2 gap-6">
               <div className="xl:ml-12">
-                <h4 className="font-semibold text-xl mb-3">Coordinateur général</h4>
-                <div className="text-red-600 text-xl">
-                  <p>Téléphone : +212 6 100 22 000</p>
-                  <p>Email : coordi.general@babrayan.ma</p>
+                <h4 className="font-semibold text-xl mb-3">Directeur des Opérations</h4>
+                <div className="text-red-600 text-xl leading-relaxed">
+                  <p>Téléphone : +212 610 022 000</p>
+                  <p>Email : Dir.operations@babrayan.ma</p>
                 </div>
               </div>
               <div>
-                <h4 className="font-semibold text-xl mb-3">Responsable Communication & Partenariats</h4>
-                <div className="text-red-600 text-xl">
-                  <p>Téléphone : +212 6 181 81 806</p>
+                <h4 className="font-semibold text-xl mb-3">Directrice Partenariats et Relations Publiques</h4>
+                <div className="text-red-600 text-xl leading-relaxed">
+                  <p>Téléphone : +212 618 181 806</p>
                   <p>Email : communication@babrayan.ma</p>
                 </div>
               </div>

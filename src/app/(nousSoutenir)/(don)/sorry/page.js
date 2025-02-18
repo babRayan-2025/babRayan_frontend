@@ -2,23 +2,62 @@
 
 import { motion } from "framer-motion";
 
-export default function sorry() {
+export default function Sorry() {
   return (
     <main>
       <div className="flex min-h-screen flex-col items-center justify-between p-5 bg-[url('/sorry/bg.png')] bg-cover">
-        <div className="flex flex-col items-center pb-24 px-24 justify-center leading-relaxed">
-          <img src="/sorry/tri.png" alt="erreur" className="w-1/2 w-[400px] h-[4  00px]" />
-          <h1 className="text-8xl font-bold text-gray-900 mb-8">OUPS...</h1>
-          <p className="text-gray-900 font-bold mb-8 text-3xl">
+        <motion.div
+          className="flex flex-col items-center pb-24 px-24 justify-center leading-relaxed"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.img
+            src="/sorry/tri.png"
+            alt="erreur"
+            className="w-1/2 w-[400px] h-[400px]"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          />
+          <motion.h1
+            className="text-8xl font-bold text-gray-900 mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            OUPS...
+          </motion.h1>
+          <motion.p
+            className="text-gray-900 font-bold mb-8 text-md md:text-3xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
             IL SEMBLE Y AVOIR UN PROBLÈME !
-          </p>
-          <p className="text-gray-900 font-bold text-3xl text-center mb-14 leading-relaxed">
+          </motion.p>
+          <motion.p
+            className="text-gray-900 font-bold text-3xl text-center mb-14 leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
             NOUS SOMMES DÉSOLÉS, VOTRE DON N’A PAS PU ÊTRE TRAITÉ. MAIS NE VOUS
             INQUIÉTEZ PAS, PLUSIEURS SOLUTIONS S’OFFRENT À VOUS :
-          </p>
+          </motion.p>
 
-          <div className="leading-loose mb-12">
-            <li className="mb-8 flex items-start">
+          <motion.div
+            className="leading-loose mb-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+          >
+            <motion.li
+              className="mb-8 flex items-start"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
               <img
                 src="/sorry/check.png"
                 alt="Check"
@@ -27,8 +66,13 @@ export default function sorry() {
               <span className="mt-0.5 text-gray-800  text-3xl font-bold ">
                 Vérifiez vos informations de paiement et réessayez.
               </span>
-            </li>
-            <li className="mb-8 flex items-start">
+            </motion.li>
+            <motion.li
+              className="mb-8 flex items-start"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+            >
               <img
                 src="/sorry/check.png"
                 alt="Check"
@@ -38,8 +82,13 @@ export default function sorry() {
                 Essayez un autre mode de paiement, comme le virement ou le
                 chèque.
               </span>
-            </li>
-            <li className="mb-8 flex items-start">
+            </motion.li>
+            <motion.li
+              className="mb-8 flex items-start"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.6 }}
+            >
               <img
                 src="/sorry/check.png"
                 alt="Check"
@@ -53,28 +102,42 @@ export default function sorry() {
                 <br /> ou <span className="text-red-700">+212 610 023 555</span>{" "}
                 pour toute assistance.
               </span>
-            </li>
-          </div>
+            </motion.li>
+          </motion.div>
 
-          <p className="text-gray-900 font-bold text-3xl text-center leading-relaxed">
+          <motion.p
+            className="text-gray-900 font-bold text-3xl text-center leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.8 }}
+          >
             CHAQUE DON COMPTE ET NOUS VOUS REMERCIONS POUR VOTRE GÉNÉROSITÉ.
             N’HÉSITEZ PAS À RÉESSAYER, VOTRE SOUTIEN EST PRÉCIEUX !
-          </p>
-        </div>
-        <div className="flex flex-row gap-10 items-center mb-16 justify-center">
-          <a
+          </motion.p>
+        </motion.div>
+        <motion.div
+          className="flex flex-row gap-10 items-center mb-16 justify-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2 }}
+        >
+          <motion.a
             href="/donation"
             className="bg-red-700 text-white text-lg font-semibold px-5 py-3 rounded-xl"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             Réessayer le paiement
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="/contact_us"
             className="bg-red-700 text-white text-lg font-semibold px-14 py-3 rounded-xl"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             Nous contacter
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
     </main>
   );

@@ -17,7 +17,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/
 import { Button, Modal } from 'antd';
 
 import pic3 from "../assets/PHOTO/3.jpg";
-import pic4 from "../assets/PHOTO/4.jpg";
+// import pic4 from "../assets/PHOTO/4.jpg";
 // import pic5 from "../assets/PHOTO/5.jpg";
 // import pic6 from "../assets/PHOTO/6.jpg";
 // import pic7 from "../assets/PHOTO/7.jpg";
@@ -239,7 +239,7 @@ export default function Home() {
                     {/* Text Content */}
                     <motion.div
                       variants={{}}
-                      className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[300px] md:max-w-xl text-white p-4 md:p-0"
+                      className="absolute right-4 md:right-10 top-2/3 md:top-1/2 -translate-y-1/2 z-40 max-w-[300px] md:max-w-xl text-white p-4 md:p-0"
                     >
                       {/* Icon */}
                       {slide.picto && (
@@ -510,10 +510,10 @@ export default function Home() {
                 initial="initial"
                 animate="animate"
               >
-                <Image
-                  src={pic4}
+                <img
+                src="/actions_solidaires/landing.png"
                   alt="Les Ftours Bab Rayan"
-                  className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl object-cover"
+                  className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg"
                 />
               </motion.div>
 
@@ -542,14 +542,24 @@ export default function Home() {
                   l&apos;esprit de solidarité du Ramadan est alors au
                   rendez-vous, grâce à vos dons !
                 </motion.p>
-                <Link href="/actions-solidaires" passHref> {/* Add the link to the "Actions Solidaires" page */}
+                <Link href="/don" passHref> 
                   <motion.button
                     variants={scaleIn} // Apply scaleIn animation
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-block bg-yellow-400 text-red-600 font-bold px-5 md:px-7 py-2 rounded-xl hover:bg-yellow-500 transition cursor-pointer"
+                    className="inline-block bg-yellow-300 text-red-600 font-bold px-5 mr-4 md:px-7 py-2 rounded-xl hover:bg-yellow-400 transition cursor-pointer"
                   >
-                    Voir plus
+                    faire un don
+                  </motion.button>
+                </Link>
+                <Link href="/benevole" passHref>
+                  <motion.button
+                    variants={scaleIn} // Apply scaleIn animation
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-block bg-yellow-300 text-red-600 font-bold px-5 py-2 rounded-xl hover:bg-yellow-400 transition cursor-pointer"
+                  >
+                    devenir bénévole
                   </motion.button>
                 </Link>
 

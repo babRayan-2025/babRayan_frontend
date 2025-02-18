@@ -308,24 +308,24 @@ export default function Donation() {
         <div className="bg-white rounded-3xl shadow-lg text-center">
           {method && (
             <>
-              <img src={method.popup} alt={method.label} className="md:w-[70rem] md:h-[40rem] mx-auto mb-4 rounded-3xl shadow-md" />
-              <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3>
+              <img src={method.popup} alt={method.label} className="md:w-[70rem] md:h-[40rem] mx-auto rounded-3xl shadow-md" />
+              {/* <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3> */}
               {/* <p className="text-gray-700">{method.desc}</p> */}
             </>
           )}
-          {amount && (
+          {/* {amount && (
             <>
               <img src={amountImages[amount]} alt={amount} className="w-32 h-32 mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">Montant sélectionné</h3>
               <p className="text-gray-700">{amount}</p>
             </>
-          )}
-          <button
+          )} */}
+          {/* <button
             onClick={onClose}
             className="mt-4 bg-red-700 text-white py-2 mb-4 px-6 rounded-full"
           >
             Fermer
-          </button>
+          </button> */}
         </div>
       </div>
     );

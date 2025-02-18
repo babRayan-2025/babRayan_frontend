@@ -49,7 +49,7 @@ export default function Benevole() {
 
         {/* Description */}
         <motion.p
-          className="mx-16 text-center text-gray-700 text-3xl"
+          className="md:mx-16 mx-6 text-center text-gray-700 text-base md:text-3xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
@@ -76,7 +76,7 @@ export default function Benevole() {
               layoutId="contact-underline"
             ></motion.div>
           </h2>
-          <div className="flex justify-center my-10 gap-6">
+          <div className="flex  justify-center m-10 gap-6">
             {/* <Image
               src="/benevole/flech-partenaire.png"
               alt="flech-partenaire"
@@ -85,27 +85,31 @@ export default function Benevole() {
               className="init-block -left-48 md:left-[550px]"
             /> */}
             <div
-              className="flex items-center gap-2 font-semibold text-red-600 border-2 border-red-600 px-4 rounded-3xl shadow-md cursor-pointer"
+              className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 font-semibold text-lg md:text-2xl text-red-600 border-2 border-red-600 p-4 rounded-3xl shadow-md cursor-pointer"
               title="Call us at +212 6 181 81 806"
               aria-label="Call us"
             >
-              <Image
+            <div className='flex flex-row items-center gap-2'>
+            <Image
                 src="/benevole/contact.png"
                 alt="call"
                 width={50}
                 height={50}
-                className="object-cover"
+                className="object-cover ml-3"
               />
-              <span className="mr-12">+212 6 181 81 806</span>
+              <span className="content-center">+212 6 181 81 806</span>
 
-              <Image
+            </div>
+             <div className='flex flex-row items-center gap-2'>
+             <Image
                 src="/benevole/mail.png"
                 alt="mail"
                 width={70}
                 height={70}
                 className="object-cover"
               />
-              <span>benevolat@babryan.ma</span>
+              <span className='content-center'>contact@babrayan.ma</span>
+             </div>
             </div>
           </div>
         </motion.div>
@@ -113,7 +117,7 @@ export default function Benevole() {
 
       {/* Form Section */}
       <motion.div
-      className="w-full bg-[url('/benevole/bg-benevole.png')] bg-cover bg-center py-16 px-16"
+      className="w-full bg-[url('/benevole/bg-benevole.png')] bg-cover bg-center py-16 md:px-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 1.2 }}
@@ -169,7 +173,7 @@ export default function Benevole() {
             <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
               FOYER
             </h2>
-            <div className="space-y-2 grid sm:text-base sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+            <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
               {[
                 "Soutien Scolaire",
                 "Accompagnement des enfants",
@@ -200,7 +204,7 @@ export default function Benevole() {
             <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
               ÉCOLE
             </h2>
-            <div className="space-y-2 grid sm:text-base sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+            <div className="space-y-2 grid sm:text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
               {[
                 "Soutien Scolaire",
                 "Soutien administratif",
@@ -232,7 +236,7 @@ export default function Benevole() {
             <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
               CENTRE DE FORMATION ET D’INSERTION
             </h2>
-            <div className="space-y-2 grid sm:text-base sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+            <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
               {[
                 "Coaching pédagogique",
                 "Cours de communication et soft-skills",

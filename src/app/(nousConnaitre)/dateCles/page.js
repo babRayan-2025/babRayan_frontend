@@ -10,34 +10,35 @@ export default function Dates() {
           <div className="w-24 md:w-48 sm:w-32 xs:w-24 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
         </header>
 
-        <section className="relative grid justify-items-center mb-20 md:mb-40 sm:mb-20 xs:mb-10">
+        <div className="">
+        <div className="relative grid justify-items-center mb-20 md:mb-40 sm:mb-20 xs:mb-10">
           {/* Première division 2014 */}
           <div className="flex flex-col items-center">
             <div className="relative ml-[7.5rem] md:ml-[7.5rem] sm:ml-[5rem] xs:ml-[3.7rem] md:mb-8 sm:mb-0 xs:mb-2">
               <img
                 src="/dateCles/site bab rayan dates clés-02.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem] object-cover"
               />
             </div>
             <div className="relative grid place-items-start mt-4 md:mt-4 sm:mt-2 xs:mt-0 ml-[23rem] md:ml-[23rem] sm:ml-[19rem] xs:ml-[12rem]">
               <ul
-                className="list-disc list-inside text-pretty text-sm md:text-lg sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-left text-pretty text-sm md:text-lg sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
-                <li className="pl-[1rem]">
+                <li className="">
                   Création de l'association Bab Rayan
                 </li>
-                <li className="pl-[1rem]">
+                <li className="">
                   Partenariat avec l'académie <br />
                   régionale de l'éducation et de la <br />
                   formation de la région du Grand <br />
                   Casablanca et l'INDH
                 </li>
-                <li className="pl-[1rem]">Lancement du Ftour Bab Rayan</li>
+                <li className="">Lancement du Ftour Bab Rayan</li>
               </ul>
             </div>
-            <div className="absolute top-[8rem] md:top-[7rem] sm:top-[5rem] xs:top-[4rem] left-1/2 transform -translate-x-1/2">
+            <div className="absolute top-[8rem] md:top-[8rem] sm:top-[5rem] xs:top-[4rem] left-1/2 transform -translate-x-1/2">
               <img
                 src="/dateCles/site bab rayan dates clés-09.png"
                 alt="fleche"
@@ -52,7 +53,7 @@ export default function Dates() {
               <img
                 src="/dateCles/site bab rayan dates clés-03.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[18rem] md:-ml-[18rem] sm:-ml-[14rem] xs:-ml-[11rem]">
@@ -80,7 +81,7 @@ export default function Dates() {
               <img
                 src="/dateCles/site bab rayan dates clés-04.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[23rem] md:ml-[23rem] sm:ml-[16rem] xs:ml-[12rem]">
@@ -109,7 +110,7 @@ export default function Dates() {
               <img
                 src="/dateCles/site bab rayan dates clés-05.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[11rem]">
@@ -137,7 +138,7 @@ export default function Dates() {
               <img
                 src="/dateCles/site bab rayan dates clés-06.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[17rem] md:ml-[17rem] sm:ml-[12rem] xs:ml-[9rem]">
@@ -165,7 +166,7 @@ export default function Dates() {
               <img
                 src="/dateCles/site bab rayan dates clés-07.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 md:mr-8 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[12rem]">
@@ -195,7 +196,7 @@ export default function Dates() {
               <img
                 src="/dateCles/site bab rayan dates clés-08.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[30rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[20rem] md:ml-[25rem] sm:ml-[18rem] xs:ml-[12rem]">
@@ -219,7 +220,8 @@ export default function Dates() {
               />
             </div>
           </div>
-        </section>
+        </div>
+        </div>
       </div>
     </main>
   );

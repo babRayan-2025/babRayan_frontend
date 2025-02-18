@@ -64,7 +64,7 @@ export default function Formation() {
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
-            className="opacity-80"
+            className="opacity-80 object-cover"
           />
         </div>
         <motion.div
@@ -156,9 +156,9 @@ export default function Formation() {
               </p>
               <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-6"></div>
             </h1>
-            <div className="flex flex-wrap justify-center gap-36 my-20">
+            <div className="flex flex-wrap justify-center gap-10 md:gap-36 my:10 md:my-20">
               {[
-                { src: "/CFI/4.png", text: "Art culinaire" },
+                { src: "/CFI/4.png", text: "culinaire" },
                 { src: "/CFI/5.png", text: "Boulangerie/Pâtisserie" },
                 { src: "/CFI/6.png", text: "Service en restauration" },
               ].map((item, index) => (
@@ -178,7 +178,7 @@ export default function Formation() {
                 </motion.div>
               ))}
             </div>
-            <p className="text-lg font-semibold mx-6">
+            <p className="text-lg font-semibold mt-4 mx-6">
               Ces formations gratuites, certifiantes et d’une durée d’un an sont
               ouvertes aux jeunes de plus de 18 ans issus du foyer Bab Rayan,
               d’autres établissements de protection sociale (EPS) et de familles

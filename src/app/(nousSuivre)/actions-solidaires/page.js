@@ -112,8 +112,8 @@ export default function Actions() {
                 className="p-8" style={{ backgroundColor: "#F8D24D" }}
             >
                 <div className="items-center gap-8 xl:px-20">
-                    <div className="text-red-700 text-2xl md:text-4xl font-bold my-8">
-                        Séisme <br /> D'Alhaouz
+                    <div className="text-red-700 text-4xl font-bold my-8">
+                        Séisme <br /> D&apos;Alhaouz
                     </div>
                     <p className="text-black text-xl">
                         En plus des activités mentionnées, l'association intervient également en cas d'urgence nationale, telles que la pandémie de Covid-19 ou le séisme dans la région d'Al Haouz en septembre 2023.
@@ -191,7 +191,7 @@ export default function Actions() {
                 className=" p-8"
             >
                 <div className="items-center gap-8 xl:px-20">
-                    <div className="text-red-700 text-2xl md:text-4xl font-bold my-8">
+                    <div className="text-red-700 text-4xl font-bold my-8">
                         Actions <br /> Diverses
                     </div>
                     <p> Le pôle Actions Solidaires propose divers services sociaux, incluant la circoncision, le soutien aux familles pendant l'Aid al-Adha.
