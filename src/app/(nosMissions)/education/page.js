@@ -45,7 +45,7 @@ export default function Education() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="/Parrainer/5.jpg"
+            src="/education/école.jpg"
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"

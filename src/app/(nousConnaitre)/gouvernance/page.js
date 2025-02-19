@@ -37,7 +37,7 @@ const HeroSection = () => (
   <div className="relative">
     <div
       className="h-[750px] bg-cover bg-center"
-      style={{ backgroundImage: "url('/gouvernance.png')" }}
+      style={{ backgroundImage: "url('/gouvernance/gouv.jpg')" }}
     />
     <div className="absolute bottom-2 right-4 p-6 max-w-5xl">
       <div className="text-white p-4 lg:p-12 max-w-4xl mx-auto rounded">
