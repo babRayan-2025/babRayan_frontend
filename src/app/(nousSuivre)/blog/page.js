@@ -74,7 +74,7 @@ const NewsItem = ({ imageSrc, title, description }) => (
 
 export default function Blog() {
   const [isLoading, setIsLoading] = useState(true);
-
+  const [showMore, setShowMore] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const videoUrl =
@@ -228,7 +228,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
               <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mt-6 mb-4">
                 TelQuel parle de nous !
               </h1>
-              <p className="text-gray-600 md:mb-10 mb-4 text-sm md:text-base">
+              <p className="text-gray-600 mb-4 text-sm md:text-base leading-relaxed">
                 L’association Bab Rayan a récemment été mise en lumière par
                 TelQuel à travers un reportage poignant, révélant avec justesse
                 et sensibilité l’impact de ses actions en faveur des enfants en
@@ -236,7 +236,23 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
                 incontestable, l’équipe de TelQuel a su capturer l’essence de
                 notre mission : protéger, éduquer et accompagner vers
                 l’autonomie les enfants et jeunes issus des milieux les plus
-                vulnérables. De notre foyer d’accueil à notre école inclusive en
+                vulnérables... <motion.button
+              className=" text-red-600 font-bold px-1"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? "" : "Voir plus"}
+            </motion.button>
+              </p>
+              {showMore && (
+              <motion.p
+                className="text-gray-600 md:mb-10 mb-4 text-sm md:text-base leading-relaxed"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+               De notre foyer d’accueil à notre école inclusive en
                 passant par notre centre de formation et d’insertion
                 professionnelle, chaque image, chaque témoignage reflète
                 l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un
@@ -246,8 +262,10 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
                 avons la chance d’accompagner chaque jour. Un immense merci à
                 TelQuel pour cette mise en lumière précieuse qui rappelle
                 combien chaque enfant mérite une chance, un soutien et un
-                avenir.`,
-              </p>
+                avenir.
+              </motion.p>
+            )}
+            
             </div>
           </motion.section>
           {/* bloooog ---------- */}
