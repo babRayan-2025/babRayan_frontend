@@ -511,9 +511,9 @@ export default function Home() {
                 animate="animate"
               >
                 <img
-                src="/actions_solidaires/landing.png"
+                src="/actions_solidaires/24.jpg"
                   alt="Les Ftours Bab Rayan"
-                  className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg"
+                  className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
                 />
               </motion.div>
 
@@ -542,24 +542,14 @@ export default function Home() {
                   l&apos;esprit de solidarité du Ramadan est alors au
                   rendez-vous, grâce à vos dons !
                 </motion.p>
-                <Link href="/don" passHref> 
+                <Link href="/actions-solidaires" passHref> 
                   <motion.button
                     variants={scaleIn} // Apply scaleIn animation
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="inline-block bg-yellow-300 text-red-600 font-bold px-5 mr-4 md:px-7 py-2 rounded-xl hover:bg-yellow-400 transition cursor-pointer"
                   >
-                    faire un don
-                  </motion.button>
-                </Link>
-                <Link href="/benevole" passHref>
-                  <motion.button
-                    variants={scaleIn} // Apply scaleIn animation
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="inline-block bg-yellow-300 text-red-600 font-bold px-5 py-2 rounded-xl hover:bg-yellow-400 transition cursor-pointer"
-                  >
-                    devenir bénévole
+                    Voir Plus
                   </motion.button>
                 </Link>
 
