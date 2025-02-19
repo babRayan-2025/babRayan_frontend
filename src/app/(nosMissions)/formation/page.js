@@ -158,18 +158,18 @@ export default function Formation() {
             </h1>
             <div className="flex flex-wrap justify-center gap-10 md:gap-36 my:10 md:my-20">
               {[
-                { src: "/CFI/4.png", text: "culinaire" },
+                { src: "/CFI/4.png", text: "Art culinaire" },
                 { src: "/CFI/5.png", text: "Boulangerie/Pâtisserie" },
-                { src: "/CFI/6.png", text: "Service en restauration" },
+                { src: "/CFI/6.png", text: "Services en restauration" },
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  className="text-center font-semibold text-lg"
+                  className="text-center font-semibold md:text-lg"
                   variants={fadeInUp}
                 >
                   <Image
                     src={item.src}
-                    className="w-40 h-40"
+                    className="w-32 h-32 md:w-40 md:h-40"
                     width={40}
                     height={40}
                     alt={item.text}
@@ -178,8 +178,8 @@ export default function Formation() {
                 </motion.div>
               ))}
             </div>
-            <p className="text-lg font-semibold mt-4 mx-6">
-              Ces formations gratuites, certifiantes et d’une durée d’un an sont
+            <p className="text-lg font-semibold mt-8 mx-6">
+              Ces formations gratuites, diplômantes et d’une durée d’un an sont
               ouvertes aux jeunes de plus de 18 ans issus du foyer Bab Rayan,
               d’autres établissements de protection sociale (EPS) et de familles
               en situation de précarité dans la région du Grand Casablanca. Le

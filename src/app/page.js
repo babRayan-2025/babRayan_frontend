@@ -8,7 +8,12 @@ import {
   FaHandHoldingHeart,
   FaHouseUser,
   FaBox,
+  
 } from "react-icons/fa";
+import { MdFreeBreakfast } from "react-icons/md";
+import { FaBowlFood } from "react-icons/fa6";
+
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -136,12 +141,12 @@ export default function Home() {
     {
       label: "repas offerts",
       value: 230000,
-      icon: <FaBox />,
+      icon: <FaBowlFood />,
     },
     {
       label: "Ftours servis",
       value: 31200 ,
-      icon: <FaBox />,
+      icon: <MdFreeBreakfast />,
     },
   ];
 
@@ -400,7 +405,16 @@ export default function Home() {
           variants={fadeIn}
           className="bg-[#ef2323] py-8 px-5 shadow-inner overflow-hidden"
         >
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-4">
+          <motion.h1
+                      className="p-4 text-xl md:text-3xl font-bold text-white text-center mb-8 relative uppercase"
+                      variants={fadeIn}
+                      initial="initial"
+                      animate="animate"
+                    >
+                      Chiffres clés annuels
+                      <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+                    </motion.h1>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 justify-center items-center gap-4">
             {chiffres.map((stat, index) => (
               <motion.div
                 key={index}

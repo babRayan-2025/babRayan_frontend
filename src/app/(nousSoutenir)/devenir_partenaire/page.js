@@ -87,14 +87,14 @@ export default function DevenirPartenaire() {
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
             viewport={{ once: true }}
-            className="md:w-[1100px] ml-[-40px] mb-6 md:mb-0"
+            className="md:w-[1100px] md:ml-[-40px] mb-6 md:mb-0"
           >
             <Image
               src="/devenirPartenaire/partenaire.jpg"
               alt="Group Image"
               width={1100}
               height={600}
-              className="rounded-r-xl"
+              className="rounded-xl md:rounded-r-xl"
             />
           </motion.div>
 
@@ -170,20 +170,22 @@ export default function DevenirPartenaire() {
           </h2>
           <div className="bg-white border border-red-500 rounded-3xl p-4 md:p-12">
             <div className="grid grid-rows-2 xl:grid-rows-1 xl:grid-cols-2 gap-6">
-              <div className="xl:ml-12">
-                <h4 className="font-semibold text-xl mb-3">Directeur des Opérations</h4>
-                <div className="text-red-600 text-xl leading-relaxed">
-                  <p>Téléphone : +212 610 022 000</p>
-                  <p>Email : Dir.operations@babrayan.ma</p>
-                </div>
-              </div>
-              <div>
+            <div>
                 <h4 className="font-semibold text-xl mb-3">Directrice Partenariats et Relations Publiques</h4>
                 <div className="text-red-600 text-xl leading-relaxed">
                   <p>Téléphone : +212 618 181 806</p>
                   <p>Email : communication@babrayan.ma</p>
                 </div>
               </div>
+
+              <div className="xl:ml-12">
+                <h4 className="font-semibold text-xl mb-3">Directeur des Opérations</h4>
+                <div className="text-red-600 text-xl leading-relaxed">
+                  <p>Téléphone : +212 610 022 000</p>
+                  <p>Email : dir.operations@babrayan.ma</p>
+                </div>
+              </div>
+              
             </div>
           </div>
 

@@ -50,7 +50,7 @@ export default function Parrainage() {
 
         {/* Main section */}
         <motion.div
-          className="grid md:grid-cols-2 gap-8 mb-12"
+          className="grid md:grid-cols-2 gap-8 md:mb-12"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}

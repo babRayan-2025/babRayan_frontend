@@ -281,12 +281,12 @@ export default function Donation() {
       image: "/donation/4.png",
       desc: "Faire un don par virement bancaire",
     },
-    {
-      id: 5,
-      label: "Apple Pay",
-      image: "/donation/5.png",
-      desc: "Payer avec Apple Pay",
-    },
+    // {
+    //   id: 5,
+    //   label: "Apple Pay",
+    //   image: "/donation/5.png",
+    //   desc: "Payer avec Apple Pay",
+    // },
     { id: 6, label: "CMI", image: "/donation/6.png", desc: "Payer avec CMI" },
   ];
 

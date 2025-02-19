@@ -113,7 +113,7 @@ export default function About() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-4">
+            <p className="text-gray-800 md:text-lg font-semibold leading-relaxed mb-4">
               Au cours de cette décennie, notre dévouement inébranlable envers
               la protection, l&apos;éducation, la formation, et l&apos;insertion
               professionnelle des enfants en difficulté a été la pierre
@@ -122,14 +122,14 @@ export default function About() {
               fiers de reconnaître Sa Majesté le Roi Mohammed VI comme une
               source inépuisable d&apos;inspiration et de motivation.
             </p>
-            <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-6">
+            <p className="text-gray-800 md:text-lg font-semibold leading-relaxed mb-6">
               Les initiatives de Bab Rayan ont évolué, démontrant notre
               engagement croissant envers la construction d&apos;un avenir
               prometteur pour les enfants que nous servons.
             </p>
             {showMore && (
               <motion.p
-                className="text-gray-800 text-lg font-semibold leading-relaxed mb-6"
+                className="text-gray-800 md:text-lg font-semibold leading-relaxed mb-6"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -149,7 +149,7 @@ export default function About() {
               </motion.p>
             )}
             <motion.button
-              className="bg-yellow-300 hover:bg-yellow-500 text-red-600 font-bold py-2 px-4 rounded-xl"
+              className="bg-yellow-300 hover:bg-yellow-400 text-red-600 font-bold py-2 px-4 rounded-xl"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setShowMore(!showMore)}
@@ -239,7 +239,7 @@ export default function About() {
 
                 {/* Right Side: Text */}
                 <motion.div
-                  className="text-left pt-16 md:my-auto"
+                  className="text-left md:pt-16 md:my-auto"
                   initial={{ x: 50, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.5 }}
