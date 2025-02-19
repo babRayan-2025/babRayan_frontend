@@ -196,11 +196,11 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
                 className="relative w-full rounded-3xl overflow-hidden"
               >
                 <div className="relative aspect-video w-full">
-                  {/* <Image
-                  src={pic3}
+                  <img
+                  src='/blog/image.png'
                   alt="Video thumbnail"
                   className="w-full h-full object-cover"
-                /> */}
+                />
 
                   {!isPlaying && (
                     <motion.button
