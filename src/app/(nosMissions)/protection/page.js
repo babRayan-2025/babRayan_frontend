@@ -61,7 +61,7 @@ export default function Foyer() {
           alt="Foyer Bab Rayan"
           layout="fill"
           objectfit="cover"
-          className="z-0"
+          className="z-0 object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         <div className="absolute md:bottom-10  bottom-1  right-10 p-6 max-w-lg text-white z-20">

@@ -5,6 +5,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Play } from "lucide-react";
+
 
 // Animation Variants
 const fadeIn = {
@@ -73,6 +75,15 @@ const NewsItem = ({ imageSrc, title, description }) => (
 
 export default function Blog() {
   const [isLoading, setIsLoading] = useState(true);
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const videoUrl =
+  "https://firebasestorage.googleapis.com/v0/b/bab-rayan-87f71.appspot.com/o/video.mp4?alt=media&token=6cc682dc-b7fa-4729-b2d3-ac2ad8d0df87";
+
+const handlePlayClick = () => {
+  setIsPlaying(true);
+};
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
@@ -173,6 +184,52 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
             <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </motion.h1>
 
+                  {/* Video Section */}
+        <motion.section
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="w-full bg-[url('/BACKGROUNDSCHOOL.png')] bg-cover bg-center py-16"
+        >
+          <div className="max-w-6xl mx-auto px-4">
+            <motion.div
+              variants={scaleIn}
+              className="relative w-full rounded-3xl overflow-hidden"
+            >
+              <div className="relative aspect-video w-full">
+                {/* <Image
+                  src={pic3}
+                  alt="Video thumbnail"
+                  className="w-full h-full object-cover"
+                /> */}
+
+                {!isPlaying && (
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={handlePlayClick}
+                    className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
+                  >
+                    <div className="w-16 h-16 flex items-center justify-center rounded-full bg-white/90 group-hover:bg-white transition-colors">
+                      <Play className="w-8 h-8 text-gray-900 ml-1" />
+                    </div>
+                  </motion.button>
+                )}
+
+                {isPlaying && (
+                  <div className="absolute inset-0">
+                    <video className="w-full h-full" controls autoPlay>
+                      <source src={videoUrl} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+                  {/* bloooog ---------- */}
           {newdata.map((item) => (
             <motion.div
               key={item.id}

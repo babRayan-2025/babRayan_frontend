@@ -134,8 +134,13 @@ export default function Home() {
       icon: <FaHouseUser />,
     },
     {
-      label: "Paniers distribués",
-      value: 57000,
+      label: "repas offerts",
+      value: 230000,
+      icon: <FaBox />,
+    },
+    {
+      label: "Ftours servis",
+      value: 31200 ,
       icon: <FaBox />,
     },
   ];

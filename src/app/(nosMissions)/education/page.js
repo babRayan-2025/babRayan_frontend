@@ -254,7 +254,7 @@ export default function Education() {
                 activités technologiques et un programme sportif d’éducation
                 physique.
               </p>
-              <div className="grid grid-cols-2 lg:grid-cols-4 mx-6  justify-center gap-36 my-20">
+              <div className="grid grid-cols-2 lg:grid-cols-4 mx-6  justify-center gap-16 my-20">
                 {[
                   {
                     src: "/education/picto/site bab rayan école-08.png",
