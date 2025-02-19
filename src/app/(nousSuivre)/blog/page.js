@@ -247,7 +247,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
               </p>
               {showMore && (
               <motion.p
-                className="text-gray-600 md:mb-10 mb-4 text-sm md:text-base leading-relaxed"
+                className="text-gray-600 text-sm md:text-base leading-relaxed"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}

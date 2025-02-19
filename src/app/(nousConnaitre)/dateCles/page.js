@@ -14,16 +14,16 @@ export default function Dates() {
         <div className="relative grid justify-items-center mb-20 md:mb-40 sm:mb-20 xs:mb-10">
           {/* Première division 2014 */}
           <div className="flex flex-col items-center">
-            <div className="relative ml-[7.5rem] md:ml-[7.5rem] sm:ml-[5rem] xs:ml-[3.7rem] md:mb-8 sm:mb-0 xs:mb-2">
+            <div className="relative ml-[8rem] md:ml-[11rem] sm:ml-[5rem] xs:ml-[4.7rem] md:mb-2 sm:mb-0 xs:mb-2">
               <img
                 src="/dateCles/site bab rayan dates clés-02.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem] object-cover"
+                className="w-[30rem] h-[15rem] md:w-[45rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem] object-cover"
               />
             </div>
             <div className="relative grid place-items-start mt-4 md:mt-4 sm:mt-2 xs:mt-0 ml-[23rem] md:ml-[23rem] sm:ml-[19rem] xs:ml-[12rem]">
               <ul
-                className="list-disc list-inside text-left text-pretty text-sm md:text-lg sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-left text-pretty italic text-sm md:text-lg sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li className="">
@@ -49,16 +49,16 @@ export default function Dates() {
 
           {/* Deuxième division 2015 */}
           <div className="flex flex-col items-center">
-            <div className="relative -ml-[9rem] md:-ml-[9rem] sm:-ml-[6rem] xs:-ml-[4.5rem] md:mb-4 sm:mb-0 xs:mb-0">
+            <div className="relative -ml-[9rem] md:-ml-[14rem] sm:-ml-[6rem] xs:-ml-[4.5rem] md:mb-1 sm:mb-0 xs:mb-0">
               <img
                 src="/dateCles/site bab rayan dates clés-03.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[45rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[18rem] md:-ml-[18rem] sm:-ml-[14rem] xs:-ml-[11rem]">
               <ul
-                className="list-disc list-inside text-sm md:text-lg  sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-sm md:text-lg italic sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -77,16 +77,16 @@ export default function Dates() {
 
           {/* Troisième division 2016 */}
           <div className="flex flex-col items-center">
-            <div className="relative mt-12 ml-[8rem] md:ml-[8rem] sm:ml-[5.5rem] xs:ml-[4rem] md:mb-2 sm:mb-0 xs:mb-0">
+            <div className="relative mt-12 ml-[8rem] md:ml-[12rem] sm:ml-[5.5rem] xs:ml-[4rem]  sm:mb-0 xs:mb-0">
               <img
                 src="/dateCles/site bab rayan dates clés-04.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[45rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[23rem] md:ml-[23rem] sm:ml-[16rem] xs:ml-[12rem]">
               <ul
-                className="list-disc list-inside text-left text-sm md:text-lg  sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-left text-sm md:text-lg italic  sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -106,16 +106,16 @@ export default function Dates() {
 
           {/* Quatrième division 2018 */}
           <div className="flex flex-col items-center">
-            <div className="relative mt-12 -ml-[8.5rem] md:-ml-[8.5rem] sm:-ml-[5.7rem] xs:-ml-[4.3rem] md:mb-4 sm:mb-0 xs:mb-0">
+            <div className="relative mt-12 -ml-[8.5rem] md:-ml-[13rem] sm:-ml-[5.7rem] xs:-ml-[4.3rem] sm:mb-0 xs:mb-0">
               <img
                 src="/dateCles/site bab rayan dates clés-05.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[45rem] md:h-[17rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[11rem]">
               <ul
-                className="list-disc list-inside text-sm md:text-lg  sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-sm md:text-lg italic sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -134,16 +134,16 @@ export default function Dates() {
 
           {/* Cinquième division 2021 */}
           <div className="flex flex-col items-center">
-            <div className="relative mb-6 mt-10 ml-[9.5rem] md:ml-[9.5rem] sm:ml-[6.2rem] xs:ml-[4.5rem] md:mb-8 sm:mb-0 xs:mb-0">
+            <div className="relative mb-6 mt-10 ml-[9.5rem] md:ml-[14rem] sm:ml-[6.2rem] xs:ml-[4.5rem] md:mb-8 sm:mb-0 xs:mb-0">
               <img
                 src="/dateCles/site bab rayan dates clés-06.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[45rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[17rem] md:ml-[17rem] sm:ml-[12rem] xs:ml-[9rem]">
               <ul
-                className="list-disc list-inside text-left text-sm md:text-lg  sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-left text-sm md:text-lg italic  sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -162,16 +162,16 @@ export default function Dates() {
 
           {/* Sixième division 2022 */}
           <div className="flex flex-col items-center">
-            <div className="relative mt-12 -ml-[8.5rem] md:-ml-[8.5rem] sm:-ml-[5.7rem] xs:-ml-[4rem] md:mb-8 sm:mb-0 xs:mb-0">
+            <div className="relative mt-12 -ml-[8.5rem] md:-ml-[13rem] sm:-ml-[5.7rem] xs:-ml-[4rem] md:mb-6 sm:mb-0 xs:mb-0">
               <img
                 src="/dateCles/site bab rayan dates clés-07.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[45rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 md:mr-8 -ml-[20rem] md:-ml-[20rem] sm:-ml-[15rem] xs:-ml-[12rem]">
               <ul
-                className="list-disc list-inside text-sm md:text-lg  sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-sm md:text-lg italic sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
@@ -192,16 +192,16 @@ export default function Dates() {
 
           {/* Septième division 2024 */}
           <div className="flex flex-col items-center">
-            <div className="relative mt-4 ml-[10rem] md:ml-[10rem] sm:ml-[6.5rem] xs:ml-[5rem]">
+            <div className="relative mt-4 ml-[10rem] md:ml-[15rem] sm:ml-[6.5rem] xs:ml-[5rem]">
               <img
                 src="/dateCles/site bab rayan dates clés-08.png"
                 alt="element"
-                className="w-[30rem] h-[15rem] md:w-[40rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
+                className="w-[30rem] h-[15rem] md:w-[45rem] md:h-[15rem] sm:w-[20rem] sm:h-[10rem] xs:w-[15rem] xs:h-[7.5rem]"
               />
             </div>
             <div className="relative grid place-items-start mt-4 ml-[20rem] md:ml-[25rem] sm:ml-[18rem] xs:ml-[12rem]">
               <ul
-                className="list-disc list-inside text-left text-sm md:text-lg  sm:text-xs xs:text-[9px]"
+                className="list-disc list-inside text-left text-sm md:text-lg italic sm:text-xs xs:text-[9px]"
                 style={{ lineHeight: "1" }}
               >
                 <li>
