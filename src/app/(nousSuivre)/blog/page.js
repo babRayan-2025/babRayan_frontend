@@ -77,32 +77,31 @@ export default function Blog() {
   const [showMore, setShowMore] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const videoUrl =
-      "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s"
+  const videoUrl = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
   const handlePlayClick = () => {
     setIsPlaying(true);
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
+    const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
   const newdata = [
-//     {
-//       id: 1,
-//       // image: "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s ",
-//       alt: "Graduation",
-//       title: "TelQuel parle de nous !",
-//       description: `L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité.
-// Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir.
-// Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour.
-// Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir.`,
-//       buttonText: "Découvrir plus",
-//       href: "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s",
-//     },
+    //     {
+    //       id: 1,
+    //       // image: "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s ",
+    //       alt: "Graduation",
+    //       title: "TelQuel parle de nous !",
+    //       description: `L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité.
+    // Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir.
+    // Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour.
+    // Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir.`,
+    //       buttonText: "Découvrir plus",
+    //       href: "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s",
+    //     },
     {
-      id: 2,
+      id: 1,
       image: "/blog/1.png",
       alt: "Graduation",
       title: "Remise des diplômes de la deuxième promotion du CFI",
@@ -116,20 +115,34 @@ export default function Blog() {
       buttonText: "Découvrir plus",
     },
     {
+      id: 2,
+      image: "/blog/4.png",
+      alt: "Partnership",
+      title: "Cérémonie d'ouverture de PSG Academy",
+      description: `La PSG Academy Maroc a ouvert ses portes le 11 novembre à Casablanca, en présence d'Achraf Hakimi, invité d'honneur.
+Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un match contre lui.`,
+      buttonText: "Découvrir plus",
+    },
+    {
       id: 3,
-      image: "/blog/2.png",
-      alt: "Graduation",
+      image: "/blog/5.jpg",
+      alt: "Success",
       title:
         "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
-      description: `Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation
-    diplômante en restauration, une première qui changera la vie d'une
-    promotion engagée de jeunes en difficulté! D'ici août prochain, ils
-    auront non seulement acquis des compétences, mais aussi trouvé un
-    projet de vie qui leur ouvre les portes d'un avenir prometteur.`,
+      description: `Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation diplômante en restauration, une première qui changera la vie d'une promotion engagée de jeunes en difficulté !`,
       buttonText: "Découvrir plus",
     },
     {
       id: 4,
+      image: "/blog/2.png",
+      alt: "Success",
+      title: "Aiguebelle : Un partenaire engagé avec nos jeunes du CFI",
+      description: `Notre partenaire Aiguebelle a généreusement organisé cet automne, une journée de visite et de formation en chocolaterie pour les jeunes du Centre de Formation et d’Insertion (CFI) de Bab Rayan.
+Nos étudiants ont eu l'opportunité unique de découvrir les secrets de la fabrication du chocolat, tout en explorant le fonctionnement de l'usine. Cette expérience immersive a enrichi leurs connaissances et stimulé leur passion pour l’art culinaire.`,
+      buttonText: "Découvrir plus",
+    },
+    {
+      id: 5,
       image: "/blog/3.png",
       alt: "Training",
       title: "Une sortie au théâtre pour voir le petit prince",
@@ -139,25 +152,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
       buttonText: "Découvrir plus",
     },
     {
-      id: 5,
-      image: "/blog/4.png",
-      alt: "Partnership",
-      title: "Cérémonie d`ouverture de PSG Academy",
-      description: `La PSG Academy Maroc a ouvert ses portes le 11 novembre à Casablanca, en présence d'Achraf Hakimi, invité d'honneur.
-Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un match contre lui.`,
-      buttonText: "Découvrir plus",
-    },
-    {
       id: 6,
-      image: "/blog/5.jpg",
-      alt: "Success",
-      title:
-        "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
-      description: `Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation diplômante en restauration, une première qui changera la vie d'une promotion engagée de jeunes en difficulté !`,
-      buttonText: "Découvrir plus",
-    },
-    {
-      id: 7,
       image: "/blog/6.jpg",
       alt: "Innovation",
       title: "Nos enfants partent à la découverte du monde",
@@ -183,7 +178,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
           </motion.h1>
 
           {/* Video Section */}
-          <motion.section
+          {/* <motion.section
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -197,10 +192,10 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
               >
                 <div className="relative aspect-video w-full">
                   <img
-                  src='/blog/image.png'
-                  alt="Video thumbnail"
-                  className="w-full h-full object-cover"
-                />
+                    src="/blog/image.png"
+                    alt="Video thumbnail"
+                    className="w-full h-full object-cover"
+                  />
 
                   {!isPlaying && (
                     <motion.button
@@ -236,38 +231,37 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
                 incontestable, l’équipe de TelQuel a su capturer l’essence de
                 notre mission : protéger, éduquer et accompagner vers
                 l’autonomie les enfants et jeunes issus des milieux les plus
-                vulnérables... <motion.button
-              className=" text-red-600 font-bold px-1"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setShowMore(!showMore)}
-            >
-              {showMore ? "" : "Voir plus"}
-            </motion.button>
+                vulnérables...{" "}
+                <motion.button
+                  className=" text-red-600 font-bold px-1"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setShowMore(!showMore)}
+                >
+                  {showMore ? "" : "Voir plus"}
+                </motion.button>
               </p>
               {showMore && (
-              <motion.p
-                className="text-gray-600 text-sm md:text-base leading-relaxed"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-               De notre foyer d’accueil à notre école inclusive en
-                passant par notre centre de formation et d’insertion
-                professionnelle, chaque image, chaque témoignage reflète
-                l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un
-                avenir digne et porteur d’espoir. Ce reportage est bien plus
-                qu’un simple témoignage : c’est une fenêtre ouverte sur les
-                parcours de résilience, de courage et de transformation que nous
-                avons la chance d’accompagner chaque jour. Un immense merci à
-                TelQuel pour cette mise en lumière précieuse qui rappelle
-                combien chaque enfant mérite une chance, un soutien et un
-                avenir.
-              </motion.p>
-            )}
-            
+                <motion.p
+                  className="text-gray-600 text-sm md:text-base leading-relaxed"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  De notre foyer d’accueil à notre école inclusive en passant
+                  par notre centre de formation et d’insertion professionnelle,
+                  chaque image, chaque témoignage reflète l’engagement quotidien
+                  de Bab Rayan pour offrir à ces jeunes un avenir digne et
+                  porteur d’espoir. Ce reportage est bien plus qu’un simple
+                  témoignage : c’est une fenêtre ouverte sur les parcours de
+                  résilience, de courage et de transformation que nous avons la
+                  chance d’accompagner chaque jour. Un immense merci à TelQuel
+                  pour cette mise en lumière précieuse qui rappelle combien
+                  chaque enfant mérite une chance, un soutien et un avenir.
+                </motion.p>
+              )}
             </div>
-          </motion.section>
+          </motion.section> */}
           {/* bloooog ---------- */}
           {newdata.map((item) => (
             <motion.div
