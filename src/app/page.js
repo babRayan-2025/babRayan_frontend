@@ -195,6 +195,9 @@ export default function Home() {
   const handlePlayClick = () => {
     setIsPlaying(true);
   };
+  const handlePlayClick1 = () => {
+    setIsPlaying(true);
+  };
 
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [selectedBlog, setSelectedBlog] = useState(null);
@@ -690,7 +693,7 @@ export default function Home() {
                                 <motion.button
                                   whileHover={{ scale: 1.1 }}
                                   whileTap={{ scale: 0.9 }}
-                                  onClick={handlePlayClick}
+                                  onClick={handlePlayClick1}
                                   className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
                                 >
                                   <div className="w-16 h-16 flex items-center justify-center rounded-full bg-white/90 group-hover:bg-white transition-colors">
