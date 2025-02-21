@@ -126,27 +126,27 @@ export default function Home() {
     {
       label: "Enfants pris en charge",
       value: 450,
-      icon: <FaChild />,
+      icon: "/chiffres/3.png",
     },
     {
       label: "Bénévoles",
       value: 6000,
-      icon: <FaHandHoldingHeart />,
+      icon: "/chiffres/1.png",
     },
     {
       label: "Familles accompagnées",
       value: 1500,
-      icon: <FaHouseUser />,
+      icon: "/chiffres/2.png",
     },
     {
       label: "repas offerts",
       value: 230000,
-      icon: <FaBowlFood />,
+      icon: "/chiffres/repats.png",
     },
     {
       label: "Ftours servis",
       value: 31200 ,
-      icon: <MdFreeBreakfast />,
+      icon: "/chiffres/ftour.png",
     },
   ];
 
@@ -423,7 +423,7 @@ export default function Home() {
                 className="flex flex-col items-center text-center rounded-lg p-3 m-2 md:flex-1 md:basis-5/12 xl:basis-1/5"
               >
                 <span className="text-[#ffffff] text-6xl text-center">
-                  {stat.icon}
+                <img src={stat.icon} className="w-44 h-36" alt="" />{" "}
                 </span>
                 <motion.div
                   className="flex items-center justify-center mt-2"
