@@ -3,17 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from 'next/link';
-import {
-  FaChild,
-  FaHandHoldingHeart,
-  FaHouseUser,
-  FaBox,
-  
-} from "react-icons/fa";
-import { MdFreeBreakfast } from "react-icons/md";
-import { FaBowlFood } from "react-icons/fa6";
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -64,6 +53,7 @@ const staggerContainer = {
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying1, setIsPlaying1] = useState(false);
     const [showMore, setShowMore] = useState(false);
   
     const videoUrl1 = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
@@ -196,7 +186,7 @@ export default function Home() {
     setIsPlaying(true);
   };
   const handlePlayClick1 = () => {
-    setIsPlaying(true);
+    setIsPlaying1(true);
   };
 
   const [selectedArticle, setSelectedArticle] = useState(null);
@@ -660,7 +650,7 @@ export default function Home() {
 
         <div>
           <motion.h1
-            className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative"
+            className="p-4 text-2xl md:text-4xl font-bold text-center my-8 relative"
             variants={fadeIn} // Apply fadeIn animation
             initial="initial"
             animate="animate"
@@ -689,7 +679,7 @@ export default function Home() {
                                 className="w-full h-full object-cover"
                               />
             
-                              {!isPlaying && (
+                              {!isPlaying1 && (
                                 <motion.button
                                   whileHover={{ scale: 1.1 }}
                                   whileTap={{ scale: 0.9 }}
@@ -702,7 +692,7 @@ export default function Home() {
                                 </motion.button>
                               )}
             
-                              {isPlaying && (
+                              {isPlaying1 && (
                                 <div className="absolute inset-0">
                                   <video className="w-full h-full" controls autoPlay>
                                     <source src={videoUrl1} type="video/mp4" />
@@ -756,7 +746,7 @@ export default function Home() {
                       </motion.section>
           {blogs.map((article, index) => (
             <motion.div
-              className="flex flex-col items-center bg-pink-100 gap-9 px-4"
+              className="flex flex-col items-center gap-9 px-4"
               variants={staggerContainer} 
               key={index}
               initial="initial"
@@ -802,7 +792,7 @@ export default function Home() {
           )}
 
           {/* Link to All News */}
-          <div className="p-6 flex items-center justify-center">
+          <div className="p-6 flex items-center md:my-4 justify-center">
             <motion.a href="/blog" variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105" >
               Voir toutes les Actualités
