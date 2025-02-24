@@ -746,14 +746,14 @@ export default function Home() {
                       </motion.section>
           {blogs.map((article, index) => (
             <motion.div
-              className="flex flex-col items-center gap-9 px-4"
+              className="flex flex-col items-center gap-9 md:px-4"
               variants={staggerContainer} 
               key={index}
               initial="initial"
               animate="animate"
             >
               <motion.div
-                className="p-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl" variants={fadeIn} >
+                className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl" variants={fadeIn} >
                 {/* Image Section */}
                 <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn}>
                   <Image src={article.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" />
