@@ -225,7 +225,7 @@ export default function Donation() {
     } else if ([4, 5, 6].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
       setShowForm(true);
-       // window.open("https://www.paypal.com/donate?hosted_button_id=5J2Z7Z8Q9Z6E8", "_blank");
+      // window.open("https://www.paypal.com/donate?hosted_button_id=5J2Z7Z8Q9Z6E8", "_blank");
     } else if (!selectedAmount && !customAmount) {
       // Navigate to the error page
       // router.push('/sorry');
@@ -254,7 +254,7 @@ export default function Donation() {
     e.preventDefault();
     // Handle form submission logic (e.g., send data to backend, process payment)
     toast.success("Merci pour votre don !");
-    
+
     // Reset states after successful submission
     setSelectedAmount(null);
     setCustomAmount("");
@@ -262,7 +262,7 @@ export default function Donation() {
     setDonationDetails(null);
     setPaymentMethod(null);
     setShowThirdCard(false);
-    setShowForm(false); 
+    setShowForm(false);
   };
 
   const selectedContent = contentByAmount[selectedAmount] || {
@@ -305,23 +305,8 @@ export default function Donation() {
       image: "/donation/4.png",
       desc: "Faire un don par virement bancaire",
     },
-    // {
-    //   id: 5,
-    //   label: "Apple Pay",
-    //   image: "/donation/5.png",
-    //   desc: "Payer avec Apple Pay",
-    // },
-    { id: 6, label: "CMI", image: "/donation/6.png", desc: "Payer avec CMI" },
+    { id: 6, label: "CMI", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
   ];
-
-  // const amountImages = {
-  //   "100 DH": "/donation/amounts/100.png",
-  //   "200 DH": "/donation/amounts/200.png",
-  //   "300 DH": "/donation/amounts/300.png",
-  //   "500 DH": "/donation/amounts/500.png",
-  //   "800 DH": "/donation/amounts/800.png",
-  //   "1900 DH": "/donation/amounts/1900.png",
-  // };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState(null);
@@ -427,9 +412,8 @@ export default function Donation() {
             {/* Amount Card */}
             <motion.div
               variants={cardVariants}
-              className={`bg-[#cc2229] p-4 md:p-8 rounded-3xl shadow-md border border-gray-500 ${
-                showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
-              }`}
+              className={`bg-[#cc2229] p-4 md:p-8 rounded-3xl shadow-md border border-gray-500 ${showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
+                }`}
             >
               <h2 className="md:text-4xl text-white font-bold mb-4">
                 Choisissez <br /> le montant
@@ -441,11 +425,10 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-8 md:px-10 rounded-full ${
-                      donationType === "Mensuel"
-                        ? "bg-yellow-300 text-red-700"
-                        : "bg-white text-red-700 border border-yellow-300"
-                    }`}
+                    className={`py-2 px-8 md:px-10 rounded-full ${donationType === "Mensuel"
+                      ? "bg-yellow-300 text-red-700"
+                      : "bg-white text-red-700 border border-yellow-300"
+                      }`}
                     onClick={() => handleDonationTypeChange("Mensuel")}
                   >
                     Mensuel
@@ -454,11 +437,10 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-8 md:px-10 rounded-full ${
-                      donationType === "Ponctuel"
-                        ? "bg-yellow-300 text-red-700"
-                        : "bg-white text-red-700 border border-yellow-300"
-                    }`}
+                    className={`py-2 px-8 md:px-10 rounded-full ${donationType === "Ponctuel"
+                      ? "bg-yellow-300 text-red-700"
+                      : "bg-white text-red-700 border border-yellow-300"
+                      }`}
                     onClick={() => handleDonationTypeChange("Ponctuel")}
                   >
                     Ponctuel
@@ -480,11 +462,10 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-4 px-2  rounded-2xl text-lg border-2 border-yellow-300 ${
-                      selectedAmount === amount
-                        ? "bg-[#FCE8F3] text-red-700 font-bold"
-                        : "bg-red-700 text-white font-bold"
-                    }`}
+                    className={`py-4 px-2  rounded-2xl text-lg border-2 border-yellow-300 ${selectedAmount === amount
+                      ? "bg-[#FCE8F3] text-red-700 font-bold"
+                      : "bg-red-700 text-white font-bold"
+                      }`}
                     onClick={() => handleAmountChange(amount)}
                   >
                     {amount}
@@ -513,21 +494,19 @@ export default function Donation() {
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
-                      className={`bg-white p-4  rounded-2xl justify-items-center shadow-md ${
-                        paymentMethod === method.id
-                          ? "bg-yellow-300 text-red-700 font-bold"
-                          : "bg-red-700 text-white font-bold"
-                      }`}
+                      className={`bg-white p-4  rounded-2xl justify-items-center shadow-md ${paymentMethod === method.id
+                        ? "bg-yellow-300 text-red-700 font-bold"
+                        : "bg-red-700 text-white font-bold"
+                        }`}
                       onClick={() => handlePaymentMethodClick(method.id)}
                     >
                       <img
                         src={method.image}
                         alt={method.label}
-                        className={`w-14 h-11  ${
-                          method.id == 4 || method.id == 5 || method.id == 6
-                            ? ""
-                            : "object-cover"
-                        }`}
+                        className={`w-14 h-11  ${method.id == 4 || method.id == 5 || method.id == 6
+                          ? ""
+                          : "object-cover"
+                          }`}
                       />
                     </motion.button>
                     <span className="text-xs block mt-0 text-center text-white">
@@ -555,8 +534,8 @@ export default function Donation() {
               )}
             </motion.div>
 
-           {/* Sponsorship or Form Card */}
-           {(showThirdCard && !showForm) && (
+            {/* Sponsorship or Form Card */}
+            {(showThirdCard && !showForm) && (
               <motion.div
                 variants={cardVariants}
                 initial="hidden"
@@ -712,9 +691,8 @@ export default function Donation() {
             {/* Image Card */}
             <motion.div
               variants={cardVariants}
-              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center shadow-md border border-gray-500 min-h-[30rem] ${
-                showThirdCard ? "w-full lg:w-1/3" : "w-full lg:w-[50rem]"
-              }`}
+              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center shadow-md border border-gray-500 min-h-[30rem] ${showThirdCard ? "w-full lg:w-1/3" : "w-full lg:w-[50rem]"
+                }`}
             />
           </motion.div>
         </section>
