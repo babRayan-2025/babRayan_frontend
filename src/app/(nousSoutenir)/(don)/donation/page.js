@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
@@ -47,10 +47,27 @@ export default function Donation() {
   const [donationType, setDonationType] = useState("Mensuel");
   const [showThirdCard, setShowThirdCard] = useState(false);
   const [customAmount, setCustomAmount] = useState("");
-  const [isCustomAmountSelected, setIsCustomAmountSelected] = useState(false);
   const [donationDetails, setDonationDetails] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState(null);
+
+  const [userData, setUserData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    companyName: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+  };
 
   // Content for different amounts
   const contentByAmount = {
@@ -180,7 +197,6 @@ export default function Donation() {
 
   const handleAmountChange = (amount) => {
     setSelectedAmount(amount);
-    setIsCustomAmountSelected(false);
     setCustomAmount("");
     updateDonationDetails(amount, donationType);
     setShowThirdCard(true);
@@ -196,15 +212,10 @@ export default function Donation() {
     const value = e.target.value;
     setSelectedAmount(null);
     setCustomAmount(value);
-    setIsCustomAmountSelected(value !== "");
     updateDonationDetails(value, donationType);
     setShowThirdCard(true);
   };
 
-  const handlePaymentMethodClick = (method) => {
-    setPaymentMethod(method);
-    console.log("Payment method selected:", method);
-  };
 
   const updateDonationDetails = (amount, type) => {
     const details = {
@@ -218,51 +229,74 @@ export default function Donation() {
     const selectedPaymentMethod = paymentMethods.find(
       (method) => method.id === paymentMethod
     );
-
-    if ([1, 2, 3].includes(paymentMethod)) {
-      setSelectedMethod(selectedPaymentMethod);
-      setIsModalOpen(true);
-    } else if ([4, 5, 6].includes(paymentMethod)) {
-      setSelectedMethod(selectedPaymentMethod);
-      setShowForm(true);
-      // window.open("https://www.paypal.com/donate?hosted_button_id=5J2Z7Z8Q9Z6E8", "_blank");
-    } else if (!selectedAmount && !customAmount) {
-      // Navigate to the error page
-      // router.push('/sorry');
+    if (!selectedAmount && !customAmount) {
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
     } else if (!paymentMethod) {
-      // Navigate to the thanks page
-      // router.push('/sorry');
-      toast.error(
-        "Veuillez choisir un type de paiement avant de procéder au don."
-      );
+      toast.error("Veuillez choisir un type de paiement avant de procéder au don.");
+      return;
+    } else if ([1, 2, 3].includes(paymentMethod)) {
+      setSelectedMethod(selectedPaymentMethod);
+      setIsModalOpen(true);
+    } else if ([4, 5].includes(paymentMethod)) {
+      setSelectedMethod(selectedPaymentMethod);
+      setShowForm(true);
+    } 
+  };
+
+  const CMIpaymentProcess = () => {
+    console.log("cmi");
+    console.log(userData);
+    console.log(selectedAmount || customAmount);
+  };
+
+  const PaypalpaymentProcess = async () => {
+    console.log("User Data:", userData);
+    console.log("Amount:", selectedAmount || customAmount);
+    console.log("Processing PayPal Payment...");
+
+    const amount = selectedAmount || customAmount;
+    if (!amount || amount <= 0) {
+      alert("Veuillez entrer un montant valide.");
       return;
     }
-    // router.push('/Remerciement');
-    // toast.success("Merci pour votre don !");
 
-    // setSelectedAmount(null);
-    // setCustomAmount("");
-    // setIsCustomAmountSelected(false);
-    // setDonationDetails(null);
-    // setPaymentMethod(null);
-    // setShowThirdCard(false);
+    try {
+      const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/don/payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          montant: Number(amount),
+          // userId: userData.userId,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.approvalUrl) {
+        window.location.href = data.approvalUrl; // Redirect user to PayPal
+      } else {
+        alert("Erreur : aucune URL de paiement reçue.");
+      }
+    } catch (error) {
+      console.error("Erreur lors du paiement:", error);
+      alert("Une erreur est survenue lors du paiement.");
+    }
   };
+
+
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic (e.g., send data to backend, process payment)
-    toast.success("Merci pour votre don !");
-
-    // Reset states after successful submission
-    setSelectedAmount(null);
-    setCustomAmount("");
-    setIsCustomAmountSelected(false);
-    setDonationDetails(null);
-    setPaymentMethod(null);
-    setShowThirdCard(false);
-    setShowForm(false);
+    // toast.success("Merci pour votre don !");
+    if (paymentMethod === 5) {
+      CMIpaymentProcess();
+    } else if (paymentMethod === 4) {
+      PaypalpaymentProcess();
+    }
   };
 
   const selectedContent = contentByAmount[selectedAmount] || {
@@ -305,11 +339,8 @@ export default function Donation() {
       image: "/donation/4.png",
       desc: "Faire un don par virement bancaire",
     },
-    { id: 6, label: "CMI", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
+    { id: 5, label: "CMI", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
   ];
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedMethod, setSelectedMethod] = useState(null);
 
   const Modal = ({ method, amount, onClose }) => {
     return (
@@ -325,23 +356,8 @@ export default function Donation() {
                 alt={method.label}
                 className="md:w-[70rem] md:h-[40rem] mx-auto rounded-3xl shadow-md"
               />
-              {/* <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3> */}
-              {/* <p className="text-gray-700">{method.desc}</p> */}
             </>
           )}
-          {/* {amount && (
-            <>
-              <img src={amountImages[amount]} alt={amount} className="w-32 h-32 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Montant sélectionné</h3>
-              <p className="text-gray-700">{amount}</p>
-            </>
-          )} */}
-          {/* <button
-            onClick={onClose}
-            className="mt-4 bg-red-700 text-white py-2 mb-4 px-6 rounded-full"
-          >
-            Fermer
-          </button> */}
         </div>
       </div>
     );
@@ -450,12 +466,12 @@ export default function Donation() {
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
                 {[
-                  "100 DH",
-                  "200 DH",
-                  "300 DH",
-                  "500 DH",
-                  "800 DH",
-                  "1900 DH",
+                  "100",
+                  "200",
+                  "300",
+                  "500",
+                  "800",
+                  "1900",
                 ].map((amount) => (
                   <motion.button
                     key={amount}
@@ -468,7 +484,7 @@ export default function Donation() {
                       }`}
                     onClick={() => handleAmountChange(amount)}
                   >
-                    {amount}
+                    {amount} DH
                   </motion.button>
                 ))}
               </div>
@@ -485,21 +501,13 @@ export default function Donation() {
               <div className="grid grid-cols-3 gap-4 mt-4 justify-center">
                 {/* khtaar le choie de paiement */}
                 {paymentMethods.map((method) => (
-                  <div
-                    key={method.id}
-                    className="flex flex-col items-center gap-2"
-                  >
-                    <motion.button
-                      key={method.id}
-                      variants={buttonVariants}
-                      whileHover="hover"
-                      whileTap="tap"
+                  <div key={method.id} className="flex flex-col items-center gap-2" >
+                    <motion.button key={method.id} variants={buttonVariants} whileHover="hover" whileTap="tap"
                       className={`bg-white p-4  rounded-2xl justify-items-center shadow-md ${paymentMethod === method.id
                         ? "bg-yellow-300 text-red-700 font-bold"
                         : "bg-red-700 text-white font-bold"
                         }`}
-                      onClick={() => handlePaymentMethodClick(method.id)}
-                    >
+                      onClick={() => setPaymentMethod(method.id)} >
                       <img
                         src={method.image}
                         alt={method.label}
@@ -621,29 +629,10 @@ export default function Donation() {
                   {selectedContent.title}
                 </h2>
                 <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">
-                  <input
-                    type="text"
-                    placeholder="Nom complet :"
-                    className="w-full p-2 rounded-lg border border-gray-300"
-                    required
-                  />
-                  <input
-                    type="text"
-                    placeholder="Nom de l'entreprise :"
-                    className="w-full p-2 rounded-lg border border-gray-300"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Adresse e-mail :"
-                    className="w-full p-2 rounded-lg border border-gray-300"
-                    required
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Téléphone :"
-                    className="w-full p-2 rounded-lg border border-gray-300"
-                    required
-                  />
+                  <input name="email" type="email" placeholder="Adresse e-mail" className="w-full p-2 rounded-lg border border-gray-300" required value={userData.email} onChange={handleChange} />
+                  <input name="fullName" type="text" placeholder="Nom complet" className="w-full p-2 rounded-lg border border-gray-300" value={userData.fullName} onChange={handleChange} />
+                  <input name="companyName" type="text" placeholder="Nom de l'entreprise" className="w-full p-2 rounded-lg border border-gray-300" value={userData.companyName} onChange={handleChange} />
+                  <input name="phone" type="tel" placeholder="Téléphone" className="w-full p-2 rounded-lg border border-gray-300" value={userData.phone} onChange={handleChange} />
                   <motion.button
                     variants={buttonVariants}
                     whileHover="hover"
