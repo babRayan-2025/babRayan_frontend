@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -50,6 +50,7 @@ export default function Donation() {
   const [isCustomAmountSelected, setIsCustomAmountSelected] = useState(false);
   const [donationDetails, setDonationDetails] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   // Content for different amounts
   const contentByAmount = {
@@ -63,7 +64,8 @@ export default function Donation() {
         },
         {
           label: "Soutenez la diversité des sports :",
-          description: "Pour découvrir de nouvelles passions et développer ses talents.",
+          description:
+            "Pour découvrir de nouvelles passions et développer ses talents.",
         },
         {
           label: "Offrez un équipement adapté :",
@@ -82,11 +84,13 @@ export default function Donation() {
         },
         {
           label: "Offrez des traitements adaptés :",
-          description: "Médecins spécialisés, soins dentaires, et suivi personnalisé.",
+          description:
+            "Médecins spécialisés, soins dentaires, et suivi personnalisé.",
         },
         {
           label: "Promouvez l'hygiène et le bien-être :",
-          description: "Produits d'hygiène, sensibilisation aux bonnes pratiques pour une vie saine.",
+          description:
+            "Produits d'hygiène, sensibilisation aux bonnes pratiques pour une vie saine.",
         },
       ],
       image: "/donation/santé.png",
@@ -101,7 +105,8 @@ export default function Donation() {
         },
         {
           label: "Une tenue pour chaque occasion :",
-          description: "Pour se sentir confiant, que ce soit à l'école ou lors d'événements spéciaux.",
+          description:
+            "Pour se sentir confiant, que ce soit à l'école ou lors d'événements spéciaux.",
         },
       ],
       image: "/donation/Vetements.png",
@@ -210,14 +215,20 @@ export default function Donation() {
   };
 
   const handleProceedToDonation = () => {
-    const selectedPaymentMethod = paymentMethods.find(method => method.id === paymentMethod);
+    const selectedPaymentMethod = paymentMethods.find(
+      (method) => method.id === paymentMethod
+    );
 
     if ([1, 2, 3].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
       setIsModalOpen(true);
-    }else if (!selectedAmount && !customAmount) {
+    } else if ([4, 5, 6].includes(paymentMethod)) {
+      setSelectedMethod(selectedPaymentMethod);
+      setShowForm(true);
+       // window.open("https://www.paypal.com/donate?hosted_button_id=5J2Z7Z8Q9Z6E8", "_blank");
+    } else if (!selectedAmount && !customAmount) {
       // Navigate to the error page
-      router.push('/sorry');
+      // router.push('/sorry');
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
     } else if (!paymentMethod) {
@@ -229,14 +240,29 @@ export default function Donation() {
       return;
     }
     // router.push('/Remerciement');
-    toast.success("Merci pour votre don !");
+    // toast.success("Merci pour votre don !");
 
+    // setSelectedAmount(null);
+    // setCustomAmount("");
+    // setIsCustomAmountSelected(false);
+    // setDonationDetails(null);
+    // setPaymentMethod(null);
+    // setShowThirdCard(false);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic (e.g., send data to backend, process payment)
+    toast.success("Merci pour votre don !");
+    
+    // Reset states after successful submission
     setSelectedAmount(null);
     setCustomAmount("");
     setIsCustomAmountSelected(false);
     setDonationDetails(null);
     setPaymentMethod(null);
     setShowThirdCard(false);
+    setShowForm(false); 
   };
 
   const selectedContent = contentByAmount[selectedAmount] || {
@@ -265,7 +291,6 @@ export default function Donation() {
       image: "/donation/2.png",
       desc: "Payer avec votre compte PayPal",
       popup: "/donation/popUp/1.png",
-
     },
     {
       id: 3,
@@ -273,7 +298,6 @@ export default function Donation() {
       image: "/donation/3.png",
       desc: "Faire un don par chèque",
       popup: "/donation/popUp/3.png",
-
     },
     {
       id: 4,
@@ -304,11 +328,18 @@ export default function Donation() {
 
   const Modal = ({ method, amount, onClose }) => {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6" onClick={onClose}>
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6"
+        onClick={onClose}
+      >
         <div className="bg-white rounded-3xl shadow-lg text-center">
           {method && (
             <>
-              <img src={method.popup} alt={method.label} className="md:w-[70rem] md:h-[40rem] mx-auto rounded-3xl shadow-md" />
+              <img
+                src={method.popup}
+                alt={method.label}
+                className="md:w-[70rem] md:h-[40rem] mx-auto rounded-3xl shadow-md"
+              />
               {/* <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3> */}
               {/* <p className="text-gray-700">{method.desc}</p> */}
             </>
@@ -436,7 +467,14 @@ export default function Donation() {
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
-                {["100 DH","200 DH","300 DH","500 DH", "800 DH", "1900 DH"].map((amount) => (
+                {[
+                  "100 DH",
+                  "200 DH",
+                  "300 DH",
+                  "500 DH",
+                  "800 DH",
+                  "1900 DH",
+                ].map((amount) => (
                   <motion.button
                     key={amount}
                     variants={buttonVariants}
@@ -509,21 +547,21 @@ export default function Donation() {
                 Procéder au don
               </motion.button>
               {isModalOpen && (
-        <Modal
-          method={selectedMethod}
-          amount={selectedAmount}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
+                <Modal
+                  method={selectedMethod}
+                  amount={selectedAmount}
+                  onClose={() => setIsModalOpen(false)}
+                />
+              )}
             </motion.div>
 
-            {/* Sponsorship Card */}
-            {showThirdCard && (
+           {/* Sponsorship or Form Card */}
+           {(showThirdCard && !showForm) && (
               <motion.div
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-[#fdc000] p-4  rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
+                className="bg-[#fdc000] p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
               >
                 <h2 className="text-3xl text-red-700 font-extrabold mb-4 mx-10 text-center">
                   {selectedContent.title}
@@ -547,9 +585,7 @@ export default function Donation() {
                         className="w-8 h-8 mr-0 mt-0"
                       />
                       <span className="mt-0.5">
-                        <span className="text-red-700 font-bold ">
-                          {item.label}
-                        </span>{" "}
+                        <span className="text-red-700 font-bold">{item.label}</span>{" "}
                         <br /> {item.description}
                       </span>
                     </motion.li>
@@ -565,13 +601,13 @@ export default function Donation() {
                   <span className="text-gray-800 text-xl font-bold mr-2">
                     Type de don
                   </span>
-                  <motion.button
+                  <motion.div
                     variants={buttonVariants}
                     whileHover="hover"
-                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 "
+                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
                   >
                     {donationDetails ? donationDetails.type : "Mensuel"}
-                  </motion.button>
+                  </motion.div>
                 </div>
                 {donationDetails?.amount && (
                   <div className="flex items-center justify-end">
@@ -583,9 +619,91 @@ export default function Donation() {
                     <span className="text-gray-800 text-xl font-bold mr-2">
                       Montant
                     </span>
-                    <button className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 ">
+                    <motion.div
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
+                    >
                       {donationDetails.amount}
-                    </button>
+                    </motion.div>
+                  </div>
+                )}
+              </motion.div>
+            )}
+
+            {showForm && (
+              <motion.div
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                className="bg-[#fdc000] p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
+              >
+                <h2 className="text-3xl text-red-700 font-extrabold my-4 mx-10 text-center">
+                  {selectedContent.title}
+                </h2>
+                <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">
+                  <input
+                    type="text"
+                    placeholder="Nom complet :"
+                    className="w-full p-2 rounded-lg border border-gray-300"
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Nom de l'entreprise :"
+                    className="w-full p-2 rounded-lg border border-gray-300"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Adresse e-mail :"
+                    className="w-full p-2 rounded-lg border border-gray-300"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Téléphone :"
+                    className="w-full p-2 rounded-lg border border-gray-300"
+                    required
+                  />
+                  <motion.button
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    type="submit"
+                    className="bg-red-700 text-white py-2 px-6 rounded-xl w-full mt-4"
+                  >
+                    Finaliser mon don
+                  </motion.button>
+                </form>
+                <div className="flex items-center mt-4 justify-end">
+                  <span className="text-gray-800 text-xl font-bold mr-2">
+                    Type de don
+                  </span>
+                  <motion.div
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
+                  >
+                    {donationDetails ? donationDetails.type : "Mensuel"}
+                  </motion.div>
+                </div>
+                {donationDetails?.amount && (
+                  <div className="flex items-center justify-end">
+                    <img
+                      src="/donation/gauche.png"
+                      alt="Money"
+                      className="w-16 h-8 mr-2 mb-2"
+                    />
+                    <span className="text-gray-800 text-xl font-bold mr-2">
+                      Montant
+                    </span>
+                    <motion.div
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
+                    >
+                      {donationDetails.amount}
+                    </motion.div>
                   </div>
                 )}
               </motion.div>
@@ -613,51 +731,52 @@ export default function Donation() {
           CONTACT
         </h2>
         <motion.div
-  variants={staggerChildren}
-  className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8"
->
-  <div className="justify-center mt-4">
-    <ul className="list-none flex flex-col text-sm sm:text-base md:text-lg">
-      {[
-        {
-          icon: "/donation/phone.svg",
-          label: "Direction Générale :",
-          content: "+212 610 02 35 55",
-        },
-        {
-          icon: "/donation/mail.svg",
-          content: "direction@babrayan.ma",
-        },
-        {
-          icon: "/donation/localisation.svg",
-          content: "4 rue Bayt Lahm, Quartier Palmier, Casablanca",
-        },
-      ].map((item, index) => (
-        <motion.li
-          key={index}
-          variants={fadeIn}
-          className="flex items-center space-x-2 md:space-x-4 mb-2 md:mb-3"
+          variants={staggerChildren}
+          className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8"
         >
-          <motion.img
-            src={item.icon}
-            alt={`Contact ${index + 1}`}
-            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
-            whileHover={{ scale: 1.1 }}
-          />
-          <div className="flex flex-col md:flex-row md:items-center">
-            {item.label && (
-              <span className="text-yellow-300 text-xs sm:text-sm md:text-lg font-medium mr-1 md:mr-2">
-                {item.label}
-              </span>
-            )}
-            <span className="text-xs sm:text-sm md:text-lg">{item.content}</span>
+          <div className="justify-center mt-4">
+            <ul className="list-none flex flex-col text-sm sm:text-base md:text-lg">
+              {[
+                {
+                  icon: "/donation/phone.svg",
+                  label: "Direction Générale :",
+                  content: "+212 610 02 35 55",
+                },
+                {
+                  icon: "/donation/mail.svg",
+                  content: "direction@babrayan.ma",
+                },
+                {
+                  icon: "/donation/localisation.svg",
+                  content: "4 rue Bayt Lahm, Quartier Palmier, Casablanca",
+                },
+              ].map((item, index) => (
+                <motion.li
+                  key={index}
+                  variants={fadeIn}
+                  className="flex items-center space-x-2 md:space-x-4 mb-2 md:mb-3"
+                >
+                  <motion.img
+                    src={item.icon}
+                    alt={`Contact ${index + 1}`}
+                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
+                    whileHover={{ scale: 1.1 }}
+                  />
+                  <div className="flex flex-col md:flex-row md:items-center">
+                    {item.label && (
+                      <span className="text-yellow-300 text-xs sm:text-sm md:text-lg font-medium mr-1 md:mr-2">
+                        {item.label}
+                      </span>
+                    )}
+                    <span className="text-xs sm:text-sm md:text-lg">
+                      {item.content}
+                    </span>
+                  </div>
+                </motion.li>
+              ))}
+            </ul>
           </div>
-        </motion.li>
-      ))}
-    </ul>
-  </div>
-</motion.div>
-
+        </motion.div>
       </motion.section>
     </main>
   );
