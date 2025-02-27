@@ -11,15 +11,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/
 import { Button, Modal } from 'antd';
 
 import pic3 from "../assets/PHOTO/3.jpg";
-// import pic4 from "../assets/PHOTO/4.jpg";
-// import pic5 from "../assets/PHOTO/5.jpg";
-// import pic6 from "../assets/PHOTO/6.jpg";
-// import pic7 from "../assets/PHOTO/7.jpg";
-import pic8 from "../assets/PHOTO/remiseDiplome.jpg";
-import pic9 from "../assets/PHOTO/newrest.jpg";
 import pic10 from "../assets/PNG/ETOILERAMADAN.png";
 import pic11 from "../assets/PNG/LANTERNE.png";
-// import soleil from "../assets/PNG/SOLEIL.png";
 import CountUp from "react-countup";
 import React, { useState } from "react";
 import { Play } from "lucide-react";
@@ -53,36 +46,36 @@ const staggerContainer = {
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isPlaying1, setIsPlaying1] = useState(false);
-    const [showMore, setShowMore] = useState(false);
+  // const [isPlaying1, setIsPlaying1] = useState(false);
+  //   const [showMore, setShowMore] = useState(false);
   
-    const videoUrl1 = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
+    // const videoUrl1 = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
 
 
   const caroussel = [
     {
-      image: '/caroussel/children.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fchildren.webp?alt=media&token=3a77488c-709c-423a-8f01-0acde1a9e440',
       picto: '/caroussel/sun.png',
       title: "CHANGER LE PARCOURS D'UNE VIE",
       description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
       link: "/protection"
     },
     {
-      image: '/caroussel/jeux.png',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fjeux.webp?alt=media&token=bbfc4156-bcb7-40f9-8ab8-7ab3055dbfb2',
       picto: '/caroussel/main.png',
       title: "PROTÉGER, ÉDUQUER, ACCOMPAGNER",
       description: "Bab Rayan défend les droits des enfants en leur offrant un foyer sécurisant et une éducation de qualité.",
       link: "/education"
     },
     {
-      image: '/caroussel/patisserie.png',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fpatisserie.webp?alt=media&token=799fb85f-1f24-4373-9d71-23f11b2d2cd8',
       picto: '/caroussel/fleche.png',
       title: "FORMER ET INTÉGRER",
       description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens autonomes et engagés.",
       link: "/formation"
     },
     {
-      image: '/caroussel/slider.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fslider.webp?alt=media&token=76dc0fc8-a46d-4fe7-bb1b-79a407afeb06',
       picto: '/caroussel/etoile.svg',
       title: "UN ENGAGEMENT QUI A DU SENS",
       description: "Rejoignez le combat pour la protection de l’enfance, engagez-vous en devenant donateur, partenaire ou bénévole.",
@@ -96,21 +89,21 @@ export default function Home() {
       title: "Protection de l'enfance",
       description: "Depuis 2014, Bab Rayan se consacre à la protection de l'enfance, assurant un environnement sûr et bienveillant pour les enfants vulnérables.",
       buttonText: "Découvrir le foyer Bab Rayan",
-      image: '/2girls.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2F2girls.webp?alt=media&token=57cd0889-0283-4562-9f75-ca477befb96a',
       link: '/protection'
     },
     {
       title: "Éducation et scolarité",
       description: "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
       buttonText: "Découvrir l'école Palmier",
-      image: '/fille.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2Ffille.webp?alt=media&token=2715100e-bc68-4e94-b55c-6d934e536a41',
       link: '/education'
     },
     {
       title: "Formation et insertion professionnelle",
       description: "Des formations offertes dans des secteurs variés tels que l'hôtellerie-restauration et les métiers du digital pour accompagner ces jeunes vers une insertion professionnelle réussie.",
       buttonText: "Découvrir le CFI",
-      image: '/cfi.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2Fcfi.webp?alt=media&token=e7ac98b6-e82a-4efd-bf40-14c355ad3b84',
       link: '/formation',
     }
   ];
@@ -167,14 +160,21 @@ export default function Home() {
   const blogs = [
     {
       id: 1,
-      img: pic8,
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2Fimage.png?alt=media&token=59294c46-147b-4616-904f-db39da3841c9",
+      title: "TelQuel parle de nous !",
+      description: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables" ,
+      text: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir. Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour. Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir."
+    },
+    {
+      id: 2,
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.png?alt=media&token=7a62f41b-fcb0-4990-9e4b-4b008d59949e",
       title: "Remise des diplômes de la deuxième promotion du CFI",
       description: "L&apos;Association Bab Rayan a eu l&apos;honneur de célébrer ce 28 Octobre 2024, la réussite de la deuxième promotion de diplômés de son Centre de Formation et d&apos;Insertion. Le CFI propose aux jeunes issus des EPS et en situation de précarité une formation qualifiante dans les métiers de l&apos;hôtellerie et de la restauration. Aujourd&apos;hui, plus de 120 jeunes franchissent une étape clé vers l&apos;emploi, grâce au soutien de nos entreprises partenaires. <br /> Nous avons été honorés par la présence de Mr le Wali, le Gouverneur et Mme la Maire de Casablanca.",
       text: "L'Association Bab Rayan a eu l'honneur de célébrer le 28 Octobre la réussite de la deuxième promotion de diplômés de son Centre de Formation et d'Insertion. Le CFI propose aux jeunes issus des établissements de protection sociale (EPS) et en situation de précarité une formation qualifiante dans les métiers de l’hôtellerie et de la restauration. Aujourd'hui, plus de 120 jeunes franchissent une étape clé vers l'emploi, grâce au soutien de nos entreprises partenaires. Ce diplôme, délivré en partenariat avec l'Entraide Nationale, témoigne de leur persévérance et marque le début d'une carrière prometteuse. Nous avons été honorés par la présence de personnalités de marque : le Wali de Casablanca, le Gouverneur des arrondissements de Casablanca-Anfa, Mme la Maire de Casablanca. Merci infiniment à nos partenaires et à la communauté Bab Rayan pour leur soutien indéfectible."
     },
     {
-      id: 2,
-      img: pic9,
+      id: 3,
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F9.webp?alt=media&token=91152e31-ccd5-4507-a2e5-295997badda8",
       title: "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
       description: "Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation diplômante en restauration, une première qui changera la vie d'une promotion engagée de jeunes en difficulté! D'ici août prochain, ils auront non seulement acquis des compétences, mais aussi trouvé un projet de vie qui leur ouvre les portes d'un avenir prometteur.",
     },
@@ -235,7 +235,7 @@ export default function Home() {
                     {/* Background Image */}
                     <Image
                       src={slide.image}
-                      className="absolute block w-full h-full object-cover"
+                      className="absolute block w-full h-full object-cover loading='lazy'"
                       // loading="lazy"
                       alt={`Slide ${index + 1}`}
                       priority={index === 0}
@@ -526,7 +526,7 @@ export default function Home() {
                 animate="animate"
               >
                 <img
-                src="/actions_solidaires/24.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F5.webp?alt=media&token=03668d9b-4bf0-4e04-92d3-bdcc43a850b6"
                   alt="Les Ftours Bab Rayan"
                   className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
                 />
@@ -660,7 +660,7 @@ export default function Home() {
           </motion.h1>
 
             {/* video --------------- */}
-                      <motion.section
+                      {/* <motion.section
                         initial="initial"
                         whileInView="animate"
                         viewport={{ once: true }}
@@ -743,7 +743,7 @@ export default function Home() {
                             </motion.p>
                           )}
                         </div>
-                      </motion.section>
+                      </motion.section> */}
           {blogs.map((article, index) => (
             <motion.div
               className="flex flex-col items-center gap-9 md:px-4"
@@ -755,8 +755,8 @@ export default function Home() {
               <motion.div
                 className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl" variants={fadeIn} >
                 {/* Image Section */}
-                <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn}>
-                  <Image src={article.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" />
+                <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn} loading="lazy">
+                  <img src={article.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" />
                 </motion.div>
 
                 {/* Text Section */}

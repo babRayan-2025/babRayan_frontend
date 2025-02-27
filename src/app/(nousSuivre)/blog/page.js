@@ -77,7 +77,7 @@ export default function Blog() {
   const [showMore, setShowMore] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const videoUrl = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
+  const videoUrl = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0";
   const handlePlayClick = () => {
     setIsPlaying(true);
   };
@@ -102,7 +102,7 @@ export default function Blog() {
     //     },
     {
       id: 1,
-      image: "/blog/1.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.png?alt=media&token=7a62f41b-fcb0-4990-9e4b-4b008d59949e",
       alt: "Graduation",
       title: "Remise des diplômes de la deuxième promotion du CFI",
       description: `L'Association Bab Rayan a eu l'honneur de célébrer ce 28 Octobre 2024,
@@ -116,7 +116,7 @@ export default function Blog() {
     },
     {
       id: 2,
-      image: "/blog/4.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F4.png?alt=media&token=d52dcba5-1607-4857-b6c3-f747be013f33",
       alt: "Partnership",
       title: "Cérémonie d'ouverture de PSG Academy",
       description: `La PSG Academy Maroc a ouvert ses portes le 11 novembre à Casablanca, en présence d'Achraf Hakimi, invité d'honneur.
@@ -125,7 +125,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
     },
     {
       id: 3,
-      image: "/blog/5.jpg",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F5.jpg?alt=media&token=49d37a09-f513-4560-835c-17a6d79f91e5",
       alt: "Success",
       title:
         "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
@@ -134,7 +134,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
     },
     {
       id: 4,
-      image: "/blog/2.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F2.png?alt=media&token=4352c4ca-b31f-4c6f-b80d-bf769c94ab61",
       alt: "Success",
       title: "Aiguebelle : Un partenaire engagé avec nos jeunes du CFI",
       description: `Notre partenaire Aiguebelle a généreusement organisé cet automne, une journée de visite et de formation en chocolaterie pour les jeunes du Centre de Formation et d’Insertion (CFI) de Bab Rayan.
@@ -143,7 +143,7 @@ Nos étudiants ont eu l'opportunité unique de découvrir les secrets de la f
     },
     {
       id: 5,
-      image: "/blog/3.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F3.png?alt=media&token=52fe0b4f-5bd4-47e4-83ec-b956f899974e",
       alt: "Training",
       title: "Une sortie au théâtre pour voir le petit prince",
       description: `Les enfants de Bab Rayan ont assisté au premier spectacle de la saison de l'École du Jeune
@@ -153,7 +153,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
     },
     {
       id: 6,
-      image: "/blog/6.jpg",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F6.jpg?alt=media&token=36db8a71-c325-4b8d-9a3f-1827087dd694",
       alt: "Innovation",
       title: "Nos enfants partent à la découverte du monde",
       description: `Grâce à des voyages à l'étranger, nos enfants ont eu la chance unique d'élargir leurs horizons, de nourrir leurs rêves et de s'ouvrir à de nouvelles cultures. Ces expériences enrichissantes encouragent la tolérance, renforcent l'estime de soi, et favorisent une meilleure compréhension des autres, tout en contribuant à leur épanouissement personnel.`,
@@ -166,7 +166,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
       {isLoading ? (
         <SkeletonLoader />
       ) : (
-        <main className="w-full bg-[url('/BG-actualité.png')] bg-center py-16">
+        <main className="w-full bg-[url('https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2FBG-actualit%C3%A9.webp?alt=media&token=077e9635-b894-44e1-993a-860948c23554')] bg-center py-16">
           <motion.h1
             className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative"
             variants={fadeIn}
@@ -178,7 +178,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
           </motion.h1>
 
           {/* Video Section */}
-          {/* <motion.section
+          <motion.section
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -192,7 +192,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
               >
                 <div className="relative aspect-video w-full">
                   <img
-                    src="/blog/image.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2Fimage.png?alt=media&token=59294c46-147b-4616-904f-db39da3841c9"
                     alt="Video thumbnail"
                     className="w-full h-full object-cover"
                   />
@@ -261,7 +261,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                 </motion.p>
               )}
             </div>
-          </motion.section> */}
+          </motion.section>
           {/* bloooog ---------- */}
           {newdata.map((item) => (
             <motion.div
@@ -285,7 +285,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                     alt={item.alt}
                     width={600}
                     height={400}
-                    className="rounded-xl w-full md:h-[350px] object-cover"
+                    className="rounded-xl w-full md:h-[350px] object-cover loading= 'lazy'"
                   />
                 </motion.div>
 
