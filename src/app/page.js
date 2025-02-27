@@ -148,19 +148,19 @@ export default function Home() {
       title: "Mécénat culturel : Éveiller les talents et les passions de nos jeunes",
       shortDesc: "L'Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture ...",
       fullDesc: "l’Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture et de l’art. À travers le programme de l’école du jeune spectateur, de nombreuses sorties au théâtre sont organisées, offrant aux enfants et adolescents une immersion unique dans l’univers des arts vivants. Au-delà du théâtre, nos jeunes participent activement à des expositions d’art, explorant les œuvres et les histoires qu’elles racontent. Des ateliers de peinture et d’expression artistique leur permettent également de développer leur sensibilité, leur créativité et leur confiance en eux. Ces initiatives culturelles sont bien plus que des moments de loisir : elles nourrissent l’imaginaire, ouvrent de nouveaux horizons et encouragent chacun de nos jeunes à croire en ses talents. Nous remercions chaleureusement tous nos partenaires pour leur engagement à rendre l’art et la culture accessibles à tous.",
-      img: "/3cards/5.jpg",
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F5.webp?alt=media&token=0f8bbf30-2ccb-42d0-a2dd-cb37eb30cf5b",
     },
     {
       title: "La Digitalisation au cœur des projets de Bab Rayan",
       shortDesc: "Aujourd'hui, plusieurs projets de l'association Bab Rayan intègrent la digitalisation comme levier d’apprentissage et d’insertion professionnelle. À l’école élémentaire ...",
       fullDesc: "Aujourd’hui, plusieurs projets de l’association Bab Rayan intègrent la digitalisation comme levier d’apprentissage et d’insertion professionnelle. À l’école élémentaire, nous sensibilisons dès le plus jeune âge à l’informatique à travers des programmes de codage interactifs, spécialement conçus pour éveiller l’intérêt des enfants pour les métiers de l’IT. Au niveau du Centre de Formation et d’Insertion (CFI), un module dédié aux outils bureautiques (Microsoft Office) a été intégré au curriculum pour renforcer les compétences techniques essentielles. En parallèle, le CFI a lancé un projet pilote ambitieux : ForsaTech.",
-      img: "/3cards/6.jpg",
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F6.webp?alt=media&token=0afbdb43-3d07-4e5d-8ba0-6d9799837273",
     },
     {
       title: "ForsaTech : Une porte d'entrée vers les métiers du numérique",
       shortDesc: "Créé pour répondre aux besoins croissant du marché digital, ForsaTech propose des formations ...",
       fullDesc: "Créé pour répondre aux besoins croissants du marché digital, ForsaTech propose des formations accélérées aux jeunes en difficulté, axées sur les compétences numériques les plus demandées. Conçu en collaboration avec des entreprises partenaires, ce programme garantit une employabilité directe grâce à une sélection rigoureuse des modules et des candidats. Forts de notre expertise dans les métiers de l’hôtellerie et de la restauration, et inspirés par le succès de ce modèle, nous sommes déterminés à élargir notre impact en ouvrant de nouvelles perspectives dans le secteur numérique. Avec ces initiatives, Bab Rayan continue de transformer les défis de la jeunesse en opportunités durables, en bâtissant un pont solide entre éducation, technologie et insertion professionnelle.",
-      img: "/3cards/7.jpg",
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F7.webp?alt=media&token=7f83b4aa-3845-43eb-be66-0d42c582c960",
     },
   ];
 
@@ -596,7 +596,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {articles.map((article, index) => (
               <motion.div key={index} className="bg-white rounded-lg shadow-lg">
-                <img src={article.img} className="h-[45vh] object-cover" alt={article.title} style={{ width: '100%' }} height={300} />
+                <img src={article.img} className="h-[45vh] object-cover" alt={article.title} style={{ width: '100%' }} height={300} loading="lazy" />
                 <div className="p-6">
                   <p className="text-3xl font-bold text-center pb-4">{article.title}</p>
                   <p className="pb-6 text-center">{article.shortDesc}</p>
