@@ -241,13 +241,73 @@ export default function Donation() {
     } else if ([4, 5].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
       setShowForm(true);
-    } 
+    }
   };
 
-  const CMIpaymentProcess = () => {
-    console.log("cmi");
-    console.log(userData);
+  const CMIpaymentProcess = async (event = null) => {
+    if (event?.preventDefault) event.preventDefault(); // Vérifie si event existe avant d'appeler preventDefault()
+
+    console.log("Début du processus CMI...");
+    console.log(userData.fullName);
+    console.log(userData.email);
+    console.log(userData.phone);
+    console.log(userData.companyName);
     console.log(selectedAmount || customAmount);
+    console.log(donationType);
+
+
+    // Vérifier si les champs sont remplis
+    if (userData && !userData.email) {
+      toast.error("Veuillez entrer votre adresse e-mail.");
+      return;
+    }
+
+    try {
+      // Étape 1 : Envoyer une requête au backend pour générer le paiement
+      const response = await fetch('http://127.0.0.1:5001/bab-rayan-b04a0/us-central1/api/v1/cmi/createCmi', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullname: userData && userData.fullName ? userData.fullName : "Anonyme",
+          email: userData && userData.email ? userData.email : "Anonyme@gmail.com",
+          telephone: userData && userData.phone ? userData.phone : "06XXXXXXXX",
+          amount: Number(selectedAmount || customAmount),
+        }),
+      });
+
+      const data = await response.json();
+
+      console.log("------------------", data);
+
+      // Étape 2 : Vérifier les données reçues
+      if (data.paymentUrl && data.params) {
+        // Étape 3 : Créer un formulaire dynamique et rediriger vers la plateforme CMI
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = data.paymentUrl; // URL CMI
+
+        // Ajouter les paramètres reçus du backend
+        Object.entries(data.params).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value;
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+        form.submit(); // Soumettre automatiquement le formulaire
+      } else {
+        console.error('Paramètres de paiement manquants ou URL invalide');
+      }
+
+    }
+    catch (error) {
+      console.error('Erreur lors du paiement :', error);
+      toast.error('Une erreur est survenue lors du paiement.');
+    }
   };
 
   const PaypalpaymentProcess = async () => {
@@ -269,8 +329,12 @@ export default function Donation() {
         },
         body: JSON.stringify({
           montant: Number(amount),
-          // userId: userData.userId,
+          userId: "FjN6UWTKIMjNHm1KTNLZ",
         }),
+      });
+      console.log("Payload envoyé:", {
+        montant: Number(amount),
+        userId: "FjN6UWTKIMjNHm1KTNLZ",
       });
 
       const data = await response.json();
@@ -290,7 +354,6 @@ export default function Donation() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic (e.g., send data to backend, process payment)
     // toast.success("Merci pour votre don !");
     if (paymentMethod === 5) {
       CMIpaymentProcess();
@@ -629,7 +692,7 @@ export default function Donation() {
                   {selectedContent.title}
                 </h2>
                 <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">
-                  <input name="email" type="email" placeholder="Adresse e-mail" className="w-full p-2 rounded-lg border border-gray-300" required value={userData.email} onChange={handleChange} />
+                  <input name="email" type="email" placeholder="Adresse e-mail *" className="w-full p-2 rounded-lg border border-gray-300" value={userData.email} onChange={handleChange} />
                   <input name="fullName" type="text" placeholder="Nom complet" className="w-full p-2 rounded-lg border border-gray-300" value={userData.fullName} onChange={handleChange} />
                   <input name="companyName" type="text" placeholder="Nom de l'entreprise" className="w-full p-2 rounded-lg border border-gray-300" value={userData.companyName} onChange={handleChange} />
                   <input name="phone" type="tel" placeholder="Téléphone" className="w-full p-2 rounded-lg border border-gray-300" value={userData.phone} onChange={handleChange} />
