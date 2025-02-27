@@ -307,7 +307,7 @@ export default function Donation() {
     console.log("Début du processus de paiement PayPal...");
 
     // Récupérer les valeurs du formulaire
-    const typeDon = userData?.typeDon?.trim() || "Général";
+    const typeDon = donationType || "default";
     const nom = userData?.fullName?.trim() || "Anonyme";
     const email = userData?.email?.trim() || "anonyme@gmail.com";
     const telephone = userData?.phone?.trim() || "06XXXXXXXX";
@@ -406,7 +406,7 @@ export default function Donation() {
       image: "/donation/4.png",
       desc: "Faire un don par virement bancaire",
     },
-    { id: 5, label: "CMI", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
+    { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
   ];
 
   const Modal = ({ method, amount, onClose }) => {
