@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import cookingImage from "../../../assets/PHOTO/12.jpg";
 // import presidentImage from "../../../assets/PHOTO/members/Fatima Zohra Ratibe.jpeg";
-import groupPhoto from "../../../assets/PHOTO/6.jpg";
 import lampe from "../../../assets/PNG/lampe.png";
 import sign from "../../../assets/PNG/flaiche.png";
 import soleil from "../../../assets/PNG/SOLEIL.png";
@@ -46,7 +44,7 @@ export default function About() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src={cookingImage}
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2F12.jpg?alt=media&token=92fc5f75-54e6-488a-89d9-b86f9f7595ff"
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
@@ -92,7 +90,7 @@ export default function About() {
           >
             <div className="relative w-80 h-60 rounded-xl border-3 border-red-500 overflow-hidden">
               <Image
-                src="/members/presedente.jpeg"
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2Fpresedente.jpeg?alt=media&token=8b80bf81-19f6-4e8c-b37d-d8f55afb5f44"
                 alt="Présidente"
                 layout="fill"
                 objectfit="cover"
@@ -228,7 +226,7 @@ export default function About() {
                 >
                   <div className="overflow-hidden rounded-xl shadow-lg">
                     <Image
-                      src={groupPhoto}
+                      src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2F6.jpg?alt=media&token=823c0780-9fe8-462c-8b94-5ec8ea249c50"
                       alt="Group of children"
                       width={500}
                       height={300}
