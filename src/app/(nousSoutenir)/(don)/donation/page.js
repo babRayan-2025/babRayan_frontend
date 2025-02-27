@@ -248,19 +248,6 @@ export default function Donation() {
     if (event?.preventDefault) event.preventDefault(); // Vérifie si event existe avant d'appeler preventDefault()
 
     console.log("Début du processus CMI...");
-    console.log(userData.fullName);
-    console.log(userData.email);
-    console.log(userData.phone);
-    console.log(userData.companyName);
-    console.log(selectedAmount || customAmount);
-    console.log(donationType);
-
-
-    // Vérifier si les champs sont remplis
-    if (userData && !userData.email) {
-      toast.error("Veuillez entrer votre adresse e-mail.");
-      return;
-    }
 
     try {
       // Étape 1 : Envoyer une requête au backend pour générer le paiement
@@ -284,8 +271,6 @@ export default function Donation() {
       });
 
       const data = await response.json();
-
-      console.log("------------------", data);
 
       // Étape 2 : Vérifier les données reçues
       if (data.paymentUrl && data.params) {
@@ -316,51 +301,64 @@ export default function Donation() {
     }
   };
 
-  const PaypalpaymentProcess = async () => {
-    console.log("User Data:", userData);
-    console.log("Amount:", selectedAmount || customAmount);
-    console.log("Processing PayPal Payment...");
+  const PaypalpaymentProcess = async (event = null) => {
+    if (event?.preventDefault) event.preventDefault(); // Empêcher le rechargement de la page
 
-    const amount = selectedAmount || customAmount;
-    if (!amount || amount <= 0) {
-      alert("Veuillez entrer un montant valide.");
-      return;
-    }
+    console.log("Début du processus de paiement PayPal...");
+
+    // Récupérer les valeurs du formulaire
+    const typeDon = userData?.typeDon?.trim() || "Général";
+    const nom = userData?.fullName?.trim() || "Anonyme";
+    const email = userData?.email?.trim() || "anonyme@gmail.com";
+    const telephone = userData?.phone?.trim() || "06XXXXXXXX";
+    const entreprise = userData?.company?.trim() || null;
+    const montant = Number(selectedAmount || customAmount);
+
 
     try {
+      // Étape 1 : Envoyer une requête au backend pour créer le paiement PayPal
       const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/don/payment", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          montant: Number(amount),
-          userId: "FjN6UWTKIMjNHm1KTNLZ",
-        }),
-      });
-      console.log("Payload envoyé:", {
-        montant: Number(amount),
-        userId: "FjN6UWTKIMjNHm1KTNLZ",
+          typeDon,
+          nom,
+          email,
+          telephone,
+          entreprise,
+          montant
+        })
       });
 
       const data = await response.json();
 
+      // Étape 2 : Vérifier la réponse et rediriger l'utilisateur vers PayPal
       if (data.approvalUrl) {
-        window.location.href = data.approvalUrl; // Redirect user to PayPal
+        window.location.href = data.approvalUrl;
       } else {
-        alert("Erreur : aucune URL de paiement reçue.");
+        console.error("Erreur : aucune URL de paiement reçue.");
+        toast.error("Une erreur est survenue lors de la création du paiement.");
       }
     } catch (error) {
-      console.error("Erreur lors du paiement:", error);
-      alert("Une erreur est survenue lors du paiement.");
+      console.error("Erreur lors du paiement PayPal :", error);
+      toast.error("Une erreur est survenue lors du paiement.");
     }
   };
 
 
 
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // toast.success("Merci pour votre don !");
+    
+    // Vérifier si les champs sont remplis
+    if (userData && !userData.email) {
+      toast.error("Veuillez entrer votre adresse e-mail.");
+      return;
+    }
+    
     if (paymentMethod === 5) {
       CMIpaymentProcess();
     } else if (paymentMethod === 4) {
