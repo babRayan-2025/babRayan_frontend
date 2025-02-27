@@ -27,7 +27,7 @@ export default function Actions() {
         { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F7.webp?alt=media&token=73db11ce-9eb8-41d0-ab4c-7521731a0ca8", alt: "Scolaire" },
         { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F8.webp?alt=media&token=382deef9-a3da-411e-b145-3d12cc4b3e65", alt: "Scolaire" },
         { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F555.webp?alt=media&token=1a3767c4-4fe7-4fca-a362-7e51b0bacba0", alt: "Scolaire" },
-        { src: "./actions_solidaires/666.png", alt: "Scolaire" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F666.webp?alt=media&token=e91a49bd-84fa-4dab-9544-fc94e0377a36", alt: "Scolaire" },
     ]
     const actionsPhotos = [
         { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F1.webp?alt=media&token=dddb6a76-607b-4a13-9c2a-886485c316f0", alt: "action" },
