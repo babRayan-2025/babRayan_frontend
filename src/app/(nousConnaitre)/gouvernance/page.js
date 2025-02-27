@@ -20,12 +20,13 @@ const TeamMember = ({ name, title, imageUrl }) => (
     className="flex flex-col items-center text-center p-4"
   >
     <div className="relative w-48 h-48 rounded-full overflow-hidden mb-3">
-      <Image
+      <img
         src={imageUrl}
         alt={name}
         width={192}
         height={192}
         className="object-cover"
+        loading="lazy"
       />
     </div>
     <h3 className="text-yellow-300 font-semibold">{name}</h3>
