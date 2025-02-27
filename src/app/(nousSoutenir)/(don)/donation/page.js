@@ -264,15 +264,21 @@ export default function Donation() {
 
     try {
       // Étape 1 : Envoyer une requête au backend pour générer le paiement
-      const response = await fetch('http://127.0.0.1:5001/bab-rayan-b04a0/us-central1/api/v1/cmi/createCmi', {
+      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/createCmi', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          fullname: userData && userData.fullName ? userData.fullName : "Anonyme",
-          email: userData && userData.email ? userData.email : "Anonyme@gmail.com",
-          telephone: userData && userData.phone ? userData.phone : "06XXXXXXXX",
+          fullname: userData && userData.fullName && userData.fullName.trim() !== "" ? userData.fullName.trim() : "Anonyme",
+          email: userData && userData.email && userData.email.trim() !== ""
+            ? userData.email.trim()
+            : "Anonyme@gmail.com",
+
+          telephone: userData && userData.phone && userData.phone.trim() !== ""
+            ? userData.phone.trim()
+            : "06XXXXXXXX",
+
           amount: Number(selectedAmount || customAmount),
         }),
       });
