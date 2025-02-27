@@ -73,52 +73,52 @@ export default function Gouvernance() {
     {
       name: 'Fatima Zahra Hamroudi',
       title: 'Fondatrice Présidente',
-      imageUrl: '/members/Fatima Zohra Ratibe.jpeg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FFatima%20Zohra%20Ratibe.webp?alt=media&token=f31414cf-9b7b-429d-b281-ef85c79281a4'
     },
     {
       name: 'Hind Ratiba',
       title: 'Membre Fondateur',
-      imageUrl: '/members/Hind Ratibe.jpeg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FHind%20Ratibe.webp?alt=media&token=4bd27475-1f56-492c-95ca-def39b819cd1'
     },
     {
       name: 'Abdelmoula Ratibe',
       title: 'Membre Fondateur',
-      imageUrl: '/members/moula.jpeg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fmoula.webp?alt=media&token=539f9fbf-86fb-4b4c-8e5f-9ec37addbd90'
     },
     {
       name: 'Driss Lalami',
       title: 'Membre Fondateur\nTrésorier Adjoint',
-      imageUrl: '/members/Driss El Alami.jpeg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FDriss%20El%20Alami.webp?alt=media&token=2999a16a-edf8-43dc-b84c-9724b6778455'
     },
     {
       name: 'Mouniji Salim Sefrioui',
       title: 'Membre Fondateur\nTrésorier général',
-      imageUrl: '/members/sefrioui.jpeg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fsefrioui.webp?alt=media&token=fba582c8-826f-4477-8ee3-3ecbce4c28e4'
     },
     {
       name: 'Mohamed Jamal Lahlouji',
       title: 'Membre Fondateur\nVice-président',
-      imageUrl: '/members/jamal.jpeg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fjamal.webp?alt=media&token=10b06c7d-3602-4b86-8069-f90b4a9a3881'
     },
     {
       name: 'Anas Guennoun',
       title: 'Vice-président',
-      imageUrl: '/members/Anas Guennoun.png'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FAnas%20Guennoun.webp?alt=media&token=c6e18eb0-ff69-4574-a3c2-112c1d796c61'
     },
     {
       name: 'Hamza Laghari',
       title: 'Vice-président',
-      imageUrl: '/members/Hamza Laghrari.jpeg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FHamza%20Laghrari.webp?alt=media&token=62fcf63e-dbd1-4b88-a79f-a8e6367568e4'
     },
     {
       name: 'Reda Essakalli',
       title: 'Conseiller en communication',
-      imageUrl: '/members/Reda Essakalli.jpeg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FReda%20Essakalli.webp?alt=media&token=4fdfc2d5-d711-4933-8245-7c3b160a3977'
     },
     {
       name: 'Jihane Lahbabi Berrada',
       title: 'Conseillère en partenariats',
-      imageUrl: '/members/Jihane Lahbabi Berrada.jpg'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FJihane%20Lahbabi%20Berrada.webp?alt=media&token=5861feb7-a76f-4993-b50b-eab3ff024932'
     }
   ];
 
