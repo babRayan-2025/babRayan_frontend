@@ -57,11 +57,11 @@ export default function Parrainage() {
         >
           {/* Left side - Image */}
           <motion.div
-            className=" h-[320px] ml-[-40px] overflow-hidden md:rounded-r-xl"
+            className="h-[320px] ml-[-40px] overflow-hidden md:rounded-r-xl"
             variants={fadeIn}
           >
-            <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F1.webp?alt=media&token=cc25d630-cbef-4959-bd19-1bdcd85fd41d"
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F11.webp?alt=media&token=0b7b29d7-40fc-4f78-ac6e-437c14bcdef1"
               alt="Children smiling"
               width={980}
               height={300}
@@ -150,9 +150,12 @@ export default function Parrainage() {
             className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4 md:mr-8"
             variants={staggerContainer}
           >
-            {["https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F2.webp?alt=media&token=a19096c0-f74f-4667-831b-49b2596421a9", "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F3.webp?alt=media&token=276e6deb-85ef-4f09-8d23-bd1c6524bcd3", "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F4.webp?alt=media&token=8eca1889-308f-48c3-a2d8-c457dac62aac", "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F5.webp?alt=media&token=36fc5693-9b0b-45a9-a71b-5ad2c05ef174"].map((img, index) => (
+            {["https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F2.webp?alt=media&token=2de4472b-396c-4602-9890-a4c10c8570a5",
+             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F3.webp?alt=media&token=6a7f3445-93a8-4523-9a2b-ff8746addfd3",
+             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F4.webp?alt=media&token=9740baf6-bcef-438f-8e22-610cff203047",
+             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F5.webp?alt=media&token=a69040ed-499b-449f-9f29-b8d319d7390e"].map((img, index) => (
               <motion.div key={index} variants={fadeIn}>
-                <Image
+                <img
                   src={img}
                   alt="Image description"
                   width={500}

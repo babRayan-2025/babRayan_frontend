@@ -69,7 +69,7 @@ export default function DevenirPartenaire() {
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="w-full bg-white bg-[url('/devenirPartenaire/background-partenaire.png')] bg-cover bg-center p-6 md:p-10 text-gray-800"
+        className="w-full bg-white bg-[url('https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/devenirPartenaire%2Fbackground-partenaire.webp?alt=media&token=6663b127-e6eb-462b-922d-35d80b0154e0')] bg-cover bg-center p-6 md:p-10 text-gray-800"
       >
         <motion.header
           initial="hidden"
@@ -89,8 +89,8 @@ export default function DevenirPartenaire() {
             viewport={{ once: true }}
             className="md:w-[1100px] md:ml-[-40px] mb-6 md:mb-0"
           >
-            <Image
-              src="/devenirPartenaire/partenaire.jpg"
+            <img loading="lazy"
+              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/devenirPartenaire%2Fpartenaire.webp?alt=media&token=7a0b4eab-d073-482a-93af-1745373217b7"
               alt="Group Image"
               width={1100}
               height={600}
@@ -212,7 +212,7 @@ export default function DevenirPartenaire() {
                     className="flex-shrink-0 w-1/5 px-2"
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Image
+                    <img loading="lazy"
                       src={sponsor.src}
                       alt={sponsor.alt}
                       width={200}

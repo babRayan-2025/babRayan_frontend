@@ -39,7 +39,7 @@ export default function Benevole() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <Image
-            src="/benevole/benevole.png"
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fbenevole.webp?alt=media&token=dbd4d2c7-f3a3-4404-b932-9cf21e8eb9f4"
             alt="Child smiling"
             width={1900}
             height={1900}
@@ -77,13 +77,6 @@ export default function Benevole() {
             ></motion.div>
           </h2>
           <div className="flex  justify-center m-10 gap-6">
-            {/* <Image
-              src="/benevole/flech-partenaire.png"
-              alt="flech-partenaire"
-              width={100}
-              height={50}
-              className="init-block -left-48 md:left-[550px]"
-            /> */}
             <div
               className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 font-semibold text-lg md:text-2xl text-red-600 border-2 border-red-600 p-4 rounded-3xl shadow-md cursor-pointer"
               title="Call us at +212 6 181 81 806"
@@ -91,7 +84,7 @@ export default function Benevole() {
             >
             <div className='flex flex-row items-center gap-2'>
             <Image
-                src="/benevole/contact.png"
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fcontact.webp?alt=media&token=36de36ea-009b-4e8f-a143-7e4be349afcd"
                 alt="call"
                 width={50}
                 height={50}
@@ -102,7 +95,7 @@ export default function Benevole() {
             </div>
              <div className='flex flex-row items-center gap-2'>
              <Image
-                src="/benevole/mail.png"
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fmail.webp?alt=media&token=f246f27d-9d4f-43ef-906d-a977bf3a8ae2"
                 alt="mail"
                 width={70}
                 height={70}
@@ -117,7 +110,7 @@ export default function Benevole() {
 
       {/* Form Section */}
       <motion.div
-      className="w-full bg-[url('/benevole/bg-benevole.png')] bg-cover bg-center py-16 md:px-16"
+      className="w-full bg-[url('https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fbg-benevole.webp?alt=media&token=7335c25a-8f38-4acd-99ff-e514014a07a7')] bg-cover bg-center py-16 md:px-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 1.2 }}
