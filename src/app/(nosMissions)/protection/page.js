@@ -2,24 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import FirstImg from "../../../assets/foyer/first_pic.jpeg";
-import BookIcon from "../../../assets/foyer/book_icon.png";
-import StartIcon from "../../../assets/foyer/star.png";
-import CardPic1 from "../../../assets/foyer/pic1.jpeg";
-import CardPic2 from "../../../assets/foyer/pic2.JPG";
-import SoleilIcon from "../../../assets/foyer/soleil.png";
-import S7abaIcon from "../../../assets/foyer/s7aba.png";
 
-import Icon1 from "../../../assets/foyer/icon1.png";
-import Icon2 from "../../../assets/foyer/icon2.png";
-import Icon3 from "../../../assets/foyer/icon3.png";
-import Icon4 from "../../../assets/foyer/icon4.png";
-import Icon5 from "../../../assets/foyer/icon5.png";
-
-import Activity1 from "../../../assets/foyer/act1.jpeg";
-import Activity2 from "../../../assets/foyer/act2.jpeg";
-import Activity3 from "../../../assets/foyer/act3.jpeg";
-import Activity4 from "../../../assets/foyer/act4.jpeg";
 
 import "./style.css";
 export default function Foyer() {
@@ -28,28 +11,28 @@ export default function Foyer() {
       title: "PROJET DE VIE",
       description:
         "En créant un foyer de vie, l'association Bab Rayan préserve l'enfance en veillant à ce que les enfants soient nourris, soignés, protégés, éduqués, et entourés par des adultes bienveillants intégrés dans la société. Dans notre approche, chaque enfant bénéficie d'un projet de vie complet. Cela inclut la résolution de questions administratives essentielles telles que l'obtention de documents d'identité, la prise en charge de leur dossier médical, leur parcours éducatif et sportif, ainsi qu'un plan d'insertion sociale sur mesure.",
-      image: CardPic1,
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fpic1.webp?alt=media&token=3e06c326-8fea-4cde-b5e0-25d4a00fbcf6",
     },
     {
       title: "STRUCTURE",
       description:
         "Le Foyer Bab Rayan est un établissement de protection sociale (EPS) agréé et sous la tutelle du Ministère de la Solidarité, de l’Insertion Sociale et de la Famille. Le premier pavillon du Foyer Bab Rayan a ouvert ses portes en septembre 2015 et est habilité à accueillir des enfants orphelins, abandonnés, en situation difficile ou maltraités à partir de 3 ans jusqu’à l’âge de 18 ans, souvent envoyés par d'autres organisations.",
-      image: CardPic2,
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fpic2.webp?alt=media&token=2550557e-5490-46e9-89f6-337db633514b",
     },
   ];
 
   const Icons = [
-    { icon: Icon1 },
-    { icon: Icon2 },
-    { icon: Icon3 },
-    { icon: Icon4 },
-    { icon: Icon5 },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon1.webp?alt=media&token=60f7e420-eb98-4eaf-acac-397809e9f814" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon2.webp?alt=media&token=7dd10459-5092-48f4-9c2b-d962d1c5ebac" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon3.webp?alt=media&token=dd46dfa7-5c52-4121-a7e9-2b2b131fca11" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon4.webp?alt=media&token=40ca54de-09ad-4f0c-be71-5d254502a929" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon5.webp?alt=media&token=c887bdbc-3210-477f-9cfd-954cd4d2bf7f" },
   ];
 
   const activities = [
-    { image: Activity1 },
-    { image: Activity2 },
-    { image: Activity3 },
+    { image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fact1.webp?alt=media&token=ccb11077-edb3-474d-a25a-4264e02c4e98" },
+    { image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fact2.webp?alt=media&token=00e4e889-3d1f-44d0-854d-1527063644e9" },
+    { image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fact3.webp?alt=media&token=a6704277-c2ba-4ab6-8161-ffa16e6018cd" },
   ];
 
   return (
@@ -57,7 +40,7 @@ export default function Foyer() {
       {/* Header Section */}
       <div className="relative w-full h-[700px] md:h-screen flex items-center justify-center">
         <Image
-          src={FirstImg}
+          src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ffirst_pic.webp?alt=media&token=24ae9f55-10ea-4e57-839f-055bd8362cba"
           alt="Foyer Bab Rayan"
           layout="fill"
           objectfit="cover"
@@ -87,22 +70,24 @@ export default function Foyer() {
           <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           {/* Decorative Icons */}
           <Image
-            src={BookIcon}
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fbook_icon.webp?alt=media&token=1c0c719d-944d-417d-95b7-7f7caeb0d1ab"
             alt="Book Icon"
             width={250}
+            height={100}
             className="absolute top-2 md:top-4 right-[480px] md:right-[300px] z-[-1]"
           />
           <Image
-            src={StartIcon}
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fstar.webp?alt=media&token=6366212b-5d30-4d95-9311-b80ad3c053bb"
             alt="Star Icon"
             width={250}
+            height={100}
             className="absolute top-2 md:top-4 md:left-4 right-[350px] z-[-1]"
           />
         </h1>
 
         {/* Watermark Text */}
         <h4 className="absolute top-1/2 md:right-[300px] right-[500px] transform -translate-y-1/2  font-bold text-gray-300 z-0 pointer-events-none">
-          <Image src={S7abaIcon} alt="Star Icon" width={250} />
+          <Image src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fs7aba.webp?alt=media&token=ddfbb731-4d95-45ac-b297-695fc6b98c9a" alt="Star Icon" width={250} height={100} />
         </h4>
 
         {/* cards */}
@@ -116,6 +101,8 @@ export default function Foyer() {
                 <div>
                   <Image
                     src={card.image}
+                    width={470}
+                    height={400} 
                     style={{
                       width: "470px",
                       height: "400px",
@@ -139,9 +126,10 @@ export default function Foyer() {
 
         <div className="relative">
           <Image
-            src={SoleilIcon}
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fsoleil.webp?alt=media&token=fbb46d56-791f-4aca-8afa-6c94b7fc804c"
             alt="Middle Right Icon"
             width={300}
+            height={100}
             className="absolute top-1/2 right-4 transform -translate-y-1/2 z-[-1]"
           />
         </div>
@@ -158,8 +146,10 @@ export default function Foyer() {
         </h1>
         <div className="flex flex-wrap-reverse items-center justify-center w-full gap-8 px-2 rounded-lg md:-ml-10">
           <Image
-            src={Activity4}
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fact4.webp?alt=media&token=0c51ae71-d5a4-467c-acc5-0301cdce6cf6"
             className="w-1/3 shadow_style_css rounded-lg object-cover"
+            width={400}
+            height={300}
             style={{ width: "400px", height: "300px", objectfit: "cover" }}
           />
           <div className="md:w-1/3 p-2 text-gray-800">
@@ -186,11 +176,14 @@ export default function Foyer() {
           {activities.map((activity, index) => (
             <div
               key={index}
+              
               className="bg-white rounded-lg shadow_style_css overflow-hidden w-[340px] h-[260px]"
               // style={{ width: "340px", height: "260px" }}
             >
               <Image
                 src={activity.image}
+                width={340}
+                height={260}
                 className="w-full h-full object-cover"
                 alt="activity"
               />
