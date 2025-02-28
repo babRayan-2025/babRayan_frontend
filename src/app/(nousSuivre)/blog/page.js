@@ -103,7 +103,7 @@ export default function Blog() {
     //     },
     {
       id: 1,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.png?alt=media&token=7a62f41b-fcb0-4990-9e4b-4b008d59949e",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.webp?alt=media&token=b0c6a114-b3c3-4f4e-b67f-4a9bf34db295",
       alt: "Graduation",
       title: "Remise des diplômes de la deuxième promotion du CFI",
       description: `L'Association Bab Rayan a eu l'honneur de célébrer ce 28 Octobre 2024,
@@ -117,7 +117,7 @@ export default function Blog() {
     },
     {
       id: 2,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F4.png?alt=media&token=d52dcba5-1607-4857-b6c3-f747be013f33",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F4.webp?alt=media&token=89b740c5-254f-44d2-b845-3930aee653e5",
       alt: "Partnership",
       title: "Cérémonie d'ouverture de PSG Academy",
       description: `La PSG Academy Maroc a ouvert ses portes le 11 novembre à Casablanca, en présence d'Achraf Hakimi, invité d'honneur.
@@ -126,7 +126,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
     },
     {
       id: 3,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F5.jpg?alt=media&token=49d37a09-f513-4560-835c-17a6d79f91e5",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F5.webp?alt=media&token=4ea7e43b-07f4-4ef0-ae66-74bfbc360419",
       alt: "Success",
       title:
         "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
@@ -135,7 +135,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
     },
     {
       id: 4,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F2.png?alt=media&token=4352c4ca-b31f-4c6f-b80d-bf769c94ab61",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F2.webp?alt=media&token=4e3ed1bb-88aa-4898-a48f-9f94f7b4fb8f",
       alt: "Success",
       title: "Aiguebelle : Un partenaire engagé avec nos jeunes du CFI",
       description: `Notre partenaire Aiguebelle a généreusement organisé cet automne, une journée de visite et de formation en chocolaterie pour les jeunes du Centre de Formation et d’Insertion (CFI) de Bab Rayan.
@@ -144,7 +144,7 @@ Nos étudiants ont eu l'opportunité unique de découvrir les secrets de la f
     },
     {
       id: 5,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F3.png?alt=media&token=52fe0b4f-5bd4-47e4-83ec-b956f899974e",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F3.webp?alt=media&token=641b43cb-71de-408f-8fd5-ef8c3b4c864a",
       alt: "Training",
       title: "Une sortie au théâtre pour voir le petit prince",
       description: `Les enfants de Bab Rayan ont assisté au premier spectacle de la saison de l'École du Jeune
@@ -154,7 +154,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
     },
     {
       id: 6,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F6.jpg?alt=media&token=36db8a71-c325-4b8d-9a3f-1827087dd694",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F6.webp?alt=media&token=7e2fe45d-fb7c-4fe9-a09d-4a5af77a7c1c",
       alt: "Innovation",
       title: "Nos enfants partent à la découverte du monde",
       description: `Grâce à des voyages à l'étranger, nos enfants ont eu la chance unique d'élargir leurs horizons, de nourrir leurs rêves et de s'ouvrir à de nouvelles cultures. Ces expériences enrichissantes encouragent la tolérance, renforcent l'estime de soi, et favorisent une meilleure compréhension des autres, tout en contribuant à leur épanouissement personnel.`,
@@ -193,7 +193,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
               >
                 <div className="relative aspect-video w-full">
                   <img
-                    src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2Fimage.png?alt=media&token=59294c46-147b-4616-904f-db39da3841c9"
+                    src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2Fimage.webp?alt=media&token=caa5b969-c0fc-47aa-a784-4d0865ce92a5"
                     alt="Video thumbnail"
                     className="w-full h-full object-cover"
                   />
