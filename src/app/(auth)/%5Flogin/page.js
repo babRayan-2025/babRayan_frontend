@@ -7,7 +7,7 @@ export default function Login() {
       <div className="min-h-screen flex fle-col items-center justify-center lg:p-6 p-4">
         <div className="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
           <div>
-            <Link href="javascript:void(0)"><Image
+            <Link href="javascript:void(0)"><img
               src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481" alt="logo" className='w-52 mb-12 inline-block' />
             </Link>
             <h2 className="text-4xl font-extrabold lg:leading-[50px] text-white">
