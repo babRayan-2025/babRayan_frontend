@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download } from "lucide-react";
+// import { Download } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { Modal } from 'antd';
