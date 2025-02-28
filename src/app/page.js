@@ -536,7 +536,7 @@ export default function Home() {
                 animate="animate"
               >
                 <img
-                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F5.webp?alt=media&token=03668d9b-4bf0-4e04-92d3-bdcc43a850b6"
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan3.webp?alt=media&token=cee70e0d-8cc2-4143-a7d8-d50d947bf59b"
                   alt="Les Ftours Bab Rayan"
                   className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
                 />

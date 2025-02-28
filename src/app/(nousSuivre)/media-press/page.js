@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download } from "lucide-react";
+// import { Download } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { Modal } from 'antd';
@@ -43,13 +43,12 @@ export default function Press() {
 
   const albums = {
     "Le Foyer bab rayan": [
-      // cover :"",
-      "/press/album/AlbumFoyer/1.JPG",
-      "/press/album/AlbumFoyer/2.JPG",
-      "/press/album/AlbumFoyer/3.JPG",
-      "/press/album/AlbumFoyer/4.JPG",
-      "/press/album/AlbumFoyer/5.jpeg",
-      "/press/album/AlbumFoyer/6.jpeg",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F1.webp?alt=media&token=6489ac9e-08b5-477d-88b8-fbecde08aed8",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F2.webp?alt=media&token=45da7b9f-9304-4452-9ea7-09c3a00044b9",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F3.webp?alt=media&token=ac20dbcd-2f27-4b43-a15c-05004666f330",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F4.webp?alt=media&token=32444c19-5725-4d2c-8742-9c5b99915bdc",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F5.webp?alt=media&token=aa990cdc-2035-4334-8a84-55b5024a9c16",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F6.webp?alt=media&token=522ec0ad-4071-4d43-aa99-0862f663b453",
     ],
     "CFI": [
       "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F1.webp?alt=media&token=5e932b45-910a-4d51-b32c-c23b1f4a87a4",
@@ -65,19 +64,20 @@ export default function Press() {
       "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2F2.webp?alt=media&token=864d28ce-4a09-4f74-a9f3-f47eb40bc982",
     ],
     "Ecole palmier": [
-      "/press/album/AlbumécolePalmier/1.JPG",
-      "/press/album/AlbumécolePalmier/2.JPG",
-      "/press/album/AlbumécolePalmier/3.JPG",
-      "/press/album/AlbumécolePalmier/4.JPG",
-      "/press/album/AlbumécolePalmier/5.JPG",
-      "/press/album/AlbumécolePalmier/6.jpeg"
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F1.webp?alt=media&token=34679e19-2dbf-485b-8ac7-7c4f25e5c462",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F2.webp?alt=media&token=7f83a3eb-b3cd-4ccb-8063-f906ff50d896",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F3.webp?alt=media&token=ea4752e9-feff-4de5-b1b0-ad2999d39530",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F4.webp?alt=media&token=57486e52-0395-415e-acb2-49ac4903a00d",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F5.webp?alt=media&token=8ee46a7f-eb8a-4244-9a50-dbedc107fdc7",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F6.webp?alt=media&token=d76de80c-3788-46c3-9ee5-37cd19444468"
     ],
     "Ftour bab rayan": [
-      "/press/album/AlbumFtourBabRayan/Ftourbabrayan1.jpeg",
-      "/press/album/AlbumFtourBabRayan/Ftourbabrayan2.jpeg",
-      "/press/album/AlbumFtourBabRayan/Ftourbabrayan3.jpeg",
-      "/press/album/AlbumFtourBabRayan/Ftourbabrayan4.png",
-      "/press/album/AlbumFtourBabRayan/Ftourbabrayan5.png"
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FFtourbabrayan1.webp?alt=media&token=49c1b009-41df-4a69-ba57-50db011299a0",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan2.webp?alt=media&token=567eb805-d145-4160-b54f-9d401bdba6d7",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan3.webp?alt=media&token=cee70e0d-8cc2-4143-a7d8-d50d947bf59b",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FFtourbabrayan4.webp?alt=media&token=a36667e6-c322-4516-904a-69878c55c949",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FRamadan%202024%201.webp?alt=media&token=f177ef7d-badd-4ebb-a9fc-ce80cd31aa64",
+      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FFtourBabRayan5.webp?alt=media&token=3a558ccd-afb9-4336-b75d-0c618173e9c4"
     ],
   };
 
@@ -326,7 +326,7 @@ export default function Press() {
               <motion.div
               >
                 <Modal
-                  title={<h2 className="text-center w-full text-3xl font-semibold">{selectedAlbum}</h2>}
+                  title={<h2 className="text-center w-full text-5xl font-bold mb-8">{selectedAlbum}</h2>}
                   centered
                   open={modal2Open}
                   onCancel={() => setModal2Open(false)}
