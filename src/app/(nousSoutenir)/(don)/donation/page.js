@@ -229,11 +229,16 @@ export default function Donation() {
     const selectedPaymentMethod = paymentMethods.find(
       (method) => method.id === paymentMethod
     );
+    const montant = Number(selectedAmount || customAmount);
+
     if (!selectedAmount && !customAmount) {
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
     } else if (!paymentMethod) {
       toast.error("Veuillez choisir un type de paiement avant de procéder au don.");
+      return;
+    } else if (montant < 10) {
+      toast.error("Le montant doit être supérieur ou égal à 10 DH.");
       return;
     } else if ([1, 2, 3].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
@@ -352,13 +357,15 @@ export default function Donation() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    
+
     // Vérifier si les champs sont remplis
     if (userData && !userData.email) {
       toast.error("Veuillez entrer votre adresse e-mail.");
       return;
     }
-    
+
+
+
     if (paymentMethod === 5) {
       // CMIpaymentProcess();
       PaypalpaymentProcess();
