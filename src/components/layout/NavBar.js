@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../../public/Logo.png";
 import deco from "../../assets/PNG/SPLASH.png";
 
 export default function NavBar() {
@@ -75,7 +74,7 @@ export default function NavBar() {
           {/* Left side - Logo */}
           <div className="flex items-center">
             <Link href="/">
-              <Image src={logo} alt="Logo" className="w-28 sm:w-36" />
+              <Image src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481" alt="Logo" className="w-28 sm:w-36" />
             </Link>
           </div>
 
