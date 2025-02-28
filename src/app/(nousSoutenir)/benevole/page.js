@@ -178,8 +178,8 @@ export default function Benevole() {
                   key={index}
                   className={`w-full text-left p-4 rounded-full border ${
                     selectedButton === item
-                      ? "bg-yellow-300 border-black text-xl w-auto m-auto p-auto font-medium text-center text-red-600"
-                      : "border-yellow-300 text-xl w-auto m-auto p-auto font-medium text-center bg-red-600 text-white-300"
+                      ? "bg-yellow-300 border-black text-md md:text-xl w-auto m-auto p-auto font-medium text-center text-red-600"
+                      : "border-yellow-300 text-md md:text-xl w-auto m-auto p-auto font-medium text-center bg-red-600 text-white-300"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
