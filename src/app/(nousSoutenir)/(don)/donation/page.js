@@ -311,7 +311,7 @@ export default function Donation() {
     const nom = userData?.fullName?.trim() || "Anonyme";
     const email = userData?.email?.trim() || "anonyme@gmail.com";
     const telephone = userData?.phone?.trim() || "06XXXXXXXX";
-    const entreprise = userData?.company?.trim() || null;
+    const entreprise = userData?.company?.trim() || "Anonyme";
     const montant = Number(selectedAmount || customAmount);
 
 
