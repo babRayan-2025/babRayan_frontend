@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -69,7 +70,7 @@ export default function Donation() {
           description: "Pour pratiquer en toute sécurité et avec plaisir.",
         },
       ],
-      image: "/donation/Sport.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/your-app-id.appspot.com/o/donation%2FSport.png?alt=media",
     },
     "200 DH": {
       title: 'Parrainage "Santé"',
@@ -88,7 +89,7 @@ export default function Donation() {
           description: "Produits d'hygiène, sensibilisation aux bonnes pratiques pour une vie saine.",
         },
       ],
-      image: "/donation/santé.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/your-app-id.appspot.com/o/donation%2Fsant%C3%A9.png?alt=media",
     },
     "300 DH": {
       title: 'Parrainage "Habillement"',
@@ -103,7 +104,7 @@ export default function Donation() {
           description: "Pour se sentir confiant, que ce soit à l'école ou lors d'événements spéciaux.",
         },
       ],
-      image: "/donation/Vetements.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/your-app-id.appspot.com/o/donation%2FVetements.png?alt=media",
     },
     "500 DH": {
       title: 'Parrainage "Essentiel"',
@@ -122,7 +123,7 @@ export default function Donation() {
           description: "Pour préserver sa dignité.",
         },
       ],
-      image: "/donation/plat.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Feducation.webp?alt=media&token=5906c1b5-1196-4dd0-982c-ecd72b909dad",
     },
     "800 DH": {
       title: 'Parrainage "Education"',
@@ -141,7 +142,7 @@ export default function Donation() {
           description: "Pour nourrir son esprit et son corps.",
         },
       ],
-      image: "/donation/edu.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/your-app-id.appspot.com/o/donation%2Fedu.png?alt=media",
     },
     "1900 DH": {
       title: 'Parrainage "Envol"',
@@ -168,7 +169,7 @@ export default function Donation() {
           description: "Pour enrichir son quotidien.",
         },
       ],
-      image: "/donation/edd.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/your-app-id.appspot.com/o/donation%2Fedd.png?alt=media",
     },
   };
 
@@ -214,8 +215,13 @@ export default function Donation() {
     if ([1, 2, 3].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
       setIsModalOpen(true);
-    }else if (!selectedAmount && !customAmount) {
-      // Affichez un toast d'erreur si aucun montant n'est sélectionné
+    } else if ([4, 5, 6].includes(paymentMethod)) {
+      setSelectedMethod(selectedPaymentMethod);
+      setShowForm(true);
+       // window.open("https://www.paypal.com/donate?hosted_button_id=5J2Z7Z8Q9Z6E8", "_blank");
+    } else if (!selectedAmount && !customAmount) {
+      // Navigate to the error page
+      // router.push('/sorry');
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
     } else if (!paymentMethod) {
@@ -224,7 +230,20 @@ export default function Donation() {
       );
       return;
     }
+    // router.push('/Remerciement');
+    // toast.success("Merci pour votre don !");
 
+    // setSelectedAmount(null);
+    // setCustomAmount("");
+    // setIsCustomAmountSelected(false);
+    // setDonationDetails(null);
+    // setPaymentMethod(null);
+    // setShowThirdCard(false);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic (e.g., send data to backend, process payment)
     toast.success("Merci pour votre don !");
 
     setSelectedAmount(null);
@@ -244,21 +263,21 @@ export default function Donation() {
         description: "pour répondre à des besoins spécifiques.",
       },
     ],
-    image: "/donation/plat.png",
+    image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Feducation.webp?alt=media&token=5906c1b5-1196-4dd0-982c-ecd72b909dad",
   };
 
   const paymentMethods = [
     {
       id: 1,
       label: "Virement bancaire",
-      image: "/donation/1.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/your-app-id.appspot.com/o/donation%2F1.png?alt=media",
       desc: "Payer avec votre carte bancaire",
       popup: "/donation/popUp/2.png",
     },
     {
       id: 2,
       label: "Chèque",
-      image: "/donation/2.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2F2_001.webp?alt=media&token=361831f3-0c48-4722-9462-0eade623e885",
       desc: "Payer avec votre compte PayPal",
       popup: "/donation/popUp/1.png",
 
@@ -266,7 +285,7 @@ export default function Donation() {
     {
       id: 3,
       label: "Cash",
-      image: "/donation/3.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2F3.webp?alt=media&token=76c30087-15bf-493d-9601-ff778f80de62",
       desc: "Faire un don par chèque",
       popup: "/donation/popUp/3.png",
 
@@ -274,15 +293,15 @@ export default function Donation() {
     {
       id: 4,
       label: "PayPal",
-      image: "/donation/4.png",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2F4.webp?alt=media&token=6435f64f-f007-4585-ab6c-117b63589f99",
       desc: "Faire un don par virement bancaire",
     },
-    {
-      id: 5,
-      label: "Apple Pay",
-      image: "/donation/5.png",
-      desc: "Payer avec Apple Pay",
-    },
+    // {
+    //   id: 5,
+    //   label: "Apple Pay",
+    //   image: "/donation/5.png",
+    //   desc: "Payer avec Apple Pay",
+    // },
     { id: 6, label: "CMI", image: "/donation/6.png", desc: "Payer avec CMI" },
   ];
 
@@ -304,8 +323,12 @@ export default function Donation() {
         <div className="bg-white rounded-3xl shadow-lg text-center">
           {method && (
             <>
-              <img src={method.popup} alt={method.label} className="md:w-[70rem] md:h-[40rem] mx-auto mb-4 rounded-3xl shadow-md" />
-              <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3>
+              <img
+                src={method.popup}
+                alt={method.label}
+                className="md:w-[70rem] md:h-[40rem] mx-auto rounded-3xl shadow-md"
+              />
+              {/* <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3> */}
               {/* <p className="text-gray-700">{method.desc}</p> */}
             </>
           )}
@@ -329,7 +352,7 @@ export default function Donation() {
 
   return (
     <main>
-      <div className="flex min-h-screen flex-col items-center justify-between p-5 bg-[url('/donation/background.png')] bg-cover">
+      <div className="flex min-h-screen flex-col items-center justify-between p-5 bg-[url('https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fbackground.webp?alt=media&token=5ca57395-e866-4503-b1e1-3046b656eb1b')] bg-cover">
         <ToastContainer
           position="top-right"
           autoClose={3000}
@@ -374,7 +397,7 @@ export default function Donation() {
             </motion.span>
           </h1>
           <motion.img
-            src="/donation/bas.png"
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fbas.webp?alt=media&token=0de4f1ea-1571-480b-ac56-bf9777d0e5a5"
             alt="Gauche"
             className="w-24 h-12 md:w-48 md:h-24 mt-4 self-start"
             animate={{ rotate: [0, 5, 0] }}
