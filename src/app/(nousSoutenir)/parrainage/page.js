@@ -61,10 +61,11 @@ export default function Parrainage() {
             variants={fadeIn}
           >
             <Image
-              src="/Parrainer/1.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F1.webp?alt=media&token=cc25d630-cbef-4959-bd19-1bdcd85fd41d"
               alt="Children smiling"
               width={980}
               height={300}
+              loading="lazy"
               className="object-cover"
             />
           </motion.div>
@@ -149,13 +150,14 @@ export default function Parrainage() {
             className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4 md:mr-8"
             variants={staggerContainer}
           >
-            {["2.jpg", "3.jpg", "4.jpg", "5.jpg"].map((img, index) => (
+            {["https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F2.webp?alt=media&token=a19096c0-f74f-4667-831b-49b2596421a9", "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F3.webp?alt=media&token=276e6deb-85ef-4f09-8d23-bd1c6524bcd3", "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F4.webp?alt=media&token=8eca1889-308f-48c3-a2d8-c457dac62aac", "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F5.webp?alt=media&token=36fc5693-9b0b-45a9-a71b-5ad2c05ef174"].map((img, index) => (
               <motion.div key={index} variants={fadeIn}>
                 <Image
-                  src={`/Parrainer/${img}`}
+                  src={img}
                   alt="Image description"
                   width={500}
                   height={300}
+                  loading="lazy"
                   className="rounded-2xl h-[300px] w-[500px] shadow-md object-cover"
                 />
               </motion.div>

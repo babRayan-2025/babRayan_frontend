@@ -290,7 +290,7 @@ export default function Press() {
 
         {/* Albums Section */}
         <motion.div
-          className="bg-[#cc2229] rounded-3xl mx-16 mb-6 p-8 md:mx-16 ms:mb-6 p-8 mx-14"
+          className="bg-[#cc2229] rounded-3xl mb-6 md:mx-16 ms:mb-6 p-8 mx-14"
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.2 }}
@@ -310,7 +310,7 @@ export default function Press() {
             {Object.keys(albums).map((album) => (
               <div key={album} onClick={() => { handleAlbumClick(album); setModal2Open(true) }}>
                 <img
-                  src={`/press/${album}.png`}
+                  src={`/press/${album}.webp`}
                   alt={album}
                   style={{ width: '100%', height: 'auto' }}
                   loading="lazy"

@@ -11,14 +11,7 @@ import cloud from "../../../assets/PNG/cloud.png";
 import pen from "../../../assets/PNG/pen.png";
 import book from "../../../assets/PNG/book.png";
 import star from "../../../assets/PNG/yellow_star.png";
-import {
-  FaHandsHelping,
-  FaFistRaised,
-  FaBalanceScale,
-  FaHeart,
-  FaLightbulb,
-} from "react-icons/fa";
-//i3adat nadar
+
 
 export default function About() {
   const [showMore, setShowMore] = useState(false);
