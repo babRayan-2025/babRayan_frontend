@@ -160,7 +160,7 @@ export default function Home() {
   const blogv = [
     {
       id: 1,
-      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2Fimage.png?alt=media&token=59294c46-147b-4616-904f-db39da3841c9",
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0",
       title: "TelQuel parle de nous !",
       description: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir." ,
       text: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir. Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour. Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir."
@@ -766,7 +766,11 @@ export default function Home() {
                 className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl" variants={fadeIn} >
                 {/* Image Section */}
                 <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn} loading="lazy">
-                  <img src={articlev.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" />
+                <video className="w-full md:h-[310px] rounded-xl" controls autoPlay>
+                        <source src={articlev.img} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                  {/* <img src={articlev.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" /> */}
                 </motion.div>
 
                 {/* Text Section */}

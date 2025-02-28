@@ -58,7 +58,7 @@ const NewsItem = ({ imageSrc, title, description }) => (
         </h1>
         <p className="text-gray-600 mb-4 md:mb-10 text-sm md:text-base">
           {description}
-        </p>
+        </p> 
         <motion.button
           className="inline-block bg-yellow-300 rounded-full text-red-600 font-semibold px-4 py-2 transition hover:bg-yellow-400"
           variants={scaleIn}
@@ -77,7 +77,8 @@ export default function Blog() {
   const [showMore, setShowMore] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const videoUrl = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0";
+  // const videoUrl = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0";
+  const videoUrl = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
   const handlePlayClick = () => {
     setIsPlaying(true);
   };
