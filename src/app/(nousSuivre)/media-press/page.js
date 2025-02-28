@@ -298,7 +298,7 @@ export default function Press() {
         >
           <h2 className="text-5xl font-medium text-white mb-8 text-center flex items-center justify-center font-[Helvetica Neue] tracking-tighter">
             <Image
-              src="/benevole/flech-partenaire.png"
+              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fflech-partenaire.png?alt=media&token=82d18c4c-f43f-4dd4-9a32-0ca3397feff0"
               alt="flech-partenaire"
               width={100}
               height={50}

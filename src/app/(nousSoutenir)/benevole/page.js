@@ -76,9 +76,9 @@ export default function Benevole() {
               layoutId="contact-underline"
             ></motion.div>
           </h2>
-          <div className="flex  justify-center m-10 gap-6">
+          <div className="flex  justify-center my-10 gap-6">
             <div
-              className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 font-semibold text-lg md:text-2xl text-red-600 border-2 border-red-600 p-4 rounded-3xl shadow-md cursor-pointer"
+              className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 font-semibold text-md md:text-2xl text-red-600 border-2 border-red-600 p-4 rounded-3xl shadow-md cursor-pointer"
               title="Call us at +212 6 181 81 806"
               aria-label="Call us"
             >
@@ -99,9 +99,8 @@ export default function Benevole() {
                 alt="mail"
                 width={70}
                 height={70}
-                className="object-cover"
-              />
-              <span className='content-center'>contact@babrayan.ma</span>
+                className="object-cover "
+              /><span className="content-center">contact@babrayan.ma</span>
              </div>
             </div>
           </div>
@@ -179,8 +178,8 @@ export default function Benevole() {
                   key={index}
                   className={`w-full text-left p-4 rounded-full border ${
                     selectedButton === item
-                      ? "bg-yellow-300 border-black text-2xl font-medium text-center text-red-600"
-                      : "border-yellow-300 text-2xl font-medium text-center bg-red-600 text-white-300"
+                      ? "bg-yellow-300 border-black text-xl w-auto m-auto p-auto font-medium text-center text-red-600"
+                      : "border-yellow-300 text-xl w-auto m-auto p-auto font-medium text-center bg-red-600 text-white-300"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -209,7 +208,7 @@ export default function Benevole() {
               ].map((item, index) => (
                 <motion.button
                   key={index}
-                  className={`w-full text-center text-2xl font-medium p-4 rounded-full border ${
+                  className={`w-full text-center text-xl w-auto m-auto p-auto font-medium p-4 rounded-full border ${
                     selectedButton === item
                       ? "bg-yellow-300 border-black text-red-600"
                       : "bg-red-600 border-yellow-300 text-white-300"
@@ -238,7 +237,7 @@ export default function Benevole() {
               ].map((item, index) => (
                 <motion.button
                   key={index}
-                  className={`w-full text-2xl font-medium p-4 rounded-full text-center border ${
+                  className={`w-full text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${
                     selectedButton === item
                       ? "bg-yellow-300 border-black text-red-600"
                       : "bg-red-600 border-yellow-300 text-white-300"
