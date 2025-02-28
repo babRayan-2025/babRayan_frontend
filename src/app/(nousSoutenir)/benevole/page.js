@@ -176,10 +176,10 @@ export default function Benevole() {
               ].map((item, index) => (
                 <motion.button
                   key={index}
-                  className={`w-full text-left p-4 rounded-full border ${
+                  className={`w-full p-4 rounded-full border text-md lg:text-xl m-auto p-auto font-medium text-center ${
                     selectedButton === item
-                      ? "bg-yellow-300 border-black text-md md:text-xl w-auto m-auto p-auto font-medium text-center text-red-600"
-                      : "border-yellow-300 text-md md:text-xl w-auto m-auto p-auto font-medium text-center bg-red-600 text-white-300"
+                      ? "bg-yellow-300 border-black  text-red-600"
+                      : "border-yellow-300  bg-red-600 text-white-300"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -208,7 +208,7 @@ export default function Benevole() {
               ].map((item, index) => (
                 <motion.button
                   key={index}
-                  className={`w-full text-center text-xl w-auto m-auto p-auto font-medium p-4 rounded-full border ${
+                  className={`w-full text-center text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full border ${
                     selectedButton === item
                       ? "bg-yellow-300 border-black text-red-600"
                       : "bg-red-600 border-yellow-300 text-white-300"
@@ -225,7 +225,7 @@ export default function Benevole() {
 
           {/* Centre de formation et d'insertion */}
           <div>
-            <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
+            <h2 className="text-md font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
               CENTRE DE FORMATION ET D’INSERTION
             </h2>
             <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
@@ -237,7 +237,7 @@ export default function Benevole() {
               ].map((item, index) => (
                 <motion.button
                   key={index}
-                  className={`w-full text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${
+                  className={`w-full text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${
                     selectedButton === item
                       ? "bg-yellow-300 border-black text-red-600"
                       : "bg-red-600 border-yellow-300 text-white-300"
