@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
+// import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
 import { Button, Modal } from 'antd';
 
 import pic3 from "../assets/PHOTO/3.jpg";
@@ -116,22 +116,22 @@ export default function Home() {
     },
     {
       label: "Bénévoles",
-      value: 6000,
+      value: "6 000",
       icon: "/chiffres/1.png",
     },
     {
-      label: "Familles accompagnées",
-      value: 1500,
+      label: "Familles bénéficiaires",
+      value: "1 500",
       icon: "/chiffres/2.png",
     },
     {
-      label: "repas offerts",
-      value: 230000,
+      label: "repas offerts à la cantine",
+      value: "230 000",
       icon: "/chiffres/repats.png",
     },
     {
       label: "Ftours servis",
-      value: 31200 ,
+      value: "31 200" ,
       icon: "/chiffres/ftour.png",
     },
   ];
@@ -429,7 +429,7 @@ export default function Home() {
                 className="flex flex-col items-center text-center rounded-lg p-3 m-2 md:flex-1 md:basis-5/12 xl:basis-1/5"
               >
                 <span className="text-[#ffffff] text-6xl text-center">
-                <img src={stat.icon} className="w-44 h-36" alt="" />{" "}
+                <img src={stat.icon} className="w-44 h-36" alt="" />
                 </span>
                 <motion.div
                   className="flex items-center justify-center mt-2"
@@ -438,13 +438,13 @@ export default function Home() {
                   transition={{ delay: 0.2 * index }}
                 >
                   <span className="text-[#ffffff] text-6xl font-bold">
-                    +
+                    + {stat.value}
                   </span>
-                  <CountUp
+                  {/* <CountUp
                     end={stat.value}
                     duration={2}
                     className="text-white text-5xl font-bold"
-                  />
+                  /> */}
                 </motion.div>
                 <span className="text-[#ffffff] mt-2">{stat.label}</span>
               </motion.div>

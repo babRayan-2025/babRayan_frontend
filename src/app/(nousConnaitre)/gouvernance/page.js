@@ -77,14 +77,14 @@ export default function Gouvernance() {
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FFatima%20Zohra%20Ratibe.webp?alt=media&token=f31414cf-9b7b-429d-b281-ef85c79281a4'
     },
     {
-      name: 'Hind Ratiba',
+      name: 'Hind Ratibe',
       title: 'Membre Fondateur',
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FHind%20Ratibe.webp?alt=media&token=4bd27475-1f56-492c-95ca-def39b819cd1'
     },
     {
       name: 'Abdelmoula Ratibe',
       title: 'Membre Fondateur',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fmoula.webp?alt=media&token=539f9fbf-86fb-4b4c-8e5f-9ec37addbd90'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Frtb.webp?alt=media&token=28617203-decf-40bc-bc64-2a9f0c2309c9'
     },
     {
       name: 'Driss Lalami',
@@ -118,7 +118,7 @@ export default function Gouvernance() {
     },
     {
       name: 'Jihane Lahbabi Berrada',
-      title: 'Conseillère en partenariats',
+      title: 'Membre du Bureau',
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FJihane%20Lahbabi%20Berrada.webp?alt=media&token=5861feb7-a76f-4993-b50b-eab3ff024932'
     }
   ];
