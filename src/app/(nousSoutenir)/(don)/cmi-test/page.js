@@ -168,6 +168,14 @@ export default function CmiDonation() {
 
     console.log("Début du processus CMI...");
 
+    // Récupérer les valeurs du formulaire
+    const typeDon = donationType || "default";
+    const nom = userData?.fullName?.trim() || "Anonyme";
+    const email = userData?.email?.trim() || "anonyme@gmail.com";
+    const telephone = userData?.phone?.trim() || "06XXXXXXXX";
+    const entreprise = userData?.company?.trim() || "Anonyme";
+    const montant = Number(selectedAmount || customAmount);
+
     try {
       // Étape 1 : Envoyer une requête au backend pour générer le paiement
       const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/createCmi', {
@@ -176,16 +184,11 @@ export default function CmiDonation() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          fullname: userData && userData.fullName && userData.fullName.trim() !== "" ? userData.fullName.trim() : "Anonyme",
-          email: userData && userData.email && userData.email.trim() !== ""
-            ? userData.email.trim()
-            : "Anonyme@gmail.com",
-
-          telephone: userData && userData.phone && userData.phone.trim() !== ""
-            ? userData.phone.trim()
-            : "06XXXXXXXX",
-
-          amount: Number(selectedAmount || customAmount),
+          fullname: nom,
+          email: email,
+          telephone: telephone,
+          type : typeDon,
+          amount: montant,
         }),
       });
 
