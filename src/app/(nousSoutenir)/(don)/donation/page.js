@@ -698,15 +698,16 @@ export default function Donation() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-[#fdc000] p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
+                className="bg-yellow-300 p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
               >
-                <h2 className="text-3xl text-red-700 font-extrabold my-4 mx-10 text-center">
-                  {selectedContent.title}
+                <h2 className="text-5xl text-red-700 font-extrabold my-4 mx-8 text-center">
+                   Fiche contact
                 </h2>
+                <p className="text-md font-semibold text-white md:mt-8">Vos données personnelles sont confidentielles et utilisées à des fins administratives.</p>
                 <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">
                   <input name="email" type="email" placeholder="Adresse e-mail *" className="w-full p-2 rounded-lg border border-gray-300" value={userData.email} onChange={handleChange} />
                   <input name="fullName" type="text" placeholder="Nom complet" className="w-full p-2 rounded-lg border border-gray-300" value={userData.fullName} onChange={handleChange} />
-                  <input name="companyName" type="text" placeholder="Nom de l'entreprise" className="w-full p-2 rounded-lg border border-gray-300" value={userData.companyName} onChange={handleChange} />
+                  {/* <input name="companyName" type="text" placeholder="Nom de l'entreprise" className="w-full p-2 rounded-lg border border-gray-300" value={userData.companyName} onChange={handleChange} /> */}
                   <input name="phone" type="tel" placeholder="Téléphone" className="w-full p-2 rounded-lg border border-gray-300" value={userData.phone} onChange={handleChange} />
                   <motion.button
                     variants={buttonVariants}

@@ -437,7 +437,7 @@ export default function Home() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 * index }}
                 >
-                  <span className="text-[#ffffff] text-6xl font-bold">
+                  <span className="text-[#ffffff] text-3xl md:text-4xl font-extrabold">
                     + {stat.value}
                   </span>
                   {/* <CountUp
