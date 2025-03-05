@@ -5,7 +5,8 @@ import deco from "../../assets/PNG/SPLASH.png";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const userId = localStorage.getItem("userID") || null;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -21,6 +22,10 @@ export default function NavBar() {
     setOpenDropdown(null); // Close menu and dropdowns
   };
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   const navItems = [
     {
       name: "Nous connaître",
@@ -141,6 +146,17 @@ export default function NavBar() {
             >
               S`incrire
             </Link> */}
+            {
+              userId ? (
+                <>
+                  <Link href="/dashboard"
+                    className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#ffffff] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150" >
+                    Admin Dashboard
+                  </Link>
+                  <button className="button" onClick={() => (logout())}> logout</button>
+                </>
+              ) : null
+            }
             <Link
               href="/donation"
               className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"
