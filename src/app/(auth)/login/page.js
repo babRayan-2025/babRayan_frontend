@@ -16,26 +16,27 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
+    // setLoading(true);
+    // setError(null);
 
-    const mockEmail = "admin@babRayan.com";
-    const mockPassword = "password123";
+    // const mockEmail = "admin@babRayan.com";
+    // const mockPassword = "password123";
 
-    if (formData.email === mockEmail && formData.password === mockPassword) {
-      const user = {
-        email: formData.email,
-        role: "admin",
-        loggedInAt: new Date().toISOString(),
-      };
-      localStorage.setItem("user", JSON.stringify(user));
-      // Set a cookie for middleware
-      document.cookie = "auth_token=logged-in; path=/; SameSite=Strict";
-      router.push("/dashboard");
-    } else {
-      setError("Invalid email or password");
-      setLoading(false);
-    }
+    // if (formData.email === mockEmail && formData.password === mockPassword) {
+    //   const user = {
+    //     email: formData.email,
+    //     role: "admin",
+    //     loggedInAt: new Date().toISOString(),
+    //   };
+    //   localStorage.setItem("user", JSON.stringify(user));
+    //   // Set a cookie for middleware
+    //   document.cookie = "auth_token=logged-in; path=/; SameSite=Strict";
+    //   router.push("/dashboard");
+    // } else {
+    //   setError("Invalid email or password");
+    //   setLoading(false);
+    // }
+    localStorage.setItem("userID", "mouad zwine");
   };
 
   return (
