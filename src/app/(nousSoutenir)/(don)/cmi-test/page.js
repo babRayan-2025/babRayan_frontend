@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import termsText from "../../../../(policy)/termsPolicy";
 
 // Animation variants
 const fadeIn = {
@@ -51,6 +52,9 @@ export default function CmiDonation() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState(null);
 
+  const [showModalterms, setShowModalterms] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+
   const [userData, setUserData] = useState({
     fullName: "",
     email: "",
@@ -89,27 +93,6 @@ export default function CmiDonation() {
       ],
       image: "/donation/Sport.png",
     },
-    "200 DH": {
-      title: 'Parrainage "Santé"',
-      description: "Prenez soin de sa santé, un cadeau pour la vie :",
-      items: [
-        {
-          label: "Assurez l'accès aux soins essentiels :",
-          description: "Consultations médicales, vaccins, et bilans réguliers.",
-        },
-        {
-          label: "Offrez des traitements adaptés :",
-          description:
-            "Médecins spécialisés, soins dentaires, et suivi personnalisé.",
-        },
-        {
-          label: "Promouvez l'hygiène et le bien-être :",
-          description:
-            "Produits d'hygiène, sensibilisation aux bonnes pratiques pour une vie saine.",
-        },
-      ],
-      image: "/donation/santé.png",
-    },
   };
 
   const handleAmountChange = (amount) => {
@@ -146,21 +129,25 @@ export default function CmiDonation() {
     const selectedPaymentMethod = paymentMethods.find(
       (method) => method.id === paymentMethod
     );
-    const montant = Number(selectedAmount || customAmount);
-
+    console.log(acceptTerms);
     if (!selectedAmount && !customAmount) {
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
     } else if (!paymentMethod) {
       toast.error("Veuillez choisir un type de paiement avant de procéder au don.");
       return;
-    } else if ([1, 2, 3].includes(paymentMethod)) {
-      setSelectedMethod(selectedPaymentMethod);
-      setIsModalOpen(true);
-    } else if ([4, 5].includes(paymentMethod)) {
-      setSelectedMethod(selectedPaymentMethod);
-      setShowForm(true);
-    }
+    } else if ([5].includes(paymentMethod)) {
+      setShowModalterms(true);
+    };
+  };
+
+  const forCMIProcess = async (event = null) => {
+    if (event?.preventDefault) event.preventDefault(); // Vérifie si event existe avant d'appeler preventDefault()
+    const selectedPaymentMethod = paymentMethods.find(
+      (method) => method.id === paymentMethod
+    );
+    setSelectedMethod(selectedPaymentMethod);
+    setShowForm(true);
   };
 
   const CMIpaymentProcess = async (event = null) => {
@@ -187,7 +174,7 @@ export default function CmiDonation() {
           fullname: nom,
           email: email,
           telephone: telephone,
-          type : typeDon,
+          type: typeDon,
           amount: montant,
         }),
       });
@@ -223,6 +210,7 @@ export default function CmiDonation() {
     }
   };
 
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -232,12 +220,11 @@ export default function CmiDonation() {
       return;
     }
 
-
-
     if (paymentMethod === 5) {
+
       CMIpaymentProcess();
     }
-  };
+  }
 
   const selectedContent = contentByAmount[selectedAmount] || {
     title: 'Parrainage "Personnalisé"',
@@ -255,25 +242,59 @@ export default function CmiDonation() {
     { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
   ];
 
-  const Modal = ({ method, amount, onClose }) => {
+
+  const TermsModal = () => {
+
+
+    const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
+    const textContainerRef = useRef(null);
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = textContainerRef.current;
+      if (scrollTop + clientHeight >= scrollHeight - 5) {
+        setIsScrolledToBottom(true);
+      }
+    };
+    const onClose = () => {
+      setShowModalterms(false);
+    };
+
+    const acceptTermsFunction = (e) => {
+      setAcceptTerms(true);
+      onClose();
+      forCMIProcess();
+      // handleProceedToDonation();
+    };
+
     return (
       <div
+        style={{ zIndex: 1000 }}
         className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6"
         onClick={onClose}
       >
-        <div className="bg-white rounded-3xl shadow-lg text-center">
-          {method && (
-            <>
-              <img
-                src={method.popup}
-                alt={method.label}
-                className="md:w-[70rem] md:h-[40rem] mx-auto rounded-3xl shadow-md"
-              />
-            </>
-          )}
+        <div
+          className="bg-white rounded-3xl shadow-lg text-center p-6 w-[90%]"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <h2 className="text-xl font-semibold my-4">Terms and Conditions</h2>
+          <div
+            ref={textContainerRef}
+            onScroll={handleScroll}
+            className="max-h-96 overflow-y-auto p-4 border border-gray-300 rounded-lg text-left"
+            dangerouslySetInnerHTML={{ __html: termsText }}
+          />
+          <button
+            className={`mt-4 px-6 py-2 my-5 rounded-lg text-white ${isScrolledToBottom ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-400 cursor-not-allowed"
+              }`}
+            disabled={!isScrolledToBottom}
+            onClick={() => acceptTermsFunction()}
+          >
+            Accept
+          </button>
         </div>
       </div>
     );
+
   };
 
   return (
@@ -379,9 +400,7 @@ export default function CmiDonation() {
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
                 {[
-                  "100",
-                  "200",
-                  "300"
+                  "100"
                 ].map((amount) => (
                   <motion.button
                     key={amount}
@@ -450,6 +469,10 @@ export default function CmiDonation() {
                   onClose={() => setIsModalOpen(false)}
                 />
               )}
+              {showModalterms && (
+                <TermsModal />
+              )
+              }
             </motion.div>
 
             {/* Sponsorship or Form Card */}
@@ -536,7 +559,7 @@ export default function CmiDonation() {
                 className="bg-yellow-300 p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
               >
                 <h2 className="text-5xl text-red-700 font-extrabold my-4 mx-8 text-center">
-                   Fiche contact
+                  Fiche contact
                 </h2>
                 <p className="text-md font-semibold text-white md:mt-8">Vos données personnelles sont confidentielles et utilisées à des fins administratives.</p>
                 <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">
