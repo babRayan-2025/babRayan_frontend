@@ -94,7 +94,7 @@ export default function Contact() {
         </div>
 
         {/* Location Map Section */}
-        <div className="items-center  bg-yellow-300 border border-gray-600 rounded-3xl place-content-center p-8">
+        <div className="items-center  bg-yellow-300 border border-gray-600 rounded-3xl place-content-center pt-6 md:p-8">
           <h2 className="text-5xl font-bold text-red-700 mb-8 text-center flex items-center justify-center ">
             <span className="mr-2 ">
               <Image
@@ -107,7 +107,7 @@ export default function Contact() {
             </span>{" "}
             Localisation
           </h2>
-          <div className="w-full max-w-md bg-white border border-gray-600 rounded-lg shadow-md overflow-hidden">
+          <div className="w-full max-w-sm md:max-w-md bg-white border border-gray-600 rounded-lg shadow-md overflow-hidden">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.846981346241!2d-7.632492684855834!3d33.592882980730195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDM1JzM0LjQiTiA3wrAzNyc1Ny4wIlc!5e0!3m2!1sen!2sma!4v1635789876543!5m2!1sen!2sma"
               width={600}

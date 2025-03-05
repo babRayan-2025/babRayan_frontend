@@ -39,7 +39,7 @@ export default function Benevole() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <Image
-            src="/benevole/benevole.png"
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fbenevole.webp?alt=media&token=dbd4d2c7-f3a3-4404-b932-9cf21e8eb9f4"
             alt="Child smiling"
             width={1900}
             height={1900}
@@ -49,7 +49,7 @@ export default function Benevole() {
 
         {/* Description */}
         <motion.p
-          className="mx-16 text-center text-gray-700 text-3xl"
+          className="md:mx-16 mx-6 text-center text-gray-700 text-base md:text-3xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
@@ -76,36 +76,32 @@ export default function Benevole() {
               layoutId="contact-underline"
             ></motion.div>
           </h2>
-          <div className="flex justify-center my-10 gap-6">
-            {/* <Image
-              src="/benevole/flech-partenaire.png"
-              alt="flech-partenaire"
-              width={100}
-              height={50}
-              className="init-block -left-48 md:left-[550px]"
-            /> */}
+          <div className="flex  justify-center my-10 gap-6">
             <div
-              className="flex items-center gap-2 font-semibold text-red-600 border-2 border-red-600 px-4 rounded-3xl shadow-md cursor-pointer"
+              className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 font-semibold text-md md:text-2xl text-red-600 border-2 border-red-600 p-4 rounded-3xl shadow-md cursor-pointer"
               title="Call us at +212 6 181 81 806"
               aria-label="Call us"
             >
-              <Image
-                src="/benevole/contact.png"
+            <div className='flex flex-row items-center gap-2'>
+            <Image
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fcontact.webp?alt=media&token=36de36ea-009b-4e8f-a143-7e4be349afcd"
                 alt="call"
                 width={50}
                 height={50}
-                className="object-cover"
+                className="object-cover ml-3"
               />
-              <span className="mr-12">+212 6 181 81 806</span>
+              <span className="content-center">+212 6 181 81 806</span>
 
-              <Image
-                src="/benevole/mail.png"
+            </div>
+             <div className='flex flex-row items-center gap-2'>
+             <Image
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fmail.webp?alt=media&token=f246f27d-9d4f-43ef-906d-a977bf3a8ae2"
                 alt="mail"
                 width={70}
                 height={70}
-                className="object-cover"
-              />
-              <span>benevolat@babryan.ma</span>
+                className="object-cover "
+              /><span className="content-center">contact@babrayan.ma</span>
+             </div>
             </div>
           </div>
         </motion.div>
@@ -113,7 +109,7 @@ export default function Benevole() {
 
       {/* Form Section */}
       <motion.div
-      className="w-full bg-[url('/benevole/bg-benevole.png')] bg-cover bg-center py-16 px-16"
+      className="w-full bg-[url('https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fbg-benevole.webp?alt=media&token=7335c25a-8f38-4acd-99ff-e514014a07a7')] bg-cover bg-center py-16 md:px-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 1.2 }}
@@ -169,7 +165,7 @@ export default function Benevole() {
             <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
               FOYER
             </h2>
-            <div className="space-y-2 grid sm:text-base sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+            <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
               {[
                 "Soutien Scolaire",
                 "Accompagnement des enfants",
@@ -180,10 +176,10 @@ export default function Benevole() {
               ].map((item, index) => (
                 <motion.button
                   key={index}
-                  className={`w-full text-left p-4 rounded-full border ${
+                  className={`w-full p-4 rounded-full border text-md lg:text-xl m-auto p-auto font-medium text-center ${
                     selectedButton === item
-                      ? "bg-yellow-300 border-black text-2xl font-medium text-center text-red-600"
-                      : "border-yellow-300 text-2xl font-medium text-center bg-red-600 text-white-300"
+                      ? "bg-yellow-300 border-black  text-red-600"
+                      : "border-yellow-300  bg-red-600 text-white-300"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -200,7 +196,7 @@ export default function Benevole() {
             <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
               ÉCOLE
             </h2>
-            <div className="space-y-2 grid sm:text-base sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+            <div className="space-y-2 grid sm:text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
               {[
                 "Soutien Scolaire",
                 "Soutien administratif",
@@ -212,7 +208,7 @@ export default function Benevole() {
               ].map((item, index) => (
                 <motion.button
                   key={index}
-                  className={`w-full text-center text-2xl font-medium p-4 rounded-full border ${
+                  className={`w-full text-center text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full border ${
                     selectedButton === item
                       ? "bg-yellow-300 border-black text-red-600"
                       : "bg-red-600 border-yellow-300 text-white-300"
@@ -229,10 +225,10 @@ export default function Benevole() {
 
           {/* Centre de formation et d'insertion */}
           <div>
-            <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
+            <h2 className="text-md font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
               CENTRE DE FORMATION ET D’INSERTION
             </h2>
-            <div className="space-y-2 grid sm:text-base sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+            <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
               {[
                 "Coaching pédagogique",
                 "Cours de communication et soft-skills",
@@ -241,7 +237,7 @@ export default function Benevole() {
               ].map((item, index) => (
                 <motion.button
                   key={index}
-                  className={`w-full text-2xl font-medium p-4 rounded-full text-center border ${
+                  className={`w-full text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${
                     selectedButton === item
                       ? "bg-yellow-300 border-black text-red-600"
                       : "bg-red-600 border-yellow-300 text-white-300"

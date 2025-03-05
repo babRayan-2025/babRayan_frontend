@@ -50,27 +50,28 @@ export default function Parrainage() {
 
         {/* Main section */}
         <motion.div
-          className="grid md:grid-cols-2 gap-8 mb-12"
+          className="grid md:grid-cols-2 gap-8 md:mb-12"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
         >
           {/* Left side - Image */}
           <motion.div
-            className=" h-[320px] ml-[-40px] overflow-hidden md:rounded-r-xl"
+            className="h-[320px] ml-[-40px] overflow-hidden md:rounded-r-xl"
             variants={fadeIn}
           >
-            <Image
-              src="/Parrainer/1.jpg"
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F11.webp?alt=media&token=0b7b29d7-40fc-4f78-ac6e-437c14bcdef1"
               alt="Children smiling"
               width={980}
               height={300}
+              loading="lazy"
               className="object-cover"
             />
           </motion.div>
 
           {/* Right side - Text content */}
-          <motion.div className="space-y-4 md:mx-4 pr-20" variants={fadeIn}>
+          <motion.div className="space-y-4 md:mx-4 p-4 md:pr-20" variants={fadeIn}>
             <h2 className="text-3xl font-semibold">
               Pourquoi parrainer <br /> un enfant ?
             </h2>
@@ -97,7 +98,7 @@ export default function Parrainage() {
           animate="visible"
           variants={staggerContainer}
         >
-          <motion.div className="w-full p-6 mb-12 ml-12" variants={fadeIn}>
+          <motion.div className="w-full p-6 md:pl-12 md:mb-1" variants={fadeIn}>
             <h3 className="text-xl font-semibold mb-4">
               Votre contribution mensuelle permettra de donner à un enfant :
             </h3>
@@ -146,17 +147,21 @@ export default function Parrainage() {
 
           {/* Image grid */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4 mr-8"
+            className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4 md:mr-8"
             variants={staggerContainer}
           >
-            {["2.jpg", "3.jpg", "4.jpg", "5.jpg"].map((img, index) => (
+            {["https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F2.webp?alt=media&token=2de4472b-396c-4602-9890-a4c10c8570a5",
+             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F3.webp?alt=media&token=6a7f3445-93a8-4523-9a2b-ff8746addfd3",
+             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F4.webp?alt=media&token=9740baf6-bcef-438f-8e22-610cff203047",
+             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F5.webp?alt=media&token=a69040ed-499b-449f-9f29-b8d319d7390e"].map((img, index) => (
               <motion.div key={index} variants={fadeIn}>
-                <Image
-                  src={`/Parrainer/${img}`}
+                <img
+                  src={img}
                   alt="Image description"
                   width={500}
                   height={300}
-                  className="rounded-xl h-[300px] w-[500px] shadow-md"
+                  loading="lazy"
+                  className="rounded-2xl h-[300px] w-[500px] shadow-md object-cover"
                 />
               </motion.div>
             ))}

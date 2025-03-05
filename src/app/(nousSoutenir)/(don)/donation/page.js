@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,9 +47,27 @@ export default function Donation() {
   const [donationType, setDonationType] = useState("Mensuel");
   const [showThirdCard, setShowThirdCard] = useState(false);
   const [customAmount, setCustomAmount] = useState("");
-  const [isCustomAmountSelected, setIsCustomAmountSelected] = useState(false);
   const [donationDetails, setDonationDetails] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState(null);
+
+  const [userData, setUserData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    companyName: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+  };
 
   // Content for different amounts
   const contentByAmount = {
@@ -62,7 +81,8 @@ export default function Donation() {
         },
         {
           label: "Soutenez la diversité des sports :",
-          description: "Pour découvrir de nouvelles passions et développer ses talents.",
+          description:
+            "Pour découvrir de nouvelles passions et développer ses talents.",
         },
         {
           label: "Offrez un équipement adapté :",
@@ -81,11 +101,13 @@ export default function Donation() {
         },
         {
           label: "Offrez des traitements adaptés :",
-          description: "Médecins spécialisés, soins dentaires, et suivi personnalisé.",
+          description:
+            "Médecins spécialisés, soins dentaires, et suivi personnalisé.",
         },
         {
           label: "Promouvez l'hygiène et le bien-être :",
-          description: "Produits d'hygiène, sensibilisation aux bonnes pratiques pour une vie saine.",
+          description:
+            "Produits d'hygiène, sensibilisation aux bonnes pratiques pour une vie saine.",
         },
       ],
       image: "/donation/santé.png",
@@ -100,7 +122,8 @@ export default function Donation() {
         },
         {
           label: "Une tenue pour chaque occasion :",
-          description: "Pour se sentir confiant, que ce soit à l'école ou lors d'événements spéciaux.",
+          description:
+            "Pour se sentir confiant, que ce soit à l'école ou lors d'événements spéciaux.",
         },
       ],
       image: "/donation/Vetements.png",
@@ -174,7 +197,6 @@ export default function Donation() {
 
   const handleAmountChange = (amount) => {
     setSelectedAmount(amount);
-    setIsCustomAmountSelected(false);
     setCustomAmount("");
     updateDonationDetails(amount, donationType);
     setShowThirdCard(true);
@@ -190,15 +212,10 @@ export default function Donation() {
     const value = e.target.value;
     setSelectedAmount(null);
     setCustomAmount(value);
-    setIsCustomAmountSelected(value !== "");
     updateDonationDetails(value, donationType);
     setShowThirdCard(true);
   };
 
-  const handlePaymentMethodClick = (method) => {
-    setPaymentMethod(method);
-    console.log("Payment method selected:", method);
-  };
 
   const updateDonationDetails = (amount, type) => {
     const details = {
@@ -209,30 +226,152 @@ export default function Donation() {
   };
 
   const handleProceedToDonation = () => {
-    const selectedPaymentMethod = paymentMethods.find(method => method.id === paymentMethod);
+    const selectedPaymentMethod = paymentMethods.find(
+      (method) => method.id === paymentMethod
+    );
+    const montant = Number(selectedAmount || customAmount);
 
-    if ([1, 2, 3].includes(paymentMethod)) {
-      setSelectedMethod(selectedPaymentMethod);
-      setIsModalOpen(true);
-    }else if (!selectedAmount && !customAmount) {
-      // Affichez un toast d'erreur si aucun montant n'est sélectionné
+    if (!selectedAmount && !customAmount) {
       toast.error("Veuillez choisir un montant avant de procéder au don.");
       return;
     } else if (!paymentMethod) {
-      toast.error(
-        "Veuillez choisir un type de paiement avant de procéder au don."
-      );
+      toast.error("Veuillez choisir un type de paiement avant de procéder au don.");
+      return;
+    } else if (montant < 10) {
+      toast.error("Le montant doit être supérieur ou égal à 10 DH.");
+      return;
+    } else if ([1, 2, 3].includes(paymentMethod)) {
+      setSelectedMethod(selectedPaymentMethod);
+      setIsModalOpen(true);
+    } else if ([4, 5].includes(paymentMethod)) {
+      setSelectedMethod(selectedPaymentMethod);
+      setShowForm(true);
+    }
+  };
+
+  const CMIpaymentProcess = async (event = null) => {
+    if (event?.preventDefault) event.preventDefault(); // Vérifie si event existe avant d'appeler preventDefault()
+
+    console.log("Début du processus CMI...");
+
+    try {
+      // Étape 1 : Envoyer une requête au backend pour générer le paiement
+      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/createCmi', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullname: userData && userData.fullName && userData.fullName.trim() !== "" ? userData.fullName.trim() : "Anonyme",
+          email: userData && userData.email && userData.email.trim() !== ""
+            ? userData.email.trim()
+            : "Anonyme@gmail.com",
+
+          telephone: userData && userData.phone && userData.phone.trim() !== ""
+            ? userData.phone.trim()
+            : "06XXXXXXXX",
+
+          amount: Number(selectedAmount || customAmount),
+        }),
+      });
+
+      const data = await response.json();
+
+      // Étape 2 : Vérifier les données reçues
+      if (data.paymentUrl && data.params) {
+        // Étape 3 : Créer un formulaire dynamique et rediriger vers la plateforme CMI
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = data.paymentUrl; // URL CMI
+
+        // Ajouter les paramètres reçus du backend
+        Object.entries(data.params).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value;
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+        form.submit(); // Soumettre automatiquement le formulaire
+      } else {
+        console.error('Paramètres de paiement manquants ou URL invalide');
+      }
+
+    }
+    catch (error) {
+      console.error('Erreur lors du paiement :', error);
+      toast.error('Une erreur est survenue lors du paiement.');
+    }
+  };
+
+  const PaypalpaymentProcess = async (event = null) => {
+    if (event?.preventDefault) event.preventDefault(); // Empêcher le rechargement de la page
+
+    console.log("Début du processus de paiement PayPal...");
+
+    // Récupérer les valeurs du formulaire
+    const typeDon = donationType || "default";
+    const nom = userData?.fullName?.trim() || "Anonyme";
+    const email = userData?.email?.trim() || "anonyme@gmail.com";
+    const telephone = userData?.phone?.trim() || "06XXXXXXXX";
+    const entreprise = userData?.company?.trim() || "Anonyme";
+    const montant = Number(selectedAmount || customAmount);
+
+
+    try {
+      // Étape 1 : Envoyer une requête au backend pour créer le paiement PayPal
+      const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/don/payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          typeDon,
+          nom,
+          email,
+          telephone,
+          entreprise,
+          montant
+        })
+      });
+
+      const data = await response.json();
+
+      // Étape 2 : Vérifier la réponse et rediriger l'utilisateur vers PayPal
+      if (data.approvalUrl) {
+        window.location.href = data.approvalUrl;
+      } else {
+        console.error("Erreur : aucune URL de paiement reçue.");
+        toast.error("Une erreur est survenue lors de la création du paiement.");
+      }
+    } catch (error) {
+      console.error("Erreur lors du paiement PayPal :", error);
+      toast.error("Une erreur est survenue lors du paiement.");
+    }
+  };
+
+
+
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    // Vérifier si les champs sont remplis
+    if (userData && !userData.email) {
+      toast.error("Veuillez entrer votre adresse e-mail.");
       return;
     }
 
-    toast.success("Merci pour votre don !");
 
-    setSelectedAmount(null);
-    setCustomAmount("");
-    setIsCustomAmountSelected(false);
-    setDonationDetails(null);
-    setPaymentMethod(null);
-    setShowThirdCard(false);
+
+    if (paymentMethod === 5) {
+      // CMIpaymentProcess();
+      PaypalpaymentProcess();
+    } else if (paymentMethod === 4) {
+      PaypalpaymentProcess();
+    }
   };
 
   const selectedContent = contentByAmount[selectedAmount] || {
@@ -261,7 +400,6 @@ export default function Donation() {
       image: "/donation/2.png",
       desc: "Payer avec votre compte PayPal",
       popup: "/donation/popUp/1.png",
-
     },
     {
       id: 3,
@@ -269,59 +407,32 @@ export default function Donation() {
       image: "/donation/3.png",
       desc: "Faire un don par chèque",
       popup: "/donation/popUp/3.png",
-
     },
     {
       id: 4,
       label: "PayPal",
-      image: "/donation/4.png",
+      image: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
       desc: "Faire un don par virement bancaire",
     },
-    {
-      id: 5,
-      label: "Apple Pay",
-      image: "/donation/5.png",
-      desc: "Payer avec Apple Pay",
-    },
-    { id: 6, label: "CMI", image: "/donation/6.png", desc: "Payer avec CMI" },
+    { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
   ];
-
-  // const amountImages = {
-  //   "100 DH": "/donation/amounts/100.png",
-  //   "200 DH": "/donation/amounts/200.png",
-  //   "300 DH": "/donation/amounts/300.png",
-  //   "500 DH": "/donation/amounts/500.png",
-  //   "800 DH": "/donation/amounts/800.png",
-  //   "1900 DH": "/donation/amounts/1900.png",
-  // };
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedMethod, setSelectedMethod] = useState(null);
 
   const Modal = ({ method, amount, onClose }) => {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6" onClick={onClose}>
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6"
+        onClick={onClose}
+      >
         <div className="bg-white rounded-3xl shadow-lg text-center">
           {method && (
             <>
-              <img src={method.popup} alt={method.label} className="md:w-[70rem] md:h-[40rem] mx-auto mb-4 rounded-3xl shadow-md" />
-              <h3 className="text-xl text-gray-900 font-bold mb-2">{method.label}</h3>
-              {/* <p className="text-gray-700">{method.desc}</p> */}
+              <img
+                src={method.popup}
+                alt={method.label}
+                className="md:w-[70rem] md:h-[40rem] mx-auto rounded-3xl shadow-md"
+              />
             </>
           )}
-          {amount && (
-            <>
-              <img src={amountImages[amount]} alt={amount} className="w-32 h-32 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Montant sélectionné</h3>
-              <p className="text-gray-700">{amount}</p>
-            </>
-          )}
-          <button
-            onClick={onClose}
-            className="mt-4 bg-red-700 text-white py-2 mb-4 px-6 rounded-full"
-          >
-            Fermer
-          </button>
         </div>
       </div>
     );
@@ -392,9 +503,8 @@ export default function Donation() {
             {/* Amount Card */}
             <motion.div
               variants={cardVariants}
-              className={`bg-[#cc2229] p-4 md:p-8 rounded-3xl shadow-md border border-gray-500 ${
-                showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
-              }`}
+              className={`bg-[#cc2229] p-4 md:p-8 rounded-3xl shadow-md border border-gray-500 ${showThirdCard ? "w-full lg:w-1/4" : "w-full lg:w-[25rem]"
+                }`}
             >
               <h2 className="md:text-4xl text-white font-bold mb-4">
                 Choisissez <br /> le montant
@@ -406,11 +516,10 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-8 md:px-10 rounded-full ${
-                      donationType === "Mensuel"
-                        ? "bg-yellow-300 text-red-700"
-                        : "bg-white text-red-700 border border-yellow-300"
-                    }`}
+                    className={`py-2 px-8 md:px-10 rounded-full ${donationType === "Mensuel"
+                      ? "bg-yellow-300 text-red-700"
+                      : "bg-white text-red-700 border border-yellow-300"
+                      }`}
                     onClick={() => handleDonationTypeChange("Mensuel")}
                   >
                     Mensuel
@@ -419,11 +528,10 @@ export default function Donation() {
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-2 px-8 md:px-10 rounded-full ${
-                      donationType === "Ponctuel"
-                        ? "bg-yellow-300 text-red-700"
-                        : "bg-white text-red-700 border border-yellow-300"
-                    }`}
+                    className={`py-2 px-8 md:px-10 rounded-full ${donationType === "Ponctuel"
+                      ? "bg-yellow-300 text-red-700"
+                      : "bg-white text-red-700 border border-yellow-300"
+                      }`}
                     onClick={() => handleDonationTypeChange("Ponctuel")}
                   >
                     Ponctuel
@@ -432,20 +540,26 @@ export default function Donation() {
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
-                {["100 DH","200 DH","300 DH","500 DH", "800 DH", "1900 DH"].map((amount) => (
+                {[
+                  "100",
+                  "200",
+                  "300",
+                  "500",
+                  "800",
+                  "1900",
+                ].map((amount) => (
                   <motion.button
                     key={amount}
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
-                    className={`py-4 px-2  rounded-2xl text-lg border-2 border-yellow-300 ${
-                      selectedAmount === amount
-                        ? "bg-[#FCE8F3] text-red-700 font-bold"
-                        : "bg-red-700 text-white font-bold"
-                    }`}
+                    className={`py-4 px-2  rounded-2xl text-lg border-2 border-yellow-300 ${selectedAmount === amount
+                      ? "bg-[#FCE8F3] text-red-700 font-bold"
+                      : "bg-red-700 text-white font-bold"
+                      }`}
                     onClick={() => handleAmountChange(amount)}
                   >
-                    {amount}
+                    {amount} DH
                   </motion.button>
                 ))}
               </div>
@@ -462,30 +576,20 @@ export default function Donation() {
               <div className="grid grid-cols-3 gap-4 mt-4 justify-center">
                 {/* khtaar le choie de paiement */}
                 {paymentMethods.map((method) => (
-                  <div
-                    key={method.id}
-                    className="flex flex-col items-center gap-2"
-                  >
-                    <motion.button
-                      key={method.id}
-                      variants={buttonVariants}
-                      whileHover="hover"
-                      whileTap="tap"
-                      className={`bg-white p-4  rounded-2xl justify-items-center shadow-md ${
-                        paymentMethod === method.id
-                          ? "bg-yellow-300 text-red-700 font-bold"
-                          : "bg-red-700 text-white font-bold"
-                      }`}
-                      onClick={() => handlePaymentMethodClick(method.id)}
-                    >
+                  <div key={method.id} className="flex flex-col items-center gap-2" >
+                    <motion.button key={method.id} variants={buttonVariants} whileHover="hover" whileTap="tap"
+                      className={`bg-white p-4  rounded-2xl justify-items-center shadow-md ${paymentMethod === method.id
+                        ? "bg-yellow-300 text-red-700 font-bold"
+                        : "bg-red-700 text-white font-bold"
+                        }`}
+                      onClick={() => setPaymentMethod(method.id)} >
                       <img
                         src={method.image}
                         alt={method.label}
-                        className={`w-14 h-11  ${
-                          method.id == 4 || method.id == 5 || method.id == 6
-                            ? ""
-                            : "object-cover"
-                        }`}
+                        className={`w-14 h-11  ${method.id == 4 || method.id == 5 || method.id == 6
+                          ? ""
+                          : "object-cover"
+                          }`}
                       />
                     </motion.button>
                     <span className="text-xs block mt-0 text-center text-white">
@@ -505,21 +609,21 @@ export default function Donation() {
                 Procéder au don
               </motion.button>
               {isModalOpen && (
-        <Modal
-          method={selectedMethod}
-          amount={selectedAmount}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
+                <Modal
+                  method={selectedMethod}
+                  amount={selectedAmount}
+                  onClose={() => setIsModalOpen(false)}
+                />
+              )}
             </motion.div>
 
-            {/* Sponsorship Card */}
-            {showThirdCard && (
+            {/* Sponsorship or Form Card */}
+            {(showThirdCard && !showForm) && (
               <motion.div
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-[#fdc000] p-4  rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
+                className="bg-[#fdc000] p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
               >
                 <h2 className="text-3xl text-red-700 font-extrabold mb-4 mx-10 text-center">
                   {selectedContent.title}
@@ -543,9 +647,7 @@ export default function Donation() {
                         className="w-8 h-8 mr-0 mt-0"
                       />
                       <span className="mt-0.5">
-                        <span className="text-red-700 font-bold ">
-                          {item.label}
-                        </span>{" "}
+                        <span className="text-red-700 font-bold">{item.label}</span>{" "}
                         <br /> {item.description}
                       </span>
                     </motion.li>
@@ -561,13 +663,13 @@ export default function Donation() {
                   <span className="text-gray-800 text-xl font-bold mr-2">
                     Type de don
                   </span>
-                  <motion.button
+                  <motion.div
                     variants={buttonVariants}
                     whileHover="hover"
-                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 "
+                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
                   >
                     {donationDetails ? donationDetails.type : "Mensuel"}
-                  </motion.button>
+                  </motion.div>
                 </div>
                 {donationDetails?.amount && (
                   <div className="flex items-center justify-end">
@@ -579,9 +681,73 @@ export default function Donation() {
                     <span className="text-gray-800 text-xl font-bold mr-2">
                       Montant
                     </span>
-                    <button className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3 ">
+                    <motion.div
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
+                    >
                       {donationDetails.amount}
-                    </button>
+                    </motion.div>
+                  </div>
+                )}
+              </motion.div>
+            )}
+
+            {showForm && (
+              <motion.div
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                className="bg-yellow-300 p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
+              >
+                <h2 className="text-5xl text-red-700 font-extrabold my-4 mx-8 text-center">
+                   Fiche contact
+                </h2>
+                <p className="text-md font-semibold text-white md:mt-8">Vos données personnelles sont confidentielles et utilisées à des fins administratives.</p>
+                <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">
+                  <input name="email" type="email" placeholder="Adresse e-mail *" className="w-full p-2 rounded-lg border border-gray-300" value={userData.email} onChange={handleChange} />
+                  <input name="fullName" type="text" placeholder="Nom complet" className="w-full p-2 rounded-lg border border-gray-300" value={userData.fullName} onChange={handleChange} />
+                  {/* <input name="companyName" type="text" placeholder="Nom de l'entreprise" className="w-full p-2 rounded-lg border border-gray-300" value={userData.companyName} onChange={handleChange} /> */}
+                  <input name="phone" type="tel" placeholder="Téléphone" className="w-full p-2 rounded-lg border border-gray-300" value={userData.phone} onChange={handleChange} />
+                  <motion.button
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    type="submit"
+                    className="bg-red-700 text-white py-2 px-6 rounded-xl w-full mt-4"
+                  >
+                    Finaliser mon don
+                  </motion.button>
+                </form>
+                <div className="flex items-center mt-4 justify-end">
+                  <span className="text-gray-800 text-xl font-bold mr-2">
+                    Type de don
+                  </span>
+                  <motion.div
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
+                  >
+                    {donationDetails ? donationDetails.type : "Mensuel"}
+                  </motion.div>
+                </div>
+                {donationDetails?.amount && (
+                  <div className="flex items-center justify-end">
+                    <img
+                      src="/donation/gauche.png"
+                      alt="Money"
+                      className="w-16 h-8 mr-2 mb-2"
+                    />
+                    <span className="text-gray-800 text-xl font-bold mr-2">
+                      Montant
+                    </span>
+                    <motion.div
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
+                    >
+                      {donationDetails.amount}
+                    </motion.div>
                   </div>
                 )}
               </motion.div>
@@ -590,9 +756,8 @@ export default function Donation() {
             {/* Image Card */}
             <motion.div
               variants={cardVariants}
-              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center shadow-md border border-gray-500 min-h-[30rem] ${
-                showThirdCard ? "w-full lg:w-1/3" : "w-full lg:w-[50rem]"
-              }`}
+              className={`p-8 rounded-3xl shadow-lg bg-[url('/donation/photo.png')] bg-cover bg-center shadow-md border border-gray-500 min-h-[30rem] ${showThirdCard ? "w-full lg:w-1/3" : "w-full lg:w-[50rem]"
+                }`}
             />
           </motion.div>
         </section>
@@ -609,51 +774,52 @@ export default function Donation() {
           CONTACT
         </h2>
         <motion.div
-  variants={staggerChildren}
-  className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8"
->
-  <div className="justify-center mt-4">
-    <ul className="list-none flex flex-col text-sm sm:text-base md:text-lg">
-      {[
-        {
-          icon: "/donation/phone.svg",
-          label: "Direction Générale :",
-          content: "+212 610 02 35 55",
-        },
-        {
-          icon: "/donation/mail.svg",
-          content: "direction@babrayan.ma",
-        },
-        {
-          icon: "/donation/localisation.svg",
-          content: "4 rue Bayt Lahm, Quartier Palmier, Casablanca",
-        },
-      ].map((item, index) => (
-        <motion.li
-          key={index}
-          variants={fadeIn}
-          className="flex items-center space-x-2 md:space-x-4 mb-2 md:mb-3"
+          variants={staggerChildren}
+          className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8"
         >
-          <motion.img
-            src={item.icon}
-            alt={`Contact ${index + 1}`}
-            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
-            whileHover={{ scale: 1.1 }}
-          />
-          <div className="flex flex-col md:flex-row md:items-center">
-            {item.label && (
-              <span className="text-yellow-300 text-xs sm:text-sm md:text-lg font-medium mr-1 md:mr-2">
-                {item.label}
-              </span>
-            )}
-            <span className="text-xs sm:text-sm md:text-lg">{item.content}</span>
+          <div className="justify-center mt-4">
+            <ul className="list-none flex flex-col text-sm sm:text-base md:text-lg">
+              {[
+                {
+                  icon: "/donation/phone.svg",
+                  label: "Direction Générale :",
+                  content: "+212 610 02 35 55",
+                },
+                {
+                  icon: "/donation/mail.svg",
+                  content: "direction@babrayan.ma",
+                },
+                {
+                  icon: "/donation/localisation.svg",
+                  content: "4 rue Bayt Lahm, Quartier Palmier, Casablanca",
+                },
+              ].map((item, index) => (
+                <motion.li
+                  key={index}
+                  variants={fadeIn}
+                  className="flex items-center space-x-2 md:space-x-4 mb-2 md:mb-3"
+                >
+                  <motion.img
+                    src={item.icon}
+                    alt={`Contact ${index + 1}`}
+                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
+                    whileHover={{ scale: 1.1 }}
+                  />
+                  <div className="flex flex-col md:flex-row md:items-center">
+                    {item.label && (
+                      <span className="text-yellow-300 text-xs sm:text-sm md:text-lg font-medium mr-1 md:mr-2">
+                        {item.label}
+                      </span>
+                    )}
+                    <span className="text-xs sm:text-sm md:text-lg">
+                      {item.content}
+                    </span>
+                  </div>
+                </motion.li>
+              ))}
+            </ul>
           </div>
-        </motion.li>
-      ))}
-    </ul>
-  </div>
-</motion.div>
-
+        </motion.div>
       </motion.section>
     </main>
   );

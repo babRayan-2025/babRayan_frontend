@@ -45,11 +45,11 @@ export default function Education() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="/parrainer/5.jpg"
+            src="/education/école.jpg"
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
-            className="opacity-80"
+            className="opacity-80 object-cover"
           />
         </div>
         <motion.div
@@ -243,7 +243,7 @@ export default function Education() {
           <div className="max-w-6xl mx-auto text-center">
             <motion.div variants={fadeInUp}>
               <h1 className="p-4 text-2xl md:text-4xl text-gray-950 font-bold text-center mb-8 relative">
-                SUIVI ET ENCADREMENT DE L'ENFANT
+                SUIVI ET ENCADREMENT DE L&apos;ENFANT
                 <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-6"></div>
               </h1>
               <p className="text-lg text-gray-900 font-semibold mx-6">
@@ -254,7 +254,7 @@ export default function Education() {
                 activités technologiques et un programme sportif d’éducation
                 physique.
               </p>
-              <div className="grid grid-cols-2 lg:grid-cols-4 mx-6  justify-center gap-36 my-20">
+              <div className="grid grid-cols-2 lg:grid-cols-4 mx-6  justify-center gap-16 my-20">
                 {[
                   {
                     src: "/education/picto/site bab rayan école-08.png",
@@ -291,7 +291,7 @@ export default function Education() {
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className="text-center mx-auto d-flex justify-items-center text-gray-700 font-semibold text-lg"
+                    className="text-center mx-auto d-flex justify-items-center text-gray-700 font-semibold md:text-lg"
                     variants={fadeInUp}
                   >
                     <Image
@@ -370,7 +370,7 @@ export default function Education() {
               <p className="text-red-700 text-xl font-semibold  mb-4">
                 EN AIDANT LES PARENTS, NOUS AIDONS LES ENFANTS
               </p>
-              <p className="text-black text-lg font-medium mr-24 mb-6">
+              <p className="text-black text-lg font-medium md:mr-24 mb-6">
                 L&apos;école Palmier, tant pour le préscolaire que pour le
                 primaire, s&apos;adresse aux enfants du foyer Bab Rayan ainsi
                 qu&apos;aux externes issus de milieux défavorisés. Les parents

@@ -3,29 +3,16 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from 'next/link';
-import {
-  FaChild,
-  FaHandHoldingHeart,
-  FaHouseUser,
-  FaBox,
-} from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
+// import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
 import { Button, Modal } from 'antd';
 
 import pic3 from "../assets/PHOTO/3.jpg";
-import pic4 from "../assets/PHOTO/4.jpg";
-// import pic5 from "../assets/PHOTO/5.jpg";
-// import pic6 from "../assets/PHOTO/6.jpg";
-// import pic7 from "../assets/PHOTO/7.jpg";
-import pic8 from "../assets/PHOTO/remiseDiplome.jpg";
-import pic9 from "../assets/PHOTO/newrest.jpg";
 import pic10 from "../assets/PNG/ETOILERAMADAN.png";
 import pic11 from "../assets/PNG/LANTERNE.png";
-// import soleil from "../assets/PNG/SOLEIL.png";
 import CountUp from "react-countup";
 import React, { useState } from "react";
 import { Play } from "lucide-react";
@@ -59,32 +46,36 @@ const staggerContainer = {
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
+  // const [isPlaying1, setIsPlaying1] = useState(false);
+  //   const [showMore, setShowMore] = useState(false);
+  
+    // const videoUrl1 = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
 
 
   const caroussel = [
     {
-      image: '/caroussel/children.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fchildren.webp?alt=media&token=3a77488c-709c-423a-8f01-0acde1a9e440',
       picto: '/caroussel/sun.png',
       title: "CHANGER LE PARCOURS D'UNE VIE",
       description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
       link: "/protection"
     },
     {
-      image: '/caroussel/jeux.png',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fjeux.webp?alt=media&token=bbfc4156-bcb7-40f9-8ab8-7ab3055dbfb2',
       picto: '/caroussel/main.png',
       title: "PROTÉGER, ÉDUQUER, ACCOMPAGNER",
       description: "Bab Rayan défend les droits des enfants en leur offrant un foyer sécurisant et une éducation de qualité.",
       link: "/education"
     },
     {
-      image: '/caroussel/patisserie.png',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fpatisserie.webp?alt=media&token=799fb85f-1f24-4373-9d71-23f11b2d2cd8',
       picto: '/caroussel/fleche.png',
       title: "FORMER ET INTÉGRER",
       description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens autonomes et engagés.",
       link: "/formation"
     },
     {
-      image: '/caroussel/slider.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fslider.webp?alt=media&token=76dc0fc8-a46d-4fe7-bb1b-79a407afeb06',
       picto: '/caroussel/etoile.svg',
       title: "UN ENGAGEMENT QUI A DU SENS",
       description: "Rejoignez le combat pour la protection de l’enfance, engagez-vous en devenant donateur, partenaire ou bénévole.",
@@ -98,21 +89,21 @@ export default function Home() {
       title: "Protection de l'enfance",
       description: "Depuis 2014, Bab Rayan se consacre à la protection de l'enfance, assurant un environnement sûr et bienveillant pour les enfants vulnérables.",
       buttonText: "Découvrir le foyer Bab Rayan",
-      image: '/2girls.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2F2girls.webp?alt=media&token=57cd0889-0283-4562-9f75-ca477befb96a',
       link: '/protection'
     },
     {
       title: "Éducation et scolarité",
       description: "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
       buttonText: "Découvrir l'école Palmier",
-      image: '/fille.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2Ffille.webp?alt=media&token=2715100e-bc68-4e94-b55c-6d934e536a41',
       link: '/education'
     },
     {
       title: "Formation et insertion professionnelle",
       description: "Des formations offertes dans des secteurs variés tels que l'hôtellerie-restauration et les métiers du digital pour accompagner ces jeunes vers une insertion professionnelle réussie.",
       buttonText: "Découvrir le CFI",
-      image: '/cfi.jpg',
+      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2Fcfi.webp?alt=media&token=e7ac98b6-e82a-4efd-bf40-14c355ad3b84',
       link: '/formation',
     }
   ];
@@ -121,22 +112,27 @@ export default function Home() {
     {
       label: "Enfants pris en charge",
       value: 450,
-      icon: <FaChild />,
+      icon: "/chiffres/3.png",
     },
     {
       label: "Bénévoles",
-      value: 6000,
-      icon: <FaHandHoldingHeart />,
+      value: "6 000",
+      icon: "/chiffres/1.png",
     },
     {
-      label: "Familles accompagnées",
-      value: 1200,
-      icon: <FaHouseUser />,
+      label: "Familles bénéficiaires",
+      value: "1 500",
+      icon: "/chiffres/2.png",
     },
     {
-      label: "Paniers distribués",
-      value: 57000,
-      icon: <FaBox />,
+      label: "repas offerts à la cantine",
+      value: "230 000",
+      icon: "/chiffres/repats.png",
+    },
+    {
+      label: "Ftours servis",
+      value: "31 200" ,
+      icon: "/chiffres/ftour.png",
     },
   ];
 
@@ -145,33 +141,50 @@ export default function Home() {
       title: "Mécénat culturel : Éveiller les talents et les passions de nos jeunes",
       shortDesc: "L'Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture ...",
       fullDesc: "l’Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture et de l’art. À travers le programme de l’école du jeune spectateur, de nombreuses sorties au théâtre sont organisées, offrant aux enfants et adolescents une immersion unique dans l’univers des arts vivants. Au-delà du théâtre, nos jeunes participent activement à des expositions d’art, explorant les œuvres et les histoires qu’elles racontent. Des ateliers de peinture et d’expression artistique leur permettent également de développer leur sensibilité, leur créativité et leur confiance en eux. Ces initiatives culturelles sont bien plus que des moments de loisir : elles nourrissent l’imaginaire, ouvrent de nouveaux horizons et encouragent chacun de nos jeunes à croire en ses talents. Nous remercions chaleureusement tous nos partenaires pour leur engagement à rendre l’art et la culture accessibles à tous.",
-      img: "/3cards/5.jpg",
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F5.webp?alt=media&token=0f8bbf30-2ccb-42d0-a2dd-cb37eb30cf5b",
     },
     {
       title: "La Digitalisation au cœur des projets de Bab Rayan",
       shortDesc: "Aujourd'hui, plusieurs projets de l'association Bab Rayan intègrent la digitalisation comme levier d’apprentissage et d’insertion professionnelle. À l’école élémentaire ...",
       fullDesc: "Aujourd’hui, plusieurs projets de l’association Bab Rayan intègrent la digitalisation comme levier d’apprentissage et d’insertion professionnelle. À l’école élémentaire, nous sensibilisons dès le plus jeune âge à l’informatique à travers des programmes de codage interactifs, spécialement conçus pour éveiller l’intérêt des enfants pour les métiers de l’IT. Au niveau du Centre de Formation et d’Insertion (CFI), un module dédié aux outils bureautiques (Microsoft Office) a été intégré au curriculum pour renforcer les compétences techniques essentielles. En parallèle, le CFI a lancé un projet pilote ambitieux : ForsaTech.",
-      img: "/3cards/6.jpg",
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F6.webp?alt=media&token=0afbdb43-3d07-4e5d-8ba0-6d9799837273",
     },
     {
       title: "ForsaTech : Une porte d'entrée vers les métiers du numérique",
       shortDesc: "Créé pour répondre aux besoins croissant du marché digital, ForsaTech propose des formations ...",
       fullDesc: "Créé pour répondre aux besoins croissants du marché digital, ForsaTech propose des formations accélérées aux jeunes en difficulté, axées sur les compétences numériques les plus demandées. Conçu en collaboration avec des entreprises partenaires, ce programme garantit une employabilité directe grâce à une sélection rigoureuse des modules et des candidats. Forts de notre expertise dans les métiers de l’hôtellerie et de la restauration, et inspirés par le succès de ce modèle, nous sommes déterminés à élargir notre impact en ouvrant de nouvelles perspectives dans le secteur numérique. Avec ces initiatives, Bab Rayan continue de transformer les défis de la jeunesse en opportunités durables, en bâtissant un pont solide entre éducation, technologie et insertion professionnelle.",
-      img: "/3cards/7.jpg",
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F7.webp?alt=media&token=7f83b4aa-3845-43eb-be66-0d42c582c960",
     },
   ];
 
-  const blogs = [
+  const blogv = [
     {
       id: 1,
-      img: pic8,
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0",
+      title: "TelQuel parle de nous !",
+      description: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir." ,
+      text: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir. Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour. Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir."
+    },
+  ]
+
+  const blogs = [
+    // {
+    //   id: 1,
+    //   img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2Fimage.png?alt=media&token=59294c46-147b-4616-904f-db39da3841c9",
+    //   title: "TelQuel parle de nous !",
+    //   description: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables" ,
+    //   text: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir. Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour. Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir."
+    // },
+    {
+      id: 1,
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.webp?alt=media&token=b0c6a114-b3c3-4f4e-b67f-4a9bf34db295",
       title: "Remise des diplômes de la deuxième promotion du CFI",
       description: "L&apos;Association Bab Rayan a eu l&apos;honneur de célébrer ce 28 Octobre 2024, la réussite de la deuxième promotion de diplômés de son Centre de Formation et d&apos;Insertion. Le CFI propose aux jeunes issus des EPS et en situation de précarité une formation qualifiante dans les métiers de l&apos;hôtellerie et de la restauration. Aujourd&apos;hui, plus de 120 jeunes franchissent une étape clé vers l&apos;emploi, grâce au soutien de nos entreprises partenaires. <br /> Nous avons été honorés par la présence de Mr le Wali, le Gouverneur et Mme la Maire de Casablanca.",
       text: "L'Association Bab Rayan a eu l'honneur de célébrer le 28 Octobre la réussite de la deuxième promotion de diplômés de son Centre de Formation et d'Insertion. Le CFI propose aux jeunes issus des établissements de protection sociale (EPS) et en situation de précarité une formation qualifiante dans les métiers de l’hôtellerie et de la restauration. Aujourd'hui, plus de 120 jeunes franchissent une étape clé vers l'emploi, grâce au soutien de nos entreprises partenaires. Ce diplôme, délivré en partenariat avec l'Entraide Nationale, témoigne de leur persévérance et marque le début d'une carrière prometteuse. Nous avons été honorés par la présence de personnalités de marque : le Wali de Casablanca, le Gouverneur des arrondissements de Casablanca-Anfa, Mme la Maire de Casablanca. Merci infiniment à nos partenaires et à la communauté Bab Rayan pour leur soutien indéfectible."
     },
     {
       id: 2,
-      img: pic9,
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F9.webp?alt=media&token=91152e31-ccd5-4507-a2e5-295997badda8",
       title: "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
       description: "Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation diplômante en restauration, une première qui changera la vie d'une promotion engagée de jeunes en difficulté! D'ici août prochain, ils auront non seulement acquis des compétences, mais aussi trouvé un projet de vie qui leur ouvre les portes d'un avenir prometteur.",
     },
@@ -181,6 +194,9 @@ export default function Home() {
 
   const handlePlayClick = () => {
     setIsPlaying(true);
+  };
+  const handlePlayClick1 = () => {
+    setIsPlaying1(true);
   };
 
   const [selectedArticle, setSelectedArticle] = useState(null);
@@ -229,7 +245,7 @@ export default function Home() {
                     {/* Background Image */}
                     <Image
                       src={slide.image}
-                      className="absolute block w-full h-full"
+                      className="absolute block w-full h-full object-cover loading='lazy'"
                       // loading="lazy"
                       alt={`Slide ${index + 1}`}
                       priority={index === 0}
@@ -239,7 +255,7 @@ export default function Home() {
                     {/* Text Content */}
                     <motion.div
                       variants={{}}
-                      className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-40 max-w-[300px] md:max-w-xl text-white p-4 md:p-0"
+                      className="absolute right-4 md:right-10 top-2/3 md:top-1/2 -translate-y-1/2 z-40 max-w-[300px] md:max-w-xl text-white p-4 md:p-0"
                     >
                       {/* Icon */}
                       {slide.picto && (
@@ -395,7 +411,16 @@ export default function Home() {
           variants={fadeIn}
           className="bg-[#ef2323] py-8 px-5 shadow-inner overflow-hidden"
         >
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-4">
+          <motion.h1
+                      className="p-4 text-xl md:text-3xl font-bold text-white text-center mb-8 relative uppercase"
+                      variants={fadeIn}
+                      initial="initial"
+                      animate="animate"
+                    >
+                      Chiffres clés annuels
+                      <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+                    </motion.h1>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 justify-center items-center gap-4">
             {chiffres.map((stat, index) => (
               <motion.div
                 key={index}
@@ -404,7 +429,7 @@ export default function Home() {
                 className="flex flex-col items-center text-center rounded-lg p-3 m-2 md:flex-1 md:basis-5/12 xl:basis-1/5"
               >
                 <span className="text-[#ffffff] text-6xl text-center">
-                  {stat.icon}
+                <img src={stat.icon} className="w-44 h-36" alt="" />
                 </span>
                 <motion.div
                   className="flex items-center justify-center mt-2"
@@ -412,14 +437,14 @@ export default function Home() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 * index }}
                 >
-                  <span className="text-[#ffffff] text-6xl font-bold">
-                    +
+                  <span className="text-[#ffffff] text-3xl md:text-4xl font-extrabold">
+                    + {stat.value}
                   </span>
-                  <CountUp
+                  {/* <CountUp
                     end={stat.value}
                     duration={2}
                     className="text-white text-5xl font-bold"
-                  />
+                  /> */}
                 </motion.div>
                 <span className="text-[#ffffff] mt-2">{stat.label}</span>
               </motion.div>
@@ -510,10 +535,10 @@ export default function Home() {
                 initial="initial"
                 animate="animate"
               >
-                <Image
-                  src={pic4}
+                <img
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan3.webp?alt=media&token=cee70e0d-8cc2-4143-a7d8-d50d947bf59b"
                   alt="Les Ftours Bab Rayan"
-                  className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl object-cover"
+                  className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
                 />
               </motion.div>
 
@@ -542,14 +567,14 @@ export default function Home() {
                   l&apos;esprit de solidarité du Ramadan est alors au
                   rendez-vous, grâce à vos dons !
                 </motion.p>
-                <Link href="/actions-solidaires" passHref> {/* Add the link to the "Actions Solidaires" page */}
+                <Link href="/actions-solidaires" passHref> 
                   <motion.button
                     variants={scaleIn} // Apply scaleIn animation
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-block bg-yellow-400 text-red-600 font-bold px-5 md:px-7 py-2 rounded-xl hover:bg-yellow-500 transition cursor-pointer"
+                    className="inline-block bg-yellow-300 text-red-600 font-bold px-5 mr-4 md:px-7 py-2 rounded-xl hover:bg-yellow-400 transition cursor-pointer"
                   >
-                    Voir plus
+                    Voir Plus
                   </motion.button>
                 </Link>
 
@@ -581,7 +606,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {articles.map((article, index) => (
               <motion.div key={index} className="bg-white rounded-lg shadow-lg">
-                <img src={article.img} className="h-[45vh] object-cover" alt={article.title} style={{ width: '100%' }} height={300} />
+                <img src={article.img} className="h-[45vh] object-cover" alt={article.title} style={{ width: '100%' }} height={300} loading="lazy" />
                 <div className="p-6">
                   <p className="text-3xl font-bold text-center pb-4">{article.title}</p>
                   <p className="pb-6 text-center">{article.shortDesc}</p>
@@ -635,7 +660,7 @@ export default function Home() {
 
         <div>
           <motion.h1
-            className="p-4 text-2xl md:text-4xl font-bold text-center mb-8 relative"
+            className="p-4 text-2xl md:text-4xl font-bold text-center my-8 relative"
             variants={fadeIn} // Apply fadeIn animation
             initial="initial"
             animate="animate"
@@ -644,19 +669,56 @@ export default function Home() {
             <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </motion.h1>
 
-          {blogs.map((article, index) => (
+            
+          {blogv.map((articlev, index) => (
             <motion.div
-              className="flex flex-col items-center bg-pink-100 gap-9 px-4"
+              className="flex flex-col items-center gap-9 md:px-4"
               variants={staggerContainer} 
               key={index}
               initial="initial"
               animate="animate"
             >
               <motion.div
-                className="p-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-[70%]" variants={fadeIn} >
+                className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl" variants={fadeIn} >
                 {/* Image Section */}
-                <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn}>
-                  <Image src={article.img} alt="Graduation" className="rounded-xl w-full h-auto object-cover" />
+                <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn} loading="lazy">
+                <video className="w-full md:h-[310px] rounded-xl" controls>
+                        <source src={articlev.img} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                  {/* <img src={articlev.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" /> */}
+                </motion.div>
+
+                {/* Text Section */}
+                <motion.div className="text-center md:text-left" variants={fadeIn}>
+                  <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
+                    {articlev.title}
+                  </h1>
+                  <p className="text-gray-700 mb-4 italic text-sm md:text-base" dangerouslySetInnerHTML={{ __html: articlev.description }}>
+                  </p>
+                  <motion.button onClick={() => { window.open('https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s', '_blank') }}
+                  className="inline-block bg-yellow-300 rounded-full text-red-500 font-semibold px-4 py-2 transition hover:bg-yellow-400"
+                    variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} >
+                    Découvrir plus
+                  </motion.button>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          ))}
+          {/* 222222222222222222222222222222$$$$$$$$$$$$$$$#################### */}
+          {blogs.map((article, index) => (
+            <motion.div
+              className="flex flex-col items-center gap-9 md:px-4"
+              variants={staggerContainer} 
+              key={index}
+              initial="initial"
+              animate="animate"
+            >
+              <motion.div
+                className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl" variants={fadeIn} >
+                {/* Image Section */}
+                <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn} loading="lazy">
+                  <img src={article.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" />
                 </motion.div>
 
                 {/* Text Section */}
@@ -692,7 +754,7 @@ export default function Home() {
           )}
 
           {/* Link to All News */}
-          <div className="p-6 flex items-center justify-center">
+          <div className="p-6 flex items-center md:my-4 justify-center">
             <motion.a href="/blog" variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105" >
               Voir toutes les Actualités

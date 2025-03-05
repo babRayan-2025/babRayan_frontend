@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import cookingImage from "../../../assets/PHOTO/12.jpg";
 // import presidentImage from "../../../assets/PHOTO/members/Fatima Zohra Ratibe.jpeg";
-import groupPhoto from "../../../assets/PHOTO/6.jpg";
 import lampe from "../../../assets/PNG/lampe.png";
 import sign from "../../../assets/PNG/flaiche.png";
 import soleil from "../../../assets/PNG/SOLEIL.png";
@@ -13,14 +11,7 @@ import cloud from "../../../assets/PNG/cloud.png";
 import pen from "../../../assets/PNG/pen.png";
 import book from "../../../assets/PNG/book.png";
 import star from "../../../assets/PNG/yellow_star.png";
-import {
-  FaHandsHelping,
-  FaFistRaised,
-  FaBalanceScale,
-  FaHeart,
-  FaLightbulb,
-} from "react-icons/fa";
-//i3adat nadar
+
 
 export default function About() {
   const [showMore, setShowMore] = useState(false);
@@ -46,11 +37,11 @@ export default function About() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src={cookingImage}
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2F12.jpg?alt=media&token=92fc5f75-54e6-488a-89d9-b86f9f7595ff"
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
-            className="opacity-80 "
+            className="opacity-80 object-cover"
           />
         </div>
         <motion.div
@@ -92,7 +83,7 @@ export default function About() {
           >
             <div className="relative w-80 h-60 rounded-xl border-3 border-red-500 overflow-hidden">
               <Image
-                src="/members/presedente.jpeg"
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2Fpresedente.jpeg?alt=media&token=8b80bf81-19f6-4e8c-b37d-d8f55afb5f44"
                 alt="Présidente"
                 layout="fill"
                 objectfit="cover"
@@ -113,7 +104,7 @@ export default function About() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-4">
+            <p className="text-gray-800 md:text-lg font-semibold leading-relaxed mb-4">
               Au cours de cette décennie, notre dévouement inébranlable envers
               la protection, l&apos;éducation, la formation, et l&apos;insertion
               professionnelle des enfants en difficulté a été la pierre
@@ -122,14 +113,14 @@ export default function About() {
               fiers de reconnaître Sa Majesté le Roi Mohammed VI comme une
               source inépuisable d&apos;inspiration et de motivation.
             </p>
-            <p className="text-gray-800 text-lg font-semibold leading-relaxed mb-6">
+            <p className="text-gray-800 md:text-lg font-semibold leading-relaxed mb-6">
               Les initiatives de Bab Rayan ont évolué, démontrant notre
               engagement croissant envers la construction d&apos;un avenir
               prometteur pour les enfants que nous servons.
             </p>
             {showMore && (
               <motion.p
-                className="text-gray-800 text-lg font-semibold leading-relaxed mb-6"
+                className="text-gray-800 md:text-lg font-semibold leading-relaxed mb-6"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -149,7 +140,7 @@ export default function About() {
               </motion.p>
             )}
             <motion.button
-              className="bg-yellow-300 hover:bg-yellow-500 text-red-600 font-bold py-2 px-4 rounded-xl"
+              className="bg-yellow-300 hover:bg-yellow-400 text-red-600 font-bold py-2 px-4 rounded-xl"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setShowMore(!showMore)}
@@ -228,7 +219,7 @@ export default function About() {
                 >
                   <div className="overflow-hidden rounded-xl shadow-lg">
                     <Image
-                      src={groupPhoto}
+                      src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2F6.jpg?alt=media&token=823c0780-9fe8-462c-8b94-5ec8ea249c50"
                       alt="Group of children"
                       width={500}
                       height={300}
@@ -239,13 +230,13 @@ export default function About() {
 
                 {/* Right Side: Text */}
                 <motion.div
-                  className="text-left pt-16 md:my-auto"
+                  className="text-left md:pt-16 md:my-auto"
                   initial={{ x: 50, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <p className="text-gray-800 text-xl md:text-2xl italic font-bold leading-relaxed">
+                  <p className="text-gray-800 text-xl text-center md:text-start md:text-2xl italic font-bold leading-relaxed">
                     Notre mission est de protéger, d’éduquer et de former les
                     enfants et jeunes en difficulté pour leur offrir un avenir
                     digne, autonome et enrichissant. Grâce à nos programmes
