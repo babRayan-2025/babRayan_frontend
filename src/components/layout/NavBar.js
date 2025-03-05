@@ -22,6 +22,10 @@ export default function NavBar() {
     setOpenDropdown(null); // Close menu and dropdowns
   };
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   const navItems = [
     {
       name: "Nous connaître",
@@ -149,7 +153,7 @@ export default function NavBar() {
                     className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#ffffff] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150" >
                     Admin Dashboard
                   </Link>
-                  <button className="button" onClick={() => localStorage.clear()}> logout</button>
+                  <button className="button" onClick={() => (logout())}> logout</button>
                 </>
               ) : null
             }

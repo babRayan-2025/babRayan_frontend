@@ -37,6 +37,8 @@ export default function Login() {
     //   setLoading(false);
     // }
     localStorage.setItem("userID", "mouad zwine");
+    router.push("/dashboard");
+
   };
 
   return (
