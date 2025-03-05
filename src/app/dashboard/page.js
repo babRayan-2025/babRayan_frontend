@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { useRouter } from "next/navigation";
 import { FaUsers, FaDollarSign, FaHandshake, FaChild } from 'react-icons/fa';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
@@ -28,6 +29,15 @@ export default function Home() {
     ],
   };
 
+  // for protected route 
+  const router = useRouter();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+    if (!user || user.role !== "admin") {
+      router.push("/login");
+    }
+  }, [router]);
   return (
     <div className="home_dashboard container mt-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">

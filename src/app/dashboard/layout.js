@@ -34,12 +34,12 @@ export default function DashboardLayout({ children }) {
     { name: 'Administateurs', icon: <FaUsers />, path: '/admins' },
     { name: 'Settings', icon: <IoSettingsSharp />, path: '/settings' },
   ];
-
+// private route
   const handleLogout = () => {
-    // empty local storage
-    localStorage.clear();
-    window.location.href = '/';
-  }
+    localStorage.removeItem("user");
+    document.cookie = "auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    router.push("/login");
+  };
   return (
     <section className='dashboard'>
       <div className="fledx min-h-screen">
@@ -76,10 +76,10 @@ export default function DashboardLayout({ children }) {
 
             <div className="flex items-center gap-4" id="navbarSupportedContent">
               <div>
-                <a href="/"> <span>⬅</span> Revenir au siteweb </a>
+                <Link href="/"> <span>⬅</span> Revenir au siteweb </Link>
               </div>
               <div>
-                <a className="p-2 deconnexion" href="#!" onClick={handleLogout}> Déconnexion </a>
+                <a className="p-2 deconnexion" href="/login" onClick={handleLogout}> Déconnexion </a>
               </div>
             </div>
           </header>
