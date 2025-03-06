@@ -238,8 +238,18 @@ export default function CmiDonation() {
     image: "/donation/plat.png",
   };
 
-  const paymentMethods = [
-    { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
+  const paymentMethods = [{
+    id: 4,
+    label: "PayPal",
+    image: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
+    desc: "Faire un don par virement bancaire",
+  },
+  {
+    id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f",
+    img2: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Fsecure_code_logo.png?alt=media&token=c1438943-9627-43b2-9afd-62fc7588648c",
+    img3: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Ftn_verified_by_visa.png?alt=media&token=b2590060-ed4c-4a12-914d-3ae4f0a6200d",
+    desc: "Payer avec CMI"
+  },
   ];
 
 
@@ -273,10 +283,15 @@ export default function CmiDonation() {
         onClick={onClose}
       >
         <div
-          className="bg-white rounded-3xl shadow-lg text-center p-6 w-[90%]"
+          className="bg-white rounded-3xl shadow-lg text-center p-6 w-[80%]"
           onClick={(e) => e.stopPropagation()}
         >
-          <h2 className="text-xl font-semibold my-4">Terms and Conditions</h2>
+          <div className="flex justify-between pb-2 items-center">
+            <img className="w-22 h-14" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Fsecure_code_logo.png?alt=media&token=c1438943-9627-43b2-9afd-62fc7588648c" alt="" />
+            <h2 className="text-2xl font-bold">Termes et conditions</h2>
+            <img className="w-22 h-14" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Ftn_verified_by_visa.png?alt=media&token=b2590060-ed4c-4a12-914d-3ae4f0a6200d" alt="" />
+          </div>
+
           <div
             ref={textContainerRef}
             onScroll={handleScroll}
@@ -289,7 +304,13 @@ export default function CmiDonation() {
             disabled={!isScrolledToBottom}
             onClick={() => acceptTermsFunction()}
           >
-            Accept
+            J'accepte les termes et conditions
+          </button>
+          <button
+            className="mt-4 ms-2 px-6 py-2 my-5 rounded-lg text-white bg-gray-400 cursor-not-allowed"
+            onClick={onClose}
+          >
+            Annuler
           </button>
         </div>
       </div>
@@ -432,7 +453,7 @@ export default function CmiDonation() {
                 {paymentMethods.map((method) => (
                   <div key={method.id} className="flex flex-col items-center gap-2" >
                     <motion.button key={method.id} variants={buttonVariants} whileHover="hover" whileTap="tap"
-                      className={`bg-white p-4  rounded-2xl justify-items-center shadow-md ${paymentMethod === method.id
+                      className={`bg-white p-4  rounded-2xl justify-items-center h-auto shadow-md ${paymentMethod === method.id
                         ? "bg-yellow-300 text-red-700 font-bold"
                         : "bg-red-700 text-white font-bold"
                         }`}
@@ -445,6 +466,13 @@ export default function CmiDonation() {
                           : "object-cover"
                           }`}
                       />
+                      {method && method.img2 && (
+                        <div className="flex mt-1 items-center justify-center space-x-2">
+                          <img src={method.img2} alt={method.label} className="w-10 h-7" />
+                          <img src={method.img3} alt={method.label} className="w-10 h-7" />
+                        </div>
+                      )}
+
                     </motion.button>
                     <span className="text-xs block mt-0 text-center text-white">
                       {method.label}

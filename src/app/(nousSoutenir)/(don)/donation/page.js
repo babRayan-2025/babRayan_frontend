@@ -414,7 +414,7 @@ export default function Donation() {
       image: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
       desc: "Faire un don par virement bancaire",
     },
-    { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fcredit%20card.png?alt=media&token=9c8b0d64-d25d-4b1d-b12d-e62cf3c97891", desc: "Payer avec CMI" },
+    { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f", desc: "Payer avec CMI" },
   ];
 
   const Modal = ({ method, amount, onClose }) => {
