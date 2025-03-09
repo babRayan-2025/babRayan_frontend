@@ -31,13 +31,21 @@ export default function Home() {
 
   // for protected route 
   const router = useRouter();
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "null");
-    if (!user || user.role !== "admin") {
-      router.push("/login");
+    // Check if userId exists
+    if (!user || !user.userId) {
+      router.push("/login"); // Redirect to login if no userId
     }
   }, [router]);
+
+
+
+  // Only render dashboard if authenticated (implicitly handled by useEffect)
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+  if (!user || !user.userId) {
+    return null; 
+  }
   return (
     <div className="home_dashboard container mt-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">

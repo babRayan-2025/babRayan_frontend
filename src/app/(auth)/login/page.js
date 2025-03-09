@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -10,35 +10,38 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+    if (user && user.userId) {
+      router.push("/dashboard");
+    }
+  }, [router]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setLoading(true);
-    // setError(null);
+    setLoading(true);
+    setError(null);
 
-    // const mockEmail = "admin@babRayan.com";
-    // const mockPassword = "password123";
+    const mockEmail = "admin@babRayan.com";
+    const mockPassword = "password123";
 
-    // if (formData.email === mockEmail && formData.password === mockPassword) {
-    //   const user = {
-    //     email: formData.email,
-    //     role: "admin",
-    //     loggedInAt: new Date().toISOString(),
-    //   };
-    //   localStorage.setItem("user", JSON.stringify(user));
-    //   // Set a cookie for middleware
-    //   document.cookie = "auth_token=logged-in; path=/; SameSite=Strict";
-    //   router.push("/dashboard");
-    // } else {
-    //   setError("Invalid email or password");
-    //   setLoading(false);
-    // }
-    localStorage.setItem("userID", "mouad zwine");
-    router.push("/dashboard");
-
+    if (formData.email === mockEmail && formData.password === mockPassword) {
+      const user = {
+        userId: "admin123",
+        email: formData.email,
+        role: "admin",
+        loggedInAt: new Date().toISOString(),
+      };
+      localStorage.setItem("user", JSON.stringify(user));
+      router.push("/dashboard");
+    } else {
+      setError("Invalid email or password");
+      setLoading(false);
+    }
   };
 
   return (
@@ -95,7 +98,7 @@ export default function Login() {
             </div>
             <div className="text-sm text-right">
               <a href="javascript:void(0);" className="text-blue-600 font-semibold hover:underline">
-                Forgot your password?
+                Forgotten your password?
               </a>
             </div>
             <div>

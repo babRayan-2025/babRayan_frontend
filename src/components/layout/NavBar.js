@@ -146,17 +146,37 @@ export default function NavBar() {
             >
               S`incrire
             </Link> */}
-            {
-              userId ? (
-                <>
-                  <Link href="/dashboard"
-                    className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#ffffff] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150" >
-                    Admin Dashboard
-                  </Link>
-                  <button className="button" onClick={() => (logout())}> logout</button>
-                </>
-              ) : null
-            }
+          {userId ? (
+        <>
+          <Link
+            href="/dashboard"
+            className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#ffffff] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"
+          >
+            Admin Dashboard
+          </Link>
+          <button
+            onClick={logout} 
+            className="bg-red-600 px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
+          >
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <Link
+            href="/login"
+            className="text-white text-sm hover:text-gray-200"
+          >
+            Se Connecter
+          </Link>
+          <Link
+            href="/register"
+            className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-gray-100 transition duration-150"
+          >
+            S’inscrire
+          </Link>
+        </>
+      )}
             <Link
               href="/donation"
               className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"

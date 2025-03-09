@@ -12,34 +12,54 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function DashboardLayout({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(null); // Start as null
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const handleResize = () => {
       setIsSidebarOpen(window.innerWidth >= 768);
     };
 
-    handleResize(); // Set initial state
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user && user.role === "admin") {
+      setLoading(false);
+    } else {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
+
+
+    handleResize(); 
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (isSidebarOpen === null) {
-    return null; // Avoid rendering until client state is determined
+  if (isSidebarOpen === null || loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="flex flex-col items-center">
+          <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
   }
+
   const menuItems = [
     { name: 'Dashboard', icon: <MdOutlineSpaceDashboard />, path: '/' },
     { name: 'Actualités', icon: <ImNewspaper />, path: '/news' },
-    { name: 'Donations',  path: '/news' },
+    { name: 'Donations', path: '/news' },
     { name: 'Administateurs', icon: <FaUsers />, path: '/admins' },
     { name: 'Settings', icon: <IoSettingsSharp />, path: '/settings' },
   ];
-// private route
+
   const handleLogout = () => {
     localStorage.removeItem("user");
     document.cookie = "auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     router.push("/login");
   };
+
   return (
     <section className='dashboard'>
       <div className="fledx min-h-screen">
