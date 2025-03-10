@@ -196,9 +196,11 @@ export default function Donation() {
   };
 
   const handleAmountChange = (amount) => {
-    setSelectedAmount(amount);
+    const formattedAmount = `${amount} DH`;
+    // console.log("Selected amount:", formattedAmount);
+    setSelectedAmount(formattedAmount);
     setCustomAmount("");
-    updateDonationDetails(amount, donationType);
+    updateDonationDetails(formattedAmount, donationType);
     setShowThirdCard(true);
   };
 
@@ -385,6 +387,8 @@ export default function Donation() {
     ],
     image: "/donation/plat.png",
   };
+
+  // console.log("Selected content:", selectedContent); 
 
   const paymentMethods = [
     {
