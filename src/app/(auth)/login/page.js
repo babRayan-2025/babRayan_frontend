@@ -3,12 +3,16 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { notification } from 'antd';
+import { Mail, Lock } from 'lucide-react';
+import './Login.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const router = useRouter();
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState(''); const [error, setError] = useState(null);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "null");
@@ -17,106 +21,112 @@ export default function Login() {
     }
   }, [router]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        })
+      });
+      const data = await response.json();
+      if (data.status) {
+        localStorage.setItem('userID', data.data.user.id);
+        localStorage.setItem('userName', data.data.user.name);
+        toast.success('Connexion réussie !');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 2000);
+      } else {
+        toast.error('Une erreur est survenue lors du paiement.');
+        console.log(data);
 
-    const mockEmail = "admin@babRayan.com";
-    const mockPassword = "password123";
-
-    if (formData.email === mockEmail && formData.password === mockPassword) {
-      const user = {
-        userId: "admin123",
-        email: formData.email,
-        role: "admin",
-        loggedInAt: new Date().toISOString(),
-      };
-      localStorage.setItem("user", JSON.stringify(user));
-      router.push("/dashboard");
-    } else {
-      setError("Invalid email or password");
-      setLoading(false);
+      }
+    } catch (error) {
+      console.error(error);
     }
-  };
+  }
 
+
+  const handleForgotPassword = async (event) => {
+    event.preventDefault();
+    console.log("password reset");
+
+  }
   return (
-    <div className="font-[sans-serif] bg-gradient-to-r from-[#000000] to-white dark:bg-gray-900 text-gray-800">
-      <div className="min-h-screen flex flex-col items-center justify-center lg:p-6 p-4">
-        <div className="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
-          <div>
-            <Link href="javascript:void(0)">
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481"
-                alt="logo"
-                className="w-52 mb-12 inline-block"
-              />
-            </Link>
-            <h2 className="text-4xl font-extrabold lg:leading-[50px] text-white">
-              Seamless Login for Exclusive Access
-            </h2>
-            <p className="text-sm mt-6 text-white">
-              Immerse yourself in a hassle-free login journey with our intuitively designed login form. Effortlessly access your account.
-            </p>
-            <p className="text-sm mt-6 text-white">
-              Don`t have an account{" "}
-              <Link href="/register" className="text-white font-semibold underline ml-1">
-                Register here
-              </Link>
-            </p>
-          </div>
+    <div className="login-container">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />      {/* Animations d'arrière-plan */}
+      <div className="login-background">
+        <div className="animated-circle circle-1"></div>
+        <div className="animated-circle circle-2"></div>
+        <div className="animated-circle circle-3"></div>
+      </div>
 
-          <form onSubmit={handleSubmit} className="bg-white rounded-xl px-6 py-8 space-y-6 max-w-md md:ml-auto w-full">
-            <h3 className="text-3xl font-extrabold mb-12">Sign in</h3>
-            <div>
-              <input
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="bg-gray-100 focus:bg-transparent w-full text-sm px-4 py-3.5 rounded-md outline-gray-800"
-                placeholder="Email address"
-              />
+      <div className="login-card">
+        {/* Section features */}
+        <div className="login-features">
+          <h2 className="mb-5 text-center flex flex-col items-center">
+            Bienvenue sur <br />
+            <img className="mt-2" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481" alt="Logo" />
+          </h2>
+
+          <div className="feature-item">
+            🎁 Faites un don pour aider un enfant
+          </div>
+          <div className="feature-item">
+            👋 Parrainez un enfant dans le besoin
+          </div>
+          <div className="feature-item">
+            ❤️ Devenez bénévole
+          </div>
+        </div>
+
+        {/* Section formulaire */}
+        <div className="login-form-section">
+
+          <h1 className="login-title">Connexion 🔐</h1>
+
+          <form onSubmit={handleLogin}>
+            <div className="form-group">
+              <Mail className="input-icon" size={20} />
+              <input type="email" className="form-input" onChange={(e) => { setEmail(e.target.value) }} placeholder="Email" required />
             </div>
-            <div>
-              <input
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                value={formData.password}
-                onChange={handleChange}
-                className="bg-gray-100 focus:bg-transparent w-full text-sm px-4 py-3.5 rounded-md outline-gray-800"
-                placeholder="Password"
-              />
+
+            <div className="form-group">
+              <Lock className="input-icon" size={20} />
+              <input type="password" className="form-input" onChange={(e) => { setPassword(e.target.value) }} placeholder="Mot de passe" required />
             </div>
-            <div className="text-sm text-right">
-              <a href="javascript:void(0);" className="text-blue-600 font-semibold hover:underline">
-                Forgotten your password?
+
+            <div className="form-group text-end">
+              <u><span style={{ cursor: 'pointer' }} onClick={handleForgotPassword}>Mot de passe oublié ?</span></u>
+            </div>
+
+            <button type="submit" className="login-button bg-[#cc2229] hover:bg-[#cc2228b6]">
+              Se connecter
+            </button>
+
+            {/* <p className="text-center mt-4">
+              Pas encore de compte ?{' '}
+              <a href="/register" className="auth_btn">
+                <u>S'inscrire</u>
               </a>
-            </div>
-            <div>
-              <button
-                type="submit"
-                disabled={loading}
-                className={`w-full shadow-xl py-3 px-6 text-sm font-semibold rounded-md text-white bg-gray-800 hover:bg-[#222] focus:outline-none ${
-                  loading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                {loading ? "Logging in..." : "Log in"}
-              </button>
-            </div>
-            {error && <p className="text-sm text-red-500 text-center">{error}</p>}
-            <p className="my-6 text-sm text-gray-400 text-center">or continue with</p>
-            <div className="space-x-6 flex justify-center">
-              {/* Social login buttons unchanged */}
-            </div>
+            </p> */}
           </form>
         </div>
       </div>

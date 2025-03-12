@@ -2,16 +2,25 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import deco from "../../assets/PNG/SPLASH.png";
+import { DownOutlined, SettingOutlined ,LogoutOutlined  } from '@ant-design/icons';
+import { Dropdown, Space } from 'antd';
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+  const [userName, setUserName] = useState(null);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user && user.role === "admin") {
-      setIsAdmin(true);
+    const user = localStorage.getItem("userID");
+    const userName = localStorage.getItem("userName");
+
+    if (user && user.length > 0 && user !== "null" && user !== "undefined") {
+      setIsAuth(true);
+    }
+
+    if (userName && userName.length > 0 && userName !== "null" && userName !== "undefined") {
+      setUserName(userName);
     }
   }, []);
 
@@ -28,8 +37,9 @@ export default function NavBar() {
     setIsMenuOpen(false);
     setOpenDropdown(null); // Close menu and dropdowns
   };
+  
 
-  const logout = () => {
+  const handleLogout = () => {
     localStorage.clear();
     window.location.href = "/";
   };
@@ -79,6 +89,7 @@ export default function NavBar() {
     },
     { name: "Nous contacter", href: "/contact_us" },
   ];
+
 
   return (
     <header className="shadow-md bg-[#cc2229] font-[sans-serif] relative z-50">
@@ -142,9 +153,38 @@ export default function NavBar() {
           </nav>
           {/* Right side - Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            {isAdmin ? (
+            {isAuth ? (
               <>
-                <Link
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: '1',
+                        onClick: () => windows.location.href = '/dashboard',
+                        label: 'Admin Dashboard',
+                        icon: <SettingOutlined />,
+                      },
+                      {
+                        key: '2',
+                        label: 'Déconnexion',
+                        onClick: handleLogout,
+                        icon: <LogoutOutlined />,
+                      }
+                    ],
+                  }}
+                >
+                  <a                   
+                  className=" px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
+ 
+                  style={{ cursor: 'pointer' }} onClick={(e) => e.preventDefault()}>
+                    <Space>
+                      Hi,{userName}
+                      <DownOutlined />
+                    </Space>
+                  </a>
+                </Dropdown>
+
+                {/* <Link
                   href="/dashboard"
                   className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#ffffff] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"
                 >
@@ -155,23 +195,26 @@ export default function NavBar() {
                   className="bg-red-600 px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
                 >
                   Logout
-                </button>
+                </button> */}
               </>
             ) : (
               <>
                 <Link
                   href="/login"
-                  className="text-white text-sm hover:text-gray-200"
+                  // className="text-white text-sm hover:text-gray-200"
+                  className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-gray-100 transition duration-150"
                 >
                   Se Connecter
                 </Link>
-                <Link
+                {/* <Link
                   href="/register"
                   className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-gray-100 transition duration-150"
                 >
                   S’inscrire
-                </Link>
-                <Link
+                </Link> */}
+              </>
+            )}
+            <Link
               href="/donation"
               className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"
             >
@@ -183,8 +226,7 @@ export default function NavBar() {
               className="w-5 md:w-10 absolute top-[-5%] md:top-[-2%] left-[95%] md:left-[95%]"
               alt="Les Ftours Bab Rayan"
             />
-              </>
-            )}
+
           </div>
           {/* Mobile menu button */}
           <div className="lg:hidden">
