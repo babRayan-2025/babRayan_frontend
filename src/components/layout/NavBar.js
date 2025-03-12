@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import deco from "../../assets/PNG/SPLASH.png";
+import { DownOutlined, SettingOutlined ,LogoutOutlined  } from '@ant-design/icons';
+import { Dropdown, Space } from 'antd';
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const userID = localStorage.getItem("userID") || null;
+  const userName = localStorage.getItem("userName") || null;
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -19,6 +24,12 @@ export default function NavBar() {
   const closeMenu = () => {
     setIsMenuOpen(false);
     setOpenDropdown(null); // Close menu and dropdowns
+  };
+  
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = "/";
   };
 
   const navItems = [
@@ -50,7 +61,7 @@ export default function NavBar() {
         { name: "Faire un DON", href: "/donation" },
         { name: "Parrainer un enfant", href: "/parrainage" },
         { name: "Devenir partenaire", href: "/devenir_partenaire" },
-        { name: "Devenir bénévole", href: "/benevole" },
+        { name: "Devenir bénévole", href: "/benevole" },
         { name: "Partenaires", href: "/partenaires" },
       ],
     },
@@ -66,6 +77,7 @@ export default function NavBar() {
     },
     { name: "Nous contacter", href: "/contact_us" },
   ];
+
 
   return (
     <header className="shadow-md bg-[#cc2229] font-[sans-serif] relative z-50">
@@ -129,18 +141,67 @@ export default function NavBar() {
           </nav>
           {/* Right side - Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* <Link
-              href="/login"
-              className="text-white text-sm hover:text-gray-200"
-            >
-              Se Connecter
-            </Link>
-            <Link
-              href="/register"
-              className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-gray-100 transition duration-150"
-            >
-              S`incrire
-            </Link> */}
+            {userID ? (
+              <>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: '1',
+                        onClick: () => window.location.href = '/dashboard',
+                        label: 'Admin Dashboard',
+                        icon: <SettingOutlined />,
+                      },
+                      {
+                        key: '2',
+                        label: 'Déconnexion',
+                        onClick: handleLogout,
+                        icon: <LogoutOutlined />,
+                      }
+                    ],
+                  }}
+                >
+                  <a                   
+                  className=" px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
+ 
+                  style={{ cursor: 'pointer' }} onClick={(e) => e.preventDefault()}>
+                    <Space>
+                      Hi,{userName}
+                      <DownOutlined />
+                    </Space>
+                  </a>
+                </Dropdown>
+
+                {/* <Link
+                  href="/dashboard"
+                  className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#ffffff] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"
+                >
+                  Admin Dashboard
+                </Link>
+                <button
+                  onClick={logout}
+                  className="bg-red-600 px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
+                >
+                  Logout
+                </button> */}
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  // className="text-white text-sm hover:text-gray-200"
+                  className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-gray-100 transition duration-150"
+                >
+                  Se Connecter
+                </Link>
+                {/* <Link
+                  href="/register"
+                  className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-gray-100 transition duration-150"
+                >
+                  S’inscrire
+                </Link> */}
+              </>
+            )}
             <Link
               href="/donation"
               className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"
@@ -153,6 +214,7 @@ export default function NavBar() {
               className="w-5 md:w-10 absolute top-[-5%] md:top-[-2%] left-[95%] md:left-[95%]"
               alt="Les Ftours Bab Rayan"
             />
+
           </div>
           {/* Mobile menu button */}
           <div className="lg:hidden">
@@ -252,18 +314,6 @@ export default function NavBar() {
             </div>
           ))}
           <div className="mt-4 space-y-2 px-3">
-            {/* <Link
-              href="/login"
-              className="block text-white hover:bg-[#b41e24] px-3 py-2 rounded-md"
-            >
-              Se Connecter
-            </Link>
-            <Link
-              href="/register"
-              className="block bg-white text-center px-3 py-2 rounded-md text-[#cc2229] font-medium hover:bg-gray-100"
-            >
-              S`incrire
-            </Link> */}
             <Link
               href="/donation"
               className="block bg-[#f3ca31] text-center px-3 py-2 rounded-md text-[#cc2229] font-medium hover:bg-[#e5b82c]"
