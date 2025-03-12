@@ -71,7 +71,7 @@ export default function Donation() {
 
   // Content for different amounts
   const contentByAmount = {
-    "100 DH": {
+    "100": {
       title: 'Parrainage "Sport"',
       description: "Offrez-lui l'opportunité de s'épanouir pleinement :",
       items: [
@@ -91,7 +91,7 @@ export default function Donation() {
       ],
       image: "/donation/Sport.png",
     },
-    "200 DH": {
+    "200": {
       title: 'Parrainage "Santé"',
       description: "Prenez soin de sa santé, un cadeau pour la vie :",
       items: [
@@ -112,7 +112,7 @@ export default function Donation() {
       ],
       image: "/donation/santé.png",
     },
-    "300 DH": {
+    "300": {
       title: 'Parrainage "Habillement"',
       description: "Offrez-lui la dignité et le confort à chaque saison :",
       items: [
@@ -128,7 +128,7 @@ export default function Donation() {
       ],
       image: "/donation/Vetements.png",
     },
-    "500 DH": {
+    "500": {
       title: 'Parrainage "Essentiel"',
       description: "Apportez un soutien vital à un enfant :",
       items: [
@@ -147,7 +147,7 @@ export default function Donation() {
       ],
       image: "/donation/plat.png",
     },
-    "800 DH": {
+    "800": {
       title: 'Parrainage "Education"',
       description: "Investissez dans l'avenir d'un enfant :",
       items: [
@@ -166,7 +166,7 @@ export default function Donation() {
       ],
       image: "/donation/edu.png",
     },
-    "1900 DH": {
+    "1900": {
       title: 'Parrainage "Envol"',
       description: "Transformez un mois entier dans la vie d'un enfant :",
       items: [
@@ -196,11 +196,11 @@ export default function Donation() {
   };
 
   const handleAmountChange = (amount) => {
-    const formattedAmount = `${amount} DH`;
+    // const formattedAmount = `${amount} DH`;
     // console.log("Selected amount:", formattedAmount);
-    setSelectedAmount(formattedAmount);
+    setSelectedAmount(amount);
     setCustomAmount("");
-    updateDonationDetails(formattedAmount, donationType);
+    updateDonationDetails(amount, donationType);
     setShowThirdCard(true);
   };
 
@@ -388,7 +388,6 @@ export default function Donation() {
     image: "/donation/plat.png",
   };
 
-  // console.log("Selected content:", selectedContent); 
 
   const paymentMethods = [
     {
@@ -690,7 +689,7 @@ export default function Donation() {
                       whileHover="hover"
                       className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
                     >
-                      {donationDetails.amount}
+                      {donationDetails.amount} DH
                     </motion.div>
                   </div>
                 )}
@@ -750,7 +749,7 @@ export default function Donation() {
                       whileHover="hover"
                       className="bg-red-700 text-yellow-300 py-1 px-4 rounded-3xl ml-3"
                     >
-                      {donationDetails.amount}
+                      {donationDetails.amount} DH
                     </motion.div>
                   </div>
                 )}
