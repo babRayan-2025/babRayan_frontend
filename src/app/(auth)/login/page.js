@@ -12,11 +12,12 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState(''); const [error, setError] = useState(null);
+  const [password, setPassword] = useState(''); 
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || "null");
-    if (user && user.userId) {
+    const userID = localStorage.getItem("userID");
+    if (userID) {
       router.push("/dashboard");
     }
   }, [router]);
@@ -44,7 +45,7 @@ export default function Login() {
           window.location.href = '/';
         }, 2000);
       } else {
-        toast.error('Une erreur est survenue lors du paiement.');
+        toast.error('Une erreur est survenue lors du login.');
         console.log(data);
 
       }
