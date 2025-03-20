@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function DevenirPartenaire() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,9 +18,11 @@ export default function DevenirPartenaire() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
+    toast.success("Votre demande a été envoyé avec succès !");
   };
 
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -65,6 +68,17 @@ export default function DevenirPartenaire() {
 
   return (
     <main>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <motion.div
         initial="hidden"
         animate="visible"
@@ -170,7 +184,7 @@ export default function DevenirPartenaire() {
           </h2>
           <div className="bg-white border border-red-500 rounded-3xl p-4 md:p-12">
             <div className="grid grid-rows-2 xl:grid-rows-1 xl:grid-cols-2 gap-6">
-            <div>
+              <div>
                 <h4 className="font-semibold text-xl mb-3">Directrice Partenariats et Relations Publiques</h4>
                 <div className="text-red-600 text-xl leading-relaxed">
                   <p>Téléphone : +212 618 181 806</p>
@@ -185,7 +199,7 @@ export default function DevenirPartenaire() {
                   <p>Email : dir.operations@babrayan.ma</p>
                 </div>
               </div>
-              
+
             </div>
           </div>
 
