@@ -15,8 +15,15 @@ export default function Login() {
   const [password, setPassword] = useState(''); 
   const [error, setError] = useState(null);
 
+  const getLocalStorage = (key) => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(key);
+    }
+    return null;
+  };
+  
   useEffect(() => {
-    const userID = localStorage.getItem("userID");
+    const userID = getLocalStorage("userID");
     if (userID) {
       router.push("/dashboard");
     }

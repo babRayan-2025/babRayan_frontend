@@ -8,9 +8,6 @@ export default function Template({ children }) {
   const pathname = usePathname();
   const isDashboard = pathname?.includes("/dashboard");
   const isDon = pathname?.includes("/don");
-  // const isLogin = pathname?.includes("/login");
-  // const isRegister = pathname?.includes("/register");
-  
   return (
     <>
       {!isDashboard && <NavBar />}
