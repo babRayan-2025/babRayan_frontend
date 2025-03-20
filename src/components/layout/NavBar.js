@@ -2,16 +2,28 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import deco from "../../assets/PNG/SPLASH.png";
-import { DownOutlined, SettingOutlined ,LogoutOutlined  } from '@ant-design/icons';
+import { DownOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
+
+const getLocalStorage = (key) => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(key);
+  }
+  return null;
+};
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const userID = localStorage.getItem("userID") || null;
-  const userName = localStorage.getItem("userName") || null;
+  const [userID, setUserID] = useState(null);
+  const [userName, setUserName] = useState(null);
 
+  useEffect(() => {
+    setUserID(getLocalStorage("userID"));
+    setUserName(getLocalStorage("userName"));
+  }, []); // ✅ Now updates when component mounts
 
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setOpenDropdown(null); // Close all dropdowns when menu toggles
@@ -25,7 +37,7 @@ export default function NavBar() {
     setIsMenuOpen(false);
     setOpenDropdown(null); // Close menu and dropdowns
   };
-  
+
 
   const handleLogout = () => {
     localStorage.clear();
@@ -161,10 +173,10 @@ export default function NavBar() {
                     ],
                   }}
                 >
-                  <a                   
-                  className=" px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
- 
-                  style={{ cursor: 'pointer' }} onClick={(e) => e.preventDefault()}>
+                  <a
+                    className=" px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
+
+                    style={{ cursor: 'pointer' }} onClick={(e) => e.preventDefault()}>
                     <Space>
                       Hi,{userName}
                       <DownOutlined />

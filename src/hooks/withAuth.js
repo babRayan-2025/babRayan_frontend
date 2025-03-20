@@ -14,7 +14,7 @@ export default function useAuth() {
         setAuthenticated(true);
       }
     }
-  }, []);
+  }, [router]); // ✅ Add router as a dependency
 
   return authenticated;
 }

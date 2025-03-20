@@ -9,23 +9,23 @@ import './Login.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const getLocalStorage = (key) => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(key);
+  }
+  return null;
+};
+
+
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState(''); 
-  const [error, setError] = useState(null);
+  const [password, setPassword] = useState('');
 
-  const getLocalStorage = (key) => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem(key);
-    }
-    return null;
-  };
-  
   useEffect(() => {
     const userID = getLocalStorage("userID");
     if (userID) {
-      router.push("/dashboard");
+      router.push("/dashboard"); // ✅ Prevent full reload
     }
   }, [router]);
 
@@ -49,7 +49,7 @@ export default function Login() {
         toast.success('Connexion réussie !');
 
         setTimeout(() => {
-          window.location.href = '/';
+          router.push("/");
         }, 2000);
       } else {
         toast.error('Une erreur est survenue lors du login.');
