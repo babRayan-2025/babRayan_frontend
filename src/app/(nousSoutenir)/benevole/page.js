@@ -32,8 +32,62 @@ export default function Benevole() {
   };
 
   const handleSubmit = () => {
-    toast.success("Votre demande a bien été envoyée !",)
-  }
+    console.log("Submit button clicked");
+    console.log("Selected Foyer:", selectedFoyer);
+    console.log("Selected Ecole:", selectedEcole);
+    console.log("Selected Formations:", selectedFormations);
+  
+    const formData = {
+      nom: document.querySelector('input[placeholder="Nom *"]').value.trim(),
+      email: document.querySelector('input[placeholder="Email *"]').value.trim(),
+      prenom: document.querySelector('input[placeholder="Prénom *"]').value.trim(),
+      telephone: document.querySelector('input[placeholder="Téléphone *"]').value.trim(),
+      domaine: document.querySelector('input[placeholder="Domaine de compétence *"]').value.trim(),
+      foyer: selectedFoyer,
+      ecole: selectedEcole,
+      formations: selectedFormations,
+    };
+  
+    console.log("Form Data Collected:", formData);
+  
+    // Validate form data
+    if (!formData.nom) {
+      toast.error("Veuillez remplir le champ Nom.");
+      return;
+    }
+    if (!formData.email) {
+      toast.error("Veuillez remplir le champ Email.");
+      return;
+    }
+    if (!formData.prenom) {
+      toast.error("Veuillez remplir le champ Prénom.");
+      return;
+    }
+    if (!formData.telephone) {
+      toast.error("Veuillez remplir le champ Téléphone.");
+      return;
+    }
+    if (!formData.domaine) {
+      toast.error("Veuillez remplir le champ Domaine de compétence.");
+      return;
+    }
+    if (formData.foyer.length === 0) {
+      toast.error("Veuillez sélectionner au moins une option dans Foyer.");
+      return;
+    }
+    if (formData.ecole.length === 0) {
+      toast.error("Veuillez sélectionner au moins une option dans École.");
+      return;
+    }
+    if (formData.formations.length === 0) {
+      toast.error("Veuillez sélectionner au moins une option dans Centre de Formation.");
+      return;
+    }
+  
+    // If all validations pass
+    console.log("Form Data Collected:", formData);
+    toast.success("Votre demande a bien été envoyée !");
+  };
 
     return (
       <main className="">
