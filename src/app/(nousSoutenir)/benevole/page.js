@@ -34,7 +34,7 @@ export default function Benevole() {
     );
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     const formData = {
       nom: nom.trim(),
       email: email.trim(),
@@ -84,13 +84,39 @@ export default function Benevole() {
 
     // If all validations pass
     console.log("Form Data Collected:", formData);
-    toast.success("Votre demande a bien été envoyée !");
+
+    try {
+      const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/benevolat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Response Data:", data);
+        toast.success("Votre demande a bien été envoyée !");
+        setNom("");
+        setEmail("");
+        setPrenom("");
+        setTelephone("");
+        setDomaine("");
+        setSelectedFoyer([]);
+        setSelectedEcole([]);
+        setSelectedFormations([]);
+      } else {
+        toast.error("Une erreur est survenue lors de l'envoi de votre demande.");      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
     <main className="">
       <ToastContainer
-        position="top-right"
+        position="bottom-left"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -274,11 +300,10 @@ export default function Benevole() {
                 ].map((item, index) => (
                   <motion.button
                     key={index}
-                    className={`w-full p-4 rounded-full border text-md lg:text-xl m-auto p-auto font-medium text-center ${
-                      selectedFoyer.includes(item)
+                    className={`w-full p-4 rounded-full border text-md lg:text-xl m-auto p-auto font-medium text-center ${selectedFoyer.includes(item)
                         ? "bg-yellow-300 border-black text-red-600"
                         : "border-yellow-300 bg-red-600 text-white-300"
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => toggleFoyer(item)}
@@ -306,11 +331,10 @@ export default function Benevole() {
                 ].map((item, index) => (
                   <motion.button
                     key={index}
-                    className={`w-full text-center text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full border ${
-                      selectedEcole.includes(item)
+                    className={`w-full text-center text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full border ${selectedEcole.includes(item)
                         ? "bg-yellow-300 border-black text-red-600"
                         : "bg-red-600 border-yellow-300 text-white-300"
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => toggleEcole(item)}
@@ -335,11 +359,10 @@ export default function Benevole() {
                 ].map((item, index) => (
                   <motion.button
                     key={index}
-                    className={`w-full text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${
-                      selectedFormations.includes(item)
+                    className={`w-full text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${selectedFormations.includes(item)
                         ? "bg-yellow-300 border-black text-red-600"
                         : "bg-red-600 border-yellow-300 text-white-300"
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => toggleFormation(item)}

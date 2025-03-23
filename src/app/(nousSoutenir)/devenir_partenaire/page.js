@@ -15,10 +15,36 @@ export default function DevenirPartenaire() {
     message: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    toast.success("Votre demande a été envoyé avec succès !");
+
+    try {
+      const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/partenaire", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Response Data:", data);
+        toast.success("Votre demande a bien été envoyée !");
+        setFormData({
+          nom: "",
+          profession: "",
+          telephone: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        toast.error("Une erreur est survenue lors de l'envoi de votre demande.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleChange = (e) => {
@@ -69,7 +95,7 @@ export default function DevenirPartenaire() {
   return (
     <main>
       <ToastContainer
-        position="top-right"
+        position="bottom-left"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
