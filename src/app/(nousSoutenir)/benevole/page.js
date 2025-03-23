@@ -67,18 +67,9 @@ export default function Benevole() {
       toast.error("Veuillez remplir le champ Domaine de compétence.");
       return;
     }
-    if (formData.foyer.length === 0) {
+    if (formData.foyer.length === 0 && formData.ecole.length === 0 && formData.formations.length === 0) {
+      toast.error("Veuillez sélectionner au moins une option dans Foyer, École ou Centre de Formation.");
       toast.error("Veuillez sélectionner au moins une option dans Foyer.");
-      return;
-    }
-    if (formData.ecole.length === 0) {
-      toast.error("Veuillez sélectionner au moins une option dans École.");
-      return;
-    }
-    if (formData.formations.length === 0) {
-      toast.error(
-        "Veuillez sélectionner au moins une option dans Centre de Formation."
-      );
       return;
     }
 
