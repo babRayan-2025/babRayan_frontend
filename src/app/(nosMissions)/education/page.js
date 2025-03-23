@@ -6,15 +6,15 @@ import Footer from "../../../components/layout/Footer";
 export default function Education() {
   const items = [
     {
-      src: "/education/Accompagnement3.jpeg",
+      src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2FAccompagnement3.webp?alt=media&token=1b686fef-92a7-4372-bc3d-1deb232647f1",
       text: "PROGRAMME NATIONAL DE LA LANGUE ARABE",
     },
     {
-      src: "/education/1.JPG",
+      src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2F1.webp?alt=media&token=8709fd90-520a-4973-9144-be9f90b36f01",
       text: "PROGRAMME FLM DE LA MISSION FRANÇAISE",
     },
     {
-      src: "/education/Accompagnement 1.jpeg",
+      src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2FAccompagnement%201.webp?alt=media&token=57ea6504-1f89-47d7-b4d1-051ec01073d7",
       text: "PROGRAMME BRITANNIQUE DE LA LANGUE ANGLAISE",
     },
   ];
@@ -45,7 +45,7 @@ export default function Education() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="/education/école.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fécole.webp?alt=media&token=b54a6d68-f369-46de-9280-60f3c0073a7f"
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
@@ -90,7 +90,7 @@ export default function Education() {
             <motion.div className="flex-shrdink-0 mb-6 md:mb-0 md:mr-8" d>
               <div className="relative  rounded-xl border-3 shadow-2xl border-r-gray-500 overfldow-hidden">
                 <img
-                  src="/education/girl_educate.jpg"
+                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fgirl_educate.webp?alt=media&token=54c813b0-54a5-402a-b8ce-8089f7f084ca"
                   alt="Présidente"
                   layout="fill"
                   objectfit="cover"
@@ -257,35 +257,35 @@ export default function Education() {
               <div className="grid grid-cols-2 lg:grid-cols-4 mx-6  justify-center gap-16 my-20">
                 {[
                   {
-                    src: "/education/picto/site bab rayan école-08.png",
+                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite%20bab%20rayan%20école-08.webp?alt=media&token=7d4f37a2-4c15-4af4-a130-96293db7955f",
                     text: "Suivi psychologique personnalisé",
                   },
                   {
-                    src: "/education/picto/site bab rayan école-06.png",
+                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-06.webp?alt=media&token=15587dc3-98dc-48f1-affc-41f465c09b19",
                     text: "Accompagnement spécialisé des troubles Dys et TDA",
                   },
                   {
-                    src: "/education/picto/site bab rayan école-04.png",
+                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-04.webp?alt=media&token=39f1fe4f-a945-4b9f-b5cc-8b941276a666",
                     text: "Aménagement des espaces d’apprentissage de façon ludique",
                   },
                   {
-                    src: "/education/picto/site bab rayan école-02.png",
+                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-02.webp?alt=media&token=1f128eea-9318-495a-8493-2bf158adde31",
                     text: "Accompagnement holistique",
                   },
                   {
-                    src: "/education/picto/site bab rayan école-09.png",
+                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite%20bab%20rayan%20école-09.webp?alt=media&token=25a59874-f2bc-4bde-a6da-7eb558758967",
                     text: "Aire de développement psychomoteur",
                   },
                   {
-                    src: "/education/picto/site bab rayan école-07.png",
+                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-07.webp?alt=media&token=1ab419bf-818c-435c-9b6b-a719e06c71e7",
                     text: "Programme sportif pour l’éducation des valeurs et du leadership",
                   },
                   {
-                    src: "/education/picto/site bab rayan école-05.png",
+                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-05.webp?alt=media&token=ee162c7a-a03f-4707-acf2-d98a3f3855b1",
                     text: "Cantine gratuite pour assurer une nutrition équilibrée",
                   },
                   {
-                    src: "/education/picto/site bab rayan école-03.png",
+                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-03.webp?alt=media&token=9ca7453d-549a-40de-9b7c-fdd4a8a554e1",
                     text: "Distribution de cartables et de matériel scolaire",
                   },
                 ].map((item, index) => (
@@ -308,21 +308,21 @@ export default function Education() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto place-items-center">
 
                 <Image
-                  src="/education/WhatsApp Image 2025-01-24 at 15.56.45.jpeg"
+                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fw4.webp?alt=media&token=c17ff32a-1b6b-46d6-a33b-95fdbce9eb3d"
                   className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
                 />
                 <Image
-                  src="/education/2.JPG"
+                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2F2.webp?alt=media&token=6b55dc1a-41de-4781-a778-82620e70e87f"
                   className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
                 />
                 <Image
-                  src="/education/3.jpeg"
+                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2F3.webp?alt=media&token=d4a7b517-e7ba-4040-a0b2-77e9520848c3"
                   className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
@@ -358,7 +358,7 @@ export default function Education() {
             >
               <div className="relative w-80 h-60 rounded-xl border-3 shadow-2xl border-r-gray-500 overflow-hidden">
                 <Image
-                  src="/education/WhatsApp Image 2025-01-24 at 15.47.51.jpeg"
+                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fw2.webp?alt=media&token=2e4dff7c-b475-46ec-a4bd-ff0098bc5a17"
                   alt="Présidente"
                   layout="fill"
                   objectfit="cover shadow-2xl"
@@ -402,18 +402,18 @@ export default function Education() {
             <div className="grid grid-cols-1  lg:grid-cols-3 gap-8">
               {[
                 {
-                  picto: "/education/site bab rayan école-10.png",
+                  picto: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fsite%20bab%20rayan%20école-10.webp?alt=media&token=7a05163d-f839-4b11-8c3b-641257e3deac",
                   numb: "+225",
                   title:
                     "élèves : l’école accueille tous les enfants du foyer et aussi des enfants externes défavorisés",
                 },
                 {
-                  picto: "/education/site bab rayan école-11.png",
+                  picto: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fsite%20bab%20rayan%20école-11.webp?alt=media&token=c1326464-a669-4128-b79e-b06e36303236",
                   numb: "23",
                   title: "encadrants",
                 },
                 {
-                  picto: "/CFI/site bab rayan CFI-09.png",
+                  picto: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fsite-bab-rayan-CFI-09.webp?alt=media&token=f6a5e106-60ed-4c5d-9a58-dff11f20deb9",
                   numb: "1200",
                   title: "bénévoles",
                 },
