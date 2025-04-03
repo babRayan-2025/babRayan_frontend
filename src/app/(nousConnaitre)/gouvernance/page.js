@@ -72,7 +72,7 @@ export default function Gouvernance() {
 
   const teamData = [
     {
-      name: 'Fatima Zahra Hamroudi',
+      name: 'Fatima Zohra Hamroudi',
       title: 'Fondatrice Présidente',
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FFatima%20Zohra%20Ratibe.webp?alt=media&token=f31414cf-9b7b-429d-b281-ef85c79281a4'
     },
@@ -92,12 +92,12 @@ export default function Gouvernance() {
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FDriss%20El%20Alami.webp?alt=media&token=2999a16a-edf8-43dc-b84c-9724b6778455'
     },
     {
-      name: 'Mouniji Salim Sefrioui',
+      name: 'Mounji Salim Sefrioui',
       title: 'Membre Fondateur\nTrésorier général',
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fsefrioui.webp?alt=media&token=fba582c8-826f-4477-8ee3-3ecbce4c28e4'
     },
     {
-      name: 'Mohamed Jamal Lahlouji',
+      name: 'Mohamed Jamal Lahjouji',
       title: 'Membre Fondateur\nVice-président',
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fjamal.webp?alt=media&token=10b06c7d-3602-4b86-8069-f90b4a9a3881'
     },

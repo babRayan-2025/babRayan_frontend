@@ -90,7 +90,7 @@ export default function About() {
               />
             </div>
             <h3 className="text-center mt-4 text-xl font-bold text-red-600">
-              FATIMA ZAHRA HAMROUDI RATIBE
+              FATIMA ZOHRA HAMROUDI RATIBE
             </h3>
             <p className="text-center text-sm text-red-600">
               Fondatrice présidente de l’association BAB RAYAN
