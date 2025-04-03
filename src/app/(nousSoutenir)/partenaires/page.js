@@ -34,6 +34,7 @@ export default function Partenaires() {
   ];
   const prives = [
     { src: "/partenaires/LOGO WB.png", alt: "Logo 1" },
+    { src: "/partenaires/alfa.jpg", alt: "Logo 1" },
     { src: "/partenaires/ynov.png", alt: "Logo 1" },
     { src: "/partenaires/Yassir_2023.png", alt: "Logo 1" },
     { src: "/partenaires/AH logos 2024 v3-21.png", alt: "Logo 1" },
@@ -43,7 +44,6 @@ export default function Partenaires() {
     { src: "/partenaires/AIESEC-Logo.png", alt: "Logo 5" },
     { src: "/partenaires/afrique orient.png", alt: "Logo 6" },
     { src: "/partenaires/TGCC.PNG", alt: "Logo 7" },
-    { src: "/partenaires/logi alfa 01.jpeg", alt: "Logo 1" },
     { src: "/partenaires/teach.png", alt: "Logo 8" },
     { src: "/partenaires/sothema.png", alt: "Logo 9" },
     { src: "/partenaires/somed.PNG", alt: "Logo 10" },
