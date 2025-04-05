@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function useAuth() {
+export function useAuth() {
   const router = useRouter();
   const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -13,8 +14,9 @@ export default function useAuth() {
       } else {
         setAuthenticated(true);
       }
+      setLoading(false);
     }
-  }, [router]); // ✅ Add router as a dependency
+  }, []); // Remove router from dependencies to prevent infinite loop
 
-  return authenticated;
+  return { authenticated, loading };
 }
