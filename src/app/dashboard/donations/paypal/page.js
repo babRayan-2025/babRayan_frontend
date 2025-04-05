@@ -110,7 +110,7 @@ export default function PaypalPage() {
         <div>
           <input
             type="text"
-            placeholder="Rechercher par nom ou email"
+            placeholder="Recherche par nom ou email"
             className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
