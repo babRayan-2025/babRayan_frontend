@@ -3,6 +3,97 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const contentByAmount = {
+  "100": {
+    title: 'Parrainage "Sport"',
+    description: "Offrez-lui l'opportunité de s'épanouir pleinement :",
+    items: [
+      {
+        label: "Encouragez l'activité physique régulière",
+        description: "Pour cultiver son bien-être et sa vitalité.",
+      },
+      {
+        label: "Soutenez la diversité des sports",
+        description:
+          "Pour découvrir de nouvelles passions et développer ses talents.",
+      },
+      {
+        label: "Offrez un équipement adapté",
+        description: "Pour pratiquer en toute sécurité et avec plaisir.",
+      },
+    ],
+  },
+  "500": {
+    title: 'Parrainage "Essentiel"',
+    description: "Apportez un soutien vital à un enfant :",
+    items: [
+      {
+        label: "Alimentation saine",
+        description: "Pour lui permettre de bien grandir.",
+      },
+      {
+        label: "Soins médicaux",
+        description: "Pour garantir sa bonne santé.",
+      },
+      {
+        label: "Hygiène adaptée",
+        description: "Pour préserver sa dignité.",
+      },
+    ],
+  },
+  "800": {
+    title: 'Parrainage "Education"',
+    description: "Investissez dans l'avenir d'un enfant :",
+    items: [
+      {
+        label: "Assurez sa scolarité",
+        description: "Pour lui ouvrir les portes du savoir.",
+      },
+      {
+        label: "Proposez des activités extrascolaires",
+        description: "Pour enrichir son quotidien.",
+      },
+      {
+        label: "Offrez des sorties sportives et culturelles",
+        description: "Pour nourrir son esprit et son corps.",
+      },
+    ],
+  },
+};
+
+const paymentMethods = [
+  {
+    id: 1,
+    label: "Virement bancaire",
+    image: "/donation/1.png",
+    desc: "Payer avec votre carte bancaire",
+    popup: "/donation/popUp/2.png",
+  },
+  {
+    id: 2,
+    label: "Chèque",
+    image: "/donation/2.png",
+    desc: "Payer avec votre compte PayPal",
+    popup: "/donation/popUp/1.png",
+  },
+  {
+    id: 3,
+    label: "Cash",
+    image: "/donation/3.png",
+    desc: "Faire un don par chèque",
+    popup: "/donation/popUp/3.png",
+  },
+  {
+    id: 4,
+    label: "PayPal",
+    image: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
+    desc: "Faire un don par virement bancaire",
+  },
+  { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f", desc: "Payer avec CMI" },
+];
 
 export default function Parrainage() {
   const [formData, setFormData] = useState({
@@ -11,19 +102,40 @@ export default function Parrainage() {
     email: "",
     message: "",
   });
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [showUserInfoModal, setShowUserInfoModal] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+    // Always log that the form was submitted, no matter what
+    console.log("Form submitted");
+    console.log("Current price:", selectedPrice);
+    console.log("Current payment method:", selectedMethod ? selectedMethod.label : "None");
 
+    // Then check conditions
+    if (!selectedPrice) {
+      toast.error('Veuillez choisir une formule de parrainage');
+      return;
+    }
+
+    if (!selectedMethod) {
+      toast.error('Veuillez choisir une méthode de paiement');
+      return;
+    }
+
+    console.log("Proceeding with submission");
+
+    // Show appropriate modal based on payment method when form is submitted
+    if (selectedMethod.id === 4 || selectedMethod.id === 5) { // PayPal or CMI
+      setShowUserInfoModal(true);
+    } else if (selectedMethod.popup) {
+      setShowModal(true);
+    }
+  };
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -34,8 +146,201 @@ export default function Parrainage() {
     visible: { transition: { staggerChildren: 0.2 } },
   };
 
+  const Modal = ({ method, amount, onClose }) => {
+    return (
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6 z-50"
+        onClick={(e) => e.target === e.currentTarget && onClose()}
+      >
+        <div className="bg-white rounded-3xl shadow-lg text-center">
+          <div className="bg-red-700 text-white py-4 px-6 rounded-t-3xl relative">
+            <h2 className="text-2xl font-bold">Parrainage de {amount} DH</h2>
+            <p className="text-lg">Paiement par {method.label}</p>
+            <button
+              onClick={onClose}
+              className="absolute top-2 right-3 bg-white bg-opacity-20 text-white hover:bg-opacity-30 rounded-full w-8 h-8 flex items-center justify-center"
+              aria-label="Fermer"
+            >
+              ✕
+            </button>
+          </div>
+          {method && method.popup && (
+            <div className="relative">
+              <img
+                src={method.popup}
+                alt={method.label}
+                className="md:w-[70rem] md:h-[35rem] mx-auto shadow-md"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const buttonVariants = {
+    hover: {
+      scale: 1.05,
+      transition: { duration: 0.3 },
+    },
+    tap: {
+      scale: 0.95,
+      transition: { duration: 0.3 },
+    },
+  };
+
+  const handleMethodClick = (method) => {
+    setPaymentMethod(method.id);
+    setSelectedMethod(method);
+    // Remove modal display from here
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setShowUserInfoModal(false);
+  };
+
+  const UserInfoModal = ({ onClose, paymentMethod }) => {
+    const [userInfo, setUserInfo] = useState({
+      fullName: '',
+      email: '',
+      phone: '',
+    });
+
+    const handleChange = (e) => {
+      setUserInfo({
+        ...userInfo,
+        [e.target.name]: e.target.value
+      });
+    };
+
+    const handleSubmitPayment = (e) => {
+      e.preventDefault();
+      console.log("Payment form submitted");
+      console.log("Email:", userInfo.email);
+
+      if (!userInfo.email) {
+        console.log("Email is empty, showing error toast");
+        toast.error('Veuillez entrer votre email');
+        return;
+      }
+
+      console.log("Payment processing... showing success toast");
+      toast.success('Paiement effectué avec succès');
+
+      setTimeout(() => {
+        userInfo.email = '';
+        userInfo.fullName = '';
+        userInfo.phone = '';
+        setSelectedPrice(null);
+        setPaymentMethod(null);
+        setSelectedMethod(null);
+        onClose();
+      }, 2000);
+    };
+
+    // Find the payment method object to get the label
+    const methodObj = paymentMethods.find(m => m.id === paymentMethod);
+    const methodLabel = methodObj ? methodObj.label : '';
+
+    return (
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6 z-50"
+        onClick={(e) => e.target === e.currentTarget && onClose()}
+      >
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-xl">
+          <div className="bg-red-700 text-white py-4 px-6 rounded-xl mb-6 relative">
+            <h2 className="text-xl font-bold">Parrainage de {selectedPrice} DH</h2>
+            <p className="text-lg">Paiement par {methodLabel}</p>
+            <button
+              onClick={onClose}
+              className="absolute top-2 right-3 bg-white bg-opacity-20 text-white hover:bg-opacity-30 rounded-full w-8 h-8 flex items-center justify-center"
+              aria-label="Fermer"
+            >
+              ✕
+            </button>
+          </div>
+          <h3 className="text-xl font-bold text-red-700 mb-6 text-center">
+            {paymentMethod === 4 ? 'Payer avec PayPal' : 'Payer avec Carte Bancaire'}
+          </h3>
+          <form onSubmit={handleSubmitPayment} className="space-y-4">
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Email*
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={userInfo.email}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-700"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Nom complet
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                value={userInfo.fullName}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-700"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Téléphone
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={userInfo.phone}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-700"
+              />
+            </div>
+            <div className="flex justify-center gap-4 pt-4">
+              <button type="button" onClick={onClose} className="px-6 py-2 bg-gray-200 rounded-full text-gray-800 font-semibold hover:bg-gray-300">
+                Annuler
+              </button>
+              <button
+                type="submit"
+                className="px-6 py-2 bg-yellow-300 rounded-full text-red-700 font-semibold hover:bg-yellow-400">
+                Procéder au paiement
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <main>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="">
         {/* Header */}
         <motion.h1
@@ -151,20 +456,20 @@ export default function Parrainage() {
             variants={staggerContainer}
           >
             {["https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F2.webp?alt=media&token=2de4472b-396c-4602-9890-a4c10c8570a5",
-             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F3.webp?alt=media&token=6a7f3445-93a8-4523-9a2b-ff8746addfd3",
-             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F4.webp?alt=media&token=9740baf6-bcef-438f-8e22-610cff203047",
-             "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F5.webp?alt=media&token=a69040ed-499b-449f-9f29-b8d319d7390e"].map((img, index) => (
-              <motion.div key={index} variants={fadeIn}>
-                <img
-                  src={img}
-                  alt="Image description"
-                  width={500}
-                  height={300}
-                  loading="lazy"
-                  className="rounded-2xl h-[300px] w-[500px] shadow-md object-cover"
-                />
-              </motion.div>
-            ))}
+              "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F3.webp?alt=media&token=6a7f3445-93a8-4523-9a2b-ff8746addfd3",
+              "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F4.webp?alt=media&token=9740baf6-bcef-438f-8e22-610cff203047",
+              "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F5.webp?alt=media&token=a69040ed-499b-449f-9f29-b8d319d7390e"].map((img, index) => (
+                <motion.div key={index} variants={fadeIn}>
+                  <img
+                    src={img}
+                    alt="Image description"
+                    width={500}
+                    height={300}
+                    loading="lazy"
+                    className="rounded-2xl h-[300px] w-[500px] shadow-md object-cover"
+                  />
+                </motion.div>
+              ))}
           </motion.div>
         </motion.div>
 
@@ -183,46 +488,117 @@ export default function Parrainage() {
               maintenant.
               <div className="w-24 md:w-48 h-1 bg-yellow-300 transform mt-2"></div>
             </h2>
+            <h3 className="text-white text-2xl font-bold mb-8">Je choisis ma formule de parrainage</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {[
-                { name: "nom", type: "text", placeholder: "Nom *" },
-                {
-                  name: "telephone",
-                  type: "tel",
-                  placeholder: "Téléphone *",
-                },
-                { name: "email", type: "email", placeholder: "Email *" },
-              ].map((input, index) => (
-                <motion.div key={index} variants={fadeIn}>
-                  <input
-                    {...input}
-                    value={formData[input.name]}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-full text-gray-700 text-lg"
-                  />
-                </motion.div>
-              ))}
-              <motion.div variants={fadeIn}>
-                <textarea
-                  name="message"
-                  placeholder="Votre message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={6}
-                  className="w-full px-4 py-3 rounded-3xl text-gray-700 text-lg"
-                />
-              </motion.div>
-              <motion.div variants={fadeIn}>
-                <button
-                  type="submit"
-                  className="px-8 py-2 bg-yellow-300 hover:bg-yellow-100 text-red-700 border border-white rounded-full text-2xl font-bold transition-colors duration-2000"
-                >
-                  envoyer
-                </button>
-              </motion.div>
+            <form onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                {Object.entries(contentByAmount).map(([price, content], index) => {
+                  const isPopular = price === "500";
+                  const isSelected = selectedPrice === parseInt(price);
+                  return (
+                    <div
+                      key={index}
+                      className={`bg-white rounded-lg shadow-lg p-6 transition-all duration-300 h-full cursor-pointer flex flex-col ${isSelected
+                        ? "border-2 border-yellow-300 shadow-xl transform scale-105 z-10"
+                        : "hover:shadow-xl hover:scale-102"
+                        } ${isPopular ? "relative" : ""}`}
+                      onClick={() => setSelectedPrice(parseInt(price))}
+                    >
+                      {isPopular && (
+                        <div className="absolute top-0 right-0 bg-yellow-300 text-red-700 px-3 py-1 rounded-bl-lg font-bold">
+                          Populaire
+                        </div>
+                      )}
+                      <div className="mt-4">
+                        <h4 className="text-xl font-bold text-red-700 mb-3">{content.title}</h4>
+                        <p className="text-gray-700 text-sm mb-4">{content.description}</p>
+                        <motion.ul
+                          initial="hidden"
+                          animate="visible"
+                          className="list-none mb-4"
+                        >
+                          {content.items.map((item, index) => (
+                            <motion.li key={index} variants={fadeIn} className="mb-2 flex items-start" >
+                              <img
+                                src="/donation/check .svg"
+                                alt="Check"
+                                className="w-8 h-8 mr-0 mt-0"
+                              />
+                              <span className="mt-0.5">
+                                <span className="text-red-700 font-bold">{item.label}</span>
+                              </span>
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                      </div>
+                      <div className="mt-auto">
+                        <div className="text-2xl font-bold text-yellow-500 mb-4">{price} DH</div>
+                        <p className={`w-full py-2 px-4 rounded-full text-center transition-colors duration-300 ${isSelected
+                          ? "bg-yellow-300 text-red-700"
+                          : "bg-red-700 text-white hover:bg-red-800"
+                          }`} >
+                          Choisir cette formule
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="mt-10">
+                <h3 className="text-white text-xl font-bold mb-4">Méthode de paiement</h3>
+                <div className="max-w-5xl mx-auto flex justify-center gap-8 flex-wrap">
+                  {/* Choix de paiement */}
+                  {paymentMethods.map((method) => (
+                    <div key={method.id} className="flex flex-col items-center">
+                      <motion.p
+                        key={`btn-${method.id}`}
+                        variants={buttonVariants}
+                        whileHover="hover"
+                        whileTap="tap"
+                        className={`w-24 h-20 cursor-pointer p-4 rounded-2xl flex items-center justify-center shadow-md transition-colors ${paymentMethod === method.id
+                          ? "bg-yellow-300"
+                          : "bg-white hover:bg-gray-100"
+                          }`}
+                        onClick={() => handleMethodClick(method)}
+                      >
+                        <img
+                          src={method.image}
+                          alt={method.label}
+                          className={`max-w-full max-h-full ${method.id === 4 || method.id === 5
+                            ? "object-contain"
+                            : "object-cover"
+                            }`}
+                        />
+                      </motion.p>
+                      <span className="text-xs font-medium mt-2 text-center text-white">
+                        {method.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="mt-8 bg-yellow-300 hover:bg-yellow-400 cursor-pointer text-red-700 font-bold py-3 px-8 rounded-full text-xl mx-auto block"
+              >
+                Parrainer maintenant
+              </button>
             </form>
+
+            {showModal && selectedMethod && (
+              <Modal
+                method={selectedMethod}
+                amount={selectedPrice}
+                onClose={closeModal}
+              />
+            )}
+
+            {showUserInfoModal && selectedMethod && (
+              <UserInfoModal
+                paymentMethod={selectedMethod.id}
+                onClose={closeModal}
+              />
+            )}
           </div>
         </motion.div>
       </div>
