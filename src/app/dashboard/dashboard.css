@@ -51,8 +51,13 @@
     color: #F77F00;
 }
 
-#navbarSupportedContent .deconnexion:hover {
+#navbarSupportedContent .deconnexion {
     background-color: #D62828;
+    border-radius: 10px;
+    color: white;
+}
+#navbarSupportedContent .deconnexion:hover {
+    background-color: #d6282877;
     border-radius: 10px;
     color: white;
 }

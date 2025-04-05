@@ -16,6 +16,8 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 export default function DashboardLayout({ children }) {
   const { authenticated, loading } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(null);
+  const [showDonationsSubmenu, setShowDonationsSubmenu] = useState(false);
+  const userName = localStorage.getItem('userName');
   const router = useRouter();
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function DashboardLayout({ children }) {
       router.replace('/login');
     }
 
-    handleResize(); 
+    handleResize();
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -49,7 +51,15 @@ export default function DashboardLayout({ children }) {
   const menuItems = [
     { name: 'Dashboard', icon: <MdOutlineSpaceDashboard />, path: '/' },
     { name: 'Actualités', icon: <ImNewspaper />, path: '/news' },
-    { name: 'Donations', icon: <FaHandHoldingHeart />, path: '/donations' },
+    {
+      name: 'Donations',
+      icon: <FaHandHoldingHeart />,
+      path: '/donations',
+      submenu: [
+        { name: 'PayPal', path: '/donations/paypal' },
+        { name: 'CMI', path: '/donations/cmi' }
+      ]
+    },
     { name: 'Administateurs', icon: <FaUsers />, path: '/admins' },
     { name: 'Settings', icon: <IoSettingsSharp />, path: '/settings' },
   ];
@@ -68,14 +78,48 @@ export default function DashboardLayout({ children }) {
             ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`} >
           <div className="d-fldex" id="wrapper">
             <div className="p-4 border-end " id="sidebar-wrapper">
-              <div className="image_dashbord">
+              <div onClick={() => window.location.href = '/dashboard'} className="image_dashbord">
                 <img src='https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481' alt="Logo" />
               </div>
               <div className="list-group list-group-flush">
-                {menuItems.map(
-                  (menuItem, index) => (
-                    <a className="p-3" key={index} href={`/dashboard${menuItem.path}`}><span className='me-2'>{menuItem.icon}</span> {menuItem.name} </a>
-                  ))}
+                {menuItems.map((menuItem, index) => (
+                  <div key={index}>
+                    {menuItem.submenu ? (
+                      <>
+                        <div className="d-flex justify-content-between align-items-center">
+                          <a
+                            className="p-3 d-flex align-items-center"
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setShowDonationsSubmenu(!showDonationsSubmenu);
+                            }}
+                          >
+                            <span className='me-2'>{menuItem.icon}</span> {menuItem.name}
+                            <span className="ms-4 pe-3">{showDonationsSubmenu ? '▼' : '▶'}</span>
+                          </a>
+                        </div>
+                        {showDonationsSubmenu && (
+                          <div className="ps-4 ">
+                            {menuItem.submenu.map((subItem, subIndex) => (
+                              <a
+                                key={subIndex}
+                                className="p-2 d-block bg-[#0d3e58]"
+                                href={`/dashboard${subItem.path}`}
+                              >
+                                {subItem.name}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <a className="p-3" href={`/dashboard${menuItem.path}`}>
+                        <span className='me-2'>{menuItem.icon}</span> {menuItem.name}
+                      </a>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -92,7 +136,7 @@ export default function DashboardLayout({ children }) {
             >
               <span className="text-white fw-bold" > <TfiMenu /></span >
             </button>
-            <h1 className="text-xl text-center font-bold">👋🏻 Bonjour, Mr <b style={{ color: "#F77F00" }}>XX</b></h1>
+            <h1 className="text-xl text-center font-bold">👋🏻 Bonjour, Mr <b style={{ color: "#F77F00" }}>{userName}</b></h1>
 
             <div className="flex items-center gap-4" id="navbarSupportedContent">
               <div>
