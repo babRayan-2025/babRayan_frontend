@@ -532,7 +532,7 @@ export default function Parrainage() {
                         </motion.ul>
                       </div>
                       <div className="mt-auto">
-                        <div className="text-2xl font-bold text-yellow-500 mb-4">{price} DH</div>
+                        <div className="text-2xl text-right font-bold text-black-500 mb-4">{price} DH</div>
                         <p className={`w-full py-2 px-4 rounded-full text-center transition-colors duration-300 ${isSelected
                           ? "bg-yellow-300 text-red-700"
                           : "bg-red-700 text-white hover:bg-red-800"
@@ -545,7 +545,7 @@ export default function Parrainage() {
                 })}
               </div>
               <div className="mt-10">
-                <h3 className="text-white text-xl font-bold mb-4">Méthode de paiement</h3>
+                <h3 className="text-white text-xl font-bold mb-4">Je choisis ma méthode de paiement</h3>
                 <div className="max-w-5xl mx-auto flex justify-center gap-8 flex-wrap">
                   {/* Choix de paiement */}
                   {paymentMethods.map((method) => (
