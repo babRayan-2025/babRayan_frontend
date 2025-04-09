@@ -506,7 +506,7 @@ export default function Parrainage() {
                         </div>
                       )}
                       <div className="mt-4">
-                        <h4 className="text-xl font-bold text-red-700 mb-3">{content.title}</h4>
+                        <h4 className="text-2xl font-bold text-red-700 mb-3">{content.title}</h4>
                         <p className="text-gray-700 text-sm mb-4">{content.description}</p>
                         <motion.ul
                           initial="hidden"
