@@ -65,7 +65,9 @@ export default function DashboardLayout({ children }) {
   ];
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    // local storage
+    localStorage.removeItem("userID");
+    localStorage.removeItem("userName");
     document.cookie = "auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     router.push("/login");
   };
