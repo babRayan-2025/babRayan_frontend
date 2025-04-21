@@ -11,6 +11,9 @@ import { ImNewspaper } from "react-icons/im";
 import { FaUsers } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaHandHoldingHeart } from "react-icons/fa";
+import { FaHandsHelping } from "react-icons/fa";
+import { FaAddressBook } from "react-icons/fa";
+import { FaHandshake } from "react-icons/fa";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function DashboardLayout({ children }) {
@@ -60,7 +63,10 @@ export default function DashboardLayout({ children }) {
         { name: 'CMI', path: '/donations/cmi' }
       ]
     },
-    { name: 'Administateurs', icon: <FaUsers />, path: '/admins' },
+    { name: 'Bénévoles', icon: <FaHandsHelping />, path: '/volunteers' },
+    { name: 'Contacts', icon: <FaAddressBook />, path: '/contacts' },
+    { name: 'Partenaires', icon: <FaHandshake />, path: '/partners' },
+    { name: 'Utilisateurs', icon: <FaUsers />, path: '/users' },
     { name: 'Settings', icon: <IoSettingsSharp />, path: '/settings' },
   ];
 
