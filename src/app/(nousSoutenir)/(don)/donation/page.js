@@ -273,7 +273,7 @@ export default function Donation() {
             ? userData.phone.trim()
             : "06XXXXXXXX",
 
-          amount: Number(selectedAmount || customAmount),
+          amount: selectedAmount || customAmount,
         }),
       });
 
