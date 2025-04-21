@@ -83,8 +83,8 @@ export default function DashboardPage() {
 
 
       {/* Donation Trend Chart */}
-      <div className="mt-32 flex justify-center">
-        <div className="p-3 rounded-lg shadow-lg w-full max-w-4xl">
+      <div className="mt-24 flex justify-center">
+        <div className="p-3 rounded-lg shadow-lg w-full max-w-7xl">
           <h4 className="text-center mb-4 text-xl font-semibold">Donation Chart</h4>
           <Line
             data={donationChartData}

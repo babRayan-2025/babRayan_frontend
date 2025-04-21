@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { notification } from 'antd';
-import { Mail, Lock } from 'lucide-react';
+import { Mail, Lock, Loader2 } from 'lucide-react';
 import './Login.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,6 +21,7 @@ export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const userID = getLocalStorage("userID");
@@ -31,6 +32,7 @@ export default function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/auth/login', {
         method: 'POST',
@@ -54,10 +56,12 @@ export default function Login() {
       } else {
         toast.error('Une erreur est survenue lors du login.');
         console.log(data);
-
       }
     } catch (error) {
       console.error(error);
+      toast.error('Erreur de connexion');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -125,8 +129,19 @@ export default function Login() {
               <u><span style={{ cursor: 'pointer' }} onClick={handleForgotPassword}>Mot de passe oublié ?</span></u>
             </div>
 
-            <button type="submit" className="login-button bg-[#cc2229] hover:bg-[#cc2228b6]">
-              Se connecter
+            <button 
+              type="submit" 
+              className="login-button bg-[#cc2229] hover:bg-[#cc2228b6] flex items-center justify-center"
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="animate-spin mr-2" size={20} />
+                  Connexion en cours...
+                </>
+              ) : (
+                'Se connecter'
+              )}
             </button>
 
             {/* <p className="text-center mt-4">
