@@ -370,7 +370,6 @@ export default function Donation() {
 
     if (paymentMethod === 5) {
       CMIpaymentProcess();
-      PaypalpaymentProcess();
     } else if (paymentMethod === 4) {
       PaypalpaymentProcess();
     }
