@@ -13,6 +13,7 @@
     "@tabler/icons-react": "^3.26.0",
     "antd": "^5.22.5",
     "autoprefixer": "^10.4.20",
+    "axios": "^1.8.4",
     "bab-rayan-frontend": "file:",
     "chart.js": "^4.4.9",
     "class-variance-authority": "^0.7.1",
