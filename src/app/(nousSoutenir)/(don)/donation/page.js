@@ -416,7 +416,13 @@ export default function Donation() {
       image: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
       desc: "Faire un don par virement bancaire",
     },
-    { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f", desc: "Payer avec CMI" },
+    {
+      id: 5, label: "Carte bancaire",
+      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f",
+      img2: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Fsecure_code_logo.png?alt=media&token=c1438943-9627-43b2-9afd-62fc7588648c",
+      img3: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Ftn_verified_by_visa.png?alt=media&token=b2590060-ed4c-4a12-914d-3ae4f0a6200d",
+      desc: "Payer avec CMI"
+    },
   ];
 
   const Modal = ({ method, amount, onClose }) => {
@@ -593,6 +599,12 @@ export default function Donation() {
                           : "object-cover"
                           }`}
                       />
+                      {method && method.img2 && (
+                        <div className="flex mt-1 items-center justify-center space-x-2">
+                          <img src={method.img2} alt={method.label} className="w-10 h-7" />
+                          <img src={method.img3} alt={method.label} className="w-10 h-7" />
+                        </div>
+                      )}
                     </motion.button>
                     <span className="text-xs block mt-0 text-center text-white">
                       {method.label}
@@ -703,7 +715,7 @@ export default function Donation() {
                 className="bg-yellow-300 p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
               >
                 <h2 className="text-5xl text-red-700 font-extrabold my-4 mx-8 text-center">
-                   Fiche contact
+                  Fiche contact
                 </h2>
                 <p className="text-md font-semibold text-white md:mt-8">Vos données personnelles sont confidentielles et utilisées à des fins administratives.</p>
                 <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">
