@@ -14,6 +14,7 @@
     "antd": "^5.22.5",
     "autoprefixer": "^10.4.20",
     "bab-rayan-frontend": "file:",
+    "chart.js": "^4.4.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "draft-js": "^0.11.7",
