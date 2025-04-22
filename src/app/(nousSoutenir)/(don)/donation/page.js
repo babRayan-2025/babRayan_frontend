@@ -506,10 +506,12 @@ export default function Donation() {
           className="bg-white rounded-3xl shadow-lg text-center p-6 w-[80%]"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex justify-between pb-2 items-center">
-            <img className="w-22 h-14" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Fsecure_code_logo.png?alt=media&token=c1438943-9627-43b2-9afd-62fc7588648c" alt="" />
-            <h2 className="text-2xl font-bold">Termes et conditions</h2>
-            <img className="w-22 h-14" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Ftn_verified_by_visa.png?alt=media&token=b2590060-ed4c-4a12-914d-3ae4f0a6200d" alt="" />
+          <div className="flex flex-col sm:flex-row justify-between pb-2 items-center">
+            <h2 className="text-2xl font-bold w-full sm:w-auto text-center sm:text-left mb-3 sm:mb-0">Termes et conditions</h2>
+            <div className="flex justify-center w-full sm:w-auto space-x-4">
+              <img className="w-16 h-10 sm:w-22 sm:h-14" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Fsecure_code_logo.png?alt=media&token=c1438943-9627-43b2-9afd-62fc7588648c" alt="" />
+              <img className="w-16 h-10 sm:w-22 sm:h-14" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Ftn_verified_by_visa.png?alt=media&token=b2590060-ed4c-4a12-914d-3ae4f0a6200d" alt="" />
+            </div>
           </div>
 
           <div
@@ -699,12 +701,6 @@ export default function Donation() {
                           : "object-cover"
                           }`}
                       />
-                      {method && method.img2 && (
-                        <div className="flex mt-1 items-center justify-center space-x-2">
-                          <img src={method.img2} alt={method.label} className="w-10 h-7" />
-                          <img src={method.img3} alt={method.label} className="w-10 h-7" />
-                        </div>
-                      )}
                     </motion.button>
                     <span className="text-xs block mt-0 text-center text-white">
                       {method.label}
