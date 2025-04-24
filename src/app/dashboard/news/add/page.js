@@ -78,36 +78,62 @@ const AddNews = () => {
 
             // Create form data
             const formData = new FormData();
-            formData.append("title", title);
+            formData.append("title", title.trim());
             formData.append("content", htmlContent);
             formData.append("likes", "0");
 
             // Add image file
-            if (fileList[0].originFileObj) {
-                formData.append("file", fileList[0].originFileObj);
+            if (fileList[0]?.originFileObj) {
+                const file = fileList[0].originFileObj;
+                formData.append("file", file, file.name);
             }
             
             // Log FormData contents properly
             console.log("FormData contents:");
             for (let [key, value] of formData.entries()) {
-                console.log(`${key}: ${value instanceof File ? `File: ${value.name}, size: ${value.size} bytes` : value}`);
+                if (value instanceof File) {
+                    console.log(`${key}: File: ${value.name}, type: ${value.type}, size: ${value.size} bytes`);
+                } else {
+                    console.log(`${key}: ${typeof value === 'string' && value.length > 100 ? value.substring(0, 100) + '...' : value}`);
+                }
             }
             
             // Send to API
             const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/news", {
                 method: "POST",
                 body: formData,
+                credentials: 'omit'
             });
 
-            const data = await response.json();
+            console.log("Response status:", response.status);
+            console.log("Response headers:", Object.fromEntries([...response.headers.entries()]));
+            
+            // Clone the response to read the text content for debugging
+            const responseClone = response.clone();
+            const responseText = await responseClone.text();
+            console.log("Raw response:", responseText);
+            
+            // Parse the JSON response
+            let data;
+            try {
+                data = JSON.parse(responseText);
+                console.log("Parsed data:", data);
+            } catch (error) {
+                console.error("JSON parse error:", error);
+                toast.error("Erreur dans le format de la réponse. Veuillez réessayer.");
+                return;
+            }
 
-            if (data.success) {
+            // Check both HTTP status and API status
+            if (data.status === true) {
                 toast.success("Article ajouté avec succès");
                 setTimeout(() => {
                     router.push("/dashboard/news");
                 }, 2000);
             } else {
-                toast.error(data || "Erreur lors de l'ajout de l'article");
+                const errorMessage = data.message || `Erreur (${response.status}): Échec de l'ajout de l'article`;
+                console.error("API error:", errorMessage, data);
+                toast.error(errorMessage);
             }
         } catch (error) {
             console.error("Error submitting news:", error);

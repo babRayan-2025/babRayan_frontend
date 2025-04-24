@@ -1,20 +1,78 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaEdit, FaTrash, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 export default function Actualite() {
-    const [actualites, setActualites] = useState([
-        { id: 1, image: "https://mdbootstrap.com/img/new/avatars/7.jpg", title: "Actualité 1", datePublication: "2022-01-01", contenu: "Contenu de l'actualité 1" },
-        { id: 2, image: "https://mdbootstrap.com/img/new/avatars/7.jpg", title: "Actualité 2", datePublication: "2022-01-02", contenu: "Contenu de l'actualité 2" },
-        { id: 3, image: "https://mdbootstrap.com/img/new/avatars/7.jpg", title: "Actualité 3", datePublication: "2022-01-03", contenu: "Contenu de l'actualité 3" },
-        { id: 4, image: "https://mdbootstrap.com/img/new/avatars/7.jpg", title: "Actualité 4", datePublication: "2022-01-04", contenu: "Contenu de l'actualité 4" },
-        { id: 5, image: "https://mdbootstrap.com/img/new/avatars/7.jpg", title: "Actualité 5", datePublication: "2022-01-05", contenu: "Contenu de l'actualité 5" },
-        { id: 6, image: "https://mdbootstrap.com/img/new/avatars/7.jpg", title: "Actualité 6", datePublication: "2022-01-06", contenu: "Contenu de l'actualité 6" },
-    ]);
-
+    const [actualites, setActualites] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [searchTitle, setSearchTitle] = useState("");
     const [sortAsc, setSortAsc] = useState(false);  // true for ascending, false for descending
     const [currentPage, setCurrentPage] = useState(1);  // Track current page
     const [itemsPerPage, setItemsPerPage] = useState(4); // Number of items per page
+
+    useEffect(() => {
+        fetchNews();
+    }, []);
+
+    const fetchNews = async () => {
+        try {
+            setLoading(true);
+            const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/news');
+            const result = await response.json();
+            
+            if (result.status && result.data) {
+                // Transform data to match our format
+                const formattedData = result.data.map(item => ({
+                    id: item.id,
+                    image: item.pic,
+                    title: item.title,
+                    datePublication: formatDate(item.createdAt),
+                    contenu: item.content,
+                    likes: item.likes
+                }));
+                setActualites(formattedData);
+            } else {
+                toast.error("Erreur lors du chargement des actualités");
+            }
+        } catch (error) {
+            console.error("Error fetching news:", error);
+            toast.error("Erreur lors du chargement des actualités");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const formatDate = (timestamp) => {
+        if (!timestamp) return 'Date inconnue';
+        
+        // Convert Firestore timestamp to JS Date
+        const date = new Date(timestamp._seconds * 1000);
+        return date.toLocaleDateString('fr-FR');
+    };
+
+    const deleteNews = async (id) => {
+        if (!confirm("Êtes-vous sûr de vouloir supprimer cette actualité?")) return;
+        
+        try {
+            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${id}`, {
+                method: 'DELETE',
+            });
+            
+            const result = await response.json();
+            
+            if (result.status) {
+                toast.success("Actualité supprimée avec succès");
+                fetchNews(); // Refresh the list
+            } else {
+                toast.error("Erreur lors de la suppression");
+            }
+        } catch (error) {
+            console.error("Error deleting news:", error);
+            toast.error("Erreur lors de la suppression");
+        }
+    };
 
     // Sort the actualites based on date of publication (ascending or descending)
     const sortedActualites = [...actualites].sort((a, b) => {
@@ -41,6 +99,8 @@ export default function Actualite() {
 
     return (
         <section>
+            <ToastContainer position="top-right" autoClose={3000} />
+            
             <div className="py-5 flex justify-between items-center">
                 <div>
                     Rechercher par titre: 
@@ -57,75 +117,91 @@ export default function Actualite() {
                 </button>
             </div>
 
-            <table className="table-auto w-full bg-white shadow-lg rounded-md overflow-hidden">
-                <thead className="bg-gray-100">
-                    <tr>
-                        <th className="px-4 py-2 text-left"> </th>
-                        <th className="px-4 py-2 text-left">Titre</th>
-                        <th 
-                            onClick={() => setSortAsc(!sortAsc)} 
-                            style={{ cursor: 'pointer' }} 
-                            className="px-4 py-2 text-left"
-                        >
-                            Date de publication
-                            <span className="ml-2">
-                                <i className={`fa-solid ${sortAsc ? "fa-arrow-up" : "fa-arrow-down"}`} />
-                            </span>
-                        </th>
-                        <th className="px-4 py-2 text-left">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {currentActualites.map(actualite => (
-                        <tr key={actualite.id}>
-                            <td className="px-4 py-2">
-                                <div className="flex items-center">
-                                    <img 
-                                        src={actualite.image} 
-                                        alt="" 
-                                        className="w-20 h-12 object-cover rounded-md" 
-                                    />
-                                </div>
-                            </td>
-                            <td className="px-4 py-2">
-                                <p className="font-medium">{actualite.title}</p>
-                            </td>
-                            <td className="px-4 py-2">
-                                <p className="font-normal">{actualite.datePublication}</p>
-                            </td>
-                            <td className="px-4 py-2">
-                                <button 
-                                    type="button" 
-                                    className="btn_edit px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
+            {loading ? (
+                <div className="text-center py-10">Chargement des actualités...</div>
+            ) : actualites.length === 0 ? (
+                <div className="text-center py-10">Aucune actualité trouvée</div>
+            ) : (
+                <>
+                    <table className="table-auto w-full bg-white shadow-lg rounded-md overflow-hidden">
+                        <thead className="bg-gray-100">
+                            <tr>
+                                <th className="px-4 py-2 text-left"> </th>
+                                <th className="px-4 py-2 text-left">Titre</th>
+                                <th 
+                                    onClick={() => setSortAsc(!sortAsc)} 
+                                    style={{ cursor: 'pointer' }} 
+                                    className="px-4 py-2 text-left flex items-center"
                                 >
-                                    <i className="fa-solid fa-pen-to-square" />
-                                </button>
-                                <button 
-                                    type="button" 
-                                    className="btn_delete px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 ml-2"
-                                >
-                                    <i className="fa-solid fa-trash" />
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                                    Date de publication
+                                    <span className="ml-2">
+                                        {sortAsc ? <FaArrowUp /> : <FaArrowDown />}
+                                    </span>
+                                </th>
+                                <th className="px-4 py-2 text-left">Likes</th>
+                                <th className="px-4 py-2 text-left">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentActualites.map(actualite => (
+                                <tr key={actualite.id}>
+                                    <td className="px-4 py-2">
+                                        <div className="flex items-center">
+                                            <img 
+                                                src={actualite.image} 
+                                                alt="" 
+                                                className="w-20 h-12 object-cover rounded-md" 
+                                            />
+                                        </div>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        <p className="font-medium">{actualite.title}</p>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        <p className="font-normal">{actualite.datePublication}</p>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        <p className="font-normal">{actualite.likes}</p>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        <button 
+                                            type="button" 
+                                            className="btn_edit px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
+                                            onClick={() => window.location.href = `/dashboard/news/edit/${actualite.id}`}
+                                        >
+                                            <FaEdit />
+                                        </button>
+                                        <button 
+                                            type="button" 
+                                            className="btn_delete px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 ml-2"
+                                            onClick={() => deleteNews(actualite.id)}
+                                        >
+                                            <FaTrash />
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
 
-            {/* Pagination controls */}
-            <div className="flex justify-center mt-4">
-                <div className="flex gap-2">
-                    {Array.from({ length: totalPages }, (_, index) => (
-                        <button
-                            key={index + 1}
-                            onClick={() => handlePaginationClick(index + 1)}
-                            className={`px-4 py-2 rounded-md ${index + 1 === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
-                        >
-                            {index + 1}
-                        </button>
-                    ))}
-                </div>
-            </div>
+                    {/* Pagination controls */}
+                    {totalPages > 1 && (
+                        <div className="flex justify-center mt-4">
+                            <div className="flex gap-2">
+                                {Array.from({ length: totalPages }, (_, index) => (
+                                    <button
+                                        key={index + 1}
+                                        onClick={() => handlePaginationClick(index + 1)}
+                                        className={`px-4 py-2 rounded-md ${index + 1 === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+                                    >
+                                        {index + 1}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
         </section>
     );
 }
