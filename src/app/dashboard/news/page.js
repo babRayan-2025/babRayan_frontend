@@ -10,11 +10,33 @@ export default function Actualite() {
     const [searchTitle, setSearchTitle] = useState("");
     const [sortAsc, setSortAsc] = useState(false);  // true for ascending, false for descending
     const [currentPage, setCurrentPage] = useState(1);  // Track current page
-    const [itemsPerPage, setItemsPerPage] = useState(4); // Number of items per page
+    const [itemsPerPage, setItemsPerPage] = useState(7); // Number of items per page
+    const [sortField, setSortField] = useState('createdAt'); // Track which field to sort by, default to createdAt
 
     useEffect(() => {
         fetchNews();
     }, []);
+
+    const formatDate = (timestamp) => {
+        if (!timestamp) return 'Date inconnue';
+        
+        // Convert Firestore timestamp to JS Date
+        const date = new Date(timestamp._seconds * 1000);
+        return date.toLocaleDateString('fr-FR');
+    };
+
+    // Store the original timestamp for accurate sorting
+    const formatNewsData = (data) => {
+        return data.map(item => ({
+            id: item.id,
+            image: item.pic,
+            title: item.title,
+            datePublication: formatDate(item.createdAt),
+            contenu: item.content,
+            likes: item.likes,
+            rawTimestamp: item.createdAt // Store the original timestamp
+        }));
+    };
 
     const fetchNews = async () => {
         try {
@@ -24,14 +46,7 @@ export default function Actualite() {
             
             if (result.status && result.data) {
                 // Transform data to match our format
-                const formattedData = result.data.map(item => ({
-                    id: item.id,
-                    image: item.pic,
-                    title: item.title,
-                    datePublication: formatDate(item.createdAt),
-                    contenu: item.content,
-                    likes: item.likes
-                }));
+                const formattedData = formatNewsData(result.data);
                 setActualites(formattedData);
             } else {
                 toast.error("Erreur lors du chargement des actualités");
@@ -42,14 +57,6 @@ export default function Actualite() {
         } finally {
             setLoading(false);
         }
-    };
-
-    const formatDate = (timestamp) => {
-        if (!timestamp) return 'Date inconnue';
-        
-        // Convert Firestore timestamp to JS Date
-        const date = new Date(timestamp._seconds * 1000);
-        return date.toLocaleDateString('fr-FR');
     };
 
     const deleteNews = async (id) => {
@@ -76,9 +83,24 @@ export default function Actualite() {
 
     // Sort the actualites based on date of publication (ascending or descending)
     const sortedActualites = [...actualites].sort((a, b) => {
-        const dateA = new Date(a.datePublication);
-        const dateB = new Date(b.datePublication);
-        return sortAsc ? dateA - dateB : dateB - dateA;  // Toggle sort order
+        if (sortField === 'createdAt') {
+            // Use raw timestamp for precise sorting including time
+            const getTimestamp = (item) => {
+                if (item.rawTimestamp && item.rawTimestamp._seconds) {
+                    return item.rawTimestamp._seconds * 1000 + 
+                           (item.rawTimestamp._nanoseconds || 0) / 1000000;
+                }
+                return new Date(item.datePublication).getTime();
+            };
+            
+            const timeA = getTimestamp(a);
+            const timeB = getTimestamp(b);
+            
+            return sortAsc ? timeA - timeB : timeB - timeA;  // Toggle sort order
+        } else if (sortField === 'likes') {
+            return sortAsc ? a.likes - b.likes : b.likes - a.likes;
+        }
+        return 0;
     });
 
     // Filter the sortedActualites based on search by title
@@ -112,9 +134,29 @@ export default function Actualite() {
                         onChange={(e) => setSearchTitle(e.target.value)} 
                     />
                 </div>
-                <button onClick={()=> window.location.href = "/dashboard/news/add"} className="btn_add px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                    Ajouter un nouvel article
-                </button>
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center">
+                        <label htmlFor="itemsPerPage" className="mr-2 text-sm font-medium">Éléments par page:</label>
+                        <select 
+                            id="itemsPerPage"
+                            className="p-2 border rounded"
+                            value={itemsPerPage}
+                            onChange={(e) => {
+                                setItemsPerPage(Number(e.target.value));
+                                setCurrentPage(1); // Reset to first page when changing items per page
+                            }}
+                        >
+                            <option value={5}>5</option>
+                            <option value={7}>7</option>
+                            <option value={10}>10</option>
+                            <option value={15}>15</option>
+                            <option value={20}>20</option>
+                        </select>
+                    </div>
+                    <button onClick={()=> window.location.href = "/dashboard/news/add"} className="btn_add px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                        Ajouter un nouvel article
+                    </button>
+                </div>
             </div>
 
             {loading ? (
