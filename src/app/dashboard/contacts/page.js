@@ -181,7 +181,7 @@ export default function Contacts() {
                     </button>
                     <button 
                         className={`px-4 py-2 rounded-md ${showArchived 
-                            ? 'bg-blue-500 text-white' 
+                            ? 'bg-red-500 text-white' 
                             : 'bg-gray-200 text-gray-700'}`}
                         onClick={toggleArchivedView}
                         disabled={loading}

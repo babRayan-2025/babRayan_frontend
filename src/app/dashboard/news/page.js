@@ -226,7 +226,7 @@ export default function Actualite() {
                                         >
                                             <button 
                                                 type="button" 
-                                                className="btn_delete px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
+                                                className="text-white px-3 py-1 bg-red-500 hover:bg-red-600 rounded-md"
                                             >
                                                 <FaTrash />
                                             </button>
