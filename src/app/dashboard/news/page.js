@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye } from 'react-icons/fa';
+import { Modal } from 'antd';
 
 export default function Actualite() {
     const [actualites, setActualites] = useState([]);
@@ -60,25 +61,32 @@ export default function Actualite() {
     };
 
     const deleteNews = async (id) => {
-        if (!confirm("Êtes-vous sûr de vouloir supprimer cette actualité?")) return;
-        
-        try {
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${id}`, {
-                method: 'DELETE',
-            });
-            
-            const result = await response.json();
-            
-            if (result.status) {
-                toast.success("Actualité supprimée avec succès");
-                fetchNews(); // Refresh the list
-            } else {
-                toast.error("Erreur lors de la suppression");
+        Modal.confirm({
+            title: 'Confirmation',
+            content: 'Êtes-vous sûr de vouloir supprimer cette actualité?',
+            okText: 'Oui',
+            okType: 'danger',
+            cancelText: 'Non',
+            onOk: async () => {
+                try {
+                    const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${id}`, {
+                        method: 'DELETE',
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.status) {
+                        toast.success("Actualité supprimée avec succès");
+                        fetchNews(); // Refresh the list
+                    } else {
+                        toast.error("Erreur lors de la suppression");
+                    }
+                } catch (error) {
+                    console.error("Error deleting news:", error);
+                    toast.error("Erreur lors de la suppression");
+                }
             }
-        } catch (error) {
-            console.error("Error deleting news:", error);
-            toast.error("Erreur lors de la suppression");
-        }
+        });
     };
 
     // Sort the actualites based on date of publication (ascending or descending)
@@ -211,13 +219,6 @@ export default function Actualite() {
                                             onClick={() => window.location.href = `/dashboard/news/${actualite.id}`}
                                         >
                                             <FaEye />
-                                        </button>
-                                        <button 
-                                            type="button" 
-                                            className="btn_edit px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
-                                            onClick={() => window.location.href = `/dashboard/news/edit/${actualite.id}`}
-                                        >
-                                            <FaEdit />
                                         </button>
                                         <button 
                                             type="button" 
