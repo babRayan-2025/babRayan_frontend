@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FaEdit, FaTrash, FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye } from 'react-icons/fa';
 
 export default function Actualite() {
     const [actualites, setActualites] = useState([]);
@@ -97,8 +97,6 @@ export default function Actualite() {
             const timeB = getTimestamp(b);
             
             return sortAsc ? timeA - timeB : timeB - timeA;  // Toggle sort order
-        } else if (sortField === 'likes') {
-            return sortAsc ? a.likes - b.likes : b.likes - a.likes;
         }
         return 0;
     });
@@ -171,16 +169,20 @@ export default function Actualite() {
                                 <th className="px-4 py-2 text-left"> </th>
                                 <th className="px-4 py-2 text-left">Titre</th>
                                 <th 
-                                    onClick={() => setSortAsc(!sortAsc)} 
+                                    onClick={() => {
+                                        setSortField('createdAt');
+                                        setSortAsc(!sortAsc);
+                                    }} 
                                     style={{ cursor: 'pointer' }} 
-                                    className="px-4 py-2 text-left flex items-center"
+                                    className="px-4 py-2 text-left flex items-center min-w-[200px]"
                                 >
                                     Date de publication
-                                    <span className="ml-2">
-                                        {sortAsc ? <FaArrowUp /> : <FaArrowDown />}
-                                    </span>
+                                    {sortField === 'createdAt' && (
+                                        <span className="ml-2">
+                                            {sortAsc ? <FaArrowUp /> : <FaArrowDown />}
+                                        </span>
+                                    )}
                                 </th>
-                                <th className="px-4 py-2 text-left">Likes</th>
                                 <th className="px-4 py-2 text-left">Actions</th>
                             </tr>
                         </thead>
@@ -199,13 +201,17 @@ export default function Actualite() {
                                     <td className="px-4 py-2">
                                         <p className="font-medium">{actualite.title}</p>
                                     </td>
-                                    <td className="px-4 py-2">
+                                    <td className="px-4 py-2 min-w-[200px]">
                                         <p className="font-normal">{actualite.datePublication}</p>
                                     </td>
-                                    <td className="px-4 py-2">
-                                        <p className="font-normal">{actualite.likes}</p>
-                                    </td>
-                                    <td className="px-4 py-2">
+                                    <td className="px-4 py-2 flex space-x-2">
+                                        <button 
+                                            type="button" 
+                                            className="btn_view px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                                            onClick={() => window.location.href = `/dashboard/news/${actualite.id}`}
+                                        >
+                                            <FaEye />
+                                        </button>
                                         <button 
                                             type="button" 
                                             className="btn_edit px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
@@ -215,7 +221,7 @@ export default function Actualite() {
                                         </button>
                                         <button 
                                             type="button" 
-                                            className="btn_delete px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 ml-2"
+                                            className="btn_delete px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
                                             onClick={() => deleteNews(actualite.id)}
                                         >
                                             <FaTrash />
