@@ -66,7 +66,7 @@ export default function DashboardLayout({ children }) {
     { name: 'Bénévoles', icon: <FaHandsHelping />, path: '/volunteers' },
     { name: 'Contacts', icon: <FaAddressBook />, path: '/contacts' },
     { name: 'Partenaires', icon: <FaHandshake />, path: '/partners' },
-    { name: 'Utilisateurs', icon: <FaUsers />, path: '/users' },
+    { name: 'Utilisateurs', icon: <FaUsers />, path: '/admins' },
     { name: 'Settings', icon: <IoSettingsSharp />, path: '/settings' },
   ];
 
