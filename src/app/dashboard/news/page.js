@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye } from 'react-icons/fa';
-import { Modal } from 'antd';
+import { Popconfirm, message } from 'antd';
 
 export default function Actualite() {
     const [actualites, setActualites] = useState([]);
@@ -61,32 +61,27 @@ export default function Actualite() {
     };
 
     const deleteNews = async (id) => {
-        Modal.confirm({
-            title: 'Confirmation',
-            content: 'Êtes-vous sûr de vouloir supprimer cette actualité?',
-            okText: 'Oui',
-            okType: 'danger',
-            cancelText: 'Non',
-            onOk: async () => {
-                try {
-                    const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${id}`, {
-                        method: 'DELETE',
-                    });
-                    
-                    const result = await response.json();
-                    
-                    if (result.status) {
-                        toast.success("Actualité supprimée avec succès");
-                        fetchNews(); // Refresh the list
-                    } else {
-                        toast.error("Erreur lors de la suppression");
-                    }
-                } catch (error) {
-                    console.error("Error deleting news:", error);
-                    toast.error("Erreur lors de la suppression");
-                }
+        try {
+            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${id}`, {
+                method: 'DELETE',
+            });
+            
+            const result = await response.json();
+            
+            if (result.status) {
+                toast.success("Actualité supprimée avec succès");
+                fetchNews(); // Refresh the list
+            } else {
+                toast.error("Erreur lors de la suppression");
             }
-        });
+        } catch (error) {
+            console.error("Error deleting news:", error);
+            toast.error("Erreur lors de la suppression");
+        }
+    };
+
+    const cancelDelete = () => {
+        message.error('Suppression annulée');
     };
 
     // Sort the actualites based on date of publication (ascending or descending)
@@ -220,13 +215,22 @@ export default function Actualite() {
                                         >
                                             <FaEye />
                                         </button>
-                                        <button 
-                                            type="button" 
-                                            className="btn_delete px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
-                                            onClick={() => deleteNews(actualite.id)}
+                                        <Popconfirm
+                                            title="Confirmation"
+                                            description="Êtes-vous sûr de vouloir supprimer cette actualité?"
+                                            onConfirm={() => deleteNews(actualite.id)}
+                                            onCancel={cancelDelete}
+                                            okText="Oui"
+                                            cancelText="Non"
+                                            okType="danger"
                                         >
-                                            <FaTrash />
-                                        </button>
+                                            <button 
+                                                type="button" 
+                                                className="btn_delete px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
+                                            >
+                                                <FaTrash />
+                                            </button>
+                                        </Popconfirm>
                                     </td>
                                 </tr>
                             ))}
