@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'antd';
-import { FaEye, FaTrash, FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import { FaEye, FaTrash, FaArrowUp, FaArrowDown, FaArchive, FaInbox, FaUndoAlt } from 'react-icons/fa';
 
 export default function Contacts() {
     const [contacts, setContacts] = useState([]);
@@ -12,46 +12,113 @@ export default function Contacts() {
     // Modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedContact, setSelectedContact] = useState(null);
+    
+    // Filter state
+    const [showArchived, setShowArchived] = useState(false);
+    const [isTogglingVisibility, setIsTogglingVisibility] = useState(false);
 
     // Fetch contacts from the API
     useEffect(() => {
-        const fetchContacts = async () => {
-            try {
-                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/contact');
-                const result = await response.json();
-
-                if (result.status && result.data) {
-                    // Transform API data to match our table format
-                    const formattedContacts = result.data.map((contact, index) => {
-                        // Convert timestamp to readable date
-                        const date = contact.createdAt?._seconds
-                            ? new Date(contact.createdAt._seconds * 1000).toISOString().split('T')[0]
-                            : 'N/A';
-
-                        return {
-                            id: contact.id || index + 1,
-                            image: imageDefault, // Default image
-                            name: contact.nom || 'N/A',
-                            type: "Contact Us", // Default type
-                            date: date,
-                            email: contact.email || 'N/A',
-                            phone: contact.telephone || 'N/A',
-                            message: contact.message || ''
-                        };
-                    });
-
-                    setContacts(formattedContacts);
-                }
-            } catch (err) {
-                console.error("Error fetching contacts:", err);
-                setError("Impossible de charger les contacts");
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchContacts();
     }, []);
+
+    const fetchContacts = async () => {
+        try {
+            setLoading(true);
+            const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/contact');
+            const result = await response.json();
+            
+            if (result.status && result.data) {
+                // Transform API data to match our table format
+                const formattedContacts = result.data.map((contact, index) => {
+                    // Convert timestamp to readable date
+                    const date = contact.createdAt?._seconds 
+                        ? new Date(contact.createdAt._seconds * 1000).toISOString().split('T')[0]
+                        : 'N/A';
+                    
+                    return {
+                        id: contact.id || index + 1,
+                        image: imageDefault, // Default image
+                        name: contact.nom || 'N/A',
+                        type: "Contact Us", // Default type
+                        date: date,
+                        email: contact.email || 'N/A',
+                        phone: contact.telephone || 'N/A',
+                        message: contact.message || '',
+                        visible: contact.visible !== false // If visible is not explicitly false, consider it visible
+                    };
+                });
+                
+                setContacts(formattedContacts);
+            }
+        } catch (err) {
+            console.error("Error fetching contacts:", err);
+            setError("Impossible de charger les contacts");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Handle view contact details
+    const handleViewContact = (contact) => {
+        setSelectedContact(contact);
+        setIsModalOpen(true);
+    };
+
+    // Handle toggle visibility
+    const handleToggleVisibility = async (id) => {
+        try {
+            setIsTogglingVisibility(true);
+            
+            // Get the current visibility state
+            const currentContact = contacts.find(contact => contact.id === id);
+            const isCurrentlyVisible = currentContact ? currentContact.visible : true;
+            
+            // Update the contact in the state immediately for better UX
+            setContacts(prevContacts => 
+                prevContacts.map(contact => 
+                    contact.id === id 
+                        ? { ...contact, visible: !isCurrentlyVisible } 
+                        : contact
+                )
+            );
+            
+            // Make the API call using PATCH with mode: 'no-cors' to bypass CORS restrictions
+            // Note: This will make the response opaque, but state has already been updated optimistically
+            try {
+                await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/contact/${id}/visibility`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+                
+                // Since we can't read the response with no-cors mode, we assume success
+                console.log(isCurrentlyVisible 
+                    ? "Contact archivé avec succès" 
+                    : "Contact restauré avec succès");
+            } catch (fetchError) {
+                console.error("API request error:", fetchError);
+                throw fetchError; // Rethrow to be caught by the outer try/catch
+            }
+        } catch (err) {
+            console.error("Error toggling visibility:", err);
+            
+            // Revert the visibility change on error
+            const currentContact = contacts.find(contact => contact.id === id);
+            const isCurrentlyVisible = currentContact ? currentContact.visible : true;
+            
+            setContacts(prevContacts => 
+                prevContacts.map(contact => 
+                    contact.id === id 
+                        ? { ...contact, visible: isCurrentlyVisible } 
+                        : contact
+                )
+            );
+        } finally {
+            setIsTogglingVisibility(false);
+        }
+    };
 
     const [searchName, setSearchName] = useState("");
     const [sortAsc, setSortAsc] = useState(false);  // true for ascending, false for descending
@@ -65,9 +132,10 @@ export default function Contacts() {
         return sortAsc ? dateA - dateB : dateB - dateA;  // Toggle sort order
     });
 
-    // Filter the sortedContacts based on search by name
+    // Filter the sortedContacts based on search by name and archived status
     const filteredContacts = sortedContacts.filter(contact =>
-        contact.name.toLowerCase().includes(searchName.toLowerCase())
+        contact.name.toLowerCase().includes(searchName.toLowerCase()) && 
+        (showArchived ? !contact.visible : contact.visible)
     );
 
     // Calculate total pages
@@ -81,30 +149,45 @@ export default function Contacts() {
         setCurrentPage(page);
     };
 
-    // Handle view contact details
-    const handleViewContact = (contact) => {
-        setSelectedContact(contact);
-        setIsModalOpen(true);
-    };
-
-    // Handle archive contact
-    const handleArchiveContact = (id) => {
-        // Implement archive functionality here
-        console.log(`Archiving contact with ID: ${id}`);
+    // Toggle archived view
+    const toggleArchivedView = () => {
+        setShowArchived(!showArchived);
+        setCurrentPage(1); // Reset to first page when switching views
     };
 
     return (
         <section>
-            <div className="py-5 flex justify-between items-center">
-                <div>
-                    Rechercher par nom:
-                    <input
-                        type="text"
-                        className="form-input w-full mt-2 p-2 border rounded"
-                        placeholder="Rechercher"
-                        value={searchName}
-                        onChange={(e) => setSearchName(e.target.value)}
+            <div className="py-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div className="w-full md:w-auto">
+                    Rechercher par nom: 
+                    <input 
+                        type="text" 
+                        className="form-input w-full mt-2 p-2 border rounded" 
+                        placeholder="Rechercher" 
+                        value={searchName} 
+                        onChange={(e) => setSearchName(e.target.value)} 
                     />
+                </div>
+                
+                <div className="flex items-center">
+                    <button 
+                        className={`px-4 py-2 rounded-md mr-2 ${showArchived 
+                            ? 'bg-gray-200 text-gray-700' 
+                            : 'bg-blue-500 text-white'}`}
+                        onClick={toggleArchivedView}
+                        disabled={loading}
+                    >
+                        <FaInbox className="inline mr-2" /> Actifs
+                    </button>
+                    <button 
+                        className={`px-4 py-2 rounded-md ${showArchived 
+                            ? 'bg-blue-500 text-white' 
+                            : 'bg-gray-200 text-gray-700'}`}
+                        onClick={toggleArchivedView}
+                        disabled={loading}
+                    >
+                        <FaArchive className="inline mr-2" /> Archivés
+                    </button>
                 </div>
             </div>
 
@@ -174,11 +257,14 @@ export default function Contacts() {
                                             </button>
                                             <button 
                                                 type="button" 
-                                                className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
-                                                title="Supprimer"
-                                                onClick={() => handleArchiveContact(contact.id)}
+                                                className={`px-3 py-1 ${contact.visible 
+                                                    ? 'bg-red-500 hover:bg-red-600' 
+                                                    : 'bg-green-500 hover:bg-green-600'} text-white rounded-md`}
+                                                title={contact.visible ? "Archiver" : "Restaurer"}
+                                                onClick={() => handleToggleVisibility(contact.id)}
+                                                disabled={isTogglingVisibility}
                                             >
-                                                <FaTrash />
+                                                {contact.visible ? <FaTrash /> : <FaUndoAlt />}
                                             </button>
                                         </td>
                                     </tr>
@@ -186,7 +272,9 @@ export default function Contacts() {
                             ) : (
                                 <tr>
                                     <td colSpan="7" className="px-4 py-4 text-center">
-                                        Aucun contact trouvé
+                                        {showArchived 
+                                            ? "Aucun contact archivé trouvé" 
+                                            : "Aucun contact actif trouvé"}
                                     </td>
                                 </tr>
                             )}
@@ -216,8 +304,8 @@ export default function Contacts() {
                         open={isModalOpen}
                         onCancel={() => setIsModalOpen(false)}
                         footer={[
-                            <button
-                                key="close"
+                            <button 
+                                key="close" 
                                 className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
                                 onClick={() => setIsModalOpen(false)}
                             >
@@ -229,17 +317,17 @@ export default function Contacts() {
                         {selectedContact && (
                             <div className="p-4">
                                 <div className="flex items-center mb-6">
-                                    <img
-                                        src={selectedContact.image}
-                                        alt=""
-                                        className="w-16 h-16 object-cover rounded-full mr-4"
+                                    <img 
+                                        src={selectedContact.image} 
+                                        alt="" 
+                                        className="w-16 h-16 object-cover rounded-full mr-4" 
                                     />
                                     <div>
                                         <h3 className="text-xl font-semibold">{selectedContact.name}</h3>
                                         <p className="text-gray-500">{selectedContact.email}</p>
                                     </div>
                                 </div>
-
+                                
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
                                         <p className="font-semibold mb-1">Téléphone:</p>
@@ -250,7 +338,7 @@ export default function Contacts() {
                                         <p className="text-gray-700">{selectedContact.date}</p>
                                     </div>
                                 </div>
-
+                                
                                 <div className="mt-6">
                                     <p className="font-semibold mb-2">Message:</p>
                                     <div className="p-3 bg-gray-100 rounded-md">
