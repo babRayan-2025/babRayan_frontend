@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Button, Input, Form, Card, Spin, Typography, Modal } from "antd";
-import { LockOutlined, MailOutlined, SaveOutlined } from "@ant-design/icons";
+import { LockOutlined, MailOutlined, SaveOutlined, KeyOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,8 +14,11 @@ export default function SettingsPage() {
   const [userData, setUserData] = useState(null);
   const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [passwordModalVisible, setPasswordModalVisible] = useState(false);
+  const [forgotPasswordModalVisible, setForgotPasswordModalVisible] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
   const [emailForm] = Form.useForm();
   const [passwordForm] = Form.useForm();
+  const [forgotPasswordForm] = Form.useForm();
 
   const userId = localStorage.getItem("userID");
 
@@ -88,7 +91,6 @@ export default function SettingsPage() {
   const handleUpdatePassword = async (values) => {
     setLoading(true);
     try {
-      // You may need to adjust this API call to include currentPassword
       const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${userId}`, {
         method: "PUT",
         headers: {
@@ -101,15 +103,91 @@ export default function SettingsPage() {
       });
 
       if (response.ok) {
-        toast.success("Mot de passe mis à jour avec succès !");
-        passwordForm.resetFields();
-        setPasswordModalVisible(false);
+        const result = await response.json();
+        if (result.status) {
+          toast.success("Mot de passe mis à jour avec succès !");
+          passwordForm.resetFields();
+          setPasswordModalVisible(false);
+        } else {
+          toast.error(result.message || "Échec de la mise à jour du mot de passe");
+        }
       } else {
-        toast.error("Échec de la mise à jour du mot de passe");
+        const errorData = await response.json();
+        toast.error(errorData.message || "Échec de la mise à jour du mot de passe");
       }
     } catch (error) {
       console.error("Error updating password:", error);
       toast.error("Une erreur s'est produite lors de la mise à jour du mot de passe");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleForgotPassword = async (values) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/forgot-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: userData?.email
+        })
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        if (result.status) {
+          setOtpSent(true);
+          toast.success("Un code de réinitialisation a été envoyé à votre adresse e-mail");
+        } else {
+          toast.error(result.message || "Échec de l'envoi du code de réinitialisation");
+        }
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.message || "Échec de l'envoi du code de réinitialisation");
+      }
+    } catch (error) {
+      console.error("Error sending reset code:", error);
+      toast.error("Une erreur s'est produite lors de l'envoi du code de réinitialisation");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleVerifyOtp = async (values) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/reset-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: userData?.email,
+          resetCode: values.otp,
+          newPassword: values.newPassword
+        })
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        if (result.status) {
+          toast.success("Mot de passe réinitialisé avec succès !");
+          forgotPasswordForm.resetFields();
+          setForgotPasswordModalVisible(false);
+          setOtpSent(false);
+        } else {
+          toast.error(result.message || "Échec de la vérification du code de réinitialisation");
+        }
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.message || "Échec de la vérification du code de réinitialisation");
+      }
+    } catch (error) {
+      console.error("Error verifying reset code:", error);
+      toast.error("Une erreur s'est produite lors de la vérification du code de réinitialisation");
     } finally {
       setLoading(false);
     }
@@ -257,6 +335,28 @@ export default function SettingsPage() {
                   Mettre à jour le mot de passe
                 </Button>
               </motion.div>
+
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <Button
+                  type="default"
+                  icon={<KeyOutlined className="btn-icon" />}
+                  size="large"
+                  block
+                  onClick={() => {
+                    setForgotPasswordModalVisible(true);
+                    setOtpSent(false);
+                  }}
+                  className="btn-update btn-secondary"
+                >
+                  Mot de passe oublié
+                </Button>
+              </motion.div>
             </div>
           </Card>
         </motion.div>
@@ -281,7 +381,7 @@ export default function SettingsPage() {
                 Email actuel :
                 <strong>{userData?.email}</strong>
               </div>
-              
+
               <Form.Item
                 label="Nouvelle adresse email"
                 name="email"
@@ -290,8 +390,8 @@ export default function SettingsPage() {
                   { type: 'email', message: 'Veuillez entrer une adresse email valide' }
                 ]}
               >
-                <Input 
-                  prefix={<MailOutlined />} 
+                <Input
+                  prefix={<MailOutlined />}
                   placeholder="Nouvelle adresse email"
                   size="large"
                 />
@@ -396,6 +496,124 @@ export default function SettingsPage() {
                 </Button>
               </Form.Item>
             </Form>
+          </Modal>
+        )}
+
+        {/* Forgot Password Modal */}
+        {forgotPasswordModalVisible && (
+          <Modal
+            title="Mot de passe oublié"
+            open={forgotPasswordModalVisible}
+            onCancel={() => {
+              setForgotPasswordModalVisible(false);
+              setOtpSent(false);
+              forgotPasswordForm.resetFields();
+            }}
+            footer={null}
+            centered
+            destroyOnClose={true}
+            className="settings-modal"
+          >
+            {!otpSent ? (
+              <div>
+                <p className="mb-4">Nous allons envoyer un code de réinitialisation à l'adresse email : <strong>{userData?.email}</strong></p>
+                <Button
+                  type="primary"
+                  icon={<MailOutlined />}
+                  loading={loading}
+                  size="large"
+                  block
+                  onClick={handleForgotPassword}
+                  className="btn-update btn-primary"
+                >
+                  Envoyer le code
+                </Button>
+              </div>
+            ) : (
+              <Form
+                form={forgotPasswordForm}
+                layout="vertical"
+                onFinish={handleVerifyOtp}
+              >
+                <p className="mb-4">Un code de réinitialisation a été envoyé à <strong>{userData?.email}</strong>. Veuillez le saisir ci-dessous avec votre nouveau mot de passe.</p>
+
+                <Form.Item
+                  label="Code de réinitialisation"
+                  name="otp"
+                  rules={[
+                    { required: true, message: 'Veuillez entrer le code de réinitialisation' }
+                  ]}
+                >
+                  <Input
+                    prefix={<KeyOutlined />}
+                    placeholder="Code de réinitialisation"
+                    size="large"
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  label="Nouveau mot de passe"
+                  name="newPassword"
+                  rules={[
+                    { required: true, message: 'Veuillez entrer votre nouveau mot de passe' },
+                    { min: 6, message: 'Le mot de passe doit comporter au moins 6 caractères' }
+                  ]}
+                >
+                  <Input.Password
+                    prefix={<LockOutlined />}
+                    placeholder="Nouveau mot de passe"
+                    size="large"
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  label="Confirmer le nouveau mot de passe"
+                  name="confirmNewPassword"
+                  dependencies={['newPassword']}
+                  rules={[
+                    { required: true, message: 'Veuillez confirmer votre nouveau mot de passe' },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (!value || getFieldValue('newPassword') === value) {
+                          return Promise.resolve();
+                        }
+                        return Promise.reject(new Error('Les deux mots de passe ne correspondent pas'));
+                      },
+                    }),
+                  ]}
+                >
+                  <Input.Password
+                    prefix={<LockOutlined />}
+                    placeholder="Confirmer le nouveau mot de passe"
+                    size="large"
+                  />
+                </Form.Item>
+
+                <Form.Item className="mb-0 mt-4">
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    icon={<SaveOutlined />}
+                    loading={loading}
+                    size="large"
+                    block
+                    className="btn-update btn-primary"
+                  >
+                    Réinitialiser le mot de passe
+                  </Button>
+                </Form.Item>
+
+                <div className="mt-4 text-center">
+                  <Button
+                    type="link"
+                    onClick={handleForgotPassword}
+                    disabled={loading}
+                  >
+                    Renvoyer le code de réinitialisation
+                  </Button>
+                </div>
+              </Form>
+            )}
           </Modal>
         )}
       </motion.div>
