@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import '../dashboard.css';
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash, FaCheck, FaTimes, FaExchangeAlt } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Popconfirm, message } from 'antd';
@@ -22,7 +22,7 @@ export default function Admins() {
             setLoading(true);
             const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/users');
             const result = await response.json();
-            
+
             if (result.status && result.data) {
                 setUsers(result.data);
             } else {
@@ -36,14 +36,40 @@ export default function Admins() {
         }
     };
 
+    const toggleVerification = async (user) => {
+        try {
+            const updatedUser = { ...user, isVerified: !user.isVerified };
+
+            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${user.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedUser),
+            });
+
+            const result = await response.json();
+
+            if (result.status) {
+                toast.success(`Utilisateur ${updatedUser.isVerified ? 'vérifié' : 'non vérifié'} avec succès`);
+                fetchUsers(); // Refresh the list
+            } else {
+                toast.error("Erreur lors de la mise à jour");
+            }
+        } catch (error) {
+            console.error("Error updating user:", error);
+            toast.error("Erreur lors de la mise à jour");
+        }
+    };
+
     const deleteUser = async (id) => {
         try {
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${id}`, {
                 method: 'DELETE',
             });
-            
+
             const result = await response.json();
-            
+
             if (result.status) {
                 toast.success("Utilisateur supprimé avec succès");
                 fetchUsers(); // Refresh the list
@@ -62,10 +88,16 @@ export default function Admins() {
 
     const formatDate = (timestamp) => {
         if (!timestamp) return 'Date inconnue';
-        
+
         // Convert Firestore timestamp to JS Date
         const date = new Date(timestamp._seconds * 1000);
         return date.toLocaleDateString('fr-FR');
+    };
+
+    // Determine if a user is a special user (main admin)
+    const isSpecialUser = (user) => {
+        return (user.email && user.email.toLowerCase().includes('yassineova')) ||
+            (user.email && user.email.toLowerCase().includes('ynovadmin'));
     };
 
     // Filter users based on the search query
@@ -73,14 +105,16 @@ export default function Admins() {
         (user.name && user.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (user.lastName && user.lastName.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (user.email && user.email.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
+    )
+        // Sort users to display main admins at the top
+        .sort((a, b) => {
+            const isAMainAdmin = isSpecialUser(a);
+            const isBMainAdmin = isSpecialUser(b);
 
-    // Determine if a user is a special user (main admin)
-    const isSpecialUser = (user) => {
-        return (user.email && user.email.toLowerCase().includes('yassineova')) || 
-               (user.name && user.name.toLowerCase().includes('rita')) || 
-               (user.email && user.email.toLowerCase().includes('ynov'));
-    };
+            if (isAMainAdmin && !isBMainAdmin) return -1;
+            if (!isAMainAdmin && isBMainAdmin) return 1;
+            return 0;
+        });
 
     // Calculate total pages
     const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
@@ -96,22 +130,22 @@ export default function Admins() {
     return (
         <section>
             <ToastContainer position="top-right" autoClose={3000} />
-            
+
             <div className="py-5 flex justify-between items-center">
                 <div>
-                    Rechercher par nom ou email: 
-                    <input 
-                        type="text" 
-                        className="form-input w-full mt-2 p-2 border rounded" 
-                        placeholder="Rechercher" 
-                        value={searchQuery} 
-                        onChange={(e) => setSearchQuery(e.target.value)} 
+                    Rechercher par nom ou email:
+                    <input
+                        type="text"
+                        className="form-input w-full mt-2 p-2 border rounded"
+                        placeholder="Rechercher"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                     />
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="flex items-center">
                         <label htmlFor="itemsPerPage" className="mr-2 text-sm font-medium">Éléments par page:</label>
-                        <select 
+                        <select
                             id="itemsPerPage"
                             className="p-2 border rounded"
                             value={itemsPerPage}
@@ -150,49 +184,61 @@ export default function Admins() {
                             {currentUsers.map((user) => {
                                 const isMainAdmin = isSpecialUser(user);
                                 return (
-                                <tr key={user.id} className={`border-b my-auto ${isMainAdmin ? 'bg-orange-100' : ''}`}>
-                                    <td className="py-3 px-4">
-                                        <div className="flex items-center">
-                                            <img src={user.pic ? user.pic : "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4"} alt={user.name} className="w-14 h-14 object-cover rounded-full" />
-                                            <div className="ml-3">
-                                                <p className="font-semibold mb-1">{user.name} {user.lastName}</p>
-                                                <p className="text-gray-500 mb-0">{user.email}</p>
+                                    <tr key={user.id} className={`border-b my-auto ${isMainAdmin ? 'bg-orange-100' : ''}`}>
+                                        <td className="py-3 px-4">
+                                            <div className="flex items-center">
+                                                <img src={user.pic ? user.pic : "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4"} alt={user.name} className="w-14 h-14 object-cover rounded-full" />
+                                                <div className="ml-3">
+                                                    <p className="font-semibold mb-1">{user.name} {user.lastName}</p>
+                                                    <p className="text-gray-500 mb-0">{user.email}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td className="py-3 px-4">{formatDate(user.createdAt)}</td>
-                                    <td className="py-3 px-4">
-                                        <span className={`py-1 px-3 inline-block rounded-full text-white ${user.isVerified ? 'bg-green-500' : 'bg-yellow-500'}`}>
-                                            {user.isVerified ? 'Vérifié' : 'Non vérifié'}
-                                        </span>
-                                    </td>
-                                    <td className="py-3 px-4">
-                                        <span className={`py-1 px-3 inline-block rounded-full text-white ${isMainAdmin ? 'bg-orange-500' : 'bg-red-500'}`}>
-                                            {isMainAdmin ? 'admin principal' : 'admin'}
-                                        </span>
-                                    </td>
-                                    <td className="py-3 px-4">
-                                        {!isMainAdmin && (
-                                            <Popconfirm
-                                                title="Confirmation"
-                                                description="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
-                                                onConfirm={() => deleteUser(user.id)}
-                                                onCancel={cancelDelete}
-                                                okText="Oui"
-                                                cancelText="Non"
-                                                okType="danger"
-                                            >
-                                                <button 
-                                                    type="button" 
-                                                    className="text-white px-3 py-1 bg-red-500 hover:bg-red-600 rounded-md"
+                                        </td>
+                                        <td className="py-3 px-4">{formatDate(user.createdAt)}</td>
+                                        <td className="py-3 px-4">
+                                            <div className="flex items-center">
+                                                <span className={`py-1 px-3 inline-block rounded-full text-white ${user.isVerified ? 'bg-green-500' : 'bg-yellow-500'}`}>
+                                                    {user.isVerified ? 'Vérifié' : 'Non vérifié'}
+                                                </span>
+                                                {!isMainAdmin && (
+                                                    <button 
+                                                        className="ml-2 text-blue-500 hover:text-blue-700 transition-colors"
+                                                        onClick={() => toggleVerification(user)}
+                                                        title="Changer le statut"
+                                                    >
+                                                        <FaExchangeAlt size={16} />
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </td>
+                                        <td className="py-3 px-4">
+                                            <span className={`py-1 px-3 inline-block rounded-full text-white ${isMainAdmin ? 'bg-orange-500' : 'bg-red-500'}`}>
+                                                {isMainAdmin ? 'admin principal' : 'admin'}
+                                            </span>
+                                        </td>
+                                        <td className="py-3 px-4">
+                                            {!isMainAdmin && (
+                                                <Popconfirm
+                                                    title="Confirmation"
+                                                    description="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+                                                    onConfirm={() => deleteUser(user.id)}
+                                                    onCancel={cancelDelete}
+                                                    okText="Oui"
+                                                    cancelText="Non"
+                                                    okType="danger"
                                                 >
-                                                    <FaTrash />
-                                                </button>
-                                            </Popconfirm>
-                                        )}
-                                    </td>
-                                </tr>
-                            )})}
+                                                    <button
+                                                        type="button"
+                                                        className="text-white px-3 py-1 bg-red-500 hover:bg-red-600 rounded-md"
+                                                    >
+                                                        <FaTrash />
+                                                    </button>
+                                                </Popconfirm>
+                                            )}
+                                        </td>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
 
