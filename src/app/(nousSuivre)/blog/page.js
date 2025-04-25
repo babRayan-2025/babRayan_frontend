@@ -58,7 +58,7 @@ const NewsItem = ({ imageSrc, title, description }) => (
         </h1>
         <p className="text-gray-600 mb-4 md:mb-10 text-sm md:text-base">
           {description}
-        </p> 
+        </p>
         <motion.button
           className="inline-block bg-yellow-300 rounded-full text-red-600 font-semibold px-4 py-2 transition hover:bg-yellow-400"
           variants={scaleIn}
@@ -76,6 +76,7 @@ export default function Blog() {
   const [isLoading, setIsLoading] = useState(true);
   const [showMore, setShowMore] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [newsfetched, setNewsfetched] = useState([]);
 
   // const videoUrl = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0";
   const videoUrl = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
@@ -84,23 +85,30 @@ export default function Blog() {
   };
 
   useEffect(() => {
+    async function fetchNews() {
+      try {
+        const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/news");
+        const data = await response.json();
+        if (data.status && data.data) {
+          setNewsfetched(data.data);
+        } else {
+          setNewsfetched([]);
+          toast.error("Erreur lors du chargement des actualités");
+        }
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        toast.error("Erreur lors du chargement des actualités");
+      }
+    }
+    fetchNews();
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
   const newdata = [
-    //     {
-    //       id: 1,
-    //       // image: "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s ",
-    //       alt: "Graduation",
-    //       title: "TelQuel parle de nous !",
-    //       description: `L'association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l'impact de ses actions en faveur des enfants en situation de précarité.
-    // Avec un regard bienveillant et un talent incontestable, l'équipe de TelQuel a su capturer l'essence de notre mission : protéger, éduquer et accompagner vers l'autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d'accueil à notre école inclusive en passant par notre centre de formation et d'insertion professionnelle, chaque image, chaque témoignage reflète l'engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d'espoir.
-    // Ce reportage est bien plus qu'un simple témoignage : c'est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d'accompagner chaque jour.
-    // Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir.`,
-    //       buttonText: "Découvrir plus",
-    //       href: "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s",
-    //     },
     {
       id: 1,
       image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.webp?alt=media&token=b0c6a114-b3c3-4f4e-b67f-4a9bf34db295",
@@ -263,58 +271,111 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
               )}
             </div>
           </motion.section>
-          {/* bloooog ---------- */}
-          {newdata.map((item) => (
-            <motion.div
-              key={item.id}
-              className="flex flex-col items-center gap-9 px-4"
-              variants={staggerContainer}
-              initial="initial"
-              animate="animate"
-            >
+
+          <motion.div
+            className="flex flex-col items-center gap-9 px-4"
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+          >
+            {newsfetched.map((item) => (
               <motion.div
-                className="md:p-6 pt-6 rounded-lg flex flex-col md:flex-row gap-7 items-center justify-center w-full max-w-[100%] md:max-w-[80%]"
+                key={item.id}
+                className="md:p-6 py-10 rounded-lg flex flex-col md:flex-row gap-10 items-start justify-center w-full max-w-[100%] md:max-w-[80%] bg-white/40 backdrop-blur-sm shadow-sm mb-8"
                 variants={fadeIn}
               >
                 {/* Image Section */}
                 <motion.div
-                  className="flex-shrink-0 w-full md:w-[45%]"
+                  className="flex-shrink-0 w-full md:w-1/2"
                   variants={fadeIn}
                 >
                   <Image
-                    src={item.image}
-                    alt={item.alt}
+                    src={item.pic}
+                    alt={item.alt || item.title}
                     width={600}
                     height={400}
-                    className="rounded-xl w-full md:h-[350px] object-cover loading= 'lazy'"
+                    className="rounded-xl w-full h-[300px] md:h-[400px] object-cover"
                   />
                 </motion.div>
 
                 {/* Text Section */}
                 <motion.div
-                  className="text-start p-2 md:text-left"
+                  className="text-start p-4 md:text-left w-full md:w-1/2 flex flex-col justify-between h-full"
                   variants={fadeIn}
                 >
-                  <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mb-4">
-                    {item.title}
-                  </h1>
-                  <p className="text-gray-600 md:mb-10 mb-4 text-sm md:text-base">
-                    {item.description}
-                  </p>
-                  <a href={item.href} target="_blank" rel="noopener noreferrer">
-                    <motion.button
-                      className="inline-block bg-yellow-300 rounded-full text-red-600 font-semibold px-6 py-2 justify-end transition hover:bg-yellow-400"
-                      variants={scaleIn}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {item.buttonText}
-                    </motion.button>
-                  </a>
+                  <div>
+                    <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+                      {item.title}
+                    </h1>
+                    <p className="text-gray-600 mb-6 text-sm md:text-base"
+                      dangerouslySetInnerHTML={{ __html: item.shortContent }}>
+                    </p>
+                  </div>
+                  <div className="mt-auto">
+                    <a href={`/dashboard/news/${item.id}`} target="_blank" rel="noopener noreferrer">
+                      <motion.button
+                        className="inline-block bg-yellow-400 rounded-full text-red-600 font-semibold px-6 py-2.5 transition hover:bg-yellow-500"
+                        variants={scaleIn}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Découvrir plus
+                      </motion.button>
+                    </a>
+                  </div>
                 </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            ))}
+
+            {newdata.map((item) => (
+              <motion.div
+                key={item.id}
+                className="md:p-6 py-10 rounded-lg flex flex-col md:flex-row gap-10 items-start justify-center w-full max-w-[100%] md:max-w-[80%] bg-white/40 backdrop-blur-sm shadow-sm mb-8"
+                variants={fadeIn}
+              >
+                {/* Image Section */}
+                <motion.div
+                  className="flex-shrink-0 w-full md:w-1/2"
+                  variants={fadeIn}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.alt || item.title}
+                    width={600}
+                    height={400}
+                    className="rounded-xl w-full h-[300px] md:h-[400px] object-cover"
+                  />
+                </motion.div>
+
+                {/* Text Section */}
+                <motion.div
+                  className="text-start p-4 md:text-left w-full md:w-1/2 flex flex-col justify-between h-full"
+                  variants={fadeIn}
+                >
+                  <div>
+                    <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+                      {item.title}
+                    </h1>
+                    <p className="text-gray-600 mb-6 text-sm md:text-base"
+                      dangerouslySetInnerHTML={{ __html: item.description }}>
+                    </p>
+                  </div>
+                  <div className="mt-auto">
+                    <a href={item.href || "#"} target="_blank" rel="noopener noreferrer">
+                      <motion.button
+                        className="inline-block bg-yellow-400 rounded-full text-red-600 font-semibold px-6 py-2.5 transition hover:bg-yellow-500"
+                        variants={scaleIn}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {item.buttonText || "Découvrir plus"}
+                      </motion.button>
+                    </a>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
         </main>
       )}
     </>
