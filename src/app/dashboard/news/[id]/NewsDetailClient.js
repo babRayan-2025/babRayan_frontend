@@ -1,24 +1,28 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { EditorState, ContentState, convertFromHTML } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { stateToHTML } from "draft-js-export-html";
-import { Upload, message } from "antd";
+import { Upload } from "antd";
 import { PlusOutlined, LoadingOutlined } from "@ant-design/icons";
+
+// Draft.js imports
+import { EditorState, ContentState, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 export default function NewsDetailClient({ newsId }) {
     const router = useRouter();
     const [newsData, setNewsData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [editorState, setEditorState] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState("");
+    const [shortContentState, setShortContentState] = useState(EditorState.createEmpty());
+    const [contentState, setContentState] = useState(EditorState.createEmpty());
     const [fileList, setFileList] = useState([]);
     const [savingChanges, setSavingChanges] = useState(false);
 
@@ -27,6 +31,20 @@ export default function NewsDetailClient({ newsId }) {
             fetchNewsById(newsId);
         }
     }, [newsId]);
+
+    // Convert HTML string to Draft.js EditorState
+    const htmlToEditorState = (html) => {
+        if (!html) return EditorState.createEmpty();
+        try {
+            const blocksFromHtml = htmlToDraft(html);
+            const { contentBlocks, entityMap } = blocksFromHtml;
+            const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
+            return EditorState.createWithContent(contentState);
+        } catch (error) {
+            console.error("Error converting HTML to editor state:", error);
+            return EditorState.createEmpty();
+        }
+    };
 
     const fetchNewsById = async (id) => {
         try {
@@ -38,6 +56,10 @@ export default function NewsDetailClient({ newsId }) {
                 setNewsData(result.data);
                 setTitle(result.data.title || "");
                 
+                // Convert HTML content to Draft.js EditorState
+                setShortContentState(htmlToEditorState(result.data.shortContent || ""));
+                setContentState(htmlToEditorState(result.data.content || ""));
+                
                 // Set image if available
                 if (result.data.pic) {
                     setFileList([{
@@ -48,16 +70,6 @@ export default function NewsDetailClient({ newsId }) {
                     }]);
                 } else {
                     setFileList([]);
-                }
-
-                // Convert HTML content to EditorState
-                if (result.data.content) {
-                    const blocksFromHTML = convertFromHTML(result.data.content);
-                    const contentState = ContentState.createFromBlockArray(
-                        blocksFromHTML.contentBlocks,
-                        blocksFromHTML.entityMap
-                    );
-                    setEditorState(EditorState.createWithContent(contentState));
                 }
             } else {
                 toast.error("Erreur lors du chargement de l'actualité");
@@ -122,21 +134,27 @@ export default function NewsDetailClient({ newsId }) {
                 return;
             }
 
-            const contentState = editorState.getCurrentContent();
-            if (!contentState.hasText()) {
+            // Convert Draft.js states to HTML
+            const shortContent = draftToHtml(convertToRaw(shortContentState.getCurrentContent()));
+            const content = draftToHtml(convertToRaw(contentState.getCurrentContent()));
+
+            if (shortContent === "<p></p>") {
+                toast.error("Veuillez ajouter une description courte");
+                return;
+            }
+
+            if (content === "<p></p>") {
                 toast.error("Veuillez ajouter du contenu");
                 return;
             }
 
             setSavingChanges(true);
 
-            // Get HTML content
-            const htmlContent = stateToHTML(contentState);
-
             // Create form data
             const formData = new FormData();
             formData.append("title", title);
-            formData.append("content", htmlContent);
+            formData.append("shortContent", shortContent);
+            formData.append("content", content);
             formData.append("likes", newsData.likes || "0");
 
             // Add image file if it's a new upload
@@ -177,6 +195,20 @@ export default function NewsDetailClient({ newsId }) {
             <div style={{ marginTop: 8 }}>Upload</div>
         </div>
     );
+
+    // Editor toolbar configuration
+    const editorToolbar = {
+        options: ['inline', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'emoji', 'history'],
+        inline: {
+            options: ['bold', 'italic', 'underline', 'strikethrough'],
+        },
+        blockType: {
+            options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+        },
+        list: {
+            options: ['unordered', 'ordered'],
+        },
+    };
 
     if (loading) {
         return (
@@ -248,11 +280,17 @@ export default function NewsDetailClient({ newsId }) {
                     </div>
                     <div className="w-1/2 flex justify-end">
                         {editMode ? (
-                            <>
-                                <button
+                            <div className="flex gap-2">
+                                <button 
+                                    onClick={() => setEditMode(false)}
+                                    className="bg-gray-500 text-white px-4 py-2 rounded"
+                                >
+                                    Annuler
+                                </button>
+                                <button 
                                     onClick={saveChanges}
                                     disabled={savingChanges}
-                                    className={`${savingChanges ? 'bg-gray-500' : 'bg-green-500 hover:bg-green-600'} text-white px-4 py-2 rounded mr-2 flex items-center`}
+                                    className={`${savingChanges ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-600'} text-white px-4 py-2 rounded flex items-center justify-center`}
                                 >
                                     {savingChanges ? (
                                         <>
@@ -263,18 +301,11 @@ export default function NewsDetailClient({ newsId }) {
                                         'Enregistrer'
                                     )}
                                 </button>
-                                <button
-                                    onClick={toggleEditMode}
-                                    className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
-                                    disabled={savingChanges}
-                                >
-                                    Annuler
-                                </button>
-                            </>
+                            </div>
                         ) : (
-                            <button
+                            <button 
                                 onClick={toggleEditMode}
-                                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
                             >
                                 Modifier
                             </button>
@@ -282,59 +313,76 @@ export default function NewsDetailClient({ newsId }) {
                     </div>
                 </div>
                 
-                {editMode ? (
-                    <div className="mb-6">
-                        <label className="block text-lg font-medium mb-2">Image</label>
-                        <Upload
-                            listType="picture-card"
-                            fileList={fileList}
-                            onPreview={handlePreview}
-                            onChange={handleChange}
-                            beforeUpload={() => false} // Prevent auto upload
-                        >
-                            {fileList.length < 1 && uploadButton}
-                        </Upload>
-                    </div>
-                ) : (
-                    newsData.pic && (
-                        <div className="mb-6">
-                            <div className="relative h-96 w-full">
+                {/* Image Upload/Preview Section */}
+                <div className="mb-6">
+                    {editMode ? (
+                        <div>
+                            <label className="block text-lg font-medium mb-2">Image (1 seule image requise)</label>
+                            <Upload
+                                listType="picture-card"
+                                fileList={fileList}
+                                onPreview={handlePreview}
+                                onChange={handleChange}
+                                beforeUpload={() => false} // Prevent auto upload
+                            >
+                                {fileList.length < 1 && uploadButton}
+                            </Upload>
+                        </div>
+                    ) : (
+                        fileList.length > 0 && (
+                            <div className="mb-6 text-center">
                                 <img
-                                    src={newsData.pic}
+                                    src={fileList[0].url}
                                     alt={newsData.title}
-                                    className="w-full h-full object-contain border rounded-md"
+                                    className="mx-auto max-h-[400px] rounded shadow-md"
                                 />
                             </div>
-                        </div>
-                    )
-                )}
-                
+                        )
+                    )}
+                </div>
+
+                {/* Short Content Section */}
                 <div className="mb-6">
-                    {editorState && (
-                        <div className="border border-gray-300 p-4 rounded-md">
-                            {editMode ? (
-                                <div>
-                                    <label className="block text-lg font-medium mb-2">Contenu</label>
-                                    <Editor
-                                        editorState={editorState}
-                                        onEditorStateChange={setEditorState}
-                                        wrapperClassName="wrapperClassName"
-                                        editorClassName="editorClassName min-h-[300px]"
-                                        toolbar={{
-                                            options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
-                                        }}
-                                    />
-                                </div>
-                            ) : (
-                                <Editor
-                                    editorState={editorState}
-                                    readOnly={true}
-                                    toolbarHidden={true}
-                                    wrapperClassName="wrapperClassName"
-                                    editorClassName="editorClassName"
-                                />
-                            )}
+                    <h2 className="text-xl font-semibold mb-2">Description courte:</h2>
+                    {editMode ? (
+                        <div className="border rounded overflow-hidden">
+                            <Editor
+                                editorState={shortContentState}
+                                onEditorStateChange={setShortContentState}
+                                toolbar={editorToolbar}
+                                editorClassName="px-3 min-h-[200px]"
+                                placeholder="Entrez une brève description (visible dans les aperçus)"
+                                wrapperClassName="editor-wrapper"
+                                stripPastedStyles={true}
+                            />
                         </div>
+                    ) : (
+                        <div 
+                            className="border border-gray-200 p-4 rounded bg-gray-50"
+                            dangerouslySetInnerHTML={{ __html: newsData.shortContent }}
+                        />
+                    )}
+                </div>
+                
+                {/* Content Editor/Viewer Section */}
+                <div className="mb-6">
+                    <h2 className="text-xl font-semibold mb-2">Contenu détaillé:</h2>
+                    {editMode ? (
+                        <div className="border rounded overflow-hidden">
+                            <Editor
+                                editorState={contentState}
+                                onEditorStateChange={setContentState}
+                                toolbar={editorToolbar}
+                                editorClassName="px-3 min-h-[400px]"
+                                wrapperClassName="editor-wrapper"
+                                stripPastedStyles={true}
+                            />
+                        </div>
+                    ) : (
+                        <div 
+                            className="border border-gray-300 p-4 rounded-md"
+                            dangerouslySetInnerHTML={{ __html: newsData.content }}
+                        />
                     )}
                 </div>
             </div>

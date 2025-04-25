@@ -1,22 +1,24 @@
 "use client";
 
 import React, { useState } from "react";
-import { EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Upload, message } from "antd";
 import { PlusOutlined, LoadingOutlined } from "@ant-design/icons";
 import { FaArrowLeft } from "react-icons/fa6";
-import { convertToRaw } from "draft-js";
-import { stateToHTML } from "draft-js-export-html";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Draft.js imports
+import { EditorState, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
 const AddNews = () => {
     const router = useRouter();
     const [title, setTitle] = useState("");
-    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    const [shortContentState, setShortContentState] = useState(EditorState.createEmpty());
+    const [contentState, setContentState] = useState(EditorState.createEmpty());
     const [fileList, setFileList] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -60,8 +62,16 @@ const AddNews = () => {
                 return;
             }
 
-            const contentState = editorState.getCurrentContent();
-            if (!contentState.hasText()) {
+            // Convert Draft.js states to HTML
+            const shortContent = draftToHtml(convertToRaw(shortContentState.getCurrentContent()));
+            const content = draftToHtml(convertToRaw(contentState.getCurrentContent()));
+
+            if (shortContent === "<p></p>") {
+                toast.error("Veuillez ajouter une description courte");
+                return;
+            }
+
+            if (content === "<p></p>") {
                 toast.error("Veuillez ajouter du contenu");
                 return;
             }
@@ -73,13 +83,11 @@ const AddNews = () => {
 
             setLoading(true);
 
-            // Get HTML content
-            const htmlContent = stateToHTML(contentState);
-
             // Create form data
             const formData = new FormData();
             formData.append("title", title);
-            formData.append("content", htmlContent);
+            formData.append("shortContent", shortContent);
+            formData.append("content", content);
             formData.append("likes", "0");
 
             // Add image file
@@ -98,8 +106,6 @@ const AddNews = () => {
                 method: "POST",
                 body: formData,
             });
-
-            
 
             const data = await response.json();
 
@@ -125,6 +131,20 @@ const AddNews = () => {
             <div style={{ marginTop: 8 }}>Upload</div>
         </div>
     );
+    
+    // Editor toolbar configuration
+    const editorToolbar = {
+        options: ['inline', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'emoji', 'history'],
+        inline: {
+            options: ['bold', 'italic', 'underline', 'strikethrough'],
+        },
+        blockType: {
+            options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+        },
+        list: {
+            options: ['unordered', 'ordered'],
+        },
+    };
 
     return (
         <section className="p-4">
@@ -173,17 +193,35 @@ const AddNews = () => {
             </div>
 
             <div className="mt-6">
-                <label className="block text-lg font-medium mb-2">Contenu</label>
-                <Editor
-                    editorState={editorState}
-                    toolbarClassName="toolbarClassName"
-                    wrapperClassName="wrapperClassName border border-gray-300 p-2 rounded"
-                    editorClassName="editorClassName"
-                    onEditorStateChange={setEditorState}
-                />
+                <label className="block text-lg font-medium mb-2">Description courte</label>
+                <div className="border rounded overflow-hidden">
+                    <Editor
+                        editorState={shortContentState}
+                        onEditorStateChange={setShortContentState}
+                        toolbar={editorToolbar}
+                        editorClassName="px-3 min-h-[200px]"
+                        placeholder="Entrez une brève description (visible dans les aperçus)"
+                        wrapperClassName="editor-wrapper"
+                        stripPastedStyles={true}
+                    />
+                </div>
             </div>
 
             <div className="mt-6">
+                <label className="block text-lg font-medium mb-2">Contenu détaillé</label>
+                <div className="border rounded overflow-hidden">
+                    <Editor
+                        editorState={contentState}
+                        onEditorStateChange={setContentState}
+                        toolbar={editorToolbar}
+                        editorClassName="px-3 min-h-[400px]"
+                        wrapperClassName="editor-wrapper"
+                        stripPastedStyles={true}
+                    />
+                </div>
+            </div>
+
+            <div className="mt-6 mb-8">
                 <button
                     onClick={handleSubmit}
                     disabled={loading}

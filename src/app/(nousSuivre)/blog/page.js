@@ -94,9 +94,9 @@ export default function Blog() {
     //       // image: "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s ",
     //       alt: "Graduation",
     //       title: "TelQuel parle de nous !",
-    //       description: `L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité.
-    // Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir.
-    // Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour.
+    //       description: `L'association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l'impact de ses actions en faveur des enfants en situation de précarité.
+    // Avec un regard bienveillant et un talent incontestable, l'équipe de TelQuel a su capturer l'essence de notre mission : protéger, éduquer et accompagner vers l'autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d'accueil à notre école inclusive en passant par notre centre de formation et d'insertion professionnelle, chaque image, chaque témoignage reflète l'engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d'espoir.
+    // Ce reportage est bien plus qu'un simple témoignage : c'est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d'accompagner chaque jour.
     // Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir.`,
     //       buttonText: "Découvrir plus",
     //       href: "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s",
@@ -138,8 +138,8 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
       image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F2.webp?alt=media&token=4e3ed1bb-88aa-4898-a48f-9f94f7b4fb8f",
       alt: "Success",
       title: "Aiguebelle : Un partenaire engagé avec nos jeunes du CFI",
-      description: `Notre partenaire Aiguebelle a généreusement organisé cet automne, une journée de visite et de formation en chocolaterie pour les jeunes du Centre de Formation et d’Insertion (CFI) de Bab Rayan.
-Nos étudiants ont eu l'opportunité unique de découvrir les secrets de la fabrication du chocolat, tout en explorant le fonctionnement de l'usine. Cette expérience immersive a enrichi leurs connaissances et stimulé leur passion pour l’art culinaire.`,
+      description: `Notre partenaire Aiguebelle a généreusement organisé cet automne, une journée de visite et de formation en chocolaterie pour les jeunes du Centre de Formation et d'Insertion (CFI) de Bab Rayan.
+Nos étudiants ont eu l'opportunité unique de découvrir les secrets de la fabrication du chocolat, tout en explorant le fonctionnement de l'usine. Cette expérience immersive a enrichi leurs connaissances et stimulé leur passion pour l'art culinaire.`,
       buttonText: "Découvrir plus",
     },
     {
@@ -225,13 +225,13 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                 TelQuel parle de nous !
               </h1>
               <p className="text-gray-600 mb-4 text-sm md:text-base leading-relaxed">
-                L’association Bab Rayan a récemment été mise en lumière par
+                L'association Bab Rayan a récemment été mise en lumière par
                 TelQuel à travers un reportage poignant, révélant avec justesse
-                et sensibilité l’impact de ses actions en faveur des enfants en
+                et sensibilité l'impact de ses actions en faveur des enfants en
                 situation de précarité. Avec un regard bienveillant et un talent
-                incontestable, l’équipe de TelQuel a su capturer l’essence de
+                incontestable, l'équipe de TelQuel a su capturer l'essence de
                 notre mission : protéger, éduquer et accompagner vers
-                l’autonomie les enfants et jeunes issus des milieux les plus
+                l'autonomie les enfants et jeunes issus des milieux les plus
                 vulnérables...{" "}
                 <motion.button
                   className=" text-red-600 font-bold px-1"
@@ -249,14 +249,14 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  De notre foyer d’accueil à notre école inclusive en passant
-                  par notre centre de formation et d’insertion professionnelle,
-                  chaque image, chaque témoignage reflète l’engagement quotidien
+                  De notre foyer d'accueil à notre école inclusive en passant
+                  par notre centre de formation et d'insertion professionnelle,
+                  chaque image, chaque témoignage reflète l'engagement quotidien
                   de Bab Rayan pour offrir à ces jeunes un avenir digne et
-                  porteur d’espoir. Ce reportage est bien plus qu’un simple
-                  témoignage : c’est une fenêtre ouverte sur les parcours de
+                  porteur d'espoir. Ce reportage est bien plus qu'un simple
+                  témoignage : c'est une fenêtre ouverte sur les parcours de
                   résilience, de courage et de transformation que nous avons la
-                  chance d’accompagner chaque jour. Un immense merci à TelQuel
+                  chance d'accompagner chaque jour. Un immense merci à TelQuel
                   pour cette mise en lumière précieuse qui rappelle combien
                   chaque enfant mérite une chance, un soutien et un avenir.
                 </motion.p>
