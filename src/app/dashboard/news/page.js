@@ -20,7 +20,7 @@ export default function Actualite() {
 
     const formatDate = (timestamp) => {
         if (!timestamp) return 'Date inconnue';
-        
+
         // Convert Firestore timestamp to JS Date
         const date = new Date(timestamp._seconds * 1000);
         return date.toLocaleDateString('fr-FR');
@@ -44,7 +44,7 @@ export default function Actualite() {
             setLoading(true);
             const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/news');
             const result = await response.json();
-            
+
             if (result.status && result.data) {
                 // Transform data to match our format
                 const formattedData = formatNewsData(result.data);
@@ -65,9 +65,9 @@ export default function Actualite() {
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${id}`, {
                 method: 'DELETE',
             });
-            
+
             const result = await response.json();
-            
+
             if (result.status) {
                 toast.success("Actualité supprimée avec succès");
                 fetchNews(); // Refresh the list
@@ -90,15 +90,15 @@ export default function Actualite() {
             // Use raw timestamp for precise sorting including time
             const getTimestamp = (item) => {
                 if (item.rawTimestamp && item.rawTimestamp._seconds) {
-                    return item.rawTimestamp._seconds * 1000 + 
-                           (item.rawTimestamp._nanoseconds || 0) / 1000000;
+                    return item.rawTimestamp._seconds * 1000 +
+                        (item.rawTimestamp._nanoseconds || 0) / 1000000;
                 }
                 return new Date(item.datePublication).getTime();
             };
-            
+
             const timeA = getTimestamp(a);
             const timeB = getTimestamp(b);
-            
+
             return sortAsc ? timeA - timeB : timeB - timeA;  // Toggle sort order
         }
         return 0;
@@ -123,22 +123,22 @@ export default function Actualite() {
     return (
         <section>
             <ToastContainer position="top-right" autoClose={3000} />
-            
+
             <div className="py-5 flex justify-between items-center">
                 <div>
-                    Rechercher par titre: 
-                    <input 
-                        type="text" 
-                        className="form-input w-full mt-2 p-2 border rounded" 
-                        placeholder="Rechercher" 
-                        value={searchTitle} 
-                        onChange={(e) => setSearchTitle(e.target.value)} 
+                    Rechercher par titre:
+                    <input
+                        type="text"
+                        className="form-input w-full mt-2 p-2 border rounded"
+                        placeholder="Rechercher"
+                        value={searchTitle}
+                        onChange={(e) => setSearchTitle(e.target.value)}
                     />
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="flex items-center">
                         <label htmlFor="itemsPerPage" className="mr-2 text-sm font-medium">Éléments par page:</label>
-                        <select 
+                        <select
                             id="itemsPerPage"
                             className="p-2 border rounded"
                             value={itemsPerPage}
@@ -154,7 +154,7 @@ export default function Actualite() {
                             <option value={20}>20</option>
                         </select>
                     </div>
-                    <button onClick={()=> window.location.href = "/dashboard/news/add"} className="btn_add px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                    <button onClick={() => window.location.href = "/dashboard/news/add"} className="btn_add px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
                         Ajouter un nouvel article
                     </button>
                 </div>
@@ -171,12 +171,12 @@ export default function Actualite() {
                             <tr>
                                 <th className="px-4 py-2 text-left"> </th>
                                 <th className="px-4 py-2 text-left">Titre</th>
-                                <th 
+                                <th
                                     onClick={() => {
                                         setSortField('createdAt');
                                         setSortAsc(!sortAsc);
-                                    }} 
-                                    style={{ cursor: 'pointer' }} 
+                                    }}
+                                    style={{ cursor: 'pointer' }}
                                     className="px-4 py-2 text-left flex items-center min-w-[200px]"
                                 >
                                     Date de publication
@@ -191,13 +191,13 @@ export default function Actualite() {
                         </thead>
                         <tbody>
                             {currentActualites.map(actualite => (
-                                <tr key={actualite.id}>
+                                <tr key={actualite.id} className='hover:bg-gray-100 '>
                                     <td className="px-4 py-2">
                                         <div className="flex items-center">
-                                            <img 
-                                                src={actualite.image} 
-                                                alt="" 
-                                                className="w-20 h-12 object-cover rounded-md" 
+                                            <img
+                                                src={actualite.image}
+                                                alt=""
+                                                className="w-20 h-12 object-cover rounded-md"
                                             />
                                         </div>
                                     </td>
@@ -207,9 +207,9 @@ export default function Actualite() {
                                     <td className="px-4 py-2 min-w-[200px]">
                                         <p className="font-normal">{actualite.datePublication}</p>
                                     </td>
-                                    <td className="px-4 py-2 flex space-x-2">
-                                        <button 
-                                            type="button" 
+                                    <td className="py-4 flex space-x-2">
+                                        <button
+                                            type="button"
                                             className="btn_view px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                                             onClick={() => window.location.href = `/dashboard/news/${actualite.id}`}
                                         >
@@ -224,8 +224,8 @@ export default function Actualite() {
                                             cancelText="Non"
                                             okType="danger"
                                         >
-                                            <button 
-                                                type="button" 
+                                            <button
+                                                type="button"
                                                 className="text-white px-3 py-1 bg-red-500 hover:bg-red-600 rounded-md"
                                             >
                                                 <FaTrash />
