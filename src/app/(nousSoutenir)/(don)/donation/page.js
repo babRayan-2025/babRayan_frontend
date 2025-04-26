@@ -303,6 +303,7 @@ export default function Donation() {
             : "06XXXXXXXX",
 
           amount: selectedAmount || customAmount,
+          type: donationType,
         }),
       });
 
