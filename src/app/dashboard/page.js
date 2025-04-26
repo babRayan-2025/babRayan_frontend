@@ -32,7 +32,7 @@ export default function DashboardPage() {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        
+
         // Fetch users count
         const usersResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/users');
         const usersData = await usersResponse.json();
@@ -43,26 +43,26 @@ export default function DashboardPage() {
         // Fetch CMI donations - only paid ones
         const cmiResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/get-cmi');
         const cmiData = await cmiResponse.json();
-        const paidCmi = (cmiData.data || []).filter(donation => 
+        const paidCmi = (cmiData.data || []).filter(donation =>
           donation.status === "Paid" || donation.status === "paid"
         );
         setPaidCmiDonations(paidCmi);
-        
+
         // Fetch PayPal donations - only paid ones
         const paypalResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/don/get-paypal');
         const paypalData = await paypalResponse.json();
-        const paidPaypal = (paypalData || []).filter(donation => 
+        const paidPaypal = (paypalData || []).filter(donation =>
           donation.status === "paid"
         );
         setPaidPaypalDonations(paidPaypal);
-        
+
         // Calculate total donations - convert to numbers properly before adding
         const cmiTotal = paidCmi.reduce((sum, donation) => sum + (parseFloat(donation.amount) || 0), 0);
         const paypalTotal = paidPaypal.reduce((sum, donation) => sum + (parseFloat(donation.montant) || 0), 0);
         setTotalCmiDonations(cmiTotal);
         setTotalPaypalDonations(paypalTotal);
         setTotalDonations(cmiTotal + paypalTotal);
-        
+
         // Process donations data for chart
         processDonationsData(paidCmi, paidPaypal);
 
@@ -71,26 +71,17 @@ export default function DashboardPage() {
         const partnershipsResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire');
         const partnershipsData = await partnershipsResponse.json();
         if (partnershipsData.status) {
-          setPartnershipsCount(partnershipsData.data.length);
+          const approuvedPartnerships = (partnershipsData.data || []).filter(partnership =>
+            partnership.approuve === true
+          );
+          setPartnershipsCount(approuvedPartnerships.length);
         }
-        
-        // // Fetch children sponsored count
-        // const childrenResponse = await axios.get(`${API_BASE_URL}/children/sponsored/count`);
-        // if (childrenResponse.data) {
-        //   setEnfantsCount(childrenResponse.data.count || 0);
-        // }
-        
+
+
       } catch (err) {
         console.error("Error fetching dashboard data:", err);
         setError("Échec du chargement des données du tableau de bord. Utilisation des valeurs par défaut.");
-        
-        // Set fallback values if API fails
-        // setUserCount(120);
-        // setDonationData([2000, 3000, 2500, 4000, 3500, 5000]);
-        // setDonationMonths(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']);
-        // setEnfantsCount(50);
-        // setPartnershipsCount(10);
-        // setTotalDonations(20000);
+
       } finally {
         setLoading(false);
       }
@@ -106,7 +97,7 @@ export default function DashboardPage() {
       const months = [];
       const monthlyTotals = {};
       const now = new Date();
-      
+
       // Initialize last 6 months data structure
       for (let i = 5; i >= 0; i--) {
         const month = new Date(now.getFullYear(), now.getMonth() - i, 1);
@@ -119,7 +110,7 @@ export default function DashboardPage() {
       // Process CMI donations
       cmiDonations.forEach(donation => {
         const amount = parseFloat(donation.amount) || 0;
-        
+
         // Add to monthly totals for chart
         if (donation.createdAt) {
           const date = new Date(donation.createdAt);
@@ -133,7 +124,7 @@ export default function DashboardPage() {
       // Process PayPal donations
       paypalDonations.forEach(donation => {
         const amount = parseFloat(donation.montant) || 0;
-        
+
         // Add to monthly totals for chart
         if (donation.createdAt) {
           // Handle different date formats
@@ -149,12 +140,12 @@ export default function DashboardPage() {
           }
         }
       });
-      
+
       // Convert monthlyTotals object to array for chart
       const chartData = Object.values(monthlyTotals);
       setDonationData(chartData);
       setDonationMonths(months);
-      
+
     } catch (error) {
       console.error("Erreur de traitement des données de dons:", error);
       // Use fallback data
@@ -191,7 +182,7 @@ export default function DashboardPage() {
               <p>{error}</p>
             </div>
           )}
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
             {/* Users Card */}
             <div className="dashboard_card users_card p-4 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
@@ -206,7 +197,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Enfants Sponsorisés Card */}
-            <div className="dashboard_card enfants_card p-4 rounded-lg shadow-lg animate__animated animate__fadeInUp">
+            {/* <div className="dashboard_card enfants_card p-4 rounded-lg shadow-lg animate__animated animate__fadeInUp">
               <div className="flex justify-center items-center">
                 <div className="icon_container">
                   <FaChild />
@@ -215,7 +206,7 @@ export default function DashboardPage() {
               </div>
               <p className="card_value text-3xl font-bold">{enfantsCount}</p>
               <p className="card_description text-sm text-gray-500">Total Enfants</p>
-            </div>
+            </div> */}
 
             {/* Donations Card */}
             <div className="dashboard_card donations_card p-4 rounded-lg shadow-lg animate__animated animate__fadeInRight">
@@ -243,7 +234,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Donation Trend Chart */}
-          <div className="mt-24 flex justify-center">
+          <div className="mt-16 flex justify-center">
             <div className="p-3 rounded-lg shadow-lg w-full max-w-7xl">
               <h4 className="text-center mb-4 text-xl font-semibold">Graphique des Dons</h4>
               <Line
@@ -256,12 +247,12 @@ export default function DashboardPage() {
               />
             </div>
           </div>
-          
+
           {/* Donation Statistics */}
           <div className="mt-10 flex justify-center">
             <div className="p-5 rounded-lg shadow-lg w-full max-w-7xl">
               <h4 className="text-center mb-4 text-xl font-semibold">Statistiques des Dons</h4>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* CMI Donations */}
                 <div className="p-4 bg-blue-50 rounded-lg">
@@ -269,7 +260,7 @@ export default function DashboardPage() {
                   <p className="text-lg"><span className="font-bold">{paidCmiDonations.length}</span> dons</p>
                   <p className="text-lg"><span className="font-bold">{totalCmiDonations.toFixed(2)}</span> MAD total</p>
                 </div>
-                
+
                 {/* PayPal Donations */}
                 <div className="p-4 bg-green-50 rounded-lg">
                   <h5 className="font-semibold mb-2 text-green-800">Dons PayPal (Payés Uniquement)</h5>

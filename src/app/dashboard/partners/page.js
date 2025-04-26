@@ -1,12 +1,13 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Modal, Popconfirm } from 'antd';
-import { FaEye, FaTrash, FaPenToSquare, FaArrowUp, FaArrowDown } from 'react-icons/fa6';
+import { FaEye, FaTrash, FaPenToSquare, FaArrowUp, FaArrowDown, FaCheck } from 'react-icons/fa6';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Partenaires() {
     const [partenaires, setPartenaires] = useState([]);
+    const [pendingPartenairesCount, setPendingPartenairesCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -36,10 +37,15 @@ export default function Partenaires() {
                         startDate: formatDate(partner.createdAt._seconds * 1000),
                         email: partner.email,
                         message: partner.message,
-                        telephone: partner.telephone
+                        telephone: partner.telephone,
+                        approuve: partner.approuve || false // Add approval status
                     }));
 
                     setPartenaires(formattedData);
+                    
+                    // Count pending partners (not approved)
+                    const pendingCount = result.data.filter(partner => !partner.approuve).length;
+                    setPendingPartenairesCount(pendingCount);
                 } else {
                     setError('Failed to fetch partners data');
                 }
@@ -93,6 +99,42 @@ export default function Partenaires() {
         }
     };
 
+    // Handle approve partner
+    const handleApprovePartenaire = async (id) => {
+        try {
+            // Make API call to approve the partner
+            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/partenaire/${id}/approuve`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                toast.error('Erreur lors de l\'approbation du partenaire');
+                throw new Error('Erreur lors de l\'approbation du partenaire');
+            }
+
+            toast.success('Partenaire approuvé avec succès');
+
+            // Update the partner's status in the local state
+            setPartenaires(prevPartenaires =>
+                prevPartenaires.map(partenaire => 
+                    partenaire.id === id 
+                        ? {...partenaire, approuve: true} 
+                        : partenaire
+                )
+            );
+            
+            // If the modal is open, update the selected partner
+            if (selectedPartenaire && selectedPartenaire.id === id) {
+                setSelectedPartenaire({...selectedPartenaire, approuve: true});
+            }
+        } catch (err) {
+            console.error("Error approving partner:", err);
+        }
+    };
+
     // Sort the partenaires based on start date (ascending or descending)
     const sortedPartenaires = [...partenaires].sort((a, b) => {
         const dateA = new Date(a.startDate);
@@ -100,9 +142,10 @@ export default function Partenaires() {
         return sortAsc ? dateA - dateB : dateB - dateA;  // Toggle sort order
     });
 
-    // Filter the sortedPartenaires based on search by name
+    // Filter the sortedPartenaires based on search by name and approval status
     const filteredPartenaires = sortedPartenaires.filter(partenaire =>
-        partenaire.name.toLowerCase().includes(searchName.toLowerCase())
+        partenaire.name.toLowerCase().includes(searchName.toLowerCase()) && 
+        partenaire.approuve === true
     );
 
     // Calculate total pages
@@ -181,12 +224,19 @@ export default function Partenaires() {
                             <option value={20}>20</option>
                         </select>
                     </div>
-                    <button
-                        onClick={() => window.location.href = "/dashboard/partners/add"}
-                        className="btn_add w-full sm:w-auto px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                    >
-                        Ajouter un partenaire
-                    </button>
+                    <div className="flex flex-wrap gap-2">
+                        <button
+                            onClick={() => window.location.href = "/dashboard/partners/examine"}
+                            className="btn_examine w-full sm:w-auto px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center"
+                        >
+                            Examiner les partenaires
+                            {pendingPartenairesCount > 0 && (
+                                <span className="ml-2 bg-white text-green-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                                    {pendingPartenairesCount}
+                                </span>
+                            )}
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -245,6 +295,16 @@ export default function Partenaires() {
                                             >
                                                 <FaEye />
                                             </button>
+                                            {!partenaire.approuve && (
+                                                <button
+                                                    type="button"
+                                                    className="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
+                                                    onClick={() => handleApprovePartenaire(partenaire.id)}
+                                                    title="Approuver le partenaire"
+                                                >
+                                                    <FaCheck />
+                                                </button>
+                                            )}
                                             <Popconfirm
                                                 title="Supprimer le partenaire"
                                                 description="Êtes-vous sûr de vouloir supprimer ce partenaire?"
@@ -298,13 +358,26 @@ export default function Partenaires() {
                 open={isModalOpen}
                 onCancel={() => setIsModalOpen(false)}
                 footer={[
-                    <button
-                        key="close"
-                        className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
-                        onClick={() => setIsModalOpen(false)}
-                    >
-                        Fermer
-                    </button>
+                    <div key="buttons" className="flex justify-between">
+                        <div>
+                            {selectedPartenaire && !selectedPartenaire.approuve && (
+                                <button
+                                    key="approve"
+                                    className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
+                                    onClick={() => handleApprovePartenaire(selectedPartenaire.id)}
+                                >
+                                    Approuver
+                                </button>
+                            )}
+                        </div>
+                        <button
+                            key="close"
+                            className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                            onClick={() => setIsModalOpen(false)}
+                        >
+                            Fermer
+                        </button>
+                    </div>
                 ]}
                 width={600}
             >
@@ -319,10 +392,20 @@ export default function Partenaires() {
                             <div>
                                 <h3 className="text-xl font-semibold">{selectedPartenaire.name}</h3>
                                 <p className="text-gray-500">{selectedPartenaire.email}</p>
+                                {selectedPartenaire.approuve && (
+                                    <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mt-1">
+                                        Approuvé
+                                    </span>
+                                )}
+                                {!selectedPartenaire.approuve && (
+                                    <span className="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full mt-1">
+                                        En attente d'approbation
+                                    </span>
+                                )}
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <p className="font-semibold mb-1">Téléphone:</p>
                                 <p className="text-gray-700">{selectedPartenaire.telephone || 'Non disponible'}</p>
