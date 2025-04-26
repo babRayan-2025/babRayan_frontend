@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import { FaTrash, FaSort, FaSortUp, FaSortDown, FaTimes } from 'react-icons/fa';
+import { FaTrash, FaSort, FaSortUp, FaSortDown, FaTimes, FaFileExcel } from 'react-icons/fa';
+import * as XLSX from 'xlsx';
 
 export default function PaypalPage() {
   const [donations, setDonations] = useState([]);
@@ -12,7 +13,8 @@ export default function PaypalPage() {
   const [sortAsc, setSortAsc] = useState(false);
   const [sortBy, setSortBy] = useState('date');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 7;
+  const [activeTab, setActiveTab] = useState('all');
+  const [itemsPerPage, setItemsPerPage] = useState(7);
 
   useEffect(() => {
     fetchDonations();
@@ -55,10 +57,21 @@ export default function PaypalPage() {
     return date.toLocaleDateString();
   };
 
-  const filteredDonations = donations.filter(donation =>
+  const filterDonationsByStatus = (donations) => {
+    if (activeTab === 'all') return donations;
+    return donations.filter(donation => 
+      activeTab === 'pending' ? donation.status === 'pending' :
+      activeTab === 'paid' ? donation.status === 'paid' :
+      activeTab === 'failed' ? donation.status === 'canceled' : true
+    );
+  };
+
+  const filteredBySearchDonations = donations.filter(donation =>
     donation.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
     donation.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const filteredDonations = filterDonationsByStatus(filteredBySearchDonations);
 
   const sortedDonations = [...filteredDonations].sort((a, b) => {
     if (sortBy === 'date') {
@@ -89,6 +102,37 @@ export default function PaypalPage() {
     currentPage * itemsPerPage
   );
 
+  const handleItemsPerPageChange = (e) => {
+    setItemsPerPage(Number(e.target.value));
+    setCurrentPage(1); // Reset to first page when changing items per page
+  };
+
+  const exportToExcel = () => {
+    try {
+      const dataToExport = sortedDonations.map(donation => ({
+        'Nom Complet': donation.nom,
+        'Email': donation.email,
+        'Téléphone': donation.telephone || 'N/A',
+        'Montant': parseFloat(donation.montant).toFixed(2) + ' MAD',
+        'Type': donation.typeDon,
+        'Date': formatDate(donation.createdAt),
+        'Status': donation.status
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, `Paypal_Donations_${activeTab}`);
+      
+      // Save the file
+      XLSX.writeFile(workbook, `Paypal_Donations_${activeTab}_${new Date().toISOString().split('T')[0]}.xlsx`);
+      
+      toast.success('Export réussi');
+    } catch (error) {
+      console.error('Error exporting to Excel:', error);
+      toast.error('Échec de l\'export');
+    }
+  };
+
   if (loading) {
     return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
@@ -116,6 +160,57 @@ export default function PaypalPage() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <label htmlFor="itemsPerPage" className="text-sm text-gray-700">Afficher:</label>
+            <select
+              id="itemsPerPage"
+              className="border rounded py-1 px-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={itemsPerPage}
+              onChange={handleItemsPerPageChange}
+            >
+              <option value={5}>5</option>
+              <option value={7}>7</option>
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+              <option value={20}>20</option>
+            </select>
+          </div>
+          <button
+            onClick={exportToExcel}
+            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center gap-2 text-sm"
+          >
+            <FaFileExcel /> Exporter {activeTab === 'all' ? 'Toutes' : activeTab === 'pending' ? 'En attente' : activeTab === 'paid' ? 'Payées' : 'Échouées'}
+          </button>
+        </div>
+      </div>
+
+      {/* Status Filter Tabs */}
+      <div className="flex overflow-x-auto mb-4 border-b">
+        <button
+          className={`px-4 py-2 font-medium text-sm ${activeTab === 'all' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+          onClick={() => {setActiveTab('all'); setCurrentPage(1);}}
+        >
+          Toutes ({donations.length})
+        </button>
+        <button
+          className={`px-4 py-2 font-medium text-sm ${activeTab === 'pending' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+          onClick={() => {setActiveTab('pending'); setCurrentPage(1);}}
+        >
+          En attente ({donations.filter(d => d.status === 'pending').length})
+        </button>
+        <button
+          className={`px-4 py-2 font-medium text-sm ${activeTab === 'paid' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+          onClick={() => {setActiveTab('paid'); setCurrentPage(1);}}
+        >
+          Payées ({donations.filter(d => d.status === 'paid').length})
+        </button>
+        <button
+          className={`px-4 py-2 font-medium text-sm ${activeTab === 'failed' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+          onClick={() => {setActiveTab('failed'); setCurrentPage(1);}}
+        >
+          Échouées ({donations.filter(d => d.status === 'canceled').length})
+        </button>
       </div>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -191,6 +286,7 @@ export default function PaypalPage() {
                   </div>
                 </th>
                 <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
                 </th>
               </tr>
             </thead>
@@ -200,7 +296,7 @@ export default function PaypalPage() {
                   <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
                     <div className="text-xs sm:text-sm font-medium text-gray-900">{donation.nom}</div>
                     <div className="text-xs sm:text-sm text-gray-500 truncate max-w-[120px] sm:max-w-full">{donation.email}</div>
-                    <div className="text-xs sm:text-sm text-gray-500 sm:hidden">{donation.telephone}</div>
+                    <div className="text-xs sm:text-sm text-gray-500">{donation.telephone}</div>
                     <div className="sm:hidden text-xs">
                       <span className="inline-block mt-1">{formatDate(donation.createdAt)}</span>
                     </div>
@@ -214,7 +310,7 @@ export default function PaypalPage() {
                     <div className="text-xs sm:text-sm text-gray-900 font-semibold">{parseFloat(donation.montant).toFixed(2)} MAD</div>
                   </td>
                   <td className="hidden sm:table-cell px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
-                    <span className="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${donation.typeDon === 'Ponctuel' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}`}>
                       {donation.typeDon}
                     </span>
                   </td>
@@ -248,21 +344,30 @@ export default function PaypalPage() {
         </div>
       </div>
 
+      {/* Empty state message */}
+      {sortedDonations.length === 0 && (
+        <div className="text-center p-6 bg-gray-50 rounded-lg mt-4">
+          <p className="text-gray-500">Aucune donation trouvée</p>
+        </div>
+      )}
+
       {/* Pagination */}
-      <div className="flex justify-center mt-4">
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i + 1}
-            onClick={() => setCurrentPage(i + 1)}
-            className={`mx-1 px-2 py-1 sm:px-3 sm:py-1 rounded text-xs sm:text-sm ${currentPage === i + 1
-              ? 'bg-blue-500 text-white'
-              : 'bg-gray-200 hover:bg-gray-300'
-              }`}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
+      {totalPages > 0 && (
+        <div className="flex justify-center mt-4">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`mx-1 px-2 py-1 sm:px-3 sm:py-1 rounded text-xs sm:text-sm ${currentPage === i + 1
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-200 hover:bg-gray-300'
+                }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
