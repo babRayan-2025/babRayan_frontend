@@ -5,6 +5,7 @@ import { FaTrash, FaCheck, FaTimes, FaExchangeAlt } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Popconfirm, message } from 'antd';
+import Link from 'next/link';
 
 export default function Admins() {
     const [users, setUsers] = useState([]);
@@ -12,6 +13,7 @@ export default function Admins() {
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(7);
+    const [unverifiedCount, setUnverifiedCount] = useState(0);
 
     useEffect(() => {
         fetchUsers();
@@ -24,7 +26,13 @@ export default function Admins() {
             const result = await response.json();
 
             if (result.status && result.data) {
-                setUsers(result.data);
+                // Count unverified users
+                const unverified = result.data.filter(user => !user.isVerified).length;
+                setUnverifiedCount(unverified);
+
+                // Only display verified users in the admin panel
+                const verifiedUsers = result.data.filter(user => user.isVerified);
+                setUsers(verifiedUsers);
             } else {
                 toast.error("Erreur lors du chargement des utilisateurs");
             }
@@ -36,9 +44,9 @@ export default function Admins() {
         }
     };
 
-    const toggleVerification = async (user) => {
+    const unverifyUser = async (user) => {
         try {
-            const updatedUser = { ...user, isVerified: !user.isVerified };
+            const updatedUser = { ...user, isVerified: false };
 
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${user.id}`, {
                 method: 'PUT',
@@ -51,7 +59,7 @@ export default function Admins() {
             const result = await response.json();
 
             if (result.status) {
-                toast.success(`Utilisateur ${updatedUser.isVerified ? 'vérifié' : 'non vérifié'} avec succès`);
+                toast.success("Utilisateur suspendu");
                 fetchUsers(); // Refresh the list
             } else {
                 toast.error("Erreur lors de la mise à jour");
@@ -161,6 +169,14 @@ export default function Admins() {
                             <option value={20}>20</option>
                         </select>
                     </div>
+                    <Link href="/dashboard/admins/verification" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md flex items-center">
+                        Vérification des utilisateurs
+                        {unverifiedCount > 0 && (
+                            <span className="ml-2 bg-white text-blue-500 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                                {unverifiedCount}
+                            </span>
+                        )}
+                    </Link>
                 </div>
             </div>
 
@@ -196,44 +212,42 @@ export default function Admins() {
                                         </td>
                                         <td className="py-3 px-4">{formatDate(user.createdAt)}</td>
                                         <td className="py-3 px-4">
-                                            <div className="flex items-center">
-                                                <span className={`py-1 px-3 inline-block rounded-full text-white ${user.isVerified ? 'bg-green-500' : 'bg-yellow-500'}`}>
-                                                    {user.isVerified ? 'Vérifié' : 'Non vérifié'}
-                                                </span>
-                                                {!isMainAdmin && (
-                                                    <button 
-                                                        className="ml-2 text-blue-500 hover:text-blue-700 transition-colors"
-                                                        onClick={() => toggleVerification(user)}
-                                                        title="Changer le statut"
-                                                    >
-                                                        <FaExchangeAlt size={16} />
-                                                    </button>
-                                                )}
-                                            </div>
+                                            <span className="py-1 px-3 inline-block rounded-full text-white bg-green-500">
+                                                Vérifié
+                                            </span>
                                         </td>
                                         <td className="py-3 px-4">
                                             <span className={`py-1 px-3 inline-block rounded-full text-white ${isMainAdmin ? 'bg-orange-500' : 'bg-red-500'}`}>
                                                 {isMainAdmin ? 'admin principal' : 'admin'}
                                             </span>
                                         </td>
-                                        <td className="py-3 px-4">
+                                        <td className="py-3 px-4 flex gap-2">
                                             {!isMainAdmin && (
-                                                <Popconfirm
-                                                    title="Confirmation"
-                                                    description="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
-                                                    onConfirm={() => deleteUser(user.id)}
-                                                    onCancel={cancelDelete}
-                                                    okText="Oui"
-                                                    cancelText="Non"
-                                                    okType="danger"
-                                                >
+                                                <>
                                                     <button
-                                                        type="button"
-                                                        className="text-white px-3 py-1 bg-red-500 hover:bg-red-600 rounded-md"
+                                                        onClick={() => unverifyUser(user)}
+                                                        className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-md"
+                                                        title="Envoyer à la vérification"
                                                     >
-                                                        <FaTrash />
+                                                        Suspendre
                                                     </button>
-                                                </Popconfirm>
+                                                    <Popconfirm
+                                                        title="Confirmation"
+                                                        description="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+                                                        onConfirm={() => deleteUser(user.id)}
+                                                        onCancel={cancelDelete}
+                                                        okText="Oui"
+                                                        cancelText="Non"
+                                                        okType="danger"
+                                                    >
+                                                        <button
+                                                            type="button"
+                                                            className="text-white px-3 py-1 bg-red-500 hover:bg-red-600 rounded-md"
+                                                        >
+                                                            <FaTrash />
+                                                        </button>
+                                                    </Popconfirm>
+                                                </>
                                             )}
                                         </td>
                                     </tr>
