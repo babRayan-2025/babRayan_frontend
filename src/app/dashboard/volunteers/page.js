@@ -260,55 +260,106 @@ export default function Benevoles() {
                             </button>
                         </div>
 
-                        <div className="space-y-4">
-                            <div className="flex flex-col md:flex-row gap-4 items-center md:items-start">
-                                <img
-                                    src={selectedVolunteer.image}
-                                    alt={selectedVolunteer.name}
-                                    className="w-32 h-32 rounded-full object-cover border-4 border-gray-200"
-                                />
-                                <div className="space-y-2 text-center md:text-left">
-                                    <h3 className="text-lg sm:text-xl font-semibold">{selectedVolunteer.name}</h3>
-                                    <p className="text-sm sm:text-base text-gray-600">{selectedVolunteer.role}</p>
-                                    <p className="text-sm text-gray-500">A rejoint le {selectedVolunteer.joinDate}</p>
+                        <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+                            <div className="md:w-1/3 flex flex-col items-center">
+                                <div className="relative group">
+                                    <img
+                                        src={selectedVolunteer.image}
+                                        alt={selectedVolunteer.name}
+                                        className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-full mb-3 border-4 border-blue-100 shadow-lg group-hover:border-blue-300 transition-all duration-300"
+                                    />
+                                    <div className="absolute inset-0 bg-blue-500 bg-opacity-0 rounded-full group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
+                                <h3 className="text-base sm:text-lg font-semibold text-center text-blue-800">{selectedVolunteer.name}</h3>
+                                <p className="text-gray-600 text-center bg-blue-50 px-3 py-1 rounded-full text-xs sm:text-sm">{selectedVolunteer.role}</p>
                             </div>
 
-                            <div className="border-t border-gray-200 pt-4">
-                                <h4 className="text-base sm:text-lg font-medium mb-2">Informations de contact</h4>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base">
-                                    <div>
-                                        <p className="font-medium">Email:</p>
-                                        <p className="text-gray-600 break-words">{selectedVolunteer.email}</p>
+                            <div className="md:w-2/3 mt-4 md:mt-0">
+                                <div className="grid grid-cols-1 gap-4 sm:gap-6">
+                                    <div className="bg-gray-50 p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                                        <h4 className="font-semibold text-blue-700 border-b border-blue-100 pb-2 mb-2 text-sm sm:text-base">Informations Personnelles</h4>
+                                        <div className="space-y-1 sm:space-y-2 text-sm sm:text-base">
+                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Prénom:</span> <span className="text-gray-800">{selectedVolunteer.rawData.prenom}</span></p>
+                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Nom:</span> <span className="text-gray-800">{selectedVolunteer.rawData.nom}</span></p>
+                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Email:</span> <span className="text-blue-600 break-all">{selectedVolunteer.rawData.email}</span></p>
+                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Téléphone:</span> <span className="text-gray-800">{selectedVolunteer.rawData.telephone}</span></p>
+                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Date d'inscription:</span> <span className="text-gray-800">{selectedVolunteer.joinDate}</span></p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="font-medium">Téléphone:</p>
-                                        <p className="text-gray-600">{selectedVolunteer.telephone}</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div className="border-t border-gray-200 pt-4">
-                                <h4 className="text-base sm:text-lg font-medium mb-2">Informations personnelles</h4>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base">
-                                    {selectedVolunteer.rawData && (
-                                        <>
-                                            <div>
-                                                <p className="font-medium">Âge:</p>
-                                                <p className="text-gray-600">{selectedVolunteer.rawData.age || 'Non spécifié'}</p>
-                                            </div>
-                                            <div>
-                                                <p className="font-medium">Ville:</p>
-                                                <p className="text-gray-600">{selectedVolunteer.rawData.ville || 'Non spécifié'}</p>
-                                            </div>
-                                            <div>
-                                                <p className="font-medium">Disponible:</p>
-                                                <p className="text-gray-600">{selectedVolunteer.rawData.disponible ? 'Oui' : 'Non'}</p>
-                                            </div>
-                                        </>
-                                    )}
+                                    <div className="bg-blue-50 p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                                        <h4 className="font-semibold text-blue-700 border-b border-blue-100 pb-2 mb-2 text-sm sm:text-base">Domaine de compétence</h4>
+                                        <div className="text-sm sm:text-base">
+                                            <p className="p-1 rounded"><span className="font-medium text-gray-700">Domaine principal:</span> <span className="text-gray-800 bg-white px-2 py-1 rounded-md">{selectedVolunteer.rawData.domaine}</span></p>
+
+                                            {selectedVolunteer.rawData.foyer && selectedVolunteer.rawData.foyer.length > 0 && (
+                                                <div className="mt-3 bg-white p-2 sm:p-3 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
+                                                    <p className="font-medium text-blue-600 text-sm sm:text-base">Activités de foyer:</p>
+                                                    <ul className="list-inside mt-1 space-y-1 text-xs sm:text-sm">
+                                                        {selectedVolunteer.rawData.foyer.map((item, index) => (
+                                                            <li key={index} className="flex items-baseline text-gray-700">
+                                                                <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
+                                                                <span className="break-words">{item}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+
+                                            {selectedVolunteer.rawData.ecole && selectedVolunteer.rawData.ecole.length > 0 && (
+                                                <div className="mt-3 bg-white p-2 sm:p-3 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
+                                                    <p className="font-medium text-blue-600 text-sm sm:text-base">Activités scolaires:</p>
+                                                    <ul className="list-inside mt-1 space-y-1 text-xs sm:text-sm">
+                                                        {selectedVolunteer.rawData.ecole.map((item, index) => (
+                                                            <li key={index} className="flex items-baseline text-gray-700">
+                                                                <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
+                                                                <span className="break-words">{item}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+
+                                            {selectedVolunteer.rawData.formations && selectedVolunteer.rawData.formations.length > 0 && (
+                                                <div className="mt-3 bg-white p-2 sm:p-3 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
+                                                    <p className="font-medium text-blue-600 text-sm sm:text-base">Formations:</p>
+                                                    <ul className="list-inside mt-1 space-y-1 text-xs sm:text-sm">
+                                                        {selectedVolunteer.rawData.formations.map((item, index) => (
+                                                            <li key={index} className="flex items-baseline text-gray-700">
+                                                                <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
+                                                                <span className="break-words">{item}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+
+                                            {selectedVolunteer.rawData.administration && selectedVolunteer.rawData.administration.length > 0 && (
+                                                <div className="mt-3 bg-white p-2 sm:p-3 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
+                                                    <p className="font-medium text-blue-600 text-sm sm:text-base">Administration:</p>
+                                                    <ul className="list-inside mt-1 space-y-1 text-xs sm:text-sm">
+                                                        {selectedVolunteer.rawData.administration.map((item, index) => (
+                                                            <li key={index} className="flex items-baseline text-gray-700">
+                                                                <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
+                                                                <span className="break-words">{item}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="mt-4 sm:mt-6 text-right border-t pt-3">
+                            <button
+                                onClick={closeModal}
+                                className="px-3 py-1 sm:px-4 sm:py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300 transform hover:scale-105 text-sm sm:text-base"
+                            >
+                                Fermer
+                            </button>
                         </div>
                     </div>
                 )}

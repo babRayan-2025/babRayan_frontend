@@ -183,7 +183,7 @@ export default function DashboardPage() {
             </div>
           )}
 
-          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-center">
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-center">
             {/* Users Card */}
             <div className="dashboard_card users_card p-3 sm:p-4 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
               <div className="flex justify-center items-center">
@@ -208,17 +208,6 @@ export default function DashboardPage() {
               <p className="card_description text-sm text-gray-500">Total Enfants</p>
             </div> */}
 
-            {/* Donations Card */}
-            <div className="dashboard_card donations_card p-3 sm:p-4 rounded-lg shadow-lg animate__animated animate__fadeInRight">
-              <div className="flex justify-center items-center">
-                <div className="icon_container">
-                  <FaDollarSign />
-                </div>
-                <h3 className="card_title ml-2 text-base sm:text-lg font-semibold">Dons</h3>
-              </div>
-              <p className="card_value text-2xl sm:text-3xl font-bold">{totalDonations} MAD</p>
-              <p className="card_description text-xs sm:text-sm text-gray-500">Total Dons</p>
-            </div>
 
             {/* Partnerships Card */}
             <div className="dashboard_card partnerships_card p-3 sm:p-4 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
@@ -231,8 +220,20 @@ export default function DashboardPage() {
               <p className="card_value text-2xl sm:text-3xl font-bold">{partnershipsCount}</p>
               <p className="card_description text-xs sm:text-sm text-gray-500">Total Partenariats</p>
             </div>
+            
+            {/* Donations Card */}
+            <div className="dashboard_card donations_card p-3 sm:p-4 rounded-lg shadow-lg animate__animated animate__fadeInRight">
+              <div className="flex justify-center items-center">
+                <div className="icon_container">
+                  <FaDollarSign />
+                </div>
+                <h3 className="card_title ml-2 text-base sm:text-lg font-semibold">Dons</h3>
+              </div>
+              <p className="card_value text-2xl sm:text-3xl font-bold">{totalDonations} MAD</p>
+              <p className="card_description text-xs sm:text-sm text-gray-500">Total Dons</p>
+            </div>
           </div>
-
+          
           {/* Donation Trend Chart */}
           <div className="mt-8 sm:mt-16 flex justify-center">
             <div className="p-2 sm:p-3 rounded-lg shadow-lg w-full">

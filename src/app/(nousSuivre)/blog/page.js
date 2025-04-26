@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Play } from "lucide-react";
+import { Modal } from 'antd';
+import toast from "react-hot-toast";
 
 // Animation Variants
 const fadeIn = {
@@ -77,6 +79,9 @@ export default function Blog() {
   const [showMore, setShowMore] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [newsfetched, setNewsfetched] = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
 
   // const videoUrl = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0";
   const videoUrl = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
@@ -312,7 +317,10 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <a href={`/dashboard/news/${item.id}`} target="_blank" rel="noopener noreferrer">
+                    <button onClick={() => {
+                      setSelectedArticle(item);
+                      setModalOpen(true);
+                    }}>
                       <motion.button
                         className="inline-block bg-yellow-400 rounded-full text-red-600 font-semibold px-6 py-2.5 transition hover:bg-yellow-500"
                         variants={scaleIn}
@@ -321,7 +329,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                       >
                         Découvrir plus
                       </motion.button>
-                    </a>
+                    </button>
                   </div>
                 </motion.div>
               </motion.div>
@@ -361,7 +369,10 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <a href={item.href || "#"} target="_blank" rel="noopener noreferrer">
+                    <button onClick={() => {
+                      setSelectedArticle(item);
+                      setModalOpen(true);
+                    }}>
                       <motion.button
                         className="inline-block bg-yellow-400 rounded-full text-red-600 font-semibold px-6 py-2.5 transition hover:bg-yellow-500"
                         variants={scaleIn}
@@ -370,12 +381,43 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                       >
                         {item.buttonText || "Découvrir plus"}
                       </motion.button>
-                    </a>
+                    </button>
                   </div>
                 </motion.div>
               </motion.div>
             ))}
           </motion.div>
+
+
+          {selectedArticle && (
+            <Modal
+              title={<h2 className="text-center w-full text-xl font-semibold">{selectedArticle.title}</h2>}
+              centered
+              open={modalOpen}
+              onCancel={() => setModalOpen(false)}
+              width={800}
+              bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }}
+              footer={null}
+            >
+              <div className="flex flex-col items-center">
+                {/* Article Image */}
+                <Image
+                  src={selectedArticle.pic || selectedArticle.image}
+                  className="w-full h-auto max-h-[300px] object-cover rounded-lg mb-4 shadow-md"
+                  alt={selectedArticle.title}
+                  width={500}
+                  height={300}
+                />
+
+                {/* Content Section */}
+                <div className="max-h-[60vh] overflow-y-auto px-4 text-gray-700 leading-relaxed text-lg">
+                  <p dangerouslySetInnerHTML={{
+                    __html: selectedArticle.content || selectedArticle.description
+                  }}></p>
+                </div>
+              </div>
+            </Modal>
+          )}
         </main>
       )}
     </>
