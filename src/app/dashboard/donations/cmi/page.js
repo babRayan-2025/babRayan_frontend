@@ -187,7 +187,7 @@ export default function CmiPage() {
                   <div className="text-sm text-gray-500">{donation.telephone}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900 font-semibold">{donation.amount} MAD</div>
+                  <div className="text-sm text-gray-900 font-semibold">{parseFloat(donation.amount).toFixed(2)} MAD</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {formatDate(donation.createdAt)}

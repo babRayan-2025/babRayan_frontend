@@ -202,7 +202,7 @@ export default function PaypalPage() {
                   <div className="text-sm text-gray-500">{donation.telephone}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900 font-semibold">{donation.montant} MAD</div>
+                  <div className="text-sm text-gray-900 font-semibold">{parseFloat(donation.montant).toFixed(2)} MAD</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
