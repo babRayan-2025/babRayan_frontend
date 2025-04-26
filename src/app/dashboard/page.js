@@ -168,7 +168,7 @@ export default function DashboardPage() {
     ],
   };
   return (
-    <div className="home_dashboard container mt-5">
+    <div className="home_dashboard container mx-auto px-4 mt-5">
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <div className="text-center">
@@ -183,17 +183,17 @@ export default function DashboardPage() {
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-center">
             {/* Users Card */}
-            <div className="dashboard_card users_card p-4 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
+            <div className="dashboard_card users_card p-3 sm:p-4 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
               <div className="flex justify-center items-center">
                 <div className="icon_container">
                   <FaUsers />
                 </div>
-                <h3 className="card_title ml-2 text-lg font-semibold">Admins</h3>
+                <h3 className="card_title ml-2 text-base sm:text-lg font-semibold">Admins</h3>
               </div>
-              <p className="card_value text-3xl font-bold">{users.length}</p>
-              <p className="card_description text-sm text-gray-500">Total Admins</p>
+              <p className="card_value text-2xl sm:text-3xl font-bold">{users.length}</p>
+              <p className="card_description text-xs sm:text-sm text-gray-500">Total Admins</p>
             </div>
 
             {/* Enfants Sponsorisés Card */}
@@ -209,42 +209,66 @@ export default function DashboardPage() {
             </div> */}
 
             {/* Donations Card */}
-            <div className="dashboard_card donations_card p-4 rounded-lg shadow-lg animate__animated animate__fadeInRight">
+            <div className="dashboard_card donations_card p-3 sm:p-4 rounded-lg shadow-lg animate__animated animate__fadeInRight">
               <div className="flex justify-center items-center">
                 <div className="icon_container">
                   <FaDollarSign />
                 </div>
-                <h3 className="card_title ml-2 text-lg font-semibold">Dons</h3>
+                <h3 className="card_title ml-2 text-base sm:text-lg font-semibold">Dons</h3>
               </div>
-              <p className="card_value text-3xl font-bold">{totalDonations} MAD</p>
-              <p className="card_description text-sm text-gray-500">Total Dons</p>
+              <p className="card_value text-2xl sm:text-3xl font-bold">{totalDonations} MAD</p>
+              <p className="card_description text-xs sm:text-sm text-gray-500">Total Dons</p>
             </div>
 
             {/* Partnerships Card */}
-            <div className="dashboard_card partnerships_card p-4 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
+            <div className="dashboard_card partnerships_card p-3 sm:p-4 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
               <div className="flex justify-center items-center">
                 <div className="icon_container">
                   <FaHandshake />
                 </div>
-                <h3 className="card_title ml-2 text-lg font-semibold">Partenariats</h3>
+                <h3 className="card_title ml-2 text-base sm:text-lg font-semibold">Partenariats</h3>
               </div>
-              <p className="card_value text-3xl font-bold">{partnershipsCount}</p>
-              <p className="card_description text-sm text-gray-500">Total Partenariats</p>
+              <p className="card_value text-2xl sm:text-3xl font-bold">{partnershipsCount}</p>
+              <p className="card_description text-xs sm:text-sm text-gray-500">Total Partenariats</p>
             </div>
           </div>
 
           {/* Donation Trend Chart */}
-          <div className="mt-16 flex justify-center">
-            <div className="p-3 rounded-lg shadow-lg w-full max-w-7xl">
-              <h4 className="text-center mb-4 text-xl font-semibold">Graphique des Dons</h4>
-              <Line
-                data={donationChartData}
-                options={{
-                  responsive: true,
-                }}
-                height={100}
-                width={600}
-              />
+          <div className="mt-8 sm:mt-16 flex justify-center">
+            <div className="p-2 sm:p-3 rounded-lg shadow-lg w-full">
+              <h4 className="text-center mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">Graphique des Dons</h4>
+              <div className="w-full h-[250px] sm:h-[300px] md:h-[350px]">
+                <Line
+                  data={donationChartData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        display: true,
+                        position: 'top',
+                      },
+                    },
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                        ticks: {
+                          font: {
+                            size: window.innerWidth < 768 ? 8 : 12
+                          }
+                        }
+                      },
+                      x: {
+                        ticks: {
+                          font: {
+                            size: window.innerWidth < 768 ? 8 : 12
+                          }
+                        }
+                      }
+                    }
+                  }}
+                />
+              </div>
             </div>
           </div>
 
