@@ -19,7 +19,8 @@ jobs:
         node-version: '20'
 
     - name: Install Dependencies
-      run: npm install
+      run: npm install --force
+
 
     - name: Build Next.js Project
       run: npm run build
