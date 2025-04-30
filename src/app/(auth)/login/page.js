@@ -211,12 +211,12 @@ export default function Login() {
               )}
             </button>
 
-            {/* <p className="text-center mt-4">
+            <p className="text-center mt-4">
               Pas encore de compte ?{' '}
               <a href="/register" className="auth_btn">
                 <u>S'inscrire</u>
               </a>
-            </p> */}
+            </p>
           </form>
         </div>
       </div>
