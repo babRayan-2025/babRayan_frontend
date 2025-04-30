@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Play } from "lucide-react";
 import { Modal } from 'antd';
 import toast from "react-hot-toast";
+import DOMPurify from "isomorphic-dompurify";
 
 // Animation Variants
 const fadeIn = {
@@ -313,23 +314,22 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                       {item.title}
                     </h1>
                     <p className="text-gray-600 mb-6 text-sm md:text-base"
-                      dangerouslySetInnerHTML={{ __html: item.shortContent }}>
+                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item.shortContent) }}>
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <button onClick={() => {
-                      setSelectedArticle(item);
-                      setModalOpen(true);
-                    }}>
-                      <motion.button
-                        className="inline-block bg-yellow-400 rounded-full text-red-600 font-semibold px-6 py-2.5 transition hover:bg-yellow-500"
-                        variants={scaleIn}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
+                  <motion.button
+                      onClick={() => {
+                        setSelectedArticle(item);
+                        setModalOpen(true);
+                      }}
+                      className="inline-block bg-yellow-400 rounded-full text-red-600 font-semibold px-6 py-2.5 transition hover:bg-yellow-500"
+                      variants={scaleIn}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                         Découvrir plus
                       </motion.button>
-                    </button>
                   </div>
                 </motion.div>
               </motion.div>
@@ -365,7 +365,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                       {item.title}
                     </h1>
                     <p className="text-gray-600 mb-6 text-sm md:text-base"
-                      dangerouslySetInnerHTML={{ __html: item.description }}>
+                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item.description) }}>
                     </p>
                   </div>
                   <div className="mt-auto">
@@ -412,7 +412,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
                 {/* Content Section */}
                 <div className="max-h-[60vh] overflow-y-auto px-4 text-gray-700 leading-relaxed text-lg">
                   <p dangerouslySetInnerHTML={{
-                    __html: selectedArticle.content || selectedArticle.description
+                    __html: DOMPurify.sanitize(selectedArticle.content || selectedArticle.description)
                   }}></p>
                 </div>
               </div>

@@ -38,7 +38,6 @@ export default function CmiPage() {
       const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/cmi/delete-cmi/${id}`, {
         method: 'DELETE',
       });
-      console.log("dd");
 
       const data = await response.json();
 

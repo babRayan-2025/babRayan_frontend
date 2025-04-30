@@ -46,7 +46,6 @@ export default function Admins() {
 
     const unverifyUser = async (user) => {
         try {
-            const updatedUser = { ...user, isVerified: false };
 
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${user.id}`, {
                 method: 'PUT',
@@ -104,8 +103,8 @@ export default function Admins() {
 
     // Determine if a user is a special user (main admin)
     const isSpecialUser = (user) => {
-        return (user.email && user.email.toLowerCase().includes('yassineova')) ||
-            (user.email && user.email.toLowerCase().includes('ynovadmin'));
+        const specialEmails = ['yassineova', 'ynovadmin'];
+        return specialEmails.some(email => user.email?.toLowerCase().includes(email));
     };
 
     // Filter users based on the search query
@@ -191,7 +190,7 @@ export default function Admins() {
                             <thead className="bg-gray-100">
                                 <tr>
                                     <th className="py-2 px-4 text-left">Utilisateur</th>
-                                    <th className="py-2 px-4 text-left hidden sm:table-cell">Date d'inscription</th>
+                                    <th className="py-2 px-4 text-left hidden sm:table-cell">Date d&apos;inscription</th>
                                     <th className="py-2 px-4 text-left hidden sm:table-cell">Status</th>
                                     <th className="py-2 px-4 text-left hidden sm:table-cell">Rôle</th>
                                     <th className="py-2 px-4 text-left">Actions</th>
