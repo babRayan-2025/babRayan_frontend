@@ -10,6 +10,7 @@ export default function Benevole() {
   const [selectedFoyer, setSelectedFoyer] = useState([]);
   const [selectedFormations, setSelectedFormations] = useState([]);
   const [selectedEcole, setSelectedEcole] = useState([]);
+  const [selectedAdministration, setSelectedAdministration] = useState([]);
   const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
   const [prenom, setPrenom] = useState("");
@@ -34,7 +35,13 @@ export default function Benevole() {
     );
   };
 
-  const handleSubmit = async() => {
+  const toggleAdministration = (item) => {
+    setSelectedAdministration((prev) =>
+      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]
+    );
+  };
+
+  const handleSubmit = async () => {
     const formData = {
       nom: nom.trim(),
       email: email.trim(),
@@ -44,6 +51,7 @@ export default function Benevole() {
       foyer: selectedFoyer,
       ecole: selectedEcole,
       formations: selectedFormations,
+      administration: selectedAdministration,
     };
 
     // Validate form data
@@ -67,9 +75,8 @@ export default function Benevole() {
       toast.error("Veuillez remplir le champ Domaine de compétence.");
       return;
     }
-    if (formData.foyer.length === 0 && formData.ecole.length === 0 && formData.formations.length === 0) {
-      toast.error("Veuillez sélectionner au moins une option dans Foyer, École ou Centre de Formation.");
-      toast.error("Veuillez sélectionner au moins une option dans Foyer.");
+    if (formData.foyer.length === 0 && formData.ecole.length === 0 && formData.formations.length === 0 && formData.administration.length === 0) {
+      toast.error("Veuillez sélectionner au moins une option dans Foyer, École, Centre de Formation ou Administration.");
       return;
     }
 
@@ -97,8 +104,10 @@ export default function Benevole() {
         setSelectedFoyer([]);
         setSelectedEcole([]);
         setSelectedFormations([]);
+        setSelectedAdministration([]);
       } else {
-        toast.error("Une erreur est survenue lors de l'envoi de votre demande.");      }
+        toast.error("Une erreur est survenue lors de l'envoi de votre demande.");
+      }
     } catch (error) {
       console.error("Error:", error);
     }
@@ -261,7 +270,7 @@ export default function Benevole() {
             />
             <input
               type="text"
-              placeholder="Domaine de compétence *"
+              placeholder="Domaine de compétences *"
               className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 col-span-full"
               value={domaine}
               onChange={(e) => setDomaine(e.target.value)}
@@ -270,7 +279,7 @@ export default function Benevole() {
 
           {/* Categories */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 text-white gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-white gap-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.7 }}
@@ -283,17 +292,14 @@ export default function Benevole() {
               <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
                 {[
                   "Soutien Scolaire",
-                  "Accompagnement des enfants",
-                  "Organisations d’évènements",
-                  "Coaching professionnel",
-                  "Animation des ateliers",
-                  "Autres (texte libre)",
+                  "Accompagnement psychosocial",
+                  "Animation d’ateliers ludiques"
                 ].map((item, index) => (
                   <motion.button
                     key={index}
                     className={`w-full p-4 rounded-full border text-md lg:text-xl m-auto p-auto font-medium text-center ${selectedFoyer.includes(item)
-                        ? "bg-yellow-300 border-black text-red-600"
-                        : "border-yellow-300 bg-red-600 text-white-300"
+                      ? "bg-yellow-300 border-black text-red-600"
+                      : "border-yellow-300 bg-red-600 text-white-300"
                       }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -314,17 +320,14 @@ export default function Benevole() {
                 {[
                   "Soutien Scolaire",
                   "Soutien administratif",
-                  "Animation Ateliers",
-                  "Suivi psychologique",
-                  "Coaching professionnel",
+                  "Accompagnement psychosocial",
                   "Formation pédagogique",
-                  "Autres (texte libre)",
                 ].map((item, index) => (
                   <motion.button
                     key={index}
                     className={`w-full text-center text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full border ${selectedEcole.includes(item)
-                        ? "bg-yellow-300 border-black text-red-600"
-                        : "bg-red-600 border-yellow-300 text-white-300"
+                      ? "bg-yellow-300 border-black text-red-600"
+                      : "bg-red-600 border-yellow-300 text-white-300"
                       }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -338,25 +341,49 @@ export default function Benevole() {
 
             {/* Centre de formation et d'insertion */}
             <div>
-              <h2 className="text-md font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
-                CENTRE DE FORMATION ET D’INSERTION
+              <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
+                CFI
               </h2>
               <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
                 {[
-                  "Coaching pédagogique",
-                  "Cours de communication et soft-skills",
-                  "Formation en métiers d’hôtellerie",
-                  "Autres (texte libre)",
+                  "Cours de langues",
+                  "Cours de communication et softskills",
+                  "Formation en hotellerie restauration",
                 ].map((item, index) => (
                   <motion.button
                     key={index}
                     className={`w-full text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${selectedFormations.includes(item)
-                        ? "bg-yellow-300 border-black text-red-600"
-                        : "bg-red-600 border-yellow-300 text-white-300"
+                      ? "bg-yellow-300 border-black text-red-600"
+                      : "bg-red-600 border-yellow-300 text-white-300"
                       }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => toggleFormation(item)}
+                  >
+                    {item}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
+                ADMINISTRATION
+              </h2>
+              <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+                {[
+                  "Marketing et communication",
+                  "Comptabilité et gestion",
+                  "Services IT",
+                ].map((item, index) => (
+                  <motion.button
+                    key={index}
+                    className={`w-full text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${selectedFormations.includes(item)
+                      ? "bg-yellow-300 border-black text-red-600"
+                      : "bg-red-600 border-yellow-300 text-white-300"
+                      }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => toggleAdministration(item)}
                   >
                     {item}
                   </motion.button>
