@@ -53,7 +53,7 @@ export default function Admins() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(updatedUser),
+                body: JSON.stringify({ isVerified: false }),
             });
 
             const result = await response.json();
@@ -208,7 +208,7 @@ export default function Admins() {
                                                     <div className="ml-0 sm:ml-3 mt-2 sm:mt-0 text-center sm:text-left">
                                                         <p className="font-semibold mb-1">{user.name} {user.lastName}</p>
                                                         <p className="text-gray-500 mb-0 text-sm">{user.email}</p>
-                                                        
+
                                                         {/* Mobile-only info */}
                                                         <div className="sm:hidden mt-1 space-y-1">
                                                             <p className="text-xs text-gray-600">
@@ -287,11 +287,11 @@ export default function Admins() {
                                     >
                                         1
                                     </button>
-                                    
+
                                     {currentPage > 3 && (
                                         <span className="px-3 py-2">...</span>
                                     )}
-                                    
+
                                     {Array.from({ length: 3 }, (_, i) => {
                                         let pageNum;
                                         if (currentPage <= 2) {
@@ -301,7 +301,7 @@ export default function Admins() {
                                         } else {
                                             pageNum = currentPage - 1 + i; // Show current and adjacent
                                         }
-                                        
+
                                         if (pageNum > 1 && pageNum < totalPages) {
                                             return (
                                                 <button
@@ -315,11 +315,11 @@ export default function Admins() {
                                         }
                                         return null;
                                     })}
-                                    
+
                                     {currentPage < totalPages - 2 && (
                                         <span className="px-3 py-2">...</span>
                                     )}
-                                    
+
                                     <button
                                         onClick={() => handlePaginationClick(totalPages)}
                                         className={`px-3 sm:px-4 py-2 rounded-md ${totalPages === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
