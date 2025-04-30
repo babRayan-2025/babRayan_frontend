@@ -204,7 +204,7 @@ export default function NavBar() {
                   // className="text-white text-sm hover:text-gray-200"
                   className="bg-white px-4 py-2 rounded-md text-[#cc2229] text-sm font-semibold hover:bg-gray-100 transition duration-150"
                 >
-                  Se Connecter
+                  Espace Admin
                 </Link>
                 {/* <Link
                   href="/register"

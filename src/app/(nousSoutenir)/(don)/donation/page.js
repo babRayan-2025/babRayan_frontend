@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
-import termsText from "../../../../(policy)/termsPolicy";
 
 // Animation variants
 const fadeIn = {
@@ -53,8 +52,6 @@ export default function Donation() {
   const [showForm, setShowForm] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState(null);
-  const [showModalterms, setShowModalterms] = useState(false);
-  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const [userData, setUserData] = useState({
     fullName: "",
@@ -205,22 +202,12 @@ export default function Donation() {
     setCustomAmount("");
     updateDonationDetails(amount, donationType);
     setShowThirdCard(true);
-    // Hide the form when amount changes
-    setShowForm(false);
-    // Reset modal states
-    setIsModalOpen(false);
-    setShowModalterms(false);
   };
 
   const handleDonationTypeChange = (type) => {
     setDonationType(type);
     updateDonationDetails(selectedAmount || customAmount, type);
     setShowThirdCard(true);
-    // Hide the form when donation type changes
-    setShowForm(false);
-    // Reset modal states
-    setIsModalOpen(false);
-    setShowModalterms(false);
   };
 
   const handleCustomAmountChange = (e) => {
@@ -229,11 +216,6 @@ export default function Donation() {
     setCustomAmount(value);
     updateDonationDetails(value, donationType);
     setShowThirdCard(true);
-    // Hide the form when custom amount changes
-    setShowForm(false);
-    // Reset modal states
-    setIsModalOpen(false);
-    setShowModalterms(false);
   };
 
 
@@ -263,21 +245,10 @@ export default function Donation() {
     } else if ([1, 2, 3].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
       setIsModalOpen(true);
-    } else if (paymentMethod === 4) {
+    } else if ([4, 5].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
       setShowForm(true);
-    } else if (paymentMethod === 5) {
-      setShowModalterms(true);
     }
-  };
-
-  const forCMIProcess = async (event = null) => {
-    if (event?.preventDefault) event.preventDefault(); // Vérifie si event existe avant d'appeler preventDefault()
-    const selectedPaymentMethod = paymentMethods.find(
-      (method) => method.id === paymentMethod
-    );
-    setSelectedMethod(selectedPaymentMethod);
-    setShowForm(true);
   };
 
   const CMIpaymentProcess = async (event = null) => {
@@ -446,13 +417,7 @@ export default function Donation() {
       image: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
       desc: "Faire un don par virement bancaire",
     },
-    {
-      id: 5, label: "Carte bancaire",
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f",
-      img2: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Fsecure_code_logo.png?alt=media&token=c1438943-9627-43b2-9afd-62fc7588648c",
-      img3: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Ftn_verified_by_visa.png?alt=media&token=b2590060-ed4c-4a12-914d-3ae4f0a6200d",
-      desc: "Payer avec CMI"
-    },
+    { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f", desc: "Payer avec CMI" },
   ];
 
   const Modal = ({ method, amount, onClose }) => {
@@ -474,79 +439,6 @@ export default function Donation() {
         </div>
       </div>
     );
-  };
-
-  const TermsModal = () => {
-    const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
-    const textContainerRef = useRef(null);
-
-    const handleScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } = textContainerRef.current;
-      if (scrollTop + clientHeight >= scrollHeight - 5) {
-        setIsScrolledToBottom(true);
-      }
-    };
-    
-    const onClose = () => {
-      setShowModalterms(false);
-    };
-
-    const acceptTermsFunction = (e) => {
-      setAcceptTerms(true);
-      onClose();
-      forCMIProcess();
-    };
-
-    return (
-      <div
-        style={{ zIndex: 1000 }}
-        className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6"
-        onClick={onClose}
-      >
-        <div
-          className="bg-white rounded-3xl shadow-lg text-center p-6 w-[80%]"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="flex flex-col sm:flex-row justify-between pb-2 items-center">
-            <h2 className="text-2xl font-bold w-full sm:w-auto text-center sm:text-left mb-3 sm:mb-0">Termes et conditions</h2>
-            <div className="flex justify-center w-full sm:w-auto space-x-4">
-              <img className="w-16 h-10 sm:w-22 sm:h-14" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Fsecure_code_logo.png?alt=media&token=c1438943-9627-43b2-9afd-62fc7588648c" alt="" />
-              <img className="w-16 h-10 sm:w-22 sm:h-14" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Ftn_verified_by_visa.png?alt=media&token=b2590060-ed4c-4a12-914d-3ae4f0a6200d" alt="" />
-            </div>
-          </div>
-
-          <div
-            ref={textContainerRef}
-            onScroll={handleScroll}
-            className="max-h-96 overflow-y-auto p-4 border border-gray-300 rounded-lg text-left"
-            dangerouslySetInnerHTML={{ __html: termsText }}
-          />
-          <button
-            className={`mt-4 px-6 py-2 my-5 rounded-lg text-white ${isScrolledToBottom ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-400 cursor-not-allowed"
-              }`}
-            disabled={!isScrolledToBottom}
-            onClick={() => acceptTermsFunction()}
-          >
-            J'accepte les termes et conditions
-          </button>
-          <button
-            className="mt-4 ms-2 px-6 py-2 my-5 rounded-lg text-white bg-gray-400 cursor-pointer hover:bg-gray-500"
-            onClick={onClose}
-          >
-            Annuler
-          </button>
-        </div>
-      </div>
-    );
-  };
-
-  const handlePaymentMethodChange = (methodId) => {
-    // Hide the form when payment method changes
-    setShowForm(false);
-    // Reset terms modal state
-    setShowModalterms(false);
-    setAcceptTerms(false);
-    setPaymentMethod(methodId);
   };
 
   return (
@@ -693,7 +585,7 @@ export default function Donation() {
                         ? "bg-yellow-300 text-red-700 font-bold"
                         : "bg-red-700 text-white font-bold"
                         }`}
-                      onClick={() => handlePaymentMethodChange(method.id)} >
+                      onClick={() => setPaymentMethod(method.id)} >
                       <img
                         src={method.image}
                         alt={method.label}
@@ -725,9 +617,6 @@ export default function Donation() {
                   amount={selectedAmount}
                   onClose={() => setIsModalOpen(false)}
                 />
-              )}
-              {showModalterms && (
-                <TermsModal />
               )}
             </motion.div>
 
@@ -815,7 +704,7 @@ export default function Donation() {
                 className="bg-yellow-300 p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
               >
                 <h2 className="text-5xl text-red-700 font-extrabold my-4 mx-8 text-center">
-                  Fiche contact
+                   Fiche contact
                 </h2>
                 <p className="text-md font-semibold text-white md:mt-8">Vos données personnelles sont confidentielles et utilisées à des fins administratives.</p>
                 <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">

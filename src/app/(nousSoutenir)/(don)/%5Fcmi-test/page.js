@@ -161,8 +161,8 @@ export default function CmiDonation() {
     const email = userData?.email?.trim() || "anonyme@gmail.com";
     const telephone = userData?.phone?.trim() || "06XXXXXXXX";
     const entreprise = userData?.company?.trim() || "Anonyme";
-    const montant = selectedAmount || customAmount;
-    
+    const montant = Number(selectedAmount || customAmount);
+
     try {
       // Étape 1 : Envoyer une requête au backend pour générer le paiement
       const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/createCmi', {

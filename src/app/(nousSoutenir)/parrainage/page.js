@@ -7,18 +7,40 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const contentByAmount = {
+  "100": {
+    title: 'Parrainage "Sport"',
+    description: "Offrez-lui l'opportunité de s'épanouir pleinement :",
+    items: [
+      {
+        label: "Encouragez l'activité physique régulière",
+        description: "Pour cultiver son bien-être et sa vitalité.",
+      },
+      {
+        label: "Soutenez la diversité des sports",
+        description:
+          "Pour découvrir de nouvelles passions et développer ses talents.",
+      },
+      {
+        label: "Offrez un équipement adapté",
+        description: "Pour pratiquer en toute sécurité et avec plaisir.",
+      },
+    ],
+  },
   "500": {
     title: 'Parrainage "Essentiel"',
     description: "Apportez un soutien vital à un enfant :",
     items: [
       {
         label: "Alimentation saine",
+        description: "Pour lui permettre de bien grandir.",
       },
       {
         label: "Soins médicaux",
+        description: "Pour garantir sa bonne santé.",
       },
       {
         label: "Hygiène adaptée",
+        description: "Pour préserver sa dignité.",
       },
     ],
   },
@@ -28,33 +50,15 @@ const contentByAmount = {
     items: [
       {
         label: "Assurez sa scolarité",
+        description: "Pour lui ouvrir les portes du savoir.",
       },
       {
         label: "Proposez des activités extrascolaires",
+        description: "Pour enrichir son quotidien.",
       },
       {
         label: "Offrez des sorties sportives et culturelles",
-      },
-    ],
-  },
-  "1900": {
-    title: 'Parrainage "Envol"',
-    description: "Transformez un mois entier dans la vie d'un enfant",
-    items: [
-      {
-        label: "Hébergement",
-      },
-      {
-        label: "Alimentation équilibrée",
-      },
-      {
-        label: "Soins médicaux et hygiène",
-      },
-      {
-        label: "Scolarité",
-      },
-      {
-        label: "Loisirs épanouissants",
+        description: "Pour nourrir son esprit et son corps.",
       },
     ],
   },
@@ -489,7 +493,7 @@ export default function Parrainage() {
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                 {Object.entries(contentByAmount).map(([price, content], index) => {
-                  const isPopular = price === "800";
+                  const isPopular = price === "500";
                   const isSelected = selectedPrice === parseInt(price);
                   return (
                     <div
@@ -506,7 +510,7 @@ export default function Parrainage() {
                         </div>
                       )}
                       <div className="mt-4">
-                        <h4 className="text-2xl font-bold text-red-700 mb-3">{content.title}</h4>
+                        <h4 className="text-xl font-bold text-red-700 mb-3">{content.title}</h4>
                         <p className="text-gray-700 text-sm mb-4">{content.description}</p>
                         <motion.ul
                           initial="hidden"
@@ -528,7 +532,7 @@ export default function Parrainage() {
                         </motion.ul>
                       </div>
                       <div className="mt-auto">
-                        <div className="text-2xl text-right font-bold text-black-500 mb-4">{price} DH</div>
+                        <div className="text-2xl font-bold text-yellow-500 mb-4">{price} DH</div>
                         <p className={`w-full py-2 px-4 rounded-full text-center transition-colors duration-300 ${isSelected
                           ? "bg-yellow-300 text-red-700"
                           : "bg-red-700 text-white hover:bg-red-800"
@@ -541,7 +545,7 @@ export default function Parrainage() {
                 })}
               </div>
               <div className="mt-10">
-                <h3 className="text-white text-xl font-bold mb-4">Je choisis ma méthode de paiement</h3>
+                <h3 className="text-white text-xl font-bold mb-4">Méthode de paiement</h3>
                 <div className="max-w-5xl mx-auto flex justify-center gap-8 flex-wrap">
                   {/* Choix de paiement */}
                   {paymentMethods.map((method) => (

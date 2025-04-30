@@ -10,6 +10,7 @@ export default function Benevole() {
   const [selectedFoyer, setSelectedFoyer] = useState([]);
   const [selectedFormations, setSelectedFormations] = useState([]);
   const [selectedEcole, setSelectedEcole] = useState([]);
+  const [selectedAdministration, setSelectedAdministration] = useState([]);
   const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
   const [prenom, setPrenom] = useState("");
@@ -34,6 +35,12 @@ export default function Benevole() {
     );
   };
 
+  const toggleAdministration = (item) => {
+    setSelectedAdministration((prev) =>
+      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]
+    );
+  };
+
   const handleSubmit = async () => {
     const formData = {
       nom: nom.trim(),
@@ -44,6 +51,7 @@ export default function Benevole() {
       foyer: selectedFoyer,
       ecole: selectedEcole,
       formations: selectedFormations,
+      administration: selectedAdministration,
     };
 
     // Validate form data
@@ -67,9 +75,8 @@ export default function Benevole() {
       toast.error("Veuillez remplir le champ Domaine de compétence.");
       return;
     }
-    if (formData.foyer.length === 0 && formData.ecole.length === 0 && formData.formations.length === 0) {
-      toast.error("Veuillez sélectionner au moins une option dans Foyer, École ou Centre de Formation.");
-      toast.error("Veuillez sélectionner au moins une option dans Foyer.");
+    if (formData.foyer.length === 0 && formData.ecole.length === 0 && formData.formations.length === 0 && formData.administration.length === 0) {
+      toast.error("Veuillez sélectionner au moins une option dans Foyer, École, Centre de Formation ou Administration.");
       return;
     }
 
@@ -97,6 +104,7 @@ export default function Benevole() {
         setSelectedFoyer([]);
         setSelectedEcole([]);
         setSelectedFormations([]);
+        setSelectedAdministration([]);
       } else {
         toast.error("Une erreur est survenue lors de l'envoi de votre demande.");
       }
@@ -375,7 +383,7 @@ export default function Benevole() {
                       }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => toggleFormation(item)}
+                    onClick={() => toggleAdministration(item)}
                   >
                     {item}
                   </motion.button>

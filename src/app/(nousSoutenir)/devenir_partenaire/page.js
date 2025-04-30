@@ -222,7 +222,7 @@ export default function DevenirPartenaire() {
                 <h4 className="font-semibold text-xl mb-3">Directeur des Opérations</h4>
                 <div className="text-red-600 text-xl leading-relaxed">
                   <p>Téléphone : +212 610 022 000</p>
-                  <p>Email : dir.operation@babrayan.ma</p>
+                  <p>Email : dir.operations@babrayan.ma</p>
                 </div>
               </div>
 
