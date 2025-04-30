@@ -20,13 +20,17 @@ export default function DashboardLayout({ children }) {
   const { authenticated, loading } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(null);
   const [showDonationsSubmenu, setShowDonationsSubmenu] = useState(false);
-  const userName = localStorage.getItem('userName');
+  const [userName, setUserName] = useState('');
   const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
       setIsSidebarOpen(window.innerWidth >= 768);
     };
+
+    if (typeof window !== 'undefined') {
+      setUserName(localStorage.getItem('userName'));
+    }
 
     if (!loading && !authenticated) {
       router.replace('/login');
@@ -71,10 +75,11 @@ export default function DashboardLayout({ children }) {
   ];
 
   const handleLogout = () => {
-    // local storage
-    localStorage.removeItem("userID");
-    localStorage.removeItem("userName");
-    document.cookie = "auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem("userID");
+      localStorage.removeItem("userName");
+      document.cookie = "auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
     router.push("/login");
   };
 

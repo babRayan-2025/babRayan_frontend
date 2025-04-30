@@ -7,16 +7,20 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const userID = localStorage.getItem("userID");
-      if (!userID) {
-        router.replace("/login");
-      } else {
-        setAuthenticated(true);
+    const checkAuth = () => {
+      if (typeof window !== "undefined") {
+        const userID = localStorage.getItem("userID");
+        if (!userID) {
+          router.replace("/login");
+        } else {
+          setAuthenticated(true);
+        }
+        setLoading(false);
       }
-      setLoading(false);
-    }
-  }, []); // Remove router from dependencies to prevent infinite loop
+    };
+
+    checkAuth();
+  }, [router]);
 
   return { authenticated, loading };
 }
