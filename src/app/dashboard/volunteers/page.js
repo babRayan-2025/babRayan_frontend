@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { FaEye, FaTrash, FaTimes } from 'react-icons/fa';
+import { FaEye, FaTrash, FaTimes, FaFileExport } from 'react-icons/fa';
 import { Popconfirm } from 'antd';
+import * as XLSX from 'xlsx';
 
 export default function Benevoles() {
     const [benevoles, setBenevoles] = useState([]);
@@ -13,6 +14,8 @@ export default function Benevoles() {
     const [selectedVolunteer, setSelectedVolunteer] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const imageDefault = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4"
+    const [exporting, setExporting] = useState(false);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -124,6 +127,46 @@ export default function Benevoles() {
         ? "bg-white rounded-lg p-6 w-11/12 max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl transform transition-transform duration-300 ease-in-out scale-100"
         : "bg-white rounded-lg p-6 w-11/12 max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl transform transition-transform duration-300 ease-in-out scale-95 opacity-0";
 
+    // Add export to Excel function
+    const exportToExcel = () => {
+        setExporting(true);
+        try {
+            // Prepare the data for export
+            const exportData = benevoles.map(benevole => ({
+                'Nom': benevole.name,
+                'Email': benevole.email,
+                'Téléphone': benevole.telephone,
+                'Domaine': benevole.role,
+                'Date d\'inscription': benevole.joinDate,
+                'Activités Foyer': benevole.rawData.foyer?.join(', ') || '',
+                'Activités École': benevole.rawData.ecole?.join(', ') || '',
+                'Formations': benevole.rawData.formations?.join(', ') || '',
+                'Administration': benevole.rawData.administration?.join(', ') || ''
+            }));
+
+            // Create worksheet
+            const ws = XLSX.utils.json_to_sheet(exportData);
+            
+            // Create workbook
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Bénévoles");
+
+            // Generate Excel file
+            XLSX.writeFile(wb, "benevoles.xlsx");
+        } catch (error) {
+            console.error("Error exporting to Excel:", error);
+        } finally {
+            setExporting(false);
+        }
+    };
+
+    // Handle items per page change
+    const handleItemsPerPageChange = (e) => {
+        const newItemsPerPage = parseInt(e.target.value);
+        setItemsPerPage(newItemsPerPage);
+        setCurrentPage(1); // Reset to first page when changing items per page
+    };
+
     return (
         <section className="w-full px-2 sm:px-4 py-4">
             <div className="py-3 sm:py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -136,6 +179,30 @@ export default function Benevoles() {
                         value={searchName}
                         onChange={(e) => setSearchName(e.target.value)}
                     />
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3 items-end">
+                    <div className="flex flex-col">
+                        <label className="block mb-1 sm:mb-2 text-sm sm:text-base">Éléments par page:</label>
+                        <select
+                            value={itemsPerPage}
+                            onChange={handleItemsPerPageChange}
+                            className="form-select p-2 border rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                        >
+                            <option value="4">4</option>
+                            <option value="8">8</option>
+                            <option value="12">12</option>
+                            <option value="16">16</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <button
+                        onClick={exportToExcel}
+                        disabled={exporting}
+                        className="mt-2 sm:mt-0 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center gap-2 disabled:opacity-50"
+                    >
+                        <FaFileExport />
+                        {exporting ? 'Exportation...' : 'Exporter en Excel'}
+                    </button>
                 </div>
             </div>
 
