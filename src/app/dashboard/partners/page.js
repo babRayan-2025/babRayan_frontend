@@ -1,15 +1,17 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Modal, Popconfirm } from 'antd';
-import { FaEye, FaTrash, FaPenToSquare, FaArrowUp, FaArrowDown, FaCheck } from 'react-icons/fa6';
+import { FaEye, FaTrash, FaPenToSquare, FaArrowUp, FaArrowDown, FaCheck, FaFileExcel } from 'react-icons/fa6';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as XLSX from 'xlsx';
 
 export default function Partenaires() {
     const [partenaires, setPartenaires] = useState([]);
     const [pendingPartenairesCount, setPendingPartenairesCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [exporting, setExporting] = useState(false);
 
     const [searchName, setSearchName] = useState("");
     const [sortAsc, setSortAsc] = useState(false);  // true for ascending, false for descending
@@ -166,6 +168,37 @@ export default function Partenaires() {
         setCurrentPage(1); // Reset to first page when changing items per page
     };
 
+    // Add export to Excel function
+    const exportToExcel = () => {
+        setExporting(true);
+        try {
+            // Prepare the data for export
+            const exportData = filteredPartenaires.map(partenaire => ({
+                'Nom': partenaire.name,
+                'Email': partenaire.email,
+                'Type': partenaire.profession,
+                'Téléphone': partenaire.telephone,
+                'Date de début': partenaire.startDate,
+            }));
+
+            // Create worksheet
+            const ws = XLSX.utils.json_to_sheet(exportData);
+
+            // Create workbook
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Partenaires");
+
+            // Generate Excel file
+            XLSX.writeFile(wb, `partenaires_${new Date().toISOString().split('T')[0]}.xlsx`);
+            toast.success('Export réussi');
+        } catch (error) {
+            console.error("Error exporting to Excel:", error);
+            toast.error('Échec de l\'export');
+        } finally {
+            setExporting(false);
+        }
+    };
+
     if (loading) {
         return <div className="flex justify-center items-center h-64">
             <p className="text-lg">Chargement des partenaires...</p>
@@ -214,7 +247,7 @@ export default function Partenaires() {
                             value={itemsPerPage}
                             onChange={(e) => {
                                 setItemsPerPage(Number(e.target.value));
-                                setCurrentPage(1); // Reset to first page when changing items per page
+                                setCurrentPage(1);
                             }}
                         >
                             <option value={4}>4</option>
@@ -225,6 +258,14 @@ export default function Partenaires() {
                         </select>
                     </div>
                     <div className="flex flex-wrap gap-2">
+                        <button
+                            onClick={exportToExcel}
+                            disabled={exporting}
+                            className="btn_examine w-full sm:w-auto px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center"
+                        >
+                            <FaFileExcel className="mr-2" />
+                            {exporting ? 'Exportation...' : 'Exporter en Excel'}
+                        </button>
                         <button
                             onClick={() => window.location.href = "/dashboard/partners/examine"}
                             className="btn_examine w-full sm:w-auto px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center"
