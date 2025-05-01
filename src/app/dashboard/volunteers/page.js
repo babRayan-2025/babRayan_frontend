@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { FaEye, FaTrash, FaTimes, FaFileExport } from 'react-icons/fa';
 import { Popconfirm } from 'antd';
 import * as XLSX from 'xlsx';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Benevoles() {
     const [benevoles, setBenevoles] = useState([]);
@@ -153,8 +155,11 @@ export default function Benevoles() {
 
             // Generate Excel file
             XLSX.writeFile(wb, "benevoles.xlsx");
+
+            toast.success('Export réussi');
         } catch (error) {
             console.error("Error exporting to Excel:", error);
+            toast.error('Échec de l\'export');
         } finally {
             setExporting(false);
         }
@@ -169,6 +174,17 @@ export default function Benevoles() {
 
     return (
         <section className="w-full px-2 sm:px-4 py-4">
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="py-3 sm:py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div className="w-full sm:w-64">
                     <label className="block mb-1 sm:mb-2 text-sm sm:text-base">Rechercher par nom:</label>
