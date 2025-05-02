@@ -95,7 +95,8 @@ export default function DashboardPage() {
     try {
       // Get last 6 months for chart
       const months = [];
-      const monthlyTotals = {};
+      const monthlyCmiTotals = {};
+      const monthlyPaypalTotals = {};
       const now = new Date();
 
       // Initialize last 6 months data structure
@@ -104,7 +105,8 @@ export default function DashboardPage() {
         const monthKey = `${month.getFullYear()}-${month.getMonth() + 1}`;
         const monthName = month.toLocaleString('default', { month: 'short' });
         months.push(monthName);
-        monthlyTotals[monthKey] = 0;
+        monthlyCmiTotals[monthKey] = 0;
+        monthlyPaypalTotals[monthKey] = 0;
       }
 
       // Process CMI donations
@@ -115,8 +117,8 @@ export default function DashboardPage() {
         if (donation.createdAt) {
           const date = new Date(donation.createdAt);
           const monthKey = `${date.getFullYear()}-${date.getMonth() + 1}`;
-          if (monthlyTotals[monthKey] !== undefined) {
-            monthlyTotals[monthKey] += amount;
+          if (monthlyCmiTotals[monthKey] !== undefined) {
+            monthlyCmiTotals[monthKey] += amount;
           }
         }
       });
@@ -135,21 +137,33 @@ export default function DashboardPage() {
             date = new Date(donation.createdAt);
           }
           const monthKey = `${date.getFullYear()}-${date.getMonth() + 1}`;
-          if (monthlyTotals[monthKey] !== undefined) {
-            monthlyTotals[monthKey] += amount;
+          if (monthlyPaypalTotals[monthKey] !== undefined) {
+            monthlyPaypalTotals[monthKey] += amount;
           }
         }
       });
 
-      // Convert monthlyTotals object to array for chart
-      const chartData = Object.values(monthlyTotals);
-      setDonationData(chartData);
+      // Convert monthlyTotals objects to arrays for chart
+      const cmiChartData = Object.values(monthlyCmiTotals);
+      const paypalChartData = Object.values(monthlyPaypalTotals);
+      const totalChartData = cmiChartData.map((cmi, index) => cmi + paypalChartData[index]);
+      
+      setDonationData({
+        total: totalChartData,
+        cmi: cmiChartData,
+        paypal: paypalChartData
+      });
       setDonationMonths(months);
 
     } catch (error) {
       console.error("Erreur de traitement des données de dons:", error);
       // Use fallback data
-      setDonationData([0, 0, 0, 0, 0, 0]);
+      const fallbackData = [0, 0, 0, 0, 0, 0];
+      setDonationData({
+        total: fallbackData,
+        cmi: fallbackData,
+        paypal: fallbackData
+      });
       setDonationMonths(['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin']);
     }
   };
@@ -159,10 +173,24 @@ export default function DashboardPage() {
     labels: donationMonths,
     datasets: [
       {
-        label: 'Dons (MAD)',
-        data: donationData,
+        label: 'Total Dons (MAD)',
+        data: donationData?.total || [],
         borderColor: '#42A5F5',
         backgroundColor: 'rgba(66, 165, 245, 0.2)',
+        tension: 0.4,
+      },
+      {
+        label: 'Dons CMI (MAD)',
+        data: donationData?.cmi || [],
+        borderColor: '#FF9800',
+        backgroundColor: 'rgba(255, 152, 0, 0.2)',
+        tension: 0.4,
+      },
+      {
+        label: 'Dons PayPal (MAD)',
+        data: donationData?.paypal || [],
+        borderColor: '#4CAF50',
+        backgroundColor: 'rgba(76, 175, 80, 0.2)',
         tension: 0.4,
       },
     ],

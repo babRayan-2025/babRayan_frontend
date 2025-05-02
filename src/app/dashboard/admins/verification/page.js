@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import '../../dashboard.css';
-import { FaCheck, FaTimes, FaArrowLeft } from 'react-icons/fa6';
+import { FaCheck, FaTrash, FaArrowLeft } from 'react-icons/fa6';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
+import { Popconfirm, message } from 'antd';
 
 export default function Verification() {
     const router = useRouter();
@@ -93,6 +94,29 @@ export default function Verification() {
         setCurrentPage(page);
     };
 
+    const cancelDelete = () => {
+        message.error('Suppression annulée');
+    };
+
+    const deleteUser = async (id) => {
+        try {
+            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${id}`, {
+                method: 'DELETE',
+            });
+
+            const result = await response.json();
+
+            if (result.status) {
+                toast.success("Utilisateur supprimé avec succès");
+                fetchNonVerifiedUsers(); // Refresh the list
+            } else {
+                toast.error("Erreur lors de la suppression");
+            }
+        } catch (error) {
+            console.error("Error deleting user:", error);
+            toast.error("Erreur lors de la suppression");
+        }
+    };
     return (
         <section className="px-2 sm:px-4 py-4">
             <ToastContainer
@@ -192,13 +216,30 @@ export default function Verification() {
                                         </span>
                                     </td>
                                     <td className="py-3 px-4">
-                                        <button
+                                        <div className="flex flex-col sm:flex-row gap-2">                                        <button
                                             onClick={() => verifyUser(user)}
                                             className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md mr-2"
                                             title="Vérifier l'utilisateur"
                                         >
                                             <FaCheck />
                                         </button>
+                                            <Popconfirm
+                                                title="Confirmation"
+                                                description="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+                                                onConfirm={() => deleteUser(user.id)}
+                                                onCancel={cancelDelete}
+                                                okText="Oui"
+                                                cancelText="Non"
+                                                okType="danger"
+                                            >
+                                                <button
+                                                    type="button"
+                                                    className="text-white px-2 sm:px-3 py-1 bg-red-500 hover:bg-red-600 rounded-md text-xs sm:text-sm w-full sm:w-auto flex justify-center"
+                                                >
+                                                    <FaTrash />
+                                                </button>
+                                            </Popconfirm>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}

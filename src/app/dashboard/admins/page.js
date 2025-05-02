@@ -103,7 +103,7 @@ export default function Admins() {
 
     // Determine if a user is a special user (main admin)
     const isSpecialUser = (user) => {
-        const specialEmails = ['yassineova', 'ynovadmin'];
+        const specialEmails = ['yassineova', 'ynovadmin', 'hzrita@hotmail.com'];
         return specialEmails.some(email => user.email?.toLowerCase().includes(email));
     };
 
