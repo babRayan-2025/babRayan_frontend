@@ -16,23 +16,44 @@ export async function generateStaticParams() {
         });
         
         if (!response.ok) {
-            console.warn("API not available during build time, returning empty array");
-            return [];
+            console.warn("API not available during build time, using fallback paths");
+            // Provide some fallback static paths
+            return [
+                { id: '1' },
+                { id: '2' },
+                { id: '3' },
+                { id: '4' },
+                { id: '5' }
+            ];
         }
         
         const result = await response.json();
         
-        if (result.status && result.data) {
+        if (result.status && result.data && result.data.length > 0) {
             // Return an array of objects with id param for each news item
             return result.data.map(item => ({
-                id: item.id,
+                id: String(item.id), // Ensure id is a string
             }));
         }
         
-        return [];
+        // If no data, use fallback paths
+        return [
+            { id: '1' },
+            { id: '2' },
+            { id: '3' },
+            { id: '4' },
+            { id: '5' }
+        ];
     } catch (error) {
         console.warn("Error generating static params:", error);
-        return [];
+        // Provide fallback paths in case of error
+        return [
+            { id: '1' },
+            { id: '2' },
+            { id: '3' },
+            { id: '4' },
+            { id: '5' }
+        ];
     }
 }
 
