@@ -214,10 +214,116 @@ export default function Parrainage() {
       });
     };
 
+    const CMIpaymentProcess = async (event = null) => {
+      if (event?.preventDefault) event.preventDefault(); // Vérifie si event existe avant d'appeler preventDefault()
+  
+      console.log("Début du processus CMI...");
+  
+      try {
+        // Étape 1 : Envoyer une requête au backend pour générer le paiement
+        const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/createCmi', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fullname: userInfo && userInfo.fullName && userInfo.fullName.trim() !== "" ? userInfo.fullName.trim() : "Anonyme",
+            email: userInfo && userInfo.email && userInfo.email.trim() !== ""
+              ? userInfo.email.trim()
+              : "Anonyme@gmail.com",
+  
+            telephone: userInfo && userInfo.phone && userInfo.phone.trim() !== ""
+              ? userInfo.phone.trim()
+              : "06XXXXXXXX",
+  
+            amount: selectedPrice,
+            type: "Parrainage",
+          }),
+        });
+  
+        const data = await response.json();
+  
+        toast.success('Merci pour votre don ! Vous allez être redirigé vers le site de CMI pour effectuer le paiement.');
+        // Étape 2 : Vérifier les données reçues
+        if (data.paymentUrl && data.params) {
+          // Étape 3 : Créer un formulaire dynamique et rediriger vers la plateforme CMI
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = data.paymentUrl; // URL CMI
+  
+          // Ajouter les paramètres reçus du backend
+          Object.entries(data.params).forEach(([key, value]) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            form.appendChild(input);
+          });
+  
+          document.body.appendChild(form);
+          form.submit(); // Soumettre automatiquement le formulaire
+        } else {
+          console.error('Paramètres de paiement manquants ou URL invalide');
+        }
+  
+      }
+      catch (error) {
+        console.error('Erreur lors du paiement :', error);
+        toast.error('Une erreur est survenue lors du paiement.');
+      }
+    };
+  
+    const PaypalpaymentProcess = async (event = null) => {
+      if (event?.preventDefault) event.preventDefault();
+  
+      console.log("Début du processus de paiement PayPal...");
+  
+      // Récupérer les valeurs du formulaire
+      const typeDon = "Parrainage";
+      const nom = userInfo?.fullName?.trim() || "Anonyme";
+      const email = userInfo?.email?.trim() || "anonyme@gmail.com";
+      const telephone = userInfo?.phone?.trim() || "06XXXXXXXX";
+      const montant = Number(selectedPrice);
+  
+  
+      try {
+        // Étape 1 : Envoyer une requête au backend pour créer le paiement PayPal
+        const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/don/payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            typeDon,
+            nom,
+            email,
+            telephone,
+            montant
+          })
+        });
+  
+        const data = await response.json();
+        
+        toast.success('Merci pour votre don ! Vous allez être redirigé vers le site de PayPal pour effectuer le paiement.');
+        // Étape 2 : Vérifier la réponse et rediriger l'utilisateur vers PayPal
+        if (data.approvalUrl) {
+          window.location.href = data.approvalUrl;
+        } else {
+          console.error("Erreur : aucune URL de paiement reçue.");
+          toast.error("Une erreur est survenue lors de la création du paiement.");
+        }
+      } catch (error) {
+        console.error("Erreur lors du paiement PayPal :", error);
+        toast.error("Une erreur est survenue lors du paiement.");
+      }
+    };
+    
     const handleSubmitPayment = (e) => {
       e.preventDefault();
       console.log("Payment form submitted");
       console.log("Email:", userInfo.email);
+      console.log("Full Name:", userInfo.fullName);
+      console.log("Phone:", userInfo.phone);
 
       if (!userInfo.email) {
         console.log("Email is empty, showing error toast");
@@ -225,8 +331,12 @@ export default function Parrainage() {
         return;
       }
 
-      console.log("Payment processing... showing success toast");
-      toast.success('Paiement effectué avec succès');
+      if (paymentMethod === 5) {
+        CMIpaymentProcess();
+      } else if (paymentMethod === 4) {
+        PaypalpaymentProcess();
+      }
+
 
       setTimeout(() => {
         userInfo.email = '';
