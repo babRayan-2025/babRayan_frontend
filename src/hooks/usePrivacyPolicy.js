@@ -5,12 +5,12 @@ export const privacyPolicyText = `
     <h1 class="text-2xl font-bold text-center">Politique de Confidentialité de l'Association <span class="font-bold italic">Bab Rayan</span></h1>
     <p class="text-sm text-gray-500 text-center">Dernière mise à jour : 22 avril 2025</p>
 
-    <div>
+    <div class="mb-3 mt-3">
       <h2 class="text-lg font-semibold">Préambule</h2>
       <p>L'Association <span class="font-bold">Bab Rayan</span>, association de droit marocain dont le siège social est situé à 4 Rue Bayt Lahm, Quartier Palmier 20100 Casablanca Maroc (ci-après dénommée « <span class="font-bold">Bab Rayan</span> » ou « nous »), est responsable du traitement des données personnelles collectées via son site internet www.babrayan.ma. Conformément à la loi n° 09-08 promulguée par le Dahir 1-09-15 du 18 février 2009 et aux directives de la Commission Nationale de Contrôle de la Protection des Données à Caractère Personnel (CNDP), nous nous engageons à protéger vos données avec transparence, sécurité et respect de vos droits.</p>
     </div>
 
-    <div>
+    <div class="mb-3">
       <h2 class="text-lg font-semibold">1. Objet de la Politique de Confidentialité</h2>
       <span>Cette politique a pour objectif de :</span>
       <ul class="list-disc pl-6">
@@ -20,7 +20,7 @@ export const privacyPolicyText = `
       </ul>
     </div>
 
-    <div>
+    <div class="mb-3">
       <h2 class="text-lg font-semibold">2. Bases légales du Traitement</h2>
       <span>Les données sont traitées sur la base :</span>
       <ul class="list-disc pl-6">
@@ -30,7 +30,7 @@ export const privacyPolicyText = `
       </ul>
     </div>
 
-    <div>
+    <div class="mb-3">
       <h2 class="text-lg font-semibold">3. Données Collectées</h2>
       <span>Sur www.babrayan.ma, nous collectons :</span>
       <ul class="list-disc pl-6">
@@ -42,7 +42,7 @@ export const privacyPolicyText = `
       </ul>
     </div>
 
-    <div>
+    <div class="mb-3">
       <h2 class="text-lg font-semibold">4. Finalités du Traitement</h2>
       <span>Vos données sont utilisées pour :</span>
       <ul class="list-disc pl-6">
@@ -54,7 +54,7 @@ export const privacyPolicyText = `
       </ul>
     </div>
 
-    <div>
+    <div class="mb-3">
       <h2 class="text-lg font-semibold">5. Destinataires des Données</h2>
       <span>Vos données sont accessibles à :</span>
       <ul class="list-disc pl-6">
@@ -64,7 +64,7 @@ export const privacyPolicyText = `
       </ul>
     </div>
 
-    <div>
+    <div class="mb-3">
       <h2 class="text-lg font-semibold">6. Durée de Conservation</h2>
       <span>Vos données sont conservées :</span>
       <ul class="list-disc pl-6">
@@ -74,7 +74,7 @@ export const privacyPolicyText = `
       </ul>
     </div>
 
-    <div>
+    <div class="mb-3">
       <h2 class="text-lg font-semibold">7. Protection des Données</h2>
       <span>Nous appliquons des mesures rigoureuses pour sécuriser vos données :</span>
       <ul class="list-disc pl-6">
@@ -84,7 +84,7 @@ export const privacyPolicyText = `
       </ul>
     </div>
 
-    <div>
+    <div class="mb-3">
       <h2 class="text-lg font-semibold">8. Vos Droits</h2>
       <span>Conformément à la loi n° 09-08, vous pouvez :</span>
       <ul class="list-disc pl-6">
@@ -113,7 +113,7 @@ export const privacyPolicyText = `
       <p>Nous nous réservons le droit de mettre à jour cette politique. Les changements seront publiés sur www.babrayan.ma avec mention de la date de dernière mise à jour.</p>
     </div>
 
-    <div class="mt-8 p-4 bg-gray-50 rounded-lg">
+    <div class="mt-8 p-4 bg-gray-100 rounded-lg">
       <p class="text-center"><span class="font-bold">Association Bab Rayan</span><br/>
       4 Rue Bayt Lahm, Quartier Palmier 20100 Casablanca Maroc<br/>
       Email : contact@babrayan.ma<br/>

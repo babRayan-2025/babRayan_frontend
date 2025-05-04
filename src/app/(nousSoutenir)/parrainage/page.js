@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { privacyPolicyText } from '@/hooks/usePrivacyPolicy';
 
 const contentByAmount = {
   "100": {
@@ -107,6 +108,8 @@ export default function Parrainage() {
   const [showModal, setShowModal] = useState(false);
   const [showUserInfoModal, setShowUserInfoModal] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState(null);
+  const [isPrivacyAccepted, setIsPrivacyAccepted] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -124,6 +127,11 @@ export default function Parrainage() {
 
     if (!selectedMethod) {
       toast.error('Veuillez choisir une méthode de paiement');
+      return;
+    }
+
+    if (!isPrivacyAccepted) {
+      toast.error('Veuillez accepter la politique de confidentialité');
       return;
     }
 
@@ -198,6 +206,7 @@ export default function Parrainage() {
   const closeModal = () => {
     setShowModal(false);
     setShowUserInfoModal(false);
+    setIsPrivacyModalOpen(false);
   };
 
   const UserInfoModal = ({ onClose, paymentMethod }) => {
@@ -687,6 +696,27 @@ export default function Parrainage() {
                   ))}
                 </div>
               </div>
+
+              <div className="mt-6 flex items-center justify-center">
+                <input
+                  type="checkbox"
+                  id="privacyPolicy"
+                  checked={isPrivacyAccepted}
+                  onChange={(e) => setIsPrivacyAccepted(e.target.checked)}
+                  className="mr-2 h-4 w-4 text-red-700 focus:ring-red-700 border-gray-300 rounded"
+                />
+                <label htmlFor="privacyPolicy" className="text-white text-sm">
+                  J'accepte la{' '}
+                  <button
+                    type="button"
+                    onClick={() => setIsPrivacyModalOpen(true)}
+                    className="text-yellow-300 hover:text-yellow-400 underline"
+                  >
+                    politique de confidentialité
+                  </button>
+                </label>
+              </div>
+
               <button
                 type="submit"
                 className="mt-8 bg-yellow-300 hover:bg-yellow-400 cursor-pointer text-red-700 font-bold py-3 px-8 rounded-full text-xl mx-auto block"
@@ -708,6 +738,32 @@ export default function Parrainage() {
                 paymentMethod={selectedMethod.id}
                 onClose={closeModal}
               />
+            )}
+
+            {isPrivacyModalOpen && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6 z-50">
+                <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-4xl max-h-[80vh] overflow-y-auto">
+                  <div className="bg-red-700 text-white py-4 px-6 rounded-xl mb-6 relative">
+                    <h2 className="text-xl font-bold">Politique de Confidentialité</h2>
+                    <button
+                      onClick={() => setIsPrivacyModalOpen(false)}
+                      className="absolute top-2 right-3 bg-white bg-opacity-20 text-white hover:bg-opacity-30 rounded-full w-8 h-8 flex items-center justify-center"
+                      aria-label="Fermer"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                  <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: privacyPolicyText }} />
+                  <div className="mt-6 flex justify-end">
+                    <button
+                      onClick={() => setIsPrivacyModalOpen(false)}
+                      className="px-6 py-2 bg-red-700 text-white rounded-full hover:bg-red-800"
+                    >
+                      Fermer
+                    </button>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         </motion.div>

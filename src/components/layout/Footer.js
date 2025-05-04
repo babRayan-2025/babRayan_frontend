@@ -3,11 +3,11 @@ import { Modal } from 'antd';
 import { usePrivacyPolicy } from '@/hooks/usePrivacyPolicy';
 
 export default function Footer() {
-  const { 
-    isPrivacyModalOpen, 
-    openPrivacyModal, 
-    closePrivacyModal, 
-    privacyPolicyText 
+  const {
+    isPrivacyModalOpen,
+    openPrivacyModal,
+    closePrivacyModal,
+    privacyPolicyText
   } = usePrivacyPolicy();
 
   return (
@@ -23,9 +23,9 @@ export default function Footer() {
             </p>
             <hr className="border-t-0.5 border-white w-500 my-4" />
             <p>
-              <span className="text-gray-400">Tél:</span> 
+              <span className="text-gray-400">Tél:</span>
               <a href="tel:+212 522 22 22 22">
-              +212 610 023 555
+                +212 610 023 555
               </a>
             </p>
             <hr className="border-t-0.5 border-white w-500 my-2" />
@@ -55,10 +55,10 @@ export default function Footer() {
                 className="text-gray-400 border-b border-transparent hover:text-white  transition-colors cursor-pointer"
               >
                 <span className="hover:border-white border-b border-transparent">
-                {item}
+                  {item}
                 </span>
               </p>
-              
+
             ))}
           </div>
 
@@ -77,7 +77,7 @@ export default function Footer() {
                 className="text-gray-400 border-b border-transparent hover:text-white transition-colors cursor-pointer"
               >
                 <span className="hover:border-white border-b border-transparent">
-                {item}
+                  {item}
                 </span>
               </p>
             ))}
@@ -93,8 +93,8 @@ export default function Footer() {
                   className="text-gray-400 border-b border-transparent hover:text-white transition-colors cursor-pointer"
                 >
                   <span className="hover:border-white border-b border-transparent">
-                {item}
-                </span>
+                    {item}
+                  </span>
                 </p>
               )
             )}
@@ -107,8 +107,8 @@ export default function Footer() {
         {/* Copyright Section */}
         <div className="text-center">
           <p className="text-sm text-gray-400">
-            <span 
-              className="cursor-pointer underline" 
+            <span
+              className="cursor-pointer underline"
               onClick={openPrivacyModal}
             >
               Politique de confidentialité
@@ -131,7 +131,29 @@ export default function Footer() {
         }}
         centered
       >
-        <div className="whitespace-pre-line text-gray-700" dangerouslySetInnerHTML={{ __html: privacyPolicyText }} />
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6 z-50">
+          <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-4xl max-h-[80vh] overflow-y-auto">
+            <div className="bg-red-700 text-white py-4 px-6 rounded-xl mb-6 relative">
+              <h2 className="text-xl font-bold">Politique de Confidentialité</h2>
+              <button
+                onClick={() => setIsPrivacyModalOpen(false)}
+                className="absolute top-2 right-3 bg-white bg-opacity-20 text-white hover:bg-opacity-30 rounded-full w-8 h-8 flex items-center justify-center"
+                aria-label="Fermer"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: privacyPolicyText }} />
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={() => setIsPrivacyModalOpen(false)}
+                className="px-6 py-2 bg-red-700 text-white rounded-full hover:bg-red-800"
+              >
+                Fermer
+              </button>
+            </div>
+          </div>
+        </div>
       </Modal>
     </footer>
   );

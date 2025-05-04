@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
+import { privacyPolicyText } from '@/hooks/usePrivacyPolicy';
 
 // Animation variants
 const fadeIn = {
@@ -52,6 +53,8 @@ export default function Donation() {
   const [showForm, setShowForm] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState(null);
+  const [isPrivacyAccepted, setIsPrivacyAccepted] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   const [userData, setUserData] = useState({
     fullName: "",
@@ -241,6 +244,9 @@ export default function Donation() {
       return;
     } else if (montant < 10) {
       toast.error("Le montant doit être supérieur ou égal à 10 DH.");
+      return;
+    } else if (!isPrivacyAccepted) {
+      toast.error("Veuillez accepter la politique de confidentialité.");
       return;
     } else if ([1, 2, 3].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
@@ -611,12 +617,59 @@ export default function Donation() {
               >
                 Procéder au don
               </motion.button>
+
+              <div className="mt-6 flex items-center justify-center">
+                <input
+                  type="checkbox"
+                  id="privacyPolicy"
+                  checked={isPrivacyAccepted}
+                  onChange={(e) => setIsPrivacyAccepted(e.target.checked)}
+                  className="mr-2 h-4 w-4 text-red-700 focus:ring-red-700 border-gray-300 rounded"
+                />
+                <label htmlFor="privacyPolicy" className="text-white text-sm">
+                  J'accepte la{' '}
+                  <button
+                    type="button"
+                    onClick={() => setIsPrivacyModalOpen(true)}
+                    className="text-yellow-300 hover:text-yellow-400 underline"
+                  >
+                    politique de confidentialité
+                  </button>
+                </label>
+              </div>
+
               {isModalOpen && (
                 <Modal
                   method={selectedMethod}
                   amount={selectedAmount}
                   onClose={() => setIsModalOpen(false)}
                 />
+              )}
+
+              {isPrivacyModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6 z-50">
+                  <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-4xl max-h-[80vh] overflow-y-auto">
+                    <div className="bg-red-700 text-white py-4 px-6 rounded-xl mb-6 relative">
+                      <h2 className="text-xl font-bold">Politique de Confidentialité</h2>
+                      <button
+                        onClick={() => setIsPrivacyModalOpen(false)}
+                        className="absolute top-2 right-3 bg-white bg-opacity-20 text-white hover:bg-opacity-30 rounded-full w-8 h-8 flex items-center justify-center"
+                        aria-label="Fermer"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                    <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: privacyPolicyText }} />
+                    <div className="mt-6 flex justify-end">
+                      <button
+                        onClick={() => setIsPrivacyModalOpen(false)}
+                        className="px-6 py-2 bg-red-700 text-white rounded-full hover:bg-red-800"
+                      >
+                        Fermer
+                      </button>
+                    </div>
+                  </div>
+                </div>
               )}
             </motion.div>
 
