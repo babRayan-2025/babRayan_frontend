@@ -1,6 +1,15 @@
 import Image from "next/image";
+import { Modal } from 'antd';
+import { usePrivacyPolicy } from '@/hooks/usePrivacyPolicy';
 
 export default function Footer() {
+  const { 
+    isPrivacyModalOpen, 
+    openPrivacyModal, 
+    closePrivacyModal, 
+    privacyPolicyText 
+  } = usePrivacyPolicy();
+
   return (
     <footer className="bg-[#000000] text-white py-10 px-5">
       <div className="container mx-auto">
@@ -98,11 +107,32 @@ export default function Footer() {
         {/* Copyright Section */}
         <div className="text-center">
           <p className="text-sm text-gray-400">
-            Politique de confidentialité / Association Bab Rayan © 2015-2025 | All
-            Rights Reserved
+            <span 
+              className="cursor-pointer underline" 
+              onClick={openPrivacyModal}
+            >
+              Politique de confidentialité
+            </span> / Association Bab Rayan © 2015-2025 | All Rights Reserved
           </p>
         </div>
       </div>
+
+      <Modal
+        title="Politique de confidentialité"
+        open={isPrivacyModalOpen}
+        onCancel={closePrivacyModal}
+        footer={null}
+        width={800}
+        className="privacy-policy-modal"
+        bodyStyle={{
+          maxHeight: '70vh',
+          overflowY: 'auto',
+          padding: '24px'
+        }}
+        centered
+      >
+        <div className="whitespace-pre-line text-gray-700" dangerouslySetInnerHTML={{ __html: privacyPolicyText }} />
+      </Modal>
     </footer>
   );
 }
