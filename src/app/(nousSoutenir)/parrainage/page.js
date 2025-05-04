@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -110,6 +110,26 @@ export default function Parrainage() {
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [isPrivacyAccepted, setIsPrivacyAccepted] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null);
+
+  useEffect(() => {
+    // Add reCAPTCHA script
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    // Add the callback function to window object
+    window.onCaptchaChange = (response) => {
+      setCaptchaValue(response);
+    };
+
+    return () => {
+      document.body.removeChild(script);
+      delete window.onCaptchaChange;
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -133,6 +153,17 @@ export default function Parrainage() {
     if (!isPrivacyAccepted) {
       toast.error('Veuillez accepter la politique de confidentialité');
       return;
+    }
+
+    if (!captchaValue) {
+      toast.error('Veuillez compléter le captcha');
+      return;
+    }
+
+    // Reset captcha after successful submission
+    setCaptchaValue(null);
+    if (window.grecaptcha) {
+      window.grecaptcha.reset();
     }
 
     console.log("Proceeding with submission");
@@ -715,6 +746,14 @@ export default function Parrainage() {
                     politique de confidentialité
                   </button>
                 </label>
+              </div>
+
+              <div className="mt-6 flex justify-center">
+                <div
+                  className="g-recaptcha"
+                  data-sitekey="6LePYC0rAAAAAPYanTVgTBqhAvppr3j2MyICOgQZ"
+                  data-callback="onCaptchaChange"
+                ></div>
               </div>
 
               <button

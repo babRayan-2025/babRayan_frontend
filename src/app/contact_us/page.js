@@ -18,9 +18,33 @@ export default function Contact() {
     email: "",
     message: "",
   });
+  const [captchaValue, setCaptchaValue] = useState(null);
+
+  useEffect(() => {
+    // Add reCAPTCHA script
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    // Add the callback function to window object
+    window.onCaptchaChange = (response) => {
+      setCaptchaValue(response);
+    };
+
+    return () => {
+      document.body.removeChild(script);
+      delete window.onCaptchaChange;
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!captchaValue) {
+      toast.error("Veuillez compléter le captcha.");
+      return;
+    }
     try {
       const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/contact', {
         method: 'POST',
@@ -46,6 +70,10 @@ export default function Contact() {
         email: "",
         message: "",
       });
+      setCaptchaValue(null);
+      if (window.grecaptcha) {
+        window.grecaptcha.reset();
+      }
     } catch (error) {
       console.error('Error:', error);
     }
@@ -191,6 +219,14 @@ export default function Contact() {
               />
             </div>
 
+
+            <div className="mt-6 flex">
+              <div
+                className="g-recaptcha"
+                data-sitekey="6LePYC0rAAAAAPYanTVgTBqhAvppr3j2MyICOgQZ"
+                data-callback="onCaptchaChange"
+              ></div>
+            </div>
             <div>
               <button type="submit" className="px-8 py-2 border border-cyan-50 bg-yellow-300 hover:bg-yellow-400 text-red-600 rounded-full text-xl font-bold transition-colors duration-200">
                 Envoyer

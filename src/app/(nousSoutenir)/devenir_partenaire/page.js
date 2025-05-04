@@ -14,9 +14,33 @@ export default function DevenirPartenaire() {
     email: "",
     message: "",
   });
+  const [captchaValue, setCaptchaValue] = useState(null);
+
+  useEffect(() => {
+    // Add reCAPTCHA script
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    // Add the callback function to window object
+    window.onCaptchaChange = (response) => {
+      setCaptchaValue(response);
+    };
+
+    return () => {
+      document.body.removeChild(script);
+      delete window.onCaptchaChange;
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!captchaValue) {
+      toast.error("Veuillez compléter le captcha.");
+      return;
+    }
     console.log("Form submitted:", formData);
 
     try {
@@ -44,6 +68,10 @@ export default function DevenirPartenaire() {
       }
     } catch (error) {
       console.error("Error:", error);
+    }
+    setCaptchaValue(null);
+    if (window.grecaptcha) {
+      window.grecaptcha.reset();
     }
   };
 
@@ -148,7 +176,7 @@ export default function DevenirPartenaire() {
               Pourquoi devenir partenaire ?
             </h2>
             <p className="mb-4 text-gray-600 text-xl leading-relaxed">
-              Parce que cette forme de générosité permet à l&apos;association Bab Rayan de réaliser des projets concrets en faveur des enfants et familles en difficulté. Vous devenez ainsi un acteur à part entière du développement économique et social de votre territoire. Nous pouvons convenir ensemble d’un partenariat sur mesure en adéquation avec vos valeurs et votre stratégie RSE.
+              Parce que cette forme de générosité permet à l&apos;association Bab Rayan de réaliser des projets concrets en faveur des enfants et familles en difficulté. Vous devenez ainsi un acteur à part entière du développement économique et social de votre territoire. Nous pouvons convenir ensemble d'un partenariat sur mesure en adéquation avec vos valeurs et votre stratégie RSE.
             </p>
           </motion.div>
         </div>
@@ -171,12 +199,12 @@ export default function DevenirPartenaire() {
               {
                 title: "Don en nature",
                 description:
-                  "Il s'agit d'un don de marchandises : produits alimentaires, vêtements, produits d’hygiène ou d’entretien, jouets, matériel sportif, mobiliers, etc.",
+                  "Il s'agit d'un don de marchandises : produits alimentaires, vêtements, produits d'hygiène ou d'entretien, jouets, matériel sportif, mobiliers, etc.",
               },
               {
                 title: "Partenariat de compétences",
                 description:
-                  "Votre entreprise peut mettre à disposition son savoir-faire et ses compétences au service de notre association. Elle peut également offrir à nos jeunes l’opportunité d’un stage, d’un contrat d’apprentissage.",
+                  "Votre entreprise peut mettre à disposition son savoir-faire et ses compétences au service de notre association. Elle peut également offrir à nos jeunes l'opportunité d'un stage, d'un contrat d'apprentissage.",
               },
               {
                 title: "Parrainer un enfant",
@@ -348,6 +376,13 @@ export default function DevenirPartenaire() {
             </div>
 
             <div>
+              <div className="mt-6 flex justify-center">
+                <div
+                  className="g-recaptcha"
+                  data-sitekey="6LePYC0rAAAAAPYanTVgTBqhAvppr3j2MyICOgQZ"
+                  data-callback="onCaptchaChange"
+                ></div>
+              </div>
               <button
                 type="submit"
                 className="px-8 py-2 border border-cyan-50 bg-yellow-300 hover:bg-yellow-400 text-red-700 rounded-full text-xl font-bold transition-colors duration-200"

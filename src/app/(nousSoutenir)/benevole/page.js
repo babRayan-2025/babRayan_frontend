@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,6 +16,26 @@ export default function Benevole() {
   const [prenom, setPrenom] = useState("");
   const [telephone, setTelephone] = useState("");
   const [domaine, setDomaine] = useState("");
+  const [captchaValue, setCaptchaValue] = useState(null);
+
+  useEffect(() => {
+    // Add reCAPTCHA script
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    // Add the callback function to window object
+    window.onCaptchaChange = (response) => {
+      setCaptchaValue(response);
+    };
+
+    return () => {
+      document.body.removeChild(script);
+      delete window.onCaptchaChange;
+    };
+  }, []);
 
   const toggleFoyer = (item) => {
     setSelectedFoyer((prev) =>
@@ -79,6 +99,10 @@ export default function Benevole() {
       toast.error("Veuillez sélectionner au moins une option dans Foyer, École, Centre de Formation ou Administration.");
       return;
     }
+    if (!captchaValue) {
+      toast.error("Veuillez compléter le captcha.");
+      return;
+    }
 
     // If all validations pass
     console.log("Form Data Collected:", formData);
@@ -105,6 +129,10 @@ export default function Benevole() {
         setSelectedEcole([]);
         setSelectedFormations([]);
         setSelectedAdministration([]);
+        setCaptchaValue(null);
+        if (window.grecaptcha) {
+          window.grecaptcha.reset();
+        }
       } else {
         toast.error("Une erreur est survenue lors de l'envoi de votre demande.");
       }
@@ -293,7 +321,7 @@ export default function Benevole() {
                 {[
                   "Soutien Scolaire",
                   "Accompagnement psychosocial",
-                  "Animation d’ateliers ludiques"
+                  "Animation d'ateliers ludiques"
                 ].map((item, index) => (
                   <motion.button
                     key={index}
@@ -391,6 +419,14 @@ export default function Benevole() {
               </div>
             </div>
           </motion.div>
+
+          <div className="mt-6 flex">
+            <div
+              className="g-recaptcha"
+              data-sitekey="6LePYC0rAAAAAPYanTVgTBqhAvppr3j2MyICOgQZ"
+              data-callback="onCaptchaChange"
+            ></div>
+          </div>
           <motion.button
             className="bg-black text-2xl font-semibold text-white border border-white-300 py-4 px-8 mt-8 rounded-full shadow-md hover:bg-gray-700 transition"
             whileHover={{ scale: 1.1, backgroundColor: "#333333" }}

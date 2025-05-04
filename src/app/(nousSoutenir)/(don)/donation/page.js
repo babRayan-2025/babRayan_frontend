@@ -55,13 +55,13 @@ export default function Donation() {
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [isPrivacyAccepted, setIsPrivacyAccepted] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
-
   const [userData, setUserData] = useState({
     fullName: "",
     email: "",
     phone: "",
     companyName: "",
   });
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -248,12 +248,20 @@ export default function Donation() {
     } else if (!isPrivacyAccepted) {
       toast.error("Veuillez accepter la politique de confidentialité.");
       return;
+    } else if (!captchaValue) {
+      toast.error("Veuillez compléter le captcha.");
+      return;
     } else if ([1, 2, 3].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
       setIsModalOpen(true);
     } else if ([4, 5].includes(paymentMethod)) {
       setSelectedMethod(selectedPaymentMethod);
       setShowForm(true);
+    }
+    // Reset captcha after successful submission
+    setCaptchaValue(null);
+    if (window.grecaptcha) {
+      window.grecaptcha.reset();
     }
   };
 
@@ -447,6 +455,25 @@ export default function Donation() {
     );
   };
 
+  useEffect(() => {
+    // Add reCAPTCHA script
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    // Add the callback function to window object
+    window.onCaptchaChange = (response) => {
+      setCaptchaValue(response);
+    };
+
+    return () => {
+      document.body.removeChild(script);
+      delete window.onCaptchaChange;
+    };
+  }, []);
+
   return (
     <main>
       <div className="flex min-h-screen flex-col items-center justify-between p-5 bg-[url('/donation/background.png')] bg-cover">
@@ -636,6 +663,14 @@ export default function Donation() {
                     politique de confidentialité
                   </button>
                 </label>
+              </div>
+
+              <div className="mt-6 flex justify-center">
+                <div
+                  className="g-recaptcha"
+                  data-sitekey="6LePYC0rAAAAAPYanTVgTBqhAvppr3j2MyICOgQZ"
+                  data-callback="onCaptchaChange"
+                ></div>
               </div>
 
               {isModalOpen && (
