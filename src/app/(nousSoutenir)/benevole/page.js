@@ -271,35 +271,35 @@ export default function Benevole() {
             <input
               type="text"
               placeholder="Nom *"
-              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 order-1"
               value={nom}
               onChange={(e) => setNom(e.target.value)}
             />
             <input
-              type="email"
-              placeholder="Email *"
-              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
               type="text"
               placeholder="Prénom *"
-              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 order-2"
               value={prenom}
               onChange={(e) => setPrenom(e.target.value)}
             />
             <input
+              type="email"
+              placeholder="Email *"
+              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 order-3"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
               type="tel"
               placeholder="Téléphone *"
-              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 order-4"
               value={telephone}
               onChange={(e) => setTelephone(e.target.value)}
             />
             <input
               type="text"
               placeholder="Domaine de compétences *"
-              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 col-span-full"
+              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 col-span-full order-5"
               value={domaine}
               onChange={(e) => setDomaine(e.target.value)}
             />
@@ -317,7 +317,7 @@ export default function Benevole() {
               <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
                 FOYER
               </h2>
-              <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+              <div className="space-y-2 grid text-base grid-cols-1 gap-2">
                 {[
                   "Soutien Scolaire",
                   "Accompagnement psychosocial",
@@ -344,7 +344,7 @@ export default function Benevole() {
               <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
                 ÉCOLE
               </h2>
-              <div className="space-y-2 grid sm:text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+              <div className="space-y-2 grid text-base grid-cols-1 gap-2">
                 {[
                   "Soutien Scolaire",
                   "Soutien administratif",
@@ -372,7 +372,7 @@ export default function Benevole() {
               <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
                 CFI
               </h2>
-              <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+              <div className="space-y-2 grid text-base grid-cols-1 gap-2">
                 {[
                   "Cours de langues",
                   "Cours de communication et softskills",
@@ -397,7 +397,7 @@ export default function Benevole() {
               <h2 className="text-xl font-bold text-center bg-black border border-white text-white py-4 mb-4 rounded-full">
                 ADMINISTRATION
               </h2>
-              <div className="space-y-2 grid text-base grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-2">
+              <div className="space-y-2 grid text-base grid-cols-1 gap-2">
                 {[
                   "Marketing et communication",
                   "Comptabilité et gestion",

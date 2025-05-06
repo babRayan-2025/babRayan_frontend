@@ -23,7 +23,7 @@ export default function NavBar() {
     setUserName(getLocalStorage("userName"));
   }, []); // ✅ Now updates when component mounts
 
-  
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setOpenDropdown(null); // Close all dropdowns when menu toggles
@@ -184,18 +184,6 @@ export default function NavBar() {
                   </a>
                 </Dropdown>
 
-                {/* <Link
-                  href="/dashboard"
-                  className="bg-[#f3ca31] px-4 py-2 rounded-md text-[#ffffff] text-sm font-semibold hover:bg-[#e5b82c] transition duration-150"
-                >
-                  Admin Dashboard
-                </Link>
-                <button
-                  onClick={logout}
-                  className="bg-red-600 px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
-                >
-                  Logout
-                </button> */}
               </>
             ) : (
               <>
@@ -325,6 +313,39 @@ export default function NavBar() {
               )}
             </div>
           ))}
+          <div className="flex justify-center mb-4">
+            {userID && (
+              <>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: '1',
+                        onClick: () => window.location.href = '/dashboard',
+                        label: 'Admin Dashboard',
+                        icon: <SettingOutlined />,
+                      },
+                      {
+                        key: '2',
+                        label: 'Déconnexion',
+                        onClick: handleLogout,
+                        icon: <LogoutOutlined />,
+                      }
+                    ],
+                  }}
+                >
+                  <a
+                    className="px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
+                    style={{ cursor: 'pointer' }} onClick={(e) => e.preventDefault()}>
+                    <Space>
+                      Hi, {userName}
+                      <DownOutlined />
+                    </Space>
+                  </a>
+                </Dropdown>
+              </>
+            )}
+          </div>
           <div className="mt-4 space-y-2 px-3">
             <Link
               href="/donation"
