@@ -100,6 +100,39 @@ export default function NavBar() {
             <Link href="/">
               <img src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481" alt="Logo" className="w-28 sm:w-36" />
             </Link>
+            <div className="absolute left-1/2 transform -translate-x-1/2 lg:hidden">
+            {userID && (
+              <>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: '1',
+                        onClick: () => window.location.href = '/dashboard',
+                        label: 'Admin Dashboard',
+                        icon: <SettingOutlined />,
+                      },
+                      {
+                        key: '2',
+                        label: 'Déconnexion',
+                        onClick: handleLogout,
+                        icon: <LogoutOutlined />,
+                      }
+                    ],
+                  }}
+                >
+                  <a
+                    className="px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
+                    style={{ cursor: 'pointer' }} onClick={(e) => e.preventDefault()}>
+                    <Space>
+                      Hi, {userName}
+                      <DownOutlined />
+                    </Space>
+                  </a>
+                </Dropdown>
+              </>
+            )}
+            </div>
           </div>
 
           {/* Center - Navigation */}
@@ -262,6 +295,7 @@ export default function NavBar() {
         className={`${isMenuOpen ? "block" : "hidden"
           } lg:hidden bg-[#cc2229] border-t border-white/10`}
       >
+        
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item, index) => (
             <div key={index}>
@@ -313,39 +347,7 @@ export default function NavBar() {
               )}
             </div>
           ))}
-          <div className="flex justify-center mb-4">
-            {userID && (
-              <>
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        key: '1',
-                        onClick: () => window.location.href = '/dashboard',
-                        label: 'Admin Dashboard',
-                        icon: <SettingOutlined />,
-                      },
-                      {
-                        key: '2',
-                        label: 'Déconnexion',
-                        onClick: handleLogout,
-                        icon: <LogoutOutlined />,
-                      }
-                    ],
-                  }}
-                >
-                  <a
-                    className="px-4 py-2 rounded-md text-white text-sm font-semibold hover:bg-red-700 transition duration-150"
-                    style={{ cursor: 'pointer' }} onClick={(e) => e.preventDefault()}>
-                    <Space>
-                      Hi, {userName}
-                      <DownOutlined />
-                    </Space>
-                  </a>
-                </Dropdown>
-              </>
-            )}
-          </div>
+          
           <div className="mt-4 space-y-2 px-3">
             <Link
               href="/donation"
