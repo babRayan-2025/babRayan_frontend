@@ -12,7 +12,7 @@ export default function Benevoles() {
     const [searchName, setSearchName] = useState("");
     const [sortAsc, setSortAsc] = useState(false);  // true for ascending, false for descending
     const [currentPage, setCurrentPage] = useState(1);  // Track current page
-    const [itemsPerPage, setItemsPerPage] = useState(4); // Number of items per page
+    const [itemsPerPage, setItemsPerPage] = useState(8); // Number of items per page
     const [selectedVolunteer, setSelectedVolunteer] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const imageDefault = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4"
@@ -28,9 +28,9 @@ export default function Benevoles() {
                     // Transform the data to match our expected format
                     const formattedData = result.data.map((item, index) => ({
                         id: item.id || index + 1,
-                        image: imageDefault, // Placeholder image
                         name: `${item.prenom} ${item.nom}`,
                         role: item.domaine || "Bénévole",
+                        disponibilites: item.disponibilites || "N/A",
                         joinDate: formatFirebaseTimestamp(item.createdAt),
                         email: item.email || "N/A",
                         telephone: item.telephone || "N/A",
@@ -103,10 +103,11 @@ export default function Benevoles() {
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/benevolat/${id}`, {
                 method: 'DELETE',
             });
-            
+
             if (response.ok) {
                 // Remove the deleted volunteer from the state
                 setBenevoles(benevoles.filter(benevole => benevole.id !== id));
+                toast.success('Bénévole supprimé avec succès');
             } else {
                 console.error("Failed to delete volunteer");
             }
@@ -139,6 +140,7 @@ export default function Benevoles() {
                 'Email': benevole.email,
                 'Téléphone': benevole.telephone,
                 'Domaine': benevole.role,
+                'Disponibilités': benevole.disponibilites,
                 'Date d\'inscription': benevole.joinDate,
                 'Activités Foyer': benevole.rawData.foyer?.join(', ') || '',
                 'Activités École': benevole.rawData.ecole?.join(', ') || '',
@@ -148,7 +150,7 @@ export default function Benevoles() {
 
             // Create worksheet
             const ws = XLSX.utils.json_to_sheet(exportData);
-            
+
             // Create workbook
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, "Bénévoles");
@@ -173,7 +175,7 @@ export default function Benevoles() {
     };
 
     return (
-        <section className="w-full px-2 sm:px-4 py-4">
+        <section className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-4">
             <ToastContainer
                 position="top-right"
                 autoClose={3000}
@@ -185,9 +187,9 @@ export default function Benevoles() {
                 draggable
                 pauseOnHover
             />
-            <div className="py-3 sm:py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                <div className="w-full sm:w-64">
-                    <label className="block mb-1 sm:mb-2 text-sm sm:text-base">Rechercher par nom:</label>
+            <div className="py-3 sm:py-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-6">
+                <div className="w-full md:w-1/2 lg:w-1/3">
+                    <label className="block mb-1 text-sm sm:text-base">Rechercher par nom:</label>
                     <input
                         type="text"
                         className="form-input w-full p-2 border rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
@@ -196,13 +198,13 @@ export default function Benevoles() {
                         onChange={(e) => setSearchName(e.target.value)}
                     />
                 </div>
-                <div className="flex flex-col sm:flex-row gap-3 items-end">
-                    <div className="flex flex-col">
-                        <label className="block mb-1 sm:mb-2 text-sm sm:text-base">Éléments par page:</label>
+                <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto md:items-end">
+                    <div className="flex flex-col w-full sm:w-auto">
+                        <label className="block mb-1 text-sm sm:text-base">Éléments par page:</label>
                         <select
                             value={itemsPerPage}
                             onChange={handleItemsPerPageChange}
-                            className="form-select p-2 border rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                            className="form-select p-2 border rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 w-full sm:w-auto"
                         >
                             <option value="4">4</option>
                             <option value="8">8</option>
@@ -214,7 +216,7 @@ export default function Benevoles() {
                     <button
                         onClick={exportToExcel}
                         disabled={exporting}
-                        className="mt-2 sm:mt-0 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center gap-2 disabled:opacity-50"
+                        className="w-full sm:w-auto px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                         <FaFileExport />
                         {exporting ? 'Exportation...' : 'Exporter en Excel'}
@@ -228,56 +230,51 @@ export default function Benevoles() {
                 </div>
             ) : (
                 <>
-                    <div className="overflow-x-auto rounded-md shadow">
-                        <table className="min-w-full bg-white rounded-md overflow-hidden">
+                    <div className="overflow-x-auto rounded-md shadow mt-2">
+                        <table className="min-w-full bg-white rounded-md overflow-hidden text-sm">
                             <thead className="bg-gray-100">
                                 <tr>
-                                    <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm"> </th>
-                                    <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm">Nom</th>
-                                    <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm hidden md:table-cell">Domaine</th>
+                                    <th className="px-2 sm:px-4 py-2 text-left">Nom</th>
+                                    <th className="px-2 sm:px-4 py-2 text-left hidden md:table-cell">Domaine</th>
+                                    <th className="px-2 sm:px-4 py-2 text-left hidden lg:table-cell">Disponibilités</th>
                                     <th
                                         onClick={() => setSortAsc(!sortAsc)}
                                         style={{ cursor: 'pointer' }}
-                                        className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm hidden sm:table-cell"
+                                        className="px-2 sm:px-4 py-2 text-left hidden sm:table-cell"
                                     >
                                         Date
                                         <span className="ml-2">
-                                            <i className={`fa-solid ${sortAsc ? "fa-arrow-up" : "fa-arrow-down"}`} />
+                                            {sortAsc ? "↑" : "↓"}
                                         </span>
                                     </th>
-                                    <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm hidden md:table-cell">Contact</th>
-                                    <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm">Actions</th>
+                                    <th className="px-2 sm:px-4 py-2 text-left hidden md:table-cell">Contact</th>
+                                    <th className="px-2 sm:px-4 py-2 text-left">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {currentBenevoles.map(benevole => (
                                     <tr key={benevole.id} className="hover:bg-gray-50 border-b border-gray-100">
-                                        <td className="px-2 sm:px-4 py-2">
-                                            <div className="flex items-center">
-                                                <img
-                                                    src={benevole.image}
-                                                    alt=""
-                                                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-cover rounded-full"
-                                                />
-                                            </div>
-                                        </td>
-                                        <td className="px-2 sm:px-4 py-2">
+                                        <td className="px-2 sm:px-4 py-2 align-top">
                                             <p className="font-medium text-sm sm:text-base">{benevole.name}</p>
                                             <p className="font-medium text-xs text-gray-500 truncate max-w-[120px] sm:max-w-[200px]">{benevole.email}</p>
                                             <p className="text-xs sm:text-sm text-gray-500 md:hidden">{benevole.role}</p>
                                             <p className="text-xs text-gray-500 sm:hidden">{benevole.joinDate}</p>
+                                            <p className="text-xs text-gray-500 md:hidden">{benevole.telephone}</p>
                                         </td>
-                                        <td className="px-2 sm:px-4 py-2 hidden md:table-cell text-sm">
+                                        <td className="px-2 sm:px-4 py-2 hidden md:table-cell align-top">
                                             <p className="font-normal">{benevole.role}</p>
                                         </td>
-                                        <td className="px-2 sm:px-4 py-2 hidden sm:table-cell text-sm">
+                                        <td className="px-2 sm:px-4 py-2 hidden lg:table-cell align-top">
+                                            <p className="font-normal">{benevole.disponibilites}</p>
+                                        </td>
+                                        <td className="px-2 sm:px-4 py-2 hidden sm:table-cell align-top">
                                             <p className="font-normal">{benevole.joinDate}</p>
                                         </td>
-                                        <td className="px-2 sm:px-4 py-2 hidden md:table-cell text-sm">
+                                        <td className="px-2 sm:px-4 py-2 hidden md:table-cell align-top">
                                             <p className="font-normal truncate max-w-[120px]">{benevole.telephone}</p>
                                         </td>
-                                        <td className="px-2 sm:px-4 py-2">
-                                            <div className="flex space-x-1 sm:space-x-2">
+                                        <td className="px-2 sm:px-4 py-2 align-top">
+                                            <div className="flex space-x-2">
                                                 <button
                                                     type="button"
                                                     className="btn_view px-2 py-1 sm:px-3 sm:py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-xs sm:text-sm flex items-center justify-center"
@@ -285,22 +282,15 @@ export default function Benevoles() {
                                                 >
                                                     <FaEye />
                                                 </button>
-                                                <Popconfirm
-                                                    title="Confirmation"
-                                                    description="Êtes-vous sûr de vouloir supprimer ce bénévole?"
-                                                    onConfirm={() => deleteVolunteer(benevole.id)}
-                                                    onCancel={cancelDelete}
-                                                    okText="Oui"
-                                                    cancelText="Non"
-                                                    okType="danger"
-                                                >
+                                                <div className="relative inline-block">
                                                     <button
                                                         type="button"
                                                         className="text-white px-2 py-1 sm:px-3 sm:py-1 bg-red-500 hover:bg-red-600 rounded-md text-xs sm:text-sm flex items-center justify-center"
+                                                        onClick={() => deleteVolunteer(benevole.id)}
                                                     >
                                                         <FaTrash />
                                                     </button>
-                                                </Popconfirm>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
@@ -310,13 +300,17 @@ export default function Benevoles() {
                     </div>
 
                     {/* Pagination controls */}
-                    <div className="flex justify-center mt-4">
-                        <div className="flex flex-wrap gap-1 sm:gap-2">
+                    <div className="flex justify-center mt-4 mb-4">
+                        <div className="flex flex-wrap justify-center gap-2">
                             {Array.from({ length: totalPages }, (_, index) => (
                                 <button
                                     key={index + 1}
                                     onClick={() => handlePaginationClick(index + 1)}
-                                    className={`px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm ${index + 1 === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+                                    className={`px-4 py-2 rounded-md text-base font-semibold transition-colors duration-200 ${
+                                        index + 1 === currentPage
+                                        ? 'bg-blue-600 text-white shadow'
+                                        : 'bg-gray-200 text-gray-700 hover:bg-blue-100'
+                                    }`}
                                 >
                                     {index + 1}
                                 </button>
@@ -343,8 +337,8 @@ export default function Benevoles() {
                             </button>
                         </div>
 
-                        <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-                            <div className="md:w-1/3 flex flex-col items-center">
+                        <div className="flex flex-col lg:flex-row gap-6">
+                            <div className="lg:w-1/3 flex flex-col items-center">
                                 <div className="relative group">
                                     <img
                                         src={selectedVolunteer.image}
@@ -357,28 +351,28 @@ export default function Benevoles() {
                                 <p className="text-gray-600 text-center bg-blue-50 px-3 py-1 rounded-full text-xs sm:text-sm">{selectedVolunteer.role}</p>
                             </div>
 
-                            <div className="md:w-2/3 mt-4 md:mt-0">
+                            <div className="lg:w-2/3 mt-4 lg:mt-0">
                                 <div className="grid grid-cols-1 gap-4 sm:gap-6">
-                                    <div className="bg-gray-50 p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                                        <h4 className="font-semibold text-blue-700 border-b border-blue-100 pb-2 mb-2 text-sm sm:text-base">Informations Personnelles</h4>
-                                        <div className="space-y-1 sm:space-y-2 text-sm sm:text-base">
-                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Prénom:</span> <span className="text-gray-800">{selectedVolunteer.rawData.prenom}</span></p>
-                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Nom:</span> <span className="text-gray-800">{selectedVolunteer.rawData.nom}</span></p>
-                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Email:</span> <span className="text-blue-600 break-all">{selectedVolunteer.rawData.email}</span></p>
-                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Téléphone:</span> <span className="text-gray-800">{selectedVolunteer.rawData.telephone}</span></p>
-                                            <p className="hover:bg-blue-50 p-1 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Date d'inscription:</span> <span className="text-gray-800">{selectedVolunteer.joinDate}</span></p>
+                                    <div className="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                                        <h4 className="font-semibold text-blue-700 border-b border-blue-100 pb-2 mb-3 text-sm sm:text-base">Informations Personnelles</h4>
+                                        <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+                                            <p className="hover:bg-blue-50 p-2 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Prénom:</span> <span className="text-gray-800">{selectedVolunteer.rawData.prenom}</span></p>
+                                            <p className="hover:bg-blue-50 p-2 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Nom:</span> <span className="text-gray-800">{selectedVolunteer.rawData.nom}</span></p>
+                                            <p className="hover:bg-blue-50 p-2 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Email:</span> <span className="text-blue-600 break-all">{selectedVolunteer.rawData.email}</span></p>
+                                            <p className="hover:bg-blue-50 p-2 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Téléphone:</span> <span className="text-gray-800">{selectedVolunteer.rawData.telephone}</span></p>
+                                            <p className="hover:bg-blue-50 p-2 rounded transition-colors duration-200"><span className="font-medium text-gray-700">Date d'inscription:</span> <span className="text-gray-800">{selectedVolunteer.joinDate}</span></p>
                                         </div>
                                     </div>
 
-                                    <div className="bg-blue-50 p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                                        <h4 className="font-semibold text-blue-700 border-b border-blue-100 pb-2 mb-2 text-sm sm:text-base">Domaine de compétence</h4>
+                                    <div className="bg-blue-50 p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                                        <h4 className="font-semibold text-blue-700 border-b border-blue-100 pb-2 mb-3 text-sm sm:text-base">Domaine de compétence</h4>
                                         <div className="text-sm sm:text-base">
-                                            <p className="p-1 rounded"><span className="font-medium text-gray-700">Domaine principal:</span> <span className="text-gray-800 bg-white px-2 py-1 rounded-md">{selectedVolunteer.rawData.domaine}</span></p>
-
+                                            <p className="p-2 rounded"><span className="font-medium text-gray-700">Domaine principal:</span> <span className="text-gray-800 bg-white px-3 py-1 rounded-md">{selectedVolunteer.rawData.domaine}</span></p>
+                                            <p className="p-2 rounded"><span className="font-medium text-gray-700">Disponibilités:</span> <span className="text-gray-800 bg-white px-3 py-1 rounded-md">{selectedVolunteer.rawData.disponibilites}</span></p>
                                             {selectedVolunteer.rawData.foyer && selectedVolunteer.rawData.foyer.length > 0 && (
-                                                <div className="mt-3 bg-white p-2 sm:p-3 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
+                                                <div className="mt-4 bg-white p-3 sm:p-4 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
                                                     <p className="font-medium text-blue-600 text-sm sm:text-base">Activités de foyer:</p>
-                                                    <ul className="list-inside mt-1 space-y-1 text-xs sm:text-sm">
+                                                    <ul className="list-inside mt-2 space-y-2 text-xs sm:text-sm">
                                                         {selectedVolunteer.rawData.foyer.map((item, index) => (
                                                             <li key={index} className="flex items-baseline text-gray-700">
                                                                 <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
@@ -390,9 +384,9 @@ export default function Benevoles() {
                                             )}
 
                                             {selectedVolunteer.rawData.ecole && selectedVolunteer.rawData.ecole.length > 0 && (
-                                                <div className="mt-3 bg-white p-2 sm:p-3 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
+                                                <div className="mt-4 bg-white p-3 sm:p-4 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
                                                     <p className="font-medium text-blue-600 text-sm sm:text-base">Activités scolaires:</p>
-                                                    <ul className="list-inside mt-1 space-y-1 text-xs sm:text-sm">
+                                                    <ul className="list-inside mt-2 space-y-2 text-xs sm:text-sm">
                                                         {selectedVolunteer.rawData.ecole.map((item, index) => (
                                                             <li key={index} className="flex items-baseline text-gray-700">
                                                                 <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
@@ -404,9 +398,9 @@ export default function Benevoles() {
                                             )}
 
                                             {selectedVolunteer.rawData.formations && selectedVolunteer.rawData.formations.length > 0 && (
-                                                <div className="mt-3 bg-white p-2 sm:p-3 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
+                                                <div className="mt-4 bg-white p-3 sm:p-4 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
                                                     <p className="font-medium text-blue-600 text-sm sm:text-base">Formations:</p>
-                                                    <ul className="list-inside mt-1 space-y-1 text-xs sm:text-sm">
+                                                    <ul className="list-inside mt-2 space-y-2 text-xs sm:text-sm">
                                                         {selectedVolunteer.rawData.formations.map((item, index) => (
                                                             <li key={index} className="flex items-baseline text-gray-700">
                                                                 <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
@@ -418,9 +412,9 @@ export default function Benevoles() {
                                             )}
 
                                             {selectedVolunteer.rawData.administration && selectedVolunteer.rawData.administration.length > 0 && (
-                                                <div className="mt-3 bg-white p-2 sm:p-3 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
+                                                <div className="mt-4 bg-white p-3 sm:p-4 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
                                                     <p className="font-medium text-blue-600 text-sm sm:text-base">Administration:</p>
-                                                    <ul className="list-inside mt-1 space-y-1 text-xs sm:text-sm">
+                                                    <ul className="list-inside mt-2 space-y-2 text-xs sm:text-sm">
                                                         {selectedVolunteer.rawData.administration.map((item, index) => (
                                                             <li key={index} className="flex items-baseline text-gray-700">
                                                                 <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
@@ -436,10 +430,10 @@ export default function Benevoles() {
                             </div>
                         </div>
 
-                        <div className="mt-4 sm:mt-6 text-right border-t pt-3">
+                        <div className="mt-6 text-right border-t pt-4">
                             <button
                                 onClick={closeModal}
-                                className="px-3 py-1 sm:px-4 sm:py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300 transform hover:scale-105 text-sm sm:text-base"
+                                className="px-4 py-2 sm:px-6 sm:py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300 transform hover:scale-105 text-sm sm:text-base"
                             >
                                 Fermer
                             </button>

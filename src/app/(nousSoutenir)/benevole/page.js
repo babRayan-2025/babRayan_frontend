@@ -76,6 +76,7 @@ export default function Benevole() {
       administration: selectedAdministration,
     };
 
+    console.log(formData);
     // Validate form data
     if (!formData.nom) {
       toast.error("Veuillez remplir le champ Nom.");
