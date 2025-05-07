@@ -327,31 +327,8 @@ export default function Benevoles() {
                         className={modalContentStyles}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <div className="flex justify-between items-start mb-4">
-                            <h2 className="text-xl sm:text-2xl font-bold">Détails du Bénévole</h2>
-                            <button
-                                className="text-gray-500 hover:text-gray-700 transition-colors"
-                                onClick={closeModal}
-                            >
-                                <FaTimes className="text-lg sm:text-xl" />
-                            </button>
-                        </div>
-
-                        <div className="flex flex-col lg:flex-row gap-6">
-                            <div className="lg:w-1/3 flex flex-col items-center">
-                                <div className="relative group">
-                                    <img
-                                        src={selectedVolunteer.image}
-                                        alt={selectedVolunteer.name}
-                                        className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-full mb-3 border-4 border-blue-100 shadow-lg group-hover:border-blue-300 transition-all duration-300"
-                                    />
-                                    <div className="absolute inset-0 bg-blue-500 bg-opacity-0 rounded-full group-hover:bg-opacity-10 transition-all duration-300"></div>
-                                </div>
-                                <h3 className="text-base sm:text-lg font-semibold text-center text-blue-800">{selectedVolunteer.name}</h3>
-                                <p className="text-gray-600 text-center bg-blue-50 px-3 py-1 rounded-full text-xs sm:text-sm">{selectedVolunteer.role}</p>
-                            </div>
-
-                            <div className="lg:w-2/3 mt-4 lg:mt-0">
+                        <div className="fle">
+                            <div className=" mt-4 lg:mt-0">
                                 <div className="grid grid-cols-1 gap-4 sm:gap-6">
                                     <div className="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                                         <h4 className="font-semibold text-blue-700 border-b border-blue-100 pb-2 mb-3 text-sm sm:text-base">Informations Personnelles</h4>
