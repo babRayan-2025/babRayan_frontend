@@ -16,6 +16,7 @@ export default function Benevole() {
   const [prenom, setPrenom] = useState("");
   const [telephone, setTelephone] = useState("");
   const [domaine, setDomaine] = useState("");
+  const [disponibilites, setDisponibilites] = useState("");
   const [captchaValue, setCaptchaValue] = useState(null);
 
   useEffect(() => {
@@ -68,6 +69,7 @@ export default function Benevole() {
       prenom: prenom.trim(),
       telephone: telephone.trim(),
       domaine: domaine.trim(),
+      disponibilites: disponibilites.trim(),
       foyer: selectedFoyer,
       ecole: selectedEcole,
       formations: selectedFormations,
@@ -93,6 +95,10 @@ export default function Benevole() {
     }
     if (!formData.domaine) {
       toast.error("Veuillez remplir le champ Domaine de compétence.");
+      return;
+    }
+    if (!formData.disponibilites) {
+      toast.error("Veuillez remplir le champ Disponibilités.");
       return;
     }
     if (formData.foyer.length === 0 && formData.ecole.length === 0 && formData.formations.length === 0 && formData.administration.length === 0) {
@@ -125,6 +131,7 @@ export default function Benevole() {
         setPrenom("");
         setTelephone("");
         setDomaine("");
+        setDisponibilites("");
         setSelectedFoyer([]);
         setSelectedEcole([]);
         setSelectedFormations([]);
@@ -206,45 +213,22 @@ export default function Benevole() {
 
         {/* Contact Section */}
         <motion.div
-          className="mt-8 text-center"
+          className="mt-8 mb-12 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
           <h2 className="text-2xl font-bold text-center place-content-center text-gray-800 mb-4">
-            CONTACT
+            Horaires de bénévolat
             <motion.div
               className="w-24 md:w-28 h-1  bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"
               layoutId="contact-underline"
             ></motion.div>
           </h2>
-          <div className="flex  justify-center my-10 gap-6">
-            <div
-              className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 font-semibold text-md md:text-2xl text-red-600 border-2 border-red-600 p-4 rounded-3xl shadow-md cursor-pointer"
-              title="Call us at +212 6 181 81 806"
-              aria-label="Call us"
-            >
-              <div className="flex flex-row items-center gap-2">
-                <Image
-                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fcontact.webp?alt=media&token=36de36ea-009b-4e8f-a143-7e4be349afcd"
-                  alt="call"
-                  width={50}
-                  height={50}
-                  className="object-cover ml-3"
-                />
-                <span className="content-center">+212 6 181 81 806</span>
-              </div>
-              <div className="flex flex-row items-center gap-2">
-                <Image
-                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fmail.webp?alt=media&token=f246f27d-9d4f-43ef-906d-a977bf3a8ae2"
-                  alt="mail"
-                  width={70}
-                  height={70}
-                  className="object-cover "
-                />
-                <span className="content-center">contact@babrayan.ma</span>
-              </div>
-            </div>
+          
+          <div className="max-w-3xl mx-auto my-6 px-4">
+            <p className="text-lg mb-3"><span className="font-semibold">Foyer:</span> du lundi au vendredi à partir de 17h, Week End, vacances scolaires et jours fériés</p>
+            <p className="text-lg mb-6"><span className="font-semibold">École Palmier, CFI, Administration:</span> du lundi au vendredi de 9h à 17h</p>
           </div>
         </motion.div>
       </motion.div>
@@ -299,9 +283,16 @@ export default function Benevole() {
             <input
               type="text"
               placeholder="Domaine de compétences *"
-              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 col-span-full order-5"
+              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 order-5"
               value={domaine}
               onChange={(e) => setDomaine(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Disponibilités *"
+              className="p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 order-6"
+              value={disponibilites}
+              onChange={(e) => setDisponibilites(e.target.value)}
             />
           </motion.div>
 
@@ -376,7 +367,7 @@ export default function Benevole() {
                 {[
                   "Cours de langues",
                   "Cours de communication et softskills",
-                  "Formation en hotellerie restauration",
+                  "Formation en hôtellerie restauration",
                 ].map((item, index) => (
                   <motion.button
                     key={index}
