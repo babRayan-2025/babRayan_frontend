@@ -30,7 +30,7 @@ export default function Benevoles() {
                         id: item.id || index + 1,
                         name: `${item.prenom} ${item.nom}`,
                         role: item.domaine || "Bénévole",
-                        disponibilites: item.disponibilites || "N/A",
+                        disponibilites: item.dispo || "N/A",
                         joinDate: formatFirebaseTimestamp(item.createdAt),
                         email: item.email || "N/A",
                         telephone: item.telephone || "N/A",
@@ -345,7 +345,7 @@ export default function Benevoles() {
                                         <h4 className="font-semibold text-blue-700 border-b border-blue-100 pb-2 mb-3 text-sm sm:text-base">Domaine de compétence</h4>
                                         <div className="text-sm sm:text-base">
                                             <p className="p-2 rounded"><span className="font-medium text-gray-700">Domaine principal:</span> <span className="text-gray-800 bg-white px-3 py-1 rounded-md">{selectedVolunteer.rawData.domaine}</span></p>
-                                            <p className="p-2 rounded"><span className="font-medium text-gray-700">Disponibilités:</span> <span className="text-gray-800 bg-white px-3 py-1 rounded-md">{selectedVolunteer.rawData.disponibilites}</span></p>
+                                            <p className="p-2 rounded"><span className="font-medium text-gray-700">Disponibilités:</span> <span className="text-gray-800 bg-white px-3 py-1 rounded-md">{selectedVolunteer.rawData.dispo}</span></p>
                                             {selectedVolunteer.rawData.foyer && selectedVolunteer.rawData.foyer.length > 0 && (
                                                 <div className="mt-4 bg-white p-3 sm:p-4 rounded-md shadow-sm transform hover:scale-[1.01] transition-transform duration-300">
                                                     <p className="font-medium text-blue-600 text-sm sm:text-base">Activités de foyer:</p>

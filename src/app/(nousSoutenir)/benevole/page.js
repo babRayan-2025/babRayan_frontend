@@ -69,7 +69,7 @@ export default function Benevole() {
       prenom: prenom.trim(),
       telephone: telephone.trim(),
       domaine: domaine.trim(),
-      disponibilites: disponibilites.trim(),
+      dispo: disponibilites.trim(),
       foyer: selectedFoyer,
       ecole: selectedEcole,
       formations: selectedFormations,
@@ -98,7 +98,7 @@ export default function Benevole() {
       toast.error("Veuillez remplir le champ Domaine de compétence.");
       return;
     }
-    if (!formData.disponibilites) {
+    if (!formData.dispo) {
       toast.error("Veuillez remplir le champ Disponibilités.");
       return;
     }
@@ -339,7 +339,7 @@ export default function Benevole() {
               <div className="space-y-2 grid text-base grid-cols-1 gap-2">
                 {[
                   "Soutien Scolaire",
-                  "Soutien administratif",
+                  "Animation d’ateliers créatifs",
                   "Accompagnement psychosocial",
                   "Formation pédagogique",
                 ].map((item, index) => (
