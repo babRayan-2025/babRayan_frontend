@@ -301,16 +301,16 @@ export default function Benevoles() {
 
                     {/* Pagination controls */}
                     <div className="flex justify-center mt-4 mb-4">
-                        <div className="flex flex-wrap justify-center gap-2">
+                        <div className="flex gap-2">
                             {Array.from({ length: totalPages }, (_, index) => (
                                 <button
                                     key={index + 1}
                                     onClick={() => handlePaginationClick(index + 1)}
-                                    className={`px-4 py-2 rounded-md text-base font-semibold transition-colors duration-200 ${
-                                        index + 1 === currentPage
-                                        ? 'bg-blue-600 text-white shadow'
-                                        : 'bg-gray-200 text-gray-700 hover:bg-blue-100'
-                                    }`}
+                                    className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold transition-colors duration-200
+                                        ${index + 1 === currentPage
+                                            ? 'bg-blue-600 text-white shadow'
+                                            : 'bg-gray-200 text-gray-700 hover:bg-blue-100'
+                                        }`}
                                 >
                                     {index + 1}
                                 </button>

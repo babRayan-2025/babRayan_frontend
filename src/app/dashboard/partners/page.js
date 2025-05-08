@@ -44,7 +44,7 @@ export default function Partenaires() {
                     }));
 
                     setPartenaires(formattedData);
-                    
+
                     // Count pending partners (not approved)
                     const pendingCount = result.data.filter(partner => !partner.approuve).length;
                     setPendingPartenairesCount(pendingCount);
@@ -121,16 +121,16 @@ export default function Partenaires() {
 
             // Update the partner's status in the local state
             setPartenaires(prevPartenaires =>
-                prevPartenaires.map(partenaire => 
-                    partenaire.id === id 
-                        ? {...partenaire, approuve: true} 
+                prevPartenaires.map(partenaire =>
+                    partenaire.id === id
+                        ? { ...partenaire, approuve: true }
                         : partenaire
                 )
             );
-            
+
             // If the modal is open, update the selected partner
             if (selectedPartenaire && selectedPartenaire.id === id) {
-                setSelectedPartenaire({...selectedPartenaire, approuve: true});
+                setSelectedPartenaire({ ...selectedPartenaire, approuve: true });
             }
         } catch (err) {
             console.error("Error approving partner:", err);
@@ -146,7 +146,7 @@ export default function Partenaires() {
 
     // Filter the sortedPartenaires based on search by name and approval status
     const filteredPartenaires = sortedPartenaires.filter(partenaire =>
-        partenaire.name.toLowerCase().includes(searchName.toLowerCase()) && 
+        partenaire.name.toLowerCase().includes(searchName.toLowerCase()) &&
         partenaire.approuve === true
     );
 
@@ -346,21 +346,17 @@ export default function Partenaires() {
                                                     <FaCheck />
                                                 </button>
                                             )}
-                                            <Popconfirm
-                                                title="Supprimer le partenaire"
-                                                description="Êtes-vous sûr de vouloir supprimer ce partenaire?"
-                                                onConfirm={() => handleDeletePartenaire(partenaire.id)}
-                                                okText="Oui"
-                                                cancelText="Non"
-                                            >
+                                            <div className="relative inline-block">
                                                 <button
                                                     type="button"
-                                                    className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
-                                                    aria-label="Supprimer"
+                                                    className="text-white px-2 py-1 sm:px-3 sm:py-1 bg-red-500 hover:bg-red-600 rounded-md text-xs sm:text-sm flex items-center justify-center"
+                                                    onClick={() => handleDeletePartenaire(partenaire.id)}
                                                 >
                                                     <FaTrash />
                                                 </button>
-                                            </Popconfirm>
+                                            </div>
+
+
                                         </div>
                                     </td>
                                 </tr>
