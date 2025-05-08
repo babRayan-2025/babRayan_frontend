@@ -55,7 +55,7 @@ export default function Footer() {
                 className="text-gray-400 border-b border-transparent hover:text-white  transition-colors cursor-pointer"
               >
                 <span className="hover:border-white border-b border-transparent"
-                onClick={() => window.open(item === "Missions & Valeurs" ? "https://www.babrayan.ma/missions"
+                onClick={() => window.open(item === "Missions & Valeurs" ? "https://www.babrayan.ma/about"
                 : item === "Gouvernance" ? "https://www.babrayan.ma/gouvernance"
                 : item === "Nos Partenaires" ? "https://www.babrayan.ma/partenaires"
                 : item === "Nous Contacter" ? "https://www.babrayan.ma/contact_us" : "")}>
