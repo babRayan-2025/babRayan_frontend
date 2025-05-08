@@ -14,7 +14,7 @@ import pic3 from "../assets/PHOTO/3.jpg";
 import pic10 from "../assets/PNG/ETOILERAMADAN.png";
 import pic11 from "../assets/PNG/LANTERNE.png";
 import CountUp from "react-countup";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Play } from "lucide-react";
 
 // Animation variants
@@ -46,11 +46,33 @@ const staggerContainer = {
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
-  // const [isPlaying1, setIsPlaying1] = useState(false);
-  //   const [showMore, setShowMore] = useState(false);
-  
-    // const videoUrl1 = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
+  const [newsfetched, setNewsfetched] = useState([]);
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [blogModal, setBlogModal] = useState(false);
 
+  useEffect(() => {
+    async function fetchNews() {
+      try {
+        const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/news");
+        const data = await response.json();
+        if (data.status && data.data) {
+          // Sort by createdAt in descending order (newest first) and take only the first 3
+          const sortedNews = data.data.sort((a, b) => {
+            const dateA = a.createdAt?._seconds || 0;
+            const dateB = b.createdAt?._seconds || 0;
+            return dateB - dateA;
+          }).slice(0, 3);
+          setNewsfetched(sortedNews);
+        } else {
+          setNewsfetched([]);
+        }
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        setNewsfetched([]);
+      }
+    }
+    fetchNews();
+  }, []);
 
   const caroussel = [
     {
@@ -78,7 +100,7 @@ export default function Home() {
       image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fslider.webp?alt=media&token=76dc0fc8-a46d-4fe7-bb1b-79a407afeb06',
       picto: '/caroussel/etoile.svg',
       title: "UN ENGAGEMENT QUI A DU SENS",
-      description: "Rejoignez le combat pour la protection de l’enfance, engagez-vous en devenant donateur, partenaire ou bénévole.",
+      description: "Rejoignez le combat pour la protection de l'enfance, engagez-vous en devenant donateur, partenaire ou bénévole.",
       link: "/devenir_partenaire"
     },
   ];
@@ -130,7 +152,7 @@ export default function Home() {
       icon: "/chiffres/repats.png",
     },
     {
-      label: "Ftours servis",
+      label: "Ftours servis",
       value: "31 200" ,
       icon: "/chiffres/ftour.png",
     },
@@ -140,19 +162,19 @@ export default function Home() {
     {
       title: "Mécénat culturel : Éveiller les talents et les passions de nos jeunes",
       shortDesc: "L'Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture ...",
-      fullDesc: "l’Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture et de l’art. À travers le programme de l’école du jeune spectateur, de nombreuses sorties au théâtre sont organisées, offrant aux enfants et adolescents une immersion unique dans l’univers des arts vivants. Au-delà du théâtre, nos jeunes participent activement à des expositions d’art, explorant les œuvres et les histoires qu’elles racontent. Des ateliers de peinture et d’expression artistique leur permettent également de développer leur sensibilité, leur créativité et leur confiance en eux. Ces initiatives culturelles sont bien plus que des moments de loisir : elles nourrissent l’imaginaire, ouvrent de nouveaux horizons et encouragent chacun de nos jeunes à croire en ses talents. Nous remercions chaleureusement tous nos partenaires pour leur engagement à rendre l’art et la culture accessibles à tous.",
+      fullDesc: "l'Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture et de l'art. À travers le programme de l'école du jeune spectateur, de nombreuses sorties au théâtre sont organisées, offrant aux enfants et adolescents une immersion unique dans l'univers des arts vivants. Au-delà du théâtre, nos jeunes participent activement à des expositions d'art, explorant les œuvres et les histoires qu'elles racontent. Des ateliers de peinture et d'expression artistique leur permettent également de développer leur sensibilité, leur créativité et leur confiance en eux. Ces initiatives culturelles sont bien plus que des moments de loisir : elles nourrissent l'imaginaire, ouvrent de nouveaux horizons et encouragent chacun de nos jeunes à croire en ses talents. Nous remercions chaleureusement tous nos partenaires pour leur engagement à rendre l'art et la culture accessibles à tous.",
       img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F5.webp?alt=media&token=0f8bbf30-2ccb-42d0-a2dd-cb37eb30cf5b",
     },
     {
       title: "La Digitalisation au cœur des projets de Bab Rayan",
-      shortDesc: "Aujourd'hui, plusieurs projets de l'association Bab Rayan intègrent la digitalisation comme levier d’apprentissage et d’insertion professionnelle. À l’école élémentaire ...",
-      fullDesc: "Aujourd’hui, plusieurs projets de l’association Bab Rayan intègrent la digitalisation comme levier d’apprentissage et d’insertion professionnelle. À l’école élémentaire, nous sensibilisons dès le plus jeune âge à l’informatique à travers des programmes de codage interactifs, spécialement conçus pour éveiller l’intérêt des enfants pour les métiers de l’IT. Au niveau du Centre de Formation et d’Insertion (CFI), un module dédié aux outils bureautiques (Microsoft Office) a été intégré au curriculum pour renforcer les compétences techniques essentielles. En parallèle, le CFI a lancé un projet pilote ambitieux : ForsaTech.",
+      shortDesc: "Aujourd'hui, plusieurs projets de l'association Bab Rayan intègrent la digitalisation comme levier d'apprentissage et d'insertion professionnelle. À l'école élémentaire ...",
+      fullDesc: "Aujourd'hui, plusieurs projets de l'association Bab Rayan intègrent la digitalisation comme levier d'apprentissage et d'insertion professionnelle. À l'école élémentaire, nous sensibilisons dès le plus jeune âge à l'informatique à travers des programmes de codage interactifs, spécialement conçus pour éveiller l'intérêt des enfants pour les métiers de l'IT. Au niveau du Centre de Formation et d'Insertion (CFI), un module dédié aux outils bureautiques (Microsoft Office) a été intégré au curriculum pour renforcer les compétences techniques essentielles. En parallèle, le CFI a lancé un projet pilote ambitieux : ForsaTech.",
       img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F6.webp?alt=media&token=0afbdb43-3d07-4e5d-8ba0-6d9799837273",
     },
     {
       title: "ForsaTech : Une porte d'entrée vers les métiers du numérique",
       shortDesc: "Créé pour répondre aux besoins croissant du marché digital, ForsaTech propose des formations ...",
-      fullDesc: "Créé pour répondre aux besoins croissants du marché digital, ForsaTech propose des formations accélérées aux jeunes en difficulté, axées sur les compétences numériques les plus demandées. Conçu en collaboration avec des entreprises partenaires, ce programme garantit une employabilité directe grâce à une sélection rigoureuse des modules et des candidats. Forts de notre expertise dans les métiers de l’hôtellerie et de la restauration, et inspirés par le succès de ce modèle, nous sommes déterminés à élargir notre impact en ouvrant de nouvelles perspectives dans le secteur numérique. Avec ces initiatives, Bab Rayan continue de transformer les défis de la jeunesse en opportunités durables, en bâtissant un pont solide entre éducation, technologie et insertion professionnelle.",
+      fullDesc: "Créé pour répondre aux besoins croissants du marché digital, ForsaTech propose des formations accélérées aux jeunes en difficulté, axées sur les compétences numériques les plus demandées. Conçu en collaboration avec des entreprises partenaires, ce programme garantit une employabilité directe grâce à une sélection rigoureuse des modules et des candidats. Forts de notre expertise dans les métiers de l'hôtellerie et de la restauration, et inspirés par le succès de ce modèle, nous sommes déterminés à élargir notre impact en ouvrant de nouvelles perspectives dans le secteur numérique. Avec ces initiatives, Bab Rayan continue de transformer les défis de la jeunesse en opportunités durables, en bâtissant un pont solide entre éducation, technologie et insertion professionnelle.",
       img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F7.webp?alt=media&token=7f83b4aa-3845-43eb-be66-0d42c582c960",
     },
   ];
@@ -160,27 +182,20 @@ export default function Home() {
   const blogv = [
     {
       id: 1,
-      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0",
+      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vidéo telquel site web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0",
       title: "TelQuel parle de nous !",
-      description: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir." ,
-      text: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir. Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour. Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir."
+      description: "L'association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l'impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l'équipe de TelQuel a su capturer l'essence de notre mission : protéger, éduquer et accompagner vers l'autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d'accueil à notre école inclusive en passant par notre centre de formation et d'insertion professionnelle, chaque image, chaque témoignage reflète l'engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d'espoir." ,
+      text: "L'association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l'impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l'équipe de TelQuel a su capturer l'essence de notre mission : protéger, éduquer et accompagner vers l'autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d'accueil à notre école inclusive en passant par notre centre de formation et d'insertion professionnelle, chaque image, chaque témoignage reflète l'engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d'espoir. Ce reportage est bien plus qu'un simple témoignage : c'est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d'accompagner chaque jour. Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir."
     },
   ]
 
   const blogs = [
-    // {
-    //   id: 1,
-    //   img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2Fimage.png?alt=media&token=59294c46-147b-4616-904f-db39da3841c9",
-    //   title: "TelQuel parle de nous !",
-    //   description: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables" ,
-    //   text: "L’association Bab Rayan a récemment été mise en lumière par TelQuel à travers un reportage poignant, révélant avec justesse et sensibilité l’impact de ses actions en faveur des enfants en situation de précarité. Avec un regard bienveillant et un talent incontestable, l’équipe de TelQuel a su capturer l’essence de notre mission : protéger, éduquer et accompagner vers l’autonomie les enfants et jeunes issus des milieux les plus vulnérables. De notre foyer d’accueil à notre école inclusive en passant par notre centre de formation et d’insertion professionnelle, chaque image, chaque témoignage reflète l’engagement quotidien de Bab Rayan pour offrir à ces jeunes un avenir digne et porteur d’espoir. Ce reportage est bien plus qu’un simple témoignage : c’est une fenêtre ouverte sur les parcours de résilience, de courage et de transformation que nous avons la chance d’accompagner chaque jour. Un immense merci à TelQuel pour cette mise en lumière précieuse qui rappelle combien chaque enfant mérite une chance, un soutien et un avenir."
-    // },
     {
       id: 1,
       img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.webp?alt=media&token=b0c6a114-b3c3-4f4e-b67f-4a9bf34db295",
       title: "Remise des diplômes de la deuxième promotion du CFI",
       description: "L&apos;Association Bab Rayan a eu l&apos;honneur de célébrer ce 28 Octobre 2024, la réussite de la deuxième promotion de diplômés de son Centre de Formation et d&apos;Insertion. Le CFI propose aux jeunes issus des EPS et en situation de précarité une formation qualifiante dans les métiers de l&apos;hôtellerie et de la restauration. Aujourd&apos;hui, plus de 120 jeunes franchissent une étape clé vers l&apos;emploi, grâce au soutien de nos entreprises partenaires. <br /> Nous avons été honorés par la présence de Mr le Wali, le Gouverneur et Mme la Maire de Casablanca.",
-      text: "L'Association Bab Rayan a eu l'honneur de célébrer le 28 Octobre la réussite de la deuxième promotion de diplômés de son Centre de Formation et d'Insertion. Le CFI propose aux jeunes issus des établissements de protection sociale (EPS) et en situation de précarité une formation qualifiante dans les métiers de l’hôtellerie et de la restauration. Aujourd'hui, plus de 120 jeunes franchissent une étape clé vers l'emploi, grâce au soutien de nos entreprises partenaires. Ce diplôme, délivré en partenariat avec l'Entraide Nationale, témoigne de leur persévérance et marque le début d'une carrière prometteuse. Nous avons été honorés par la présence de personnalités de marque : le Wali de Casablanca, le Gouverneur des arrondissements de Casablanca-Anfa, Mme la Maire de Casablanca. Merci infiniment à nos partenaires et à la communauté Bab Rayan pour leur soutien indéfectible."
+      text: "L'Association Bab Rayan a eu l'honneur de célébrer le 28 Octobre la réussite de la deuxième promotion de diplômés de son Centre de Formation et d'Insertion. Le CFI propose aux jeunes issus des établissements de protection sociale (EPS) et en situation de précarité une formation qualifiante dans les métiers de l'hôtellerie et de la restauration. Aujourd'hui, plus de 120 jeunes franchissent une étape clé vers l'emploi, grâce au soutien de nos entreprises partenaires. Ce diplôme, délivré en partenariat avec l'Entraide Nationale, témoigne de leur persévérance et marque le début d'une carrière prometteuse. Nous avons été honorés par la présence de personnalités de marque : le Wali de Casablanca, le Gouverneur des arrondissements de Casablanca-Anfa, Mme la Maire de Casablanca. Merci infiniment à nos partenaires et à la communauté Bab Rayan pour leur soutien indéfectible."
     },
     {
       id: 2,
@@ -195,14 +210,9 @@ export default function Home() {
   const handlePlayClick = () => {
     setIsPlaying(true);
   };
-  const handlePlayClick1 = () => {
-    setIsPlaying1(true);
-  };
 
   const [selectedArticle, setSelectedArticle] = useState(null);
-  const [selectedBlog, setSelectedBlog] = useState(null);
   const [modal2Open, setModal2Open] = useState(false);
-  const [blogModal, setBlogModal] = useState(false);
   return (
     <>
       {/* Main Content */}
@@ -536,7 +546,7 @@ export default function Home() {
                 animate="animate"
               >
                 <img
-                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan3.webp?alt=media&token=cee70e0d-8cc2-4143-a7d8-d50d947bf59b"
+                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan3.webp?alt=media&token=cee70e0d-8cc2-4143-a7d8-d50d947bf59b"
                   alt="Les Ftours Bab Rayan"
                   className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
                 />
@@ -661,7 +671,7 @@ export default function Home() {
         <div>
           <motion.h1
             className="p-4 text-2xl md:text-4xl font-bold text-center my-8 relative"
-            variants={fadeIn} // Apply fadeIn animation
+            variants={fadeIn}
             initial="initial"
             animate="animate"
           >
@@ -669,24 +679,64 @@ export default function Home() {
             <div className="w-24 md:w-48 h-1 bg-yellow-200 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           </motion.h1>
 
-            
-          {blogv.map((articlev, index) => (
+          {/* Show fetched news first */}
+          {newsfetched.slice(0, 3).map((item) => (
             <motion.div
               className="flex flex-col items-center gap-9 md:px-4"
-              variants={staggerContainer} 
+              variants={staggerContainer}
+              key={item.id}
+              initial="initial"
+              animate="animate"
+            >
+              <motion.div
+                className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl"
+                variants={fadeIn}
+              >
+                {/* Image Section */}
+                <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn} loading="lazy">
+                  <img src={item.pic} alt={item.title} className="rounded-xl w-full md:h-[310px] object-cover" />
+                </motion.div>
+
+                {/* Text Section */}
+                <motion.div className="text-center md:text-left" variants={fadeIn}>
+                  <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
+                    {item.title}
+                  </h1>
+                  <p className="text-gray-700 mb-4 italic text-sm md:text-base" dangerouslySetInnerHTML={{ __html: item.shortContent }}>
+                  </p>
+                  <motion.button
+                    onClick={() => { setSelectedBlog(item); setBlogModal(true) }}
+                    className="inline-block bg-yellow-300 rounded-full text-red-500 font-semibold px-4 py-2 transition hover:bg-yellow-400"
+                    variants={scaleIn}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Découvrir plus
+                  </motion.button>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          ))}
+
+          {/* Show TelQuel video blog next if we have less than 3 fetched news */}
+          {newsfetched.length < 3 && blogv.map((articlev, index) => (
+            <motion.div
+              className="flex flex-col items-center gap-9 md:px-4"
+              variants={staggerContainer}
               key={index}
               initial="initial"
               animate="animate"
             >
               <motion.div
-                className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl" variants={fadeIn} >
-                {/* Image Section */}
+                className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl"
+                variants={fadeIn}
+              >
+                {/* Video Section */}
                 <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn} loading="lazy">
-                <video className="w-full md:h-[310px] rounded-xl" controls>
-                        <source src={articlev.img} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                  {/* <img src={articlev.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" /> */}
+                  <video className="w-full md:h-[310px] rounded-xl" controls>
+                    <source src={articlev.img} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </motion.div>
 
                 {/* Text Section */}
@@ -696,26 +746,33 @@ export default function Home() {
                   </h1>
                   <p className="text-gray-700 mb-4 italic text-sm md:text-base" dangerouslySetInnerHTML={{ __html: articlev.description }}>
                   </p>
-                  <motion.button onClick={() => { window.open('https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s', '_blank') }}
-                  className="inline-block bg-yellow-300 rounded-full text-red-500 font-semibold px-4 py-2 transition hover:bg-yellow-400"
-                    variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} >
+                  <motion.button
+                    onClick={() => { window.open('https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s', '_blank') }}
+                    className="inline-block bg-yellow-300 rounded-full text-red-500 font-semibold px-4 py-2 transition hover:bg-yellow-400"
+                    variants={scaleIn}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     Découvrir plus
                   </motion.button>
                 </motion.div>
               </motion.div>
             </motion.div>
           ))}
-          {/* 222222222222222222222222222222$$$$$$$$$$$$$$$#################### */}
-          {blogs.map((article, index) => (
+
+          {/* Show static blogs only if we have less than 3 total blogs */}
+          {newsfetched.length + blogv.length < 3 && blogs.slice(0, 3 - (newsfetched.length + blogv.length)).map((article, index) => (
             <motion.div
               className="flex flex-col items-center gap-9 md:px-4"
-              variants={staggerContainer} 
+              variants={staggerContainer}
               key={index}
               initial="initial"
               animate="animate"
             >
               <motion.div
-                className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl" variants={fadeIn} >
+                className="md:px-6 py-6 rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-center w-full max-w-[90%] md:max-w-7xl"
+                variants={fadeIn}
+              >
                 {/* Image Section */}
                 <motion.div className="flex-shrink-0 w-full lg:w-[45%]" variants={fadeIn} loading="lazy">
                   <img src={article.img} alt="Graduation" className="rounded-xl w-full md:h-[310px] object-cover" />
@@ -728,9 +785,13 @@ export default function Home() {
                   </h1>
                   <p className="text-gray-700 mb-4 italic text-sm md:text-base" dangerouslySetInnerHTML={{ __html: article.description }}>
                   </p>
-                  <motion.button onClick={() => { setSelectedBlog(article); setBlogModal(true) }}
+                  <motion.button
+                    onClick={() => { setSelectedBlog(article); setBlogModal(true) }}
                     className="inline-block bg-yellow-300 rounded-full text-red-500 font-semibold px-4 py-2 transition hover:bg-yellow-400"
-                    variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} >
+                    variants={scaleIn}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     Découvrir plus
                   </motion.button>
                 </motion.div>
@@ -738,16 +799,29 @@ export default function Home() {
             </motion.div>
           ))}
 
-
           {selectedBlog && (
-            <Modal title={<h2 className="text-center w-full text-xl font-semibold">{selectedBlog.title}</h2>} centered open={blogModal} onCancel={() => setBlogModal(false)} width={800} bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }} footer={null} >
+            <Modal
+              title={<h2 className="text-center w-full text-xl font-semibold">{selectedBlog.title}</h2>}
+              centered
+              open={blogModal}
+              onCancel={() => setBlogModal(false)}
+              width={800}
+              bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }}
+              footer={null}
+            >
               <div className="flex flex-col items-center">
                 {/* Styled Image */}
-                <Image src={selectedBlog.img} className="w-full h-auto max-h-[300px] object-cover rounded-lg mb-4 shadow-md" alt={selectedBlog.title} width={500} height={300} />
+                <Image
+                  src={selectedBlog.pic || selectedBlog.img}
+                  className="w-full h-auto max-h-[300px] object-cover rounded-lg mb-4 shadow-md"
+                  alt={selectedBlog.title}
+                  width={500}
+                  height={300}
+                />
 
                 {/* Content Section */}
                 <div className="max-h-[60vh] overflow-y-auto px-4 text-gray-700 leading-relaxed text-lg">
-                  <p dangerouslySetInnerHTML={{ __html: selectedBlog.text ? selectedBlog.text : selectedBlog.description }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: selectedBlog.text || selectedBlog.description }}></p>
                 </div>
               </div>
             </Modal>
@@ -755,15 +829,18 @@ export default function Home() {
 
           {/* Link to All News */}
           <div className="p-6 flex items-center md:my-4 justify-center">
-            <motion.a href="/blog" variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105" >
+            <motion.a
+              href="/blog"
+              variants={scaleIn}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105"
+            >
               Voir toutes les Actualités
             </motion.a>
           </div>
         </div>
       </motion.div>
-      {/* </>
-      )} */}
     </>
   );
 }

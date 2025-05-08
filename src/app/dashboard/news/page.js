@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye, FaFileExcel } from 'react-icons/fa';
 import { Popconfirm, message } from 'antd';
+import * as XLSX from 'xlsx';
 
 export default function Actualite() {
     const [actualites, setActualites] = useState([]);
@@ -13,6 +14,8 @@ export default function Actualite() {
     const [currentPage, setCurrentPage] = useState(1);  // Track current page
     const [itemsPerPage, setItemsPerPage] = useState(7); // Number of items per page
     const [sortField, setSortField] = useState('createdAt'); // Track which field to sort by, default to createdAt
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [actualiteToDelete, setActualiteToDelete] = useState(null);
 
     useEffect(() => {
         fetchNews();
@@ -120,27 +123,83 @@ export default function Actualite() {
         setCurrentPage(page);
     };
 
+    
+
+    const handleDeleteActualite = async () => {
+        if (actualiteToDelete) {
+            try {
+                const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${actualiteToDelete.id}`, {
+                    method: 'DELETE',
+                });
+
+                const result = await response.json();
+
+                if (result.status) {
+                    toast.success("Actualité supprimée avec succès");
+                    fetchNews(); // Refresh the list
+                    setShowDeleteModal(false);
+                } else {
+                    toast.error("Erreur lors de la suppression");
+                }
+            } catch (error) {
+                console.error("Error deleting news:", error);
+                toast.error("Erreur lors de la suppression");
+            }
+        }
+    };
+
+    const handleExportToExcel = () => {
+        try {
+            // Prepare data for export
+            const exportData = filteredActualites.map(item => ({
+                'Titre': item.title,
+                'Date de publication': item.datePublication,
+                'Contenu': item.contenu,
+                'Likes': item.likes
+            }));
+
+            // Create worksheet
+            const ws = XLSX.utils.json_to_sheet(exportData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Actualités");
+
+            // Generate Excel file
+            XLSX.writeFile(wb, "actualites.xlsx");
+            toast.success("Export réussi!");
+        } catch (error) {
+            console.error("Error exporting to Excel:", error);
+            toast.error("Erreur lors de l'export");
+        }
+    };
+
     return (
         <section>
             <ToastContainer position="top-right" autoClose={3000} />
 
-            <div className="py-5 flex justify-between items-center">
-                <div>
-                    Rechercher par titre:
+            <div className="py-5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+                <div className="w-full sm:w-auto">
+                    <label className="block mb-1 font-medium" htmlFor="searchTitle">Rechercher par titre:</label>
                     <input
+                        id="searchTitle"
                         type="text"
-                        className="form-input w-full mt-2 p-2 border rounded"
+                        className="form-input w-full sm:w-64 p-2 border rounded"
                         placeholder="Rechercher"
                         value={searchTitle}
                         onChange={(e) => setSearchTitle(e.target.value)}
                     />
                 </div>
-                <div className="flex items-center gap-4">
-                    <div className="flex items-center">
-                        <label htmlFor="itemsPerPage" className="mr-2 text-sm font-medium">Éléments par page:</label>
+                <div className="flex flex-col sm:flex-row items-stretch gap-2 sm:gap-4 w-full sm:w-auto">
+                    <button 
+                        onClick={handleExportToExcel}
+                        className="btn_export flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 h-10"
+                    >
+                        <FaFileExcel /> Exporter en Excel
+                    </button>
+                    <div className="flex items-center gap-2 bg-white rounded px-2 h-10 border">
+                        <label htmlFor="itemsPerPage" className="text-sm font-medium whitespace-nowrap">Éléments par page:</label>
                         <select
                             id="itemsPerPage"
-                            className="p-2 border rounded"
+                            className="p-2 rounded outline-none min-w-[60px] text-black"
                             value={itemsPerPage}
                             onChange={(e) => {
                                 setItemsPerPage(Number(e.target.value));
@@ -154,7 +213,7 @@ export default function Actualite() {
                             <option value={20}>20</option>
                         </select>
                     </div>
-                    <button onClick={() => window.location.href = "/dashboard/news/add"} className="btn_add px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                    <button onClick={() => window.location.href = "/dashboard/news/add"} className="btn_add px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 h-10">
                         Ajouter un nouvel article
                     </button>
                 </div>
@@ -210,27 +269,22 @@ export default function Actualite() {
                                     <td className="py-4 flex space-x-2">
                                         <button
                                             type="button"
-                                            className="btn_view px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                                            className="bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center justify-center"
                                             onClick={() => window.location.href = `/dashboard/news/${actualite.id}`}
+                                            title="View"
                                         >
                                             <FaEye />
                                         </button>
-                                        <Popconfirm
-                                            title="Confirmation"
-                                            description="Êtes-vous sûr de vouloir supprimer cette actualité?"
-                                            onConfirm={() => deleteNews(actualite.id)}
-                                            onCancel={cancelDelete}
-                                            okText="Oui"
-                                            cancelText="Non"
-                                            okType="danger"
+                                        <button
+                                            onClick={() => {
+                                                setActualiteToDelete(actualite);
+                                                setShowDeleteModal(true);
+                                            }}
+                                            className="p-2 text-red-600 hover:text-red-900 flex items-center justify-center"
+                                            title="Delete"
                                         >
-                                            <button
-                                                type="button"
-                                                className="text-white px-3 py-1 bg-red-500 hover:bg-red-600 rounded-md"
-                                            >
-                                                <FaTrash />
-                                            </button>
-                                        </Popconfirm>
+                                            <FaTrash className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
@@ -254,6 +308,32 @@ export default function Actualite() {
                         </div>
                     )}
                 </>
+            )}
+
+            {/* Delete Confirmation Modal */}
+            {showDeleteModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-white rounded-lg p-4 sm:p-6 max-w-sm w-full">
+                        <h3 className="text-lg sm:text-xl font-medium mb-4">Confirmer la suppression</h3>
+                        <p className="mb-4 text-sm sm:text-base">
+                            Êtes-vous sûr de vouloir supprimer l'actualité <strong>{actualiteToDelete.title}</strong>?
+                        </p>
+                        <div className="flex justify-end space-x-2">
+                            <button
+                                onClick={() => setShowDeleteModal(false)}
+                                className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 focus:outline-none text-xs sm:text-sm"
+                            >
+                                Annuler
+                            </button>
+                            <button
+                                onClick={handleDeleteActualite}
+                                className="px-3 py-1 sm:px-4 sm:py-2 bg-red-600 text-white rounded hover:bg-red-700 focus:outline-none text-xs sm:text-sm"
+                            >
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
             )}
         </section>
     );
