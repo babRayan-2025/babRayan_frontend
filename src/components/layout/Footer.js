@@ -7,7 +7,8 @@ export default function Footer() {
     isPrivacyModalOpen,
     openPrivacyModal,
     closePrivacyModal,
-    privacyPolicyText
+    privacyPolicyText,
+    setIsPrivacyModalOpen
   } = usePrivacyPolicy();
 
   return (
@@ -46,7 +47,6 @@ export default function Footer() {
             {[
               "Missions & Valeurs",
               "Gouvernance",
-              "Nos Projets",
               "Nos Partenaires",
               "Nous Contacter",
             ].map((item, index) => (
@@ -68,9 +68,8 @@ export default function Footer() {
             {[
               "Faire un don",
               "Parrainer un enfant",
-              "Mécénat & Partenariat",
+              "Partenariat",
               "Bénévolat",
-              "Événements",
             ].map((item, index) => (
               <p
                 key={index}
@@ -86,7 +85,7 @@ export default function Footer() {
           {/* Follow Section */}
           <div className="space-y-4">
             <h4 className="uppercase font-bold text-white mb-4">Suivre</h4>
-            {["Actualités", "Facebook", "Instagram", "LinkedIn", "YouTube"].map(
+            {["Actualités", "Facebook", "Instagram", "LinkedIn"].map(
               (item, index) => (
                 <p
                   key={index}
@@ -131,29 +130,7 @@ export default function Footer() {
         }}
         centered
       >
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6 z-50">
-          <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-4xl max-h-[80vh] overflow-y-auto">
-            <div className="bg-red-700 text-white py-4 px-6 rounded-xl mb-6 relative">
-              <h2 className="text-xl font-bold">Politique de Confidentialité</h2>
-              <button
-                onClick={() => setIsPrivacyModalOpen(false)}
-                className="absolute top-2 right-3 bg-white bg-opacity-20 text-white hover:bg-opacity-30 rounded-full w-8 h-8 flex items-center justify-center"
-                aria-label="Fermer"
-              >
-                ✕
-              </button>
-            </div>
-            <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: privacyPolicyText }} />
-            <div className="mt-6 flex justify-end">
-              <button
-                onClick={() => setIsPrivacyModalOpen(false)}
-                className="px-6 py-2 bg-red-700 text-white rounded-full hover:bg-red-800"
-              >
-                Fermer
-              </button>
-            </div>
-          </div>
-        </div>
+        <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: privacyPolicyText }} />
       </Modal>
     </footer>
   );
