@@ -54,7 +54,11 @@ export default function Footer() {
                 key={index}
                 className="text-gray-400 border-b border-transparent hover:text-white  transition-colors cursor-pointer"
               >
-                <span className="hover:border-white border-b border-transparent">
+                <span className="hover:border-white border-b border-transparent"
+                onClick={() => window.open(item === "Missions & Valeurs" ? "https://www.babrayan.ma/missions"
+                : item === "Gouvernance" ? "https://www.babrayan.ma/gouvernance"
+                : item === "Nos Partenaires" ? "https://www.babrayan.ma/partenaires"
+                : item === "Nous Contacter" ? "https://www.babrayan.ma/contact_us" : "")}>
                   {item}
                 </span>
               </p>
@@ -75,7 +79,11 @@ export default function Footer() {
                 key={index}
                 className="text-gray-400 border-b border-transparent hover:text-white transition-colors cursor-pointer"
               >
-                <span className="hover:border-white border-b border-transparent">
+                <span className="hover:border-white border-b border-transparent"
+                onClick={() => window.open(item === "Faire un don" ? "https://www.babrayan.ma/donation"
+                : item === "Parrainer un enfant" ? "https://www.babrayan.ma/parrainage"
+                : item === "Partenariat" ? "https://www.babrayan.ma/devenir_partenaire"
+                : item === "Bénévolat" ? "https://www.babrayan.ma/benevole" : "")}>
                   {item}
                 </span>
               </p>
@@ -91,7 +99,11 @@ export default function Footer() {
                   key={index}
                   className="text-gray-400 border-b border-transparent hover:text-white transition-colors cursor-pointer"
                 >
-                  <span className="hover:border-white border-b border-transparent">
+                  <span className="hover:border-white border-b border-transparent"
+                    onClick={() => window.open(item === "Facebook" ? "https://www.facebook.com/babrayan"
+                      : item === "Instagram" ? "https://www.instagram.com/association_babrayan"
+                        : item === "LinkedIn" ? "https://www.linkedin.com/company/associationbabrayan/"
+                          : item === "Actualités" ? "https://www.babrayan.ma/blog" : "")}>
                     {item}
                   </span>
                 </p>
