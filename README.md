@@ -84,6 +84,6 @@ src/
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📧 Contact
+## 📞 Support
 
-Project Link: [https://github.com/your-username/bab-rayan-frontend](https://github.com/your-username/bab-rayan-frontend)
+For more information or support, please contact Ynov developers.
