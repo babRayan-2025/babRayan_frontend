@@ -42,13 +42,7 @@ A modern web platform built with Next.js and React, featuring a comprehensive da
    npm install
    ```
 
-3. **Navigate to functions**
-   ```bash
-   cd functions
-   npm install
-   ```
-
-4. **Start the development server**
+3. **Start the development server**
    ```bash
    npm run dev
    ```
@@ -56,27 +50,23 @@ A modern web platform built with Next.js and React, featuring a comprehensive da
 
 Then open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🧪 Testing
-
-```bash
-npm run test
-```
 
 ## 🏗️ Building for Production
 
+The project is configured for automatic production builds. When you push a commit to the main branch, the following happens automatically:
+
+1. GitHub Actions triggers the build process
+2. The application is built using `npm run build`
+3. The production build is automatically deployed to Firebase Hosting
+
+To manually build for production:
 ```bash
 npm run build
 ```
 
 ## 🚢 Deployment
 
-This project is configured for Firebase hosting:
-
-```bash
-npm run build
-npm run export  # Exports to the 'out' directory
-firebase deploy
-```
+This project is configured for Firebase hosting
 
 ## 📁 Project Structure
 
@@ -89,14 +79,6 @@ src/
 ├── assets/            # Static assets (images, etc.)
 └── ...
 ```
-
-## 🌐 Contributing
-
-1. Fork the project
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add some amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
 
 ## 📄 License
 
