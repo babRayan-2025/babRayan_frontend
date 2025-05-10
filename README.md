@@ -33,7 +33,7 @@ A modern web platform built with Next.js and React, featuring a comprehensive da
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/bab-rayan-frontend.git
+   git clone https://github.com/babRayan-2025/babRayan_frontend.git
    cd bab-rayan-frontend
    ```
 
