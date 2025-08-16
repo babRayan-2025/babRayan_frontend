@@ -51,6 +51,7 @@ export default function Login() {
       const data = await response.json();
       if (data.status) {
         localStorage.setItem('userID', data.data.user.id);
+        localStorage.setItem('token', data.data.token);
         localStorage.setItem('userName', data.data.user.name);
         toast.success('Connexion réussie !');
 
