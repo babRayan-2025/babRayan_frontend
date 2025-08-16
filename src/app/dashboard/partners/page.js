@@ -18,6 +18,7 @@ export default function Partenaires() {
     const [currentPage, setCurrentPage] = useState(1);  // Track current page
     const [itemsPerPage, setItemsPerPage] = useState(4); // Number of items per page
     const imageDefault = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4";
+    const token = localStorage.getItem("token");
 
     // Modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +27,11 @@ export default function Partenaires() {
     useEffect(() => {
         const fetchPartenaires = async () => {
             try {
-                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire');
+                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire', {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
                 const result = await response.json();
 
                 if (result.status && result.data) {
@@ -80,8 +85,9 @@ export default function Partenaires() {
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/partenaire/${id}`, {
                 method: 'DELETE',
                 headers: {
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`,
+                },
             });
 
             if (!response.ok) {
@@ -108,7 +114,8 @@ export default function Partenaires() {
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/partenaire/${id}/approuve`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`,
                 }
             });
 

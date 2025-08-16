@@ -26,6 +26,7 @@ export default function DashboardPage() {
   const [totalDonations, setTotalDonations] = useState(0);
   const [totalCmiDonations, setTotalCmiDonations] = useState(0);
   const [totalPaypalDonations, setTotalPaypalDonations] = useState(0);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     // Function to fetch all dashboard data
@@ -41,7 +42,11 @@ export default function DashboardPage() {
         }
 
         // Fetch CMI donations - only paid ones
-        const cmiResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/get-cmi');
+        const cmiResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/get-cmi', {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
         const cmiData = await cmiResponse.json();
         const paidCmi = (cmiData.data || []).filter(donation =>
           donation.status === "Paid" || donation.status === "paid"
@@ -49,7 +54,11 @@ export default function DashboardPage() {
         setPaidCmiDonations(paidCmi);
 
         // Fetch PayPal donations - only paid ones
-        const paypalResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/don/get-paypal');
+        const paypalResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/don/get-paypal', {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
         const paypalData = await paypalResponse.json();
         const paidPaypal = (paypalData || []).filter(donation =>
           donation.status === "paid"
@@ -68,7 +77,11 @@ export default function DashboardPage() {
 
 
         // total partenaires
-        const partnershipsResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire');
+        const partnershipsResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire', {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
         const partnershipsData = await partnershipsResponse.json();
         if (partnershipsData.status) {
           const approuvedPartnerships = (partnershipsData.data || []).filter(partnership =>
@@ -147,7 +160,7 @@ export default function DashboardPage() {
       const cmiChartData = Object.values(monthlyCmiTotals);
       const paypalChartData = Object.values(monthlyPaypalTotals);
       const totalChartData = cmiChartData.map((cmi, index) => cmi + paypalChartData[index]);
-      
+
       setDonationData({
         total: totalChartData,
         cmi: cmiChartData,
@@ -248,7 +261,7 @@ export default function DashboardPage() {
               <p className="card_value text-2xl sm:text-3xl font-bold">{partnershipsCount}</p>
               <p className="card_description text-xs sm:text-sm text-gray-500">Total Partenariats</p>
             </div>
-            
+
             {/* Donations Card */}
             <div className="dashboard_card donations_card p-3 sm:p-4 rounded-lg shadow-lg animate__animated animate__fadeInRight">
               <div className="flex justify-center items-center">
@@ -261,7 +274,7 @@ export default function DashboardPage() {
               <p className="card_description text-xs sm:text-sm text-gray-500">Total Dons</p>
             </div>
           </div>
-          
+
           {/* Donation Trend Chart */}
           <div className="mt-8 sm:mt-16 flex justify-center">
             <div className="p-2 sm:p-3 rounded-lg shadow-lg w-full">

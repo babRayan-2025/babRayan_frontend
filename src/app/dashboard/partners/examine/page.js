@@ -12,11 +12,16 @@ export default function ExaminePartenaire() {
     const [error, setError] = useState(null);
     const [selectedPartner, setSelectedPartner] = useState(null);
     const imageDefault = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4";
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         const fetchPendingPartners = async () => {
             try {
-                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire');
+                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire', {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
                 const result = await response.json();
 
                 if (result.status && result.data) {
@@ -68,8 +73,10 @@ export default function ExaminePartenaire() {
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/partenaire/${id}/approuve`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`,
+                },
+
             });
 
             if (!response.ok) {
@@ -81,7 +88,7 @@ export default function ExaminePartenaire() {
 
             // Remove the approved partner from the list
             setPartners(prevPartners => prevPartners.filter(partner => partner.id !== id));
-            
+
             if (selectedPartner && selectedPartner.id === id) {
                 setSelectedPartner(null);
             }
@@ -134,7 +141,7 @@ export default function ExaminePartenaire() {
                 draggable
                 pauseOnHover
             />
-            
+
             <div className="flex items-center mb-6">
                 <button
                     onClick={selectedPartner ? backToList : goToPartnersDashboard}
@@ -219,7 +226,7 @@ export default function ExaminePartenaire() {
                                     En attente d'approbation
                                 </span>
                             </div>
-                            
+
                             <div className="md:w-2/3 md:pl-6">
                                 <div className="mb-6">
                                     <h3 className="text-lg font-semibold mb-2 text-blue-600 border-b pb-2">Informations de Contact</h3>
@@ -238,7 +245,7 @@ export default function ExaminePartenaire() {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div>
                                     <h3 className="text-lg font-semibold mb-2 text-blue-600 border-b pb-2">Message</h3>
                                     <div className="bg-gray-50 p-4 rounded-md">
@@ -247,7 +254,7 @@ export default function ExaminePartenaire() {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="mt-8 flex justify-end border-t pt-4">
                             <button
                                 onClick={backToList}

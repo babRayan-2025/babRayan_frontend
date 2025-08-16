@@ -17,11 +17,16 @@ export default function Benevoles() {
     const [showModal, setShowModal] = useState(false);
     const imageDefault = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4"
     const [exporting, setExporting] = useState(false);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/benevolat');
+                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/benevolat', {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
                 const result = await response.json();
 
                 if (result.status && result.data) {
@@ -101,7 +106,11 @@ export default function Benevoles() {
     const deleteVolunteer = async (id) => {
         try {
             const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/benevolat/${id}`, {
-                method: 'DELETE',
+                method: 'DELETE',                
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`,
+                },
             });
 
             if (response.ok) {
