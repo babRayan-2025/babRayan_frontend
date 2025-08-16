@@ -15,6 +15,7 @@ export default function CmiPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('all');
   const [itemsPerPage, setItemsPerPage] = useState(7);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     fetchDonations();
@@ -22,7 +23,11 @@ export default function CmiPage() {
 
   const fetchDonations = async () => {
     try {
-      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/get-cmi');
+      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/get-cmi', {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
       const data = await response.json();
       setDonations(data.data || []);
       setLoading(false);
