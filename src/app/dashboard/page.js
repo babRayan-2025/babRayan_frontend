@@ -25,6 +25,23 @@ export default function DashboardPage() {
   const [totalPaypalDonations, setTotalPaypalDonations] = useState(0);
   const token = localStorage.getItem("token");
 
+  // ✅ Helper: logout if token expired
+  const handleLogout = () => {
+    localStorage.clear();
+    router.push("/login"); // redirect to login
+  };
+
+
+
+  // ✅ Helper: check API response for expired token
+  const checkTokenExpired = (data) => {
+    if (data?.error === "Invalid or expired token") {
+      handleLogout();
+      return true; // stop further execution
+    }
+    return false;
+  };
+
   useEffect(() => {
     // Function to fetch all dashboard data
     const fetchDashboardData = async () => {
