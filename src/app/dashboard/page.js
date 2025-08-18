@@ -62,6 +62,8 @@ export default function DashboardPage() {
           },
         });
         const cmiData = await cmiResponse.json();
+
+
         if (checkTokenExpired(cmiData)) return; // ⬅️ logout if expired
         const paidCmi = (cmiData.data || []).filter(donation =>
           donation.status === "Paid" || donation.status === "paid"
@@ -109,7 +111,7 @@ export default function DashboardPage() {
 
       } catch (err) {
         console.error("Error fetching dashboard data:", err);
-        setError("Échec du chargement des données du tableau de bord. Utilisation des valeurs par défaut.");
+        setError("Échec du chargement des données du tableau de bord. Utilisation des valeurs par défaut. Veuillez vous déconnecter puis vous reconnecter pour continuer.");
 
       } finally {
         setLoading(false);
@@ -237,6 +239,12 @@ export default function DashboardPage() {
           {error && (
             <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
               <p>{error}</p>
+              <button
+                onClick={handleLogout}
+                className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+              >
+                Se reconnecter
+              </button>
             </div>
           )}
 
