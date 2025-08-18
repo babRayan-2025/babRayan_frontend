@@ -45,6 +45,7 @@ export default function DashboardPage() {
           },
         });
         const cmiData = await cmiResponse.json();
+        if (checkTokenExpired(cmiData)) return; // ⬅️ logout if expired
         const paidCmi = (cmiData.data || []).filter(donation =>
           donation.status === "Paid" || donation.status === "paid"
         );
@@ -57,6 +58,7 @@ export default function DashboardPage() {
           },
         });
         const paypalData = await paypalResponse.json();
+        if (checkTokenExpired(paypalData)) return; // ⬅️ logout if expired
         const paidPaypal = (paypalData || []).filter(donation =>
           donation.status === "paid"
         );
