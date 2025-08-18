@@ -9,9 +9,6 @@ import axios from 'axios';
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-// API base URL
-const API_BASE_URL = 'https://api-mmcansh33q-uc.a.run.app/v1';
-
 export default function DashboardPage() {
   // State for dashboard stats
   const [users, setUsers] = useState(0);
