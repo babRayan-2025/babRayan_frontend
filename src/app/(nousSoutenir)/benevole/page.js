@@ -397,7 +397,7 @@ export default function Benevole() {
                 ].map((item, index) => (
                   <motion.button
                     key={index}
-                    className={`w-full text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${selectedFormations.includes(item)
+                    className={`w-full text-md lg:text-xl w-auto m-auto p-auto font-medium p-4 rounded-full text-center border ${selectedAdministration.includes(item)
                       ? "bg-yellow-300 border-black text-red-600"
                       : "bg-red-600 border-yellow-300 text-white-300"
                       }`}
