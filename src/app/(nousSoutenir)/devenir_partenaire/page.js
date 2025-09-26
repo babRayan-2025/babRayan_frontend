@@ -44,7 +44,7 @@ export default function DevenirPartenaire() {
     console.log("Form submitted:", formData);
 
     try {
-      const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/partenaire", {
+      const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/partenaire", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

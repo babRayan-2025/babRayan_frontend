@@ -27,7 +27,7 @@ export default function Partenaires() {
     useEffect(() => {
         const fetchPartenaires = async () => {
             try {
-                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire', {
+                const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/partenaire', {
                     headers: {
                         "Authorization": `Bearer ${token}`,
                     },
@@ -82,7 +82,7 @@ export default function Partenaires() {
     const handleDeletePartenaire = async (id) => {
         try {
             // Make API call to delete the partner
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/partenaire/${id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/partenaire/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ export default function Partenaires() {
     const handleApprovePartenaire = async (id) => {
         try {
             // Make API call to approve the partner
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/partenaire/${id}/approuve`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/partenaire/${id}/approuve`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -49,14 +49,14 @@ export default function DashboardPage() {
         setLoading(true);
 
         // Fetch users count
-        const usersResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/users');
+        const usersResponse = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users');
         const usersData = await usersResponse.json();
         if (usersData.status) {
           setUsers(usersData.data);
         }
 
         // Fetch CMI donations - only paid ones
-        const cmiResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/get-cmi', {
+        const cmiResponse = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/cmi/get-cmi', {
           headers: {
             "Authorization": `Bearer ${token}`,
           },
@@ -71,7 +71,7 @@ export default function DashboardPage() {
         setPaidCmiDonations(paidCmi);
 
         // Fetch PayPal donations - only paid ones
-        const paypalResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/don/get-paypal', {
+        const paypalResponse = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/don/get-paypal', {
           headers: {
             "Authorization": `Bearer ${token}`,
           },
@@ -95,7 +95,7 @@ export default function DashboardPage() {
 
 
         // total partenaires
-        const partnershipsResponse = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire', {
+        const partnershipsResponse = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/partenaire', {
           headers: {
             "Authorization": `Bearer ${token}`,
           },

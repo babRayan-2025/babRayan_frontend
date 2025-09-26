@@ -49,7 +49,7 @@ export default function NewsDetailClient({ newsId }) {
     const fetchNewsById = async (id) => {
         try {
             setLoading(true);
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${id}`);
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${id}`);
             const result = await response.json();
 
             if (result.status && result.data) {
@@ -166,7 +166,7 @@ export default function NewsDetailClient({ newsId }) {
             }
             
             // Send to API for update
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${newsId}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${newsId}`, {
                 method: "PUT",
                 body: formData,
             });

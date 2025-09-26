@@ -102,7 +102,7 @@ const AddNews = () => {
             }
             
             // Send to API
-            const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/news", {
+            const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/news", {
                 method: "POST",
                 body: formData,
             });

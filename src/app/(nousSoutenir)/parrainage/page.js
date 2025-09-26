@@ -261,7 +261,7 @@ export default function Parrainage() {
   
       try {
         // Étape 1 : Envoyer une requête au backend pour générer le paiement
-        const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/createCmi', {
+        const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/cmi/createCmi', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -328,7 +328,7 @@ export default function Parrainage() {
   
       try {
         // Étape 1 : Envoyer une requête au backend pour créer le paiement PayPal
-        const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/don/payment", {
+        const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/don/payment", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

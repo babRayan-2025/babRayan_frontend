@@ -27,7 +27,7 @@ export default function Register() {
 
     setLoading(true);
     try {
-      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/auth/register', {
+      const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

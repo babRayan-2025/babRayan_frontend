@@ -45,7 +45,7 @@ export default function Actualite() {
     const fetchNews = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/news');
+            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/news');
             const result = await response.json();
 
             if (result.status && result.data) {
@@ -65,7 +65,7 @@ export default function Actualite() {
 
     const deleteNews = async (id) => {
         try {
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${id}`, {
                 method: 'DELETE',
             });
 
@@ -128,7 +128,7 @@ export default function Actualite() {
     const handleDeleteActualite = async () => {
         if (actualiteToDelete) {
             try {
-                const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/news/${actualiteToDelete.id}`, {
+                const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${actualiteToDelete.id}`, {
                     method: 'DELETE',
                 });
 

@@ -22,7 +22,7 @@ export default function Admins() {
     const fetchUsers = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/users');
+            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users');
             const result = await response.json();
 
             if (result.status && result.data) {
@@ -47,7 +47,7 @@ export default function Admins() {
     const unverifyUser = async (user) => {
         try {
 
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${user.id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${user.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export default function Admins() {
 
     const deleteUser = async (id) => {
         try {
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${id}`, {
                 method: 'DELETE',
             });
 

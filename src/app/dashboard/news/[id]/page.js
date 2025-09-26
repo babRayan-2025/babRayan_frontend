@@ -11,7 +11,7 @@ export default function NewsDetailPage({ params }) {
 export async function generateStaticParams() {
     try {
         // Fetch all news IDs from the API
-        const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/news', {
+        const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/news', {
             next: { revalidate: 3600 } // Revalidate every hour
         });
         

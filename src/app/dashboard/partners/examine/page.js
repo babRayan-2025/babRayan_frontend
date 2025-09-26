@@ -17,7 +17,7 @@ export default function ExaminePartenaire() {
     useEffect(() => {
         const fetchPendingPartners = async () => {
             try {
-                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/partenaire', {
+                const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/partenaire', {
                     headers: {
                         "Authorization": `Bearer ${token}`,
                     },
@@ -70,7 +70,7 @@ export default function ExaminePartenaire() {
     // Handle approving a partner
     const handleApprovePartner = async (id) => {
         try {
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/partenaire/${id}/approuve`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/partenaire/${id}/approuve`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -46,7 +46,7 @@ export default function Contact() {
       return;
     }
     try {
-      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/contact', {
+      const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

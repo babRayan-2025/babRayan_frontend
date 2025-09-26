@@ -25,7 +25,7 @@ export default function Contacts() {
     const fetchContacts = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/contact');
+            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/contact');
             const result = await response.json();
             
             if (result.status && result.data) {
@@ -86,7 +86,7 @@ export default function Contacts() {
             // Make the API call using PATCH with mode: 'no-cors' to bypass CORS restrictions
             // Note: This will make the response opaque, but state has already been updated optimistically
             try {
-                await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/contact/${id}/visibility`, {
+                await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/contact/${id}/visibility`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'

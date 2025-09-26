@@ -23,7 +23,7 @@ export default function PaypalPage() {
 
   const fetchDonations = async () => {
     try {
-      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/don/get-paypal', {
+      const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/don/get-paypal', {
         headers: {
           "Authorization": `Bearer ${token}`,
         },
@@ -40,7 +40,7 @@ export default function PaypalPage() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/don/delete-paypal/${id}`, {
+      const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/don/delete-paypal/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {

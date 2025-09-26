@@ -23,7 +23,7 @@ export default function Verification() {
     const fetchNonVerifiedUsers = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/users');
+            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users');
             const result = await response.json();
 
             if (result.status && result.data) {
@@ -45,7 +45,7 @@ export default function Verification() {
         try {
             const updatedUser = { ...user, isVerified: true };
 
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${user.id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${user.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ export default function Verification() {
 
     const deleteUser = async (id) => {
         try {
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${id}`, {
                 method: 'DELETE',
             });
 

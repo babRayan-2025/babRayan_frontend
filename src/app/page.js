@@ -53,7 +53,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchNews() {
       try {
-        const response = await fetch("https://api-mmcansh33q-uc.a.run.app/v1/news");
+        const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/news");
         const data = await response.json();
         if (data.status && data.data) {
           // Sort by createdAt in descending order (newest first) and take only the first 3

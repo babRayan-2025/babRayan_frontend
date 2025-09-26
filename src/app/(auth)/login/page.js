@@ -38,7 +38,7 @@ export default function Login() {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/auth/login', {
+      const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/users/forgot-password', {
+      const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users/forgot-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ export default function Login() {
   const handleResetPassword = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/users/reset-password', {
+      const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users/reset-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

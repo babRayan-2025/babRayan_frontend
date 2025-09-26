@@ -27,7 +27,7 @@ export default function SettingsPage() {
     const fetchUserData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${userId}`);
+        const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userId}`);
         const data = await response.json();
         setUserData(data.data);
         // Only set form values when the form is visible
@@ -64,7 +64,7 @@ export default function SettingsPage() {
 
     setLoading(true);
     try {
-      const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${userId}`, {
+      const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -91,7 +91,7 @@ export default function SettingsPage() {
   const handleUpdatePassword = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/${userId}`, {
+      const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -126,7 +126,7 @@ export default function SettingsPage() {
   const handleForgotPassword = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/forgot-password`, {
+      const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/forgot-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -159,7 +159,7 @@ export default function SettingsPage() {
   const handleVerifyOtp = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/users/reset-password`, {
+      const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/reset-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

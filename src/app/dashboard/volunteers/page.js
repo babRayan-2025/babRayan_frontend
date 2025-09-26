@@ -22,7 +22,7 @@ export default function Benevoles() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/benevolat', {
+                const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/benevolat', {
                     headers: {
                         "Authorization": `Bearer ${token}`,
                     },
@@ -105,7 +105,7 @@ export default function Benevoles() {
     // Delete volunteer function
     const deleteVolunteer = async (id) => {
         try {
-            const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/benevolat/${id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/benevolat/${id}`, {
                 method: 'DELETE',                
                 headers: {
                     'Content-Type': 'application/json',

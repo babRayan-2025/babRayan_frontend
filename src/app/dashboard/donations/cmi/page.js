@@ -23,7 +23,7 @@ export default function CmiPage() {
 
   const fetchDonations = async () => {
     try {
-      const response = await fetch('https://api-mmcansh33q-uc.a.run.app/v1/cmi/get-cmi', {
+      const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/cmi/get-cmi', {
         headers: {
           "Authorization": `Bearer ${token}`,
         },
@@ -40,7 +40,7 @@ export default function CmiPage() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://api-mmcansh33q-uc.a.run.app/v1/cmi/delete-cmi/${id}`, {
+      const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/cmi/delete-cmi/${id}`, {
         method: 'DELETE',
       });
 
