@@ -9,7 +9,7 @@ import sign from "../../../assets/PNG/flaiche.png";
 export default function Formation() {
   const items = [
     {
-      src: "/CFI/11.JPG",
+      src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F11.jpg?alt=media&token=3c2fb5cf-c1ae-404e-9d81-405f4623f7e0",
       text: `DES FORMATIONS DANS DES <br/> SECTEURS PORTEURS`,
     },
     {
@@ -60,7 +60,7 @@ export default function Formation() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="/CFI/1.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2Fc11.jpg?alt=media&token=bec05a41-3e7b-4688-8c08-80466c5145c4"
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
@@ -110,7 +110,7 @@ export default function Formation() {
           >
             <div className="relative w-96 h-72 rounded-xl border-3 shadow-2xl border-r-gray-500 overflow-hidden">
               <Image
-                src="/CFI/2.JPG"
+                src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F2.JPG?alt=media&token=261ea93d-95e1-489a-aa4b-366bf79ed86b"
                 alt="Présidente"
                 layout="fill"
                 objectfit="cover"
@@ -158,9 +158,9 @@ export default function Formation() {
             </h1>
             <div className="flex flex-wrap justify-center gap-10 md:gap-36 my:10 md:my-20">
               {[
-                { src: "/CFI/4.png", text: "Art culinaire" },
-                { src: "/CFI/5.png", text: "Boulangerie/Pâtisserie" },
-                { src: "/CFI/6.png", text: "Services en restauration" },
+                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F4.png?alt=media&token=f6799ec3-4efe-4968-bc0e-03f7adb746c8", text: "Art culinaire" },
+                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F5.png?alt=media&token=3681e91a-af90-4190-8756-8d112551f5c4", text: "Boulangerie/Pâtisserie" },
+                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F6.png?alt=media&token=39a48af1-8d7b-4c54-937f-13e01f001cf8", text: "Services en restauration" },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -206,13 +206,13 @@ export default function Formation() {
           >
             {[
               {
-                src: "/CFI/3.jpeg",
+                src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F3.jpeg?alt=media&token=ca3a95ea-d95f-498a-baa4-73e3991441bb",
                 title: "PARTENARIATS STRATÉGIQUES POUR L’EMPLOI",
                 description:
                   "L’association collabore avec des entreprises locales et internationales de renom, telles que Newrest et Hyatt Regency, pour garantir des opportunités de formation et d’embauche de qualité. Bab Rayan s’attache à développer en continu un réseau diversifié de partenaires, renforçant ainsi les chances d’insertion professionnelle des lauréats.",
               },
               {
-                src: "/CFI/7.jpg",
+                src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F7.jpg?alt=media&token=222b5fb4-6cca-4403-9b43-2edb3148b909",
                 title: "ACCOMPAGNEMENT VERS UNE INTÉGRATION DURABLE",
                 description:
                   "Le CFI assure un suivi personnalisé avec les formateurs et les responsables des entreprises partenaires pour garantir l’intégration réussie des lauréats. Ce suivi post-insertion s’étend sur une durée minimale de six mois après leur entrée dans leur nouvel environnement professionnel.",
