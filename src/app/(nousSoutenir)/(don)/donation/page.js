@@ -431,7 +431,12 @@ export default function Donation() {
       image: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
       desc: "Faire un don par virement bancaire",
     },
-    { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f", desc: "Payer avec CMI" },
+    {
+      id: 5,
+      label: "Carte bancaire",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/donation%2F6.png?alt=media&token=5fc10560-1b09-4032-93f2-77ef1b668bfc",
+      desc: "Payer avec CMI"
+    },
   ];
 
   const Modal = ({ method, amount, onClose }) => {
@@ -792,7 +797,7 @@ export default function Donation() {
                 className="bg-yellow-300 p-4 rounded-3xl shadow-lg w-full lg:w-1/4 border border-red-700"
               >
                 <h2 className="text-5xl text-red-700 font-extrabold my-4 mx-8 text-center">
-                   Fiche contact
+                  Fiche contact
                 </h2>
                 <p className="text-md font-semibold text-white md:mt-8">Vos données personnelles sont confidentielles et utilisées à des fins administratives.</p>
                 <form onSubmit={handleFormSubmit} className="space-y-4 md:my-16">
