@@ -331,7 +331,7 @@ export default function Press() {
                   open={modal2Open}
                   onCancel={() => setModal2Open(false)}
                   width={1500} // Increased width for better display
-                  bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }} // Scrollable content
+                  styles={{ body: { padding: "20px", maxHeight: "80vh", overflowY: "auto" } }} // Scrollable content
                   footer={null} // Removes the OK button
                 >
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

@@ -98,7 +98,7 @@ export default function NavBar() {
           {/* Left side - Logo */}
           <div className="flex items-center">
             <Link href="/">
-              <img src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481" alt="Logo" className="w-28 sm:w-36" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/Logo.png?alt=media&token=1d4af563-f0f7-466b-9184-77d005204d7a" alt="Logo" className="w-28 sm:w-36" />
             </Link>
             <div className="absolute left-1/2 transform -translate-x-1/2 lg:hidden">
             {userID && (

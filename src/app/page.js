@@ -76,28 +76,28 @@ export default function Home() {
 
   const caroussel = [
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fchildren.webp?alt=media&token=3a77488c-709c-423a-8f01-0acde1a9e440',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Fslide1_optimized_2000.webp?alt=media&token=afef0b38-a7b9-45ce-b299-7d03461f9e3f',
       picto: '/caroussel/sun.png',
       title: "CHANGER LE PARCOURS D'UNE VIE",
       description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
       link: "/protection"
     },
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fjeux.webp?alt=media&token=bbfc4156-bcb7-40f9-8ab8-7ab3055dbfb2',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FSlide2.webp?alt=media&token=e28cc389-80af-493a-95aa-5e95b6326083',
       picto: '/caroussel/main.png',
       title: "PROTÉGER, ÉDUQUER, ACCOMPAGNER",
       description: "Bab Rayan défend les droits des enfants en leur offrant un foyer sécurisant et une éducation de qualité.",
       link: "/education"
     },
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fpatisserie.webp?alt=media&token=799fb85f-1f24-4373-9d71-23f11b2d2cd8',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FSlide%203.webp?alt=media&token=bd1b4ccd-f410-4bad-b948-d50e204818fe',
       picto: '/caroussel/fleche.png',
       title: "FORMER ET INTÉGRER",
       description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens autonomes et engagés.",
       link: "/formation"
     },
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fcaroussel%2Fslider.webp?alt=media&token=76dc0fc8-a46d-4fe7-bb1b-79a407afeb06',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Fslide4.webp?alt=media&token=2ad12cfa-af2b-4c85-a40c-10aaeecc66a1',
       picto: '/caroussel/etoile.svg',
       title: "UN ENGAGEMENT QUI A DU SENS",
       description: "Rejoignez le combat pour la protection de l'enfance, engagez-vous en devenant donateur, partenaire ou bénévole.",
@@ -111,21 +111,21 @@ export default function Home() {
       title: "Protection de l'enfance",
       description: "Depuis 2014, Bab Rayan se consacre à la protection de l'enfance, assurant un environnement sûr et bienveillant pour les enfants vulnérables.",
       buttonText: "Découvrir le foyer Bab Rayan",
-      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2F2girls.webp?alt=media&token=57cd0889-0283-4562-9f75-ca477befb96a',
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FProtection%20de%20l'enfance.webp?alt=media&token=aa705d8c-9d7a-4f4b-b210-266396bd9bc7",
       link: '/protection'
     },
     {
       title: "Éducation et scolarité",
       description: "En intégrant ces jeunes dans un parcours éducatif adapté à leurs besoins, nous leur donnons les outils nécessaires pour construire leur avenir.",
       buttonText: "Découvrir l'école Palmier",
-      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2Ffille.webp?alt=media&token=2715100e-bc68-4e94-b55c-6d934e536a41',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Feducation%20et%20scolarite.webp?alt=media&token=3fd3945b-552d-4c6f-bf84-fd5d190e11d1',
       link: '/education'
     },
     {
       title: "Formation et insertion professionnelle",
       description: "Des formations offertes dans des secteurs variés tels que l'hôtellerie-restauration et les métiers du digital pour accompagner ces jeunes vers une insertion professionnelle réussie.",
       buttonText: "Découvrir le CFI",
-      image: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2F2nd%20section%2Fcfi.webp?alt=media&token=e7ac98b6-e82a-4efd-bf40-14c355ad3b84',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FFormation%20et%20insertion%20professionnelle.webp?alt=media&token=4d96b93b-5505-46a1-832e-05b84a54f428',
       link: '/formation',
     }
   ];
@@ -163,19 +163,19 @@ export default function Home() {
       title: "Mécénat culturel : Éveiller les talents et les passions de nos jeunes",
       shortDesc: "L'Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture ...",
       fullDesc: "l'Association Bab Rayan donne à ses jeunes la chance de découvrir le monde fascinant de la culture et de l'art. À travers le programme de l'école du jeune spectateur, de nombreuses sorties au théâtre sont organisées, offrant aux enfants et adolescents une immersion unique dans l'univers des arts vivants. Au-delà du théâtre, nos jeunes participent activement à des expositions d'art, explorant les œuvres et les histoires qu'elles racontent. Des ateliers de peinture et d'expression artistique leur permettent également de développer leur sensibilité, leur créativité et leur confiance en eux. Ces initiatives culturelles sont bien plus que des moments de loisir : elles nourrissent l'imaginaire, ouvrent de nouveaux horizons et encouragent chacun de nos jeunes à croire en ses talents. Nous remercions chaleureusement tous nos partenaires pour leur engagement à rendre l'art et la culture accessibles à tous.",
-      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F5.webp?alt=media&token=0f8bbf30-2ccb-42d0-a2dd-cb37eb30cf5b",
+      img: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FM%C3%A9c%C3%A9nat%20culturel%20%20%C3%89veiller%20les%20talents%20et%20les%20passions%20de%20nos%20jeunes.jpg?alt=media&token=a97fafde-d4ea-4e63-a997-219034dab752",
     },
     {
       title: "La Digitalisation au cœur des projets de Bab Rayan",
       shortDesc: "Aujourd'hui, plusieurs projets de l'association Bab Rayan intègrent la digitalisation comme levier d'apprentissage et d'insertion professionnelle. À l'école élémentaire ...",
       fullDesc: "Aujourd'hui, plusieurs projets de l'association Bab Rayan intègrent la digitalisation comme levier d'apprentissage et d'insertion professionnelle. À l'école élémentaire, nous sensibilisons dès le plus jeune âge à l'informatique à travers des programmes de codage interactifs, spécialement conçus pour éveiller l'intérêt des enfants pour les métiers de l'IT. Au niveau du Centre de Formation et d'Insertion (CFI), un module dédié aux outils bureautiques (Microsoft Office) a été intégré au curriculum pour renforcer les compétences techniques essentielles. En parallèle, le CFI a lancé un projet pilote ambitieux : ForsaTech.",
-      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F6.webp?alt=media&token=0afbdb43-3d07-4e5d-8ba0-6d9799837273",
+      img: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FLa%20Digitalisation%20au%20c%C5%93ur%20des%20projets%20de%20Bab%20Rayan.webp?alt=media&token=33345520-e4a7-4364-b86e-9d9ef972c3fa",
     },
     {
       title: "ForsaTech : Une porte d'entrée vers les métiers du numérique",
       shortDesc: "Créé pour répondre aux besoins croissant du marché digital, ForsaTech propose des formations ...",
       fullDesc: "Créé pour répondre aux besoins croissants du marché digital, ForsaTech propose des formations accélérées aux jeunes en difficulté, axées sur les compétences numériques les plus demandées. Conçu en collaboration avec des entreprises partenaires, ce programme garantit une employabilité directe grâce à une sélection rigoureuse des modules et des candidats. Forts de notre expertise dans les métiers de l'hôtellerie et de la restauration, et inspirés par le succès de ce modèle, nous sommes déterminés à élargir notre impact en ouvrant de nouvelles perspectives dans le secteur numérique. Avec ces initiatives, Bab Rayan continue de transformer les défis de la jeunesse en opportunités durables, en bâtissant un pont solide entre éducation, technologie et insertion professionnelle.",
-      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/landing%2Fimpact%2F7.webp?alt=media&token=7f83b4aa-3845-43eb-be66-0d42c582c960",
+      img: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FForsaTech%20%20Une%20porte%20d'entr%C3%A9e%20vers%20les%20m%C3%A9tiers%20du%20num%C3%A9rique.webp?alt=media&token=05dd4e07-0709-4ea7-a10c-c481051d9165",
     },
   ];
 
@@ -192,14 +192,14 @@ export default function Home() {
   const blogs = [
     {
       id: 1,
-      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.webp?alt=media&token=b0c6a114-b3c3-4f4e-b67f-4a9bf34db295",
+      img: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FRemise%20des%20dipl%C3%B4mes%20de%20la%20deuxi%C3%A8me%20promotion%20du%20CFI.jpg?alt=media&token=a6788bf7-919e-48f2-96ca-5468a7d86176",
       title: "Remise des diplômes de la deuxième promotion du CFI",
       description: "L&apos;Association Bab Rayan a eu l&apos;honneur de célébrer ce 28 Octobre 2024, la réussite de la deuxième promotion de diplômés de son Centre de Formation et d&apos;Insertion. Le CFI propose aux jeunes issus des EPS et en situation de précarité une formation qualifiante dans les métiers de l&apos;hôtellerie et de la restauration. Aujourd&apos;hui, plus de 120 jeunes franchissent une étape clé vers l&apos;emploi, grâce au soutien de nos entreprises partenaires. <br /> Nous avons été honorés par la présence de Mr le Wali, le Gouverneur et Mme la Maire de Casablanca.",
       text: "L'Association Bab Rayan a eu l'honneur de célébrer le 28 Octobre la réussite de la deuxième promotion de diplômés de son Centre de Formation et d'Insertion. Le CFI propose aux jeunes issus des établissements de protection sociale (EPS) et en situation de précarité une formation qualifiante dans les métiers de l'hôtellerie et de la restauration. Aujourd'hui, plus de 120 jeunes franchissent une étape clé vers l'emploi, grâce au soutien de nos entreprises partenaires. Ce diplôme, délivré en partenariat avec l'Entraide Nationale, témoigne de leur persévérance et marque le début d'une carrière prometteuse. Nous avons été honorés par la présence de personnalités de marque : le Wali de Casablanca, le Gouverneur des arrondissements de Casablanca-Anfa, Mme la Maire de Casablanca. Merci infiniment à nos partenaires et à la communauté Bab Rayan pour leur soutien indéfectible."
     },
     {
       id: 2,
-      img: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F9.webp?alt=media&token=91152e31-ccd5-4507-a2e5-295997badda8",
+      img: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FConvention%20entre%20Newrest%20et%20le%20CFI%20pour%20offrir%20une%20formation%20en%20alternance%20de%20qualit%C3%A9%20(2).webp?alt=media&token=d0a016ca-770e-444f-b8c1-28fd3d4840cf",
       title: "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
       description: "Le CFI à Bab Rayan & Newrest s'unissent pour offrir une formation diplômante en restauration, une première qui changera la vie d'une promotion engagée de jeunes en difficulté! D'ici août prochain, ils auront non seulement acquis des compétences, mais aussi trouvé un projet de vie qui leur ouvre les portes d'un avenir prometteur.",
     },
@@ -386,14 +386,14 @@ export default function Home() {
                       <p className="text-sm sm:text-base italic text-gray-700 mb-6">
                         {slide.description}
                       </p>
-                      <Link href={slide.link} passHref>
-                        <motion.a
+                      <Link href={slide.link}>
+                        <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           className="px-1 py-2 bg-[#f3ca31] text-white font-medium rounded-xl hover:bg-yellow-500 transition duration-300 cursor-pointer"
                         >
                           {slide.buttonText}
-                        </motion.a>
+                        </motion.button>
                       </Link>
                     </div>
                     <div className="xl:w-1/2">
@@ -546,7 +546,7 @@ export default function Home() {
                 animate="animate"
               >
                 <img
-                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan3.webp?alt=media&token=cee70e0d-8cc2-4143-a7d8-d50d947bf59b"
+                src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FLes%20Ftours%20Bab%20Rayan.webp?alt=media&token=12fa859b-22aa-4f23-a22b-7395fabc2127"
                   alt="Les Ftours Bab Rayan"
                   className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
                 />
@@ -642,7 +642,7 @@ export default function Home() {
               open={modal2Open}
               onCancel={() => setModal2Open(false)}
               width={800} // Increased width for better display
-              bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }} // Scrollable content
+              styles={{ body: { padding: "20px", maxHeight: "80vh", overflowY: "auto" } }} // Scrollable content
               footer={null} // Removes the OK button
             >
               <div className="flex flex-col items-center">
@@ -806,7 +806,7 @@ export default function Home() {
               open={blogModal}
               onCancel={() => setBlogModal(false)}
               width={800}
-              bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }}
+              styles={{ body: { padding: "20px", maxHeight: "80vh", overflowY: "auto" } }}
               footer={null}
             >
               <div className="flex flex-col items-center">
@@ -829,15 +829,16 @@ export default function Home() {
 
           {/* Link to All News */}
           <div className="p-6 flex items-center md:my-4 justify-center">
-            <motion.a
-              href="/blog"
-              variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105"
-            >
-              Voir toutes les Actualités
-            </motion.a>
+            <Link href="/blog">
+              <motion.button
+                variants={scaleIn}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105"
+              >
+                Voir toutes les Actualités
+              </motion.button>
+            </Link>
           </div>
         </div>
       </motion.div>

@@ -135,10 +135,12 @@ export default function Footer() {
         footer={null}
         width={800}
         className="privacy-policy-modal"
-        bodyStyle={{
-          maxHeight: '70vh',
-          overflowY: 'auto',
-          padding: '24px'
+        styles={{
+          body: {
+            maxHeight: '70vh',
+            overflowY: 'auto',
+            padding: '24px'
+          }
         }}
         centered
       >

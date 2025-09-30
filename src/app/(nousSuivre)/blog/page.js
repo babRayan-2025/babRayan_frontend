@@ -117,7 +117,7 @@ export default function Blog() {
   const newdata = [
     {
       id: 1,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F1.webp?alt=media&token=b0c6a114-b3c3-4f4e-b67f-4a9bf34db295",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FRemise%20des%20dipl%C3%B4mes%20de%20la%20deuxi%C3%A8me%20promotion%20du%20CFI.jpg?alt=media&token=a6788bf7-919e-48f2-96ca-5468a7d86176",
       alt: "Graduation",
       title: "Remise des diplômes de la deuxième promotion du CFI",
       description: `L'Association Bab Rayan a eu l'honneur de célébrer ce 28 Octobre 2024,
@@ -140,7 +140,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
     },
     {
       id: 3,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F5.webp?alt=media&token=4ea7e43b-07f4-4ef0-ae66-74bfbc360419",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FConvention%20entre%20Newrest%20et%20le%20CFI%20pour%20offrir%20une%20formation%20en%20alternance%20de%20qualit%C3%A9%20(2).webp?alt=media&token=d0a016ca-770e-444f-b8c1-28fd3d4840cf",
       alt: "Success",
       title:
         "Convention entre Newrest et le CFI pour offrir une formation en alternance de qualité",
@@ -396,7 +396,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
               open={modalOpen}
               onCancel={() => setModalOpen(false)}
               width={800}
-              bodyStyle={{ padding: "20px", maxHeight: "80vh", overflowY: "auto" }}
+              styles={{ body: { padding: "20px", maxHeight: "80vh", overflowY: "auto" } }}
               footer={null}
             >
               <div className="flex flex-col items-center">
