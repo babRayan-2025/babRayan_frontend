@@ -37,7 +37,7 @@ export default function About() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2F12.jpg?alt=media&token=92fc5f75-54e6-488a-89d9-b86f9f7595ff"
+            src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/about%2Fcooking%20activity.webp?alt=media&token=2e371271-33e1-4d58-bf9a-8666fc39cbde"
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
@@ -81,9 +81,9 @@ export default function About() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="relative w-80 h-60 rounded-xl border-3 border-red-500 overflow-hidden">
+            <div className="relative w-80 h-80 rounded-xl border-3 border-red-500 overflow-hidden">
               <Image
-                src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2Fpresedente.jpeg?alt=media&token=8b80bf81-19f6-4e8c-b37d-d8f55afb5f44"
+                src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/about%2Fpresident.webp?alt=media&token=262e8885-a82b-4a29-a3e2-8dc901b619c1"
                 alt="Présidente"
                 layout="fill"
                 objectfit="cover"
@@ -219,7 +219,7 @@ export default function About() {
                 >
                   <div className="overflow-hidden rounded-xl shadow-lg">
                     <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/about%2F6.jpg?alt=media&token=823c0780-9fe8-462c-8b94-5ec8ea249c50"
+                      src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/about%2FMISSION%20GLOBALE.jpg?alt=media&token=fe852484-32e5-4eff-9ea9-361125913698"
                       alt="Group of children"
                       width={500}
                       height={300}

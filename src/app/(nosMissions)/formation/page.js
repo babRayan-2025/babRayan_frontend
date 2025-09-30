@@ -158,9 +158,9 @@ export default function Formation() {
             </h1>
             <div className="flex flex-wrap justify-center gap-10 md:gap-36 my:10 md:my-20">
               {[
-                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F4.png?alt=media&token=f6799ec3-4efe-4968-bc0e-03f7adb746c8", text: "Art culinaire" },
-                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F5.png?alt=media&token=3681e91a-af90-4190-8756-8d112551f5c4", text: "Boulangerie/Pâtisserie" },
-                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F6.png?alt=media&token=39a48af1-8d7b-4c54-937f-13e01f001cf8", text: "Services en restauration" },
+                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F4.png?alt=media&token=89f474a2-3b21-4349-b0a1-d285a74a4561", text: "Art culinaire" },
+                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F5.png?alt=media&token=09ca48bb-254e-40b9-8e9b-e9f194742f54", text: "Boulangerie/Pâtisserie" },
+                { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/cfi%2F6.png?alt=media&token=9b7c1c73-8b49-4de9-a25f-e1315c176581", text: "Services en restauration" },
               ].map((item, index) => (
                 <motion.div
                   key={index}
