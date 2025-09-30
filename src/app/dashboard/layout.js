@@ -86,7 +86,7 @@ export default function DashboardLayout({ children }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 dashboard-container">
       {/* Mobile sidebar toggle */}
       <div className="lg:hidden fixed top-0 left-0 z-40 p-4">
         <button 

@@ -258,15 +258,21 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     }
 }
 
-/* Form elements responsiveness */
-input, select, textarea, button {
+/* Form elements responsiveness - scoped to dashboard only */
+.dashboard-container input, 
+.dashboard-container select, 
+.dashboard-container textarea, 
+.dashboard-container button {
     font-size: 0.875rem;
     width: 100%;
     max-width: 100%;
 }
 
 @media (min-width: 640px) {
-    input, select, textarea, button {
+    .dashboard-container input, 
+    .dashboard-container select, 
+    .dashboard-container textarea, 
+    .dashboard-container button {
         font-size: 1rem;
     }
 }
