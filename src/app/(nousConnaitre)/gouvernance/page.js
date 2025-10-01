@@ -38,7 +38,7 @@ const HeroSection = () => (
   <div className="relative">
     <div
       className="h-[750px] bg-cover bg-center"
-      style={{ backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fgouv.avif?alt=media&token=fde564d6-81ad-45d1-ba3f-58d6b83058d8')" }}
+      style={{ backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fgouvernance.jpg?alt=media&token=5dc05703-cd23-4400-b0dd-cde467fdc03f')" }}
     />
     <div className="absolute bottom-2 right-4 p-6 max-w-5xl">
       <div className="text-white p-4 lg:p-12 max-w-4xl mx-auto rounded">
@@ -74,7 +74,7 @@ export default function Gouvernance() {
     {
       name: 'Fatima Zohra Hamroudi',
       title: 'Fondatrice Présidente',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FFatima%20Zohra%20Ratibe.webp?alt=media&token=f31414cf-9b7b-429d-b281-ef85c79281a4'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fzohra.webp?alt=media&token=c6b8c9bf-de11-4bcf-b24b-0c232c2896cd'
     },
     {
       name: 'Hind Ratibe',
@@ -84,7 +84,7 @@ export default function Gouvernance() {
     {
       name: 'Abdelmoula Ratibe',
       title: 'Membre Fondateur',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Frtb.webp?alt=media&token=28617203-decf-40bc-bc64-2a9f0c2309c9'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fratib.webp?alt=media&token=09465e00-065d-4910-ae2c-da6cf081c470'
     },
     {
       name: 'Driss Lalami',
@@ -94,12 +94,12 @@ export default function Gouvernance() {
     {
       name: 'Mounji Salim Sefrioui',
       title: 'Membre Fondateur\nTrésorier général',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fsefrioui.webp?alt=media&token=fba582c8-826f-4477-8ee3-3ecbce4c28e4'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fmounji.webp?alt=media&token=f2ade29e-ce38-4c2d-a101-6529e80ba0ca'
     },
     {
       name: 'Mohamed Jamal Lahjouji',
       title: 'Membre Fondateur\nVice-président',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fjamal.webp?alt=media&token=10b06c7d-3602-4b86-8069-f90b4a9a3881'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fhajouji.webp?alt=media&token=cf1117bb-4f9d-4c53-9954-e2ec6bf88b9c'
     },
     {
       name: 'Anas Guennoun',
@@ -109,30 +109,30 @@ export default function Gouvernance() {
     {
       name: 'Hamza Laghari',
       title: 'Vice-président',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FHamza%20Laghrari.webp?alt=media&token=62fcf63e-dbd1-4b88-a79f-a8e6367568e4'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fhamza.webp?alt=media&token=34400ef8-a909-4085-80cc-7412131c3b53'
     },
     {
       name: 'Reda Essakalli',
       title: 'Conseiller en communication',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FReda%20Essakalli.webp?alt=media&token=4fdfc2d5-d711-4933-8245-7c3b160a3977'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Freda.webp?alt=media&token=d34d0ce7-413d-499d-a40b-6763e8d46c5a'
     },
     {
       name: 'Jihane Lahbabi Berrada',
       title: 'Membre du Bureau',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FJihane%20Lahbabi%20Berrada.webp?alt=media&token=5861feb7-a76f-4993-b50b-eab3ff024932'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fjihan.webp?alt=media&token=e3ad8e9b-bd45-49ab-919c-b5a2c5c54176'
     }
   ];
 
   const reports = [
-    { year: 2024, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2024.png?alt=media&token=60f80f90-9675-4cf7-b09a-a1175393dffd', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20annuel%20%202024-%20V3%20Support%20de%20communication.pdf?alt=media&token=cca9cb59-967f-4554-b3f5-69ef0e508448' },
-    { year: 2023, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2023.webp?alt=media&token=e16fae63-52de-4c4d-9241-bbfb10bda742', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20annuel%20-Association%20Bab%20Rayan%202023.pdf?alt=media&token=30a3df1f-c52a-424c-be38-4a6515cea867' },
-    { year: 2022, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2022.webp?alt=media&token=87607d16-eef8-4960-b2a9-c04451f07046', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202022.pdf?alt=media&token=40c6809f-0458-4596-8d43-d279711140e3' },
-    { year: 2021, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2021.webp?alt=media&token=f45865e2-ee62-4b6f-9665-c43cbfc8abf0', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202021.pptx?alt=media&token=10959245-2802-453a-b13f-d99dbd1fc2ed' },
-    { year: 2020, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2020.webp?alt=media&token=216db117-3edb-4631-84d8-eeb57f5ae054', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202020.pdf?alt=media&token=92950d8a-f068-4bc5-be9f-bdffcb254289' },
-    { year: 2019, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2019.webp?alt=media&token=eb0201a6-33cb-407a-a285-716893c84786', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202019.pdf?alt=media&token=d7ec47d8-ea6b-43dd-beea-1da225c36de1' },
-    { year: 2018, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2018.webp?alt=media&token=deeddb4c-5330-4001-b7c3-92b3144a0e4f', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202018.pdf?alt=media&token=2e528c54-6f71-493f-98dd-acee4456e63c' },
-    { year: 2017, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2017.webp?alt=media&token=09ed3975-ad1b-4286-b570-537fd34c235e', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202017.pdf?alt=media&token=5f26bb18-1ada-40d7-9646-3b07f675c923' },
-    { year: 2016, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Frap2016.webp?alt=media&token=ce18e57d-085b-4e9a-b73f-73f71a0d0722', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2016.pdf' },
+    { year: 2024, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202024.jpg?alt=media&token=8cc3bcb0-4823-42a0-b0f4-044d2e5d0f09', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20annuel%20%202024-%20V3%20Support%20de%20communication.pdf?alt=media&token=cca9cb59-967f-4554-b3f5-69ef0e508448' },
+    { year: 2023, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202023.jpg?alt=media&token=58d7cc84-d28d-4b0a-9096-b5dcf28fba31', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20annuel%20-Association%20Bab%20Rayan%202023.pdf?alt=media&token=30a3df1f-c52a-424c-be38-4a6515cea867' },
+    { year: 2022, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202022.jpg?alt=media&token=0585cecb-64e8-4fe0-be22-b8fdb693b6a4', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202022.pdf?alt=media&token=40c6809f-0458-4596-8d43-d279711140e3' },
+    { year: 2021, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202021.jpg?alt=media&token=33001332-e946-4faf-b8d6-9c2d6921bdb3', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202021.pptx?alt=media&token=10959245-2802-453a-b13f-d99dbd1fc2ed' },
+    { year: 2020, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202020.jpg?alt=media&token=cc989b17-2f91-40a3-8542-b5988e20d2a4', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202020.pdf?alt=media&token=92950d8a-f068-4bc5-be9f-bdffcb254289' },
+    { year: 2019, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202019.jpg?alt=media&token=364545bd-c1a8-4b9e-88ea-af3db8f7e8ad', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202019.pdf?alt=media&token=d7ec47d8-ea6b-43dd-beea-1da225c36de1' },
+    { year: 2018, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202018.jpg?alt=media&token=8d4952ee-6f39-4659-bc7b-37083e23625f', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202018.pdf?alt=media&token=2e528c54-6f71-493f-98dd-acee4456e63c' },
+    { year: 2017, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202017.jpg?alt=media&token=cc434f6a-4321-4227-8166-c5397e7ee1b9', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202017.pdf?alt=media&token=5f26bb18-1ada-40d7-9646-3b07f675c923' },
+    { year: 2016, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202016.jpg?alt=media&token=9856b64f-59ac-4a60-abc4-e3a5b7289527', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2016.pdf' },
   ];
 
 
@@ -158,7 +158,7 @@ export default function Gouvernance() {
     <main>
       <HeroSection />
       {/* members -------- */}
-      <section className="w-full bg-[url('https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2Fteamback.webp?alt=media&token=5bf461ee-ba67-427d-a535-a522587d6666')] bg-cover bg-center py-16 px-6">
+      <section className="w-full bg-[url('https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Farrier%20plan.webp?alt=media&token=cb33f758-0b78-44a7-a6e4-fb5cc75286a6')] bg-cover bg-center py-16 px-6">
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="p-4 text-2xl md:text-4xl text-white font-bold text-center mb-8 relative">
             MEMBRES DU BUREAU
@@ -196,7 +196,7 @@ export default function Gouvernance() {
                   <img 
                     src={report.imageUrl}
                     alt={`Rapport Annuel ${report.year}`}
-                    className="w-full h-full "
+                    className="w-full h-full object-cover"
                     loading="lazy"
 
                   />
