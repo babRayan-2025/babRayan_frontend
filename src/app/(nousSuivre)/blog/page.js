@@ -131,7 +131,7 @@ export default function Blog() {
     },
     {
       id: 2,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F4.webp?alt=media&token=89b740c5-254f-44d2-b845-3930aee653e5",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/actualit%C3%A9%2FC%C3%A9r%C3%A9monie%20d'ouverture%20de%20PSG%20Academy.webp?alt=media&token=c364468d-8acb-41da-abee-43c53d541cac",
       alt: "Partnership",
       title: "Cérémonie d'ouverture de PSG Academy",
       description: `La PSG Academy Maroc a ouvert ses portes le 11 novembre à Casablanca, en présence d'Achraf Hakimi, invité d'honneur.
@@ -149,7 +149,7 @@ Les jeunes de Bab Rayan ont eu le privilège de le rencontrer et de jouer un mat
     },
     {
       id: 4,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F2.webp?alt=media&token=4e3ed1bb-88aa-4898-a48f-9f94f7b4fb8f",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/actualit%C3%A9%2FAiguebelle%20%20Un%20partenaire%20engage%CC%81%20avec%20nos%20jeunes%20du%20CFI.webp?alt=media&token=2c56ae94-1d41-46f7-905d-01e60bd6ee68",
       alt: "Success",
       title: "Aiguebelle : Un partenaire engagé avec nos jeunes du CFI",
       description: `Notre partenaire Aiguebelle a généreusement organisé cet automne, une journée de visite et de formation en chocolaterie pour les jeunes du Centre de Formation et d'Insertion (CFI) de Bab Rayan.
@@ -158,7 +158,7 @@ Nos étudiants ont eu l'opportunité unique de découvrir les secrets de la f
     },
     {
       id: 5,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F3.webp?alt=media&token=641b43cb-71de-408f-8fd5-ef8c3b4c864a",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/actualit%C3%A9%2FUne%20sortie%20au%20th%C3%A9%C3%A2tre%20pour%20voir%20le%20petit%20prince.webp?alt=media&token=6151e12c-77dc-4a29-9847-212535e08dde",
       alt: "Training",
       title: "Une sortie au théâtre pour voir le petit prince",
       description: `Les enfants de Bab Rayan ont assisté au premier spectacle de la saison de l'École du Jeune
@@ -168,7 +168,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
     },
     {
       id: 6,
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2F6.webp?alt=media&token=7e2fe45d-fb7c-4fe9-a09d-4a5af77a7c1c",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/actualit%C3%A9%2FUnknown.webp?alt=media&token=2df91639-ba34-4954-b9b7-f2183e89f001",
       alt: "Innovation",
       title: "Nos enfants partent à la découverte du monde",
       description: `Grâce à des voyages à l'étranger, nos enfants ont eu la chance unique d'élargir leurs horizons, de nourrir leurs rêves et de s'ouvrir à de nouvelles cultures. Ces expériences enrichissantes encouragent la tolérance, renforcent l'estime de soi, et favorisent une meilleure compréhension des autres, tout en contribuant à leur épanouissement personnel.`,
@@ -207,7 +207,7 @@ Grâce à la générosité de la Fondation Achraf Hakimi, nos jeunes ont été a
               >
                 <div className="relative aspect-video w-full">
                   <img
-                    src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/actualit%C3%A9%2Fimage.webp?alt=media&token=caa5b969-c0fc-47aa-a784-4d0865ce92a5"
+                    src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/actualit%C3%A9%2Ftelequel.webp?alt=media&token=02820e98-3d80-4e88-a7bb-5f9a0e6c989b"
                     alt="Video thumbnail"
                     className="w-full h-full object-cover"
                   />

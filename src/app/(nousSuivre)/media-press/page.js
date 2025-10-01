@@ -367,7 +367,7 @@ export default function Press() {
         >
           <h2 className="text-5xl font-semibold text-[#161618] mb-8 text-center flex items-center justify-center font-[Helvetica Neue] tracking-tighter">
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Faroow.webp?alt=media&token=bd61c759-8bf1-4c6a-bab9-a84a4bea0dc5"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fgauche.png?alt=media&token=0efc5a65-98bd-4e66-813e-09aa11e44077"
               alt="flech-partenaire"
               width={100}
               height={50}
@@ -378,7 +378,7 @@ export default function Press() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mx-auto d-flex justify-items-center gap-4 justify-center">
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2F1.webp?alt=media&token=b0ccffb0-bf07-40d1-b5ff-aa5b50785a79"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Ftelequele.webp?alt=media&token=7f0a9889-230f-47fa-ac82-828767c016fe"
               onClick={() => window.open("https://youtu.be/1SatrIi9WB0?si=MyxVJCpaVk2ye_f6", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}
@@ -386,7 +386,7 @@ export default function Press() {
               className="object-cover rounded-lg"
             />
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2F2.webp?alt=media&token=27ab31c5-247c-4edc-998b-159770110bcc"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FCasa24.webp?alt=media&token=ce1ec549-927d-4ea8-b03a-bfd34ed36aca"
               onClick={() => window.open("http://www.casa24.ma/people/economie/55743.html", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}
@@ -394,7 +394,7 @@ export default function Press() {
               className="object-cover rounded-lg"
             />
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2F3.webp?alt=media&token=5dc8d0b9-b6e7-41e9-9cfc-13517ffbb964"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FLogo-MediaPlateforme-FR.webp?alt=media&token=d5dcdf22-0da5-4384-8acc-42d05f6ff469"
               onClick={() => window.open("https://www.mediaplateforme.com/fr/100-dinsertion-pour-la-deuxieme-promotion-du-centre-de-formation-et-dinsertion-de-lassociation-bab-rayane/", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}
@@ -402,7 +402,7 @@ export default function Press() {
               className="object-cover rounded-lg"
             />
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2F4.webp?alt=media&token=ddf50f1a-24fb-4aa4-a013-d851fb15fc27"
+              src=""
               onClick={() => window.open("https://fr.hibapress.com/news-143334.html", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}
@@ -410,7 +410,7 @@ export default function Press() {
               className="object-cover rounded-lg"
             />
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Fmosta9bal.jpg?alt=media&token=87cd5e02-aa1d-4000-a28e-a691d77e3da1"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FLogo-almostakbal24-2.webp?alt=media&token=4fb09b58-ec54-4ffd-9282-254e86d4cd18"
               onClick={() => window.open("https://almostakbal24.ma/2024/10/29/منح-شهادات-التخرج-للدفعة-الثانية-من-مر/ ", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}
@@ -418,7 +418,7 @@ export default function Press() {
               className="object-cover rounded-lg"
             />
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Flaalfatima.jpg?alt=media&token=0038096e-6def-4d93-a18e-916d5622ec6d"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Flogo-lalla-fatima-HEADER.webp?alt=media&token=8c495a32-93af-49ed-9db0-fb0f556c26b5"
               onClick={() => window.open("https://www.youtube.com/watch?v=qV57CTHvD90", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}
@@ -426,7 +426,7 @@ export default function Press() {
               className="object-cover rounded-lg"
             />
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Fajrdh.jpg?alt=media&token=2e1bb10d-f0b3-4cfc-b76d-b6a7b24eaa1e"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FLogo-ALM-NV.-01.webp?alt=media&token=374b9a78-9467-4a8f-bfcc-ed81563696f6"
               onClick={() => window.open("https://aujourdhui.ma/societe/lassociation-bab-rayan-celebre-la-2eme-promotion-de-son-centre-de-formation-et-dinsertion", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}
