@@ -2,19 +2,18 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Footer from "../../../components/layout/Footer";
-
 export default function Education() {
   const items = [
     {
-      src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2FAccompagnement3.webp?alt=media&token=1b686fef-92a7-4372-bc3d-1deb232647f1",
+      src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FPROGRAMME%20NATIONAL%20DE%20LA%20LANGUE%20ARAB.jpg?alt=media&token=c3062362-3207-4bbe-890d-034389f58d8e",
       text: "PROGRAMME NATIONAL DE LA LANGUE ARABE",
     },
     {
-      src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2F1.webp?alt=media&token=8709fd90-520a-4973-9144-be9f90b36f01",
+      src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FPROGRAMME%20FLM%20DE%20LA%20MISSION%20FRAN%C3%87AISE.jpeg?alt=media&token=fb030bcb-43bb-40ff-b74a-0dfac5396ef2",
       text: "PROGRAMME FLM DE LA MISSION FRANÇAISE",
     },
     {
-      src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2FAccompagnement%201.webp?alt=media&token=57ea6504-1f89-47d7-b4d1-051ec01073d7",
+      src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FPROGRAMME%20BRITANNIQUE%20DE%20LA%20LANGUE%20ANGLAISE.jpeg?alt=media&token=2033ddb8-8a13-425d-9dda-dac9c73847dc",
       text: "PROGRAMME BRITANNIQUE DE LA LANGUE ANGLAISE",
     },
   ];
@@ -45,7 +44,7 @@ export default function Education() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fécole.webp?alt=media&token=b54a6d68-f369-46de-9280-60f3c0073a7f"
+            src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2Fmain.jpeg?alt=media&token=820cea19-823f-4d10-84c3-46d15a17935f"
             alt="Cooking Activity"
             layout="fill"
             objectfit="cover"
@@ -90,7 +89,7 @@ export default function Education() {
             <motion.div className="flex-shrdink-0 mb-6 md:mb-0 md:mr-8" d>
               <div className="relative  rounded-xl border-3 shadow-2xl border-r-gray-500 overfldow-hidden">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fgirl_educate.webp?alt=media&token=54c813b0-54a5-402a-b8ce-8089f7f084ca"
+                  src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FPALMIER.jpg?alt=media&token=4ab438c3-2fd1-48b8-a3e3-4ffc23858632"
                   alt="Présidente"
                   layout="fill"
                   objectfit="cover"
@@ -257,35 +256,35 @@ export default function Education() {
               <div className="grid grid-cols-2 lg:grid-cols-4 mx-6  justify-center gap-16 my-20">
                 {[
                   {
-                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite%20bab%20rayan%20école-08.webp?alt=media&token=7d4f37a2-4c15-4af4-a130-96293db7955f",
+                    src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FSuivi%20psychologique%20personnalis%C3%A9%201.webp?alt=media&token=082c39e5-8f5c-4277-91bd-0208be69178e",
                     text: "Suivi psychologique personnalisé",
                   },
                   {
-                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-06.webp?alt=media&token=15587dc3-98dc-48f1-affc-41f465c09b19",
+                    src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FAccompagnement%20sp%C3%A9cialis%C3%A9%20des%20troubles%20Dys%20et%20TDA.webp?alt=media&token=f5fe058b-a075-42b4-9120-0601676f3c77",
                     text: "Accompagnement spécialisé des troubles Dys et TDA",
                   },
                   {
-                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-04.webp?alt=media&token=39f1fe4f-a945-4b9f-b5cc-8b941276a666",
+                    src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FAm%C3%A9nagement%20des%20espaces%20d%E2%80%99apprentissage%20de%20fa%C3%A7on%20ludique.webp?alt=media&token=37cff61e-23bf-4140-b4ed-7bb57ee3fb47",
                     text: "Aménagement des espaces d’apprentissage de façon ludique",
                   },
                   {
-                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-02.webp?alt=media&token=1f128eea-9318-495a-8493-2bf158adde31",
+                    src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FAccompagnement%20holistique.webp?alt=media&token=f5a11585-4269-48d9-a97b-9f9caaa6f5bc",
                     text: "Accompagnement holistique",
                   },
                   {
-                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite%20bab%20rayan%20école-09.webp?alt=media&token=25a59874-f2bc-4bde-a6da-7eb558758967",
+                    src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FAire%20de%20d%C3%A9veloppement%20psychomoteur.webp?alt=media&token=6948d19b-7499-4bac-bc66-7cb0e3afc82b",
                     text: "Aire de développement psychomoteur",
                   },
                   {
-                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-07.webp?alt=media&token=1ab419bf-818c-435c-9b6b-a719e06c71e7",
+                    src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FProgramme%20sportif%20pour%20l%E2%80%99%C3%A9ducation%20des%20valeurs%20et%20du%20leadership.webp?alt=media&token=7ba72c9e-b16c-47b4-a166-ac12d4a7cc32",
                     text: "Programme sportif pour l’éducation des valeurs et du leadership",
                   },
                   {
-                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-05.webp?alt=media&token=ee162c7a-a03f-4707-acf2-d98a3f3855b1",
+                    src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FCantine%20gratuite%20pour%20assurer%20une%20nutrition%20%C3%A9quilibr%C3%A9e.webp?alt=media&token=7433c65c-c577-49c6-8a7f-e5227e3766aa",
                     text: "Cantine gratuite pour assurer une nutrition équilibrée",
                   },
                   {
-                    src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fpicto%2Fsite-bab-rayan-école-03.webp?alt=media&token=9ca7453d-549a-40de-9b7c-fdd4a8a554e1",
+                    src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FDistribution%20de%20cartables%20et%20de%20mat%C3%A9riel%20scolaire.webp?alt=media&token=685a5b44-2611-4786-88c2-2a0d14f3e212",
                     text: "Distribution de cartables et de matériel scolaire",
                   },
                 ].map((item, index) => (
@@ -308,21 +307,21 @@ export default function Education() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto place-items-center">
 
                 <Image
-                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fw4.webp?alt=media&token=c17ff32a-1b6b-46d6-a33b-95fdbce9eb3d"
+                  src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2Fimg1.jpeg?alt=media&token=209c24cd-f07c-49d2-89cd-9add4fe2e01a"
                   className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
                 />
                 <Image
-                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2F2.webp?alt=media&token=6b55dc1a-41de-4781-a778-82620e70e87f"
+                  src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2Fimg2.jpeg?alt=media&token=8862d045-d099-4ed1-b0bc-c7669d098a25"
                   className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
                   alt="Art culinaire"
                 />
                 <Image
-                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2F3.webp?alt=media&token=d4a7b517-e7ba-4040-a0b2-77e9520848c3"
+                  src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2Fimg3.jpeg?alt=media&token=880062cc-8864-411d-a642-38cde53a5f04"
                   className="w-full h-72 rounded-3xl shadow-2xl object-cover"
                   width={100}
                   height={100}
@@ -358,7 +357,7 @@ export default function Education() {
             >
               <div className="relative w-80 h-60 rounded-xl border-3 shadow-2xl border-r-gray-500 overflow-hidden">
                 <Image
-                  src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fw2.webp?alt=media&token=2e4dff7c-b475-46ec-a4bd-ff0098bc5a17"
+                  src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2FPARENTAL.jpeg?alt=media&token=3f63f5a0-1a7f-465b-866d-9a9eecf0a671"
                   alt="Présidente"
                   layout="fill"
                   objectfit="cover shadow-2xl"
@@ -402,18 +401,18 @@ export default function Education() {
             <div className="grid grid-cols-1  lg:grid-cols-3 gap-8">
               {[
                 {
-                  picto: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fsite%20bab%20rayan%20école-10.webp?alt=media&token=7a05163d-f839-4b11-8c3b-641257e3deac",
+                  picto: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2Feleves.webp?alt=media&token=8a9aa3da-b852-4c5b-a248-52c1425e2b30",
                   numb: "+225",
                   title:
                     "élèves : l’école accueille tous les enfants du foyer et aussi des enfants externes défavorisés",
                 },
                 {
-                  picto: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fsite%20bab%20rayan%20école-11.webp?alt=media&token=c1326464-a669-4128-b79e-b06e36303236",
+                  picto: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2Fencadrant.webp?alt=media&token=c23a724d-7b8e-4527-93eb-52c96493b8ca",
                   numb: "23",
                   title: "encadrants",
                 },
                 {
-                  picto: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/education%2Fsite-bab-rayan-CFI-09.webp?alt=media&token=f6a5e106-60ed-4c5d-9a58-dff11f20deb9",
+                  picto: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/education%2Fbenev.webp?alt=media&token=23dc431c-6d98-44b6-b0ed-9614ddeaded4",
                   numb: "1200",
                   title: "bénévoles",
                 },
