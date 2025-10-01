@@ -2,37 +2,38 @@
 
 import React from "react";
 import Image from "next/image";
-
-
 import "./style.css";
+import StarIcon from "/public/protection/star_icon.webp" 
+import BookIcon from "/public/protection/book_icon.webp" 
+
 export default function Foyer() {
   const Cards = [
     {
       title: "PROJET DE VIE",
       description:
         "En créant un foyer de vie, l'association Bab Rayan préserve l'enfance en veillant à ce que les enfants soient nourris, soignés, protégés, éduqués, et entourés par des adultes bienveillants intégrés dans la société. Dans notre approche, chaque enfant bénéficie d'un projet de vie complet. Cela inclut la résolution de questions administratives essentielles telles que l'obtention de documents d'identité, la prise en charge de leur dossier médical, leur parcours éducatif et sportif, ainsi qu'un plan d'insertion sociale sur mesure.",
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fpic1.webp?alt=media&token=3e06c326-8fea-4cde-b5e0-25d4a00fbcf6",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2FPROJET%20DE%20VIE.jpg?alt=media&token=37279937-04aa-4ba1-b054-68a8e1c9295a",
     },
     {
       title: "STRUCTURE",
       description:
         "Le Foyer Bab Rayan est un établissement de protection sociale (EPS) agréé et sous la tutelle du Ministère de la Solidarité, de l’Insertion Sociale et de la Famille. Le premier pavillon du Foyer Bab Rayan a ouvert ses portes en septembre 2015 et est habilité à accueillir des enfants orphelins, abandonnés, en situation difficile ou maltraités à partir de 3 ans jusqu’à l’âge de 18 ans, souvent envoyés par d'autres organisations.",
-      image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fpic2.webp?alt=media&token=2550557e-5490-46e9-89f6-337db633514b",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2FSTRUCTURE.jpeg?alt=media&token=0e4f4f0e-78d8-4228-bfc5-55b79fc40e1b",
     },
   ];
 
   const Icons = [
-    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon1.webp?alt=media&token=60f7e420-eb98-4eaf-acac-397809e9f814" },
-    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon2.webp?alt=media&token=7dd10459-5092-48f4-9c2b-d962d1c5ebac" },
-    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon3.webp?alt=media&token=dd46dfa7-5c52-4121-a7e9-2b2b131fca11" },
-    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon4.webp?alt=media&token=40ca54de-09ad-4f0c-be71-5d254502a929" },
-    { icon: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ficon5.webp?alt=media&token=c887bdbc-3210-477f-9cfd-954cd4d2bf7f" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2Ficon1.webp?alt=media&token=9bbf7d2b-813e-4b1f-87d8-b2c47d4b4fbe" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2Ficon2.webp?alt=media&token=dbf24c1c-3a69-4391-829a-9f9c24c6a0ea" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2Ficon3.webp?alt=media&token=e5554944-0985-4227-a2c4-2725ca9bdf98" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2Ficon4.webp?alt=media&token=33e406fa-cfe5-4043-abfc-b28c603a02a3" },
+    { icon: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2Ficon5.webp?alt=media&token=d7156726-dbac-43f3-b3cc-330af9bff0bb" },
   ];
 
   const activities = [
-    { image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fact1.webp?alt=media&token=ccb11077-edb3-474d-a25a-4264e02c4e98" },
-    { image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fact2.webp?alt=media&token=00e4e889-3d1f-44d0-854d-1527063644e9" },
-    { image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fact3.webp?alt=media&token=a6704277-c2ba-4ab6-8161-ffa16e6018cd" },
+    { image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2FDES%20ACTIVIT%C3%89S%20QUI%20FONT%20GRANDIR%20img2.jpeg?alt=media&token=a53a3fcf-c327-466b-a18a-3d84693c7b4a" },
+    { image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2FDES%20ACTIVIT%C3%89S%20QUI%20FONT%20GRANDIR%20img3.jpeg?alt=media&token=54101a0c-4d25-4fdd-a8a4-bc09c6c05754" },
+    { image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2FDES%20ACTIVIT%C3%89S%20QUI%20FONT%20GRANDIR%20img4.jpeg?alt=media&token=baaf053b-e8f9-485c-8833-52ebf5f103b3" },
   ];
 
   return (
@@ -40,7 +41,7 @@ export default function Foyer() {
       {/* Header Section */}
       <div className="relative w-full h-[700px] md:h-screen flex items-center justify-center">
         <Image
-          src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Ffirst_pic.webp?alt=media&token=24ae9f55-10ea-4e57-839f-055bd8362cba"
+          src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2FFoyer%20Bab%20Rayan.jpeg?alt=media&token=d135a09a-5364-4d2d-bd06-903109e667fa"
           alt="Foyer Bab Rayan"
           layout="fill"
           objectfit="cover"
@@ -70,14 +71,14 @@ export default function Foyer() {
           <div className="w-24 md:w-48 h-2 bg-yellow-300 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
           {/* Decorative Icons */}
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fbook_icon.webp?alt=media&token=1c0c719d-944d-417d-95b7-7f7caeb0d1ab"
+            src={BookIcon}
             alt="Book Icon"
             width={250}
             height={100}
             className="absolute top-2 md:top-4 right-[480px] md:right-[300px] z-[-1]"
           />
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fstar.webp?alt=media&token=6366212b-5d30-4d95-9311-b80ad3c053bb"
+            src={StarIcon}
             alt="Star Icon"
             width={250}
             height={100}
@@ -87,7 +88,7 @@ export default function Foyer() {
 
         {/* Watermark Text */}
         <h4 className="absolute top-1/2 md:right-[300px] right-[500px] transform -translate-y-1/2  font-bold text-gray-300 z-0 pointer-events-none">
-          <Image src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fs7aba.webp?alt=media&token=ddfbb731-4d95-45ac-b297-695fc6b98c9a" alt="Star Icon" width={250} height={100} />
+          <Image src={StarIcon} alt="Star Icon" width={250} height={100} />
         </h4>
 
         {/* cards */}
@@ -126,7 +127,7 @@ export default function Foyer() {
 
         <div className="relative">
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fsoleil.webp?alt=media&token=fbb46d56-791f-4aca-8afa-6c94b7fc804c"
+            src={BookIcon}
             alt="Middle Right Icon"
             width={300}
             height={100}
@@ -146,7 +147,7 @@ export default function Foyer() {
         </h1>
         <div className="flex flex-wrap-reverse items-center justify-center w-full gap-8 px-2 rounded-lg md:-ml-10">
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/foyer%2Fact4.webp?alt=media&token=0c51ae71-d5a4-467c-acc5-0301cdce6cf6"
+            src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/protection%2FDES%20ACTIVIT%C3%89S%20QUI%20FONT%20GRANDIR%20img1.jpeg?alt=media&token=9636f5e1-a64c-428a-8393-d95c07319a5f"
             className="w-1/3 shadow_style_css rounded-lg object-cover"
             width={400}
             height={300}
