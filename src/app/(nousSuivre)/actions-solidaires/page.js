@@ -11,31 +11,31 @@ const fadeIn = {
 export default function Actions() {
 
     const ftourPhotos = [
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F15.webp?alt=media&token=69b32a82-c9f4-4e29-a619-157623241b88", alt: "Ramadan" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F14.webp?alt=media&token=41f29b93-b4cd-4da4-92cf-0d21ef1f0449", alt: "Ramadan" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F12.webp?alt=media&token=ef98981a-b0c8-4dc9-9068-d15d5f74c6bc", alt: "Ramadan" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F13.webp?alt=media&token=d2cfc8df-35cb-4250-b21f-7788a0466550", alt: "Ramadan" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%201.jpg?alt=media&token=e1bc6e77-2bc3-4602-b2fd-839d268cc6f8", alt: "Ramadan" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%202.jpg?alt=media&token=0af119fb-d4c9-4e09-baea-9cf82c7c13f1", alt: "Ramadan" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%203.jpg?alt=media&token=7f88c5fe-0eac-4726-b23d-33d23e4c950e", alt: "Ramadan" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%204.jpg?alt=media&token=b2f6d34e-1aa2-49c8-8b2e-f6f41315f112", alt: "Ramadan" },
     ]
 
     const seismePhotos = [
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F9.webp?alt=media&token=a5c60e2c-eab4-4883-9f54-2aaf07be65b8", alt: "Seisme" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F10.webp?alt=media&token=ffddb4a6-e459-4cdc-b1ac-d42d34b1cc62", alt: "Seisme" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F11.webp?alt=media&token=a58f2167-e90b-457c-bee0-52c944979382", alt: "Seisme" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%201.jpg?alt=media&token=cd6543a0-5313-43b8-8ee5-bc6ee1e84324", alt: "Seisme" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%202.jpg?alt=media&token=1b4615a4-0749-4e74-b59a-0362bad0da29", alt: "Seisme" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%203.jpg?alt=media&token=c3aa301e-f5ca-4e80-97f0-eb3004d8ed58", alt: "Seisme" },
     ]
 
     const scolairePhotos = [
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F7.webp?alt=media&token=73db11ce-9eb8-41d0-ab4c-7521731a0ca8", alt: "Scolaire" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F8.webp?alt=media&token=382deef9-a3da-411e-b145-3d12cc4b3e65", alt: "Scolaire" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F555.webp?alt=media&token=1a3767c4-4fe7-4fca-a362-7e51b0bacba0", alt: "Scolaire" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F666.webp?alt=media&token=e91a49bd-84fa-4dab-9544-fc94e0377a36", alt: "Scolaire" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FService%201.JPG?alt=media&token=47c672ea-bdde-4e38-b5c2-3a56c5516fd7", alt: "Scolaire" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FServices%202.JPG?alt=media&token=603f1dd2-b4ef-4022-aa4c-7dbde28b230b", alt: "Scolaire" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FServices%203.JPG?alt=media&token=b0f3825a-9e0d-4e3c-bde3-6136ef10d04b", alt: "Scolaire" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FServices%204.JPG?alt=media&token=0fcfa3c3-12e2-44c5-b92a-556c6a7bf831", alt: "Scolaire" },
     ]
     const actionsPhotos = [
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F1.webp?alt=media&token=dddb6a76-607b-4a13-9c2a-886485c316f0", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F2.webp?alt=media&token=4c4f89fb-3eb1-4fda-8480-ce41faff0ca9", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F3.webp?alt=media&token=eff8b4b2-7409-46e7-8c29-9e16cc5c85b9", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F4.webp?alt=media&token=18c18869-389a-4733-b9f6-796996d72e17", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F5.webp?alt=media&token=03668d9b-4bf0-4e04-92d3-bdcc43a850b6", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/ACTIONS%20SOLIDAIRES%2F6.webp?alt=media&token=21527070-a2fa-41c7-a359-03fcb892eefa", alt: "action" }
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%201.jpg?alt=media&token=c40f4cb8-e573-4f54-add8-d00b99997644", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%202.jpg?alt=media&token=a5247157-bb65-4e9f-9172-2bdaaad8e8e1", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%203.jpg?alt=media&token=2e3e6d29-114c-4e0f-a74f-53244462737a", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%204.jpg?alt=media&token=470ba86d-e39d-4997-9bff-106a311a1690", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%205.jpg?alt=media&token=967f8536-ce1f-4eac-9dbb-2ff529197ff6", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%206.jpg?alt=media&token=73c1c45f-017e-4e56-a022-709009b1b6aa", alt: "action" }
     ]
     return (
         <main>
@@ -89,15 +89,14 @@ export default function Actions() {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 w-full xl:w-2/3 xl:pde-80">
+                    <div className="grid grid-cols-2 gap-4 w-full xl:w-2/3">
                         {ftourPhotos.map((photo, index) => (
-                            <div key={index} className="overflow-hidden  ">
+                            <div key={index} className="overflow-hidden rounded-lg shadow-lg">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    width={700}
+                                    className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover hover:scale-105 transition-transform duration-300"
                                     loading="lazy"
-
                                 />
                             </div>
                         ))}
@@ -121,16 +120,14 @@ export default function Actions() {
                         <br />La solidarité massive démontrée à travers le Maroc s'inspire de notre Souverain, Sa Majesté le Roi Mohammed VI.
                     </p>
 
-                    <div className="flex justify-center items-center gap-4 my-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
                         {seismePhotos.map((photo, index) => (
-                            <div key={index} className="w-2/3 overflow-hidden rounded-lg shadow-md">
+                            <div key={index} className="overflow-hidden rounded-lg shadow-lg">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    width={600}
-                                    className="object-cover rounded-lg"
+                                    className="w-full h-64 sm:h-72 md:h-80 object-cover hover:scale-105 transition-transform duration-300"
                                     loading="lazy"
-
                                 />
                             </div>
                         ))}
@@ -149,13 +146,12 @@ export default function Actions() {
                     {/* Image Section */}
                     <div className="grid grid-cols-2 gap-4 w-full xl:w-2/3">
                         {scolairePhotos.map((photo, index) => (
-                            <div key={index} className="overflow-hidden  ">
+                            <div key={index} className="overflow-hidden rounded-lg shadow-lg">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    className="object-cover rounded-lg shadow-lg w-auto "
+                                    className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover hover:scale-105 transition-transform duration-300"
                                     loading="lazy"
-
                                 />
                             </div>
                         ))}
@@ -203,15 +199,14 @@ export default function Actions() {
                         Chez Bab Rayan, nous inculquons à nos enfants les valeurs de solidarité par le biais de partage de dons en nature, reçus de nos partenaires et donateurs.
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
                         {actionsPhotos.map((photo, index) => (
-                            <div key={index} className="overflow-hidden rounded-lg">
+                            <div key={index} className="overflow-hidden rounded-lg shadow-lg">
                                 <img
                                     src={photo.src}
                                     alt={photo.alt}
-                                    className="w-full h-auto object-cover shadow-lg rounded-lg"
+                                    className="w-full h-64 sm:h-72 md:h-80 object-cover hover:scale-105 transition-transform duration-300"
                                     loading="lazy"
-
                                 />
                             </div>
                         ))}
