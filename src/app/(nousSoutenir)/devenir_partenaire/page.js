@@ -158,7 +158,7 @@ export default function DevenirPartenaire() {
             className="md:w-[1100px] md:ml-[-40px] mb-6 md:mb-0"
           >
             <img loading="lazy"
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/devenirPartenaire%2Fpartenaire.webp?alt=media&token=7a0b4eab-d073-482a-93af-1745373217b7"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/DEVENIR%20PARTENAIRE%2FDEVENIR%20PARTENAIRE.jpg?alt=media&token=3c9cf064-79c1-4707-8a9a-0498e530a5c9"
               alt="Group Image"
               width={1100}
               height={600}

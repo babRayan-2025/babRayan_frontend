@@ -189,7 +189,7 @@ export default function Benevole() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fbenevole.webp?alt=media&token=dbd4d2c7-f3a3-4404-b932-9cf21e8eb9f4"
+            src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/devenir%20benevole%2FDEVENIR%20B%C3%89N%C3%89VOLE.jpg?alt=media&token=f9819d53-9156-463a-964d-d5568b26e8a9"
             alt="Child smiling"
             width={1900}
             height={1900}
