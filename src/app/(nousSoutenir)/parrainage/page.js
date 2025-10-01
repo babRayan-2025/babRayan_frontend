@@ -93,7 +93,7 @@ const paymentMethods = [
     image: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
     desc: "Faire un don par virement bancaire",
   },
-  { id: 5, label: "Carte bancaire", image: "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/donation%2Fpayment%20method%2Flogo_cmi.png?alt=media&token=df40be6d-db1b-489a-8d9f-c6a95eb6f23f", desc: "Payer avec CMI" },
+  { id: 5, label: "Carte bancaire", image: "/donation/6.png", desc: "Payer avec CMI" },
 ];
 
 export default function Parrainage() {
@@ -256,9 +256,9 @@ export default function Parrainage() {
 
     const CMIpaymentProcess = async (event = null) => {
       if (event?.preventDefault) event.preventDefault(); // Vérifie si event existe avant d'appeler preventDefault()
-  
+
       console.log("Début du processus CMI...");
-  
+
       try {
         // Étape 1 : Envoyer une requête au backend pour générer le paiement
         const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/cmi/createCmi', {
@@ -271,18 +271,18 @@ export default function Parrainage() {
             email: userInfo && userInfo.email && userInfo.email.trim() !== ""
               ? userInfo.email.trim()
               : "Anonyme@gmail.com",
-  
+
             telephone: userInfo && userInfo.phone && userInfo.phone.trim() !== ""
               ? userInfo.phone.trim()
               : "06XXXXXXXX",
-  
+
             amount: selectedPrice,
             type: "Parrainage",
           }),
         });
-  
+
         const data = await response.json();
-  
+
         toast.success('Merci pour votre don ! Vous allez être redirigé vers le site de CMI pour effectuer le paiement.');
         // Étape 2 : Vérifier les données reçues
         if (data.paymentUrl && data.params) {
@@ -290,7 +290,7 @@ export default function Parrainage() {
           const form = document.createElement('form');
           form.method = 'POST';
           form.action = data.paymentUrl; // URL CMI
-  
+
           // Ajouter les paramètres reçus du backend
           Object.entries(data.params).forEach(([key, value]) => {
             const input = document.createElement('input');
@@ -299,33 +299,33 @@ export default function Parrainage() {
             input.value = value;
             form.appendChild(input);
           });
-  
+
           document.body.appendChild(form);
           form.submit(); // Soumettre automatiquement le formulaire
         } else {
           console.error('Paramètres de paiement manquants ou URL invalide');
         }
-  
+
       }
       catch (error) {
         console.error('Erreur lors du paiement :', error);
         toast.error('Une erreur est survenue lors du paiement.');
       }
     };
-  
+
     const PaypalpaymentProcess = async (event = null) => {
       if (event?.preventDefault) event.preventDefault();
-  
+
       console.log("Début du processus de paiement PayPal...");
-  
+
       // Récupérer les valeurs du formulaire
       const typeDon = "Parrainage";
       const nom = userInfo?.fullName?.trim() || "Anonyme";
       const email = userInfo?.email?.trim() || "anonyme@gmail.com";
       const telephone = userInfo?.phone?.trim() || "06XXXXXXXX";
       const montant = Number(selectedPrice);
-  
-  
+
+
       try {
         // Étape 1 : Envoyer une requête au backend pour créer le paiement PayPal
         const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/don/payment", {
@@ -341,9 +341,9 @@ export default function Parrainage() {
             montant
           })
         });
-  
+
         const data = await response.json();
-        
+
         toast.success('Merci pour votre don ! Vous allez être redirigé vers le site de PayPal pour effectuer le paiement.');
         // Étape 2 : Vérifier la réponse et rediriger l'utilisateur vers PayPal
         if (data.approvalUrl) {
@@ -357,7 +357,7 @@ export default function Parrainage() {
         toast.error("Une erreur est survenue lors du paiement.");
       }
     };
-    
+
     const handleSubmitPayment = (e) => {
       e.preventDefault();
       console.log("Payment form submitted");
@@ -516,7 +516,7 @@ export default function Parrainage() {
             variants={fadeIn}
           >
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F11.webp?alt=media&token=0b7b29d7-40fc-4f78-ac6e-437c14bcdef1"
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fidren%20smiling.jpg?alt=media&token=858933d4-6519-4042-bfcf-d8d173d26a36"
               alt="Children smiling"
               width={980}
               height={300}
@@ -605,10 +605,10 @@ export default function Parrainage() {
             className="grid grid-cols-2 md:grid-cols-2 gap-4 h-[600px] p-4 md:mr-8"
             variants={staggerContainer}
           >
-            {["https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F2.webp?alt=media&token=2de4472b-396c-4602-9890-a4c10c8570a5",
-              "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F3.webp?alt=media&token=6a7f3445-93a8-4523-9a2b-ff8746addfd3",
-              "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F4.webp?alt=media&token=9740baf6-bcef-438f-8e22-610cff203047",
-              "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/parrainage%2F5.webp?alt=media&token=a69040ed-499b-449f-9f29-b8d319d7390e"].map((img, index) => (
+            {["https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fimg1.jpg?alt=media&token=41392e20-d78e-4ac5-bd88-61ad883361e9",
+              "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fimg2.jpg?alt=media&token=458e5380-e9a8-4761-83a0-b72dac91ce40",
+              "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fimg3.jpg?alt=media&token=cbe717fa-beb6-477f-b801-b099c6f9c2e4",
+              "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fimg4.jpg?alt=media&token=a7a8ebb1-cfad-454c-9f15-a0c069600e92"].map((img, index) => (
                 <motion.div key={index} variants={fadeIn}>
                   <img
                     src={img}
