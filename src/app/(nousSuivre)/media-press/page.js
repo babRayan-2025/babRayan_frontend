@@ -180,7 +180,7 @@ export default function Press() {
             </h2>
             <div className=" grid md:grid-cols-2 gap-4 text-white font-medium">
               <div className="flex items-center">
-                <a href="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Flogos%2FecolePalmier.pdf?alt=media&token=3953bfa0-3798-485c-bbe1-b6b7e27868ce" download>
+                <a href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FLogos%2FLogo%20%C3%A9cole%20palmier%202.webp?alt=media&token=8ed1285b-2183-4ff5-8b04-785074fe082b" target="_blank" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
@@ -191,7 +191,7 @@ export default function Press() {
                 <span className="text-2xl mt-2">École <br /> Palmier</span>
               </div>
               <div className="flex items-center ">
-                <a href="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Flogos%2Fcfi_logo.pdf?alt=media&token=8a410c22-8e0f-4607-81eb-ec4829a213b4" download>
+                <a href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FLogos%2FLogo%20CFI.webp?alt=media&token=c54c9898-7fa2-46ee-8fae-e681a36b19fa" target="_blank" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
@@ -202,7 +202,7 @@ export default function Press() {
                 <span className="text-2xl mt-2">CFI</span>
               </div>
               <div className="flex items-center ">
-                <a href="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Flogos%2Flogobabrayan.jpg?alt=media&token=3a11dddf-4857-403c-bcbc-8ca3a7b7854c" download>
+                <a href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FLogos%2Flogo%20bab%20rayan%20arabe.jpg?alt=media&token=374f04fc-efd2-45bf-a7cf-1c284ef575a5" target="_blank" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
@@ -213,7 +213,7 @@ export default function Press() {
                 <span className="text-2xl mt-2">L&apos;association <br /> Bab Rayan</span>
               </div>
               <div className="flex items-center">
-                <a href="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Flogos%2Flogo_ftour.png?alt=media&token=0c38ed65-d735-4670-bb18-8b1d2f5135e8" download>
+                <a href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FLogos%2Flogo%20ftour.webp?alt=media&token=c200ff10-b900-4b06-9565-a09e0ef52c5b" target="_blank" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
@@ -402,7 +402,7 @@ export default function Press() {
               className="object-cover rounded-lg"
             />
             <Image
-              src=""
+              src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2FHespress-logo.webp?alt=media&token=53b9c172-237a-445b-89cd-7c78d3a07654"
               onClick={() => window.open("https://fr.hibapress.com/news-143334.html", "_blank")} style={{ cursor: "pointer" }}
               alt="call"
               width={300}

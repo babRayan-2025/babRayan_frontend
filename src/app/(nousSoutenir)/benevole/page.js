@@ -236,7 +236,7 @@ export default function Benevole() {
 
       {/* Form Section */}
       <motion.div
-        className="w-full bg-[url('https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/benevole%2Fbg-benevole.webp?alt=media&token=7335c25a-8f38-4acd-99ff-e514014a07a7')] bg-cover bg-center py-16 md:px-16"
+        className="w-full bg-[url('https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/devenir%20benevole%2Farrier%20plan.webp?alt=media&token=ec88899d-ac41-46d0-a6a3-5c09f6380074')] bg-cover bg-center py-16 md:px-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}

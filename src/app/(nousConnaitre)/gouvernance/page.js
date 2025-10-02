@@ -77,11 +77,6 @@ export default function Gouvernance() {
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fzohra.webp?alt=media&token=c6b8c9bf-de11-4bcf-b24b-0c232c2896cd'
     },
     {
-      name: 'Hind Ratibe',
-      title: 'Membre Fondateur',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FHind%20Ratibe.webp?alt=media&token=4bd27475-1f56-492c-95ca-def39b819cd1'
-    },
-    {
       name: 'Abdelmoula Ratibe',
       title: 'Membre Fondateur',
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fratib.webp?alt=media&token=09465e00-065d-4910-ae2c-da6cf081c470'
@@ -89,7 +84,7 @@ export default function Gouvernance() {
     {
       name: 'Driss Lalami',
       title: 'Membre Fondateur\nTrésorier Adjoint',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FDriss%20El%20Alami.webp?alt=media&token=2999a16a-edf8-43dc-b84c-9724b6778455'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fdriss%20alami.webp?alt=media&token=f5611e82-9366-4029-ba0f-c8afe123b28f'
     },
     {
       name: 'Mounji Salim Sefrioui',
@@ -104,7 +99,7 @@ export default function Gouvernance() {
     {
       name: 'Anas Guennoun',
       title: 'Vice-président',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2Fmembers%2FAnas%20Guennoun.webp?alt=media&token=c6e18eb0-ff69-4574-a3c2-112c1d796c61'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fanas.jpg?alt=media&token=9fae81ad-f8ca-4e7c-98b0-83afa424f25d'
     },
     {
       name: 'Hamza Laghari',
