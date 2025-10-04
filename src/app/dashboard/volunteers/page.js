@@ -15,7 +15,7 @@ export default function Benevoles() {
     const [itemsPerPage, setItemsPerPage] = useState(8); // Number of items per page
     const [selectedVolunteer, setSelectedVolunteer] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const imageDefault = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4"
+    const imageDefault = "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/avatar%20user.png?alt=media&token=96fd3b25-26e0-4ae8-92b6-fe1548f42685"
     const [exporting, setExporting] = useState(false);
     const token = localStorage.getItem("token");
 

@@ -83,13 +83,14 @@ const AddNews = () => {
 
             setLoading(true);
 
+            
             // Create form data
             const formData = new FormData();
             formData.append("title", title);
             formData.append("shortContent", shortContent);
             formData.append("content", content);
             formData.append("likes", "0");
-
+            
             // Add image file
             if (fileList[0].originFileObj) {
                 formData.append("file", fileList[0].originFileObj);

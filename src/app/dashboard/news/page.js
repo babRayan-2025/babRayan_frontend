@@ -193,7 +193,7 @@ export default function Actualite() {
                         onClick={handleExportToExcel}
                         className="btn_export flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 h-10"
                     >
-                        <FaFileExcel /> Exporter en Excel
+                        <FaFileExcel /> Exporter Excel
                     </button>
                     <div className="flex items-center gap-2 bg-white rounded px-2 h-10 border">
                         <label htmlFor="itemsPerPage" className="text-sm font-medium whitespace-nowrap">Éléments par page:</label>
@@ -213,8 +213,8 @@ export default function Actualite() {
                             <option value={20}>20</option>
                         </select>
                     </div>
-                    <button onClick={() => window.location.href = "/dashboard/news/add"} className="btn_add px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 h-10">
-                        Ajouter un nouvel article
+                    <button onClick={() => window.location.href = "/dashboard/news/add"} className="btn_add px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800">
+                        Ajouter un article
                     </button>
                 </div>
             </div>

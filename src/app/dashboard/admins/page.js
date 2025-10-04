@@ -208,7 +208,7 @@ export default function Admins() {
                                         <tr key={user.id} className={`border-b my-auto ${isMainAdmin ? 'bg-orange-100' : ''}`}>
                                             <td className="py-3 px-4">
                                                 <div className="flex flex-col sm:flex-row sm:items-center">
-                                                    <img src={user.pic ? user.pic : "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/dashboard%2Favatar.png?alt=media&token=eb86123a-2582-4770-80cb-c1c63352dbd4"} alt={user.name} className="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full mx-auto sm:mx-0" />
+                                                    <img src={user.pic ? user.pic : "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/avatar%20user.png?alt=media&token=96fd3b25-26e0-4ae8-92b6-fe1548f42685"} alt={user.name} className="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full mx-auto sm:mx-0" />
                                                     <div className="ml-0 sm:ml-3 mt-2 sm:mt-0 text-center sm:text-left">
                                                         <p className="font-semibold mb-1">{user.name} {user.lastName}</p>
                                                         <p className="text-gray-500 mb-0 text-sm">{user.email}</p>
