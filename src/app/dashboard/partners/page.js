@@ -264,18 +264,18 @@ export default function Partenaires() {
                             <option value={20}>20</option>
                         </select>
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-nowrap items-center gap-2">
                         <button
                             onClick={exportToExcel}
                             disabled={exporting}
-                            className="btn_examine w-full sm:w-auto px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center"
+                            className="btn_examine px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center whitespace-nowrap"
                         >
                             <FaFileExcel className="mr-2" />
                             {exporting ? 'Exportation...' : 'Exporter en Excel'}
                         </button>
                         <button
                             onClick={() => window.location.href = "/dashboard/partners/examine"}
-                            className="btn_examine w-full sm:w-auto px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center"
+                            className="btn_examine px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center whitespace-nowrap"
                         >
                             Examiner les partenaires
                             {pendingPartenairesCount > 0 && (
