@@ -125,7 +125,7 @@ export default function Home() {
       title: "Formation et insertion professionnelle",
       description: "Des formations offertes dans des secteurs variés tels que l'hôtellerie-restauration et les métiers du digital pour accompagner ces jeunes vers une insertion professionnelle réussie.",
       buttonText: "Découvrir le CFI",
-      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FFormation%20et%20insertion%20professionnelle.webp?alt=media&token=4d96b93b-5505-46a1-832e-05b84a54f428',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Fformation%20et%20insertion.jpg?alt=media&token=a7769358-1994-453e-924b-ed0337947bd2',
       link: '/formation',
     }
   ];
@@ -546,7 +546,7 @@ export default function Home() {
                 animate="animate"
               >
                 <img
-                src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FLes%20Ftours%20Bab%20Rayan.webp?alt=media&token=12fa859b-22aa-4f23-a22b-7395fabc2127"
+                src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FLes%20Ftours%20Bab%20Rayan.jpg?alt=media&token=38f45e82-7380-47db-a2bf-4c82c65ec2dc"
                   alt="Les Ftours Bab Rayan"
                   className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
                 />
