@@ -82,14 +82,14 @@ export default function Gouvernance() {
       imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fratib.webp?alt=media&token=09465e00-065d-4910-ae2c-da6cf081c470'
     },
     {
-      name: 'Driss Lalami',
+      name: 'Mounji Salim Sefrioui',
       title: 'Membre Fondateur\nTrésorier Adjoint',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fdriss%20alami.webp?alt=media&token=f5611e82-9366-4029-ba0f-c8afe123b28f'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fmounji.webp?alt=media&token=f2ade29e-ce38-4c2d-a101-6529e80ba0ca'
     },
     {
-      name: 'Mounji Salim Sefrioui',
+      name: 'Driss Lalami',
       title: 'Membre Fondateur\nTrésorier général',
-      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fmounji.webp?alt=media&token=f2ade29e-ce38-4c2d-a101-6529e80ba0ca'
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Fdriss%20alami.webp?alt=media&token=f5611e82-9366-4029-ba0f-c8afe123b28f'
     },
     {
       name: 'Mohamed Jamal Lahjouji',
