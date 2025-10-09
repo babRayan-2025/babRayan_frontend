@@ -119,15 +119,51 @@ export default function Gouvernance() {
   ];
 
   const reports = [
-    { year: 2024, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202024.jpg?alt=media&token=8cc3bcb0-4823-42a0-b0f4-044d2e5d0f09', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20annuel%20%202024-%20V3%20Support%20de%20communication.pdf?alt=media&token=cca9cb59-967f-4554-b3f5-69ef0e508448' },
-    { year: 2023, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202023.jpg?alt=media&token=58d7cc84-d28d-4b0a-9096-b5dcf28fba31', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20annuel%20-Association%20Bab%20Rayan%202023.pdf?alt=media&token=30a3df1f-c52a-424c-be38-4a6515cea867' },
-    { year: 2022, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202022.jpg?alt=media&token=0585cecb-64e8-4fe0-be22-b8fdb693b6a4', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202022.pdf?alt=media&token=40c6809f-0458-4596-8d43-d279711140e3' },
-    { year: 2021, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202021.jpg?alt=media&token=33001332-e946-4faf-b8d6-9c2d6921bdb3', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202021.pptx?alt=media&token=10959245-2802-453a-b13f-d99dbd1fc2ed' },
-    { year: 2020, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202020.jpg?alt=media&token=cc989b17-2f91-40a3-8542-b5988e20d2a4', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202020.pdf?alt=media&token=92950d8a-f068-4bc5-be9f-bdffcb254289' },
-    { year: 2019, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202019.jpg?alt=media&token=364545bd-c1a8-4b9e-88ea-af3db8f7e8ad', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202019.pdf?alt=media&token=d7ec47d8-ea6b-43dd-beea-1da225c36de1' },
-    { year: 2018, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202018.jpg?alt=media&token=8d4952ee-6f39-4659-bc7b-37083e23625f', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202018.pdf?alt=media&token=2e528c54-6f71-493f-98dd-acee4456e63c' },
-    { year: 2017, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202017.jpg?alt=media&token=cc434f6a-4321-4227-8166-c5397e7ee1b9', pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/gouvernance%2FRapports%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202017.pdf?alt=media&token=5f26bb18-1ada-40d7-9646-3b07f675c923' },
-    { year: 2016, imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2FRapport%20Annuel%202016.jpg?alt=media&token=9856b64f-59ac-4a60-abc4-e3a5b7289527', pdfUrl: '/about/Rapport Annuel - Association Bab Rayan 2016.pdf' },
+    {
+      year: 2024,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202024.jpg?alt=media&token=d7cd186e-ac61-489b-9b88-a896257a69a2',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202024.pdf?alt=media&token=01c22454-24bd-490e-90ef-c727dfbd3ec0'
+    },
+    {
+      year: 2023,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202023.jpg?alt=media&token=5829e04c-d600-4eea-96e4-7616d3771dea',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20annuel%20-%20Association%20Bab%20Rayan%202023.pdf?alt=media&token=1d5590bf-ddfa-4d08-a9ce-d2ca5c83e167'
+    },
+    {
+      year: 2022,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202022.jpg?alt=media&token=3577617b-989b-4fb6-9668-68f6f3a642d9',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202022.pdf?alt=media&token=d39b5ad5-3e0b-485f-869a-4f7b992d804f'
+    },
+    {
+      year: 2021,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202021.jpg?alt=media&token=e03780be-9d81-4681-824b-4658c3faf268',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202021.pdf?alt=media&token=b2d16b0c-e1cb-40a2-ae01-973f99014f9d'
+    },
+    {
+      year: 2020,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202020.jpg?alt=media&token=fab7730e-4a13-430b-a341-b423ead4e572',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202020.pdf?alt=media&token=74aca817-8b99-4126-acc1-c9d71b42a373'
+    },
+    {
+      year: 2019,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202019.jpg?alt=media&token=013007e0-ad7a-4f9f-a5c3-d3ab27c661c3',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202019.pdf?alt=media&token=1a22e49b-cdb4-4f13-a09e-039415a243d5'
+    },
+    {
+      year: 2018,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202018.jpg?alt=media&token=ea4fe80e-fcfc-4f31-a33b-10a124774b99',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202018.pdf?alt=media&token=27adf2c1-1f31-4f52-b824-7ecdbd7e34ae'
+    },
+    {
+      year: 2017,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202017.jpg?alt=media&token=7a3cfb91-72f8-4a97-9659-2c0671b521c6',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202017.pdf?alt=media&token=2630d4ce-6dc4-4ff8-9831-459aff837b12'
+    },
+    {
+      year: 2016,
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20images%2FRapport%20annuel%202016.jpg?alt=media&token=697e0c9f-ca58-4b32-b1b2-06104b18d860',
+      pdfUrl: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/gouvernance%2Frapport%20pdf%2FRapport%20Annuel%20-%20Association%20Bab%20Rayan%202016.pdf?alt=media&token=3adb537f-4fbc-4d10-8330-bff95df478c8'
+    },
   ];
 
 
@@ -188,7 +224,7 @@ export default function Gouvernance() {
               >
                 {/* Image */}
                 <div className="h-80 overflow-hidden">
-                  <img 
+                  <img
                     src={report.imageUrl}
                     alt={`Rapport Annuel ${report.year}`}
                     className="w-full h-full object-cover"

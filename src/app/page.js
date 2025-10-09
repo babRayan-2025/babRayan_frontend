@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Pagination, Navigation, Autoplay, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 // import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
@@ -49,6 +49,7 @@ export default function Home() {
   const [newsfetched, setNewsfetched] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [blogModal, setBlogModal] = useState(false);
+  const [infoSwiper, setInfoSwiper] = useState(null);
 
   useEffect(() => {
     async function fetchNews() {
@@ -365,7 +366,12 @@ export default function Home() {
               slidesPerView={2.5}
               spaceBetween={20} // Ajoute un espace entre les cartes
               pagination={{ clickable: true }}
-              modules={[Pagination]}
+              modules={[Pagination, Mousewheel]}
+              mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
+              grabCursor={true}
+              centeredSlides={true}
+              centeredSlidesBounds={true}
+              onSwiper={setInfoSwiper}
               breakpoints={{
                 320: { slidesPerView: 1 }, // 1.5 cartes visibles sur les petits écrans
                 768: { slidesPerView: 2 }, // 2 cartes visibles sur les écrans moyens
@@ -377,6 +383,7 @@ export default function Home() {
                 <SwiperSlide key={index}>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
+                    onMouseEnter={() => { if (infoSwiper) { infoSwiper.slideTo(index) } }}
                     className="m-2 flex flex-col md:flex-row items-center bg-white border- border-b-5 border-red-300 shadow-md rounded-md duration-500 hover:shadow-xl overflow-hidden"
                   >
                     <div className="p-4 gap-4 xl:w-1/2">

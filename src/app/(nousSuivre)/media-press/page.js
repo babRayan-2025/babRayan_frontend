@@ -43,25 +43,20 @@ export default function Press() {
 
   const albums = {
     "Le Foyer bab rayan": [
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F1.webp?alt=media&token=6489ac9e-08b5-477d-88b8-fbecde08aed8",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F2.webp?alt=media&token=45da7b9f-9304-4452-9ea7-09c3a00044b9",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F3.webp?alt=media&token=ac20dbcd-2f27-4b43-a15c-05004666f330",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F4.webp?alt=media&token=32444c19-5725-4d2c-8742-9c5b99915bdc",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F5.webp?alt=media&token=aa990cdc-2035-4334-8a84-55b5024a9c16",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFoyer%2F6.webp?alt=media&token=522ec0ad-4071-4d43-aa99-0862f663b453",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Ffoyer_album%2FFoyer.webp?alt=media&token=77b3dd28-5248-4802-bfce-dbdc2cf43910",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Ffoyer_album%2F2417.webp?alt=media&token=d6341d26-7ec9-426b-b831-8d05ffb8831a",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Ffoyer_album%2FBabRayan-Photo-3991.JPG?alt=media&token=23b1a044-15ab-4677-8c0d-261bf17db10d",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Ffoyer_album%2FDSC_9884.JPG?alt=media&token=25d1e3ec-5d3f-4b7d-9f95-c0f59ccc5fb5",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Ffoyer_album%2FDSC_9959.JPG?alt=media&token=69e6d971-ed50-4d3f-a3a0-7f20d9ca8eab",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Ffoyer_album%2FDSC_9922.JPG?alt=media&token=c8321460-8256-40dd-9acc-0fef58339c87",
     ],
     "CFI": [
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F1.webp?alt=media&token=5e932b45-910a-4d51-b32c-c23b1f4a87a4",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F2.webp?alt=media&token=8f430688-b2e6-4168-864a-8045d700e445",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F3.webp?alt=media&token=dd7af906-f3fc-4b98-bbf3-ee46b01ef1fe",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F4.webp?alt=media&token=fa83187e-e4b6-4808-8a0c-d802993d9967",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F5.webp?alt=media&token=a443eed1-fd35-4beb-9863-688f42aeb345",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F6.webp?alt=media&token=f035b056-6c74-4c14-a59b-61d5b51395b8",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F7.webp?alt=media&token=01fc1760-6750-42b7-9a20-2e661e5f5e44",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumCFI%2F8.webp?alt=media&token=ca1714ab-ac8c-468a-a70e-8fbbf858d440",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2F1.webp?alt=media&token=7901b67b-53e5-46f2-add2-d54c71a5b270",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2F4.webp?alt=media&token=b0b95a64-74d5-469d-ac80-37a275bc3d7e",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2F2.webp?alt=media&token=864d28ce-4a09-4f74-a9f3-f47eb40bc982",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fcfi_album%2F62-Bab%20Rayan_28%20octobre%202024%20(85).jpg?alt=media&token=f762e8ca-d3a3-473d-8b2c-d7b1363981b2",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fcfi_album%2FDSC_9635.JPG?alt=media&token=32b8f4e5-bd1d-4dd2-b023-3e73ef332593",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fcfi_album%2FPhoto1%20BP.jpeg?alt=media&token=191c2f10-21ea-41c6-a012-304f43b0574c",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fcfi_album%2Fphoto%202%20BP.jpeg?alt=media&token=638dfe92-c306-46cc-97d8-1ef17c5fe4b7",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fcfi_album%2Fphoto4%20laureat.jpeg?alt=media&token=110c8bed-13a7-4fb8-a486-5315711fc54c",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fcfi_album%2Fphoto5.jpeg?alt=media&token=2a36d48d-9168-4ada-b72d-d57e106064e1",
     ],
     "Ecole palmier": [
       "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F1.webp?alt=media&token=34679e19-2dbf-485b-8ac7-7c4f25e5c462",
@@ -238,7 +233,7 @@ export default function Press() {
             <div className=" grid md:grid-cols-2 gap-4 text-white font-medium">
               <div className="flex items-center">
                 <a
-                  href="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Fpresentation%2Fpresentation_association_bab_rayan.pdf?alt=media&token=287e0b12-8bd0-4fb1-ba8e-6283fc24fa08"
+                  href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2FBabrayan%20Brochure%20v2%202025.pdf?alt=media&token=2862a98b-631b-4ea9-841c-20d65bf40f04"
                   download
                 >
                   <Image
@@ -262,7 +257,7 @@ export default function Press() {
                 <span className="text-2xl mt-3">École <br /> Palmier</span>
               </div>
               <div className="flex items-center ">
-                <a href="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Fpresentation%2FftourBabRayan.pdf?alt=media&token=e2e39809-0ec0-46f9-b65d-f4f5677427f6" download>
+                <a href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2Fprez%202025-BAB%20RAYANE-new%20(2).pdf?alt=media&token=16b2ee85-5181-44b4-9322-2098928c1208" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
@@ -273,7 +268,7 @@ export default function Press() {
                 <span className="text-2xl mt-4" >Ftour <br /> Bab Rayan</span>
               </div>
               <div className="flex items-center">
-                <a href="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Fpresentation%2FBrochure-Parrainage-Bab-Rayan2025.pdf?alt=media&token=884431e1-4b30-412f-a7a3-365675ac220e" download>
+                <a href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2FD%C3%A9pliant%20parrainage%20-%20Association%20Bab%20Rayan.pdf?alt=media&token=5ed77bdc-1ad1-495c-821d-89d64894bd07" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
@@ -334,18 +329,17 @@ export default function Press() {
                   styles={{ body: { padding: "20px", maxHeight: "80vh", overflowY: "auto" } }} // Scrollable content
                   footer={null} // Removes the OK button
                 >
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-3 gap-4">
                     {albums[selectedAlbum].map((image, index) => (
                       <div
                         key={index}
-                        className={`relative ${index % 4 === 0 ? "col-span-3 row-span-5" : "col-span-1"
-                          }`}
+                        className={`relative ${index === 0 ? 'col-span-3' : ''} ${index > 0 && (albums[selectedAlbum].length - 1) % 3 === 2 && index === (albums[selectedAlbum].length - 1) ? 'col-span-2' : ''}`}
                       >
                         <Image
                           src={image}
                           alt={`${selectedAlbum}-${index}`}
-                          width={index % 4 === 0 ? 600 : 300}
-                          height={index % 4 === 0 ? 600 : 300}
+                          width={300}
+                          height={300}
                           className="w-full h-full object-cover rounded-lg"
                         />
                       </div>
