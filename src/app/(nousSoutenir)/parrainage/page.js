@@ -608,7 +608,7 @@ export default function Parrainage() {
             {["https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fimg1.jpg?alt=media&token=b05c77ff-e5c2-463b-9caa-cd876b631067",
               "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fimg2.jpg?alt=media&token=458e5380-e9a8-4761-83a0-b72dac91ce40",
               "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fimg3.jpg?alt=media&token=f57f6ef4-a84f-4bb7-a9ae-abbdb67522d1",
-              "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fimg4.jpg?alt=media&token=a7a8ebb1-cfad-454c-9f15-a0c069600e92"].map((img, index) => (
+              "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/parrainage%2Fparrainage%20image.JPG?alt=media&token=6cc77039-6dcb-4d5b-9467-79ce6b154f19"].map((img, index) => (
                 <motion.div key={index} variants={fadeIn}>
                   <img
                     src={img}

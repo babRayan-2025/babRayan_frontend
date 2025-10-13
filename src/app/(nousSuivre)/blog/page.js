@@ -158,7 +158,7 @@ Nos étudiants ont eu l'opportunité unique de découvrir les secrets de la f
     },
     {
       id: 5,
-      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/actualit%C3%A9%2FUne%20sortie%20au%20th%C3%A9%C3%A2tre%20pour%20voir%20le%20petit%20prince.webp?alt=media&token=6151e12c-77dc-4a29-9847-212535e08dde",
+      image: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/actualit%C3%A9%2Fsortie%20theatre.jpg?alt=media&token=73ae337a-f499-4712-bffa-e67ebe67e697",
       alt: "Training",
       title: "Une sortie au théâtre pour voir le petit prince",
       description: `Les enfants de Bab Rayan ont assisté au premier spectacle de la saison de l'École du Jeune
