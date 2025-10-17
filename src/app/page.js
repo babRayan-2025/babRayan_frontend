@@ -77,21 +77,21 @@ export default function Home() {
 
   const caroussel = [
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Fslide1_optimized_2000.webp?alt=media&token=afef0b38-a7b9-45ce-b299-7d03461f9e3f',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FSlide2.webp?alt=media&token=e28cc389-80af-493a-95aa-5e95b6326083',
       picto: '/caroussel/sun.png',
       title: "CHANGER LE PARCOURS D'UNE VIE",
       description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
       link: "/protection"
     },
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FSlide2.webp?alt=media&token=e28cc389-80af-493a-95aa-5e95b6326083',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FSlide%203.webp?alt=media&token=bd1b4ccd-f410-4bad-b948-d50e204818fe',
       picto: '/caroussel/main.png',
       title: "PROTÉGER, ÉDUQUER, ACCOMPAGNER",
       description: "Bab Rayan défend les droits des enfants en leur offrant un foyer sécurisant et une éducation de qualité.",
       link: "/education"
     },
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FSlide%203.webp?alt=media&token=bd1b4ccd-f410-4bad-b948-d50e204818fe',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Fslide4.webp?alt=media&token=2ad12cfa-af2b-4c85-a40c-10aaeecc66a1',
       picto: '/caroussel/fleche.png',
       title: "FORMER ET INTÉGRER",
       description: "Le Centre de Formation et d'Insertion prépare nos jeunes à devenir des citoyens autonomes et engagés.",
