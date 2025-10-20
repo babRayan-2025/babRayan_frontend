@@ -98,7 +98,7 @@ export default function Home() {
       link: "/formation"
     },
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Fslide4.webp?alt=media&token=2ad12cfa-af2b-4c85-a40c-10aaeecc66a1',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Fslide1_optimized_2000.webp?alt=media&token=afef0b38-a7b9-45ce-b299-7d03461f9e3f',
       picto: '/caroussel/etoile.svg',
       title: "UN ENGAGEMENT QUI A DU SENS",
       description: "Rejoignez le combat pour la protection de l'enfance, engagez-vous en devenant donateur, partenaire ou bénévole.",
