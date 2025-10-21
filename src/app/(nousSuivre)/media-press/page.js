@@ -59,12 +59,12 @@ export default function Press() {
       "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fcfi_album%2Fphoto5.jpeg?alt=media&token=2a36d48d-9168-4ada-b72d-d57e106064e1",
     ],
     "Ecole palmier": [
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F1.webp?alt=media&token=34679e19-2dbf-485b-8ac7-7c4f25e5c462",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F2.webp?alt=media&token=7f83a3eb-b3cd-4ccb-8063-f906ff50d896",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F3.webp?alt=media&token=ea4752e9-feff-4de5-b1b0-ad2999d39530",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F4.webp?alt=media&token=57486e52-0395-415e-acb2-49ac4903a00d",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F5.webp?alt=media&token=8ee46a7f-eb8a-4244-9a50-dbedc107fdc7",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbum%C3%A9colePalmier%2F6.webp?alt=media&token=d76de80c-3788-46c3-9ee5-37cd19444468"
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fecole_album%2F%C3%A9cole.jpg?alt=media&token=effdfa51-aa97-4644-a35f-e2dacbf4955d",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fecole_album%2FDSC_9927.JPG?alt=media&token=5a5741ca-0464-4250-bbf0-434befbbf473",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fecole_album%2FDSC_9381.JPG?alt=media&token=3dae47e8-2b32-4683-8caa-d34449d24a86",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fecole_album%2FDSC_9312.JPG?alt=media&token=8b60a71d-6fd7-4ba0-90db-266f4be36ca8",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fecole_album%2FDSC_9505.JPG?alt=media&token=2d39a80d-5fe3-41b4-b595-a563661f67da",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fecole_album%2FDSC_9487.JPG?alt=media&token=9b7e19a2-9dd4-409e-a05f-b4f558d08129"
     ],
     "Ftour bab rayan": [
       "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FFtourbabrayan1.webp?alt=media&token=49c1b009-41df-4a69-ba57-50db011299a0",
