@@ -77,7 +77,7 @@ export default function Home() {
 
   const caroussel = [
     {
-      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FSlide2.webp?alt=media&token=e28cc389-80af-493a-95aa-5e95b6326083',
+      image: 'https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2Fcarousel_img1.jpg?alt=media&token=cd325d2a-55a7-4e75-8306-5b78f10b893c',
       picto: '/caroussel/sun.png',
       title: "CHANGER LE PARCOURS D'UNE VIE",
       description: "L'association Bab Rayan agit depuis 2014 pour transformer la vie des enfants en difficulté.",
