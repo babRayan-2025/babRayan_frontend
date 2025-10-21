@@ -252,7 +252,7 @@ export default function Home() {
             >
               {caroussel.map((slide, index) => (
                 <SwiperSlide key={index}>
-                  <div className="relative h-[400px] sm:h-[500px] md:h-[650px] lg:h-[800px]">
+                  <div className="relative h-screen pt-16">
                     {/* Background Image */}
                     <Image
                       src={slide.image}
