@@ -309,19 +309,19 @@ export default function Benevoles() {
                     </div>
 
                     {/* Pagination controls */}
-                    <div className="flex justify-center mt-4 mb-4">
-                        <div className="flex gap-2">
-                            {Array.from({ length: totalPages }, (_, index) => (
+                    <div className="flex justify-center mt-6">
+                        <div className="flex items-center gap-1 sm:gap-2">
+                            {Array.from({ length: totalPages }, (_, i) => (
                                 <button
-                                    key={index + 1}
-                                    onClick={() => handlePaginationClick(index + 1)}
-                                    className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold transition-colors duration-200
-                                        ${index + 1 === currentPage
-                                            ? 'bg-blue-600 text-white shadow'
-                                            : 'bg-gray-200 text-gray-700 hover:bg-blue-100'
-                                        }`}
+                                    key={i + 1}
+                                    onClick={() => handlePaginationClick(i + 1)}
+                                    className={`px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm rounded-md transition-colors ${
+                                        i + 1 === currentPage
+                                            ? 'bg-blue-500 text-white'
+                                            : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+                                    }`}
                                 >
-                                    {index + 1}
+                                    {i + 1}
                                 </button>
                             ))}
                         </div>

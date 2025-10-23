@@ -28,7 +28,7 @@ export default function DashboardPage() {
   // ✅ Helper: logout if token expired
   const handleLogout = () => {
     localStorage.clear();
-    router.push("/login"); // redirect to login
+    window.location.href = "/login"; // Force a full page redirect to login
   };
 
 

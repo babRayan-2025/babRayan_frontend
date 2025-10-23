@@ -56,7 +56,7 @@ export default function Login() {
         toast.success('Connexion réussie !');
 
         setTimeout(() => {
-          router.push("/");
+          window.location.href = "/dashboard";
         }, 2000);
       } else {
         toast.error(data.message || 'Une erreur est survenue lors du login.');

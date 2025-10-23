@@ -170,14 +170,13 @@ export default function CmiPage() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex items-center gap-3">
+        <div >
           <div className="flex items-center gap-2">
-            <label htmlFor="itemsPerPage" className="text-sm text-gray-700">Afficher:</label>
+            <label className="text-sm text-gray-700">Afficher:</label>
             <select
-              id="itemsPerPage"
-              className="border rounded py-1 px-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={itemsPerPage}
-              onChange={handleItemsPerPageChange}
+              className="border border-gray-300 rounded px-3 py-1 text-sm bg-white w-20"
+              value={String(itemsPerPage)}
+              onChange={(e) => setItemsPerPage(Number(e.target.value))}
             >
               <option value={5}>5</option>
               <option value={7}>7</option>
@@ -358,19 +357,22 @@ export default function CmiPage() {
 
       {/* Pagination */}
       {totalPages > 0 && (
-        <div className="flex justify-center mt-4">
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i + 1}
-              onClick={() => setCurrentPage(i + 1)}
-              className={`mx-1 px-2 py-1 sm:px-3 sm:py-1 rounded text-xs sm:text-sm ${currentPage === i + 1
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-200 hover:bg-gray-300'
+        <div className="flex justify-center mt-6">
+          <div className="flex items-center gap-1 sm:gap-2">
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm rounded-md transition-colors ${
+                  currentPage === i + 1
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
                 }`}
-            >
-              {i + 1}
-            </button>
-          ))}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
