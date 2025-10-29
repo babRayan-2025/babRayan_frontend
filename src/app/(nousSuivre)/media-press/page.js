@@ -268,7 +268,7 @@ export default function Press() {
                 <span className="text-2xl mt-4" >Ftour <br /> Bab Rayan</span>
               </div>
               <div className="flex items-center">
-                <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2FD%C3%A9pliant%20parrainage%20-%20Association%20Bab%20Rayan.pdf?alt=media&token=5ed77bdc-1ad1-495c-821d-89d64894bd07" download>
+                <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2FBrochu%201%20final.pdf?alt=media&token=dc2bd69b-4b94-477c-b870-aa063aef4346" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
