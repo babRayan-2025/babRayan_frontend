@@ -12,30 +12,29 @@ export default function Actions() {
 
     const ftourPhotos = [
         { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%201.jpg?alt=media&token=e1bc6e77-2bc3-4602-b2fd-839d268cc6f8", alt: "Ramadan" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%202.jpg?alt=media&token=0af119fb-d4c9-4e09-baea-9cf82c7c13f1", alt: "Ramadan" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%202.jpg?alt=media&token=b6331fb9-3629-4a3a-ab5e-cb5a5ffbc6c0", alt: "Ramadan" },
         { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%203.jpg?alt=media&token=7f88c5fe-0eac-4726-b23d-33d23e4c950e", alt: "Ramadan" },
         { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FFtour%204.jpg?alt=media&token=b2f6d34e-1aa2-49c8-8b2e-f6f41315f112", alt: "Ramadan" },
     ]
 
     const seismePhotos = [
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%201.jpg?alt=media&token=cd6543a0-5313-43b8-8ee5-bc6ee1e84324", alt: "Seisme" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%202.jpg?alt=media&token=1b4615a4-0749-4e74-b59a-0362bad0da29", alt: "Seisme" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%203.jpg?alt=media&token=c3aa301e-f5ca-4e80-97f0-eb3004d8ed58", alt: "Seisme" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%201.JPG?alt=media&token=cf8b251e-01c4-46c7-8b90-753aa65e222f", alt: "Seisme" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%202.JPG?alt=media&token=54f862cd-7ea0-4bbc-8e7c-2d8fdcc32226", alt: "Seisme" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FS%C3%A9isme%203.JPG?alt=media&token=f8e3ffd8-3f4e-45f0-b51f-3f8ff7cc4fcd", alt: "Seisme" },
     ]
-
     const scolairePhotos = [
         { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FService%201.JPG?alt=media&token=47c672ea-bdde-4e38-b5c2-3a56c5516fd7", alt: "Scolaire" },
         { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FServices%202.JPG?alt=media&token=603f1dd2-b4ef-4022-aa4c-7dbde28b230b", alt: "Scolaire" },
         { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FServices%203.JPG?alt=media&token=b0f3825a-9e0d-4e3c-bde3-6136ef10d04b", alt: "Scolaire" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FServices%204.JPG?alt=media&token=0fcfa3c3-12e2-44c5-b92a-556c6a7bf831", alt: "Scolaire" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FServices%204.JPG?alt=media&token=a000647d-0cfb-4fc7-be5c-89fe3cb81674", alt: "Scolaire" },
     ]
     const actionsPhotos = [
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%201.jpg?alt=media&token=c40f4cb8-e573-4f54-add8-d00b99997644", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%202.jpg?alt=media&token=a5247157-bb65-4e9f-9172-2bdaaad8e8e1", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%203.jpg?alt=media&token=2e3e6d29-114c-4e0f-a74f-53244462737a", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%204.jpg?alt=media&token=470ba86d-e39d-4997-9bff-106a311a1690", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%205.jpg?alt=media&token=967f8536-ce1f-4eac-9dbb-2ff529197ff6", alt: "action" },
-        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FAction%206.jpg?alt=media&token=73c1c45f-017e-4e56-a022-709009b1b6aa", alt: "action" }
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FActions%20divers%201.jpeg?alt=media&token=d4b4de32-504b-4189-8bd6-518c423c5200", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FActions%20divers%202.JPG?alt=media&token=b42ac693-88f2-4185-8f51-9f6ca5206797", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FActions%20divers%203.jpg?alt=media&token=430d9850-d575-44f7-90bf-48797e107599", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FActions%20divers%204.JPG?alt=media&token=83591179-8448-4f0c-aca7-3410cfd54770", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FActions%20divers%205.jpg?alt=media&token=21bb0167-fa4a-42be-b744-90cc6bb67cac", alt: "action" },
+        { src: "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/action%20solidaire%2FActions%20divers%206.JPG?alt=media&token=00211c39-78e3-48a9-add4-fe253b9b6280", alt: "action" }
     ]
     return (
         <main>

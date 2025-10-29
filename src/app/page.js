@@ -553,9 +553,9 @@ export default function Home() {
                 animate="animate"
               >
                 <img
-                src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FLes%20Ftours%20Bab%20Rayan.jpg?alt=media&token=38f45e82-7380-47db-a2bf-4c82c65ec2dc"
+                src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/landing%2FLes%20Ftours%20Bab%20Rayan.jpg?alt=media&token=aaf1d47c-5c0b-4d3a-a87b-b56d31a6f080"
                   alt="Les Ftours Bab Rayan"
-                  className="w-full h-[40vh] lg:h-[49vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
+                  className="w-full h-[40vh] lg:h-[59vh] rounded-r-lg lg:rounded-r-3xl shadow-lg object-cover"
                 />
               </motion.div>
 

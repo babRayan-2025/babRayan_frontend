@@ -234,7 +234,7 @@ export default function Press() {
               <div className="flex items-center">
                 <a
                   href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2FBabrayan%20Brochure%20v2%202025.pdf?alt=media&token=2862a98b-631b-4ea9-841c-20d65bf40f04"
-                  download
+                  download target="_blank"
                 >
                   <Image
                     src="/press/telechargement.svg"
@@ -246,7 +246,7 @@ export default function Press() {
                 <span className="text-2xl mt-3">L&apos;association <br /> Bab Rayan</span>
               </div>
               <div className="flex items-center ">
-                <a href="/press/presentation/EcolePalmier.pdf" download>
+                <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2FEcole%20Palmier.pdf?alt=media&token=ec531fc0-4b4b-4e39-b906-6ae62ca06d03" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
@@ -257,7 +257,7 @@ export default function Press() {
                 <span className="text-2xl mt-3">École <br /> Palmier</span>
               </div>
               <div className="flex items-center ">
-                <a href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2Fprez%202025-BAB%20RAYANE-new%20(2).pdf?alt=media&token=16b2ee85-5181-44b4-9322-2098928c1208" download>
+                <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2Fprez%202025-BAB%20RAYANE-new%20(2).pdf?alt=media&token=16b2ee85-5181-44b4-9322-2098928c1208" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
@@ -268,7 +268,7 @@ export default function Press() {
                 <span className="text-2xl mt-4" >Ftour <br /> Bab Rayan</span>
               </div>
               <div className="flex items-center">
-                <a href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2FD%C3%A9pliant%20parrainage%20-%20Association%20Bab%20Rayan.pdf?alt=media&token=5ed77bdc-1ad1-495c-821d-89d64894bd07" download>
+                <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fpresentations%2FD%C3%A9pliant%20parrainage%20-%20Association%20Bab%20Rayan.pdf?alt=media&token=5ed77bdc-1ad1-495c-821d-89d64894bd07" download>
                   <Image
                     src="/press/telechargement.svg"
                     alt="download"
