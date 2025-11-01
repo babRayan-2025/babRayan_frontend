@@ -59,7 +59,7 @@ export default function DashboardLayout({ children }) {
   }
 
   const menuItems = [
-    { name: 'Dashboard', icon: <MdOutlineSpaceDashboard />, path: '/' },
+    { name: 'Dashboard', icon: <MdOutlineSpaceDashboard />, path: '' },
     { name: 'Actualités', icon: <ImNewspaper />, path: '/news' },
     {
       name: 'Donations',
