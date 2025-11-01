@@ -67,12 +67,10 @@ export default function Press() {
       "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fecole_album%2FDSC_9487.JPG?alt=media&token=9b7e19a2-9dd4-409e-a05f-b4f558d08129"
     ],
     "Ftour bab rayan": [
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FFtourbabrayan1.webp?alt=media&token=49c1b009-41df-4a69-ba57-50db011299a0",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan2.webp?alt=media&token=567eb805-d145-4160-b54f-9d401bdba6d7",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2Fftourbabrayan3.webp?alt=media&token=cee70e0d-8cc2-4143-a7d8-d50d947bf59b",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FFtourbabrayan4.webp?alt=media&token=a36667e6-c322-4516-904a-69878c55c949",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FRamadan%202024%201.webp?alt=media&token=f177ef7d-badd-4ebb-a9fc-ce80cd31aa64",
-      "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/media%20Kit%2Falbums%2FAlbumFtourBabRayan%2FFtourBabRayan5.webp?alt=media&token=3a558ccd-afb9-4336-b75d-0c618173e9c4"
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fftour_album%2Fbenevole-babrayan.jpg?alt=media&token=e55eb97b-7728-45d6-a80b-e6542ea57cd6",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fftour_album%2FFtour%201.jpg?alt=media&token=fc49b4cf-94c3-41c3-8e59-4b58c647ede8",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fftour_album%2FA3.jpg?alt=media&token=0da6c715-8768-4fd2-979b-94dbfd82bbfb",
+      "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/MEDIAS_ET_PRESS%2Fftour_album%2FIMG_2058.jpg?alt=media&token=a2a9a346-d6b8-424e-bc83-cc4fece4537e",
     ],
   };
 
