@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 export function useAuth() {
   const router = useRouter();
   const [authenticated, setAuthenticated] = useState(false);
+  const [isAllowedUser, setIsAllowedUser] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -13,14 +14,23 @@ export function useAuth() {
         if (!userID) {
           router.replace("/login");
         } else {
-          setAuthenticated(true);
+          const getUser = async () => {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userID}`);
+            const user = await response.json();
+            if (user.data.role === 'admin' || user.data.role === 'member') {
+              setIsAllowedUser(true);
+            } else {
+              setIsAllowedUser(false);
+            }
+            setAuthenticated(true);
+            setLoading(false);
+          }
+          getUser();
         }
-        setLoading(false);
       }
     };
-
     checkAuth();
   }, [router]);
 
-  return { authenticated, loading };
+  return { authenticated, loading, isAllowedUser };
 }

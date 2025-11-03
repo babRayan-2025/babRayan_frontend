@@ -30,7 +30,17 @@ export default function Login() {
   useEffect(() => {
     const userID = getLocalStorage("userID");
     if (userID) {
-      router.push("/dashboard"); // ✅ Prevent full reload
+      // Add a real server-side check for allowed role!
+      fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userID}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data?.data && (data.data.role === 'admin' || data.data.role === 'member')) {
+            router.push("/dashboard");
+          } else {
+            // Not allowed: optionally remove userID, maybe force logout.
+            localStorage.removeItem("userID");
+          }
+        });
     }
   }, [router]);
 
@@ -60,10 +70,8 @@ export default function Login() {
         }, 2000);
       } else {
         toast.error(data.message || 'Une erreur est survenue lors du login.');
-        console.log(data);
       }
     } catch (error) {
-      console.error(error);
       toast.error('Erreur de connexion');
     } finally {
       setLoading(false);
@@ -100,7 +108,6 @@ export default function Login() {
         toast.error(data.message || 'Échec de l\'envoi du code de réinitialisation');
       }
     } catch (error) {
-      console.error('Error sending reset code:', error);
       toast.error('Une erreur s\'est produite lors de l\'envoi du code de réinitialisation');
     } finally {
       setLoading(false);
@@ -132,7 +139,6 @@ export default function Login() {
         toast.error(data.message || 'Échec de la vérification du code de réinitialisation');
       }
     } catch (error) {
-      console.error('Error verifying reset code:', error);
       toast.error('Une erreur s\'est produite lors de la vérification du code de réinitialisation');
     } finally {
       setLoading(false);
@@ -163,7 +169,7 @@ export default function Login() {
         <div className="login-features">
           <h2 className="mb-5 text-center flex flex-col items-center">
             Bienvenue sur <br />
-            <img className="mt-2" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481" alt="Logo" />
+            <img className="mt-2" src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/Logo.png?alt=media&token=1d4af563-f0f7-466b-9184-77d005204d7a" alt="Logo" />
           </h2>
 
           <div className="feature-item">

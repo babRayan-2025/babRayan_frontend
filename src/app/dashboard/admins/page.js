@@ -27,11 +27,11 @@ export default function Admins() {
 
             if (result.status && result.data) {
                 // Count unverified users
-                const unverified = result.data.filter(user => !user.isVerified).length;
+                const unverified = result.data.filter(user => user.role !== 'admin' && user.role !== 'member').length;
                 setUnverifiedCount(unverified);
 
                 // Only display verified users in the admin panel
-                const verifiedUsers = result.data.filter(user => user.isVerified);
+                const verifiedUsers = result.data.filter(user => user.role === 'admin' || user.role === 'member');
                 setUsers(verifiedUsers);
             } else {
                 toast.error("Erreur lors du chargement des utilisateurs");
@@ -47,12 +47,11 @@ export default function Admins() {
     const unverifyUser = async (user) => {
         try {
 
-            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${user.id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/remove_admin/${user.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ isVerified: false }),
             });
 
             const result = await response.json();
@@ -101,16 +100,6 @@ export default function Admins() {
         return date.toLocaleDateString('fr-FR');
     };
 
-    // Determine if a user is a special user (main admin)
-    const isSpecialUser = (user) => {
-        const specialEmails = ['yassineova',
-            'mounir.baali@ynov.com',
-            'ynovadmin',
-            'hzrita@hotmail.com',
-            'communicationbabrayan01@gmail.com',
-        ];
-        return specialEmails.some(email => user.email?.toLowerCase().includes(email));
-    };
 
     // Filter users based on the search query
     const filteredUsers = users.filter(user =>
@@ -118,13 +107,10 @@ export default function Admins() {
         (user.lastName && user.lastName.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (user.email && user.email.toLowerCase().includes(searchQuery.toLowerCase()))
     )
-        // Sort users to display main admins at the top
+        // Sort users to display admins at the top
         .sort((a, b) => {
-            const isAMainAdmin = isSpecialUser(a);
-            const isBMainAdmin = isSpecialUser(b);
-
-            if (isAMainAdmin && !isBMainAdmin) return -1;
-            if (!isAMainAdmin && isBMainAdmin) return 1;
+            if (a.role === 'admin' && b.role !== 'admin') return -1;
+            if (a.role !== 'admin' && b.role === 'admin') return 1;
             return 0;
         });
 
@@ -203,9 +189,8 @@ export default function Admins() {
                             </thead>
                             <tbody>
                                 {currentUsers.map((user) => {
-                                    const isMainAdmin = isSpecialUser(user);
                                     return (
-                                        <tr key={user.id} className={`border-b my-auto ${isMainAdmin ? 'bg-orange-100' : ''}`}>
+                                        <tr key={user.id} className={`border-b my-auto ${user.role === 'admin' ? 'bg-orange-100' : ''}`}>
                                             <td className="py-3 px-4">
                                                 <div className="flex flex-col sm:flex-row sm:items-center">
                                                     <img src={user.pic ? user.pic : "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/avatar%20user.png?alt=media&token=96fd3b25-26e0-4ae8-92b6-fe1548f42685"} alt={user.name} className="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full mx-auto sm:mx-0" />
@@ -223,8 +208,8 @@ export default function Admins() {
                                                                 <span className="py-1 px-2 inline-block rounded-full text-white bg-green-500 text-xs mr-1">
                                                                     Vérifié
                                                                 </span>
-                                                                <span className={`py-1 px-2 inline-block rounded-full text-white text-xs ${isMainAdmin ? 'bg-orange-500' : 'bg-red-500'}`}>
-                                                                    {isMainAdmin ? 'admin principal' : 'admin'}
+                                                                <span className={`py-1 px-2 inline-block rounded-full text-white text-xs ${user.role === 'admin' ? 'bg-red-500' : 'bg-blue-500'}`}>
+                                                                    {user.role}
                                                                 </span>
                                                             </p>
                                                         </div>
@@ -238,13 +223,13 @@ export default function Admins() {
                                                 </span>
                                             </td>
                                             <td className="py-3 px-4 hidden sm:table-cell">
-                                                <span className={`py-1 px-3 inline-block rounded-full text-white ${isMainAdmin ? 'bg-orange-500' : 'bg-red-500'}`}>
-                                                    {isMainAdmin ? 'admin principal' : 'admin'}
+                                                <span className={`py-1 px-3 inline-block rounded-full text-white ${user.role === 'admin' ? 'bg-red-500' : 'bg-blue-500'}`}>
+                                                    {user.role}
                                                 </span>
                                             </td>
                                             <td className="py-3 px-4">
                                                 <div className="flex flex-col sm:flex-row gap-2">
-                                                    {!isMainAdmin && (
+                                                    {user.role !== 'admin' && (
                                                         <>
                                                             <button
                                                                 onClick={() => unverifyUser(user)}

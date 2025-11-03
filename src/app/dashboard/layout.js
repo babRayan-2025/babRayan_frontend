@@ -17,7 +17,7 @@ import { FaHandshake } from "react-icons/fa";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function DashboardLayout({ children }) {
-  const { authenticated, loading } = useAuth();
+  const { authenticated, loading, isAllowedUser } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showDonationsSubmenu, setShowDonationsSubmenu] = useState(false);
   const [userName, setUserName] = useState('');
@@ -37,14 +37,18 @@ export default function DashboardLayout({ children }) {
       handleResize();
     }
 
-    if (!loading && !authenticated) {
+    // Only allow access if user is authenticated and allowed (role=admin/member)
+    if (
+      !loading && (!authenticated || !isAllowedUser)
+      && typeof window !== 'undefined' 
+      && window.location.pathname !== '/login'
+    ) {
       router.replace('/login');
     }
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-
-  }, [authenticated, loading, router]);
+  }, [authenticated, loading, router, isAllowedUser]);
 
   if (loading) {
     return (
@@ -54,7 +58,8 @@ export default function DashboardLayout({ children }) {
     );
   }
 
-  if (!authenticated) {
+  // Deny rendering if not allowed, unless already on /login
+  if ((!authenticated || !isAllowedUser) && (typeof window !== 'undefined' && window.location.pathname !== '/login')) {
     return null;
   }
 

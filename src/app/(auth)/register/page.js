@@ -42,8 +42,9 @@ export default function Register() {
       const data = await response.json();
       if (data.status) {
         toast.success('Inscription réussie !');
+        localStorage.setItem('emailVerification', email);
         setTimeout(() => {
-          router.push("/login");
+          router.push("/verify");
         }, 2000);
       } else {
         toast.error(data.message || 'Une erreur est survenue lors de l\'inscription.');
@@ -81,7 +82,7 @@ export default function Register() {
         <div className="login-features">
           <h2 className="mb-5 text-center flex flex-col items-center">
             Bienvenue sur <br />
-            <img className="mt-2" src="https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Logo.png?alt=media&token=e5f5173e-6170-4f2f-9037-955c7c199481" alt="Logo" />
+            <img className="mt-2" src="https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/Logo.png?alt=media&token=1d4af563-f0f7-466b-9184-77d005204d7a" alt="Logo" />
           </h2>
 
           <div className="feature-item">

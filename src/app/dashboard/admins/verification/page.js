@@ -28,7 +28,7 @@ export default function Verification() {
 
             if (result.status && result.data) {
                 // Filter to only show non-verified users
-                const nonVerifiedUsers = result.data.filter(user => !user.isVerified);
+                const nonVerifiedUsers = result.data.filter(user => user.role === 'user');
                 setUsers(nonVerifiedUsers);
             } else {
                 toast.error("Erreur lors du chargement des utilisateurs");
@@ -43,14 +43,12 @@ export default function Verification() {
 
     const verifyUser = async (user) => {
         try {
-            const updatedUser = { ...user, isVerified: true };
 
-            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${user.id}`, {
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/make_admin/${user.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ isVerified: true }),
             });
 
             const result = await response.json();
@@ -142,7 +140,7 @@ export default function Verification() {
                 </h1>
             </div>
             <div className="py-5">
-                <p className="mb-4">Cette page affiche uniquement les utilisateurs non vérifiés en attente d'approbation.</p>
+                <p className="mb-4">Cette page affiche uniquement les utilisateurs non 'ADMIN' en attente de vérification.</p>
 
                 <div className="flex justify-between items-center mb-4">
                     <div>
