@@ -65,6 +65,11 @@ export default function CmiPage() {
     const date = new Date(dateString);
     return date.toLocaleDateString();
   };
+  const formatHoraire = (dateString) => {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    return date.toLocaleTimeString();
+  };
 
   const filterDonationsByStatus = (donations) => {
     if (activeTab === 'all') return donations;
@@ -120,6 +125,7 @@ export default function CmiPage() {
         'Montant': parseFloat(donation.amount).toFixed(2) + ' MAD',
         'Type': donation.type,
         'Date': formatDate(donation.createdAt),
+        'Horaire': formatHoraire(donation.createdAt),
         'Status': donation.status
       }));
 
@@ -307,7 +313,8 @@ export default function CmiPage() {
                     <div className="text-xs sm:text-sm text-gray-500 truncate max-w-[120px] sm:max-w-full">{donation.email}</div>
                     <div className="text-xs sm:text-sm text-gray-500 ">{donation.telephone}</div>
                     <div className="sm:hidden text-xs">
-                      <span className="inline-block mt-1">{formatDate(donation.createdAt)}</span>
+                      <span className="inline-block mt-1">{formatDate(donation.createdAt)}</span> <br />
+                      <span className="inline-block mt-1">{formatHoraire(donation.createdAt)}</span>
                     </div>
                   </td>
                   <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
@@ -319,7 +326,7 @@ export default function CmiPage() {
                     </span>
                   </td>
                   <td className="hidden md:table-cell px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
-                    {formatDate(donation.createdAt)}
+                    {formatDate(donation.createdAt)} <br /> {formatHoraire(donation.createdAt)}
                   </td>
                   <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
                     <span className={`px-2 py-1 text-xs font-semibold rounded-full ${donation.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :

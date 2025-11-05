@@ -62,6 +62,12 @@ export default function PaypalPage() {
     return date.toLocaleDateString();
   };
 
+  const formatHoraire = (dateString) => {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    return date.toLocaleTimeString();
+  };
+
   const filterDonationsByStatus = (donations) => {
     if (activeTab === 'all') return donations;
     return donations.filter(donation => 
@@ -121,6 +127,7 @@ export default function PaypalPage() {
         'Montant': parseFloat(donation.montant).toFixed(2) + ' MAD',
         'Type': donation.typeDon,
         'Date': formatDate(donation.createdAt),
+        'Horaire': formatHoraire(donation.createdAt),
         'Status': donation.status
       }));
 
@@ -303,7 +310,8 @@ export default function PaypalPage() {
                     <div className="text-xs sm:text-sm text-gray-500 truncate max-w-[120px] sm:max-w-full">{donation.email}</div>
                     <div className="text-xs sm:text-sm text-gray-500">{donation.telephone}</div>
                     <div className="sm:hidden text-xs">
-                      <span className="inline-block mt-1">{formatDate(donation.createdAt)}</span>
+                      <span className="inline-block mt-1">{formatDate(donation.createdAt)}</span> <br />
+                      <span className="inline-block mt-1">{formatHoraire(donation.createdAt)}</span>
                     </div>
                     <div className="sm:hidden">
                       <span className={`inline-block mt-1 px-2 py-1 text-xs font-semibold rounded-full ${donation.typeDon === 'Ponctuel' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}`}>
@@ -320,7 +328,7 @@ export default function PaypalPage() {
                     </span>
                   </td>
                   <td className="hidden md:table-cell px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
-                    {formatDate(donation.createdAt)}
+                    {formatDate(donation.createdAt)} <br /> {formatHoraire(donation.createdAt)}
                   </td>
                   <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
                     <span className={`px-2 py-1 text-xs font-semibold rounded-full ${donation.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
