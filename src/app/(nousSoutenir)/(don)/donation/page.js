@@ -62,6 +62,7 @@ export default function Donation() {
     companyName: "",
   });
   const [captchaValue, setCaptchaValue] = useState(null);
+  const [showUserInfoModal, setShowUserInfoModal] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -231,9 +232,6 @@ export default function Donation() {
   };
 
   const handleProceedToDonation = () => {
-    const selectedPaymentMethod = paymentMethods.find(
-      (method) => method.id === paymentMethod
-    );
     const montant = Number(selectedAmount || customAmount);
 
     if (!selectedAmount && !customAmount) {
@@ -251,14 +249,16 @@ export default function Donation() {
     } else if (!captchaValue) {
       toast.error("Veuillez compléter le captcha.");
       return;
-    } else if ([1, 2, 3].includes(paymentMethod)) {
+    } else if (paymentMethod === 4 || paymentMethod === 5) {
+      setShowUserInfoModal(true);
+      // Do NOT call any payment API here!
+      return;
+    } else {
+      // For methods with popup, show modal as before.
+      const selectedPaymentMethod = paymentMethods.find((method) => method.id === paymentMethod);
       setSelectedMethod(selectedPaymentMethod);
       setIsModalOpen(true);
-    } else if ([4, 5].includes(paymentMethod)) {
-      setSelectedMethod(selectedPaymentMethod);
-      setShowForm(true);
     }
-    // Reset captcha after successful submission
     setCaptchaValue(null);
     if (window.grecaptcha) {
       window.grecaptcha.reset();
@@ -917,6 +917,110 @@ export default function Donation() {
           </div>
         </motion.div>
       </motion.section>
+      {showUserInfoModal && (
+        <UserInfoModal
+          onClose={() => setShowUserInfoModal(false)}
+          paymentMethod={paymentMethod}
+          selectedAmount={selectedAmount}
+          customAmount={customAmount}
+          donationType={donationType}
+        />
+      )}
     </main>
+  );
+}
+
+// UserInfoModal collects user info and submits to CMI/Paypal process
+function UserInfoModal({ onClose, paymentMethod, selectedAmount, customAmount, donationType }) {
+  const [userInfo, setUserInfo] = React.useState({
+    fullName: '',
+    email: '',
+    phone: '',
+  });
+  
+  const handleChange = (e) => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!userInfo.email) {
+      toast.error('Veuillez entrer votre adresse e-mail.');
+      return;
+    }
+    if (paymentMethod === 5) {
+      try {
+        const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/cmi/createCmi', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fullname: userInfo.fullName && userInfo.fullName.trim() !== '' ? userInfo.fullName.trim() : 'Anonyme',
+            email: userInfo.email && userInfo.email.trim() !== '' ? userInfo.email.trim() : 'Anonyme@gmail.com',
+            telephone: userInfo.phone && userInfo.phone.trim() !== '' ? userInfo.phone.trim() : '06XXXXXXXX',
+            amount: selectedAmount || customAmount,
+            type: donationType,
+          }),
+        });
+        const data = await response.json();
+        if (data.paymentUrl && data.params) {
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = data.paymentUrl;
+          Object.entries(data.params).forEach(([key, value]) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            form.appendChild(input);
+          });
+          document.body.appendChild(form);
+          form.submit();
+        } else {
+          toast.error('Paramètres de paiement manquants ou URL invalide');
+        }
+      } catch (error) {
+        toast.error('Une erreur est survenue lors du paiement.');
+      }
+    } else if (paymentMethod === 4) {
+      // Paypal
+      const typeDon = donationType || 'default';
+      const nom = userInfo.fullName?.trim() || 'Anonyme';
+      const email = userInfo.email?.trim() || 'anonyme@gmail.com';
+      const telephone = userInfo.phone?.trim() || '06XXXXXXXX';
+      const montant = Number(selectedAmount || customAmount);
+      try {
+        const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/don/payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ typeDon, nom, email, telephone, montant }),
+        });
+        const data = await response.json();
+        if (data.approvalUrl) {
+          window.location.href = data.approvalUrl;
+        } else {
+          toast.error('Une erreur est survenue lors de la création du paiement.');
+        }
+      } catch (error) {
+        toast.error('Une erreur est survenue lors du paiement.');
+      }
+    }
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-6 z-50">
+      <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-xl">
+        <div className="bg-red-700 text-white py-4 px-6 rounded-xl mb-6 relative">
+          <h2 className="text-xl font-bold">Montant: {selectedAmount || customAmount} DH</h2>
+          <button onClick={onClose} className="absolute top-2 right-3 bg-white bg-opacity-20 text-white hover:bg-opacity-30 rounded-full w-8 h-8 flex items-center justify-center" aria-label="Fermer">✕</button>
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-4 md:my-6">
+          <input name="email" type="email" placeholder="Adresse e-mail *" className="w-full p-2 rounded-lg border border-gray-300" value={userInfo.email} onChange={handleChange} required />
+          <input name="fullName" type="text" placeholder="Nom complet" className="w-full p-2 rounded-lg border border-gray-300" value={userInfo.fullName} onChange={handleChange} />
+          <input name="phone" type="tel" placeholder="Téléphone" className="w-full p-2 rounded-lg border border-gray-300" value={userInfo.phone} onChange={handleChange} />
+          <button type="submit" className="bg-red-700 text-white py-2 px-6 rounded-xl w-full mt-4">Finaliser mon don</button>
+        </form>
+      </div>
+    </div>
   );
 }
