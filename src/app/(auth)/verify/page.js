@@ -16,7 +16,6 @@ export default function Verify() {
   const [resending, setResending] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [cooldown, setCooldown] = useState(0);
-  const emailVerification = localStorage.getItem('emailVerification');
 
   useEffect(() => {
     // Get email from localStorage
@@ -64,7 +63,7 @@ export default function Verify() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: emailVerification,
+          email: email,
           code: verificationCode,
         })
       });
