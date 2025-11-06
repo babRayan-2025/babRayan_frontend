@@ -15,6 +15,7 @@ export default function CmiPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('all');
   const [itemsPerPage, setItemsPerPage] = useState(7);
+  const [statusSortMode, setStatusSortMode] = useState('Failed'); // Track custom sort for status
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -93,10 +94,22 @@ export default function CmiPage() {
       const dateB = new Date(b.createdAt);
       return sortAsc ? dateA - dateB : dateB - dateA;
     } else if (sortBy === 'status') {
-      const statusOrder = { 'Pending': 0, 'Paid': 1, 'Canceled': 2 };
-      return sortAsc
-        ? statusOrder[a.status] - statusOrder[b.status]
-        : statusOrder[b.status] - statusOrder[a.status];
+      // Cycle through sort: Failed first, then Pending, then Paid
+      const cycle = {
+        'Failed': ['Failed', 'Pending', 'Paid'],
+        'Pending': ['Pending', 'Paid', 'Failed'],
+        'Paid': ['Paid', 'Failed', 'Pending'],
+      };
+      const currOrder = cycle[statusSortMode] || ['Failed', 'Pending', 'Paid'];
+      const statusToIndex = status => currOrder.indexOf(status);
+      // Sort primarily by custom order, then by time (descending, newest first)
+      const idxA = statusToIndex(a.status);
+      const idxB = statusToIndex(b.status);
+      if (idxA !== idxB) return idxA - idxB;
+      // If same status, sort by date desc
+      const dateA = new Date(a.createdAt);
+      const dateB = new Date(b.createdAt);
+      return dateB - dateA;
     } else if (sortBy === 'amount') {
       return sortAsc
         ? parseFloat(a.amount) - parseFloat(b.amount)
@@ -288,13 +301,19 @@ export default function CmiPage() {
                   className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                   onClick={() => {
                     setSortBy('status');
-                    setSortAsc(!sortAsc);
+                    setSortAsc(false); // always descending
+                    setStatusSortMode((prev) =>
+                      prev === 'Failed' ? 'Pending' : prev === 'Pending' ? 'Paid' : 'Failed'
+                    );
                   }}
                 >
                   <div className="flex items-center">
                     Status
                     {sortBy === 'status' ? (
-                      sortAsc ? <FaSortUp className="ml-1" /> : <FaSortDown className="ml-1" />
+                      <>
+                        <span className="ml-2 text-xs font-medium">{statusSortMode}</span>
+                        <FaSortDown className="ml-1" />
+                      </>
                     ) : (
                       <FaSort className="ml-1 text-gray-400" />
                     )}
