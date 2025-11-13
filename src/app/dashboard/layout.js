@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuth } from '@/hooks/withAuth';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from "next/link";
 import "./dashboard.css";
@@ -17,11 +17,12 @@ import { FaHandshake } from "react-icons/fa";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function DashboardLayout({ children }) {
-  const { authenticated, loading, isAllowedUser } = useAuth();
+  const { authenticated, loading, isAllowedUser, userRole } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showDonationsSubmenu, setShowDonationsSubmenu] = useState(false);
   const [userName, setUserName] = useState('');
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,6 +51,19 @@ export default function DashboardLayout({ children }) {
     return () => window.removeEventListener("resize", handleResize);
   }, [authenticated, loading, router, isAllowedUser]);
 
+  useEffect(() => {
+    if (loading || !userRole) {
+      return;
+    }
+    if (userRole === 'member') {
+      const allowedPrefixes = ['/dashboard/news', '/dashboard/settings'];
+      const isAllowedPath = allowedPrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
+      if (!isAllowedPath) {
+        router.replace('/dashboard/news');
+      }
+    }
+  }, [loading, userRole, pathname, router]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -64,23 +78,34 @@ export default function DashboardLayout({ children }) {
   }
 
   const menuItems = [
-    { name: 'Dashboard', icon: <MdOutlineSpaceDashboard />, path: '' },
-    { name: 'Actualités', icon: <ImNewspaper />, path: '/news' },
+    { name: 'Dashboard', icon: <MdOutlineSpaceDashboard />, path: '', rolesAllowed: ['admin'] },
+    { name: 'Actualités', icon: <ImNewspaper />, path: '/news', rolesAllowed: ['admin', 'member'] },
     {
       name: 'Donations',
       icon: <FaHandHoldingHeart />,
       path: '/donations',
+      rolesAllowed: ['admin'],
       submenu: [
         { name: 'PayPal', path: '/donations/paypal' },
         { name: 'CMI', path: '/donations/cmi' }
       ]
     },
-    { name: 'Bénévoles', icon: <FaHandsHelping />, path: '/volunteers' },
-    { name: 'Contacts', icon: <FaAddressBook />, path: '/contacts' },
-    { name: 'Partenaires', icon: <FaHandshake />, path: '/partners' },
-    { name: 'Utilisateurs', icon: <FaUsers />, path: '/admins' },
-    { name: 'Settings', icon: <IoSettingsSharp />, path: '/settings' },
+    { name: 'Bénévoles', icon: <FaHandsHelping />, path: '/volunteers', rolesAllowed: ['admin'] },
+    { name: 'Contacts', icon: <FaAddressBook />, path: '/contacts', rolesAllowed: ['admin'] },
+    { name: 'Partenaires', icon: <FaHandshake />, path: '/partners', rolesAllowed: ['admin'] },
+    { name: 'Utilisateurs', icon: <FaUsers />, path: '/admins', rolesAllowed: ['admin'] },
+    { name: 'Settings', icon: <IoSettingsSharp />, path: '/settings', rolesAllowed: ['admin', 'member'] },
   ];
+
+  const allowedMenuItems = menuItems.filter((item) => {
+    if (!item.rolesAllowed) {
+      return true;
+    }
+    if (!userRole) {
+      return false;
+    }
+    return item.rolesAllowed.includes(userRole);
+  });
 
   const handleLogout = () => {
     if (typeof window !== 'undefined') {
@@ -120,7 +145,7 @@ export default function DashboardLayout({ children }) {
 
           <div className="py-4 overflow-y-auto flex-1">
             <nav className="px-2">
-              {menuItems.map((item, index) => (
+              {allowedMenuItems.map((item, index) => (
                 <div key={index} className="mb-1">
                   {item.submenu ? (
                     <div>

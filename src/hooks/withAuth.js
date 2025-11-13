@@ -6,6 +6,7 @@ export function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
   const [isAllowedUser, setIsAllowedUser] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
     const checkAuth = () => {
@@ -15,15 +16,28 @@ export function useAuth() {
           router.replace("/login");
         } else {
           const getUser = async () => {
-            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userID}`);
-            const user = await response.json();
-            if (user.data.role === 'admin' || user.data.role === 'member') {
-              setIsAllowedUser(true);
-            } else {
+            try {
+              const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userID}`);
+              if (!response.ok) {
+                throw new Error('Unable to fetch user');
+              }
+              const user = await response.json();
+              const role = user?.data?.role;
+              setUserRole(role || null);
+              if (role === 'admin' || role === 'member') {
+                setIsAllowedUser(true);
+              } else {
+                setIsAllowedUser(false);
+              }
+              setAuthenticated(true);
+            } catch (error) {
+              console.error('Auth check failed:', error);
               setIsAllowedUser(false);
+              setAuthenticated(false);
+              router.replace("/login");
+            } finally {
+              setLoading(false);
             }
-            setAuthenticated(true);
-            setLoading(false);
           }
           getUser();
         }
@@ -32,5 +46,5 @@ export function useAuth() {
     checkAuth();
   }, [router]);
 
-  return { authenticated, loading, isAllowedUser };
+  return { authenticated, loading, isAllowedUser, userRole };
 }
