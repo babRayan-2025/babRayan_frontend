@@ -16,7 +16,6 @@ export default function Actualite() {
     const [sortField, setSortField] = useState('createdAt'); // Track which field to sort by, default to createdAt
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [actualiteToDelete, setActualiteToDelete] = useState(null);
-    const token = localStorage.getItem("token");
 
     useEffect(() => {
         fetchNews();
@@ -46,11 +45,7 @@ export default function Actualite() {
     const fetchNews = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/news', {
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                },
-            });
+            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/news');
             const result = await response.json();
 
             if (result.status && result.data) {
@@ -72,9 +67,6 @@ export default function Actualite() {
         try {
             const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${id}`, {
                 method: 'DELETE',
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                },
             });
 
             const result = await response.json();
@@ -138,9 +130,6 @@ export default function Actualite() {
             try {
                 const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${actualiteToDelete.id}`, {
                     method: 'DELETE',
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                    },
                 });
 
                 const result = await response.json();

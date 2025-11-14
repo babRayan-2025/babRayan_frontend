@@ -21,7 +21,7 @@ const AddNews = () => {
     const [contentState, setContentState] = useState(EditorState.createEmpty());
     const [fileList, setFileList] = useState([]);
     const [loading, setLoading] = useState(false);
-    const token = localStorage.getItem("token");
+
     const getBase64 = (file) =>
         new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -106,9 +106,6 @@ const AddNews = () => {
             const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/news", {
                 method: "POST",
                 body: formData,
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                },
             });
 
             const data = await response.json();

@@ -25,7 +25,7 @@ export default function NewsDetailClient({ newsId }) {
     const [contentState, setContentState] = useState(EditorState.createEmpty());
     const [fileList, setFileList] = useState([]);
     const [savingChanges, setSavingChanges] = useState(false);
-    const token = localStorage.getItem("token");
+
     useEffect(() => {
         if (newsId) {
             fetchNewsById(newsId);
@@ -49,11 +49,7 @@ export default function NewsDetailClient({ newsId }) {
     const fetchNewsById = async (id) => {
         try {
             setLoading(true);
-            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${id}`, {
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                },
-            });
+            const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${id}`);
             const result = await response.json();
 
             if (result.status && result.data) {
@@ -173,9 +169,6 @@ export default function NewsDetailClient({ newsId }) {
             const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/news/${newsId}`, {
                 method: "PUT",
                 body: formData,
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                },
             });
 
             const data = await response.json();

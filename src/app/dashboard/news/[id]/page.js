@@ -9,13 +9,9 @@ export default function NewsDetailPage({ params }) {
 // This function is required when using "output: export" in Next.js config
 // It tells Next.js which paths to pre-render at build time
 export async function generateStaticParams() {
-    const token = localStorage.getItem("token");
     try {
         // Fetch all news IDs from the API
         const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/news', {
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            },
             next: { revalidate: 3600 } // Revalidate every hour
         });
         
