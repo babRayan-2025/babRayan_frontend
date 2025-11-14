@@ -15,7 +15,7 @@ export default function Verification() {
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(7);
-
+    const token = localStorage.getItem("token");
     useEffect(() => {
         fetchNonVerifiedUsers();
     }, []);
@@ -23,7 +23,11 @@ export default function Verification() {
     const fetchNonVerifiedUsers = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users');
+            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users', {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
             const result = await response.json();
 
             if (result.status && result.data) {
@@ -48,6 +52,7 @@ export default function Verification() {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`,
                 },
             });
 
@@ -100,6 +105,9 @@ export default function Verification() {
         try {
             const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${id}`, {
                 method: 'DELETE',
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                },
             });
 
             const result = await response.json();

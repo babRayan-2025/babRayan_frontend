@@ -50,11 +50,16 @@ export default function Home() {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [blogModal, setBlogModal] = useState(false);
   const [infoSwiper, setInfoSwiper] = useState(null);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     async function fetchNews() {
       try {
-        const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/news");
+        const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/news", {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
         const data = await response.json();
         if (data.status && data.data) {
           // Sort by createdAt in descending order (newest first) and take only the first 3

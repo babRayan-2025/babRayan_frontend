@@ -7,7 +7,7 @@ export function useAuth() {
   const [isAllowedUser, setIsAllowedUser] = useState(false);
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState(null);
-
+  const token = localStorage.getItem("token");
   useEffect(() => {
     const checkAuth = () => {
       if (typeof window !== "undefined") {
@@ -17,7 +17,11 @@ export function useAuth() {
         } else {
           const getUser = async () => {
             try {
-              const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userID}`);
+              const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userID}`, {
+                headers: {
+                  "Authorization": `Bearer ${token}`,
+                },
+              });
               if (!response.ok) {
                 throw new Error('Unable to fetch user');
               }

@@ -14,6 +14,7 @@ export default function Admins() {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(7);
     const [unverifiedCount, setUnverifiedCount] = useState(0);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         fetchUsers();
@@ -22,7 +23,11 @@ export default function Admins() {
     const fetchUsers = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users');
+            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users', {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
             const result = await response.json();
 
             if (result.status && result.data) {
@@ -51,6 +56,7 @@ export default function Admins() {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`,
                 },
             });
 
@@ -72,6 +78,9 @@ export default function Admins() {
         try {
             const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${id}`, {
                 method: 'DELETE',
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                },
             });
 
             const result = await response.json();
