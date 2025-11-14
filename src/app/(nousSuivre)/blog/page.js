@@ -82,7 +82,7 @@ export default function Blog() {
   const [newsfetched, setNewsfetched] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const token = localStorage.getItem("token");
+
 
   // const videoUrl = "https://firebasestorage.googleapis.com/v0/b/bab-rayan-b04a0.firebasestorage.app/o/Vid%C3%A9o%20telquel%20site%20web.mp4?alt=media&token=fbf6d395-01d9-498c-85a3-15a800a3d1a0";
   const videoUrl = "https://www.youtube.com/watch?v=1SatrIi9WB0&t=71s";
@@ -93,11 +93,7 @@ export default function Blog() {
   useEffect(() => {
     async function fetchNews() {
       try {
-        const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/news", {
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        });
+        const response = await fetch("https://api-vevrjfohcq-uc.a.run.app/v1/news");
         const data = await response.json();
         if (data.status && data.data) {
           setNewsfetched(data.data);
