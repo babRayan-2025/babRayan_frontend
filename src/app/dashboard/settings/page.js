@@ -19,7 +19,6 @@ export default function SettingsPage() {
   const [emailForm] = Form.useForm();
   const [passwordForm] = Form.useForm();
   const [forgotPasswordForm] = Form.useForm();
-  const token = localStorage.getItem("token");
 
   const userId = localStorage.getItem("userID");
 
@@ -28,11 +27,7 @@ export default function SettingsPage() {
     const fetchUserData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userId}`, {
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userId}`);
         const data = await response.json();
         setUserData(data.data);
         // Only set form values when the form is visible
@@ -72,8 +67,7 @@ export default function SettingsPage() {
       const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userId}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({ email: values.email })
       });
@@ -100,8 +94,7 @@ export default function SettingsPage() {
       const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/${userId}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           currentPassword: values.currentPassword,
@@ -136,8 +129,7 @@ export default function SettingsPage() {
       const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/forgot-password`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           email: userData?.email
@@ -170,8 +162,7 @@ export default function SettingsPage() {
       const response = await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/users/reset-password`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           email: userData?.email,

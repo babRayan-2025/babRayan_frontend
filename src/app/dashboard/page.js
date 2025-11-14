@@ -49,11 +49,7 @@ export default function DashboardPage() {
         setLoading(true);
 
         // Fetch users count
-        const usersResponse = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users', {
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        });
+        const usersResponse = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/users');
         const usersData = await usersResponse.json();
         if (usersData.status) {
           setUsers(usersData.data);

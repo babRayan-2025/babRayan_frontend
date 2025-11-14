@@ -8,7 +8,6 @@ export default function Contacts() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const imageDefault = "https://firebasestorage.googleapis.com/v0/b/valid-bab-rayan.firebasestorage.app/o/avatar%20user.png?alt=media&token=96fd3b25-26e0-4ae8-92b6-fe1548f42685"
-    const token = localStorage.getItem("token");
 
     // Modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,11 +25,7 @@ export default function Contacts() {
     const fetchContacts = async () => {
         try {
             setLoading(true);
-            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/contact', {
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                },
-            });
+            const response = await fetch('https://api-vevrjfohcq-uc.a.run.app/v1/contact');
             const result = await response.json();
             
             if (result.status && result.data) {
@@ -94,8 +89,7 @@ export default function Contacts() {
                 await fetch(`https://api-vevrjfohcq-uc.a.run.app/v1/contact/${id}/visibility`, {
                     method: 'PATCH',
                     headers: {
-                        'Content-Type': 'application/json',
-                        "Authorization": `Bearer ${token}`,
+                        'Content-Type': 'application/json'
                     },
                 });
                 
