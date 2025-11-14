@@ -19,7 +19,7 @@ export default function Contact() {
     message: "",
   });
   const [captchaValue, setCaptchaValue] = useState(null);
-  const token = localStorage.getItem("token");
+
   useEffect(() => {
     // Add reCAPTCHA script
     const script = document.createElement("script");
@@ -50,7 +50,6 @@ export default function Contact() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
           nom: formData.nom,
