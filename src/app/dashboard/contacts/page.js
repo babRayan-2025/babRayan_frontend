@@ -123,7 +123,7 @@ export default function Contacts() {
     const [searchName, setSearchName] = useState("");
     const [sortAsc, setSortAsc] = useState(false);  // true for ascending, false for descending
     const [currentPage, setCurrentPage] = useState(1);  // Track current page
-    const [itemsPerPage, setItemsPerPage] = useState(4); // Number of items per page
+    const [itemsPerPage, setItemsPerPage] = useState(8); // Number of items per page
 
     // Sort the contacts based on date (ascending or descending)
     const sortedContacts = [...contacts].sort((a, b) => {
